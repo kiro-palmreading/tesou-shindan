@@ -693,8 +693,8 @@ body {
     <div class="line-section">
       <div class="line-title">もっと詳しく知りたい方へ</div>
       <div class="line-q">
-        LINEに登録して、この6桁コードを送ってください。<br>
-        あなたへの個別メッセージをお届けします。
+        LINEに登録後、上の「タイトルをコピーする」ボタンでコピーして<br>
+        トークに送ってください。
       </div>
       <div class="line-benefits">
         ✦ あなたの強みをさらに詳しく解説<br>
@@ -708,7 +708,7 @@ body {
         <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.630 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
         📲 LINEで友達登録する（無料）
       </a>
-      <p class="line-note">※登録後、この6桁コードをトークに送ってください<br>※いつでも解除できます</p>
+      <p class="line-note">※登録後、上のタイトルをコピーしてトークに送ってください<br>※いつでも解除できます</p>
     </div>
   </div>
 
@@ -865,6 +865,21 @@ function getTypeName() {
   return '「' + parts.join(' × ') + '」タイプ';
 }
 
+function copyTitle(title, btn) {
+  var ta = document.createElement('textarea');
+  ta.value = '「' + title + '」';
+  document.body.appendChild(ta);
+  ta.select();
+  document.execCommand('copy');
+  document.body.removeChild(ta);
+  btn.textContent = '✅ コピーしました！';
+  btn.style.background = '#2a7a2a';
+  setTimeout(function() {
+    btn.textContent = '📋 タイトルをコピーする';
+    btn.style.background = '#5ba3d9';
+  }, 2000);
+}
+
 function copyCode(code, btn) {
   navigator.clipboard.writeText(code).then(function() {
     btn.textContent = '✅ コピーしました！';
@@ -921,51 +936,21 @@ function diagnose() {
     document.getElementById('res-how').textContent = data.how;
     document.getElementById('res-action').textContent = data.action || '';
 
-// ローディング表示
+// 診断結果タイトルのコピーボタンを表示
     var lineBtn = document.getElementById('lineBtn');
     if (lineBtn) {
       var oldBox = document.getElementById('issuedCodeBox');
       if (oldBox) oldBox.remove();
+      var catchTitle = data.catch;
       lineBtn.insertAdjacentHTML(
         'beforebegin',
-        '<div id="issuedCodeBox" style="margin:16px 0;padding:16px;border:1px solid #ddd;border-radius:12px;background:#fff;text-align:center;">' +
-          '<div style="font-size:16px;color:#5ba3d9;">コードを取得中...</div>' +
+        '<div id="issuedCodeBox" style="margin:16px 0;padding:18px;border:1px solid #ddd;border-radius:12px;background:#fff;text-align:center;">' +
+          '<div style="font-size:16px;margin-bottom:10px;color:#1a3a5c;">LINEに登録後、下のボタンを押してコピーし<br>トークに貼り付けて送ってください</div>' +
+          '<div style="font-size:18px;font-weight:bold;color:#123d73;margin-bottom:14px;padding:10px;background:#e8f4fc;border-radius:8px;">「' + catchTitle + '」</div>' +
+          '<button onclick="copyTitle(\'' + catchTitle.replace(/'/g, "\\'") + '\', this)" style="background:#5ba3d9;color:white;border:none;border-radius:8px;padding:12px 28px;font-size:16px;font-weight:700;cursor:pointer;font-family:\'Noto Sans JP\',sans-serif;transition:background 0.2s;">📋 タイトルをコピーする</button>' +
         '</div>'
       );
     }
-
-    // GASにGETリクエストで保存
-    fetch(GAS_WEB_APP_URL + '?action=saveResult&key=' + encodeURIComponent(key))
-      .then(function(response) { return response.json(); })
-      .then(function(result) {
-        var oldBox = document.getElementById('issuedCodeBox');
-        if (oldBox) oldBox.remove();
-
-        if (!result || !result.success) {
-          alert('コードの発行に失敗しました: ' + (result ? result.message : '不明なエラー'));
-          return;
-        }
-
-        var code = result.code;
-        var lineBtn2 = document.getElementById('lineBtn');
-        if (lineBtn2) {
-          lineBtn2.insertAdjacentHTML(
-            'beforebegin',
-            '<div id="issuedCodeBox" style="margin:16px 0;padding:16px;border:1px solid #ddd;border-radius:12px;background:#fff;text-align:center;">' +
-              '<div style="font-size:16px;margin-bottom:8px;">LINEで次の6桁コードを送ってください</div>' +
-              '<div style="font-size:36px;font-weight:bold;letter-spacing:4px;color:#123d73;margin-bottom:12px;">' + code + '</div>' +
-              '<button onclick="copyCode(\'' + code + '\', this)" style="background:#5ba3d9;color:white;border:none;border-radius:8px;padding:12px 28px;font-size:16px;font-weight:700;cursor:pointer;font-family:\'Noto Sans JP\',sans-serif;transition:background 0.2s;">📋 コードをコピーする</button>' +
-            '</div>'
-          );
-        }
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      })
-      .catch(function(err) {
-        var oldBox = document.getElementById('issuedCodeBox');
-        if (oldBox) oldBox.remove();
-        alert('コードの発行に失敗しました: ' + err.message);
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      });
 
   }, 1800);
 }
