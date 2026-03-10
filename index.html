@@ -63,6 +63,8 @@ body {
 }
 .header-copy {
   font-size: 18px;
+  text-align: left;
+  text-align: left;
   color: var(--text-mid);
   line-height: 2;
   margin-bottom: 16px;
@@ -356,6 +358,7 @@ body {
 .result-empathy {
   font-family: 'Noto Serif JP', serif;
   font-size: 17px;
+  text-align: left;
   color: var(--navy);
   margin-bottom: 18px;
   padding-bottom: 16px;
@@ -400,6 +403,7 @@ body {
 }
 .result-card-body {
   font-size: 17px;
+  text-align: left;
   line-height: 1.9;
   color: var(--text-dark);
 }
@@ -691,24 +695,20 @@ body {
     </div>
 
     <div class="line-section">
-      <div class="line-title">もっと詳しく知りたい方へ</div>
-      <div class="line-q">
-        LINEに登録後、上の「タイトルをコピーする」ボタンでコピーして<br>
-        トークに送ってください。
+      <div style="font-size:16px;font-weight:700;color:#c8940a;text-align:center;margin-bottom:6px;letter-spacing:1px;">【1日3名様限定】</div>
+      <div class="line-title">今日の診断を、明日の行動に変えたい方へ</div>
+      <div style="font-size:16px;color:#2a5280;margin-bottom:14px;text-align:left;">累計1200名以上を鑑定、LINE占いで満足度★4.9（184名）</div>
+      <div class="line-q" style="text-align:left;">LINE登録後、診断結果名を送ってください</div>
+      <div class="line-benefits" style="text-align:left;">
+        ✦ あなたの強みを仕事に活かすヒント<br>
+        ✦ 前に進むための最初の1アクション
       </div>
-      <div class="line-benefits">
-        ✦ あなたの強みをさらに詳しく解説<br>
-        ✦ 明日から使える具体的なアドバイス<br>
-        ✦ 個別にお届けする特別なメッセージ
-      </div>
-      <div class="line-social">
-        1200名以上が鑑定を受け、満足度★4.9を獲得した手相診断を、無料でお届けします。
-      </div>
+      <div style="font-size:16px;color:#2a5280;margin-bottom:18px;text-align:left;">あなたの診断結果をもとに、LINEで個別メッセージをお届けします</div>
       <a id="lineBtn" href="https://lin.ee/OINIB8d" class="btn-line" target="_blank">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.630 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
-        📲 LINEで友達登録する（無料）
+        LINEで行動のヒントを受け取る
       </a>
-      <p class="line-note">※登録後、上のタイトルをコピーしてトークに送ってください<br>※いつでも解除できます</p>
+      <p class="line-note" style="text-align:left;">※24時間以内にお伝えします<br>※登録はいつでも解除できます</p>
     </div>
   </div>
 
@@ -875,7 +875,7 @@ function copyTitle(title, btn) {
   btn.textContent = '✅ コピーしました！';
   btn.style.background = '#2a7a2a';
   setTimeout(function() {
-    btn.textContent = '📋 タイトルをコピーする';
+    btn.textContent = '📋 診断結果名をコピーする';
     btn.style.background = '#5ba3d9';
   }, 2000);
 }
@@ -945,7 +945,7 @@ function diagnose() {
       lineBtn.insertAdjacentHTML(
         'beforebegin',
         '<div id="issuedCodeBox" style="margin:16px 0;padding:18px;border:1px solid #ddd;border-radius:12px;background:#fff;text-align:center;">' +
-          '<div style="font-size:16px;margin-bottom:10px;color:#1a3a5c;">LINEに登録後、下のボタンを押してコピーし<br>トークに貼り付けて送ってください</div>' +
+          '<div style="font-size:16px;margin-bottom:10px;color:#1a3a5c;">あなたの診断結果名</div>' +
           '<div style="font-size:18px;font-weight:bold;color:#123d73;margin-bottom:14px;padding:10px;background:#e8f4fc;border-radius:8px;">「' + catchTitle + '」</div>' +
           '<button onclick="copyTitle(\'' + catchTitle.replace(/'/g, "\\'") + '\', this)" style="background:#5ba3d9;color:white;border:none;border-radius:8px;padding:12px 28px;font-size:16px;font-weight:700;cursor:pointer;font-family:\'Noto Sans JP\',sans-serif;transition:background 0.2s;">📋 タイトルをコピーする</button>' +
         '</div>'
