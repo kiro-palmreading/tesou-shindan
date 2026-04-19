@@ -345,6 +345,12 @@ body {
   color: var(--text-dark);
   border: 1px solid var(--border);
 }
+.receive-guide-heading {
+  display: block;
+  text-align: center;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
 .btn-line {
   display: flex;
   align-items: center;
@@ -457,7 +463,7 @@ body {
       <div class="copy-code-box">
         <div class="copy-code-label">LINE送信用の診断コード</div>
         <div class="copy-code-value" id="copyCodeValue">---</div>
-        <button class="btn-copy-code" id="copyCodeBtn" type="button">📋 診断コードをコピーする</button>
+        <button class="btn-copy-code" id="copyCodeBtn" type="button">📋 診断コードを<br>コピーする</button>
       </div>
       <a id="lineBtn" href="https://lin.ee/OINIB8d" class="btn-line" target="_blank" rel="noopener noreferrer">LINE登録に進む</a>
       <p class="line-note">※コピーした診断コードをLINEで送ってください</p>
@@ -484,9 +490,7 @@ const COMMON_TEXTS = {
 少しずつ言葉になっていくはずです。
 
 まずは、あなたの土台から確認してみてください。`,
-  preLineCta: `3つの特性を組み合わせると、
-あなたの強みや、つまずきやすいポイントが
-よりはっきり見えてきます。
+  preLineCta: `3つの特性を組み合わせると、あなたの強みや、つまずきやすいポイントがよりはっきり見えてきます。
 
 LINE登録後は、
 
@@ -496,8 +500,7 @@ LINE登録後は、
 
 をまとめてお届けします。
 
-「自分の強みを、どう仕事に活かせばいいのか」
-その答えを知りたい方は、この先をご覧ください。`,
+「自分の強みを、どう仕事に活かせばいいのか」その答えを知りたい方は、この先をご覧ください。`,
   postLineLead: `ここから、あなたのトータル診断結果をお伝えします。
 
 3つの特性を重ねて見えてくるのは、
@@ -510,12 +513,12 @@ LINE登録後は、
 まずは、あなたの全体像から確認してみてください。`,
   receiveGuide: `【診断結果の受け取り方】
 
-1. 「診断コードをコピーする」ボタンを押す
-2. 「LINE登録に進む」ボタンを押す
-3. LINEでコピーした診断コードを送る
-   確認後、順次
-   トータル診断結果をお届けします。
-   ※ひとつひとつ内容を確認しながらお届けしているため、少しお時間をいただく場合があります。`
+1. 「診断コードをコピーする」ボタンを押す。
+2. 「LINE登録に進む」ボタンを押す。
+3. LINEでコピーした診断コードを送る。
+確認後、順次トータル診断結果をお届けします。
+
+※ひとつひとつ内容を確認しながらお届けしているため、少しお時間をいただく場合があります。`
 };
 // ▼ ここに本来の画像を入れてください（base64 or URL）
 const IMAGE_ASSETS = {
@@ -2478,8 +2481,8 @@ function createResultCardHtml(title,note,body,extraClass=''){
   return `<div class="result-card ${extraClass}"><div class="result-card-title">${escapeHtml(title)}</div>${normalizedNote?`<div class="result-card-note">${escapeHtml(normalizedNote)}</div>`:''}<div class="result-card-body">${escapeHtml(normalizedBody)}</div></div>`;
 }
 function diagnose(){document.getElementById('questionCard').style.display='none'; loadingMsgEl.style.display='block'; progressFillEl.style.width='100%'; setTimeout(()=>{loadingMsgEl.style.display='none'; showResult();},700);}
-function showResult(){const code=buildDiagnosisCode(); const preData=getPreResultByCode(code); const postData=POST_RESULT_MAP[code]; document.getElementById('introBlock').style.display='none'; document.getElementById('resultCode').textContent=`診断コード：${code}`; document.getElementById('copyCodeValue').textContent=code; document.getElementById('preLead').textContent=COMMON_TEXTS.preLineLead; document.getElementById('preLineCta').textContent=COMMON_TEXTS.preLineCta; document.getElementById('receiveGuide').textContent=COMMON_TEXTS.receiveGuide; document.getElementById('postLead').textContent=COMMON_TEXTS.postLineLead; document.getElementById('lineTitle').textContent='ここから先は、あなた専用の診断結果です'; const pre=document.getElementById('preResultCards'); const post=document.getElementById('postPreviewCards'); if(!preData||!postData){pre.innerHTML=createResultCardHtml('診断データが見つかりませんでした','','このコードの診断結果はまだ登録されていません。\n診断コード：'+code,'error-card'); post.innerHTML=''; resultSectionEl.style.display='block'; return;} pre.innerHTML=[createResultCardHtml(preData.foundationTitle,preData.foundationNote,preData.foundationBody),createResultCardHtml(preData.decisionTitle,preData.decisionNote,preData.decisionBody),createResultCardHtml(preData.thirdTitle,preData.thirdNote,preData.thirdBody)].join(''); post.innerHTML=[createResultCardHtml('あなたを一言で表すと','',postData.oneWord),createResultCardHtml('トータル診断結果','',postData.total),createResultCardHtml('仕事で活かせる強み','',postData.strength),createResultCardHtml('自然に前へ進むためのヒント','',postData.hint)].join(''); resultSectionEl.style.display='block'; window.scrollTo({top:0, behavior:'smooth'});}
-function copyText(text){navigator.clipboard.writeText(text).then(()=>{copyCodeBtnEl.textContent='✅ コピーしました！'; setTimeout(()=>copyCodeBtnEl.textContent='📋 診断コードをコピーする',1800);});}
+function showResult(){const code=buildDiagnosisCode(); const preData=getPreResultByCode(code); const postData=POST_RESULT_MAP[code]; document.getElementById('introBlock').style.display='none'; document.getElementById('resultCode').textContent=`診断コード：${code}`; document.getElementById('copyCodeValue').textContent=code; document.getElementById('preLead').textContent=COMMON_TEXTS.preLineLead; document.getElementById('preLineCta').textContent=COMMON_TEXTS.preLineCta; document.getElementById('receiveGuide').innerHTML=escapeHtml(COMMON_TEXTS.receiveGuide).replace('【診断結果の受け取り方】','<span class="receive-guide-heading">【診断結果の受け取り方】</span>'); document.getElementById('postLead').textContent=COMMON_TEXTS.postLineLead; document.getElementById('lineTitle').innerHTML='ここから先は<br>あなた専用の診断結果です'; const pre=document.getElementById('preResultCards'); const post=document.getElementById('postPreviewCards'); if(!preData||!postData){pre.innerHTML=createResultCardHtml('診断データが見つかりませんでした','','このコードの診断結果はまだ登録されていません。\n診断コード：'+code,'error-card'); post.innerHTML=''; resultSectionEl.style.display='block'; return;} pre.innerHTML=[createResultCardHtml(preData.foundationTitle,preData.foundationNote,preData.foundationBody),createResultCardHtml(preData.decisionTitle,preData.decisionNote,preData.decisionBody),createResultCardHtml(preData.thirdTitle,preData.thirdNote,preData.thirdBody)].join(''); post.innerHTML=[createResultCardHtml('あなたを一言で表すと','',postData.oneWord),createResultCardHtml('トータル診断結果','',postData.total),createResultCardHtml('仕事で活かせる強み','',postData.strength),createResultCardHtml('自然に前へ進むためのヒント','',postData.hint)].join(''); resultSectionEl.style.display='block'; window.scrollTo({top:0, behavior:'smooth'});}
+function copyText(text){navigator.clipboard.writeText(text).then(()=>{copyCodeBtnEl.textContent='✅ コピーしました！'; setTimeout(()=>copyCodeBtnEl.textContent='📋 診断コードを<br>コピーする',1800);});}
 nextBtnEl.addEventListener('click',goNext); backBtnEl.addEventListener('click',goBack); copyCodeBtnEl.addEventListener('click',()=>copyText(buildDiagnosisCode()));
 function runTests() {
   console.assert(Array.isArray(QUESTION_FLOW), 'QUESTION_FLOW should be an array');
