@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -2471,8 +2472,12 @@ function goNext(){ if(!isQuestionAnswered(currentQuestionKey)) return; const nex
 function goBack(){ const prev=getPreviousQuestionKey(currentQuestionKey); if(prev) renderQuestion(prev); }
 function formatJapaneseText(text){
   return String(text)
-    .replace(/。/g,'。<br>')
-    .replace(/<br>{2,}/g,'<br>')
+    .replace(/\r\n/g, '\n')
+    .replace(/\r/g, '\n')
+    .replace(/\n+/g, '')
+    .replace(/。/g, '。<br><br>')
+    .replace(/(<br><br>)+/g, '<br><br>')
+    .replace(/(<br><br>)$/g, '')
     .trim();
 }
 function normalizeResultText(text){
