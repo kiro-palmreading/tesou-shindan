@@ -297,7 +297,7 @@ body {
   border: 1px solid var(--border);
   text-align: center;
 }
-.copy-code-label { font-size: 16px; color: var(--text-mid); margin-bottom: 8px; }
+.copy-code-label { font-size: 16px; color: var(--text-mid); margin-bottom: 4px; }
 .copy-code-value {
   font-size: 22px;
   font-weight: 700;
@@ -349,7 +349,7 @@ body {
   display: block;
   text-align: center;
   font-weight: 700;
-  margin-bottom: 8px;
+  margin-bottom: 4px;
 }
 .btn-line {
   display: flex;
@@ -2471,34 +2471,20 @@ function goNext(){ if(!isQuestionAnswered(currentQuestionKey)) return; const nex
 function goBack(){ const prev=getPreviousQuestionKey(currentQuestionKey); if(prev) renderQuestion(prev); }
 function formatJapaneseText(text){
   return String(text)
-    .replace(/。\s*/g,'。<br>')
+    .replace(/。/g,'。<br>')
     .replace(/<br>{2,}/g,'<br>')
     .trim();
 }
-
 function normalizeResultText(text){
-  return formatJapaneseText(text)
-    .replace(/([^<])<br>([^・<])/g,'$1 $2')
-    .trim();
+  return formatJapaneseText(text);
 }
-
 function createResultCardHtml(title,note,body,extraClass=''){
-  const normalizedNote = note ? formatJapaneseText(note) : '';
-  const normalizedBody = formatJapaneseText(body);
-
-  return `
-  <div class="result-card ${extraClass}">
-    <div class="result-card-title">${escapeHtml(title)}</div>
-    ${normalizedNote ? `<div class="result-card-note">${normalizedNote}</div>` : ''}
-    <div class="result-card-body">${normalizedBody}</div>
-  </div>`;
-}(title,note,body,extraClass=''){
   const normalizedNote = note ? normalizeResultText(note) : '';
   const normalizedBody = normalizeResultText(body);
-  return `<div class="result-card ${extraClass}"><div class="result-card-title">${escapeHtml(title)}</div>${normalizedNote?`<div class="result-card-note">${escapeHtml(normalizedNote)}</div>`:''}<div class="result-card-body">${escapeHtml(normalizedBody)}</div></div>`;
+  return `<div class="result-card ${extraClass}"><div class="result-card-title">${escapeHtml(title)}</div>${normalizedNote?`<div class="result-card-note">${normalizedNote}</div>`:''}<div class="result-card-body">${normalizedBody}</div></div>`;
 }
 function diagnose(){document.getElementById('questionCard').style.display='none'; loadingMsgEl.style.display='block'; progressFillEl.style.width='100%'; setTimeout(()=>{loadingMsgEl.style.display='none'; showResult();},700);}
-function showResult(){const code=buildDiagnosisCode(); const preData=getPreResultByCode(code); const postData=POST_RESULT_MAP[code]; document.getElementById('introBlock').style.display='none'; document.getElementById('resultCode').textContent=`診断コード：${code}`; document.getElementById('copyCodeValue').textContent=code; document.getElementById('preLead').textContent=COMMON_TEXTS.preLineLead; document.getElementById('preLineCta').textContent=COMMON_TEXTS.preLineCta; document.getElementById('receiveGuide').innerHTML=escapeHtml(COMMON_TEXTS.receiveGuide).replace('【診断結果の受け取り方】','<span class="receive-guide-heading">【診断結果の受け取り方】</span>'); document.getElementById('postLead').textContent=COMMON_TEXTS.postLineLead; document.getElementById('lineTitle').innerHTML='ここから先は<br>あなた専用の診断結果です'; const pre=document.getElementById('preResultCards'); const post=document.getElementById('postPreviewCards'); if(!preData||!postData){pre.innerHTML=createResultCardHtml('診断データが見つかりませんでした','','このコードの診断結果はまだ登録されていません。\n診断コード：'+code,'error-card'); post.innerHTML=''; resultSectionEl.style.display='block'; return;} pre.innerHTML=[createResultCardHtml(preData.foundationTitle,preData.foundationNote,preData.foundationBody),createResultCardHtml(preData.decisionTitle,preData.decisionNote,preData.decisionBody),createResultCardHtml(preData.thirdTitle,preData.thirdNote,preData.thirdBody)].join(''); post.innerHTML=[createResultCardHtml('あなたを一言で表すと','',postData.oneWord),createResultCardHtml('トータル診断結果','',postData.total),createResultCardHtml('仕事で活かせる強み','',postData.strength),createResultCardHtml('自然に前へ進むためのヒント','',postData.hint)].join(''); resultSectionEl.style.display='block'; window.scrollTo({top:0, behavior:'smooth'});}
+function showResult(){const code=buildDiagnosisCode(); const preData=getPreResultByCode(code); const postData=POST_RESULT_MAP[code]; document.getElementById('introBlock').style.display='none'; document.getElementById('resultCode').textContent=`診断コード：${code}`; document.getElementById('copyCodeValue').textContent=code; document.getElementById('preLead').innerHTML=formatJapaneseText(COMMON_TEXTS.preLineLead); document.getElementById('preLineCta').innerHTML=formatJapaneseText(COMMON_TEXTS.preLineCta); document.getElementById('receiveGuide').innerHTML=formatJapaneseText(COMMON_TEXTS.receiveGuide).replace('【診断結果の受け取り方】','<span class="receive-guide-heading">【診断結果の受け取り方】</span>'); document.getElementById('postLead').innerHTML=formatJapaneseText(COMMON_TEXTS.postLineLead); document.getElementById('lineTitle').innerHTML='ここから先は<br>あなた専用の診断結果です'; const pre=document.getElementById('preResultCards'); const post=document.getElementById('postPreviewCards'); if(!preData||!postData){pre.innerHTML=createResultCardHtml('診断データが見つかりませんでした','','このコードの診断結果はまだ登録されていません。\n診断コード：'+code,'error-card'); post.innerHTML=''; resultSectionEl.style.display='block'; return;} pre.innerHTML=[createResultCardHtml(preData.foundationTitle,preData.foundationNote,preData.foundationBody),createResultCardHtml(preData.decisionTitle,preData.decisionNote,preData.decisionBody),createResultCardHtml(preData.thirdTitle,preData.thirdNote,preData.thirdBody)].join(''); post.innerHTML=[createResultCardHtml('あなたを一言で表すと','',postData.oneWord),createResultCardHtml('トータル診断結果','',postData.total),createResultCardHtml('仕事で活かせる強み','',postData.strength),createResultCardHtml('自然に前へ進むためのヒント','',postData.hint)].join(''); resultSectionEl.style.display='block'; window.scrollTo({top:0, behavior:'smooth'});}
 function copyText(text){navigator.clipboard.writeText(text).then(()=>{copyCodeBtnEl.textContent='✅ コピーしました！'; setTimeout(()=>copyCodeBtnEl.textContent='📋 診断コードを<br>コピーする',1800);});}
 nextBtnEl.addEventListener('click',goNext); backBtnEl.addEventListener('click',goBack); copyCodeBtnEl.addEventListener('click',()=>copyText(buildDiagnosisCode()));
 function runTests() {
