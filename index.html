@@ -2466,7 +2466,17 @@ backBtnEl.style.display=key==='q1'?'none':'inline-block'; nextBtnEl.disabled=!is
 function selectChoice(questionKey,value,clickedElement){ answers[questionKey]=value; optionsContainerEl.querySelectorAll('.opt-card').forEach(card=>card.classList.remove('selected')); clickedElement.classList.add('selected'); nextBtnEl.disabled=false; nextBtnEl.textContent=getNextButtonLabel(questionKey); updateProgress(); }
 function goNext(){ if(!isQuestionAnswered(currentQuestionKey)) return; const nextKey=getNextQuestionKey(currentQuestionKey); if(nextKey===null){diagnose(); return;} renderQuestion(nextKey); }
 function goBack(){ const prev=getPreviousQuestionKey(currentQuestionKey); if(prev) renderQuestion(prev); }
-function createResultCardHtml(title,note,body,extraClass=''){ return `<div class="result-card ${extraClass}"><div class="result-card-title">${escapeHtml(title)}</div>${note?`<div class="result-card-note">${escapeHtml(note)}</div>`:''}<div class="result-card-body">${escapeHtml(body)}</div></div>`; }
+function normalizeResultText(text){
+  return String(text)
+    .replace(/\n{3,}/g,'\n\n')
+    .replace(/([^\n])\n([^\n・])/g,'$1 $2')
+    .trim();
+}
+function createResultCardHtml(title,note,body,extraClass=''){
+  const normalizedNote = note ? normalizeResultText(note) : '';
+  const normalizedBody = normalizeResultText(body);
+  return `<div class="result-card ${extraClass}"><div class="result-card-title">${escapeHtml(title)}</div>${normalizedNote?`<div class="result-card-note">${escapeHtml(normalizedNote)}</div>`:''}<div class="result-card-body">${escapeHtml(normalizedBody)}</div></div>`;
+}
 function diagnose(){document.getElementById('questionCard').style.display='none'; loadingMsgEl.style.display='block'; progressFillEl.style.width='100%'; setTimeout(()=>{loadingMsgEl.style.display='none'; showResult();},700);}
 function showResult(){const code=buildDiagnosisCode(); const preData=getPreResultByCode(code); const postData=POST_RESULT_MAP[code]; document.getElementById('introBlock').style.display='none'; document.getElementById('resultCode').textContent=`診断コード：${code}`; document.getElementById('copyCodeValue').textContent=code; document.getElementById('preLead').textContent=COMMON_TEXTS.preLineLead; document.getElementById('preLineCta').textContent=COMMON_TEXTS.preLineCta; document.getElementById('receiveGuide').textContent=COMMON_TEXTS.receiveGuide; document.getElementById('postLead').textContent=COMMON_TEXTS.postLineLead; document.getElementById('lineTitle').textContent='ここから先は、あなた専用の診断結果です'; const pre=document.getElementById('preResultCards'); const post=document.getElementById('postPreviewCards'); if(!preData||!postData){pre.innerHTML=createResultCardHtml('診断データが見つかりませんでした','','このコードの診断結果はまだ登録されていません。\n診断コード：'+code,'error-card'); post.innerHTML=''; resultSectionEl.style.display='block'; return;} pre.innerHTML=[createResultCardHtml(preData.foundationTitle,preData.foundationNote,preData.foundationBody),createResultCardHtml(preData.decisionTitle,preData.decisionNote,preData.decisionBody),createResultCardHtml(preData.thirdTitle,preData.thirdNote,preData.thirdBody)].join(''); post.innerHTML=[createResultCardHtml('あなたを一言で表すと','',postData.oneWord),createResultCardHtml('トータル診断結果','',postData.total),createResultCardHtml('仕事で活かせる強み','',postData.strength),createResultCardHtml('自然に前へ進むためのヒント','',postData.hint)].join(''); resultSectionEl.style.display='block'; window.scrollTo({top:0, behavior:'smooth'});}
 function copyText(text){navigator.clipboard.writeText(text).then(()=>{copyCodeBtnEl.textContent='✅ コピーしました！'; setTimeout(()=>copyCodeBtnEl.textContent='📋 診断コードをコピーする',1800);});}
