@@ -1,0 +1,3050 @@
+
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=375">
+<title>ビジネス手相診断</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap');
+
+:root {
+  --sky: #5ba3d9;
+  --sky-light: #a8d4f0;
+  --sky-pale: #e8f4fc;
+  --sky-bg: #f0f8ff;
+  --navy: #1a3a5c;
+  --navy-mid: #2a5280;
+  --white: #ffffff;
+  --text-dark: #1a3a5c;
+  --text-mid: #4a6a8a;
+  --text-light: #7a9ab8;
+  --border: rgba(91,163,217,0.28);
+  --shadow: rgba(91,163,217,0.14);
+  --line: #06C755;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Noto Sans JP', sans-serif;
+  background: var(--sky-bg);
+  color: var(--text-dark);
+  min-height: 100vh;
+  font-size: 18px;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+}
+.header {
+  background: linear-gradient(160deg, #f0f8ff 0%, #d8eef9 50%, #bfe0f5 100%);
+  text-align: center;
+  padding: 40px 24px 30px;
+  border-bottom: 2px solid var(--sky-light);
+}
+.header-badge {
+  display: inline-block;
+  font-size: 16px;
+  letter-spacing: 3px;
+  color: var(--sky);
+  border: 1px solid var(--sky);
+  padding: 5px 18px;
+  border-radius: 100px;
+  margin-bottom: 16px;
+  background: white;
+  font-weight: 500;
+}
+.header h1 {
+  font-family: 'Noto Serif JP', serif;
+  font-size: clamp(18px, 4.5vw, 26px);
+  font-weight: 500;
+  line-height: 1.7;
+  color: var(--navy);
+  margin-bottom: 14px;
+}
+.header-copy {
+  font-size: 18px;
+  color: var(--text-mid);
+  line-height: 2;
+  margin-bottom: 16px;
+}
+.progress-wrap { margin-top: 18px; }
+.progress-labels {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 6px;
+  gap: 8px;
+}
+.progress-lbl {
+  font-size: 15px;
+  letter-spacing: 1px;
+  color: var(--text-light);
+  transition: color 0.3s;
+  text-align: center;
+  flex: 1;
+}
+.progress-lbl.active { color: var(--sky); font-weight: 700; }
+.progress-lbl.done { color: var(--navy); }
+.progress-track {
+  height: 4px;
+  background: rgba(91,163,217,0.2);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--sky), var(--navy));
+  border-radius: 4px;
+  transition: width 0.5s ease;
+  width: 0%;
+}
+.container {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 0 16px 80px;
+}
+.q-card {
+  background: var(--white);
+  border-radius: 20px;
+  box-shadow: 0 4px 24px var(--shadow);
+  border: 1px solid var(--border);
+  margin-top: 28px;
+  overflow: hidden;
+  display: block;
+  animation: fadeUp 0.4s ease forwards;
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.q-header {
+  padding: 20px 24px 16px;
+  border-bottom: 1px solid var(--border);
+  background: var(--sky-pale);
+}
+.q-num {
+  font-size: 16px;
+  letter-spacing: 3px;
+  color: var(--sky);
+  margin-bottom: 6px;
+}
+.q-text {
+  font-family: 'Noto Serif JP', serif;
+  font-size: clamp(18px, 4.5vw, 22px);
+  font-weight: 400;
+  line-height: 1.7;
+  color: var(--navy);
+}
+.q-image-wrap { padding: 16px 16px 0; }
+.q-image-wrap img {
+  width: 100%;
+  max-width: 260px;
+  display: block;
+  margin: 0 auto;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: white;
+  padding: 8px;
+}
+.opts-1col {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 16px;
+}
+.opt-card {
+  border: 2px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.22s ease;
+  background: var(--sky-bg);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+.opt-card:hover {
+  border-color: var(--sky);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px var(--shadow);
+}
+.opt-card.selected {
+  border-color: var(--navy);
+  background: var(--sky-pale);
+  box-shadow: 0 4px 16px rgba(91,163,217,0.3);
+}
+.opt-card.text-only {
+  padding: 14px 14px 12px;
+  text-align: left;
+}
+.opt-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: contain;
+  background: white;
+  padding: 12px;
+  display: block;
+}
+.opt-label {
+  font-size: 18px;
+  color: var(--text-dark);
+  padding: 8px 6px 4px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+.opt-card.text-only .opt-label { padding: 0 0 6px; }
+.opt-desc {
+  font-size: 17px;
+  color: var(--text-mid);
+  padding: 0 6px 10px;
+  line-height: 1.6;
+}
+.opt-card.text-only .opt-desc { padding: 0; }
+.opt-check { display: none; color: var(--navy); margin-right: 2px; }
+.opt-card.selected .opt-check { display: inline; }
+.micro-hint {
+  text-align: center;
+  font-size: 17px;
+  color: var(--text-light);
+  padding: 2px 16px 10px;
+}
+.nav-area {
+  padding: 4px 16px 20px;
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  align-items: center;
+}
+.btn-back {
+  background: transparent;
+  color: var(--text-light);
+  border: 1px solid var(--border);
+  border-radius: 50px;
+  padding: 14px 24px;
+  font-size: 18px;
+  font-family: 'Noto Sans JP', sans-serif;
+  cursor: pointer;
+}
+.btn-next, .btn-copy-code {
+  background: linear-gradient(135deg, var(--sky) 0%, var(--navy) 100%);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  padding: 16px 36px;
+  font-size: 18px;
+  font-weight: 700;
+  font-family: 'Noto Sans JP', sans-serif;
+  cursor: pointer;
+  letter-spacing: 1px;
+}
+.btn-next:disabled { opacity: 0.35; cursor: not-allowed; }
+.loading {
+  text-align: center;
+  padding: 48px 16px;
+  display: none;
+  color: var(--text-mid);
+  font-size: 16px;
+}
+#result-section { display: none; }
+/* ▼修正：診断結果タイトルの水色ボックスを削除し、文字だけで目立たせる */
+.result-title-area {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  border-radius: 0;
+  padding: 22px 0 10px;
+  margin-top: 20px;
+  text-align: center;
+}
+.result-title-area .result-badge {
+  display: inline-block;
+  font-family: 'Noto Serif JP', serif;
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--navy);
+  background: transparent;
+  border: none;
+  padding: 0;
+  border-radius: 0;
+  margin-bottom: 0;
+}
+.result-hero {
+  background: linear-gradient(160deg, #f0f8ff 0%, #d8eef9 60%, #bfe0f5 100%);
+  border-radius: 20px;
+  padding: 30px 24px 26px;
+  margin-top: 28px;
+  text-align: center;
+  border: 1px solid var(--sky-light);
+  box-shadow: 0 4px 24px var(--shadow);
+}
+.result-badge {
+  display: inline-block;
+  font-size: 14px;
+  letter-spacing: 3px;
+  color: var(--sky);
+  background: white;
+  border: 1px solid var(--border);
+  padding: 5px 16px;
+  border-radius: 100px;
+  margin-bottom: 14px;
+}
+.result-code { font-size: 17px; color: var(--navy-mid); margin-bottom: 14px; font-weight: 700; }
+.result-empathy {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 17px;
+  text-align: left;
+  color: var(--navy);
+  margin-bottom: 18px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+  line-height: 1.9;
+  white-space: pre-line;
+}
+.result-card {
+  background: var(--white);
+  border-radius: 16px;
+  padding: 20px 22px;
+  margin-top: 12px;
+  box-shadow: 0 2px 12px var(--shadow);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--sky);
+}
+.result-card-title { font-size: 17px; letter-spacing: 1px; color: var(--sky); margin-bottom: 4px; font-weight: 700; }
+.result-card-note { font-size: 14px; color: var(--text-light); margin-bottom: 10px; }
+.result-card-body { font-size: 17px; text-align: left; line-height: 1.9; color: var(--text-dark); white-space: pre-line; }
+.error-card { border-left-color: #d96b5b; }
+.error-card .result-card-title { color: #b54637; }
+.copy-code-box {
+  background: var(--white);
+  border-radius: 16px;
+  padding: 22px;
+  margin-top: 14px;
+  box-shadow: 0 2px 12px var(--shadow);
+  border: 1px solid var(--border);
+  text-align: center;
+}
+.copy-code-label { font-size: 16px; color: var(--text-mid); margin-bottom: 4px; }
+.copy-code-value {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--navy);
+  background: var(--sky-pale);
+  border-radius: 10px;
+  padding: 12px;
+  margin-bottom: 14px;
+  letter-spacing: 2px;
+}
+.line-section {
+  background: var(--white);
+  border-radius: 16px;
+  padding: 26px 22px;
+  margin-top: 12px;
+  text-align: center;
+  box-shadow: 0 2px 12px var(--shadow);
+  border: 1px solid var(--border);
+}
+.line-title {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 21px;
+  color: var(--navy);
+  margin-bottom: 10px;
+  font-weight: 500;
+  line-height: 1.6;
+}
+.line-q, .line-benefits, .line-note {
+  text-align: left;
+  white-space: pre-line;
+  line-height: 2;
+}
+.line-note {
+  font-size: 12px;
+  color: var(--text-light);
+  line-height: 1.8;
+}
+.line-q { font-size: 17px; color: var(--text-mid); margin-bottom: 16px; }
+.cta-lead {
+  font-size: 17px;
+  color: var(--navy);
+  font-weight: 700;
+  line-height: 1.8;
+  margin: 14px 0 12px;
+  text-align: center;
+}
+.line-benefits {
+  background: var(--sky-pale);
+  border-radius: 10px;
+  padding: 16px 20px;
+  margin-bottom: 16px;
+  font-size: 17px;
+  color: var(--text-dark);
+  border: 1px solid var(--border);
+}
+.receive-guide-heading {
+  display: block;
+  text-align: center;
+  font-weight: 700;
+  margin-bottom: 0;
+}
+.btn-line {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--line);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  padding: 20px 24px;
+  font-size: 19px;
+  font-weight: 700;
+  font-family: 'Noto Sans JP', sans-serif;
+  cursor: pointer;
+  text-decoration: none;
+  width: 100%;
+  position: relative;
+  z-index: 20;
+  pointer-events: auto;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* 2026-04-30 fix: コピー・LINEボタンを確実にタップできるようにする */
+.line-section, .copy-code-box, .btn-copy-code, .btn-line {
+  position: relative;
+  z-index: 9999;
+  pointer-events: auto !important;
+}
+#postLead, #postPreviewCards, .preview-wrap, .preview-blur {
+  pointer-events: none !important;
+}
+.btn-copy-code, .btn-line {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+.preview-wrap { position: relative; overflow: hidden; }
+.preview-wrap::after {
+  content: '';
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 70px;
+  background: linear-gradient(transparent, white);
+  pointer-events: none;
+}
+.preview-blur { filter: blur(4px); user-select: none; }
+.footer {
+  text-align: center;
+  padding: 40px 0 20px;
+  font-size: 16px;
+  color: var(--text-light);
+}
+
+
+/* 2026-04-30 update: FVバナー＋CTA。CTAクリック後に診断本体を表示 */
+.fv-area {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 10px 24px;
+  text-align: center;
+  box-sizing: border-box;
+}
+.fv-banner img { width: 100%; height: auto; display: block; }
+.fv-cta-note { margin: 14px 0 5px; font-size: 14px; line-height: 1.5; color: #3A5A8C; font-weight: 500; }
+.fv-cta-push { margin: 0 0 10px; font-size: 17px; line-height: 1.65; color: #1A2B5C; font-weight: 600; }
+.fv-cta-button {
+  display: block; width: 100%; max-width: 440px; margin: 0 auto; padding: 17px 18px;
+  background: #F28B6B; color: #ffffff; font-size: 18px; font-weight: 700; line-height: 1.4;
+  text-align: center; text-decoration: none; border: none; border-radius: 999px;
+  box-shadow: 0 5px 14px rgba(0, 0, 0, 0.18); box-sizing: border-box; cursor: pointer;
+  font-family: 'Noto Sans JP', sans-serif;
+}
+.fv-cta-button:hover { opacity: 0.92; }
+@media screen and (max-width: 480px) {
+  .fv-area { padding: 0 8px 22px; }
+  .fv-cta-note { margin-top: 12px; font-size: 13px; }
+  .fv-cta-push { font-size: 16px; margin-bottom: 9px; }
+  .fv-cta-button { max-width: 420px; font-size: 17px; padding: 16px 16px; }
+}
+
+@media (max-width: 600px) {
+  .q-text { font-size: 19px; line-height: 1.8; }
+  .opt-label { font-size: 17px; }
+  .opt-desc { font-size: 16px; }
+  .opt-card img { height: 200px; }
+  .btn-next, .btn-copy-code { font-size: 17px; padding: 16px 32px; }
+  .btn-back { font-size: 16px; padding: 14px 20px; }
+  .result-card-body { font-size: 17px; line-height: 2.1; }
+  .header h1 { font-size: 22px; line-height: 1.8; }
+  .header-copy { font-size: 16px; line-height: 2.1; }
+  .header-badge { font-size: 13px; }
+  .progress-lbl { font-size: 12px; }
+}
+
+/* CTAクリック後に旧FVが出ないよう、旧ヒーロー文章は常に非表示 */
+#heroBlock, #introBlock { display: none !important; }
+#diagnosisApp .header { padding: 14px 24px 12px; }
+#diagnosisApp .progress-wrap { margin-top: 0; }
+
+</style>
+</head>
+<body>
+<!-- FVバナー＋CTAエリア：CTAクリックで診断本体を表示 -->
+<section class="fv-area" id="fvArea">
+  <div class="fv-banner">
+    <img
+      src="https://cdn.peraichi.com/userData/d6621e34-3268-445c-bb20-ddb971833921/img/a9ed149b-4461-4548-aa2a-7fb645b43718/____________2_.png"
+      alt="才能コンパス診断"
+    >
+  </div>
+
+  <p class="fv-cta-note">無料・1分・その場で結果表示</p>
+
+  <p class="fv-cta-push">
+    「これでいい」と思えたとき<br>
+    前に進める
+  </p>
+
+  <button id="startDiagnosisBtn" class="fv-cta-button" type="button">
+    今すぐ診断する ▶
+  </button>
+</section>
+
+<!-- 診断本体：最初は非表示。CTAクリック後に表示 -->
+<div id="diagnosisApp" style="display:none;">
+<div class="header">
+  <!-- 旧FV文章ブロックは削除：CTAクリック後はすぐ質問に入る -->
+  <div id="heroBlock" style="display:none;"></div>
+  <div id="introBlock" style="display:none;"></div>
+  <div class="progress-wrap">
+    <div class="progress-labels">
+      <span class="progress-lbl" id="pl1">マスカケ</span>
+      <span class="progress-lbl" id="pl2">知能線の始点</span>
+      <span class="progress-lbl" id="pl3">知能線の伸び</span>
+      <span class="progress-lbl" id="pl4">手型</span>
+    </div>
+    <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+  </div>
+</div>
+<div class="container">
+  <div class="q-card" id="questionCard">
+    <div class="q-header">
+      <div class="q-num" id="questionNumber">QUESTION 01 / 04</div>
+      <div class="q-text" id="questionText"></div>
+    </div>
+    <div class="q-image-wrap" id="questionImageWrap" style="display:none;">
+      <img id="questionImage" src="" alt="">
+    </div>
+    <div class="opts-1col" id="optionsContainer"></div>
+    <div class="micro-hint">直感でひとつ選んでください</div>
+    <div class="nav-area">
+      <button class="btn-back" id="backBtn" type="button">戻る</button>
+      <button class="btn-next" id="nextBtn" type="button" disabled>次へ進む</button>
+    </div>
+  </div>
+  <div class="loading" id="loadingMsg">診断結果を読み込んでいます...</div>
+  <div id="result-section">
+    <div class="result-title-area">
+      <div class="result-badge">診断結果</div>
+      <div class="result-code" id="resultCode" style="display:none;"></div>
+      <div class="result-empathy" id="preLead" style="display:none;"></div>
+    </div>
+    <div id="preResultCards"></div>
+    <div class="line-section">
+      <div class="line-title" id="lineTitle"></div>
+      <div class="line-q" id="preLineCta"></div>
+      <div class="line-benefits" id="receiveGuide"></div>
+      <div class="copy-code-box">
+        <div class="copy-code-label">LINE送信用の診断コード</div>
+        <div class="copy-code-value" id="copyCodeValue">---</div>
+        <button class="btn-copy-code" id="copyCodeBtn" type="button" onclick="copyDiagnosisCodeNow(event)">📋 診断コードを<br>コピーする</button>
+      </div>
+      <div class="cta-lead" id="ctaLead"></div>
+      <a id="lineBtn" href="https://lin.ee/OINIB8d" class="btn-line" target="_blank" rel="noopener noreferrer" onclick="openLineNow(event)">あなた専用の診断結果を今すぐ受け取る</a>
+      <p class="line-note">※コピーした診断コードをLINEで送ってください</p>
+      
+    </div>
+    <div class="result-hero" style="margin-top:14px;">
+      <div class="result-badge">登録後に表示する想定内容</div>
+      <div class="result-empathy preview-blur preview-wrap" id="postLead"></div>
+    </div>
+    <div id="postPreviewCards" class="preview-wrap preview-blur"></div>
+  </div>
+  <div class="footer">ビジネス手相診断士 輝路(kiro) © 2026</div>
+</div>
+</div>
+<script>
+// 2026-04-30 update: 質問順序変更・全75パターン登録前診断結果・CTA導線を統合
+
+const COMMON_TEXTS = {
+  preLineLead: ``,
+  preLineCta: `【この診断でわかること】
+・あなたの総合診断結果
+・仕事で活かせる強み
+・つまずきやすいポイント
+・自然に前へ進むためのヒント
+・今すぐ取れる最初の一歩
+
+ここまで具体的に言語化されることで、
+「自分の強みを、どう仕事に活かせばいいのか」がはっきり見えてきます。
+
+その一歩を踏み出したい方は、この先をご覧ください。`,
+  postLineLead: `ここから、あなたのトータル診断結果をお伝えします。
+
+3つの特性を重ねて見えてくるのは、
+あなたがもともと持っている強みと、
+つまずきやすいポイントです。
+
+「なんとなくうまくいかない」
+
+その理由が、ここで少しずつ言葉になっていきます。
+まずは、あなたの全体像から確認してみてください。`,
+  receiveGuide: `【詳しい診断結果の受け取り方】
+1. 下記の「診断コードをコピーする」ボタンを押す。
+2. 「LINE登録に進む」ボタンを押す。
+3. LINEでコピーした診断コードを送る。
+
+確認後、順次
+トータル診断結果をお届けします。
+
+※ひとつひとつ内容を確認しながらお届けしているため、少しお時間をいただく場合があります。`,
+  ctaLead: `この続きが気になる方は、今すぐ受け取ってください。`
+};
+// ▼ ここに本来の画像を入れてください（base64 or URL）
+const IMAGE_ASSETS = {
+  Q1_A: "https://cdn.peraichi.com/userData/d6621e34-3268-445c-bb20-ddb971833921/img/8d67ae3b-1e9e-4300-93e1-47a3844163b5/17.png",
+  Q1_B: "https://cdn.peraichi.com/userData/d6621e34-3268-445c-bb20-ddb971833921/img/820409af-d9ef-4172-88a0-4e9f63b013dd/21.png",
+  Q1_C: "https://cdn.peraichi.com/userData/d6621e34-3268-445c-bb20-ddb971833921/img/bbd8991d-8ead-45d8-a7ae-0dc8ce25e549/19.png",
+  Q1_D: "https://cdn.peraichi.com/userData/d6621e34-3268-445c-bb20-ddb971833921/img/19bcce50-e7d7-4f77-a95a-a6cdfddf7bd1/20.png",
+  Q1_E: "https://cdn.peraichi.com/userData/d6621e34-3268-445c-bb20-ddb971833921/img/bf039615-601c-4bdc-977d-489815b1796d/18.png",
+
+  Q2_1: "https://cdn.peraichi.com/userData/d6621e34-3268-445c-bb20-ddb971833921/img/ed06e130-714c-013e-b9f6-0a58a9feac02/1.png",
+  Q2_2: "https://cdn.peraichi.com/userData/d6621e34-3268-445c-bb20-ddb971833921/img/ed029380-714c-013e-0474-0a58a9feac02/2.png",
+  Q2_3: "https://cdn.peraichi.com/userData/d6621e34-3268-445c-bb20-ddb971833921/img/ed22c970-714c-013e-b9f8-0a58a9feac02/3.png"
+};
+
+function svgData(label){return `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(`<svg xmlns='http://www.w3.org/2000/svg' width='320' height='220'><rect width='100%' height='100%' fill='#ffffff'/><rect x='10' y='10' width='300' height='200' rx='14' fill='#f0f8ff' stroke='#a8d4f0'/><text x='160' y='108' font-size='20' text-anchor='middle' fill='#1a3a5c' font-family='sans-serif'>画像を差し替えてください</text></svg>`)}`}
+
+// ▼質問順序を変更：Q3（マスカケ）→ Q2（知能線の始点）→ Q4（知能線の終点）→ Q1（手型）
+// 診断コード生成は従来通り「手型 + 知能線始点 + 知能線終点 or M」で維持します。
+const QUESTION_FLOW = [
+  {
+    key: 'q3',
+    order: 1,
+    question: '下記のような線がありますか？（マスカケ）',
+    imageUrl: 'https://cdn.peraichi.com/userData/d6621e34-3268-445c-bb20-ddb971833921/img/eaf70000-69a9-4b09-87aa-c4f83616156e/_________200_x_200_px___11_.png',
+    choices: [
+      { value: 'M', label: 'ある', description: '' },
+      { value: 'NONE', label: 'ない', description: '' }
+    ]
+  },
+  {
+    key: 'q2',
+    order: 2,
+    question: '手のひらの中央あたりにある横線（知能線）は、どこから始まっていますか？',
+    imageUrl: '',
+    choices: [
+      {
+        value: '1',
+        label: '生命線と一緒',
+        description: '',
+        imageUrl: IMAGE_ASSETS.Q2_1 || svgData('1')
+      },
+      {
+        value: '2',
+        label: '生命線と離れている',
+        description: '',
+        imageUrl: IMAGE_ASSETS.Q2_2 || svgData('2')
+      },
+      {
+        value: '3',
+        label: '生命線の途中から出ている',
+        description: '',
+        imageUrl: IMAGE_ASSETS.Q2_3 || svgData('3')
+      }
+    ]
+  },
+  {
+    key: 'q4',
+    order: 4,
+    question: '知能線は、どこまで伸びていますか？',
+    imageUrl: '',
+    choices: [
+      {
+        value: 'X',
+        label: '小指の下まで',
+        description: '長め・横に伸びている',
+        imageUrl: 'https://cdn.peraichi.com/userData/d6621e34-3268-445c-bb20-ddb971833921/img/ed6341d0-714c-013e-b9fa-0a58a9feac02/4.png'
+      },
+      {
+        value: 'Y',
+        label: '薬指の下くらい',
+        description: '短め・横に伸びている',
+        imageUrl: 'https://cdn.peraichi.com/userData/d6621e34-3268-445c-bb20-ddb971833921/img/ed024c50-714c-013e-0475-0a58a9feac02/5.png'
+      },
+      {
+        value: 'Z',
+        label: '手首方面まで',
+        description: '斜め下・手首方面に流れている',
+        imageUrl: 'https://cdn.peraichi.com/userData/d6621e34-3268-445c-bb20-ddb971833921/img/033891d0-714d-013e-ba02-0a58a9feac02/6.png'
+      },
+      {
+        value: 'W',
+        label: '二股に分かれている',
+        description: '一方は小指の下までまっすぐに伸びていて、もう一方は、手首方面に流れている',
+        imageUrl: 'https://cdn.peraichi.com/userData/d6621e34-3268-445c-bb20-ddb971833921/img/23a9ac40-2d94-4509-866f-df4d30e19df1/_________200_x_200_px___12_.png'
+      }
+    ]
+  },
+  {
+    key: 'q1',
+    order: 3,
+    question: '次の5つの手型の中で一番近いものを選んでください',
+    imageUrl: '',
+    choices: [
+      {
+        value: 'A',
+        label: '現実的でタフな手',
+        description: '手のひらが正方形に近く、縦横がほぼ同じ長さ／爪が四角い／指は短め／骨太タイプの方によく見られる',
+        imageUrl: IMAGE_ASSETS.Q1_A || svgData('A')
+      },
+      {
+        value: 'B',
+        label: '感受性豊かな手',
+        description: '手のひらが縦に長い／指先が丸い',
+        imageUrl: IMAGE_ASSETS.Q1_B || svgData('B')
+      },
+      {
+        value: 'C',
+        label: '分析好きの手',
+        description: '指の関節がはっきりしている／指は比較的長い／骨の目立つ細身体型の方によく見られる',
+        imageUrl: IMAGE_ASSETS.Q1_C || svgData('C')
+      },
+      {
+        value: 'D',
+        label: 'エネルギッシュな手',
+        description: '指先がヘラのように広がっている／手のひらは縦よりも横がやや長い',
+        imageUrl: IMAGE_ASSETS.Q1_D || svgData('D')
+      },
+      {
+        value: 'E',
+        label: '感性高い手',
+        description: '指は長くて細く、先がとがっている／手は縦に長く、繊細な印象／華奢な細身体型の方によく見られる',
+        imageUrl: IMAGE_ASSETS.Q1_E || svgData('E')
+      }
+    ]
+  }
+];
+
+const PRE_FOUNDATION_MAP = {
+  A: {
+    title: 'あなたの土台になっている気質',
+    note: '※手の形から見える傾向です',
+    body: `あなたは、思いつきよりも「ちゃんと形になるか」を大事にするタイプです。
+勢いだけで進めるよりも、
+「これって現実的に続けられるかな？」
+と自然に考えられる力があります。
+そのため、無理のない形に整えながら進めることができ、
+周りからは「しっかりしている」「安心して任せられる」と思われやすい方です。`
+  },
+  B: {
+    title: 'あなたの土台になっている気質',
+    note: '※手の形から見える傾向です',
+    body: `あなたは、人の気持ちや空気の変化に気づきやすいタイプです。
+目に見えることだけでなく、
+「なんとなくこう感じる」という空気も自然と受け取りやすい方です。
+そのため、相手の立場や状況を考えた対応ができる一方で、
+気を使いすぎて疲れやすいところもありそうです。`
+  },
+  C: {
+    title: 'あなたの土台になっている気質',
+    note: '※手の形から見える傾向です',
+    body: `あなたは、物事をじっくり考えて理解したいタイプです。
+なんとなく進めるよりも、
+「どういう仕組みなのか」「なぜそうなるのか」を知りたくなる方です。
+そのため、表面的な情報だけで判断することは少なく、
+納得できるまで考える力があります。`
+  },
+  D: {
+    title: 'あなたの土台になっている気質',
+    note: '※手の形から見える傾向です',
+    body: `あなたは、エネルギーが外に向かいやすく、
+「まず動いてみたい」という気持ちが自然に湧きやすいタイプです。
+新しいことにも反応しやすく、
+じっと考え続けるより、
+実際に動きながら流れをつかみたくなる方です。
+そのため、周りからは
+行動力がある、勢いがあると思われやすいでしょう。`
+  },
+  E: {
+    title: 'あなたの土台になっている気質',
+    note: '※手の形から見える傾向です',
+    body: `あなたは、感覚や雰囲気を大切にしながら、
+自分に合うものを選び取りたいタイプです。
+「なんとなく違う」といった違和感にも気づきやすく、
+自分なりの基準を持っています。`
+  }
+};
+
+const PRE_DECISION_MAP = {
+  1: {
+    title: '決めるときの傾向',
+    note: '※知能線のスタート地点から見える傾向です',
+    body: `あなたは、「本当にこれでいいかな？」と確認してから進みたいタイプです。
+思いつきだけで動くより、
+自分の中で納得できるかを大切にします。
+特に大事なことほど、
+慎重に見極めたい気持ちが強く出やすいでしょう。`
+  },
+  2: {
+    title: '決めるときの傾向',
+    note: '※知能線のスタート地点から見える傾向です',
+    body: `あなたは、まず動いてみてから考えることができるタイプです。
+細かく考えすぎるよりも、
+一度やってみて、そこから調整していく流れが合いやすいでしょう。
+思い立ったら小さくでも動けるので、
+考え込みすぎて止まるより、
+動きながら答えを見つけていくことが多い方です。`
+  },
+  3: {
+    title: '決めるときの傾向',
+    note: '※知能線のスタート地点から見える傾向です',
+    body: `あなたは、流れや状況を見ながら判断するタイプです。
+すぐに決めるというよりも、
+「今動くべきかどうか」を見極めてから進むことが多いでしょう。
+周りの動きやタイミングも含めて判断できるため、
+無理のない形で進めやすい傾向があります。`
+  }
+};
+
+const PRE_THIRD_MAP = {
+  X: {
+    title: '考えを伝えるときの傾向',
+    note: '※知能線の終点から見える傾向です',
+    body: `あなたは、「どう伝えたらちゃんと伝わるか」を自然と考えやすいタイプです。
+頭の中にある考えや想いを、
+わかりやすい言葉に整理して伝えることが得意です。
+そのため、複雑なことでも順番立てて説明しやすく、
+相手に「わかりやすい」と感じてもらいやすいでしょう。`
+  },
+  Y: {
+    title: '考えを伝えるときの傾向',
+    note: '※知能線の終点から見える傾向です',
+    body: `あなたは、考えをため込みすぎず、比較的早い段階で外に出せるタイプです。
+頭の中で完璧に整えてから出すというより、
+まず形にしてみて、そこから調整していく流れが合いやすいでしょう。
+そのため、アウトプットのスピードが比較的早く、
+実際に出しながら磨いていくことに向いています。`
+  },
+  Z: {
+    title: '考えを伝えるときの傾向',
+    note: '※知能線の終点から見える傾向です',
+    body: `あなたは、言葉だけで説明するよりも、
+感覚やイメージも含めて伝えるタイプです。
+頭の中にある世界観や雰囲気を大切にしていて、
+「なんとなくこういう感じ」を形にして見せることに向いています。
+そのため、理屈だけでは出せない
+あなたらしい空気感が伝わりやすいでしょう。`
+  },
+  W: {
+    title: '考えを伝えるときの傾向',
+    note: '※知能線の終点から見える傾向です',
+    body: `あなたは、言葉と感覚の両方を使って伝えるタイプです。
+わかりやすく説明するだけでなく、
+雰囲気やニュアンスも含めて伝えることができます。
+そのため、相手や場面に合わせて、
+伝え方を柔軟に変えやすい方です。
+ただし、広く見えすぎるぶん、どこを軸にするか迷うこともあります。`
+  },
+  M: {
+    title: '考え方の特徴',
+    note: '※マスカケから見える傾向です',
+    body: `あなたは、ひとつの方向に決めたときの集中力が強いタイプです。
+気持ちが定まると、
+途中でぶれずに進みやすいところがあります。
+そのため、周りに左右されにくく、
+自分で決めたことを押し進める力がある方です。`
+  }
+};
+
+const PRE_DIRECT_RESULT_MAP = {
+  "A1X": {
+    "catch": "伝わる形に整えられる人",
+    "body": "あなたは、堅実に考えながら、相手に伝わる形まで整えられるタイプです。\nただ思いつくだけではなく、「これは実際に伝わるか」「相手にとって理解しやすいか」というところまで考えられるため、言葉や見せ方に自然と信頼感が出やすいタイプです。\n\nただ──\nこの「整える力」は、使い方を間違えると、“準備ばかりで動けなくなる状態”をつくることもあります。\n\nこのまま「考えすぎて止まる状態」を続けてしまうと、せっかくの強みがあるのに、行動できないまま時間だけが過ぎてしまいます。\n\nでも、強みの使い方がわかれば、「実際に使える形」に整えながら、そのまま行動に移しやすくなります。\n\nこのまま止まるのではなく、あなたの強みを“着実に前に進む力”に変えるために。\nあなた専用の診断結果を受け取ってください。"
+  },
+  "A1Y": {
+    "catch": "慎重に見極めたあと、要点を押さえてすばやく形にできる人",
+    "body": "あなたは、最初は堅実に考えながらも、「これでいこう」と決めたあとは、要点を押さえてすばやく形にできるタイプです。\n勢いだけで進むのではなく、一度しっかり見極めてから動けるため、無駄のない判断で前に進みやすいでしょう。\nただ──\nこの「見極める力」は、使い方を間違えると、“動き出す前に時間がかかりすぎる状態”をつくることもあります。\nこのまま「もう少し確認してから」と止まり続けてしまうと、せっかく動ける力があるのに、行動のタイミングを逃してしまうかもしれません。\nでも、判断の基準がわかれば、迷いすぎず、要点を押さえたまま形にしやすくなります。\nこのまま止まるのではなく、あなたの決断力を“無駄なく前に進む力”に変えるために。\nあなた専用の診断結果を受け取ってください。"
+  },
+  "A1Z": {
+    "catch": "現実感覚を持ちながら、自分のイメージを形にできる人",
+    "body": "あなたは、現実をしっかり見ながら、自分の中にあるイメージや考えを形にできるタイプです。\nただの思いつきで終わらせず、自分なりに納得できる形まで持っていこうとするため、「現実的なのにその人らしさがある」と感じてもらいやすいでしょう。\nただ──\nこの「イメージを形にする力」は、使い方を間違えると、“うまく言葉にできず止まる状態”をつくることもあります。\nこのまま「もっと伝わる形があるはず」と迷い続けてしまうと、せっかくの考えがあるのに、外に出ないまま時間だけが過ぎてしまいます。\nでも、今のイメージを現実的に出す順番がわかれば、少しずつ形にしやすくなります。\nこのまま止まるのではなく、あなたのイメージを“伝わる形”に変えるために。\nあなた専用の診断結果を受け取ってください。"
+  },
+  "A1W": {
+    "catch": "慎重さと伝え方の調整力をあわせ持つ人",
+    "body": "あなたは、堅実に考えながら、言葉とニュアンスの両方を使って伝えられるタイプです。\n思いつきだけで進むのではなく、自分なりに納得できる形をつくってから外に出そうとするため、丁寧さと伝え方の調整力が出やすいでしょう。\nただ──\nこの「伝え方の調整力」は、使い方を間違えると、“どちらを優先すればいいか迷って止まる状態”をつくることもあります。\nこのまま「わかりやすさか、雰囲気か」と迷い続けると、せっかく整える力があるのに、形にする前に止まってしまうかもしれません。\nでも、今優先する軸が決まれば、迷いすぎず、あなたらしい形で整えやすくなります。\nこのまま止まるのではなく、あなたの調整力を“伝わる力”に変えるために。\nあなた専用の診断結果を受け取ってください。"
+  },
+  "A2X": {
+    "catch": "まず動いてから、わかりやすく形にできる人",
+    "body": "あなたは、現実を見て「いけそう」と感じた瞬間に、考えるより先に動けるタイプです。\n慎重に整えてからではなく、まず動き、その中で考えを整理していくことで、自然と形をつくっていきます。\nさらに、あとから考えを言葉にして整理する力も持っているため、動く → 整える → 伝える、という流れを自然に回しやすいタイプです。\nただ──\nこの「動きながら整える力」は、使い方を間違えると、“伝える前に次へ進んでしまう状態”をつくることもあります。\nこの状態が続くと、せっかく形にする力があるのに、相手に意図が伝わらないまま終わってしまいます。\nでも、一度言葉にして整える流れがわかれば、スピードを落としすぎずに伝わる形へ仕上げやすくなります。\nこのまま勢いで通り過ぎるのではなく、あなたの行動力を“伝わる前進力”に変えるために。\nあなた専用の診断結果を受け取ってください。"
+  },
+  "A2Y": {
+    "catch": "まず動いて、必要な形にすばやく整えられる人",
+    "body": "あなたは、現実を見て「まずやってみよう」と思ったら、比較的すぐに動けるタイプです。\n細かく考え込むよりも、実際に動きながら必要な形をつくっていくほうが、力を発揮しやすいでしょう。\nただ──\nこの「すばやく形にする力」は、使い方を間違えると、“目的があいまいなまま進んでしまう状態”をつくることもあります。\nこのまま勢いだけで進んでしまうと、せっかく動ける力があるのに、途中で迷って手が止まってしまうかもしれません。\nでも、最初に見るべき軸がわかれば、あなたのスピード感は空回りせず、前に進む力として活きやすくなります。\nこのまま迷いながら走るのではなく、あなたの行動力を“成果につながる前進力”に変えるために。\nあなた専用の診断結果を受け取ってください。"
+  },
+  "A2Z": {
+    "catch": "まず動きながら、自分らしいイメージを形にできる人",
+    "body": "あなたは、現実を見ながら動きつつ、自分の中にあるイメージや感覚も形にできるタイプです。\n頭の中で考え続けるよりも、実際に動いてみることで、自分らしい形が見えてきやすいでしょう。\nただ──\nこの「動きながら形にする力」は、使い方を間違えると、“感覚のまま進んでまとまりにくい状態”をつくることもあります。\nこのまま「なんとなく」で進めてしまうと、せっかくのイメージがあるのに、相手に伝わりにくいまま終わってしまうかもしれません。\nでも、仮の形で出しながら整える順番がわかれば、あなたらしさを残したまま、現実に伝わる形にしやすくなります。\nこのまま曖昧なまま進むのではなく、あなたのイメージを“伝わる形”に変えるために。\nあなた専用の診断結果を受け取ってください。"
+  },
+  "A2W": {
+    "catch": "まず動きながら、伝え方を柔軟に整えられる人",
+    "body": "あなたは、現実を見てまず動き、その中で言葉と感覚の両方を使いながら伝え方を整えられるタイプです。\n最初から一つの形に決め込むよりも、動きながら「どう伝えるとよさそうか」を調整していくほうが力を発揮しやすいでしょう。\nただ──\nこの「柔軟に整える力」は、使い方を間違えると、“何を優先すればいいか迷って止まる状態”をつくることもあります。\nこのまま全部を盛り込もうとしてしまうと、せっかく伝える力があるのに、焦点がぼやけて伝わりにくくなるかもしれません。\nでも、最初に優先する軸が決まれば、動きながらでも、あなたらしい形に整えやすくなります。\nこのまま迷って止まるのではなく、あなたの調整力を“伝わる前進力”に変えるために。\nあなた専用の診断結果を受け取ってください。"
+  },
+  "A3X": {
+    "catch": "慎重に確認しながら、わかりやすく整えられる人",
+    "body": "あなたは、勢いだけで進むよりも、まず状況やリスクを確認してから動きたいタイプです。\nそのうえで、考えたことを相手に伝わるように、順番立てて整理する力があります。\nただ──\nこの「確認してから整える力」は、使い方を間違えると、“考えはまとまっているのに動き出せない状態”をつくることもあります。\nこのまま「もう少し確認してから」と止まり続けてしまうと、せっかく説明できる力があるのに、外に出すタイミングを逃してしまうかもしれません。\nでも、動き出す基準が決まれば、慎重さを活かしながら、無理なく前へ進みやすくなります。\nこのまま様子見で止まるのではなく、あなたの整理力を“着実に前に進む力”に変えるために。\nあなた専用の診断結果を受け取ってください。"
+  },
+  "A3Y": {
+    "catch": "慎重に見極めてから、必要な形にできる人",
+    "body": "あなたは、すぐに飛び込むよりも、まず状況を確認してから動きたいタイプです。\nただし、納得できたあとは、必要な部分を押さえて形にしていく力があります。\nただ──\nこの「見極めてから動く力」は、使い方を間違えると、“まだ早いかも”と止まり続ける原因になることもあります。\nこのまま様子を見続けてしまうと、せっかく形にする力があるのに、チャンスを逃してしまうかもしれません。\nでも、動くタイミングの決め方がわかれば、慎重さを保ちながらも、スムーズに一歩を出しやすくなります。\nこのまま待ち続けるのではなく、あなたの見極める力を“前に進む力”に変えるために。\nあなた専用の診断結果を受け取ってください。"
+  },
+  "A3Z": {
+    "catch": "慎重に確認しながら、イメージを形にできる人",
+    "body": "あなたは、現実を無視して進むのではなく、まず状況を確認しながら、自分の中にあるイメージを形にしたいタイプです。\n感覚だけで突き進むよりも、「これで本当に伝わるか」「今出して大丈夫か」を考えながら進めます。\nただ──\nこの「確認しながらイメージを形にする力」は、使い方を間違えると、“しっくりくる形を待ち続ける状態”をつくることもあります。\nこのまま「まだ違う気がする」と止まり続けてしまうと、せっかくの考えや世界観があるのに、誰にも届かないまま時間だけが過ぎてしまいます。\nでも、今あるイメージを仮の形で出す順番がわかれば、完璧な形を待たなくても、あなたらしさを外に出しやすくなります。\nこのまま止まるのではなく、あなたのイメージを“伝わる形”に変えるために。\nあなた専用の診断結果を受け取ってください。"
+  },
+  "A3W": {
+    "catch": "慎重に見極めながら、伝え方を調整できる人",
+    "body": "あなたは、すぐに決めて動くよりも、まず状況を確認しながら、相手や場面に合う伝え方を探したいタイプです。\n言葉でわかりやすく伝える力と、雰囲気やニュアンスをくみ取る力の両方を使えます。\nただ──\nこの「伝え方を調整できる力」は、使い方を間違えると、“選択肢が多すぎて決められない状態”をつくることもあります。\nこのまま「どの伝え方がいいのか」と迷い続けると、せっかく相手に合わせて伝えられる力があるのに、形にする前に止まってしまうかもしれません。\nでも、今優先する伝え方が決まれば、迷いすぎず、あなたらしく表現しやすくなります。\nこのまま選べずに止まるのではなく、あなたの調整力を“伝わる力”に変えるために。\nあなた専用の診断結果を受け取ってください。"
+  },
+  "B1X": {
+    "catch": "相手の気持ちをくみ取りながら、伝わる言葉に整えられる人",
+    "body": "あなたは、人の気持ちや場の空気を感じ取りながら、その内容を相手に伝わる言葉に整えられるタイプです。\nたとえば、\n・相手がどこで迷いそうか\n・どの言い方なら受け取りやすいか\nといったポイントに自然と気づくことができます。\nそのため、説明文やメッセージ、案内文などを「相手が理解しやすい形」に整える場面で力を発揮しやすいでしょう。\nただ──\nこの「相手を思いやる力」は、使い方を間違えると、“言葉を選びすぎて動けない状態”をつくることもあります。\n「この言い方で大丈夫かな」\n「傷つけないかな」\nと考え続けてしまうと、せっかく伝える力があるのに、発信や提案が止まってしまうかもしれません。\nでも、「ここまで整えたら出していい」という基準があれば、やさしさを保ちながら前に進みやすくなります。\nこのまま気を使いすぎて止まるのではなく、あなたのやさしさを“伝わる力”に変えるために。\nあなた専用の診断結果を受け取ってください。"
+  },
+  "B1Y": {
+    "catch": "相手を気づかいながら、決めたあとは形にできる人",
+    "body": "あなたは、人の気持ちや場の空気を感じ取りながら、慎重に判断するタイプです。\nたとえば、発信や案内を出すときも、「相手はどう受け取るかな」「この言い方で伝わるかな」と考えてから動こうとします。\nただ、いったん方向が見えると、必要な部分を押さえて形にしていく力があります。\nただ──\nこの「気づかいながら判断する力」は、使い方を間違えると、“動き出す前に気持ちが揺れて止まる状態”をつくることもあります。\nこのまま相手の反応を気にしすぎてしまうと、せっかく形にする力があるのに、一歩目を出せないまま時間だけが過ぎてしまいます。\nでも、動き出す基準がわかれば、人へのやさしさを持ったまま、必要な行動に移しやすくなります。\nこのまま気持ちが揺れて止まるのではなく、あなたの気づかいを“前に進む力”に変えるために。\nあなた専用の診断結果を受け取ってください。"
+  },
+  "B1Z": {
+    "catch": "人の気持ちを感じ取りながら、自分らしい世界観を形にできる人",
+    "body": "あなたは、人の気持ちや場の空気を感じ取りながら、自分の中にある感覚や世界観も大切にできるタイプです。\nただ相手に合わせるだけではなく、「自分らしい雰囲気で伝えたい」「この空気感を大切にしたい」という思いも持っています。\nたとえば、発信の言葉選び、サービスの世界観、プロフィール文などに、やさしさや自分らしさが出やすいでしょう。\nただ──\nこの「感覚を大切にする力」は、使い方を間違えると、“うまく言葉にできず止まる状態”をつくることもあります。\nこのまま「まだうまく言えない」と止まり続けてしまうと、せっかくのやさしさや世界観があるのに、必要な人に届かないまま時間だけが過ぎてしまいます。\nでも、今の感覚を小さく外に出す順番がわかれば、完璧な言葉を探し続けなくても、あなたらしさを形にしやすくなります。\nこのまま言葉にできず止まるのではなく、あなたの感性を“届く魅力”に変えるために。\nあなた専用の診断結果を受け取ってください。"
+  },
+  "B1W": {
+    "catch": "やさしさを持ちながら、伝え方を調整できる人",
+    "body": "あなたは、人の気持ちや場の空気を感じ取りながら、言葉と感覚の両方を使って伝えられるタイプです。\n相手に寄り添うやさしさがあり、わかりやすく説明するだけでなく、雰囲気やニュアンスも含めて伝えようとします。\nたとえば、文章のトーン、言葉のやわらかさ、相手が受け取りやすい順番などを自然に考えられるでしょう。\nただ──\nこの「相手に合わせて表現できる力」は、使い方を間違えると、“どこまで言うか、どう伝えるかで迷って止まる状態”をつくることもあります。\nこのまま相手に合わせすぎてしまうと、せっかく伝える力があるのに、あなた自身の言葉が薄くなってしまうかもしれません。\nでも、何を一番伝えるかが決まれば、やさしさを保ちながら、自分の想いも形にしやすくなります。\nこのまま気を使いすぎて止まるのではなく、あなたのやさしさを“伝わる表現力”に変えるために。\nあなた専用の診断結果を受け取ってください。"
+  },
+  "B2X": {
+    "catch": "感じ取ったことを、すぐ動きながら言葉にできる人",
+    "body": "あなたは、人の気持ちや場の空気を感じ取ったとき、考え込むよりも先に動きながら整えていけるタイプです。\nたとえば、相手の反応を見て言い方を変えたり、会話や発信の中で「この伝え方のほうが届きそう」と調整したりできます。\nただ──\nこの「感じて動ける力」は、使い方を間違えると、“相手の反応に引っぱられて伝え方がぶれる状態”をつくることもあります。\nこのまま相手の反応を気にしすぎてしまうと、せっかく言葉にできる力があるのに、自分が本当に伝えたいことがぼやけてしまうかもしれません。\nでも、伝える軸がひとつ決まれば、相手への配慮を持ったまま、わかりやすく届けやすくなります。\nこのまま反応に振り回されるのではなく、あなたの感度を“伝わる言葉”に変えるために。\nあなた専用の診断結果を受け取ってください。"
+  },
+  "B2Y": {
+    "catch": "相手の反応を見ながら、すばやく形にできる人",
+    "body": "あなたは、人の気持ちや場の空気を感じ取りながらも、動き出したあとはすばやく形にしていけるタイプです。\nたとえば、相手の反応を見て「この方向でいけそう」と感じたら、投稿・案内文・提案内容などを早めに形にできます。\nただ──\nこの「感じてすばやく動ける力」は、使い方を間違えると、“相手の反応を気にしすぎて最初の一歩が止まる状態”をつくることもあります。\nこのまま「どう思われるかな」と考えすぎてしまうと、せっかく形にする力があるのに、動き出す前に時間だけが過ぎてしまいます。\nでも、動き出す基準が決まれば、相手への気づかいを持ったまま、すばやく形にしやすくなります。\nこのまま迷って止まるのではなく、あなたのやさしさと行動力を“前に進む力”に変えるために。\nあなた専用の診断結果を受け取ってください。"
+  },
+  "B2Z": {
+    "catch": "感じた空気を、そのまま自分らしい形にできる人",
+    "body": "あなたは、人の気持ちや場の空気を感じ取り、その感覚をもとに動きながら形にしていけるタイプです。\nたとえば、「この雰囲気で伝えたい」「この世界観なら届きそう」と感じたものを、発信やサービスの見せ方に反映しやすいでしょう。\nただ──\nこの「感覚を形にする力」は、使い方を間違えると、“しっくりくるまで動けない状態”をつくることもあります。\nこのまま「まだ違う気がする」と止まり続けてしまうと、せっかく感じ取った魅力や世界観があるのに、誰にも届かないまま時間だけが過ぎてしまいます。\nでも、一度出して感覚を確かめる流れがわかれば、あなたらしい表現を育てながら前に進みやすくなります。\nこのまま感覚の中で止まるのではなく、あなたの感性を“届く魅力”に変えるために。\nあなた専用の診断結果を受け取ってください。"
+  },
+  "B2W": {
+    "catch": "感じ取りながら、伝え方を柔軟に変えられる人",
+    "body": "あなたは、人の気持ちや場の空気を感じ取りながら、動きの中で形をつくり、言葉と感覚の両方で伝えられるタイプです。\nたとえば、相手に合わせて言葉をやわらかくしたり、場面によって説明重視・雰囲気重視を切り替えたりできます。\nただ──\nこの「柔軟に表現できる力」は、使い方を間違えると、“迷いが増えて動けない状態”をつくることもあります。\nこのまま相手の反応や伝え方を考えすぎてしまうと、せっかく表現の幅があるのに、何を出せばいいのかわからなくなってしまうかもしれません。\nでも、最初に一つ軸を決めて動く流れがわかれば、感じ取る力を活かしながら、柔軟に整えていきやすくなります。\nこのまま迷って止まるのではなく、あなたの感受性と表現力を“伝わる力”に変えるために。\nあなた専用の診断結果を受け取ってください。"
+  },
+  "B3X": {
+    "catch": "空気を読みながら、伝わる言葉に整えられる人",
+    "body": "あなたは、人の気持ちや場の空気を敏感に感じ取りながら、慎重に言葉を選ぶタイプです。\nたとえば、発信や案内文を出すときも、「この言い方で誤解されないかな」「相手にきちんと伝わるかな」と確認してから出そうとします。\nそのうえで、考えをわかりやすく整理し、相手に伝わる言葉に整える力があります。\nただ──\nこの「空気を読みながら整える力」は、使い方を間違えると、“確認しすぎて出せない状態”をつくることもあります。\nこのまま周りの反応を気にしすぎてしまうと、せっかく伝える力があるのに、出すタイミングを逃してしまうかもしれません。\nでも、「ここまで整ったら出していい」という基準があれば、慎重さを保ちながら必要な言葉を届けやすくなります。\nこのまま様子見で止まるのではなく、あなたの気づく力を“伝わる力”に変えるために。\nあなた専用の診断結果を受け取ってください。"
+  },
+  "B3Y": {
+    "catch": "空気を見極めてから、必要な形にできる人",
+    "body": "あなたは、人の気持ちや場の空気を感じ取りながら、慎重にタイミングを見て動くタイプです。\nすぐに出すよりも、「今出して大丈夫か」「相手に受け取ってもらえるか」を確認してから進めようとします。\nただ、いったん動くと決めたあとは、必要な部分を押さえて形にしていく力があります。\nただ──\nこの「タイミングを見る力」は、使い方を間違えると、“まだ早いかも”と一歩目を止める原因になることもあります。\nこのままタイミングを待ち続けてしまうと、せっかく形にする力があるのに、動き出す機会を逃してしまうかもしれません。\nでも、「少しでも形が見えたら出す」という流れがわかれば、空気を読みながらでも次の動きにつなげやすくなります。\nこのまま待ち続けるのではなく、あなたのタイミングを見る力を“前に進む力”に変えるために。\nあなた専用の診断結果を受け取ってください。"
+  },
+  "B3Z": {
+    "catch": "空気を感じ取りながら、自分らしい世界観を形にできる人",
+    "body": "あなたは、人の気持ちや場の空気を敏感に感じ取りながら、自分の中にある感覚や世界観も大切にするタイプです。\nたとえば、「この雰囲気で伝えたい」「この言葉だと少し違う」といった細かな感覚に気づきやすいでしょう。\nただ──\nこの「感性で表現できる力」は、使い方を間違えると、“しっくりくるまで出せない状態”をつくることもあります。\nこのまま「まだ違う気がする」と止まり続けてしまうと、せっかく感じ取った世界観があるのに、必要な人に届かないまま時間だけが過ぎてしまいます。\nでも、完璧を待たずに一度形にする流れがわかれば、あなたの感性は届く表現として育てやすくなります。\nこのまま感覚の中で止まるのではなく、あなたの感性を“届く魅力”に変えるために。\nあなた専用の診断結果を受け取ってください。"
+  },
+  "B3W": {
+    "catch": "空気を見ながら、伝え方をやわらかく調整できる人",
+    "body": "あなたは、人の気持ちや場の空気を敏感に感じ取りながら、慎重に伝え方を選ぶタイプです。\nわかりやすく説明する力と、雰囲気やニュアンスをくみ取る力の両方を持っているため、相手や場面に合わせた表現がしやすいでしょう。\nただ──\nこの「やわらかく表現できる力」は、使い方を間違えると、“周りを見すぎて選べない状態”をつくることもあります。\nこのまま相手や場の空気に合わせ続けてしまうと、せっかく表現力があるのに、あなた自身が何を伝えたいのかがぼやけてしまうかもしれません。\nでも、その場で一つ軸を決めて動く流れがわかれば、やわらかさを保ちながら、自分の言葉も出しやすくなります。\nこのまま選べずに止まるのではなく、あなたのやさしさと表現力を“伝わる力”に変えるために。\nあなた専用の診断結果を受け取ってください。"
+  },
+  "C1X": {
+    "catch": "深く理解して、筋道立てて伝えられる人",
+    "body": "あなたは、物事をしっかり理解したうえで、それをわかりやすく言葉にできるタイプです。\nなんとなく進めるよりも、仕組みや背景まで納得してから動きたい傾向があります。\nそのため、説明文・講座資料・サービス案内などを、筋道立てて整理する場面で力を発揮しやすいでしょう。\nただ──\nこの「深く理解する力」は、使い方を間違えると、“納得できるまで出せない状態”をつくることもあります。\nこのまま「まだ理解が足りない」と考え続けてしまうと、せっかく伝える力があるのに、必要な人に届かないまま時間だけが過ぎてしまいます。\nでも、出すための区切りがわかれば、深く考える力を活かしたまま、前に進みやすくなります。\nこのまま考え続けて止まるのではなく、あなたの理解力を“伝わる力”に変えるために。\nあなた専用の診断結果を受け取ってください。"
+  },
+  "C1Y": {
+    "catch": "理解してから、必要な形にすばやくまとめられる人",
+    "body": "あなたは、物事をしっかり理解したうえで、納得できたら必要な形にまとめられるタイプです。\n考えるだけで終わらず、理解した内容を資料・文章・企画などに落とし込む力があります。\nただ──\nこの「理解してから動く力」は、使い方を間違えると、“動き出す前に止まる状態”をつくることもあります。\nこのまま「もう少し理解してから」と止まり続けてしまうと、せっかく形にする力があるのに、行動のタイミングを逃してしまうかもしれません。\nでも、動き出す基準がわかれば、理解したことを止めたままにせず、実際の形にしやすくなります。\nこのまま理解だけで終わらせるのではなく、あなたの思考力を“形にする力”に変えるために。\nあなた専用の診断結果を受け取ってください。"
+  },
+  "C1Z": {
+    "catch": "深く理解して、自分らしい言葉で表現できる人",
+    "body": "あなたは、物事を深く理解したうえで、それを自分なりの感覚や言葉で表現できるタイプです。\n知識をそのまま並べるのではなく、自分の中で消化してから形にしたい傾向があります。\nそのため、発信・講座・コラム・世界観づくりなどで、独自の伝え方につながりやすいでしょう。\nただ──\nこの「理解と感性で表現する力」は、使い方を間違えると、“まだまとまっていないと感じて止まる状態”をつくることもあります。\nこのまま「もっと理解してから」「もっとしっくりきてから」と待ち続けてしまうと、せっかくの独自性があるのに、誰にも届かないまま時間だけが過ぎてしまいます。\nでも、一度外に出す流れがわかれば、理解も感性も、出しながら自然に深めていきやすくなります。\nこのまま内側で止めるのではなく、あなたの理解力と感性を“伝わる個性”に変えるために。\nあなた専用の診断結果を受け取ってください。"
+  },
+  "C1W": {
+    "catch": "深く理解して、伝え方を柔軟に変えられる人",
+    "body": "あなたは、物事をしっかり理解したうえで、言葉と感覚の両方を使って表現できるタイプです。\n知識として持つだけではなく、相手に伝わる形へ変換できるため、説明の仕方にも幅が出やすいでしょう。\nただ──\nこの「深く理解して柔軟に表現する力」は、使い方を間違えると、“まだ足りないと感じて止まる状態”をつくることもあります。\nこのまま「もっと理解してから」と止まり続けてしまうと、せっかく伝える力があるのに、形にする前に時間だけが過ぎてしまいます。\nでも、今の理解で一度出す流れがわかれば、実践の中でさらに深めながら、伝わる形へ育てやすくなります。\nこのまま理解だけで止まるのではなく、あなたの思考力を“伝わる表現力”に変えるために。\nあなた専用の診断結果を受け取ってください。"
+  },
+  "C2X": {
+    "catch": "動きながら理解し、わかりやすく言葉にできる人",
+    "body": "あなたは、考えるだけで終わらせず、実際に動きながら物事を理解していくタイプです。\nやってみる中で流れや仕組みをつかみ、それを言葉で整理して伝えられるため、説明・発信・提案などに活かしやすいでしょう。\nただ──\nこの「動きながら理解し、言葉にする力」は、使い方を間違えると、“もう少し整理してから出そう”と止まる状態をつくることもあります。\n本来は実践しながら理解を深められるタイプなのに、言葉として整えることに時間をかけすぎると、動き出すタイミングを逃してしまいます。\nでも、まず小さく出してから整理する流れがわかれば、理解も行動も止めずに前へ進みやすくなります。\nこのまま考えを頭の中で止めるのではなく、あなたの理解力を“伝わる実践力”に変えるために。\nあなた専用の診断結果を受け取ってください。"
+  },
+  "C2Y": {
+    "catch": "理解しながら、すばやく形にできる人",
+    "body": "あなたは、物事の流れを理解しながら、動き出したあとはすばやく形にできるタイプです。\n考えるだけで終わらず、要点をつかんで行動へ移せるため、仕事や発信でもスピード感を持って進めやすいでしょう。\nただ──\nこの「理解して形にする力」は、使い方を間違えると、“どこまでわかれば出していいのか”で迷う状態をつくることもあります。\nこのまま「もう少しわかってから」と止まり続けてしまうと、せっかく早く形にできる力があるのに、動き出すタイミングを逃してしまいます。\nでも、出す基準が決まれば、理解したことを止めずに行動へつなげやすくなります。\nこのまま理解だけで止まるのではなく、あなたの思考力を“形にする力”に変えるために。\nあなた専用の診断結果を受け取ってください。"
+  },
+  "C2Z": {
+    "catch": "理解をもとに、自分らしく表現できる人",
+    "body": "あなたは、物事を理解しながら、その内容を自分なりの感覚で表現できるタイプです。\n知識をそのまま伝えるのではなく、自分の中で消化してから形にできるため、発信・企画・世界観づくりなどに活かしやすいでしょう。\nただ──\nこの「理解を感性で表現する力」は、使い方を間違えると、“まだ自分らしくまとまっていない”と感じて止まる状態をつくることもあります。\nこのまま完全に整うまで待ち続けてしまうと、せっかくの独自性があるのに、誰にも届かないまま時間だけが過ぎてしまいます。\nでも、一度外に出す流れがわかれば、理解も感性も、出しながら自然に深めていきやすくなります。\nこのまま内側で止めるのではなく、あなたの理解力と感性を“伝わる個性”に変えるために。\nあなた専用の診断結果を受け取ってください。"
+  },
+  "C2W": {
+    "catch": "理解しながら、柔軟に伝え方を変えられる人",
+    "body": "あなたは、物事を理解しながら、実際に動く中で形をつくり、言葉と感覚の両方で伝えられるタイプです。\n論理的に説明することも、感覚的にイメージで伝えることもできるため、相手や場面に合わせて表現を調整しやすいでしょう。\nただ──\nこの「理解しながら柔軟に表現する力」は、使い方を間違えると、“どの伝え方が正解か”で迷う状態をつくることもあります。\nこのまま「もっと理解してから」「もっと整えてから」と止まり続けてしまうと、せっかく実践で深められる力があるのに、形にする前に時間だけが過ぎてしまいます。\nでも、今の理解で一度使ってみる流れがわかれば、実践の中でさらに精度を上げながら、伝わる形へ育てやすくなります。\nこのまま理解だけで止まるのではなく、あなたの思考力を“実践で活きる表現力”に変えるために。\nあなた専用の診断結果を受け取ってください。"
+  },
+  "C3X": {
+    "catch": "しっかり確認し、理解をわかりやすく伝えられる人",
+    "body": "あなたは、物事をすぐに決めるよりも、状況や根拠をしっかり確認してから判断したいタイプです。\nそのうえで、理解した内容を筋道立てて整理し、わかりやすく言葉にして伝える力があります。\nただ──\nこの「確認してから伝える力」は、使い方を間違えると、“今ある情報ではまだ足りない”と感じて止まる状態をつくることもあります。\nこのまま考え続けてしまうと、せっかくわかりやすく伝える力があるのに、必要な人に届かないまま時間だけが過ぎてしまいます。\nでも、今ある情報で一度伝える流れがわかれば、確認しながらでも前へ進みやすくなります。\nこのまま考え続けて止まるのではなく、あなたの理解力を“伝わる力”に変えるために。\nあなた専用の診断結果を受け取ってください。"
+  },
+  "C3Y": {
+    "catch": "しっかり確認しながら、現実的に形にできる人",
+    "body": "あなたは、すぐに動くよりも、状況や根拠を確認してから進めたいタイプです。\n慎重さはありますが、ただ止まるだけではなく、納得できたことは現実的な形にしていく力があります。\nただ──\nこの「確認して形にする力」は、使い方を間違えると、“まだ今じゃないかも”と止まる状態をつくることもあります。\nこのままタイミングを待ち続けてしまうと、せっかく形にする力があるのに、動き出す機会を逃してしまうかもしれません。\nでも、最低限の確認ができた段階で一度出す流れがわかれば、理解を深めながら次の流れをつかみやすくなります。\nこのまま待ち続けるのではなく、あなたの理解力を“形にする力”に変えるために。\nあなた専用の診断結果を受け取ってください。"
+  },
+  "C3Z": {
+    "catch": "しっかり確認しながら、自分らしく表現できる人",
+    "body": "あなたは、物事をすぐに表現するよりも、自分の中でしっかり理解し、納得してから形にしたいタイプです。\n理解したことをそのまま出すのではなく、自分なりの感覚や言葉に変えて表現できるため、独自の視点や空気感が出やすいでしょう。\nただ──\nこの「理解を感性で表現する力」は、使い方を間違えると、“まだしっくりこない”と感じて止まる状態をつくることもあります。\nこのまま完璧にまとまるのを待ち続けてしまうと、せっかくの独自性があるのに、誰にも届かないまま時間だけが過ぎてしまいます。\nでも、今の時点の形で一度出す流れがわかれば、理解も感性も、出しながら自然に深めていけます。\nこのまま内側で止めるのではなく、あなたの理解力と感性を“伝わる個性”に変えるために。\nあなた専用の診断結果を受け取ってください。"
+  },
+  "C3W": {
+    "catch": "しっかり確認しながら、柔軟に表現できる人",
+    "body": "あなたは、物事をすぐに出すよりも、内容をしっかり理解し、納得してから伝えたいタイプです。\nそのうえで、言葉と感覚の両方を使って表現できるため、相手や状況に合わせて伝え方を調整しやすいでしょう。\nただ──\nこの「理解を柔軟に表現する力」は、使い方を間違えると、“まだ足りない”“まだまとまらない”と感じて止まる状態をつくることもあります。\nこのまま理解も表現も整うまで待ち続けてしまうと、せっかく伝える力があるのに、形にする前に時間だけが過ぎてしまいます。\nでも、今の理解で一度伝えてみる流れがわかれば、実践の中でさらに深めながら、伝わる形へ育てやすくなります。\nこのまま理解だけで止まるのではなく、あなたの思考力を“伝わる表現力”に変えるために。\nあなた専用の診断結果を受け取ってください。"
+  },
+  "D1X": {
+    "catch": "行動力があり、伝わる形まで整えられる人",
+    "body": "あなたは、もともとの行動力を持ちながら、大事な場面では一度立ち止まり、相手に伝わる形まで整えられるタイプです。\n勢いだけで突き進むのではなく、必要な確認を入れながら進められるため、動けるのに雑になりにくいでしょう。\nただ──\nこの「動きながら整える力」は、使い方を間違えると、“動きたい気持ち”と“整えてから出したい気持ち”がぶつかって止まる状態をつくることもあります。\nこのまま最初から全部を整えようとしてしまうと、せっかくの行動力があるのに、一歩目が遅くなってしまうかもしれません。\nでも、動いてから整える流れがわかれば、勢いを止めずに伝わる形へ整えやすくなります。\nこのまま動きたい気持ちを止めるのではなく、あなたの行動力を“伝わる前進力”に変えるために。\nあなた専用の診断結果を受け取ってください。"
+  },
+  "D1Y": {
+    "catch": "思い立ったらすぐ形にできる人",
+    "body": "あなたは、もともとの行動力が強く、「やろう」と思ったらすぐに動けるタイプです。\n考え込んで止まるより、まず形にしてみることで流れをつくり、そこから整えていけるでしょう。\nそのため、スピード感を持って前に進める力があります。\nただ──\nこの「すぐ動ける力」は、使い方を間違えると、“方向があいまいなまま進む状態”をつくることもあります。\nこのまま勢いだけで進めてしまうと、途中で「思っていたのと違う」と感じて、手が止まってしまうこともあるでしょう。\nでも、最初にざっくりとした方向だけ決めておけば、あなたのスピードはそのまま成果につながりやすくなります。\nこのまま勢いを止めるのではなく、あなたの行動力を“結果につながる前進力”に変えるために。\nあなた専用の診断結果を受け取ってください。"
+  },
+  "D1Z": {
+    "catch": "行動力と感性をあわせ持つ人",
+    "body": "あなたは、もともとの行動力を持ちながら、自分の中にある感覚や世界観も大切にできるタイプです。\n思いついたことを動きに変えやすい一方で、大事なことは一度立ち止まり、「この形でいいか」を見極めたい気持ちも持っています。\nただ──\nこの「行動力と感性」は、使い方を間違えると、“動きたいのに、しっくりこなくて止まる状態”をつくることもあります。\nこのまま頭の中で完成形を探し続けてしまうと、せっかくの感性や行動力があるのに、形になる前に時間だけが過ぎてしまいます。\nでも、ラフでも一度形にする流れがわかれば、あなたらしい感性を動きの中で育てやすくなります。\nこのまま内側で止めるのではなく、あなたの感性を“形になる魅力”に変えるために。\nあなた専用の診断結果を受け取ってください。"
+  },
+  "D1W": {
+    "catch": "行動力と表現の幅をあわせ持つ人",
+    "body": "あなたは、もともとの行動力を持ちながら、言葉と感覚の両方を使って表現できるタイプです。\n思いついたことを前に進めやすく、そのうえで、ただ勢いで終わらせず、伝え方にも幅を持たせられるでしょう。\nただ──\nこの「行動力と表現の幅」は、使い方を間違えると、“何を優先すればいいか迷って止まる状態”をつくることもあります。\nこのまま勢いで進めるか、丁寧に整えるかで迷い続けてしまうと、せっかくの行動力が止まってしまうかもしれません。\nでも、今回は何を優先するかが決まれば、行動力も表現力も活かしやすくなります。\nこのまま迷って止まるのではなく、あなたの勢いを“伝わる表現力”に変えるために。\nあなた専用の診断結果を受け取ってください。"
+  },
+  "D2X": {
+    "catch": "動きながら、伝わる言葉に整えられる人",
+    "body": "あなたは、思いついたことをすぐに動きに変えながら、その内容を相手に伝わる言葉へ整えられるタイプです。\nスピード感を持って動けるだけでなく、「どう言えば伝わるか」も意識できるため、ただ早いだけで終わらないでしょう。\nただ──\nこの「動きながら言葉にする力」は、使い方を間違えると、“伝える前に次へ進んでしまう状態”をつくることもあります。\nこのままスピードだけで進んでしまうと、せっかく形にする力があるのに、相手に意図が伝わらないまま終わってしまうかもしれません。\nでも、一度言葉にして整える流れがわかれば、スピードを落としすぎずに伝わる形へ仕上げやすくなります。\nこのまま勢いで通り過ぎるのではなく、あなたの行動力を“伝わる前進力”に変えるために。\nあなた専用の診断結果を受け取ってください。"
+  },
+  "D2Y": {
+    "catch": "スピード感を持って、現実的に形にできる人",
+    "body": "あなたは、思いついたことをすぐに行動へ移し、現実的な形にしていけるタイプです。\n考え込んで止まるよりも、まず動いて形にし、そこから調整しながら成果に近づいていきやすいでしょう。\nただ──\nこの「スピードで形にする力」は、使い方を間違えると、“方向がズレたまま進み続ける状態”をつくることもあります。\nこのまま目的を確認しないまま走ってしまうと、せっかく行動できる力があるのに、途中で遠回りになってしまうかもしれません。\nでも、今どこに向かっているかを短く確認する流れがあれば、あなたのスピード感は成果につながりやすくなります。\nこのまま勢いを空回りさせるのではなく、あなたの行動力を“成果につながる前進力”に変えるために。\nあなた専用の診断結果を受け取ってください。"
+  },
+  "D2Z": {
+    "catch": "勢いと感覚で、自分らしく形にできる人",
+    "body": "あなたは、思いついたことをすぐに行動へ移し、その中で感じたことを自分らしく表現できるタイプです。\nスピードと感性の両方を使って、独自の雰囲気や世界観を形にしやすいでしょう。\nただ──\nこの「勢いと感覚で形にする力」は、使い方を間違えると、“魅力が伝わる前に流れてしまう状態”をつくることもあります。\nこのまま感覚のまま出し続けてしまうと、せっかく独自の世界観があるのに、相手に伝わりきらないまま終わってしまうかもしれません。\nでも、少しだけ言葉にして整理する流れがわかれば、あなたらしい魅力はもっと伝わりやすくなります。\nこのまま感覚だけで終わらせるのではなく、あなたの感性を“伝わる魅力”に変えるために。\nあなた専用の診断結果を受け取ってください。"
+  },
+  "D2W": {
+    "catch": "動きながら、表現を柔軟に使い分けられる人",
+    "body": "あなたは、すぐに行動しながら流れをつかみ、その場に合わせて伝え方を変えられるタイプです。\nスピードと柔軟さの両方を持っているため、変化のある場面でも対応しやすいでしょう。\nただ──\nこの「柔軟に動ける力」は、使い方を間違えると、“軸があいまいなまま動き続ける状態”をつくることもあります。\nこのままその場に合わせ続けてしまうと、せっかく対応力があるのに、自分が何を大事にしたいのかがぼやけてしまうかもしれません。\nでも、先に大事にする軸が決まれば、動きながらでも安定して進みやすくなります。\nこのまま流れに流されるのではなく、あなたの対応力を“ブレない前進力”に変えるために。\nあなた専用の診断結果を受け取ってください。"
+  },
+  "D3X": {
+    "catch": "確認しながら、伝わる形に整えられる人",
+    "body": "あなたは、行動力を持ちながらも、すぐに飛び出すより、状況を確認してから動きたいタイプです。\nそのうえで、相手に伝わるように言葉を整えられるため、勢いだけで終わらず、納得感のある形に仕上げやすいでしょう。\nただ──\nこの「確認してから伝える力」は、使い方を間違えると、“もう少し待ったほうがいいかも”と動きが遅くなる状態をつくることもあります。\nこのまま確認し続けてしまうと、せっかく伝える力があるのに、出す機会を逃してしまうかもしれません。\nでも、「ここまで確認できたら動く」と決めておけば、判断力を活かしながら前へ進みやすくなります。\nこのまま様子見で止まるのではなく、あなたの判断力を“伝わる前進力”に変えるために。\nあなた専用の診断結果を受け取ってください。"
+  },
+  "D3Y": {
+    "catch": "確認してから、一気に形にできる人",
+    "body": "あなたは、行動力を持ちながらも、すぐに飛び出すより、状況を見てから動きたいタイプです。\nただし、納得できるタイミングが来ると、一気に動いて形にできる力があります。\n慎重に見極める力と、動き出したあとのスピード感をあわせ持っているでしょう。\nただ──\nこの「確認してから一気に動く力」は、使い方を間違えると、“まだ早いかも”とチャンスを逃す状態をつくることもあります。\nこのまま動くタイミングを待ち続けてしまうと、せっかく形にできる力があるのに、最初の一歩が遅くなってしまいます。\nでも、小さく動き出す基準がわかれば、チャンスを逃さず流れに乗りやすくなります。\nこのまま待ち続けるのではなく、あなたの行動力を“成果につながる前進力”に変えるために。\nあなた専用の診断結果を受け取ってください。"
+  },
+  "D3Z": {
+    "catch": "確認しながら、感覚を形にできる人",
+    "body": "あなたは、行動力を持ちながらも、感覚的にしっくりくるかを確認してから動きたいタイプです。\n勢いだけで進むのではなく、自分の中の感覚やイメージを大切にしながら、あなたらしい形をつくれるでしょう。\nただ──\nこの「確認しながら感覚を形にする力」は、使い方を間違えると、“しっくりくるまで動けない状態”をつくることもあります。\nこのまま完璧な感覚を待ち続けてしまうと、せっかくの感性や行動力があるのに、形になる前に時間だけが過ぎてしまいます。\nでも、ある程度の段階で動き出す流れがわかれば、感覚を育てながら形にしやすくなります。\nこのまま感覚待ちで止まるのではなく、あなたの感性を“形になる魅力”に変えるために。\nあなた専用の診断結果を受け取ってください。"
+  },
+  "D3W": {
+    "catch": "確認しながら、表現を柔軟に変えられる人",
+    "body": "あなたは、行動力を持ちながらも、すぐに飛び出すより、状況を確認してから動きたいタイプです。\nそのうえで、言葉と感覚の両方を使えるため、相手や場面に合わせて伝え方を変えられるでしょう。\nただ──\nこの「柔軟に対応できる力」は、使い方を間違えると、“周りに合わせすぎて自分の軸がぼやける状態”をつくることもあります。\nこのまま流れに合わせ続けてしまうと、せっかく動ける力があるのに、自分が何を大事にしたいのか見えにくくなってしまうかもしれません。\nでも、先に大事にする軸が決まれば、流れに合わせながらでも安定して進みやすくなります。\nこのまま周りに流されるのではなく、あなたの柔軟さを“ブレない前進力”に変えるために。\nあなた専用の診断結果を受け取ってください。"
+  },
+  "E1X": {
+    "catch": "感覚を、伝わる言葉にできる人",
+    "body": "あなたは、自分の中にある感覚や違和感を大切にしながら、それを言葉にして伝えられるタイプです。\n感覚だけで終わらせず、相手に伝わる形まで整えられるのが強みです。\nただ──\nこの「感覚を言葉にする力」は、使い方を間違えると、“これで本当にいいのか”と迷い続ける状態をつくることもあります。\nこのまま納得できるまで考え続けてしまうと、せっかくの感覚や言葉にする力があるのに、外に出せないまま時間だけが過ぎてしまいます。\nでも、ある程度納得できた段階で一度出す流れがわかれば、感覚を伝わる形へ育てやすくなります。\nこのまま迷い続けるのではなく、あなたの感覚を“伝わる言葉”に変えるために。\nあなた専用の診断結果を受け取ってください。"
+  },
+  "E1Y": {
+    "catch": "感覚を、現実的な形にできる人",
+    "body": "あなたは、自分の感覚や違和感を大切にしながら、それを現実的な形へ落とし込めるタイプです。\n無理に急ぐよりも、「これなら形にできる」と納得してから進むことで、安定した成果につながりやすいでしょう。\nただ──\nこの「感覚を形にする力」は、使い方を間違えると、“まだ足りない”と感じて前に進めない状態をつくることもあります。\nこのまま完璧な納得感を待ち続けてしまうと、せっかく形にできる力があるのに、動き出すタイミングを逃してしまいます。\nでも、7割くらいで一度出す流れがわかれば、自分の感覚を大切にしながら前へ進みやすくなります。\nこのまま納得待ちで止まるのではなく、あなたの感覚を“形になる力”に変えるために。\nあなた専用の診断結果を受け取ってください。"
+  },
+  "E1Z": {
+    "catch": "感性を、自分らしい形にできる人",
+    "body": "あなたは、自分の中にある感覚や世界観を大切にし、それを自分らしく表現できるタイプです。\n無理に周りへ合わせるよりも、自分の感性を活かした形で力を発揮しやすいでしょう。\nただ──\nこの「感性を形にする力」は、使い方を間違えると、“しっくりこない”と感じて動きが止まる状態をつくることもあります。\nこのまま完璧なしっくり感を待ち続けてしまうと、せっかくの世界観があるのに、外に出ないまま時間だけが過ぎてしまいます。\nでも、小さく試しながら調整する流れがわかれば、感性を活かしながら前に進みやすくなります。\nこのまま感覚の中で止めるのではなく、あなたの感性を“形になる魅力”に変えるために。\nあなた専用の診断結果を受け取ってください。"
+  },
+  "E1W": {
+    "catch": "感覚と表現を、バランスよく使える人",
+    "body": "あなたは、自分の感覚を大切にしながら、言葉と雰囲気の両方で伝えられるタイプです。\n感覚だけに寄りすぎず、状況に合わせて表現を変えられるため、柔軟に対応しやすいでしょう。\nただ──\nこの「感覚と表現を使い分ける力」は、使い方を間違えると、“毎回すべてを整えようとして迷う状態”をつくることもあります。\nこのまま全部をきれいに整えようとしてしまうと、せっかく柔軟に表現できる力があるのに、手が止まってしまうかもしれません。\nでも、優先するものを先に決める流れがわかれば、感覚も表現力も活かしやすくなります。\nこのまま迷って止まるのではなく、あなたの感覚を“伝わる表現力”に変えるために。\nあなた専用の診断結果を受け取ってください。"
+  },
+  "E2X": {
+    "catch": "感覚で動き、言葉で伝えられる人",
+    "body": "あなたは、感覚で方向をつかみながらすぐに動き、その内容を言葉として整えられるタイプです。\n「なんとなくいい」をそのままで終わらせず、相手に伝わる形まで持っていけるのが特徴です。\nただ──\nこの「感覚を言葉にする力」は、使い方を間違えると、“なぜ良いのかが伝わらない状態”をつくることもあります。\nこのまま感覚だけで進めてしまうと、せっかく良いものをつかんでいるのに、相手に価値が伝わらないまま終わってしまうかもしれません。\nでも、「なぜそれがいいと思ったのか」を一度言葉にする流れがわかれば、あなたの感覚は相手に届く価値へ変わりやすくなります。\nこのまま感覚だけで終わらせるのではなく、あなたの直感を“伝わる価値”に変えるために。\nあなた専用の診断結果を受け取ってください。"
+  },
+  "E2Y": {
+    "catch": "感覚で動き、すぐ形にできる人",
+    "body": "あなたは、自分の感覚を起点にすぐ動き、そのまま現実的な形にしていけるタイプです。\n考えすぎて止まるよりも、動きながら調整していくことで、自然と前に進めるでしょう。\nただ──\nこの「感覚で形にする力」は、使い方を間違えると、“方向性があいまいなまま進む状態”をつくることもあります。\nこのまま感覚だけで走り続けてしまうと、せっかく形にする力があるのに、途中でズレに気づきにくくなるかもしれません。\nでも、最初に「どこに向かうか」だけ軽く決めておけば、感覚を活かしながら進みやすくなります。\nこのまま感覚を空回りさせるのではなく、あなたの直感を“形になる前進力”に変えるために。\nあなた専用の診断結果を受け取ってください。"
+  },
+  "E2Z": {
+    "catch": "感性で動き、世界観を形にできる人",
+    "body": "あなたは、自分の感覚や「好き」を起点にすぐ動き、そのまま世界観として表現できるタイプです。\n理屈に寄りすぎず、あなたらしい雰囲気や魅力を形にできるのが特徴です。\nただ──\nこの「世界観を形にする力」は、使い方を間違えると、“魅力が伝わりきらない状態”をつくることもあります。\nこのまま言葉にしないまま出し続けてしまうと、せっかく独自の世界観があるのに、相手に価値が伝わらないまま終わってしまうかもしれません。\nでも、少しだけ言語化する流れがわかれば、あなたの魅力は必要な人に届きやすくなります。\nこのまま感覚だけで終わらせるのではなく、あなたの世界観を“伝わる魅力”に変えるために。\nあなた専用の診断結果を受け取ってください。"
+  },
+  "E2W": {
+    "catch": "感覚で動き、柔軟に伝えられる人",
+    "body": "あなたは、感覚を起点にすぐ動きながら、状況に合わせて伝え方を変えられるタイプです。\n感覚・言葉・雰囲気を使い分けられるため、変化のある場面でも柔軟に対応しやすいでしょう。\nただ──\nこの「感覚で動きながら柔軟に伝える力」は、使い方を間違えると、“軸があいまいなまま進む状態”をつくることもあります。\nこのまま感覚と状況に合わせ続けてしまうと、せっかく柔軟に動けるのに、方向がブレやすくなるかもしれません。\nでも、「自分が大事にしたい感覚」を最初に決めておけば、柔軟に対応しながらも安定して進みやすくなります。\nこのまま流れに流されるのではなく、あなたの感覚を“ブレない表現力”に変えるために。\nあなた専用の診断結果を受け取ってください。"
+  },
+  "E3X": {
+    "catch": "感覚を確認しながら、言葉にできる人",
+    "body": "あなたは、自分の感覚や違和感を大切にしながら、すぐに出すよりも「これで合っているか」を確認してから動きたいタイプです。\nそのうえで、感じたことを言葉にして伝えられるため、感覚だけで終わらせず、相手に伝わる形へ整えやすいでしょう。\nただ──\nこの「感覚を確認して言葉にする力」は、使い方を間違えると、“まだ今じゃないかも”と動きが遅くなる状態をつくることもあります。\nこのままタイミングを待ち続けてしまうと、せっかく感覚を言葉にできる力があるのに、外に出す機会を逃してしまうかもしれません。\nでも、ある程度しっくりきた段階で一度動く流れがわかれば、感覚を大切にしながら前に進みやすくなります。\nこのまま待ち続けるのではなく、あなたの感覚を“伝わる言葉”に変えるために。\nあなた専用の診断結果を受け取ってください。"
+  },
+  "E3Y": {
+    "catch": "感覚を確認してから、形にできる人",
+    "body": "あなたは、自分の感覚や流れを確認しながら、「これなら進められる」と思えたタイミングで形にできるタイプです。\n無理に急ぐよりも、自分に合う形を見極めてから動くことで、納得感のある成果につながりやすいでしょう。\nただ──\nこの「確認してから形にする力」は、使い方を間違えると、“待ちすぎてチャンスを逃す状態”をつくることもあります。\nこのまま完璧なタイミングを待ち続けてしまうと、せっかく形にできる力があるのに、一歩目が遅くなってしまうかもしれません。\nでも、小さくでも動ける余地を見つける流れがわかれば、感覚を活かしながら前に進みやすくなります。\nこのまま待ち続けるのではなく、あなたの感覚を“形になる力”に変えるために。\nあなた専用の診断結果を受け取ってください。"
+  },
+  "E3Z": {
+    "catch": "感覚を確認しながら、世界観を形にできる人",
+    "body": "あなたは、自分の感覚や世界観を大切にしながら、すぐに出すよりも「しっくりくるか」を確認してから表現したいタイプです。\n無理に周りへ合わせるのではなく、自分に合う形で力を発揮しやすいでしょう。\nただ──\nこの「世界観を形にする力」は、使い方を間違えると、“しっくりこないまま動けない状態”をつくることもあります。\nこのまま完璧に合う感覚を待ち続けてしまうと、せっかくの世界観があるのに、外に出ないまま時間だけが過ぎてしまいます。\nでも、少しでも合う形で動いてみる流れがわかれば、あなたの世界観は少しずつ形になりやすくなります。\nこのまま感覚の中で止めるのではなく、あなたの世界観を“形になる魅力”に変えるために。\nあなた専用の診断結果を受け取ってください。"
+  },
+  "E3W": {
+    "catch": "感覚を確認しながら、表現を柔軟に変えられる人",
+    "body": "あなたは、自分の感覚と状況の両方を見ながら動き、相手や場面に合わせて伝え方を変えられるタイプです。\n柔軟さと慎重な判断力をあわせ持っているため、変化のある場面でも安定して対応しやすいでしょう。\nただ──\nこの「柔軟に表現を変えられる力」は、使い方を間違えると、“周りに合わせすぎて自分の軸がぼやける状態”をつくることもあります。\nこのまま流れや状況に合わせ続けてしまうと、せっかく柔軟に動けるのに、自分が大切にしたい基準が見えにくくなるかもしれません。\nでも、先に自分の中で大切にしたい基準が決まれば、状況に合わせながらも安定して進みやすくなります。\nこのまま流れに流されるのではなく、あなたの柔軟さを“ブレない表現力”に変えるために。\nあなた専用の診断結果を受け取ってください。"
+  },
+  "A1M": {
+    "catch": "納得したことを、粘り強く形にできる人",
+    "body": "あなたは、現実感覚を持ちながら、自分の中で納得したことをしっかり形にしていけるタイプです。\n慎重に見極める一方で、いったん「これでいく」と決めたあとは気持ちがぶれにくく、自分のやり方で進めていける強さがあります。\nただ──\nこの「納得したことを貫く力」は、使い方を間違えると、“動き出すまでに時間がかかりすぎる状態”をつくることもあります。\nこのまま完璧に決め切るまで待ってしまうと、せっかく現実に落とし込む力があるのに、気持ちが重くなって動き出しにくくなるかもしれません。\nでも、小さく決めて動き出す流れがわかれば、慎重さも強さも前進の力に変えやすくなります。\nこのまま考え続けて止まるのではなく、あなたの軸の強さを“形にする力”に変えるために。\nあなた専用の診断結果を受け取ってください。"
+  },
+  "A2M": {
+    "catch": "決めたことを、一気に現実化できる人",
+    "body": "あなたは、現実感覚を持ちながら、決めたことをスピード感をもって形にしていけるタイプです。\nまず動いてみる軽さがあり、いったん方向が定まると強く集中できるため、前に進む力がかなり強いでしょう。\nただ──\nこの「一気に現実化する力」は、使い方を間違えると、“方向が固まりきらないまま進む状態”をつくることもあります。\nこのまま勢いだけで進めてしまうと、せっかく実行力があるのに、あとから大きな修正が必要になるかもしれません。\nでも、最初に「何を形にしたいか」だけ決めておけば、スピード感を活かしながら現実に落とし込みやすくなります。\nこのまま勢いを空回りさせるのではなく、あなたの実行力を“成果につながる力”に変えるために。\nあなた専用の診断結果を受け取ってください。"
+  },
+  "A3M": {
+    "catch": "流れを見極め、決めたら一気に進める人",
+    "body": "あなたは、現実的に状況を見ながら、「今動くべきかどうか」をしっかり見極めてから動きたいタイプです。\n無理に進むのではなく、自分に合うタイミングを見て判断できる慎重さがあります。\nそのうえで、いったん「これでいく」と決めたあとは、迷いが減り、一気に集中して進められる強さを持っています。\nただ──\nこの「見極めてから一気に進む力」は、使い方を間違えると、“もう少し様子を見よう”が長くなる状態をつくることもあります。\nこのまま完璧なタイミングを待ち続けてしまうと、せっかく決めたあとは強く進める力があるのに、動くきっかけを逃してしまうかもしれません。\nでも、「進めそう」と感じた段階で小さく動く流れがわかれば、あなたの判断力と集中力はそのまま前進の力に変わりやすくなります。\nこのまま様子見で止まるのではなく、あなたの集中力を“現実を動かす力”に変えるために。\nあなた専用の診断結果を受け取ってください。"
+  },
+  "B1M": {
+    "catch": "繊細さと芯の強さをあわせ持つ人",
+    "body": "あなたは、人の気持ちや状況を丁寧に感じ取りながら、自分の中で納得したことには強く集中できるタイプです。\n普段は周りに合わせる柔軟さがありますが、いったん方向が決まると、自分の意志で進める強さを持っています。\nただ──\nこの「感じ取る力と芯の強さ」は、使い方を間違えると、“考えすぎて決められない状態”をつくることもあります。\nこのまま周りのことを考えすぎてしまうと、せっかく自分の軸で進める力があるのに、決断までに時間だけが過ぎてしまうかもしれません。\nでも、ある程度納得できた段階で「これでいく」と決める流れがわかれば、やさしさも強さも前に進む力へ変えやすくなります。\nこのまま迷い続けるのではなく、あなたの共感力を“芯のある前進力”に変えるために。\nあなた専用の診断結果を受け取ってください。"
+  },
+  "B2M": {
+    "catch": "感じて動き、決めたら一気に進める人",
+    "body": "あなたは、人の気持ちや場の空気を感じ取りながら、「よさそう」と思った方向へ動けるタイプです。\nさらに、いったん方向が定まると強く集中して進めるため、共感力と行動力の両方を持っています。\nただ──\nこの「感じて動ける力」は、使い方を間違えると、“周りに合わせすぎて方向がぶれる状態”をつくることもあります。\nこのまま相手の反応や場の空気に合わせ続けてしまうと、せっかく集中して進める力があるのに、自分が何を大事にしたいのか見えにくくなるかもしれません。\nでも、先に「自分は何を大事にするか」を決めておけば、相手を感じ取りながらでもぶれずに進みやすくなります。\nこのまま周りに流されるのではなく、あなたの共感力を“集中して進む力”に変えるために。\nあなた専用の診断結果を受け取ってください。"
+  },
+  "B3M": {
+    "catch": "流れを見極め、決めたら強く進める人",
+    "body": "あなたは、場の空気や相手の反応を丁寧に感じ取りながら、自分に合うタイミングで動きたいタイプです。\nさらに、いったん方向が定まると強く集中して進めることができるため、柔軟さと芯の強さの両方を持っています。\nただ──\nこの「流れを見極めて決める力」は、使い方を間違えると、“もう少し様子を見よう”が長くなる状態をつくることもあります。\nこのままタイミングを見続けてしまうと、せっかく決めたら強く進める力があるのに、動くきっかけを逃してしまうかもしれません。\nでも、動けそうだと感じたタイミングで一歩踏み出す流れがわかれば、流れを読みながらも前に進みやすくなります。\nこのまま様子見で止まるのではなく、あなたの集中力を“現実を動かす力”に変えるために。\nあなた専用の診断結果を受け取ってください。"
+  },
+  "C1M": {
+    "catch": "整理して決めたらブレない人",
+    "body": "あなたは、物事をしっかり整理して理解し、納得したうえで決めたことを強く実行できるタイプです。\n考える力と集中力の両方を持っているため、ただ分析するだけで終わらず、現実の形まで落とし込めるでしょう。\nただ──\nこの「整理してやり切る力」は、使い方を間違えると、“整理が終わるまで動けない状態”をつくることもあります。\nこのまま全部を整理しきるまで待ってしまうと、せっかく実行できる力があるのに、動き出すタイミングを逃してしまうかもしれません。\nでも、「動きながら整理する」という流れがわかれば、考える力も実行力も止めずに前へ進めます。\nこのまま考え続けて止まるのではなく、あなたの分析力を“現実を動かす力”に変えるために。\nあなた専用の診断結果を受け取ってください。"
+  },
+  "C2M": {
+    "catch": "理解して決めたら一気に進める人",
+    "body": "あなたは、物事を整理して理解し、納得した方向に対して一気に進めるタイプです。\n考える力と行動力の両方を持っており、理解したことをそのまま実行に移しやすい特徴があります。\nただ──\nこの「理解して一気に進める力」は、使い方を間違えると、“納得が浅いまま進んでしまう状態”をつくることもあります。\nこのまま方向を深く決めないまま進むと、途中でズレに気づき、大きく修正することになるかもしれません。\nでも、「どこまで理解できていれば進むか」の基準がわかれば、スピードと精度の両方を活かしやすくなります。\nこのまま勢いだけで進むのではなく、あなたの理解力を“成果につながる実行力”に変えるために。\nあなた専用の診断結果を受け取ってください。"
+  },
+  "C3M": {
+    "catch": "流れを見て、決めたら確実に進める人",
+    "body": "あなたは、物事を整理して全体を見ながら、自分に合うタイミングで動くことができるタイプです。\nさらに、いったん方向が定まると強く集中して進めるため、判断力と実行力の両方を持っています。\nただ──\nこの「全体を見て決める力」は、使い方を間違えると、“判断の先延ばし”を生みやすくなります。\nこのまま流れを見続けてしまうと、せっかく決めたら進める力があるのに、動くタイミングを逃してしまうかもしれません。\nでも、「ここまで見えたら動く」という基準があれば、全体を見ながらでも確実に前へ進めます。\nこのまま様子見で止まるのではなく、あなたの判断力を“現実を動かす力”に変えるために。\nあなた専用の診断結果を受け取ってください。"
+  },
+  "D1M": {
+    "catch": "動けて、決めたら強く進める人",
+    "body": "あなたは、行動力を持ちながら、納得したことに対して強く集中できるタイプです。\n動き出す力と、決めたあとのブレにくさの両方を持っているため、結果につなげやすいでしょう。\nただ──\nこの「動けてやり切れる力」は、使い方を間違えると、“最初の判断に時間がかかって勢いが止まる状態”をつくることもあります。\nこのまま完璧に決め切るまで待ってしまうと、せっかくの行動力があるのに、一歩目が重くなってしまうかもしれません。\nでも、完璧に決め切る前に一度動く流れがわかれば、勢いと集中力を前進につなげやすくなります。\nこのまま判断で止まるのではなく、あなたの行動力を“やり切る力”に変えるために。\nあなた専用の診断結果を受け取ってください。"
+  },
+  "D2M": {
+    "catch": "動き出しが早く、決めたら一気に進める人",
+    "body": "あなたは、思いついたことをすぐに行動に移し、決めた方向に対して一気に進めるタイプです。\nスピードと集中力の両方を持っているため、形にする力が強いでしょう。\nただ──\nこの「動いてやり切る力」は、使い方を間違えると、“方向を深く決めないまま進む状態”をつくることもあります。\nこのまま勢いだけで進んでしまうと、せっかくの行動力と集中力があるのに、あとから修正が大きくなるかもしれません。\nでも、最初に「何をやるか」だけはっきりさせておけば、スピードと集中力を成果につなげやすくなります。\nこのまま勢いを空回りさせるのではなく、あなたの行動力を“成果につながる実行力”に変えるために。\nあなた専用の診断結果を受け取ってください。"
+  },
+  "D3M": {
+    "catch": "流れを見極め、決めたら一気に進める人",
+    "body": "あなたは、行動力を持ちながらも、すぐに飛び出すより、流れやタイミングを見てから動きたいタイプです。\nただし、ここだと決めた瞬間には一気に集中して進めるため、慎重な判断力と突破力の両方を持っています。\nただ──\nこの「見極めて一気に進める力」は、使い方を間違えると、“もう少し待とう”とタイミングを逃す状態をつくることもあります。\nこのまま待ち続けてしまうと、せっかく決めたら一気に進める力があるのに、チャンスが流れてしまうかもしれません。\nでも、動けると感じた瞬間に小さく踏み出す流れがわかれば、集中力を活かして前に進みやすくなります。\nこのまま様子見で止まるのではなく、あなたの集中力を“チャンスを形にする力”に変えるために。\nあなた専用の診断結果を受け取ってください。"
+  },
+  "E1M": {
+    "catch": "感覚を信じて、決めたら深く形にできる人",
+    "body": "あなたは、自分の感覚を大切にしながら、納得したことに対して強く集中できるタイプです。\n感性だけで終わらせず、決めたことを現実の形に落とし込める力があります。\nただ──\nこの「感覚を信じて深く進める力」は、使い方を間違えると、“しっくりくるまで決められない状態”をつくることもあります。\nこのまま迷い続けてしまうと、せっかく深く掘り下げられる力があるのに、動き出す前に時間だけが過ぎてしまうかもしれません。\nでも、ある程度しっくりきた段階で一度決める流れがわかれば、あなたの感性は現実の形になりやすくなります。\nこのまま迷い続けるのではなく、あなたの感覚を“深く形にする力”に変えるために。\nあなた専用の診断結果を受け取ってください。"
+  },
+  "E2M": {
+    "catch": "感じて動き、決めたら一気に深める人",
+    "body": "あなたは、自分の感覚を起点に動きながら、方向が定まると一気に集中して進めるタイプです。\n感性と行動力、そして集中力のバランスがよく、結果につなげやすいでしょう。\nただ──\nこの「感じて動き、深める力」は、使い方を間違えると、“方向を決めきらないまま進む状態”をつくることもあります。\nこのまま感覚だけで動き続けてしまうと、せっかく深く掘り下げられる力があるのに、途中で迷いが出やすくなるかもしれません。\nでも、「ここを深める」と決める流れがわかれば、感覚も行動力も結果につながりやすくなります。\nこのまま感覚を散らすのではなく、あなたの直感を“深く形にする力”に変えるために。\nあなた専用の診断結果を受け取ってください。"
+  },
+  "E3M": {
+    "catch": "感覚を見極め、決めたら深く進める人",
+    "body": "あなたは、自分の感覚と流れの両方を見ながら動き、方向が定まったときに深く集中できるタイプです。\n無理に急がず、自分に合うタイミングを見極めながら進めるため、柔軟さと集中力の両方を持っています。\nただ──\nこの「感覚を見極めて決める力」は、使い方を間違えると、“まだ今じゃない”と止まり続ける状態をつくることもあります。\nこのままタイミングを待ち続けてしまうと、せっかく深く集中できる力があるのに、動き出すきっかけを逃してしまうかもしれません。\nでも、進めそうだと感じたタイミングで一歩踏み出す流れがわかれば、あなたの感覚と集中力は結果につながりやすくなります。\nこのまま待ち続けるのではなく、あなたの感性を“深く形にする力”に変えるために。\nあなた専用の診断結果を受け取ってください。"
+  }
+};
+
+const POST_RESULT_MAP = {
+  A1X: {
+    oneWord: '堅実に考えながら、伝わる形に整えられる人',
+    total: `あなたは、堅実に考えながら、相手に伝わる形まで丁寧に整えられる人です。
+ただ思いつくだけではなく、
+「これは相手にちゃんと伝わるかな？」
+というところまで考えられるため、
+言葉や見せ方に自然と信頼感が出やすいタイプです。
+派手さで引っぱるというより、
+「この人の話はわかりやすい」
+「ちゃんと考えてくれている」
+と感じてもらいやすいでしょう。`,
+    strength: `あなたの強みは、
+頭の中にある考えやサービスの魅力を、
+相手に伝わる形に整えられることです。
+特に、
+・自分の想いを言葉にする
+・サービス内容をわかりやすく伝える
+・相手が迷わない順番に整える
+こうした場面で力を発揮しやすいでしょう。`,
+    hint: `あなたは、整える力が高いぶん、
+整えすぎて止まりやすいところがあります。
+だからこそ、最初から100点を目指すより、
+まずは8割で出してみる。
+そのあとで磨いていく。
+この進め方のほうが、あなたの強みは自然に活きやすくなります。`
+  },
+  A1Y: {
+    oneWord: '慎重に見極めたあと、すばやく形にできる人',
+    total: `あなたは、堅実に考えながらも、
+「これでいこう」と決めたあとは一気に形にできる人です。
+土台は慎重なのに、
+決まったあとの動きは意外と早く、
+考え込むだけで終わらせず、現実の形に持っていけるタイプです。
+そのため、周りからは
+「しっかり考えているのに仕事が早い」
+という印象を持たれやすいでしょう。`,
+    strength: `あなたの強みは、
+見極める力と、動き出したあとの速さを両方持っていることです。
+特に、
+・方向性を見極めてから動ける
+・決めたことを素早く形にできる
+・実際に出しながら調整できる
+こうした場面で力を発揮しやすいでしょう。`,
+    hint: `あなたは、最初の見極めに時間をかけるぶん、
+動き出す前に止まりやすいところがあります。
+でも、いったん方向が見えれば、
+そこから進む力はちゃんとあります。
+だからこそ、最初から完璧に決めようとするより、
+「ここまで見えたら一度出してみる」
+くらいの基準を持つと、前へ進みやすくなります。`
+  },
+  A1Z: {
+    oneWord: '現実感覚を持ちながら、自分の感性も大切にできる人',
+    total: `あなたは、現実をしっかり見ながら、
+自分の中にある感覚や世界観も大切にできる人です。
+堅実さがあるので、
+ただふわっとしたイメージで終わらず、
+自分なりに納得できる形まで持っていこうとするタイプです。
+そのため、
+「現実的なのに、どこかその人らしさがある」
+そんな印象を持たれやすいでしょう。`,
+    strength: `あなたの強みは、
+現実感覚と感性の両方を使いながら形にできることです。
+特に、
+・自分らしい世界観をつくる
+・感覚をサービスや表現に落とし込む
+・現実から離れすぎずに個性を出す
+こうした場面で力を発揮しやすいでしょう。`,
+    hint: `あなたは、感覚を大事にするぶん、
+「これで本当に伝わるかな」と迷いやすいところがあります。
+でも、最初から完璧に言葉にしようとしなくても大丈夫です。
+まずは、今の時点で言える形にしてみる。
+そこから少しずつ整えていくほうが、
+あなたの感性は自然に活きやすくなります。`
+  },
+  A1W: {
+    oneWord: '慎重さと表現の幅をあわせ持つ人',
+    total: `あなたは、堅実に考えながら、
+言葉と感覚の両方を使って伝えられる人です。
+慎重さがあるので、
+思いつきだけで進むことは少なく、
+自分なりに納得できる形をつくってから外に出そうとするタイプです。
+そのうえで、
+説明だけに偏らず、
+雰囲気やニュアンスも含めて伝えられるため、
+伝え方に幅があるのが大きな特徴です。`,
+    strength: `あなたの強みは、
+丁寧さと表現の幅を両方持っていることです。
+特に、
+・わかりやすさと雰囲気を両立できる
+・相手に合わせて伝え方を調整できる
+・雑に出さず、納得できる形に整えられる
+こうした場面で力を発揮しやすいでしょう。`,
+    hint: `あなたは、丁寧に考えられるぶん、
+「言葉を優先するか、感覚を優先するか」で迷いやすいところがあります。
+だからこそ、毎回きれいにまとめようとするより、
+今はどちらを優先する場面なのかを先に決めておくことが大切です。
+それだけでも、手が止まりにくくなり、
+あなたの良さを形にしやすくなります。`
+  },
+  A1M: {
+    oneWord: '納得したことを強く形にしていける人',
+    total: `あなたは、現実感覚を持ちながら、
+自分の中で納得したことをしっかり形にしていける人です。
+慎重に見極める一方で、
+いったん決めたあとは気持ちがぶれにくく、
+自分のやり方で進めていける強さがあります。
+そのため、ただ真面目なだけでなく、
+決めたことを現実に落とし込む力があるタイプです。`,
+    strength: `あなたの強みは、
+納得した方向に対して、ぶれずに力を注げることです。
+特に、
+・現実的に考えて判断できる
+・決めたことを継続して形にできる
+・周りに流されず自分の軸で進められる
+こうした場面で力を発揮しやすいでしょう。`,
+    hint: `あなたは慎重さと強さの両方を持っているぶん、
+動き出すまでに時間がかかると、
+逆に気持ちが重くなりやすいところがあります。
+だからこそ、
+最初から完璧に決め切るより、
+まずは小さく決めて動き出すことが大切です。`
+  },
+  A2X: {
+    oneWord: '動きながら、わかりやすく形にできる人',
+    total: `あなたは、現実を見ながら動き、
+その中で考えを整理して、伝わる形にできる人です。
+土台は堅実ですが、
+慎重に考え込むだけで終わらず、
+まずやってみることで流れをつくっていけるタイプです。
+そのうえで、
+頭の中で終わらせずに言葉にして整えられるため、
+「動けるだけでなく、ちゃんと伝えられる人」と見られやすいでしょう。`,
+    strength: `あなたの強みは、
+動きながら考えを整理し、
+相手に伝わる形まで持っていけることです。
+特に、
+・思いついたことを小さく形にする
+・複雑な内容をわかりやすく整理する
+・動きながら伝え方を調整する
+こうした場面で力を発揮しやすいでしょう。`,
+    hint: `あなたは、動ける力があるぶん、
+考えがまとまり切る前に先へ進みたくなることがあります。
+でも、それ自体は悪いことではありません。
+あなたは、止まって整えるより、
+出しながら整えるほうが力を発揮しやすいタイプです。
+だからこそ、
+「完璧にしてから出す」ではなく、
+「まず出して、あとから整える」を前提にしたほうが、
+自然に前へ進みやすくなります。`
+  },
+  A2Y: {
+    oneWord: '現実を見ながら、すばやく形にできる人',
+    total: `あなたは、堅実さを持ちながらも、
+動き出したあとは比較的早く形にしていける人です。
+土台は現実的なので、
+ただ勢いだけで突っ走るのではなく、
+「形になるもの」を見ながら進められるタイプです。
+そのうえで、
+考え込んで止まるより、
+まず出してみて、そこから整えていけるので、
+仕事のスピード感につながりやすいでしょう。`,
+    strength: `あなたの強みは、
+現実的な感覚を持ちながら、
+動き出したあとは素早く形にできることです。
+特に、
+・思い立ったことを早めに形にする
+・まず出して反応を見ながら調整する
+・スピード感を持って前に進める
+こうした場面で力を発揮しやすいでしょう。`,
+    hint: `あなたは、動ける力があるぶん、
+方向性があいまいなまま走ると、
+途中で迷いやすくなることがあります。
+だからこそ、
+最初に全部を決め切る必要はありませんが、
+「何のためにやるのか」だけは先に決めておくことが大切です。
+それだけでも、
+あなたのスピード感は空回りしにくくなり、
+強みとして活きやすくなります。`
+  },
+  A2Z: {
+    oneWord: '現実感覚を持ちながら、感性を形にできる人',
+    total: `あなたは、現実を見ながら動きつつ、
+自分の中にある感覚や世界観も形にできる人です。
+ただ堅実なだけではなく、
+自分らしい雰囲気やイメージを大切にしているので、
+現実に落とし込みながらも、
+どこかその人らしさがにじむタイプです。
+また、考え込んで止まるより、
+動きながら形にしていけるので、
+感覚を現実につなげやすいでしょう。`,
+    strength: `あなたの強みは、
+現実感覚と感性の両方を使いながら、
+自分らしい形をつくれることです。
+特に、
+・世界観を形にする
+・感覚をサービスや表現に落とし込む
+・理屈だけに寄りすぎず、魅力を出す
+こうした場面で力を発揮しやすいでしょう。`,
+    hint: `あなたは、感覚を大切にするぶん、
+「まだしっくりこない」と感じると手が止まりやすいところがあります。
+でも、あなたの場合は、
+頭の中で整え切ってから進むより、
+一度出してみたほうが感覚がはっきりしやすいタイプです。
+だからこそ、
+最初から完璧なしっくり感を待つより、
+まずは仮の形でも出してみる。
+そのほうが、あなたらしさを自然に育てやすくなります。`
+  },
+  A2W: {
+    oneWord: '動きながら、言葉と感覚の両方を活かせる人',
+    total: `あなたは、現実を見ながらまず動き、
+そのうえで言葉と感覚の両方を使って表現できる人です。
+堅実さがあるので、
+ただノリで進むわけではありません。
+でも、考え込んで止まるより、
+動きながら形を探していけるタイプです。
+さらに、
+説明だけでも、感覚だけでもなく、
+その両方を使って伝えられるため、
+表現の幅が広いのが大きな強みです。`,
+    strength: `あなたの強みは、
+動きながら形をつくり、
+その中で伝え方の幅も持てることです。
+特に、
+・まず試して流れをつくる
+・わかりやすさと雰囲気を両立する
+・相手や場面に合わせて表現を変える
+こうした場面で力を発揮しやすいでしょう。`,
+    hint: `あなたは、できることの幅があるぶん、
+「どの伝え方が今いちばん合っているか」で迷いやすいところがあります。
+だからこそ、
+最初から全部を盛り込もうとするより、
+今回は何を優先するかを先に決めておくことが大切です。
+それだけでも、
+動きながら整えるあなたの強みが活きやすくなり、
+前へ進みやすくなります。`
+  },
+  A2M: {
+    oneWord: '決めたことを一気に形にできる人',
+    total: `あなたは、現実感覚を持ちながら、
+決めたことをスピード感をもって形にしていける人です。
+まず動いてみる軽さがありつつ、
+いったん方向が定まると強く集中できるため、
+前に進む力がかなり強いタイプです。
+そのため、思いつきで終わらせず、
+実際の形に持っていきやすいでしょう。`,
+    strength: `あなたの強みは、
+決めたことを迷いすぎず、現実の形に落とし込めることです。
+特に、
+・決断したあと動きが早い
+・集中して一気に進められる
+・アイデアを実行に移しやすい
+こうした場面で力を発揮しやすいでしょう。`,
+    hint: `あなたは動き出す力が強いぶん、
+方向が固まりきらないまま進むと、
+あとから修正が大きくなりやすいところがあります。
+だからこそ、
+最初に「何を形にしたいか」だけは
+はっきりさせておくことが大切です。`
+  }
+  ,
+  A3X: {
+    oneWord: '状況を見ながら、わかりやすく整えられる人',
+    total: `あなたは、現実を見ながら流れを判断し、
+そのうえで考えをわかりやすく整えられる人です。
+無理に急ぐことはせず、
+状況に合わせて動くことができるため、
+安定した形で結果につなげやすいタイプです。
+また、頭の中を整理して伝える力があるので、
+周りからも「説明がわかりやすい」と思われやすいでしょう。`,
+    strength: `あなたの強みは、
+状況を見ながら、考えを整理して伝えられることです。
+特に、
+・流れを読みながら判断する
+・複雑な内容をわかりやすくする
+・相手に合わせて説明を調整する
+こうした場面で力を発揮しやすいでしょう。`,
+    hint: `あなたは、状況を見て判断できるぶん、
+タイミングを考えすぎて動き出しが遅くなることがあります。
+だからこそ、
+「ここまで見えたら一度動く」と基準を決めておくことで、
+流れに乗りやすくなります。`
+  },
+  A3Y: {
+    oneWord: 'タイミングを見て動き、形にできる人',
+    total: `あなたは、状況を見て判断しながら、
+「ここだ」と思えたタイミングで動ける人です。
+普段は慎重に流れを見ていますが、
+動き出すときはしっかり行動できるため、
+安定とスピードのバランスを持っているタイプです。
+また、出しながら整えていくことができるので、
+形にする力も持っています。`,
+    strength: `あなたの強みは、
+流れや状況を見ながら、無理のない形で前に進めることです。
+勢いだけで動くのではなく、
+「今なら進める」というタイミングを見て動けるため、
+安定感のある進め方ができます。
+特に、
+・状況を見ながら動くタイミングを判断できる
+・無理のない形で仕事を前に進められる
+・出しながら整えて、実際の形にしていける
+こうした場面で力を発揮しやすいでしょう。`,
+    hint: `あなたは、タイミングを見極める力があるぶん、
+「まだ早いかも」と感じて動きを止めてしまうことがあります。
+だからこそ、
+少しでも形が見えたら一度出してみることで、
+次の流れにつなげやすくなります。`
+  },
+  A3Z: {
+    oneWord: '流れを見ながら、感覚を形にできる人',
+    total: `あなたは、状況を見て動きながら、
+自分の感覚や世界観を形にできる人です。
+現実を無視せずに進められるため、
+感覚だけに偏らず、
+しっかりと形に落とし込むことができるタイプです。`,
+    strength: `あなたの強みは、
+感覚や世界観を大切にしながらも、きちんと形に落とし込めることです。
+ふわっとしたイメージのままで終わらせず、
+現実の流れを見ながら表現として整えていけるため、
+あなたらしさと実用性の両方を出しやすいタイプです。
+特に、
+・世界観や雰囲気を形にできる
+・感覚をサービスや表現に落とし込める
+・流れを見ながら、現実に合う形で進められる
+こうした場面で力を発揮しやすいでしょう。`,
+    hint: `あなたは、感覚を大切にするぶん、
+「まだしっくりこない」と感じると止まりやすいところがあります。
+だからこそ、
+完璧にしようとするより、
+一度形にしてみることで、
+次の流れが見えやすくなります。`
+  },
+  A3W: {
+    oneWord: '状況を見ながら、柔軟に表現できる人',
+    total: `あなたは、流れを見て判断しながら、
+言葉と感覚の両方を使って表現できる人です。
+一つのやり方にこだわらず、
+状況に応じて伝え方を変えられるため、
+柔軟に対応できるタイプです。`,
+    strength: `あなたの強みは、
+状況を見ながら、相手に合う伝え方へ柔軟に調整できることです。
+言葉だけに偏らず、雰囲気やニュアンスも使いながら伝えられるため、
+その場に合った形で伝わりやすく整えることができます。
+特に、
+・相手や状況に合わせて伝え方を変えられる
+・言葉と感覚のバランスを取りながら表現できる
+・流れを見ながら無理なく調整していける
+こうした場面で力を発揮しやすいでしょう。`,
+    hint: `あなたは、選択肢が多いぶん、
+どれを選ぶか迷いやすいところがあります。
+だからこそ、
+その場で一つ決めて動くことで、
+前に進みやすくなります。`
+  },
+  A3M: {
+    oneWord: '流れを見て、決めたら強い人',
+    total: `あなたは、現実的に状況を見ながら、
+自分に合うタイミングで動き出せる人です。
+さらに、いったん方向が定まると
+気持ちを強く集中させて進められるため、
+慎重さと粘り強さの両方を持っています。
+そのため、無理に急がなくても、
+自分に合う流れをつかめたときに大きく前へ進みやすいタイプです。`,
+    strength: `あなたの強みは、
+流れを見ながら、決めたことを着実に形にしていけることです。
+特に、
+・状況やタイミングを見て判断できる
+・決めたあとはぶれずに進められる
+・無理のない形で現実に落とし込める
+こうした場面で力を発揮しやすいでしょう。`,
+    hint: `あなたは流れを見られるぶん、
+「もう少し様子を見よう」が長くなると、
+動くきっかけを逃しやすくなります。
+だからこそ、
+完璧なタイミングを待つより、
+進めそうだと思えた時点で小さく動くことが大切です。`
+  }
+
+  ,
+  B1M: {
+    oneWord: '繊細さと芯の強さをあわせ持つ人',
+    total: `あなたは、人の気持ちや状況を丁寧に感じ取りながら、
+自分の中で納得したことには強く集中できる人です。
+普段は周りに合わせる柔軟さがありますが、
+いったん方向が決まると、
+自分の意志で進める強さを持っています。
+そのため、やさしいだけでなく、
+いざという場面ではぶれにくい芯の強さが出やすいタイプです。`,
+    strength: `あなたの強みは、
+相手の気持ちを理解しながら、自分の軸で判断できることです。
+特に、
+・相手の立場や感情をくみ取れる
+・バランスを見て判断できる
+・決めたことをぶれずに進められる
+こうした場面で力を発揮しやすいでしょう。`,
+    hint: `あなたは周りを見られるぶん、
+考えすぎると決断が遅くなることがあります。
+だからこそ、
+ある程度納得できた段階で
+「これでいく」と決めることが大切です。
+やさしさを持ったまま決めることは、
+わがままではなく、前に進むための力です。`
+  },
+  B1X: {
+    oneWord: '相手の気持ちをくみ取りながら、言葉を整えられる人',
+    total: `あなたは、人の気持ちや空気を感じ取りながら、
+それを相手に伝わる言葉へと整えられる人です。
+感受性が高いので、
+相手がどこで引っかかりやすいかにも気づきやすく、
+そのうえで、伝え方まで丁寧に考えられるタイプです。
+そのため、
+「この人はちゃんとわかってくれている」
+「言い方がやさしくて伝わりやすい」
+と感じてもらいやすいでしょう。`,
+    strength: `あなたの強みは、
+相手の気持ちをくみ取りながら、伝わる言葉に整えられることです。
+特に、
+・相手に合わせた言葉を選ぶ
+・やわらかく、でも伝わる表現にする
+・相手が受け取りやすい順番で伝える
+こうした場面で力を発揮しやすいでしょう。`,
+    hint: `あなたは、相手を大切にするぶん、
+「この言い方で大丈夫かな」と考えすぎて止まりやすいところがあります。
+でも、あなたの場合は、
+雑に出すより少し整えてから出す方が合っています。
+だからこそ、完璧を目指すより、
+「今の自分なりに丁寧なら出していい」
+という基準を持つことが大切です。`
+  },
+  B1Y: {
+    oneWord: '気づかいができて、決めたあとは早い人',
+    total: `あなたは、人の気持ちや空気を感じ取れるやさしさを持ちながら、
+決めたあとは比較的早く動ける人です。
+感受性が高いので、
+何も考えずに進むタイプではありません。
+でも、いったん方向が見えると、
+そこで止まり続けずに形にしていける力があります。
+そのため、
+「気づかいができるのに仕事が早い」
+そんな印象を持たれやすいでしょう。`,
+    strength: `あなたの強みは、
+相手を見ながら判断しつつ、
+決めたあとは素早く形にできることです。
+特に、
+・相手の反応を見ながら動く
+・方向が決まったら早く形にする
+・出しながら伝え方を調整する
+こうした場面で力を発揮しやすいでしょう。`,
+    hint: `あなたは、最初の見極めに時間を使うぶん、
+動き出す前に気持ちが揺れやすいところがあります。
+でも、あなたは一度決まれば進める人です。
+だからこそ、最初から全部を決め切ろうとするより、
+「ここまで見えたら一度出す」
+という基準を持っておくと、前へ進みやすくなります。`
+  },
+  B1Z: {
+    oneWord: '人の気持ちを感じ取りながら、感性を形にできる人',
+    total: `あなたは、人の気持ちや空気を感じ取りながら、
+自分の中にある感覚や世界観を形にできる人です。
+感受性が高いので、
+人に寄り添う力があります。
+そのうえで、ただ相手に合わせるだけでなく、
+自分らしい雰囲気や表現も大切にできるタイプです。
+そのため、
+「やさしさがあるのに、ちゃんとその人らしさもある」
+そんな印象を持たれやすいでしょう。`,
+    strength: `あなたの強みは、
+相手への感度と、自分の感性の両方を活かせることです。
+特に、
+・相手に寄り添った世界観をつくる
+・感覚を表現やサービスに落とし込む
+・やさしさのある空気感を形にする
+こうした場面で力を発揮しやすいでしょう。`,
+    hint: `あなたは、感覚を大切にするぶん、
+「まだうまく言えない」と感じると止まりやすいところがあります。
+でも、最初から全部をきれいに言葉にしなくても大丈夫です。
+今の時点で出せる形にしてみる。
+そこから少しずつ整えていく方が、
+あなたの感性は自然に活きやすくなります。`
+  },
+  B1W: {
+    oneWord: 'やさしさと表現の幅をあわせ持つ人',
+    total: `あなたは、人の気持ちや空気を感じ取りながら、
+言葉と感覚の両方を使って伝えられる人です。
+感受性が高いので、
+相手に寄り添うことができます。
+そのうえで、説明だけに偏らず、
+雰囲気やニュアンスも含めて表現できるため、
+伝え方に幅があるのが大きな特徴です。
+そのため、
+「やさしいだけでなく、表現にも深みがある」
+そんな印象を持たれやすいでしょう。`,
+    strength: `あなたの強みは、
+相手への感度と、伝え方の幅を両方持っていることです。
+特に、
+・相手に合わせた伝え方をする
+・やわらかさとわかりやすさを両立する
+・雰囲気も含めて魅力を伝える
+こうした場面で力を発揮しやすいでしょう。`,
+    hint: `あなたは、相手を大切にできるぶん、
+「どこまで言うか」「どう伝えるか」で迷いやすいところがあります。
+だからこそ、毎回きれいにまとめようとするより、
+今回は何を一番伝えたいのかを先に決めておくことが大切です。
+それだけでも、
+あなたのやさしさや表現力は、
+もっと形にしやすくなります。`
+  }
+
+  ,
+  B2X: {
+    oneWord: '相手を感じ取りながら、伝え方を整えられる人',
+    total: `あなたは、人の気持ちや空気を感じ取りながら、
+やり取りの中で形を整え、伝わる言葉へまとめていける人です。
+ただ感じ取るだけでなく、動きながら調整できるため、
+相手との関係の中で最適な伝え方を見つけやすいタイプです。`,
+    strength: `あなたの強みは、
+相手の反応を感じ取りながら、その場に合う伝え方へ整えられることです。
+特に、
+・相手の反応を見ながら調整できる
+・その場に合う言葉を選べる
+・やり取りの中で形にできる`,
+    hint: `「どう思われるか」を気にして止まりやすいタイプです。
+でもあなたは、動きながら整えられる人です。
+まず出して、そこから調整する流れを大切にしてください。`
+  },
+  B2Y: {
+    oneWord: '気づきながら、すばやく形にできる人',
+    total: `あなたは、人の気持ちに気づけるやさしさを持ちながら、
+動き出したあとは比較的早く形にできる人です。
+そのため、やさしさとスピードの両方を持ったタイプです。`,
+    strength: `あなたの強みは、
+相手の気持ちを感じ取りながら、動きの中で形にしていけることです。
+特に、
+・相手の反応を見ながら動ける
+・出しながら整えられる
+・スピードを持って進められる`,
+    hint: `最初の一歩で迷いやすいタイプです。
+「少しでも形が見えたら動く」
+この基準を持つと進みやすくなります。`
+  },
+  B2Z: {
+    oneWord: '感覚をつかみながら、形にしていける人',
+    total: `あなたは、人の気持ちや空気を感じ取りながら、
+その感覚をもとに動き、形にしていける人です。
+考え込むより、動きながら自分の感覚をつかめるタイプです。`,
+    strength: `あなたの強みは、
+感じ取った感覚をそのまま表現として形にできることです。
+特に、
+・感覚をそのまま形にできる
+・世界観を表現できる
+・動きながら方向を見つけられる`,
+    hint: `「まだしっくりこない」で止まりやすいです。
+でもあなたは、
+動くことで感覚がはっきりするタイプです。
+まず出すことを優先してください。`
+  },
+  B2W: {
+    oneWord: '感じ取りながら、柔軟に表現できる人',
+    total: `あなたは、人の気持ちを感じ取りながら、
+動きの中で形をつくり、
+言葉と感覚の両方で伝えられる人です。
+柔軟に対応できるタイプです。`,
+    strength: `あなたの強みは、
+相手に合わせて伝え方を変えられることです。
+特に、
+・相手に合わせた表現ができる
+・動きながら調整できる
+・言葉と感覚の両方を使える`,
+    hint: `選択肢が多くて迷いやすいタイプです。
+だからこそ、
+「今回はこれ」と一つ決めて動くことが大切です。`
+  },
+  B2M: {
+    oneWord: '感じて動き、決めたら一気に進める人',
+    total: `あなたは、人の気持ちや空気を感じ取りながら、
+「よさそう」と思った方向に動ける人です。
+さらに、決めたあとは強く集中できるため、
+共感力と行動力の両方を持っています。`,
+    strength: `あなたの強みは、
+相手の反応を見ながら動き、決めたことに集中できることです。
+特に、
+・ニーズを感じ取れる
+・動きながら判断できる
+・一気に進められる`,
+    hint: `周りに合わせすぎると方向がぶれます。
+「自分は何を大事にするか」
+これを先に決めておくことが大切です。`
+  }
+
+  ,
+  B3X: {
+    oneWord: '空気を読みながら、わかりやすく整えられる人',
+    total: `あなたは、人の気持ちや場の空気を感じ取りながら、
+そのうえで考えをわかりやすく言葉にできる人です。
+無理なくその場に合った動きができ、
+信頼を得やすいタイプです。`,
+    strength: `相手や場を見ながら、伝わる形に整えられること。
+・状況に合わせた伝え方
+・整理して伝える力
+・無理のない対応`,
+    hint: `「今じゃないかも」で止まりやすいです。
+「ここまで整っていれば出す」という基準を持つと進みます。`
+  },
+  B3Y: {
+    oneWord: '流れを見て動き、形にしていける人',
+    total: `あなたは、流れを見て判断しながら、
+動くべきタイミングで形にできる人です。`,
+    strength: `・タイミング判断
+・無理なく進める
+・出しながら整える`,
+    hint: `「まだ早い」で止まりがち。
+少しでも形が見えたら出すこと。`
+  },
+  B3Z: {
+    oneWord: '流れを感じ取りながら、感性で表現できる人',
+    total: `あなたは、空気を感じ取りながら、
+感覚をもとに表現できる人です。`,
+    strength: `・感覚を形に
+・世界観表現
+・流れに合わせる`,
+    hint: `完璧待ちで止まるタイプ。
+まず形にすること。`
+  },
+  B3W: {
+    oneWord: '流れを見ながら、やわらかく表現できる人',
+    total: `あなたは、状況に合わせて柔軟に表現できる人です。`,
+    strength: `・柔軟な伝え方
+・相手に合わせる
+・言葉＋感覚`,
+    hint: `迷いやすいので「今回はこれ」と決める。`
+  },
+  B3M: {
+    oneWord: '流れを見て、決めたら強い人',
+    total: `あなたは、流れを見て動き、
+決めたら集中できる人です。`,
+    strength: `・空気を読む
+・タイミング判断
+・集中力`,
+    hint: `様子見しすぎ注意。
+動ける時に一歩出る。`
+  }
+
+,
+  C1X: {
+    oneWord: '深く理解して、わかりやすく伝えられる人',
+    total: `あなたは、物事をしっかり理解したうえで、
+それをわかりやすく言葉にできる人です。
+なんとなく進めるのではなく、
+自分の中で納得してから動くため、
+内容にブレが少なく、安定した形で進められるタイプです。`,
+    strength: `あなたの強みは、
+物事を深く理解したうえで、筋道を立ててわかりやすく伝えられることです。
+表面的な説明で終わらず、
+仕組みや理由まで整理して相手に渡せるため、
+納得感のある伝え方ができるタイプです。
+特に、
+・物事の仕組みや背景まで理解できる
+・考えを整理して順序立てて伝えられる
+・筋の通った説明で相手の納得を得やすい
+こうした場面で力を発揮しやすいでしょう。`,
+    hint: `あなたは、納得するまで考えられるぶん、
+考えているうちに止まりやすいところがあります。
+だからこそ、
+「ある程度わかったら一度出す」
+という区切りを持つことで、前に進みやすくなります。`
+  },
+  C1Y: {
+    oneWord: '理解してから、素早く形にできる人',
+    total: `あなたは、物事をしっかり理解したうえで、
+納得できたら一気に形にできる人です。
+考えるだけで終わらず、
+行動につなげられるため、
+理解と実行のバランスが取れているタイプです。`,
+    strength: `あなたの強みは、
+理解したことを止めたままにせず、実際の形にしていけることです。
+しっかり考えて納得したうえで動けるため、
+考えるだけで終わらず、
+理解と実行をつなげやすいタイプです。
+特に、
+・理解した内容を実際の形に落とし込める
+・考えと行動をつなげて進められる
+・出しながら調整してよりよい形にできる
+こうした場面で力を発揮しやすいでしょう。`,
+    hint: `あなたは、最初の理解に時間を使うぶん、
+動き出す前に止まりやすいところがあります。
+でも、一度動き出せば進める人です。
+だからこそ、
+「ここまで理解できたら動く」と決めておくことが大切です。`
+  },
+  C1Z: {
+    oneWord: '理解と感性の両方で表現できる人',
+    total: `あなたは、物事を深く理解したうえで、
+それを自分なりの感覚で表現できる人です。
+ただ知識として持つだけでなく、
+自分の中で消化してから形にできるため、
+独自の伝え方につながりやすいタイプです。`,
+    strength: `あなたの強みは、
+深く理解したことを、自分らしい感覚や表現に変えられることです。
+知識をそのまま並べるのではなく、
+自分の中で消化したうえで伝えられるため、
+独自性のある表現につながりやすいタイプです。
+特に、
+・理解した内容を自分の言葉に変えられる
+・感覚やイメージを使って表現できる
+・独自の視点を伝わる形に落とし込める
+こうした場面で力を発揮しやすいでしょう。`,
+    hint: `あなたは、理解と感覚の両方を大切にするぶん、
+「まだまとまっていない」と感じて止まりやすいところがあります。
+だからこそ、
+完璧にまとまる前でも、一度出してみることで、
+次の形が見えやすくなります。`
+  },
+  C1W: {
+    oneWord: '深く理解して、柔軟に表現できる人',
+    total: `あなたは、物事をしっかり理解したうえで、
+言葉と感覚の両方を使って表現できる人です。
+知識として持つだけでなく、
+それを相手に伝わる形へと変換できるため、
+表現に幅があるタイプです。`,
+    strength: `あなたの強みは、
+深く理解したことを、相手に合わせて柔軟に伝えられることです。
+わかりやすさだけでなく、
+雰囲気やニュアンスも含めて表現できるため、
+内容を伝わる形へ調整しやすいタイプです。
+特に、
+・理解した内容を伝わる形に変えられる
+・言葉と感覚の両方を使って表現できる
+・相手に合わせて柔軟に説明を調整できる
+こうした場面で力を発揮しやすいでしょう。`,
+    hint: `あなたは、理解を大切にするぶん、
+「まだ足りない」と感じて動きを止めやすいところがあります。
+だからこそ、
+今の理解で一度出してみることで、
+実践の中でさらに深めていく流れが合っています。`
+  },
+  C1M: {
+    oneWord: '整理して決めたらブレない人',
+    total: `あなたは、物事をしっかり整理して理解し、
+納得したうえで決めたことを強く実行できる人です。
+考える力と集中力の両方を持っているため、
+ただ分析するだけで終わらず、
+現実の形まで落とし込めるタイプです。`,
+    strength: `あなたの強みは、
+整理して判断し、決めたことを最後までやり切れることです。
+特に、
+・情報を整理して理解できる
+・納得して判断できる
+・決めたことを継続して形にできる
+こうした場面で力を発揮しやすいでしょう。`,
+    hint: `あなたはしっかり考えられるぶん、
+判断までに時間がかかりやすいところがあります。
+だからこそ、
+完璧に整理しきる前に
+一度動いてみることが大切です。`
+  },
+  C2M: {
+    oneWord: '理解して決めたら一気に進める人',
+    total: `あなたは、物事を整理して理解し、
+納得した方向に対して一気に進める人です。
+考える力と行動力の両方を持っているため、
+止まらずに形にしていけるタイプです。`,
+    strength: `あなたの強みは、
+理解したことをもとに、迷わず実行に移せることです。
+特に、
+・仕組みを理解できる
+・納得して判断できる
+・集中して一気に進められる
+こうした場面で力を発揮しやすいでしょう。`,
+    hint: `あなたは考える力とスピードの両方があるぶん、
+方向を深く決めないまま進むと、
+あとからズレを感じやすくなります。
+だからこそ、
+最初に「何を目指すか」を
+ある程度明確にしておくことが大切です。`
+  },
+  C2X: {
+    oneWord: '動きながら理解し、わかりやすく伝えられる人',
+    total: `あなたは、物事を理解したい気持ちを持ちながら、
+実際に動くことで理解を深め、
+それを言葉で整理して伝えられる人です。
+頭の中だけで考え続けるのではなく、
+行動と理解をつなげられるため、
+現実的な形で活かしやすいタイプです。`,
+    strength: `あなたの強みは、
+動きながら理解を深め、その内容をわかりやすく伝えられることです。
+頭の中だけで完結させず、
+実際に試した経験をもとに整理できるため、
+実務に落とし込みやすい説明ができるタイプです。
+特に、
+・動きながら仕組みや流れを理解できる
+・経験をもとに考えを整理できる
+・納得感のある形でわかりやすく伝えられる
+こうした場面で力を発揮しやすいでしょう。`,
+    hint: `あなたは、理解を大切にするぶん、
+「まだわかりきっていない」と感じて止まりやすいところがあります。
+でも、あなたの場合は、
+動くことで理解が進むタイプです。
+だからこそ、
+完全に理解してからではなく、
+動きながら深めていく流れを大切にしてください。`
+  },
+  C2Y: {
+    oneWord: '理解しながら、すばやく形にできる人',
+    total: `あなたは、物事を理解したい気持ちを持ちながら、
+動き出したあとは比較的早く形にできる人です。
+考えるだけで終わらず、
+理解と行動をつなげられるため、
+スピードと納得感の両方を持っているタイプです。`,
+    strength: `あなたの強みは、
+理解したことを止めずに、すぐ行動へつなげて形にできることです。
+考えるだけで終わらず、
+試しながら調整していけるため、
+スピードと納得感の両方を持って進められるタイプです。
+特に、
+・理解した内容をすぐ行動に移せる
+・出しながら調整して形にできる
+・スピード感を持って前に進められる
+こうした場面で力を発揮しやすいでしょう。`,
+    hint: `あなたは、理解しようとするぶん、
+最初の一歩で迷いやすいところがあります。
+でも、あなたは動きながら整えられる人です。
+だからこそ、
+「ある程度わかったら一度出す」
+この基準を持つことが大切です。`
+  },
+  C2Z: {
+    oneWord: '理解をもとに、感性で表現できる人',
+    total: `あなたは、物事を理解しながら、
+その内容を自分なりの感覚で表現できる人です。
+知識として持つだけでなく、
+自分の中で消化してから形にできるため、
+独自の伝え方につながりやすいタイプです。`,
+    strength: `あなたの強みは、
+理解したことを、自分らしい感覚や表現に変えて形にできることです。
+知識をそのまま伝えるのではなく、
+自分の中で消化してからアウトプットできるため、
+独自性のある表現につながりやすいタイプです。
+特に、
+・理解した内容を自分の表現に変えられる
+・世界観やイメージとして伝えられる
+・感覚を形に落とし込める
+こうした場面で力を発揮しやすいでしょう。`,
+    hint: `あなたは、理解と感覚の両方を大切にするぶん、
+「まだまとまっていない」と感じて止まりやすいところがあります。
+だからこそ、
+完全に整う前でも一度出すことで、
+次の形が見えやすくなります。`
+  },
+  C2W: {
+    oneWord: '理解しながら、柔軟に表現できる人',
+    total: `あなたは、物事を理解しながら、
+動きの中で形をつくり、
+言葉と感覚の両方で伝えられる人です。
+知識として持つだけでなく、
+実際に使える形へと変換できるため、
+実務に活かしやすいタイプです。`,
+    strength: `あなたの強みは、
+理解したことを実際に使いながら、柔軟に伝え方を調整できることです。
+知識として持つだけでなく、
+実務の中で活かしながら相手に合わせて伝えられるため、
+実用性の高いアウトプットができるタイプです。
+特に、
+・理解を実践に落とし込める
+・言葉と感覚の両方で伝えられる
+・状況に応じて柔軟に調整できる
+こうした場面で力を発揮しやすいでしょう。`,
+    hint: `あなたは、理解を大切にするぶん、
+「まだ足りない」と感じて止まりやすいところがあります。
+でも、あなたは動きながら深められる人です。
+だからこそ、
+今の理解で一度使ってみることで、
+さらに精度を上げていく流れが合っています。`
+  },
+  C3X: {
+    oneWord: '流れを見ながら、理解をわかりやすく伝えられる人',
+    total: `あなたは、物事をしっかり理解したうえで、
+状況や流れを見ながら判断し、
+それをわかりやすく伝えられる人です。
+ただ知識を持っているだけではなく、
+今どう動くのが自然かを見ながら進められるため、
+無理のない形で周りに伝えていけるタイプです。`,
+    strength: `あなたの強みは、
+流れや状況を見ながら、理解した内容をわかりやすく整理して伝えられることです。
+知識をそのまま出すのではなく、
+「今この場でどう伝えるのが最適か」を判断できるため、
+相手に合わせた納得感のある説明ができます。
+特に、
+・状況に合わせて説明の順序や切り口を調整できる
+・複雑な内容を筋道立ててわかりやすく伝えられる
+・流れを見ながら無理のない形で伝えられる
+こうした場面で力を発揮しやすいでしょう。`,
+    hint: `あなたは、理解も流れも大切にするぶん、
+考えているうちに動き出しが遅くなることがあります。
+だからこそ、
+「今ある情報で一度伝えてみる」
+という区切りを持つことで、前に進みやすくなります。`
+  },
+  C3Y: {
+    oneWord: '理解しながら、タイミングを見て形にできる人',
+    total: `あなたは、物事を理解したうえで、
+流れを見ながら動くタイミングを判断し、
+必要なときには形にしていける人です。
+慎重さはありますが、
+ずっと止まり続けるわけではなく、
+動くべき場面ではしっかり前に出られるタイプです。`,
+    strength: `あなたの強みは、
+理解をもとに、タイミングを見て無理なく形にしていけることです。
+考えるだけで終わらず、
+「今なら出せる」と判断した段階でアウトプットできるため、
+納得感と実行力のバランスが取れています。
+特に、
+・理解したうえで動くタイミングを見極められる
+・必要な段階で形にして前に進められる
+・出しながら調整して精度を上げていける
+こうした場面で力を発揮しやすいでしょう。`,
+    hint: `あなたは、理解とタイミングの両方を見ようとするぶん、
+「まだ今じゃないかも」と感じて止まりやすいところがあります。
+だからこそ、
+少しでも形が見えたら一度出してみることで、
+流れをつかみやすくなります。`
+  },
+  C3Z: {
+    oneWord: '流れを見ながら、理解を感性で表現できる人',
+    total: `あなたは、物事を深く理解したうえで、
+流れを見ながら動き、
+それを自分なりの感覚で表現できる人です。
+ただ知識を持つだけではなく、
+自分の中で消化してから表現できるため、
+独自の視点や空気感がにじみやすいタイプです。`,
+    strength: `あなたの強みは、
+理解した内容を、自分らしい感覚や世界観にのせて表現できることです。
+ただ情報を伝えるのではなく、
+流れや空気感も含めてアウトプットできるため、
+印象に残る形で伝えやすいタイプです。
+特に、
+・理解したことを自分の表現に変えられる
+・世界観やニュアンスとして伝えられる
+・流れを見ながら合う形で表現できる
+こうした場面で力を発揮しやすいでしょう。`,
+    hint: `あなたは、理解と感覚の両方を大切にするぶん、
+「まだしっくりこない」と感じると止まりやすいところがあります。
+だからこそ、
+完璧にまとまるのを待つより、
+今の時点の形で一度出してみることで、次の流れが見えやすくなります。`
+  },
+  C3W: {
+    oneWord: '流れを見ながら、理解を柔軟に表現できる人',
+    total: `あなたは、物事をしっかり理解したうえで、
+流れを見ながら動き、
+言葉と感覚の両方で伝えられる人です。
+知識として持つだけでなく、
+相手に伝わる形へと変換できるため、
+理解の深さと表現の幅をあわせ持つタイプです。`,
+    strength: `あなたの強みは、
+理解した内容をもとに、状況に合わせて柔軟に表現を変えられることです。
+わかりやすさと雰囲気の両方を使い分けながら、
+相手に伝わる形へ調整できるため、
+実務でも応用が効きやすいタイプです。
+特に、
+・理解を相手に伝わる形へ変換できる
+・言葉と感覚の両方で表現できる
+・状況に応じて柔軟に調整できる
+こうした場面で力を発揮しやすいでしょう。`,
+    hint: `あなたは、理解も表現も大切にするぶん、
+「まだ足りない」「まだまとまらない」と感じて止まりやすいところがあります。
+だからこそ、
+今の理解で一度伝えてみることで、
+実践の中でさらに深めていく流れが合っています。`
+  },
+  C3M: {
+    oneWord: '流れを整理し、決めたら強い人',
+    total: `あなたは、物事を整理して全体を見ながら、
+自分に合うタイミングで動ける人です。
+さらに、いったん方向が決まると
+強く集中して進めるため、
+判断力と実行力の両方を持っています。`,
+    strength: `あなたの強みは、
+全体を見ながら判断し、決めたことを確実に進められることです。
+特に、
+・全体像を把握できる
+・流れを見て判断できる
+・決めたことをやり切れる
+こうした場面で力を発揮しやすいでしょう。`,
+    hint: `あなたは流れを見られるぶん、
+判断を先延ばしにすると
+動くタイミングを逃しやすくなります。
+だからこそ、
+ある程度整理できた段階で
+一度動いてみることが大切です。`
+  }
+
+,
+  D1M: {
+    oneWord: '動けて、決めたら一気に進める人',
+    total: `あなたは、行動力を持ちながら、
+納得したことに対して強く集中できる人です。
+動ける力と、決めたあとのブレにくさの両方を持っているため、
+結果につなげやすいタイプです。`,
+    strength: `あなたの強みは、
+動き出す力と、決めたことをやり切る力の両方を持っていることです。
+特に、
+・行動に移すスピードがある
+・決めた方向に集中できる
+・途中でぶれずに進められる
+こうした場面で力を発揮しやすいでしょう。`,
+    hint: `あなたは動ける力があるぶん、
+最初の判断に時間をかけすぎると、
+勢いが止まりやすくなります。
+だからこそ、
+完璧に決め切る前に
+一度動いてみることが大切です。`
+  },
+  D1X: {
+    oneWord: '行動力があり、伝わる形まで整えられる人',
+    total: `あなたは、もともとの行動力を持ちながら、
+大事な場面ではしっかり考え、
+さらに相手に伝わる形まで整えられる人です。
+勢いだけで突き進むのではなく、
+ここぞという場面では立ち止まって確認できるため、
+動けるのに雑になりにくいタイプです。
+そのうえで、考えを言葉にして整えられるので、
+「動きながらでも、きちんと伝えられる人」と見られやすいでしょう。`,
+    strength: `あなたの強みは、
+行動しながら、相手に伝わる形へ整えられることです。
+思いついたことをそのまま出すのではなく、
+伝わる形まで調整できるため、
+スピードとわかりやすさの両方を活かせるタイプです。
+特に、
+・行動しながら内容を形にできる
+・相手に伝わるように言葉を整えられる
+・勢いをそのまま成果につなげられる
+こうした場面で力を発揮しやすいでしょう。`,
+    hint: `あなたは、動ける力があるぶん、
+最初の勢いと慎重さがぶつかると、
+逆に止まりやすくなることがあります。
+だからこそ、
+最初に全部を整えようとするより、
+まずは動いて、そのあと整える流れを意識することが大切です。`
+  },
+  D1Y: {
+    oneWord: '勢いをそのまま形にできる人',
+    total: `あなたは、もともとの行動力が強く、
+決めたあとは一気に前へ進める人です。
+考え込んで止まるより、
+まず形にしてみることで流れをつくり、
+そこから整えていけるタイプです。
+そのため、周りからは
+「動きが早い」
+「思いついたことを形にするのが早い」
+と見られやすいでしょう。`,
+    strength: `あなたの強みは、
+思いついたことをすぐ形にし、そこから調整していけることです。
+スピードを止めずにアウトプットできるため、
+試行回数を増やしながら精度を上げていけるタイプです。
+特に、
+・スピード感を持って行動できる
+・思いついたことをすぐ形にできる
+・出しながら調整してよりよい形にできる
+こうした場面で力を発揮しやすいでしょう。`,
+    hint: `あなたは、勢いがあるぶん、
+方向性があいまいなまま走ると、
+途中でズレを感じやすくなることがあります。
+だからこそ、
+最初に細かく固めすぎる必要はありませんが、
+「何を目指して動くのか」だけは先に決めておくことが大切です。`
+  },
+  D1Z: {
+    oneWord: '勢いと感性をあわせ持つ人',
+    total: `あなたは、もともとの行動力を持ちながら、
+自分の中にある感覚や世界観も大切にできる人です。
+外に向かうエネルギーがあるので、
+思いついたことを動きに変えやすい一方、
+大事なことは慎重に見極めたい気持ちも持っています。
+そのため、ただ勢いで進むのではなく、
+自分らしさのある形に持っていけるタイプです。`,
+    strength: `あなたの強みは、
+自分の感覚や世界観を、行動に乗せて形にできることです。
+思いついたイメージをそのままにせず、
+実際のアウトプットへとつなげられるため、
+自分らしさのある表現を仕事に活かしやすいタイプです。
+特に、
+・感覚やイメージを形にできる
+・世界観を行動に落とし込める
+・自分らしい表現を実際の仕事に活かせる
+こうした場面で力を発揮しやすいでしょう。`,
+    hint: `あなたは、勢いと慎重さの両方を持っているぶん、
+頭の中でブレーキがかかると、
+急に手が止まりやすいところがあります。
+だからこそ、
+最初から完成形を目指すより、
+まずはラフでも形にしてみることが大切です。
+そこから整えていくほうが、あなたの感性は活きやすくなります。`
+  },
+  D1W: {
+    oneWord: '勢いと表現の幅をあわせ持つ人',
+    total: `あなたは、もともとの行動力を持ちながら、
+言葉と感覚の両方を使って表現できる人です。
+動ける力があるので、
+思いついたことを前に進めやすく、
+そのうえで、ただ勢いで終わらせず、
+伝え方にも幅を持たせられるタイプです。
+また、大事な場面では慎重さもあるため、
+勢いと丁寧さの両方を持っているのが特徴です。`,
+    strength: `あなたの強みは、
+行動力をベースに、状況に合わせて伝え方を柔軟に変えられることです。
+スピードだけで進むのではなく、
+相手や場面に応じて表現を調整できるため、
+幅のあるアウトプットができるタイプです。
+特に、
+・行動しながら伝え方を調整できる
+・言葉と感覚の両方を使って表現できる
+・状況に合わせて柔軟に対応できる
+こうした場面で力を発揮しやすいでしょう。`,
+    hint: `あなたは、できることが多いぶん、
+勢いで進めるか、丁寧に整えるかで迷いやすいところがあります。
+だからこそ、
+毎回全部を両立させようとするより、
+今回は何を優先するかを先に決めておくことが大切です。`
+  },
+
+  D2X: {
+    oneWord: '動きながら伝わる形に整えられる人',
+    total: `あなたは、思いついたことをすぐに動きに変えながら、
+その内容をきちんと伝わる形に整えられる人です。
+スピード感を持って動けるだけでなく、
+相手にどう伝わるかも意識できるため、
+ただ早いだけで終わらないのが特徴です。`,
+    strength: `あなたの強みは、
+動きながら内容を整え、伝わる形へ仕上げられることです。
+スピードを落とさずにアウトプットしつつ、
+相手にどう伝わるかまで調整できるため、
+早さと質の両方を両立できるタイプです。
+特に、
+・行動しながら内容を形にできる
+・伝わるように言葉や見せ方を整えられる
+・スピードを落とさず成果につなげられる
+こうした場面で力を発揮しやすいでしょう。`,
+    hint: `あなたはスピードがあるぶん、
+伝える前に次へ進んでしまうことがあります。
+だからこそ、
+「一度言葉にする」時間を意識的に取ることで、
+あなたの強みはさらに活きやすくなります。`
+  },
+  D2Y: {
+    oneWord: 'スピードで形にしていける人',
+    total: `あなたは、思いついたことをすぐに形にし、
+前に進みながら調整していける人です。
+考え込んで止まるよりも、
+動き続けることで成果に近づいていくタイプです。`,
+    strength: `あなたの強みは、
+思いついたことをすぐに形にし、改善しながら精度を上げていけることです。
+スピードを止めずに試行回数を重ねられるため、
+結果にたどり着くまでの距離を短くできるタイプです。
+特に、
+・行動スピードが速い
+・思いついたことをすぐ形にできる
+・出しながら改善して精度を高められる
+こうした場面で力を発揮しやすいでしょう。`,
+    hint: `あなたはスピードがあるぶん、
+方向がズレたまま進み続けることがあります。
+だからこそ、
+短い時間でもいいので
+「今どこに向かっているか」を確認する習慣を持つことが大切です。`
+  },
+  D2Z: {
+    oneWord: '勢いと感覚で形にできる人',
+    total: `あなたは、思いついたことをすぐに行動に移し、
+その中で感じたことをそのまま表現できる人です。
+スピードと感性の両方を使って、
+あなたらしい形をつくれるのが特徴です。`,
+    strength: `あなたの強みは、
+自分の感覚やイメージを、そのまま行動に乗せて形にできることです。
+頭の中で止めずにアウトプットへつなげられるため、
+独自性のある表現をスピード感を持って形にできるタイプです。
+特に、
+・感覚やイメージをすぐ形にできる
+・世界観を行動に落とし込める
+・自分らしい表現をスピード感を持って出せる
+こうした場面で力を発揮しやすいでしょう。`,
+    hint: `あなたは感覚で動けるぶん、
+人に伝わりにくくなることがあります。
+だからこそ、
+少しだけ言葉にして整理することで、
+あなたの魅力はより伝わりやすくなります。`
+  },
+  D2W: {
+    oneWord: '動きながら表現を使い分けられる人',
+    total: `あなたは、行動しながら流れをつかみ、
+その場に合わせて伝え方を変えられる人です。
+スピードと柔軟さの両方を持っているため、
+変化の中でも対応しやすいタイプです。`,
+    strength: `あなたの強みは、
+行動しながら、その場に合う伝え方へ柔軟に調整できることです。
+スピードを保ったまま、
+状況や相手に応じて表現を変えられるため、
+変化の中でも対応しながら成果につなげられるタイプです。
+特に、
+・行動しながら伝え方を調整できる
+・言葉と感覚の両方で表現できる
+・状況に応じて柔軟に対応できる
+こうした場面で力を発揮しやすいでしょう。`,
+    hint: `あなたは対応力があるぶん、
+軸があいまいなまま動くとブレやすくなります。
+だからこそ、
+「自分は何を大事にするか」を先に決めておくと、
+動きながらでも安定して進めるようになります。`
+  },
+  D2M: {
+    oneWord: '動いて決めて、そのままやり切れる人',
+    total: `あなたは、思いついたことをすぐに行動に移し、
+決めた方向に対して一気に進める人です。
+スピードと集中力の両方を持っているため、
+結果を出しやすいタイプです。`,
+    strength: `あなたの強みは、
+動き出しの速さと、決めたことをやり切る力です。
+特に、
+・行動スピードが速い
+・決断したあと迷いにくい
+・集中して一気に進められる
+こうした場面で力を発揮しやすいでしょう。`,
+    hint: `あなたはスピードがあるぶん、
+方向を深く決めないまま進むと、
+あとから修正が大きくなりやすいところがあります。
+だからこそ、
+最初に「何をやるか」だけは
+はっきりさせておくことが大切です。`
+  }
+,
+  D3M: {
+    oneWord: '流れを見て、決めたら一気に進める人',
+    total: `あなたは、流れやタイミングを見ながら動き、
+ここだと決めた瞬間に一気に進める人です。
+柔軟さと集中力の両方を持っているため、
+チャンスを形にしやすいタイプです。`,
+    strength: `あなたの強みは、
+タイミングを見極め、決めたことを一気に進められることです。
+特に、
+・流れを見て判断できる
+・チャンスを逃さず動ける
+・決めたことに集中できる
+こうした場面で力を発揮しやすいでしょう。`,
+    hint: `あなたは流れを見られるぶん、
+「もう少し待とう」と考えすぎると、
+動くタイミングを逃しやすくなります。
+だからこそ、
+動けると感じた瞬間を
+逃さないことが大切です。`
+  },
+  D3X: {
+    oneWord: '流れを読みながら伝えられる人',
+    total: `あなたは、流れやタイミングを見ながら動き、
+そのうえで相手に伝わる形まで整えられる人です。
+動く力と判断力のバランスがよく、
+状況に合わせて最適な動きができるタイプです。`,
+    strength: `あなたの強みは、
+流れや状況を見極めながら動き、伝わる形へ整えられることです。
+ただ早く動くだけでなく、
+「今どう動くのが最適か」を判断し、
+そのうえで相手に届く形に調整できるため、
+精度の高いアウトプットができるタイプです。
+特に、
+・タイミングを見て最適な動きを選べる
+・状況に合わせて内容を整えられる
+・伝わる形まで仕上げてアウトプットできる
+こうした場面で力を発揮しやすいでしょう。`,
+    hint: `あなたは流れを見られるぶん、
+「もう少し待ったほうがいいかも」と考えすぎると
+動きが遅くなることがあります。
+だからこそ、
+ある程度の感覚で「ここで動く」と決めることが大切です。`
+  },
+  D3Y: {
+    oneWord: 'タイミングを見て一気に動ける人',
+    total: `あなたは、流れを読みながらタイミングをつかみ、
+ここだと思った瞬間に一気に動ける人です。
+スピードと判断力の両方を持っているため、
+チャンスを形にしやすいタイプです。`,
+    strength: `あなたの強みは、
+タイミングを見極め、ここだと判断した瞬間に一気に形にできることです。
+待つだけで終わらず、
+チャンスをつかんだタイミングで行動に移せるため、
+結果につなげやすいタイプです。
+特に、
+・流れを見て動くタイミングを判断できる
+・チャンスを逃さず一気に動ける
+・出しながら調整して形にしていける
+こうした場面で力を発揮しやすいでしょう。`,
+    hint: `あなたはタイミングを大切にするぶん、
+「まだ早いかも」と感じ続けると
+チャンスを逃しやすくなります。
+だからこそ、
+少しでも動ける余地があれば、
+小さくでも動き出すことが大切です。`
+  },
+  D3Z: {
+    oneWord: '流れと感覚で形にできる人',
+    total: `あなたは、流れやタイミングを感じながら動き、
+その中で生まれた感覚をそのまま形にできる人です。
+スピードと感性をバランスよく使い、
+あなたらしい形をつくれるタイプです。`,
+    strength: `あなたの強みは、
+流れを感じ取りながら、自分の感覚をそのまま形にできることです。
+状況の変化をとらえつつ、
+そこから生まれたイメージをアウトプットへつなげられるため、
+自分らしさのある表現をつくりやすいタイプです。
+特に、
+・流れや空気感を読み取れる
+・感覚やイメージを形にできる
+・自分らしい表現をアウトプットに落とし込める
+こうした場面で力を発揮しやすいでしょう。`,
+    hint: `あなたは感覚を大切にするぶん、
+「しっくりこない」と感じると
+動きが止まりやすくなります。
+だからこそ、
+完璧な感覚を待つのではなく、
+ある程度の段階で動き出すことが大切です。`
+  },
+  D3W: {
+    oneWord: '流れに合わせて表現を変えられる人',
+    total: `あなたは、流れや状況を見ながら動き,
+その場に合わせて伝え方を変えられる人です。
+柔軟さと行動力をあわせ持っているため、
+変化の中でも対応しやすいタイプです。`,
+    strength: `あなたの強みは、
+流れに合わせて行動しながら、伝え方を柔軟に使い分けられることです。
+状況や相手に応じて表現を変えられるため、
+変化の中でも対応しながら成果につなげやすいタイプです。
+特に、
+・流れを見て動き方を調整できる
+・言葉と感覚の両方で表現できる
+・状況に応じて柔軟に対応できる
+こうした場面で力を発揮しやすいでしょう。`,
+    hint: `あなたは柔軟に動けるぶん、
+周りに合わせすぎると
+自分の軸がぼやけやすくなります。
+だからこそ、
+「自分は何を大事にするか」を決めておくことで、
+より安定して進めるようになります。`
+  },
+  E1X: {
+    oneWord: '感覚を言葉にできる人',
+    total: `あなたは、自分の中にある感覚や違和感を大切にしながら、
+それをきちんと言葉にして伝えられる人です。
+感覚だけで終わらせず、
+相手に伝わる形まで整えられるのが強みです。`,
+    strength: `あなたの強みは、
+自分の感覚を言葉に変え、相手に伝わる形にできることです。
+特に、
+・違和感やズレに気づける
+・感覚を言語化して整理できる
+・相手に伝わる形に整えられる
+こうした場面で力を発揮しやすいでしょう。`,
+    hint: `あなたは慎重に考えられるぶん、
+「これでいいのか」と迷い続けると
+動き出しにくくなることがあります。
+だからこそ、
+ある程度納得できた段階で一度出してみることが大切です。`
+  },
+  E1Y: {
+    oneWord: '納得してから形にできる人',
+    total: `あなたは、自分の感覚に納得できたタイミングで動き、
+それを形にしていける人です。
+無理に急がず、自分のペースで進めることで、
+安定した成果につながりやすいタイプです。`,
+    strength: `あなたの強みは、
+自分の感覚に納得したうえで、それを形にしていけることです。
+特に、
+・自分に合う方向性を見極められる
+・納得感のある形で行動できる
+・感覚をサービスや形に落とし込める
+こうした場面で力を発揮しやすいでしょう。`,
+    hint: `あなたは納得を大切にするぶん、
+「まだ足りない」と感じ続けると
+なかなか前に進めなくなります。
+だからこそ、
+完璧を待つのではなく、
+7割くらいで一度出してみることが大切です。`
+  },
+  E1Z: {
+    oneWord: '感性をそのまま形にできる人',
+    total: `あなたは、自分の中にある感覚や世界観を大切にし、
+それをそのまま表現できる人です。
+無理に合わせるよりも、
+自分らしさを活かした形で力を発揮しやすいタイプです。`,
+    strength: `あなたの強みは、
+自分の中の世界観や感覚を、そのまま形にできることです。
+特に、
+・独自の世界観を持っている
+・感覚を表現として外に出せる
+・雰囲気や魅力を伝えるのが得意
+こうした場面で力を発揮しやすいでしょう。`,
+    hint: `あなたは感覚を大切にするぶん、
+「しっくりこない」と感じると
+動きが止まりやすくなります。
+だからこそ、
+小さく試しながら調整していくことで、
+感性を活かしながら前に進みやすくなります。`
+  },
+  E1W: {
+    oneWord: '感覚と表現をバランスよく使える人',
+    total: `あなたは、自分の感覚を大切にしながら、
+言葉と雰囲気の両方で伝えられる人です。
+状況に合わせて表現を変えられるため、
+柔軟に対応できるタイプです。`,
+    strength: `あなたの強みは、
+感覚と論理の両方を使いながら、伝え方を調整できることです。
+特に、
+・相手や状況に合わせて表現を変えられる
+・言葉と感覚のバランスを取れる
+・柔軟に伝え方を整えられる
+こうした場面で力を発揮しやすいでしょう。`,
+    hint: `あなたは考えられることが多いぶん、
+迷いが増えやすいところがあります。
+だからこそ、
+毎回すべてを整えようとするより、
+優先するものを決めて動くことが大切です。`
+  },
+  E1M: {
+    oneWord: '感覚を信じて、決めたら深く進める人',
+    total: `あなたは、自分の感覚を大切にしながら、
+納得したことに対して深く集中できる人です。
+感性だけで終わらせず、
+決めたことを現実の形に落とし込める力があります。`,
+    strength: `あなたの強みは、
+自分の感覚をもとに、決めたことを深く形にしていけることです。
+特に、
+・違和感やズレに気づける
+・自分に合う方向を見極められる
+・決めたことを深く掘り下げられる
+こうした場面で力を発揮しやすいでしょう。`,
+    hint: `あなたは納得を大切にするぶん、
+迷い続けると動き出しにくくなります。
+だからこそ、
+ある程度しっくりきた段階で
+一度決めて進むことが大切です。`
+  },
+  E2X: {
+    oneWord: '感覚で動き、言葉で伝えられる人',
+    total: `あなたは、感覚で方向をつかみながら動き、
+その内容を言葉として整えられる人です。
+「なんとなくいい」をそのままで終わらせず、
+相手に伝わる形まで持っていけるのが特徴です。`,
+    strength: `あなたの強みは、
+感覚でつかんだものを言葉にし、価値として伝えられることです。
+特に、
+・「いい」と感じたポイントを言語化できる
+・感覚を説明できる形に整えられる
+・相手に伝わる表現に変えられる
+こうした場面で力を発揮しやすいでしょう。`,
+    hint: `あなたは感覚で動けるぶん、
+その理由を言葉にしないまま進むと、
+周りに伝わりにくくなることがあります。
+だからこそ、
+「なぜそれがいいと思ったのか」を
+一度言葉にすることが大切です。`
+  },
+  E2Y: {
+    oneWord: '感覚で動き、そのまま形にできる人',
+    total: `あなたは、自分の感覚を起点に動き、
+そのまま形にしていける人です。
+考えすぎず、動きながら調整していくことで、
+自然と前に進めるタイプです。`,
+    strength: `あなたの強みは、
+感覚でつかんだものをそのまま形にできるスピード感です。
+特に、
+・「いい」と感じたものをすぐ形にできる
+・感覚をアウトプットに変えられる
+・出しながら調整していける
+こうした場面で力を発揮しやすいでしょう。`,
+    hint: `あなたは感覚で動けるぶん、
+方向性を決めないまま進むと、
+ズレに気づきにくくなることがあります。
+だからこそ、
+最初に「どこに向かうか」だけは
+軽くでも決めておくことが大切です。`
+  },
+  E2Z: {
+    oneWord: '感性で動き、世界観を形にできる人',
+    total: `あなたは、自分の感覚や好きを起点に動き、
+そのまま世界観として表現できる人です。
+理屈に寄りすぎず、
+あなたらしい魅力をそのまま形にできるのが特徴です。`,
+    strength: `あなたの強みは、
+自分の世界観や感覚をそのまま価値として表現できることです。
+特に、
+・独自の世界観を持っている
+・感覚をそのまま表現にできる
+・雰囲気や魅力を伝えられる
+こうした場面で力を発揮しやすいでしょう。`,
+    hint: `あなたは感覚を信じて動けるぶん、
+言葉にしないままだと、
+魅力が伝わりにくくなることがあります。
+だからこそ、
+少しだけ言語化することで、
+あなたの価値はより届きやすくなります。`
+  },
+  E2W: {
+    oneWord: '感覚で動き、柔軟に伝えられる人',
+    total: `あなたは、感覚を起点に動きながら、
+状況に合わせて伝え方を変えられる人です。
+柔軟さと行動力をあわせ持っているため、
+変化の中でも対応しやすいタイプです。`,
+    strength: `あなたの強みは、
+感覚と状況判断の両方を使いながら、伝え方を調整できることです。
+特に、
+・状況に合わせて表現を変えられる
+・感覚を言葉と雰囲気の両方で伝えられる
+・柔軟に対応しながら形にできる
+こうした場面で力を発揮しやすいでしょう。`,
+    hint: `あなたは柔軟に動けるぶん、
+軸があいまいなまま進むと
+方向がブレやすくなります。
+だからこそ、
+「自分が大事にしたい感覚」を
+最初に決めておくことが大切です。`
+  },
+  E2M: {
+    oneWord: '感じて動き、決めたら一気に深める人',
+    total: `あなたは、自分の感覚を起点に動きながら、
+方向が定まると一気に深く進める人です。
+感性と行動力、そして集中力のバランスがよく、
+結果につなげやすいタイプです。`,
+    strength: `あなたの強みは、
+感覚でつかんだ方向を、深く形にしていけることです。
+特に、
+・感覚で方向性をつかめる
+・動きながら判断できる
+・決めたことを深く掘り下げられる
+こうした場面で力を発揮しやすいでしょう。`,
+    hint: `あなたは感覚で動けるぶん、
+方向を決めきらないまま進むと、
+途中で迷いが出やすくなります。
+だからこそ、
+「ここを深める」と決めることが
+前に進むためのポイントになります。`
+  },
+  E3X: {
+    oneWord: '感覚とタイミングを言葉にできる人',
+    total: `あなたは、自分の感覚と流れの両方を見ながら動き、
+それを言葉として伝えられる人です。
+無理に進むのではなく、
+「合っているタイミング」で動けるため、
+納得感のある形で前に進めるタイプです。`,
+    strength: `あなたの強みは、
+感覚とタイミングを見極めながら、それを言葉にして伝えられることです。
+特に、
+・違和感やズレに気づける
+・タイミングを見て判断できる
+・感覚を言語化して伝えられる`,
+    hint: `あなたは流れを見られるぶん、
+「まだ今じゃないかも」と感じ続けると
+動きが遅くなることがあります。
+だからこそ、
+ある程度しっくりきたら
+一度動いてみることが大切です。`
+  },
+  E3Y: {
+    oneWord: 'タイミングで形にできる人',
+    total: `あなたは、自分の感覚と流れを見ながら、
+「今だ」と思ったタイミングで形にできる人です。
+無理に動くのではなく、
+合うタイミングで動けるため、
+自然な流れで成果につながりやすいタイプです。`,
+    strength: `あなたの強みは、
+タイミングを見極めながら、感覚を形にできることです。
+特に、
+・流れを見て動ける
+・タイミングを逃さず行動できる
+・感覚を形にできる`,
+    hint: `あなたはタイミングを大切にするぶん、
+待ちすぎるとチャンスを逃しやすくなります。
+だからこそ、
+小さくでも動ける余地があれば、
+一歩踏み出してみることが大切です。`
+  },
+  E3Z: {
+    oneWord: '流れと世界観で形にできる人',
+    total: `あなたは、自分の感覚と流れを大切にしながら、
+世界観として表現できる人です。
+無理に合わせるのではなく、
+自分に合う形で力を発揮しやすいタイプです。`,
+    strength: `あなたの強みは、
+感覚と流れをもとに、世界観を形にできることです。
+特に、
+・独自の世界観を持っている
+・感覚をそのまま表現にできる
+・タイミングを見て出せる`,
+    hint: `あなたは感覚と流れを大切にするぶん、
+「しっくりこない」と感じ続けると
+動きが止まりやすくなります。
+だからこそ、
+完璧を待つのではなく、
+少しでも合う形で動いてみることが大切です。`
+  },
+  E3W: {
+    oneWord: '流れに合わせて表現を変えられる人',
+    total: `あなたは、感覚と流れの両方を見ながら動き、
+状況に合わせて伝え方を変えられる人です。
+柔軟さと判断力をあわせ持っているため、
+変化の中でも安定して対応できるタイプです。`,
+    strength: `あなたの強みは、
+流れと感覚をもとに、伝え方を柔軟に調整できることです。
+特に、
+・状況に合わせて表現を変えられる
+・感覚と論理のバランスが取れる
+・柔軟に対応しながら進められる`,
+    hint: `あなたは柔軟に動けるぶん、
+周りに合わせすぎると
+自分の軸がぼやけやすくなります。
+だからこそ、
+自分の中で大切にしたい基準を
+先に決めておくことが大切です。`
+  },
+  E3M: {
+    oneWord: '流れと感覚で決めて、深く進める人',
+    total: `あなたは、自分の感覚と流れの両方を見ながら動き、
+方向が定まったときに深く集中できる人です。
+柔軟さと集中力の両方を持っているため、
+自分に合う形で結果につなげやすいタイプです。`,
+    strength: `あなたの強みは、
+流れと感覚をもとに、決めたことを深く形にしていけることです。
+特に、
+・違和感やズレに気づける
+・タイミングを見て判断できる
+・決めたことに集中できる`,
+    hint: `あなたは流れを大切にするぶん、
+「まだ今じゃない」と感じ続けると
+動きが止まりやすくなります。
+だからこそ、
+進めそうだと感じたタイミングで
+一歩踏み出すことが大切です。`
+  }
+};
+
+function getPreResultByCode(code) {
+  const handType = code.charAt(0);
+  const startType = code.charAt(1);
+  const lastType = code.slice(2);
+
+  const foundation = PRE_FOUNDATION_MAP[handType];
+  const decision = PRE_DECISION_MAP[startType];
+  const third = PRE_THIRD_MAP[lastType];
+
+  if (!foundation || !decision || !third) {
+    return null;
+  }
+
+  return {
+    foundationTitle: foundation.title,
+    foundationNote: foundation.note,
+    foundationBody: foundation.body,
+    decisionTitle: decision.title,
+    decisionNote: decision.note,
+    decisionBody: decision.body,
+    thirdTitle: third.title,
+    thirdNote: third.note,
+    thirdBody: third.body
+  };
+}
+
+const answers={q1:'',q2:'',q3:'',q4:''}; let currentQuestionKey='q1';
+const questionNumberEl=document.getElementById('questionNumber');
+const questionTextEl=document.getElementById('questionText');
+const questionImageWrapEl=document.getElementById('questionImageWrap');
+const questionImageEl=document.getElementById('questionImage');
+const optionsContainerEl=document.getElementById('optionsContainer');
+const nextBtnEl=document.getElementById('nextBtn');
+const backBtnEl=document.getElementById('backBtn');
+const loadingMsgEl=document.getElementById('loadingMsg');
+const resultSectionEl=document.getElementById('result-section');
+const progressFillEl=document.getElementById('progressFill');
+const copyCodeBtnEl=document.getElementById('copyCodeBtn');
+function escapeHtml(v){return String(v).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');}
+function getQuestionConfig(k){return QUESTION_FLOW.find(q=>q.key===k)}
+function getQuestionIndex(k){return QUESTION_FLOW.findIndex(q=>q.key===k)}
+function isQuestionAnswered(k){return !!answers[k]}
+function getNextQuestionKey(k){if(k==='q3')return 'q2'; if(k==='q2')return answers.q3==='M'?'q1':'q4'; if(k==='q4')return 'q1'; if(k==='q1')return null; return null;}
+function getPreviousQuestionKey(k){if(k==='q1')return answers.q3==='M'?'q2':'q4'; if(k==='q4')return 'q2'; if(k==='q2')return 'q3'; return null;}
+function buildDiagnosisCode(){if(answers.q3==='M') return answers.q1+answers.q2+'M'; return answers.q1+answers.q2+answers.q4;}
+function updateIntroVisibility(){
+  // 旧FV文章は使わないため、CTAクリック後は常に質問だけを表示します。
+  const introBlock = document.getElementById('introBlock');
+  const heroBlock = document.getElementById('heroBlock');
+  if(introBlock) introBlock.style.display = 'none';
+  if(heroBlock) heroBlock.style.display = 'none';
+}
+function getVisibleFlowKeys(){
+  // 表示順に合わせた動的な質問番号用。
+  // Q3（マスカケ）で「ある」の場合はQ4を表示しないため、全3問として扱います。
+  if(answers.q3 === 'M') return ['q3','q2','q1'];
+  return ['q3','q2','q4','q1'];
+}
+function updateProgress(){
+  const flowKeys = getVisibleFlowKeys();
+  const currentIndex = Math.max(0, flowKeys.indexOf(currentQuestionKey));
+  progressFillEl.style.width = (((currentIndex + 1) / flowKeys.length) * 100) + '%';
+  QUESTION_FLOW.forEach((q,i)=>{
+    const el=document.getElementById('pl'+(i+1));
+    if(!el) return;
+    el.className='progress-lbl';
+    el.style.display = flowKeys.includes(q.key) ? 'block' : 'none';
+    if(isQuestionAnswered(q.key) && q.key!==currentQuestionKey) el.classList.add('done');
+    if(q.key===currentQuestionKey) el.classList.add('active');
+  });
+}
+function getNextButtonLabel(k){ if(k==='q1') return '診断結果を見る'; return '次へ進む'; }
+function renderQuestion(key){const q=getQuestionConfig(key); currentQuestionKey=key; const flowKeys=getVisibleFlowKeys(); const displayIndex=Math.max(0, flowKeys.indexOf(key))+1; questionNumberEl.textContent=`QUESTION ${String(displayIndex).padStart(2,'0')} / ${String(flowKeys.length).padStart(2,'0')}`; questionTextEl.textContent=q.question; if(q.imageUrl){questionImageWrapEl.style.display='block'; questionImageEl.src=q.imageUrl; questionImageEl.alt=q.question;} else {questionImageWrapEl.style.display='none'; questionImageEl.src='';}
+const selectedValue=answers[key]||''; optionsContainerEl.innerHTML=q.choices.map(choice=>{const isSelected=selectedValue===choice.value; const hasImage=!!choice.imageUrl; const hasDesc=!!(choice.description&&choice.description.trim()); return `<div class="opt-card ${hasImage?'':'text-only'} ${isSelected?'selected':''}" onclick="selectChoice('${q.key}','${escapeHtml(choice.value)}',this)">${hasImage?`<img src="${escapeHtml(choice.imageUrl)}" alt="${escapeHtml(choice.label)}">`:''}<div class="opt-label"><span class="opt-check">✓</span>${escapeHtml(choice.label)}</div>${hasDesc?`<div class="opt-desc">${escapeHtml(choice.description)}</div>`:''}</div>`;}).join('');
+backBtnEl.style.display=key==='q3'?'none':'inline-block'; nextBtnEl.disabled=!isQuestionAnswered(key); nextBtnEl.textContent=getNextButtonLabel(key); updateProgress(); updateIntroVisibility(); window.scrollTo({top:0, behavior:'smooth'});}
+function selectChoice(questionKey,value,clickedElement){ answers[questionKey]=value; optionsContainerEl.querySelectorAll('.opt-card').forEach(card=>card.classList.remove('selected')); clickedElement.classList.add('selected'); nextBtnEl.disabled=false; nextBtnEl.textContent=getNextButtonLabel(questionKey); updateProgress(); }
+function goNext(){ if(!isQuestionAnswered(currentQuestionKey)) return; const nextKey=getNextQuestionKey(currentQuestionKey); if(nextKey===null){diagnose(); return;} renderQuestion(nextKey); }
+function goBack(){ const prev=getPreviousQuestionKey(currentQuestionKey); if(prev) renderQuestion(prev); }
+function formatJapaneseText(text){
+  return String(text)
+    .replace(/\r\n/g, '')
+    .replace(/\r/g, '')
+    .replace(/\n/g, '')
+    .replace(/。/g, '。<br><span style="display:block;height:0.8em;"></span>')
+    .replace(/<br>+/g, '<br>')
+    .trim();
+}
+function normalizeResultText(text){
+  return formatJapaneseText(text);
+}
+function createResultCardHtml(title,note,body,extraClass=''){
+  const normalizedNote = note ? normalizeResultText(note) : '';
+  const normalizedBody = normalizeResultText(body);
+  return `<div class="result-card ${extraClass}"><div class="result-card-title">${escapeHtml(title)}</div>${normalizedNote?`<div class="result-card-note">${normalizedNote}</div>`:''}<div class="result-card-body">${normalizedBody}</div></div>`;
+}
+function diagnose(){document.getElementById('questionCard').style.display='none'; loadingMsgEl.style.display='block'; progressFillEl.style.width='100%'; setTimeout(()=>{loadingMsgEl.style.display='none'; showResult();},700);}
+function showResult(){
+  const code=buildDiagnosisCode();
+  const preData=PRE_DIRECT_RESULT_MAP[code];
+  const postData=POST_RESULT_MAP[code];
+
+  document.getElementById('introBlock').style.display='none';
+  document.getElementById('resultCode').textContent='';
+  document.getElementById('copyCodeValue').textContent=code;
+
+  document.getElementById('preLead').style.display='none';
+  document.getElementById('preLead').innerHTML='';
+
+  document.getElementById('preLineCta').innerHTML=escapeHtml(COMMON_TEXTS.preLineCta)
+    .replace(/\r\n/g, '<br>')
+    .replace(/\r/g, '<br>')
+    .replace(/\n/g, '<br>');
+
+  document.getElementById('receiveGuide').innerHTML=escapeHtml(COMMON_TEXTS.receiveGuide)
+    .replace(/\r\n/g, '<br>')
+    .replace(/\r/g, '<br>')
+    .replace(/\n/g, '<br>')
+    .replace(
+      '【詳しい診断結果の受け取り方】',
+      '<span class="receive-guide-heading">【詳しい診断結果の受け取り方】</span>'
+    );
+
+  document.getElementById('ctaLead').textContent=COMMON_TEXTS.ctaLead;
+  document.getElementById('postLead').innerHTML=formatJapaneseText(COMMON_TEXTS.postLineLead);
+  document.getElementById('lineTitle').innerHTML='';
+
+  const pre=document.getElementById('preResultCards');
+  const post=document.getElementById('postPreviewCards');
+
+  if(!preData || !postData){
+    pre.innerHTML=createResultCardHtml('診断データが見つかりませんでした','','このコードの診断結果はまだ登録されていません。','error-card');
+    post.innerHTML='';
+    resultSectionEl.style.display='block';
+    return;
+  }
+
+  pre.innerHTML=[
+    createResultCardHtml('あなたを一言で表すと','',preData.catch),
+    createResultCardHtml('あなたのベース診断','',preData.body)
+  ].join('');
+
+  post.innerHTML=[
+    createResultCardHtml('あなたを一言で表すと','',postData.oneWord),
+    createResultCardHtml('あなたの総合診断結果','',postData.total),
+    createResultCardHtml('仕事で活かせる強み','',postData.strength),
+    postData.weakness ? createResultCardHtml('つまずきやすいポイント','',postData.weakness) : '',
+    createResultCardHtml('自然に前へ進むためのヒント','',postData.hint),
+    postData.firstStep ? createResultCardHtml('今すぐ取れる最初の一歩','',postData.firstStep) : ''
+  ].join('');
+
+  resultSectionEl.style.display='block';
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+function setCopyButtonDone(){
+  if(!copyCodeBtnEl) return;
+  copyCodeBtnEl.textContent='✅ コピーしました！';
+  setTimeout(()=>{ copyCodeBtnEl.innerHTML='📋 診断コードを<br>コピーする'; },1800);
+}
+
+function copyText(text){
+  // https環境ではClipboard API、http/埋め込み環境ではtextarea方式にフォールバック
+  if(navigator.clipboard && window.isSecureContext){
+    return navigator.clipboard.writeText(text).then(setCopyButtonDone).catch(()=>fallbackCopyText(text));
+  }
+  return fallbackCopyText(text);
+}
+
+function fallbackCopyText(text){
+  const ta=document.createElement('textarea');
+  ta.value=text;
+  ta.setAttribute('readonly','');
+  ta.style.position='fixed';
+  ta.style.top='-1000px';
+  ta.style.left='-1000px';
+  document.body.appendChild(ta);
+  ta.focus();
+  ta.select();
+  ta.setSelectionRange(0,99999);
+  try { document.execCommand('copy'); } catch(e) {}
+  document.body.removeChild(ta);
+  setCopyButtonDone();
+}
+
+function copyDiagnosisCodeNow(e){
+  if(e){ e.preventDefault(); e.stopPropagation(); }
+  copyText(buildDiagnosisCode());
+  return false;
+}
+
+function openLineNow(e){
+  if(e){ e.preventDefault(); e.stopPropagation(); }
+  const url='https://lin.ee/OINIB8d';
+  const opened=window.open(url, '_blank', 'noopener,noreferrer');
+  if(!opened){ window.location.href=url; }
+  return false;
+}
+
+
+function startDiagnosisFromFV(){
+  const fvArea = document.getElementById('fvArea');
+  const diagnosisApp = document.getElementById('diagnosisApp');
+  if(fvArea) fvArea.style.display = 'none';
+  if(diagnosisApp) diagnosisApp.style.display = 'block';
+  renderQuestion('q3');
+  diagnosisApp.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+const startDiagnosisBtnEl = document.getElementById('startDiagnosisBtn');
+if(startDiagnosisBtnEl){ startDiagnosisBtnEl.addEventListener('click', startDiagnosisFromFV); }
+
+nextBtnEl.addEventListener('click',goNext);
+backBtnEl.addEventListener('click',goBack);
+copyCodeBtnEl.addEventListener('click',copyDiagnosisCodeNow);
+const lineBtnEl = document.getElementById('lineBtn');
+if (lineBtnEl) { lineBtnEl.addEventListener('click', openLineNow); }
+window.copyDiagnosisCodeNow = copyDiagnosisCodeNow;
+window.openLineNow = openLineNow;
+function runTests() {
+  console.assert(Array.isArray(QUESTION_FLOW), 'QUESTION_FLOW should be an array');
+  console.assert(QUESTION_FLOW.length === 4, 'QUESTION_FLOW should contain 4 questions');
+  console.assert(QUESTION_FLOW[1].choices.length === 3, 'Q2 should contain 3 choices');
+  console.assert(QUESTION_FLOW[2].choices.length === 4, 'Q4 should contain 4 choices');
+
+  answers.q1 = 'A';
+  answers.q2 = '1';
+  answers.q3 = 'M';
+  answers.q4 = '';
+  console.assert(buildDiagnosisCode() === 'A1M', 'Masukake code should be A1M');
+
+  answers.q1 = 'B';
+  answers.q2 = '2';
+  answers.q3 = 'NONE';
+  answers.q4 = 'W';
+  console.assert(buildDiagnosisCode() === 'B2W', 'Normal code should be B2W');
+
+  answers.q1 = '';
+  answers.q2 = '';
+  answers.q3 = '';
+  answers.q4 = '';
+}
+
+window.selectChoice = selectChoice;
+runTests();
+renderQuestion('q3');
+</script>
+</body>
+</html>
