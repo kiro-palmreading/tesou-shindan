@@ -571,7 +571,7 @@ body {
 </div>
 </div>
 <script>
-// function generateResult(code) {
+function generateResult(code) {
 
   if (PRE_DIRECT_RESULT_MAP[code]) {
     return PRE_DIRECT_RESULT_MAP[code].body;
@@ -611,17 +611,14 @@ ${stopPattern}
 `;
 }
 
-
-// ▼ここがポイント（自動上書き）
+// ▼既存ロジックを壊さず上書き
 const originalMap = PRE_DIRECT_RESULT_MAP;
 
 PRE_DIRECT_RESULT_MAP = new Proxy(originalMap, {
   get(target, prop) {
-
     if (target[prop]) {
       return target[prop];
     }
-
     return {
       body: generateResult(prop)
     };
