@@ -206,6 +206,12 @@ body {
   color: var(--text-light);
   padding: 2px 16px 10px;
 }
+.question-hint {
+  text-align: left;
+  padding: 8px 0 0;
+  font-size: 15px;
+  line-height: 1.6;
+}
 .nav-area {
   padding: 4px 16px 20px;
   display: flex;
@@ -527,12 +533,12 @@ body {
     <div class="q-header">
       <div class="q-num" id="questionNumber">QUESTION 01 / 04</div>
       <div class="q-text" id="questionText"></div>
+      <div class="micro-hint question-hint">直感でひとつ選んでください</div>
     </div>
     <div class="q-image-wrap" id="questionImageWrap" style="display:none;">
       <img id="questionImage" src="" alt="">
     </div>
     <div class="opts-1col" id="optionsContainer"></div>
-    <div class="micro-hint">直感でひとつ選んでください</div>
     <div class="nav-area">
       <button class="btn-back" id="backBtn" type="button">戻る</button>
       <button class="btn-next" id="nextBtn" type="button" disabled>次へ進む</button>
@@ -557,7 +563,7 @@ body {
       </div>
       <div class="cta-lead" id="ctaLead"></div>
       <a id="lineBtn" href="https://lin.ee/OINIB8d" class="btn-line" target="_blank" rel="noopener noreferrer" onclick="openLineNow(event)">あなた専用の診断結果を今すぐ受け取る</a>
-      <p class="line-note">※コピーした診断コードをLINEで送ってください</p>
+      <p class="line-note">※無料・1分で登録できます</p>
       
     </div>
     <div class="result-hero" style="margin-top:14px;">
@@ -574,17 +580,7 @@ body {
 
 const COMMON_TEXTS = {
   preLineLead: ``,
-  preLineCta: `【この診断でわかること】
-・あなたの総合診断結果
-・仕事で活かせる強み
-・つまずきやすいポイント
-・自然に前へ進むためのヒント
-・今すぐ取れる最初の一歩
-
-ここまで具体的に言語化されることで、
-「自分の強みを、どう仕事に活かせばいいのか」がはっきり見えてきます。
-
-その一歩を踏み出したい方は、この先をご覧ください。`,
+  preLineCta: ``,
   postLineLead: `ここから、あなたのトータル診断結果をお伝えします。
 
 3つの特性を重ねて見えてくるのは、
@@ -595,7 +591,7 @@ const COMMON_TEXTS = {
 
 その理由が、ここで少しずつ言葉になっていきます。
 まずは、あなたの全体像から確認してみてください。`,
-  receiveGuide: `【詳しい診断結果の受け取り方】
+  receiveGuide: `【診断結果の受け取り方】
 1. 下記の「診断コードをコピーする」ボタンを押す。
 2. 「LINE登録に進む」ボタンを押す。
 3. LINEでコピーした診断コードを送る。
@@ -604,7 +600,8 @@ const COMMON_TEXTS = {
 トータル診断結果をお届けします。
 
 ※ひとつひとつ内容を確認しながらお届けしているため、少しお時間をいただく場合があります。`,
-  ctaLead: `この続きが気になる方は、今すぐ受け取ってください。`
+  ctaLead: `今の状況から抜け出し、次の一歩を踏み出したい方は
+今すぐ診断結果を受け取ってください。`
 };
 // ▼ ここに本来の画像を入れてください（base64 or URL）
 const IMAGE_ASSETS = {
@@ -2882,11 +2879,11 @@ function goNext(){ if(!isQuestionAnswered(currentQuestionKey)) return; const nex
 function goBack(){ const prev=getPreviousQuestionKey(currentQuestionKey); if(prev) renderQuestion(prev); }
 function formatJapaneseText(text){
   return String(text)
-    .replace(/\r\n/g, '')
-    .replace(/\r/g, '')
-    .replace(/\n/g, '')
-    .replace(/。/g, '。<br><span style="display:block;height:0.8em;"></span>')
-    .replace(/<br>+/g, '<br>')
+    .replace(/\r\n/g, '\n')
+    .replace(/\r/g, '\n')
+    .replace(/\n{3,}/g, '\n\n')
+    .replace(/\n/g, '<br>')
+    .replace(/(<br>){3,}/g, '<br><br>')
     .trim();
 }
 function normalizeResultText(text){
@@ -2898,10 +2895,611 @@ function createResultCardHtml(title,note,body,extraClass=''){
   return `<div class="result-card ${extraClass}"><div class="result-card-title">${escapeHtml(title)}</div>${normalizedNote?`<div class="result-card-note">${normalizedNote}</div>`:''}<div class="result-card-body">${normalizedBody}</div></div>`;
 }
 function diagnose(){document.getElementById('questionCard').style.display='none'; loadingMsgEl.style.display='block'; progressFillEl.style.width='100%'; setTimeout(()=>{loadingMsgEl.style.display='none'; showResult();},700);}
+
+// 2026-05-03 update: 6つのベース型から登録前診断結果を自動生成
+// 目的：75パターンすべてで、診断結果が必ず表示されるようにする
+const GENERATED_PRE_RESULT_MAP = {
+  A1X: {
+    catch: '決めたことを、現実に落とし込んでいける人',
+    body: `【あなたの本質】
+あなたは、現実的に考えながら、
+決めたことを形にしていけるタイプです。
+
+思いつきや勢いだけで進むのではなく、
+「ちゃんと成り立つか」
+「現実的に続けられるか」
+を見ながら進めていくため、
+ブレにくく、安定して積み上げていける力があります。
+
+【あなたの才能】
+あなたの強みは、「考えたことを現実の形にする力」です。
+
+たとえば、
+・サービス内容を分かりやすく整理する
+・伝わる順番に組み立て直す
+・曖昧なアイデアを具体化する
+
+といった形で、
+「ちゃんと伝わる・使える状態」に整えられるタイプです。
+
+【周囲から見たあなた】
+周りからは、
+・話が整理されていて分かりやすい
+・現実的で任せやすい
+・無理のない提案をしてくれる
+
+といった印象を持たれやすいはずです。
+
+その結果、
+「この人なら安心して任せられる」
+と感じてもらいやすいタイプです。
+
+ただ――
+「これで本当にいいのか」
+「もう少し整えてから」
+と考えているうちに、
+動き出すタイミングを逃してしまうことはありませんか？
+
+【今の状態】
+あなたは本来、
+形にできる力があるにもかかわらず、
+納得してから動こうとすることで、
+最初の一歩が重くなりやすい状態です。
+
+その結果、
+・やろうと思っていたことが後回しになる
+・出せるはずの発信や提案が止まる
+・動けるはずなのに進めない
+
+というズレが起きやすくなっています。
+
+【このまま進むと】
+この状態が続くと、
+「できるはずなのに進めない」
+「準備しているのに結果につながらない」
+という状態が続いてしまう可能性があります。
+
+その原因は、
+「完璧に決めてから動こうとするクセ」にあります。
+
+このままでは、
+3ヶ月後も同じところで止まり続けてしまう可能性があります。
+
+ここから先が本題です。
+
+LINE登録後、
+あなたのタイプに合わせて
+・なぜ「分かっているのに動けない」のか
+・あなたの強みをどう活かせばいいのか
+・自然に前へ進みやすくなる考え方
+
+をお伝えします。
+
+このまま同じところで止まり続けないために、
+ここで受け取ってください。`
+  },
+  B2Y: {
+    catch: '相手を見ながら、すばやく形にできる人',
+    body: `【あなたの本質】
+あなたは、人の反応や空気を感じ取りながら、
+その場に合った動きができるタイプです。
+
+状況に合わせて柔軟に動けるため、
+流れに乗る力があります。
+
+【あなたの才能】
+あなたの強みは、「相手に合わせてすばやく形にする力」です。
+
+たとえば、
+・反応を見ながら言い回しを調整する
+・その場で提案内容を組み替える
+・相手に合う形でアウトプットを出す
+
+といった形で、
+「今必要な形」を素早く届けられるタイプです。
+
+【周囲から見たあなた】
+周りからは、
+・気が利く
+・対応が早い
+・柔軟に動ける
+
+といった印象を持たれやすいはずです。
+
+その結果、
+「この人に任せるとスムーズ」
+と感じてもらいやすいタイプです。
+
+ただ――
+相手の反応を気にしすぎて、
+最初の一歩で止まってしまうことはありませんか？
+
+【今の状態】
+あなたは本来、
+動ける力があるにもかかわらず、
+出す前に考えすぎてしまい、
+・発信が止まる
+・タイミングを逃す
+・自信が下がる
+
+というズレが起きやすい状態です。
+
+【このまま進むと】
+動ける力があるのに、
+結果に繋がらない状態が続いてしまう可能性があります。
+
+その原因は、
+「相手を気にしすぎるクセ」にあります。
+
+このままでは、
+同じところで止まり続けてしまう可能性があります。
+
+ここから先が本題です。
+
+LINE登録後、
+あなたのタイプに合わせて
+・なぜ「相手の反応を気にして動けなくなる」のか
+・相手に合わせる力を仕事で活かす方法
+・迷わず動き出すための判断基準
+
+をお伝えします。
+
+このままタイミングを逃し続けないために、
+ここで受け取ってください。`
+  },
+  C1Z: {
+    catch: '深く理解して、自分の言葉で伝えられる人',
+    body: `【あなたの本質】
+あなたは、物事を深く理解し、
+自分なりに落とし込むタイプです。
+
+表面的ではなく、
+本質から考える力があります。
+
+【あなたの才能】
+あなたの強みは、「理解したことを自分の言葉に変える力」です。
+
+たとえば、
+・難しい内容を分かりやすく言い換える
+・たとえ話でイメージを伝える
+・自分の視点で再構成する
+
+といった形で、
+「腑に落ちる説明」に繋がるタイプです。
+
+【周囲から見たあなた】
+周りからは、
+・説明が分かりやすい
+・考えが深い
+・独自の視点がある
+
+といった印象を持たれやすいはずです。
+
+その結果、
+「この人の話は納得できる」
+と感じてもらいやすいタイプです。
+
+ただ――
+「まだまとまっていない」と感じて、
+出せずに止まってしまうことはありませんか？
+
+【今の状態】
+あなたは本来、
+価値のある内容を持っているにもかかわらず、
+外に出す前に止まってしまい、
+・発信できない
+・形にならない
+・評価されない
+
+という状態になりやすいです。
+
+【このまま進むと】
+価値が外に出ないまま、
+止まり続けてしまう可能性があります。
+
+その原因は、
+「まとまってから出そうとするクセ」にあります。
+
+このままでは、
+同じところで止まり続けてしまう可能性があります。
+
+ここから先が本題です。
+
+LINE登録後、
+あなたのタイプに合わせて
+・なぜ「まとまるまで出せずに止まる」のか
+・理解力を発信や仕事に活かす方法
+・出しながら整えるための考え方
+
+をお伝えします。
+
+このまま価値を外に出せない状態を続けないために、
+ここで受け取ってください。`
+  },
+  D3X: {
+    catch: '状況を見ながら、確実に進める人',
+    body: `【あなたの本質】
+あなたは、動く力を持ちながら、
+状況を見て判断するタイプです。
+
+勢いだけで突き進むのではなく、
+今動くべきかどうかを見極めようとします。
+
+【あなたの才能】
+あなたの強みは、「判断して無駄なく動く力」です。
+
+たとえば、
+・必要な情報を見て判断する
+・タイミングを見て動く
+・リスクを避けながら進める
+
+といった形で、
+「失敗を減らしながら前進」しやすいタイプです。
+
+【周囲から見たあなた】
+周りからは、
+・慎重に判断できる
+・状況をよく見ている
+・無駄な動きが少ない
+
+といった印象を持たれやすいはずです。
+
+その結果、
+「安心して任せられる人」
+と感じてもらいやすいタイプです。
+
+ただ――
+タイミングを見すぎて、
+動き出しが遅れることはありませんか？
+
+【今の状態】
+あなたは本来、
+動く力があるにもかかわらず、
+動き出すタイミングを見続けてしまい、
+・後手に回る
+・機会を逃す
+・流れに乗れない
+
+という状態になりやすいです。
+
+【このまま進むと】
+チャンスを活かせない状態が続いてしまう可能性があります。
+
+その原因は、
+「タイミングを待ちすぎるクセ」にあります。
+
+このままでは、
+同じところで止まり続けてしまう可能性があります。
+
+ここから先が本題です。
+
+LINE登録後、
+あなたのタイプに合わせて
+・なぜ「タイミングを見すぎて動けなくなる」のか
+・判断力を結果につなげるための使い方
+・迷わず動くための基準の作り方
+
+をお伝えします。
+
+このままチャンスを逃し続けないために、
+ここで受け取ってください。`
+  },
+  E2Y: {
+    catch: '感覚でつかみ、すぐ形にできる人',
+    body: `【あなたの本質】
+あなたは、感覚を頼りに動けるタイプです。
+
+「いい」と感じたものを、
+考え込みすぎずに形にしていく力があります。
+
+【あなたの才能】
+あなたの強みは、「思いついたことをすぐ形にする力」です。
+
+たとえば、
+・アイデアをすぐアウトプットする
+・動きながら整える
+・試しながら改善する
+
+といった形で、
+「スピードある前進」ができるタイプです。
+
+【周囲から見たあなた】
+周りからは、
+・行動が早い
+・直感が鋭い
+・流れをつかむのが早い
+
+といった印象を持たれやすいはずです。
+
+その結果、
+「動きが早くて頼れる人」
+と感じてもらいやすいタイプです。
+
+ただ――
+方向が定まらないまま進んでしまうことはありませんか？
+
+【今の状態】
+あなたは本来、
+すぐ形にできる力があるにもかかわらず、
+向かう先が曖昧なまま動くことで、
+・ブレやすい
+・迷いが増える
+・積み上がらない
+
+という状態になりやすいです。
+
+【このまま進むと】
+やり直しが増えてしまう可能性があります。
+
+その原因は、
+「方向を決めずに動くクセ」にあります。
+
+このままでは、
+同じところで止まり続けてしまう可能性があります。
+
+ここから先が本題です。
+
+LINE登録後、
+あなたのタイプに合わせて
+・なぜ「方向が定まらないまま進んでしまう」のか
+・スピードを成果につなげるための活かし方
+・ブレずに進むための方向の決め方
+
+をお伝えします。
+
+このままやり直しを繰り返さないために、
+ここで受け取ってください。`
+  },
+  A1M: {
+    catch: '納得したことに、強く集中できる人',
+    body: `【あなたの本質】
+あなたは、現実的に考えながら、
+納得したことに強く集中できるタイプです。
+
+一度「これでいく」と決めると、
+途中でブレずに進める強さがあります。
+
+【あなたの才能】
+あなたの強みは、「一つに集中して深く進める力」です。
+
+たとえば、
+・一つのテーマを掘り下げる
+・継続して形にし続ける
+・途中でブレずに進める
+
+といった形で、
+「深さ」と「継続」によって成果に繋がりやすいタイプです。
+
+【周囲から見たあなた】
+周りからは、
+・ブレない
+・一貫性がある
+・最後までやり切る
+
+といった印象を持たれやすいはずです。
+
+その結果、
+「軸がある人」
+として信頼に繋がりやすいタイプです。
+
+ただ――
+決めるまでに時間がかかることはありませんか？
+
+【今の状態】
+あなたは本来、
+集中して進める力があるにもかかわらず、
+完璧に決めてから動こうとすることで、
+・スタートが遅れる
+・流れに乗れない
+・成果が出る前に止まりやすい
+
+という状態になりやすいです。
+
+【このまま進むと】
+強みが活かされないまま止まってしまう可能性があります。
+
+その原因は、
+「完璧に決めてから動こうとするクセ」にあります。
+
+このままでは、
+同じところで止まり続けてしまう可能性があります。
+
+ここから先が本題です。
+
+LINE登録後、
+あなたのタイプに合わせて
+・なぜ「完璧に決めるまで動けない」のか
+・集中力を成果につなげるための使い方
+・一歩目を軽くするための決め方
+
+をお伝えします。
+
+このまま動き出しが遅れる状態を続けないために、
+ここで受け取ってください。`
+  }
+};
+
+const HAND_BASE_PRE = {
+  A: {
+    catchBase: '決めたことを、現実に落とし込んでいける人',
+    essence: `あなたは、現実的に考えながら、決めたことを形にしていけるタイプです。\n\n無理のない形に整えながら、安定して積み上げていける力があります。`,
+    talentName: '考えたことを現実の形にする力',
+    talentBullets: ['サービス内容を分かりやすく整理する','曖昧なアイデアを具体化する','現実的に続けられる形に整える'],
+    talentBenefit: 'ちゃんと伝わる・使える状態に整えられる',
+    outsideBullets: ['現実的で任せやすい','安心して相談できる','無理のない提案をしてくれる'],
+    outsideBenefit: '「安心して任せられる人」と感じてもらいやすい'
+  },
+  B: {
+    catchBase: '相手を見ながら、必要な形に整えられる人',
+    essence: `あなたは、人の反応や空気を感じ取りながら、その場に合った動きができるタイプです。\n\n相手の状態を見ながら、柔らかく対応していける力があります。`,
+    talentName: '相手に合わせて形にする力',
+    talentBullets: ['相手の反応を見て言い回しを調整する','場の空気に合わせて伝え方を変える','相手に合う形でアウトプットを出す'],
+    talentBenefit: '必要な人に届きやすい形へ整えられる',
+    outsideBullets: ['気が利く','相手のことをよく見ている','柔軟に対応できる'],
+    outsideBenefit: '「この人は分かってくれる」と感じてもらいやすい'
+  },
+  C: {
+    catchBase: '深く理解して、自分の言葉で伝えられる人',
+    essence: `あなたは、物事を深く理解し、自分なりに落とし込むタイプです。\n\n表面的ではなく、本質から考える力があります。`,
+    talentName: '理解したことを自分の言葉に変える力',
+    talentBullets: ['難しい内容を分かりやすく言い換える','たとえ話でイメージを伝える','自分の視点で再構成する'],
+    talentBenefit: '腑に落ちる説明につなげやすい',
+    outsideBullets: ['説明が分かりやすい','考えが深い','独自の視点がある'],
+    outsideBenefit: '「この人の話は納得できる」と感じてもらいやすい'
+  },
+  D: {
+    catchBase: '状況を見ながら、前に進める人',
+    essence: `あなたは、動く力を持ちながら、状況を見て判断するタイプです。\n\n勢いだけで突き進むのではなく、流れを見ながら進める力があります。`,
+    talentName: '判断して無駄なく動く力',
+    talentBullets: ['必要な情報を見て判断する','タイミングを見て動く','リスクを避けながら進める'],
+    talentBenefit: '失敗を減らしながら前進しやすい',
+    outsideBullets: ['状況をよく見ている','判断が的確','無駄な動きが少ない'],
+    outsideBenefit: '「安心して任せられる人」と感じてもらいやすい'
+  },
+  E: {
+    catchBase: '感覚でつかみ、形にしていける人',
+    essence: `あなたは、感覚を頼りに動けるタイプです。\n\n「いい」と感じたものを、考え込みすぎずに形にしていく力があります。`,
+    talentName: '感覚でつかんだことを形にする力',
+    talentBullets: ['アイデアをアウトプットにする','動きながら整える','試しながら改善する'],
+    talentBenefit: '感覚を現実の形に変えやすい',
+    outsideBullets: ['直感が鋭い','感性がある','流れをつかむのが早い'],
+    outsideBenefit: '「感覚がいい人」と感じてもらいやすい'
+  }
+};
+
+const START_ISSUE_PRE = {
+  1: {
+    trigger: '「これで本当にいいのか」「もう少し整えてから」と考えているうちに、動き出すタイミングを逃してしまうことはありませんか？',
+    state: '納得してから動こうとすることで、最初の一歩が重くなりやすい状態です。',
+    results: ['やろうと思っていたことが後回しになる','出せるはずの発信や提案が止まる','動けるはずなのに進めない'],
+    risk: '同じところで止まり続けてしまう可能性があります。',
+    cause: '完璧に決めてから動こうとするクセ',
+    offer1: 'なぜ「分かっているのに動けない」のか',
+    offer3: '一歩目を軽くするための考え方',
+    finalPush: 'このまま同じところで止まり続けないために、ここで受け取ってください。'
+  },
+  2: {
+    trigger: '思いついたら動ける一方で、方向が定まらないまま進んでしまうことはありませんか？',
+    state: '動ける力があるにもかかわらず、向かう先が曖昧なまま進みやすい状態です。',
+    results: ['動いているのに積み上がらない','途中で迷いが増える','やり直しが増える'],
+    risk: '動いているのに、成果につながりにくくなる可能性があります。',
+    cause: '方向を決めずに動くクセ',
+    offer1: 'なぜ「方向が定まらないまま進んでしまう」のか',
+    offer3: 'ブレずに進むための方向の決め方',
+    finalPush: 'このままやり直しを繰り返さないために、ここで受け取ってください。'
+  },
+  3: {
+    trigger: 'タイミングを見すぎて、動き出しが遅れることはありませんか？',
+    state: '動く力があるにもかかわらず、動き出すタイミングを見続けてしまいやすい状態です。',
+    results: ['後手に回る','機会を逃す','流れに乗れない'],
+    risk: 'チャンスを活かせない状態が続いてしまう可能性があります。',
+    cause: 'タイミングを待ちすぎるクセ',
+    offer1: 'なぜ「タイミングを見すぎて動けなくなる」のか',
+    offer3: '迷わず動くための基準の作り方',
+    finalPush: 'このままチャンスを逃し続けないために、ここで受け取ってください。'
+  }
+};
+
+const END_OFFER_PRE = {
+  X: { offer2: '言葉にして伝える力を仕事で活かす方法' },
+  Y: { offer2: 'スピードを成果につなげるための活かし方' },
+  Z: { offer2: '感覚や世界観を仕事で活かす方法' },
+  W: { offer2: '言葉と感覚の両方を仕事で活かす方法' },
+  M: { offer2: '集中力を成果につなげるための使い方' }
+};
+
+function getGeneratedPreResult(code){
+  if (GENERATED_PRE_RESULT_MAP[code]) return GENERATED_PRE_RESULT_MAP[code];
+
+  const handType = code.charAt(0);
+  const startType = code.charAt(1);
+  const endType = code.charAt(2);
+
+  const hand = HAND_BASE_PRE[handType] || HAND_BASE_PRE.A;
+  const issue = START_ISSUE_PRE[startType] || START_ISSUE_PRE[1];
+  const endOffer = END_OFFER_PRE[endType] || END_OFFER_PRE.X;
+
+  const catchText = hand.catchBase;
+  const body = `【あなたの本質】
+${hand.essence}
+
+【あなたの才能】
+あなたの強みは、「${hand.talentName}」です。
+
+たとえば、
+・${hand.talentBullets[0]}
+・${hand.talentBullets[1]}
+・${hand.talentBullets[2]}
+
+といった形で、
+「${hand.talentBenefit}」タイプです。
+
+【周囲から見たあなた】
+周りからは、
+・${hand.outsideBullets[0]}
+・${hand.outsideBullets[1]}
+・${hand.outsideBullets[2]}
+
+といった印象を持たれやすいはずです。
+
+その結果、
+${hand.outsideBenefit}タイプです。
+
+ただ――
+${issue.trigger}
+
+【今の状態】
+あなたは本来、
+強みを持っているにもかかわらず、
+${issue.state}
+
+その結果、
+・${issue.results[0]}
+・${issue.results[1]}
+・${issue.results[2]}
+
+というズレが起きやすくなっています。
+
+【このまま進むと】
+この状態が続くと、
+${issue.risk}
+
+その原因は、
+「${issue.cause}」にあります。
+
+ここから先が本題です。
+
+LINE登録後、
+あなたのタイプに合わせて
+・${issue.offer1}
+・${endOffer.offer2}
+・${issue.offer3}
+
+をお伝えします。
+
+${issue.finalPush}`;
+
+  return { catch: catchText, body };
+}
+
+function getGeneratedPostResult(code){
+  if (POST_RESULT_MAP[code]) return POST_RESULT_MAP[code];
+
+  const pre = getGeneratedPreResult(code);
+  return {
+    oneWord: pre.catch,
+    total: 'あなたは、自分なりの強みを持ちながらも、その使い方によって前に進みやすさが変わるタイプです。今回の診断では、手の形・知能線の始点・知能線の伸び方から、思考や行動の傾向を整理しています。',
+    strength: 'あなたの強みは、すでに持っている思考や行動の傾向を、仕事の中で活かせる可能性があることです。大切なのは、自分のクセを知ったうえで、無理のない形で使うことです。',
+    weakness: 'つまずきやすいポイントは、強みそのものではなく、強みの使い方がズレたときに出やすくなります。自分では当たり前にやっているため、気づきにくいこともあります。',
+    hint: 'まずは、自分のタイプに合った小さな一歩を決めることが大切です。完璧に変えようとするより、今日できる行動をひとつ決めることで流れが動きやすくなります。',
+    firstStep: '今迷っていることをひとつ選び、「まず何を一歩だけ進めるか」を決めてください。小さく動くことで、自分の強みを使いやすくなります。'
+  };
+}
+
 function showResult(){
   const code=buildDiagnosisCode();
-  const preData=PRE_DIRECT_RESULT_MAP[code];
-  const postData=POST_RESULT_MAP[code];
+  const preData=getGeneratedPreResult(code);
+  const postData=getGeneratedPostResult(code);
 
   document.getElementById('introBlock').style.display='none';
   document.getElementById('resultCode').textContent='';
@@ -2910,18 +3508,17 @@ function showResult(){
   document.getElementById('preLead').style.display='none';
   document.getElementById('preLead').innerHTML='';
 
-  document.getElementById('preLineCta').innerHTML=escapeHtml(COMMON_TEXTS.preLineCta)
-    .replace(/\r\n/g, '<br>')
-    .replace(/\r/g, '<br>')
-    .replace(/\n/g, '<br>');
+  const preLineCtaEl = document.getElementById('preLineCta');
+  preLineCtaEl.innerHTML='';
+  preLineCtaEl.style.display='none';
 
   document.getElementById('receiveGuide').innerHTML=escapeHtml(COMMON_TEXTS.receiveGuide)
     .replace(/\r\n/g, '<br>')
     .replace(/\r/g, '<br>')
     .replace(/\n/g, '<br>')
     .replace(
-      '【詳しい診断結果の受け取り方】',
-      '<span class="receive-guide-heading">【詳しい診断結果の受け取り方】</span>'
+      '【診断結果の受け取り方】',
+      '<span class="receive-guide-heading">【診断結果の受け取り方】</span>'
     );
 
   document.getElementById('ctaLead').textContent=COMMON_TEXTS.ctaLead;
@@ -2930,13 +3527,6 @@ function showResult(){
 
   const pre=document.getElementById('preResultCards');
   const post=document.getElementById('postPreviewCards');
-
-  if(!preData || !postData){
-    pre.innerHTML=createResultCardHtml('診断データが見つかりませんでした','','このコードの診断結果はまだ登録されていません。','error-card');
-    post.innerHTML='';
-    resultSectionEl.style.display='block';
-    return;
-  }
 
   pre.innerHTML=[
     createResultCardHtml('あなたを一言で表すと','',preData.catch),
@@ -2955,6 +3545,7 @@ function showResult(){
   resultSectionEl.style.display='block';
   window.scrollTo({top:0, behavior:'smooth'});
 }
+
 function setCopyButtonDone(){
   if(!copyCodeBtnEl) return;
   copyCodeBtnEl.textContent='✅ コピーしました！';
