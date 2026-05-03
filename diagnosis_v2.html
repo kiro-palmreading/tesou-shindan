@@ -420,9 +420,18 @@ body {
 #postLead, #postPreviewCards, .preview-wrap, .preview-blur {
   pointer-events: none !important;
 }
-.btn-copy-code, .btn-line {
+.btn-copy-code, .btn-line, .fv-cta-button {
   touch-action: manipulation;
   -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+.fv-area, .fv-cta-button {
+  position: relative;
+  z-index: 9999;
+}
+
+.fv-banner, .fv-banner img {
+  pointer-events: none !important;
 }
 
 .preview-wrap { position: relative; overflow: hidden; }
@@ -451,14 +460,15 @@ body {
   text-align: center;
   box-sizing: border-box;
 }
-.fv-banner img { width: 100%; height: auto; display: block; }
+.fv-banner img { width: 100%; height: auto; display: block; pointer-events: none; }
 .fv-cta-note { margin: 14px 0 5px; font-size: 14px; line-height: 1.5; color: #3A5A8C; font-weight: 500; }
-.fv-cta-push { margin: 0 0 10px; font-size: 17px; line-height: 1.65; color: #1A2B5C; font-weight: 600; }
+.fv-cta-push { display:none !important; margin: 0 0 10px; font-size: 17px; line-height: 1.65; color: #1A2B5C; font-weight: 600; }
 .fv-cta-button {
   display: block; width: 100%; max-width: 440px; margin: 0 auto; padding: 17px 18px;
   background: #F28B6B; color: #ffffff; font-size: 18px; font-weight: 700; line-height: 1.4;
   text-align: center; text-decoration: none; border: none; border-radius: 999px;
   box-shadow: 0 5px 14px rgba(0, 0, 0, 0.18); box-sizing: border-box; cursor: pointer;
+  position: relative; z-index: 9999; pointer-events: auto; touch-action: manipulation;
   font-family: 'Noto Sans JP', sans-serif;
 }
 .fv-cta-button:hover { opacity: 0.92; }
@@ -502,10 +512,6 @@ body {
 
   <p class="fv-cta-note">無料・1分・その場で結果表示</p>
 
-  <p class="fv-cta-push">
-    「これでいい」と思えたとき<br>
-    前に進める
-  </p>
 
   <button id="startDiagnosisBtn" class="fv-cta-button" type="button">
     今すぐ診断する ▶
@@ -562,7 +568,7 @@ body {
         <button class="btn-copy-code" id="copyCodeBtn" type="button" onclick="copyDiagnosisCodeNow(event)">📋 診断コードを<br>コピーする</button>
       </div>
       <div class="cta-lead" id="ctaLead"></div>
-      <a id="lineBtn" href="https://lin.ee/OINIB8d" class="btn-line" target="_blank" rel="noopener noreferrer" onclick="openLineNow(event)">あなた専用の診断結果を今すぐ受け取る</a>
+      <a id="lineBtn" href="https://lin.ee/OINIB8d" class="btn-line" target="_blank" rel="noopener noreferrer" onclick="openLineNow(event)">あなた専用の診断結果を受け取る</a>
       <p class="line-note">※無料・1分で登録できます</p>
       
     </div>
@@ -600,7 +606,7 @@ const COMMON_TEXTS = {
 トータル診断結果をお届けします。
 
 ※ひとつひとつ内容を確認しながらお届けしているため、少しお時間をいただく場合があります。`,
-  ctaLead: `今の状況から抜け出し、次の一歩を踏み出したい方は
+  ctaLead: `強みを活かして、次の一歩を踏み出したい方は
 今すぐ診断結果を受け取ってください。`
 };
 // ▼ ここに本来の画像を入れてください（base64 or URL）
