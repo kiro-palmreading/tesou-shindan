@@ -133,6 +133,13 @@ body {
   line-height: 1.7;
   color: var(--navy);
 }
+
+.question-main-instruction {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--text-mid);
+  margin: 2px 0 10px;
+}
 .q-image-wrap { padding: 16px 16px 0; }
 .q-image-wrap img {
   width: 100%;
@@ -538,8 +545,11 @@ body {
   <div class="q-card" id="questionCard">
     <div class="q-header">
       <div class="q-num" id="questionNumber">QUESTION 01 / 04</div>
-      <div class="q-text" id="questionText"></div>
-      <div class="micro-hint question-hint">直感でひとつ選んでください</div>
+<div class="question-main-instruction">
+  利き手を見ながら、直感で質問に答えてください。
+</div>
+<div class="q-text" id="questionText"></div>
+<div class="micro-hint question-hint">直感でひとつ選んでください</div>
     </div>
     <div class="q-image-wrap" id="questionImageWrap" style="display:none;">
       <img id="questionImage" src="" alt="">
