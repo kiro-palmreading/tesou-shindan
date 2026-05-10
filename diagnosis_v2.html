@@ -323,7 +323,7 @@ body {
 }
 .result-card-title { font-size: 17px; letter-spacing: 1px; color: var(--sky); margin-bottom: 4px; font-weight: 700; }
 .result-card-note { font-size: 14px; color: var(--text-light); margin-bottom: 10px; }
-.result-card-body { font-size: 17px; text-align: left; line-height: 1.9; color: var(--text-dark); white-space: pre-line; }
+.result-card-body { font-size: 17px; text-align: left; line-height: 1.9; color: var(--text-dark); white-space: normal; }
 .error-card { border-left-color: #d96b5b; }
 .error-card .result-card-title { color: #b54637; }
 .copy-code-box {
@@ -17204,9 +17204,8 @@ function formatJapaneseText(text){
   return String(text)
     .replace(/\r\n/g, '\n')
     .replace(/\r/g, '\n')
-    .replace(/\n{3,}/g, '\n\n')
-    .replace(/\n/g, '<br>')
-    .replace(/(<br>){3,}/g, '<br><br>')
+    .replace(/\n{2,}/g, '<br><br>')
+    .replace(/\n/g, '')
     .trim();
 }
 function normalizeResultText(text){
