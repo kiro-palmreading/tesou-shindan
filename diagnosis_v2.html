@@ -17204,8 +17204,9 @@ function formatJapaneseText(text){
   return String(text)
     .replace(/\r\n/g, '\n')
     .replace(/\r/g, '\n')
+    .replace(/、\n/g, '、')
     .replace(/\n{2,}/g, '<br><br>')
-    .replace(/\n/g, '')
+    .replace(/\n/g, '<br>')
     .trim();
 }
 function normalizeResultText(text){
