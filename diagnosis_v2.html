@@ -17206,7 +17206,7 @@ function formatJapaneseText(text){
     .replace(/\r/g, '\n')
     .replace(/、\n/g, '、')
     .replace(/」\n/g, '」')
-    .replace(/❞\n/g, '❞')
+    .replace(/”\n/g, '”')
     .replace(/\n{2,}/g, '<br><br>')
     .replace(/\n/g, '<br>')
     .trim();
