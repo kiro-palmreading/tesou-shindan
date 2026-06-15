@@ -474,7 +474,7 @@ body {
 .fv-cta-note { margin: 14px 0 5px; font-size: 14px; line-height: 1.5; color: #3A5A8C; font-weight: 500; }
 .fv-cta-push { display:none !important; margin: 0 0 10px; font-size: 17px; line-height: 1.65; color: #1A2B5C; font-weight: 600; }
 .fv-cta-button {
-  display: block; width: 100%; max-width: 440px; margin: 0 auto; padding: 17px 18px;
+  display: block; width: 100%; max-width: 440px; margin: 30px auto 0; padding: 17px 18px;
   background: linear-gradient(135deg, #ff9a5a 0%, #f26b3a 100%); color: #ffffff; font-size: 18px; font-weight: 700; line-height: 1.4;
   text-align: center; text-decoration: none; border: none; border-radius: 999px;
   box-shadow: 0 6px 16px rgba(242, 107, 58, 0.32); box-sizing: border-box; cursor: pointer;
@@ -486,7 +486,7 @@ body {
   .fv-area { padding: 0 8px 22px; }
   .fv-cta-note { margin-top: 12px; font-size: 13px; }
   .fv-cta-push { font-size: 16px; margin-bottom: 9px; }
-  .fv-cta-button { max-width: 420px; font-size: 17px; padding: 16px 16px; }
+  .fv-cta-button { max-width: 420px; margin: 26px auto 0; font-size: 17px; padding: 16px 16px; }
 }
 
 @media (max-width: 600px) {
@@ -538,7 +538,10 @@ body {
   text-align: left;
 }
 .external-result-text {
-  margin-top: 16px;
+  margin-top: 18px;
+  word-break: normal;
+  overflow-wrap: break-word;
+  line-break: strict;
 }
 .external-result-text .result-detail {
   display: block;
@@ -566,7 +569,8 @@ body {
   font-size: 17px;
   line-height: 2.05;
   color: var(--text-dark);
-  margin: 0 0 16px;
+  margin: 0 0 18px;
+  letter-spacing: 0.02em;
 }
 .external-result-text .result-block p:last-child {
   margin-bottom: 0;
@@ -586,6 +590,7 @@ body {
   background: var(--sky-pale);
   border-radius: 12px;
   border: 1px solid var(--border);
+  letter-spacing: 0.02em;
 }
 .external-result-text .result-block li::before {
   content: '';
@@ -3835,7 +3840,10 @@ function getC1YResultHtml(){
   text-align: left;
 }
 .external-result-text {
-  margin-top: 16px;
+  margin-top: 18px;
+  word-break: normal;
+  overflow-wrap: break-word;
+  line-break: strict;
 }
 .external-result-text .result-detail {
   display: block;
@@ -3863,7 +3871,8 @@ function getC1YResultHtml(){
   font-size: 17px;
   line-height: 2.05;
   color: var(--text-dark);
-  margin: 0 0 16px;
+  margin: 0 0 18px;
+  letter-spacing: 0.02em;
 }
 .external-result-text .result-block p:last-child {
   margin-bottom: 0;
@@ -3883,6 +3892,7 @@ function getC1YResultHtml(){
   background: var(--sky-pale);
   border-radius: 12px;
   border: 1px solid var(--border);
+  letter-spacing: 0.02em;
 }
 .external-result-text .result-block li::before {
   content: '';
@@ -4111,6 +4121,31 @@ function getC1YResultHtml(){
 `;
 }
 
+
+function normalizeExternalResultHtml(html){
+  const wrapper = document.createElement('div');
+  wrapper.innerHTML = html;
+
+  // 診断結果画像内にすでにあるため、本文側の「あなたを一言で表すと」ブロックは非表示にします。
+  wrapper.querySelectorAll('.result-block').forEach(block => {
+    const heading = block.querySelector('h2');
+    if(heading && heading.textContent.trim().includes('あなたを一言で表すと')){
+      block.remove();
+    }
+  });
+
+  // 外部HTML側の細かい<br>を外し、スマホ幅で自然に折り返されるようにします。
+  wrapper.querySelectorAll('br').forEach(br => {
+    br.replaceWith(document.createTextNode(' '));
+  });
+
+  wrapper.querySelectorAll('p, li').forEach(el => {
+    el.innerHTML = el.innerHTML.replace(/\s+/g, ' ').trim();
+  });
+
+  return wrapper.innerHTML;
+}
+
 async function showResult(){
   const code = buildDiagnosisCode();
   const resultImagePath = `image/results/${code}.png`;
@@ -4158,7 +4193,7 @@ async function showResult(){
     const response = await fetch(resultTextPath, { cache: 'no-cache' });
     if(!response.ok) throw new Error('result text not found');
     const html = await response.text();
-    externalResultText.innerHTML = html;
+    externalResultText.innerHTML = normalizeExternalResultHtml(html);
   } catch(error) {
     externalResultText.innerHTML = `
       <div class="external-result-error">
