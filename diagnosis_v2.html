@@ -373,7 +373,6 @@ body {
 
 .result-card,
 .external-result-text .result-block,
-.external-result-text section,
 .external-result-text article {
   background: var(--white);
   border-radius: 16px;
@@ -381,7 +380,15 @@ body {
   margin-top: 16px;
   box-shadow: 0 2px 12px var(--shadow);
   border: 1px solid var(--border);
-  border-left: 4px solid var(--sky);
+}
+
+.external-result-text section.result-detail {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  border-radius: 0;
+  padding: 0;
+  margin: 0;
 }
 
 .result-card-title,
@@ -559,10 +566,10 @@ body {
   font-size: 17px;
   color: var(--navy);
   font-weight: 700;
-  line-height: 1.8;
+  line-height: 1.85;
   margin: 14px 0 12px;
   text-align: center;
-  white-space: pre-line;
+  white-space: normal;
 }
 
 .btn-line {
@@ -665,7 +672,6 @@ body {
   }
 
   .external-result-text .result-block,
-  .external-result-text section,
   .external-result-text article {
     padding: 20px 18px;
     margin-top: 17px !important;
@@ -782,8 +788,7 @@ const COMMON_TEXTS = {
 
 ※ひとつひとつ内容を確認しながらお届けしているため、少しお時間をいただく場合があります。`,
 
-  ctaLead: `強みを活かして、次の一歩を踏み出したい方は
-今すぐ診断結果を受け取ってください。`
+  ctaLead: `強みを活かして、次の一歩を踏み出したい方は、今すぐ診断結果を受け取ってください。`
 };
 
 const IMAGE_ASSETS = {
@@ -801,7 +806,7 @@ const IMAGE_ASSETS = {
 const QUESTION_FLOW = [
   {
     key: 'q3',
-    question: '下記のような線がありますか？（マスカケ）',
+    question: '下記のように、手のひらを横切る線がありますか？（マスカケ）',
     imageUrl: 'https://cdn.peraichi.com/userData/d6621e34-3268-445c-bb20-ddb971833921/img/eaf70000-69a9-4b09-87aa-c4f83616156e/_________200_x_200_px___11_.png',
     choices: [
       { value: 'M', label: 'ある', description: '' },
@@ -859,7 +864,7 @@ const QUESTION_FLOW = [
       {
         value: 'W',
         label: '二股に分かれている',
-        description: '一方は小指の下までまっすぐに伸びていて、もう一方は、手首方面に流れている',
+        description: '一方は小指の下へ、もう一方は手首方面へ流れている',
         imageUrl: 'https://cdn.peraichi.com/userData/d6621e34-3268-445c-bb20-ddb971833921/img/23a9ac40-2d94-4509-866f-df4d30e19df1/_________200_x_200_px___12_.png'
       }
     ]
@@ -1179,6 +1184,7 @@ function cleanExternalHtml(html) {
   const body = doc.body || doc;
 
   removeOneWordBlock(body);
+  removeMarkdownArtifacts(body);
   mergeSpecificParagraphs(body);
   removeEmptyParagraphs(body);
 
@@ -1217,6 +1223,25 @@ function removeOneWordBlock(root) {
   });
 }
 
+
+
+function removeMarkdownArtifacts(root) {
+  Array.from(root.querySelectorAll('p, div, span, h1, h2, h3')).forEach(el => {
+    const text = el.textContent.trim();
+
+    if (
+      text === '```' ||
+      text === '```html' ||
+      text === '```HTML' ||
+      text === '```text' ||
+      text === ':::writing' ||
+      text.startsWith(':::writing') ||
+      text === ':::'
+    ) {
+      el.remove();
+    }
+  });
+}
 
 function mergeSpecificParagraphs(root) {
   const paragraphs = Array.from(root.querySelectorAll('p'));
