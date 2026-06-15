@@ -2,386 +2,419 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=375">
 <title>才能コンパス診断</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap');
 
 :root {
   --sky: #5ba3d9;
   --sky-light: #a8d4f0;
   --sky-pale: #e8f4fc;
-  --sky-bg: #f3f9ff;
-  --navy: #173a5e;
+  --sky-bg: #f0f8ff;
+  --navy: #1a3a5c;
   --navy-mid: #2a5280;
   --white: #ffffff;
-  --text-dark: #173a5e;
-  --text-mid: #456a8d;
-  --text-light: #7898b5;
-  --border: rgba(91, 163, 217, 0.28);
-  --shadow: rgba(26, 58, 92, 0.10);
-  --line: #06c755;
+  --text-dark: #1a3a5c;
+  --text-mid: #4a6a8a;
+  --text-light: #7a9ab8;
+  --border: rgba(91,163,217,0.28);
+  --shadow: rgba(91,163,217,0.14);
+  --line: #06C755;
 }
 
 * {
   box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-  margin: 0;
-  background: linear-gradient(180deg, #eef7ff 0%, #ffffff 40%, #f6fbff 100%);
+  font-family: 'Noto Sans JP', sans-serif;
+  background: var(--sky-bg);
   color: var(--text-dark);
-  font-family: "Noto Sans JP", "Hiragino Sans", "Yu Gothic", sans-serif;
-  letter-spacing: 0.03em;
-  line-height: 1.75;
+  min-height: 100vh;
+  font-size: 18px;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
 }
 
-button,
-a {
-  -webkit-tap-highlight-color: transparent;
-}
-
+/* ===== FV ===== */
 .fv-area {
-  width: 100%;
-  max-width: 760px;
+  max-width: 1080px;
   margin: 0 auto;
-  padding: 0 0 34px;
+  padding: 0 10px 26px;
   text-align: center;
+  box-sizing: border-box;
 }
 
 .fv-banner img {
-  display: block;
   width: 100%;
   height: auto;
-  margin: 0 auto;
+  display: block;
+  pointer-events: none;
 }
 
 .fv-cta-button {
-  width: calc(100% - 34px);
-  max-width: 430px;
+  display: block;
+  width: 100%;
+  max-width: 440px;
   margin: 24px auto 0;
-  padding: 18px 18px;
+  padding: 17px 18px;
+  background: linear-gradient(135deg, #ff9a5a 0%, #f26b3a 100%);
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.4;
+  text-align: center;
+  text-decoration: none;
   border: none;
   border-radius: 999px;
-  background: linear-gradient(180deg, #ffb84d 0%, #f39a24 100%);
-  color: #ffffff;
-  font-size: 19px;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  box-shadow: 0 8px 18px rgba(211, 124, 22, 0.28);
+  box-shadow: 0 6px 16px rgba(242, 107, 58, 0.32);
+  box-sizing: border-box;
   cursor: pointer;
+  position: relative;
+  z-index: 9999;
+  pointer-events: auto;
+  touch-action: manipulation;
+  font-family: 'Noto Sans JP', sans-serif;
 }
 
-.fv-cta-button:active {
-  transform: translateY(1px);
+.fv-cta-button:hover {
+  opacity: 0.92;
 }
 
-#diagnosisApp {
-  width: 100%;
-  max-width: 760px;
-  margin: 0 auto;
-  padding: 0 14px 42px;
-}
-
+/* ===== 診断本体 ===== */
 .header {
-  padding: 8px 0 10px;
+  background: linear-gradient(160deg, #f0f8ff 0%, #d8eef9 50%, #bfe0f5 100%);
+  text-align: center;
+  padding: 14px 24px 12px;
+  border-bottom: 2px solid var(--sky-light);
 }
 
 .progress-wrap {
-  width: 100%;
-  margin: 0 auto 14px;
-  padding: 14px 12px 12px;
-  background: rgba(255,255,255,0.78);
-  border: 1px solid var(--border);
-  border-radius: 18px;
-  box-shadow: 0 4px 16px var(--shadow);
+  margin-top: 0;
 }
 
 .progress-labels {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 4px;
-  margin-bottom: 8px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 6px;
+  gap: 8px;
 }
 
 .progress-lbl {
-  font-size: 11px;
+  font-size: 12px;
+  letter-spacing: 1px;
   color: var(--text-light);
+  transition: color 0.3s;
   text-align: center;
-  line-height: 1.4;
+  flex: 1;
 }
 
 .progress-lbl.active {
-  color: var(--navy);
+  color: var(--sky);
   font-weight: 700;
 }
 
+.progress-lbl.done {
+  color: var(--navy);
+}
+
 .progress-track {
-  width: 100%;
-  height: 8px;
-  background: #dceefb;
-  border-radius: 999px;
+  height: 4px;
+  background: rgba(91,163,217,0.2);
+  border-radius: 4px;
   overflow: hidden;
 }
 
 .progress-fill {
-  width: 25%;
   height: 100%;
-  background: linear-gradient(90deg, var(--sky), var(--sky-light));
-  border-radius: 999px;
-  transition: width 0.25s ease;
+  background: linear-gradient(90deg, var(--sky), var(--navy));
+  border-radius: 4px;
+  transition: width 0.5s ease;
+  width: 0%;
 }
 
 .container {
-  width: 100%;
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 0 16px 80px;
 }
 
 .q-card {
   background: var(--white);
+  border-radius: 20px;
+  box-shadow: 0 4px 24px var(--shadow);
   border: 1px solid var(--border);
-  border-radius: 22px;
-  padding: 22px 17px 20px;
-  box-shadow: 0 6px 24px var(--shadow);
+  margin-top: 28px;
+  overflow: hidden;
+  display: block;
+  animation: fadeUp 0.4s ease forwards;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.q-header {
+  padding: 20px 24px 16px;
+  border-bottom: 1px solid var(--border);
+  background: var(--sky-pale);
 }
 
 .q-num {
-  display: inline-block;
-  margin-bottom: 12px;
-  padding: 5px 12px;
-  border-radius: 999px;
-  background: var(--sky-pale);
-  color: var(--navy-mid);
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
+  font-size: 16px;
+  letter-spacing: 3px;
+  color: var(--sky);
+  margin-bottom: 6px;
 }
 
 .question-main-instruction {
-  margin-bottom: 12px;
-  color: var(--text-mid);
   font-size: 14px;
-  line-height: 1.65;
+  line-height: 1.7;
+  color: var(--text-mid);
+  margin: 2px 0 10px;
 }
 
 .q-text {
-  font-family: "Noto Serif JP", serif;
+  font-family: 'Noto Serif JP', serif;
+  font-size: clamp(18px, 4.5vw, 22px);
+  font-weight: 400;
+  line-height: 1.7;
   color: var(--navy);
-  font-size: 20px;
-  font-weight: 700;
-  line-height: 1.65;
-  margin-bottom: 16px;
 }
 
 .q-image-wrap {
-  margin: 10px auto 18px;
-  text-align: center;
+  padding: 16px 16px 0;
 }
 
 .q-image-wrap img {
-  display: block;
   width: 100%;
-  max-width: 290px;
-  height: auto;
+  max-width: 260px;
+  display: block;
   margin: 0 auto;
-  border-radius: 16px;
-  border: 1px solid var(--border);
-  background: var(--white);
-}
-
-.opts-1col {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 12px;
-}
-
-.option-btn {
-  width: 100%;
-  padding: 13px 12px;
-  border: 1px solid var(--border);
-  border-radius: 17px;
-  background: #ffffff;
-  color: var(--text-dark);
-  text-align: left;
-  cursor: pointer;
-  box-shadow: 0 3px 12px rgba(26,58,92,0.06);
-}
-
-.option-btn.selected {
-  border-color: var(--sky);
-  background: #eef8ff;
-  box-shadow: 0 4px 16px rgba(91,163,217,0.18);
-}
-
-.option-layout {
-  display: flex;
-  gap: 12px;
-  align-items: center;
-}
-
-.option-img {
-  width: 82px;
-  min-width: 82px;
-  height: 82px;
-  object-fit: contain;
   border-radius: 12px;
-  background: #ffffff;
   border: 1px solid var(--border);
+  background: white;
+  padding: 8px;
 }
 
-.option-text {
-  flex: 1;
+/* 見本コード準拠：選択肢は縦型カード */
+.opts-1col {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 16px;
 }
 
-.option-label {
+.opt-card {
+  border: 2px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.22s ease;
+  background: var(--sky-bg);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.opt-card:hover {
+  border-color: var(--sky);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px var(--shadow);
+}
+
+.opt-card.selected {
+  border-color: var(--navy);
+  background: var(--sky-pale);
+  box-shadow: 0 4px 16px rgba(91,163,217,0.3);
+}
+
+.opt-card.text-only {
+  padding: 14px 14px 12px;
+  text-align: left;
+}
+
+.opt-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: contain;
+  background: white;
+  padding: 12px;
   display: block;
-  font-size: 16px;
-  font-weight: 700;
-  line-height: 1.55;
-  color: var(--navy);
 }
 
-.option-desc {
-  display: block;
-  margin-top: 3px;
-  font-size: 13px;
-  line-height: 1.55;
+.opt-label {
+  font-size: 18px;
+  color: var(--text-dark);
+  padding: 8px 6px 4px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.opt-card.text-only .opt-label {
+  padding: 0 0 6px;
+}
+
+.opt-desc {
+  font-size: 17px;
   color: var(--text-mid);
+  padding: 0 6px 10px;
+  line-height: 1.6;
+}
+
+.opt-card.text-only .opt-desc {
+  padding: 0;
+}
+
+.opt-check {
+  display: none;
+  color: var(--navy);
+  margin-right: 2px;
+}
+
+.opt-card.selected .opt-check {
+  display: inline;
 }
 
 .nav-area {
+  padding: 4px 16px 20px;
   display: flex;
   gap: 10px;
-  margin-top: 18px;
-}
-
-.btn-back,
-.btn-next {
-  flex: 1;
-  padding: 14px 12px;
-  border-radius: 999px;
-  font-size: 15px;
-  font-weight: 700;
-  cursor: pointer;
+  justify-content: flex-end;
+  align-items: center;
 }
 
 .btn-back {
+  background: transparent;
+  color: var(--text-light);
   border: 1px solid var(--border);
-  background: #ffffff;
-  color: var(--text-mid);
+  border-radius: 50px;
+  padding: 14px 24px;
+  font-size: 18px;
+  font-family: 'Noto Sans JP', sans-serif;
+  cursor: pointer;
 }
 
-.btn-next {
+.btn-next,
+.btn-copy-code {
+  background: linear-gradient(135deg, var(--sky) 0%, var(--navy) 100%);
+  color: white;
   border: none;
-  background: linear-gradient(180deg, var(--sky) 0%, #3f8fca 100%);
-  color: #ffffff;
-  box-shadow: 0 5px 15px rgba(91,163,217,0.25);
+  border-radius: 50px;
+  padding: 16px 36px;
+  font-size: 18px;
+  font-weight: 700;
+  font-family: 'Noto Sans JP', sans-serif;
+  cursor: pointer;
+  letter-spacing: 1px;
 }
 
 .btn-next:disabled {
-  opacity: 0.42;
+  opacity: 0.35;
   cursor: not-allowed;
 }
 
 .loading {
-  display: none;
-  margin: 18px 0;
-  padding: 18px 14px;
   text-align: center;
+  padding: 48px 16px;
+  display: none;
   color: var(--text-mid);
-  background: var(--white);
-  border: 1px solid var(--border);
-  border-radius: 18px;
+  font-size: 16px;
 }
 
 #result-section {
   display: none;
 }
 
+/* ===== 診断結果 ===== */
 .result-title-area {
-  margin: 12px 0 14px;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  border-radius: 0;
+  padding: 22px 0 10px;
+  margin-top: 20px;
   text-align: center;
 }
 
-.result-badge {
+.result-title-area .result-badge {
   display: inline-block;
-  padding: 6px 14px;
-  background: var(--sky-pale);
-  color: var(--navy);
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  font-size: 13px;
+  font-family: 'Noto Serif JP', serif;
+  font-size: 24px;
   font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--navy);
+  background: transparent;
+  border: none;
+  padding: 0;
+  border-radius: 0;
+  margin-bottom: 0;
 }
 
 .result-image-wrap {
-  margin: 14px 0 14px;
+  margin-top: 18px;
   text-align: center;
 }
 
 .result-image-wrap img {
   width: 100%;
-  max-width: 640px;
   height: auto;
   display: block;
   margin: 0 auto;
   border-radius: 18px;
   border: 1px solid var(--border);
-  box-shadow: 0 4px 20px var(--shadow);
-  background: var(--white);
+  background: white;
+  box-shadow: 0 4px 24px var(--shadow);
 }
 
-.result-image-error,
-.external-result-error {
-  margin: 14px 0;
-  padding: 15px 14px;
-  background: #ffffff;
-  border: 1px solid var(--border);
-  border-left: 4px solid #d96b5b;
+.result-card,
+.external-result-text .result-block,
+.external-result-text section,
+.external-result-text article {
+  background: var(--white);
   border-radius: 16px;
-  color: var(--text-mid);
-  font-size: 14px;
-  line-height: 1.75;
-  text-align: left;
-}
-
-.external-result-text {
-  margin-top: 10px;
-  word-break: normal;
-  overflow-wrap: break-word;
-  line-break: strict;
-}
-
-/* 外部HTML本文内の余白を、スマホで間延びしないように整える */
-.external-result-text .result-detail {
-  display: block;
-}
-
-.external-result-text .result-block {
-  margin: 0 0 13px !important;
-  padding: 17px 15px !important;
-  background: var(--white);
+  padding: 22px 22px;
+  margin-top: 16px;
+  box-shadow: 0 2px 12px var(--shadow);
   border: 1px solid var(--border);
   border-left: 4px solid var(--sky);
-  border-radius: 17px;
-  box-shadow: 0 3px 14px var(--shadow);
+}
+
+.result-card-title,
+.external-result-text h2,
+.external-result-text h3 {
+  font-size: 17px;
+  letter-spacing: 1px;
+  color: var(--sky);
+  margin-bottom: 8px;
+  font-weight: 700;
+  line-height: 1.7;
+}
+
+.result-card-note {
+  font-size: 14px;
+  color: var(--text-light);
+  margin-bottom: 10px;
+}
+
+.result-card-body {
+  font-size: 17px;
+  text-align: left;
+  line-height: 2.05;
+  color: var(--text-dark);
+  white-space: pre-line;
+}
+
+/* 外部HTML本文：見本コード寄せ。詰めすぎず、塊の余白を残す */
+.external-result-text {
+  margin-top: 14px;
   text-align: left;
 }
 
-.external-result-text .result-block h2 {
-  margin: 0 0 9px !important;
-  padding-bottom: 7px !important;
-  border-bottom: 1px solid var(--border);
-  color: var(--navy);
-  font-family: "Noto Serif JP", serif;
-  font-size: 18px !important;
-  line-height: 1.55 !important;
-}
-
-/* 「あなたを一言で表すと」は画像内にあるため非表示 */
 .external-result-text .result-block:first-child,
 .external-result-text [data-hide-title="true"],
 .external-result-text .result-catch,
@@ -390,229 +423,251 @@ a {
   display: none !important;
 }
 
-/* pタグが1文ごとでも、余白で間延びしないようにする */
+.external-result-text .result-block {
+  margin-top: 16px !important;
+  margin-bottom: 0 !important;
+}
+
+.external-result-text .result-block h2,
+.external-result-text .result-block h3 {
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 14px !important;
+}
+
 .external-result-text p {
-  margin: 0 0 2px !important;
-  padding: 0 !important;
+  font-size: 17px;
+  line-height: 2.05;
   color: var(--text-dark);
-  font-size: 16px !important;
-  line-height: 1.76 !important;
-  letter-spacing: 0.02em;
+  margin: 0 0 10px;
+  padding: 0;
 }
 
 .external-result-text p + p {
-  margin-top: 0 !important;
+  margin-top: 0;
 }
 
 .external-result-text p:empty {
-  display: none !important;
+  display: block;
+  height: 12px;
+  margin: 0;
 }
 
 .external-result-text br + br {
   display: block;
   content: "";
-  margin-top: 8px;
+  margin-top: 12px;
 }
 
 .external-result-text ul {
-  margin: 7px 0 12px !important;
-  padding: 0 !important;
   list-style: none;
+  margin: 12px 0 8px;
+  padding: 0;
 }
 
 .external-result-text li {
-  position: relative;
-  margin: 0 0 6px !important;
-  padding: 8px 10px 8px 28px !important;
+  font-size: 17px;
+  line-height: 1.9;
+  color: var(--text-dark);
   background: var(--sky-pale);
   border: 1px solid var(--border);
   border-radius: 12px;
-  color: var(--text-dark);
-  font-size: 16px !important;
-  line-height: 1.72 !important;
+  padding: 10px 12px;
+  margin-bottom: 9px;
 }
 
-.external-result-text li::before {
-  content: "";
-  position: absolute;
-  left: 12px;
-  top: 1.18em;
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: var(--sky);
-}
-
-.line-section {
-  margin: 18px 0 0;
-  padding: 20px 16px 22px;
-  background: #ffffff;
+.external-result-error,
+.result-image-error {
+  background: var(--white);
+  border-radius: 16px;
+  padding: 20px 22px;
+  margin-top: 16px;
+  box-shadow: 0 2px 12px var(--shadow);
   border: 1px solid var(--border);
-  border-radius: 22px;
-  box-shadow: 0 5px 22px var(--shadow);
+  border-left: 4px solid #d96b5b;
+  color: var(--text-mid);
+  font-size: 16px;
+  line-height: 1.9;
+  text-align: left;
+}
+
+/* ===== LINE導線 ===== */
+.copy-code-box {
+  background: var(--white);
+  border-radius: 16px;
+  padding: 22px;
+  margin-top: 14px;
+  box-shadow: 0 2px 12px var(--shadow);
+  border: 1px solid var(--border);
   text-align: center;
 }
 
-.line-benefits {
-  margin: 0 0 16px;
-  padding: 14px 13px;
-  background: #f3fbf5;
-  border: 1px solid rgba(6,199,85,0.22);
-  border-radius: 17px;
-  color: #245c3a;
-  font-size: 14px;
-  line-height: 1.78;
-  text-align: left;
-  white-space: pre-line;
-}
-
-.copy-code-box {
-  margin: 14px 0 16px;
-  padding: 14px;
-  border-radius: 18px;
-  background: var(--sky-bg);
-  border: 1px solid var(--border);
-}
-
 .copy-code-label {
-  margin-bottom: 5px;
+  font-size: 16px;
   color: var(--text-mid);
-  font-size: 13px;
-  font-weight: 700;
+  margin-bottom: 4px;
 }
 
 .copy-code-value {
-  margin-bottom: 10px;
+  font-size: 22px;
+  font-weight: 700;
   color: var(--navy);
-  font-size: 24px;
-  font-weight: 800;
-  letter-spacing: 0.08em;
+  background: var(--sky-pale);
+  border-radius: 10px;
+  padding: 12px;
+  margin-bottom: 14px;
+  letter-spacing: 2px;
 }
 
-.btn-copy-code {
-  width: 100%;
-  max-width: 260px;
-  padding: 12px 12px;
-  border: none;
-  border-radius: 999px;
-  background: var(--navy);
-  color: #ffffff;
-  font-size: 15px;
-  font-weight: 700;
-  cursor: pointer;
+.line-section {
+  background: var(--white);
+  border-radius: 16px;
+  padding: 26px 22px;
+  margin-top: 18px;
+  text-align: center;
+  box-shadow: 0 2px 12px var(--shadow);
+  border: 1px solid var(--border);
+}
+
+.line-benefits,
+.line-note {
+  text-align: left;
+  white-space: pre-line;
+  line-height: 2;
+}
+
+.line-benefits {
+  background: var(--sky-pale);
+  border-radius: 10px;
+  padding: 16px 20px;
+  margin-bottom: 16px;
+  font-size: 17px;
+  color: var(--text-dark);
+  border: 1px solid var(--border);
 }
 
 .cta-lead {
-  margin: 12px 0 14px;
-  color: var(--text-dark);
-  font-size: 15px;
-  line-height: 1.75;
+  font-size: 17px;
+  color: var(--navy);
+  font-weight: 700;
+  line-height: 1.8;
+  margin: 14px 0 12px;
+  text-align: center;
   white-space: pre-line;
 }
 
 .btn-line {
-  display: block;
-  width: 100%;
-  max-width: 380px;
-  margin: 0 auto;
-  padding: 16px 14px;
-  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background: var(--line);
-  color: #ffffff;
-  font-size: 17px;
-  font-weight: 800;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  padding: 20px 24px;
+  font-size: 19px;
+  font-weight: 700;
+  font-family: 'Noto Sans JP', sans-serif;
+  cursor: pointer;
   text-decoration: none;
-  box-shadow: 0 6px 16px rgba(6,199,85,0.25);
+  width: 100%;
+  position: relative;
+  z-index: 20;
+  pointer-events: auto;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .line-note {
-  margin: 9px 0 0;
-  color: var(--text-light);
   font-size: 12px;
+  color: var(--text-light);
+  line-height: 1.8;
+  margin-top: 10px;
+}
+
+.line-section,
+.copy-code-box,
+.btn-copy-code,
+.btn-line {
+  position: relative;
+  z-index: 9999;
+  pointer-events: auto !important;
+}
+
+.btn-copy-code,
+.btn-line,
+.fv-cta-button {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 
 .footer {
-  margin: 26px 0 0;
   text-align: center;
+  padding: 40px 0 20px;
+  font-size: 16px;
   color: var(--text-light);
-  font-size: 12px;
 }
 
-@media (max-width: 600px) {
-  body {
-    background: #f6fbff;
-  }
-
+@media screen and (max-width: 480px) {
   .fv-area {
-    max-width: 430px;
-    padding-bottom: 30px;
+    padding: 0 8px 24px;
   }
 
   .fv-cta-button {
+    max-width: 420px;
     margin-top: 22px;
-    font-size: 18px;
-    padding: 17px 16px;
+    font-size: 17px;
+    padding: 16px 16px;
   }
+}
 
-  #diagnosisApp {
-    max-width: 430px;
-    padding: 0 12px 38px;
-  }
-
-  .q-card {
-    padding: 20px 15px 18px;
-    border-radius: 20px;
-  }
-
+@media (max-width: 600px) {
   .q-text {
     font-size: 19px;
+    line-height: 1.8;
   }
 
-  .option-layout {
-    gap: 10px;
+  .opt-label {
+    font-size: 17px;
   }
 
-  .option-img {
-    width: 76px;
-    min-width: 76px;
-    height: 76px;
+  .opt-desc {
+    font-size: 16px;
   }
 
-  .option-label {
-    font-size: 15px;
+  .opt-card img {
+    height: 200px;
   }
 
-  .option-desc {
-    font-size: 12px;
+  .btn-next,
+  .btn-copy-code {
+    font-size: 17px;
+    padding: 16px 32px;
   }
 
-  .result-image-wrap {
-    margin: 12px 0 12px;
+  .btn-back {
+    font-size: 16px;
+    padding: 14px 20px;
   }
 
-  .external-result-text {
-    margin-top: 8px;
+  .result-card-body,
+  .external-result-text p {
+    font-size: 17px;
+    line-height: 2.05;
   }
 
-  .external-result-text .result-block {
-    margin-bottom: 12px !important;
-    padding: 16px 14px !important;
-  }
-
-  .external-result-text .result-block h2 {
-    font-size: 17px !important;
-    margin-bottom: 8px !important;
+  .external-result-text .result-block,
+  .external-result-text section,
+  .external-result-text article {
+    padding: 20px 18px;
+    margin-top: 17px !important;
   }
 
   .external-result-text p {
-    font-size: 15.5px !important;
-    line-height: 1.72 !important;
-    margin-bottom: 1px !important;
+    margin-bottom: 11px;
   }
 
-  .external-result-text li {
-    font-size: 15.5px !important;
-    line-height: 1.7 !important;
+  .external-result-text p:empty {
+    height: 13px;
   }
 }
 </style>
@@ -620,6 +675,7 @@ a {
 
 <body>
 
+<!-- FVバナー＋CTAエリア -->
 <section class="fv-area" id="fvArea">
   <div class="fv-banner">
     <img src="image/fv/fv-main.png" alt="才能コンパス診断">
@@ -630,6 +686,7 @@ a {
   </button>
 </section>
 
+<!-- 診断本体：最初は非表示 -->
 <div id="diagnosisApp" style="display:none;">
   <div class="header">
     <div class="progress-wrap">
@@ -649,7 +706,11 @@ a {
     <div class="q-card" id="questionCard">
       <div class="q-header">
         <div class="q-num" id="questionNumber">QUESTION 01 / 04</div>
-        <div class="question-main-instruction">利き手を見ながら、直感で質問に答えてください。</div>
+
+        <div class="question-main-instruction">
+          利き手を見ながら、直感で質問に答えてください。
+        </div>
+
         <div class="q-text" id="questionText"></div>
       </div>
 
@@ -694,17 +755,15 @@ a {
 
         <p class="line-note">※無料・1分で登録できます</p>
       </div>
-    </div>
 
-    <div class="footer">ビジネス手相診断士 輝路(kiro) © 2026</div>
+      <div class="footer">ビジネス手相診断士 輝路(kiro) © 2026</div>
+    </div>
   </div>
 </div>
 
 <script>
 const COMMON_TEXTS = {
-  receiveGuide:
-`〖診断結果の受け取り方〗
-
+  receiveGuide: `【診断結果の受け取り方】
 1. 下記の「診断コードをコピーする」ボタンを押す。
 2. 「LINE登録に進む」ボタンを押す。
 3. LINEでコピーした診断コードを送る。
@@ -714,8 +773,7 @@ const COMMON_TEXTS = {
 
 ※ひとつひとつ内容を確認しながらお届けしているため、少しお時間をいただく場合があります。`,
 
-  ctaLead:
-`強みを活かして、次の一歩を踏み出したい方は
+  ctaLead: `強みを活かして、次の一歩を踏み出したい方は
 今すぐ診断結果を受け取ってください。`
 };
 
@@ -733,283 +791,371 @@ const IMAGE_ASSETS = {
 
 const QUESTION_FLOW = [
   {
-    key: "q3",
-    question: "下記のような線がありますか？（マスカケ）",
-    imageUrl: "https://cdn.peraichi.com/userData/d6621e34-3268-445c-bb20-ddb971833921/img/eaf70000-69a9-4b09-87aa-c4f83616156e/_________200_x_200_px___11_.png",
+    key: 'q3',
+    question: '下記のような線がありますか？（マスカケ）',
+    imageUrl: 'https://cdn.peraichi.com/userData/d6621e34-3268-445c-bb20-ddb971833921/img/eaf70000-69a9-4b09-87aa-c4f83616156e/_________200_x_200_px___11_.png',
     choices: [
-      { value: "M", label: "ある", description: "" },
-      { value: "NONE", label: "ない", description: "" }
+      { value: 'M', label: 'ある', description: '' },
+      { value: 'NONE', label: 'ない', description: '' }
     ]
   },
   {
-    key: "q2",
-    question: "手のひらの中央あたりにある横線（知能線）は、どこから始まっていますか？",
-    imageUrl: "",
-    choices: [
-      { value: "1", label: "生命線の起点近くから", description: "", imageUrl: IMAGE_ASSETS.Q2_1 },
-      { value: "2", label: "生命線と離れている", description: "", imageUrl: IMAGE_ASSETS.Q2_2 },
-      { value: "3", label: "生命線の途中から", description: "", imageUrl: IMAGE_ASSETS.Q2_3 }
-    ]
-  },
-  {
-    key: "q4",
-    question: "知能線は、どこまで伸びていますか？",
-    imageUrl: "",
+    key: 'q2',
+    question: '手のひらの中央あたりにある横線（知能線）は、どこから始まっていますか？',
+    imageUrl: '',
     choices: [
       {
-        value: "X",
-        label: "小指の下まで",
-        description: "長め・横に伸びている",
-        imageUrl: "https://cdn.peraichi.com/userData/d6621e34-3268-445c-bb20-ddb971833921/img/ed6341d0-714c-013e-b9fa-0a58a9feac02/4.png"
+        value: '1',
+        label: '生命線の起点近くから',
+        description: '',
+        imageUrl: IMAGE_ASSETS.Q2_1
       },
       {
-        value: "Y",
-        label: "薬指の下くらい",
-        description: "短め・横に伸びている",
-        imageUrl: "https://cdn.peraichi.com/userData/d6621e34-3268-445c-bb20-ddb971833921/img/ed024c50-714c-013e-0475-0a58a9feac02/5.png"
+        value: '2',
+        label: '生命線と離れている',
+        description: '',
+        imageUrl: IMAGE_ASSETS.Q2_2
       },
       {
-        value: "Z",
-        label: "手首方面まで",
-        description: "斜め下・手首方面に流れている",
-        imageUrl: "https://cdn.peraichi.com/userData/d6621e34-3268-445c-bb20-ddb971833921/img/033891d0-714d-013e-ba02-0a58a9feac02/6.png"
-      },
-      {
-        value: "W",
-        label: "二股に分かれている",
-        description: "一方は小指の下までまっすぐに伸びていて、もう一方は、手首方面に流れている",
-        imageUrl: "https://cdn.peraichi.com/userData/d6621e34-3268-445c-bb20-ddb971833921/img/23a9ac40-2d94-4509-866f-df4d30e19df1/_________200_x_200_px___12_.png"
+        value: '3',
+        label: '生命線の途中から',
+        description: '',
+        imageUrl: IMAGE_ASSETS.Q2_3
       }
     ]
   },
   {
-    key: "q1",
-    question: "次の5つの手型の中で一番近いものを選んでください",
-    imageUrl: "",
+    key: 'q4',
+    question: '知能線は、どこまで伸びていますか？',
+    imageUrl: '',
     choices: [
       {
-        value: "A",
-        label: "現実的でタフな手",
-        description: "手のひらが正方形に近く、縦横がほぼ同じ長さ／爪が四角い／指は短め／骨太タイプの方によく見られる",
+        value: 'X',
+        label: '小指の下まで',
+        description: '長め・横に伸びている',
+        imageUrl: 'https://cdn.peraichi.com/userData/d6621e34-3268-445c-bb20-ddb971833921/img/ed6341d0-714c-013e-b9fa-0a58a9feac02/4.png'
+      },
+      {
+        value: 'Y',
+        label: '薬指の下くらい',
+        description: '短め・横に伸びている',
+        imageUrl: 'https://cdn.peraichi.com/userData/d6621e34-3268-445c-bb20-ddb971833921/img/ed024c50-714c-013e-0475-0a58a9feac02/5.png'
+      },
+      {
+        value: 'Z',
+        label: '手首方面まで',
+        description: '斜め下・手首方面に流れている',
+        imageUrl: 'https://cdn.peraichi.com/userData/d6621e34-3268-445c-bb20-ddb971833921/img/033891d0-714d-013e-ba02-0a58a9feac02/6.png'
+      },
+      {
+        value: 'W',
+        label: '二股に分かれている',
+        description: '一方は小指の下までまっすぐに伸びていて、もう一方は、手首方面に流れている',
+        imageUrl: 'https://cdn.peraichi.com/userData/d6621e34-3268-445c-bb20-ddb971833921/img/23a9ac40-2d94-4509-866f-df4d30e19df1/_________200_x_200_px___12_.png'
+      }
+    ]
+  },
+  {
+    key: 'q1',
+    question: '次の5つの手型の中で一番近いものを選んでください',
+    imageUrl: '',
+    choices: [
+      {
+        value: 'A',
+        label: '現実的でタフな手',
+        description: '手のひらが正方形に近く、縦横がほぼ同じ長さ／爪が四角い／指は短め／骨太タイプの方によく見られる',
         imageUrl: IMAGE_ASSETS.Q1_A
       },
       {
-        value: "B",
-        label: "感受性豊かな手",
-        description: "手のひらが縦に長い／指先が丸い",
+        value: 'B',
+        label: '感受性豊かな手',
+        description: '手のひらが縦に長い／指先が丸い',
         imageUrl: IMAGE_ASSETS.Q1_B
       },
       {
-        value: "C",
-        label: "分析好きの手",
-        description: "指の関節がはっきりしている／指は比較的長い／骨の目立つ細身体型の方によく見られる",
+        value: 'C',
+        label: '分析好きの手',
+        description: '指の関節がはっきりしている／指は比較的長い／骨の目立つ細身体型の方によく見られる',
         imageUrl: IMAGE_ASSETS.Q1_C
       },
       {
-        value: "D",
-        label: "エネルギッシュな手",
-        description: "指先がヘラのように広がっている／手のひらは縦よりも横がやや長い",
+        value: 'D',
+        label: 'エネルギッシュな手',
+        description: '指先がヘラのように広がっている／手のひらは縦よりも横がやや長い',
         imageUrl: IMAGE_ASSETS.Q1_D
       },
       {
-        value: "E",
-        label: "感性高い手",
-        description: "指は長くて細く、先がとがっている／手は縦に長く、繊細な印象／華奢な細身体型の方によく見られる",
+        value: 'E',
+        label: '感性高い手',
+        description: '指は長くて細く、先がとがっている／手は縦に長く、繊細な印象／華奢な細身体型の方によく見られる',
         imageUrl: IMAGE_ASSETS.Q1_E
       }
     ]
   }
 ];
 
-const state = {
-  currentIndex: 0,
-  answers: {}
-};
+let answers = {};
+let currentQuestionKey = 'q3';
 
-const $ = (id) => document.getElementById(id);
+const fvAreaEl = document.getElementById('fvArea');
+const diagnosisAppEl = document.getElementById('diagnosisApp');
+const startDiagnosisBtnEl = document.getElementById('startDiagnosisBtn');
+const questionCardEl = document.getElementById('questionCard');
+const questionNumberEl = document.getElementById('questionNumber');
+const questionTextEl = document.getElementById('questionText');
+const questionImageWrapEl = document.getElementById('questionImageWrap');
+const questionImageEl = document.getElementById('questionImage');
+const optionsContainerEl = document.getElementById('optionsContainer');
+const backBtnEl = document.getElementById('backBtn');
+const nextBtnEl = document.getElementById('nextBtn');
+const loadingMsgEl = document.getElementById('loadingMsg');
+const resultSectionEl = document.getElementById('result-section');
+const progressFillEl = document.getElementById('progressFill');
+const resultImageWrapEl = document.getElementById('resultImageWrap');
+const externalResultTextEl = document.getElementById('externalResultText');
+const receiveGuideEl = document.getElementById('receiveGuide');
+const ctaLeadEl = document.getElementById('ctaLead');
+const copyCodeValueEl = document.getElementById('copyCodeValue');
+const copyCodeBtnEl = document.getElementById('copyCodeBtn');
 
-$("startDiagnosisBtn").addEventListener("click", () => {
-  $("fvArea").style.display = "none";
-  $("diagnosisApp").style.display = "block";
-  renderQuestion();
-  window.scrollTo({ top: 0, behavior: "smooth" });
+startDiagnosisBtnEl.addEventListener('click', function() {
+  fvAreaEl.style.display = 'none';
+  diagnosisAppEl.style.display = 'block';
+  renderQuestion('q3');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
-$("backBtn").addEventListener("click", () => {
-  if (state.currentIndex === 0) {
-    $("diagnosisApp").style.display = "none";
-    $("fvArea").style.display = "block";
-    window.scrollTo({ top: 0, behavior: "smooth" });
-    return;
-  }
+backBtnEl.addEventListener('click', goBack);
+nextBtnEl.addEventListener('click', goNext);
 
-  state.currentIndex--;
-  renderQuestion();
-  window.scrollTo({ top: 0, behavior: "smooth" });
-});
-
-$("nextBtn").addEventListener("click", () => {
-  if (!state.answers[QUESTION_FLOW[state.currentIndex].key]) return;
-
-  if (state.currentIndex < QUESTION_FLOW.length - 1) {
-    state.currentIndex++;
-    renderQuestion();
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  } else {
-    showResult();
-  }
-});
-
-$("copyCodeBtn").addEventListener("click", async () => {
-  const code = $("copyCodeValue").textContent.trim();
+copyCodeBtnEl.addEventListener('click', async function() {
+  const code = copyCodeValueEl.textContent.trim();
 
   try {
     await navigator.clipboard.writeText(code);
-    $("copyCodeBtn").innerHTML = "コピーしました";
-    setTimeout(() => {
-      $("copyCodeBtn").innerHTML = "診断コードを<br>コピーする";
+    copyCodeBtnEl.innerHTML = 'コピーしました';
+    setTimeout(function() {
+      copyCodeBtnEl.innerHTML = '診断コードを<br>コピーする';
     }, 1600);
-  } catch (e) {
-    alert("コピーできない場合は、診断コードを長押ししてコピーしてください。");
+  } catch (error) {
+    alert('コピーできない場合は、診断コードを長押ししてコピーしてください。');
   }
 });
 
-function renderQuestion() {
-  const q = QUESTION_FLOW[state.currentIndex];
-
-  $("questionCard").style.display = "block";
-  $("result-section").style.display = "none";
-  $("loadingMsg").style.display = "none";
-
-  $("questionNumber").textContent = `QUESTION ${String(state.currentIndex + 1).padStart(2, "0")} / 04`;
-  $("questionText").textContent = q.question;
-
-  const progress = ((state.currentIndex + 1) / QUESTION_FLOW.length) * 100;
-  $("progressFill").style.width = `${progress}%`;
-
-  for (let i = 1; i <= 4; i++) {
-    $("pl" + i).classList.toggle("active", i === state.currentIndex + 1);
-  }
-
-  if (q.imageUrl) {
-    $("questionImageWrap").style.display = "block";
-    $("questionImage").src = q.imageUrl;
-    $("questionImage").alt = q.question;
-  } else {
-    $("questionImageWrap").style.display = "none";
-    $("questionImage").src = "";
-  }
-
-  $("optionsContainer").innerHTML = "";
-
-  q.choices.forEach(choice => {
-    const btn = document.createElement("button");
-    btn.type = "button";
-    btn.className = "option-btn";
-    if (state.answers[q.key] === choice.value) {
-      btn.classList.add("selected");
-    }
-
-    const hasImage = !!choice.imageUrl;
-
-    btn.innerHTML = `
-      <span class="option-layout">
-        ${hasImage ? `<img class="option-img" src="${choice.imageUrl}" alt="${escapeHtml(choice.label)}">` : ""}
-        <span class="option-text">
-          <span class="option-label">${escapeHtml(choice.label)}</span>
-          ${choice.description ? `<span class="option-desc">${escapeHtml(choice.description)}</span>` : ""}
-        </span>
-      </span>
-    `;
-
-    btn.addEventListener("click", () => {
-      state.answers[q.key] = choice.value;
-      $("nextBtn").disabled = false;
-
-      document.querySelectorAll(".option-btn").forEach(el => el.classList.remove("selected"));
-      btn.classList.add("selected");
-    });
-
-    $("optionsContainer").appendChild(btn);
-  });
-
-  $("nextBtn").disabled = !state.answers[q.key];
-  $("nextBtn").textContent = state.currentIndex === QUESTION_FLOW.length - 1 ? "診断結果を見る" : "次へ進む";
+function getQuestionConfig(key) {
+  return QUESTION_FLOW.find(q => q.key === key);
 }
 
-function buildResultCode() {
-  const handType = state.answers.q1;
-  const start = state.answers.q2;
-  const masakake = state.answers.q3;
-  const end = state.answers.q4;
+function isQuestionAnswered(key) {
+  return !!answers[key];
+}
 
-  if (masakake === "M") {
-    return `${handType}${start}M`;
+function getVisibleFlowKeys() {
+  if (answers.q3 === 'M') {
+    return ['q3', 'q2', 'q1'];
   }
 
-  return `${handType}${start}${end}`;
+  return ['q3', 'q2', 'q4', 'q1'];
+}
+
+function getNextQuestionKey(key) {
+  if (key === 'q3') return 'q2';
+  if (key === 'q2') return answers.q3 === 'M' ? 'q1' : 'q4';
+  if (key === 'q4') return 'q1';
+  return null;
+}
+
+function getPreviousQuestionKey(key) {
+  if (key === 'q1') return answers.q3 === 'M' ? 'q2' : 'q4';
+  if (key === 'q4') return 'q2';
+  if (key === 'q2') return 'q3';
+  return null;
+}
+
+function getNextButtonLabel(key) {
+  if (key === 'q1') return '診断結果を見る';
+  return '次へ進む';
+}
+
+function updateProgress() {
+  const flowKeys = getVisibleFlowKeys();
+  const currentIndex = Math.max(0, flowKeys.indexOf(currentQuestionKey));
+
+  progressFillEl.style.width = (((currentIndex + 1) / flowKeys.length) * 100) + '%';
+
+  QUESTION_FLOW.forEach((q, i) => {
+    const el = document.getElementById('pl' + (i + 1));
+    if (!el) return;
+
+    el.className = 'progress-lbl';
+    el.style.display = flowKeys.includes(q.key) ? 'block' : 'none';
+
+    if (isQuestionAnswered(q.key) && q.key !== currentQuestionKey) {
+      el.classList.add('done');
+    }
+
+    if (q.key === currentQuestionKey) {
+      el.classList.add('active');
+    }
+  });
+}
+
+function renderQuestion(key) {
+  const q = getQuestionConfig(key);
+  currentQuestionKey = key;
+
+  const flowKeys = getVisibleFlowKeys();
+  const displayIndex = Math.max(0, flowKeys.indexOf(key)) + 1;
+
+  questionCardEl.style.display = 'block';
+  resultSectionEl.style.display = 'none';
+  loadingMsgEl.style.display = 'none';
+
+  questionNumberEl.textContent = `QUESTION ${String(displayIndex).padStart(2, '0')} / ${String(flowKeys.length).padStart(2, '0')}`;
+  questionTextEl.textContent = q.question;
+
+  if (q.imageUrl) {
+    questionImageWrapEl.style.display = 'block';
+    questionImageEl.src = q.imageUrl;
+    questionImageEl.alt = q.question;
+  } else {
+    questionImageWrapEl.style.display = 'none';
+    questionImageEl.src = '';
+  }
+
+  const selectedValue = answers[key] || '';
+
+  optionsContainerEl.innerHTML = q.choices.map(choice => {
+    const isSelected = selectedValue === choice.value;
+    const hasImage = !!choice.imageUrl;
+    const hasDesc = !!(choice.description && choice.description.trim());
+
+    return `
+      <div class="opt-card ${hasImage ? '' : 'text-only'} ${isSelected ? 'selected' : ''}" onclick="selectChoice('${q.key}', '${escapeHtml(choice.value)}', this)">
+        ${hasImage ? `<img src="${escapeHtml(choice.imageUrl)}" alt="${escapeHtml(choice.label)}">` : ''}
+        <div class="opt-label"><span class="opt-check">✓</span>${escapeHtml(choice.label)}</div>
+        ${hasDesc ? `<div class="opt-desc">${escapeHtml(choice.description)}</div>` : ''}
+      </div>
+    `;
+  }).join('');
+
+  backBtnEl.style.display = key === 'q3' ? 'none' : 'inline-block';
+  nextBtnEl.disabled = !isQuestionAnswered(key);
+  nextBtnEl.textContent = getNextButtonLabel(key);
+
+  updateProgress();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function selectChoice(questionKey, value, clickedElement) {
+  answers[questionKey] = value;
+
+  if (questionKey === 'q3' && value === 'M') {
+    delete answers.q4;
+  }
+
+  optionsContainerEl.querySelectorAll('.opt-card').forEach(card => {
+    card.classList.remove('selected');
+  });
+
+  clickedElement.classList.add('selected');
+  nextBtnEl.disabled = false;
+  nextBtnEl.textContent = getNextButtonLabel(questionKey);
+
+  updateProgress();
+}
+
+function goNext() {
+  if (!isQuestionAnswered(currentQuestionKey)) return;
+
+  const nextKey = getNextQuestionKey(currentQuestionKey);
+
+  if (nextKey === null) {
+    diagnose();
+    return;
+  }
+
+  renderQuestion(nextKey);
+}
+
+function goBack() {
+  const prevKey = getPreviousQuestionKey(currentQuestionKey);
+
+  if (prevKey) {
+    renderQuestion(prevKey);
+  }
+}
+
+function buildDiagnosisCode() {
+  if (answers.q3 === 'M') {
+    return answers.q1 + answers.q2 + 'M';
+  }
+
+  return answers.q1 + answers.q2 + answers.q4;
+}
+
+function diagnose() {
+  questionCardEl.style.display = 'none';
+  loadingMsgEl.style.display = 'block';
+  progressFillEl.style.width = '100%';
+
+  setTimeout(function() {
+    loadingMsgEl.style.display = 'none';
+    showResult();
+  }, 500);
 }
 
 async function showResult() {
-  const code = buildResultCode();
+  const code = buildDiagnosisCode();
 
-  $("questionCard").style.display = "none";
-  $("loadingMsg").style.display = "block";
-  $("result-section").style.display = "none";
-
-  $("copyCodeValue").textContent = code;
-  $("receiveGuide").textContent = COMMON_TEXTS.receiveGuide;
-  $("ctaLead").textContent = COMMON_TEXTS.ctaLead;
+  copyCodeValueEl.textContent = code;
+  receiveGuideEl.textContent = COMMON_TEXTS.receiveGuide;
+  ctaLeadEl.textContent = COMMON_TEXTS.ctaLead;
 
   renderResultImage(code);
   await loadExternalResultText(code);
 
-  $("loadingMsg").style.display = "none";
-  $("result-section").style.display = "block";
-
-  window.scrollTo({ top: 0, behavior: "smooth" });
+  resultSectionEl.style.display = 'block';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 function renderResultImage(code) {
-  const wrap = $("resultImageWrap");
-  wrap.innerHTML = "";
+  resultImageWrapEl.innerHTML = '';
 
-  const img = document.createElement("img");
+  const img = document.createElement('img');
   img.src = `image/results/${code}.png`;
   img.alt = `${code}の診断結果`;
 
-  img.onerror = () => {
-    wrap.innerHTML = `
+  img.onerror = function() {
+    resultImageWrapEl.innerHTML = `
       <div class="result-image-error">
         診断結果画像を読み込めませんでした。<br>
-        image/results/${code}.png がGitHubにアップロードされているか確認してください。
+        image/results/${escapeHtml(code)}.png がGitHubにアップロードされているか確認してください。
       </div>
     `;
   };
 
-  wrap.appendChild(img);
+  resultImageWrapEl.appendChild(img);
 }
 
 async function loadExternalResultText(code) {
-  const target = $("externalResultText");
-  target.innerHTML = "";
+  externalResultTextEl.innerHTML = '';
 
   try {
-    const response = await fetch(`results/${code}.html`, { cache: "no-store" });
+    const response = await fetch(`results/${code}.html`, { cache: 'no-store' });
 
     if (!response.ok) {
-      throw new Error("HTML file not found");
+      throw new Error('HTML file not found');
     }
 
     const html = await response.text();
-    const cleaned = cleanExternalHtml(html);
-    target.innerHTML = cleaned;
+    externalResultTextEl.innerHTML = cleanExternalHtml(html);
 
   } catch (error) {
-    target.innerHTML = `
+    externalResultTextEl.innerHTML = `
       <div class="external-result-error">
         診断結果本文を読み込めませんでした。<br>
-        results/${code}.html がGitHubにアップロードされているか確認してください。
+        results/${escapeHtml(code)}.html がGitHubにアップロードされているか確認してください。
       </div>
     `;
   }
@@ -1017,37 +1163,41 @@ async function loadExternalResultText(code) {
 
 function cleanExternalHtml(html) {
   const parser = new DOMParser();
-  const doc = parser.parseFromString(html, "text/html");
+  const doc = parser.parseFromString(html, 'text/html');
 
-  doc.querySelectorAll("script, style").forEach(el => el.remove());
+  doc.querySelectorAll('script, style').forEach(el => el.remove());
 
   const body = doc.body || doc;
 
   removeOneWordBlock(body);
+  normalizeEmptyParagraphs(body);
 
   return body.innerHTML;
 }
 
 function removeOneWordBlock(root) {
-  const blocks = Array.from(root.querySelectorAll(".result-block"));
+  const blocks = Array.from(root.querySelectorAll('.result-block'));
 
   blocks.forEach(block => {
-    const text = block.textContent.replace(/\s+/g, "");
+    const text = block.textContent.replace(/\s+/g, '');
+
     if (
-      text.includes("あなたを一言で表すと") ||
-      text.includes("あなたをひと言で表すと")
+      text.includes('あなたを一言で表すと') ||
+      text.includes('あなたをひと言で表すと')
     ) {
       block.remove();
     }
   });
 
-  Array.from(root.querySelectorAll("h1, h2, h3, p, div")).forEach(el => {
-    const text = el.textContent.replace(/\s+/g, "");
+  Array.from(root.querySelectorAll('h1, h2, h3, p, div')).forEach(el => {
+    const text = el.textContent.replace(/\s+/g, '');
+
     if (
-      text === "あなたを一言で表すと" ||
-      text === "あなたをひと言で表すと"
+      text === 'あなたを一言で表すと' ||
+      text === 'あなたをひと言で表すと'
     ) {
-      const parentBlock = el.closest(".result-block");
+      const parentBlock = el.closest('.result-block');
+
       if (parentBlock) {
         parentBlock.remove();
       } else {
@@ -1057,13 +1207,23 @@ function removeOneWordBlock(root) {
   });
 }
 
+function normalizeEmptyParagraphs(root) {
+  Array.from(root.querySelectorAll('p')).forEach(p => {
+    const text = p.textContent.replace(/\s+/g, '');
+
+    if (!text) {
+      p.innerHTML = '&nbsp;';
+    }
+  });
+}
+
 function escapeHtml(str) {
   return String(str)
-    .replaceAll("&", "&amp;")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;")
-    .replaceAll('"', "&quot;")
-    .replaceAll("'", "&#039;");
+    .replaceAll('&', '&amp;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;')
+    .replaceAll('"', '&quot;')
+    .replaceAll("'", '&#039;');
 }
 </script>
 
