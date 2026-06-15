@@ -508,6 +508,108 @@ body {
 #diagnosisApp .header { padding: 14px 24px 12px; }
 #diagnosisApp .progress-wrap { margin-top: 0; }
 
+
+/* 2026-06-15 update: GitHub管理の診断結果画像＋外部HTML本文を表示 */
+.result-image-wrap {
+  margin: 18px 0 18px;
+  text-align: center;
+}
+.result-image-wrap img {
+  width: 100%;
+  max-width: 640px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  box-shadow: 0 4px 24px var(--shadow);
+  background: var(--white);
+}
+.result-image-error, .external-result-error {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-left: 4px solid #d96b5b;
+  border-radius: 16px;
+  padding: 18px 16px;
+  margin: 16px 0;
+  color: var(--text-mid);
+  font-size: 15px;
+  line-height: 1.8;
+  text-align: left;
+}
+.external-result-text {
+  margin-top: 16px;
+}
+.external-result-text .result-detail {
+  display: block;
+}
+.external-result-text .result-block {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--sky);
+  border-radius: 18px;
+  box-shadow: 0 3px 16px var(--shadow);
+  padding: 20px 18px;
+  margin: 0 0 18px;
+  text-align: left;
+}
+.external-result-text .result-block h2 {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 20px;
+  line-height: 1.6;
+  color: var(--navy);
+  margin: 0 0 14px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+}
+.external-result-text .result-block p {
+  font-size: 17px;
+  line-height: 2.05;
+  color: var(--text-dark);
+  margin: 0 0 16px;
+}
+.external-result-text .result-block p:last-child {
+  margin-bottom: 0;
+}
+.external-result-text .result-block ul {
+  list-style: none;
+  padding: 0;
+  margin: 8px 0 16px;
+}
+.external-result-text .result-block li {
+  position: relative;
+  font-size: 17px;
+  line-height: 1.85;
+  color: var(--text-dark);
+  padding: 8px 10px 8px 28px;
+  margin-bottom: 8px;
+  background: var(--sky-pale);
+  border-radius: 12px;
+  border: 1px solid var(--border);
+}
+.external-result-text .result-block li::before {
+  content: '';
+  position: absolute;
+  left: 12px;
+  top: 1.22em;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--sky);
+}
+/* 外部HTML本文に切り替えるため、旧登録後プレビューは非表示 */
+#result-section .result-hero,
+#postPreviewCards {
+  display: none !important;
+}
+@media (max-width: 600px) {
+  .result-image-wrap { margin: 16px 0 16px; }
+  .external-result-text .result-block { padding: 18px 16px; border-radius: 16px; margin-bottom: 16px; }
+  .external-result-text .result-block h2 { font-size: 19px; }
+  .external-result-text .result-block p,
+  .external-result-text .result-block li { font-size: 16px; line-height: 2; }
+}
+
 </style>
 </head>
 <body>
@@ -515,7 +617,7 @@ body {
 <section class="fv-area" id="fvArea">
   <div class="fv-banner">
     <img
-      src="https://cdn.peraichi.com/userData/d6621e34-3268-445c-bb20-ddb971833921/img/e5ed6745-c9e0-4b48-af10-881f8482e80a/ChatGPT_Image_2026_6_9__00_02_19.png"
+      src="image/fv/fv-main.png"
       alt="才能コンパス診断"
     >
   </div>
@@ -523,7 +625,7 @@ body {
 
 
   <button id="startDiagnosisBtn" class="fv-cta-button" type="button">
-    今すぐ無料で診断する ▶
+    無料で診断してみる
   </button>
 </section>
 
@@ -569,7 +671,10 @@ body {
       <div class="result-code" id="resultCode" style="display:none;"></div>
       <div class="result-empathy" id="preLead" style="display:none;"></div>
     </div>
-    <div id="preResultCards"></div>
+    <div id="preResultCards">
+      <div id="resultImageWrap" class="result-image-wrap"></div>
+      <div id="externalResultText" class="external-result-text"></div>
+    </div>
     <div class="line-section">
       <div class="line-title" id="lineTitle"></div>
       <div class="line-q" id="preLineCta"></div>
@@ -3700,6 +3805,108 @@ function getC1YResultHtml(){
     grid-template-columns:1fr;
   }
 }
+
+/* 2026-06-15 update: GitHub管理の診断結果画像＋外部HTML本文を表示 */
+.result-image-wrap {
+  margin: 18px 0 18px;
+  text-align: center;
+}
+.result-image-wrap img {
+  width: 100%;
+  max-width: 640px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  box-shadow: 0 4px 24px var(--shadow);
+  background: var(--white);
+}
+.result-image-error, .external-result-error {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-left: 4px solid #d96b5b;
+  border-radius: 16px;
+  padding: 18px 16px;
+  margin: 16px 0;
+  color: var(--text-mid);
+  font-size: 15px;
+  line-height: 1.8;
+  text-align: left;
+}
+.external-result-text {
+  margin-top: 16px;
+}
+.external-result-text .result-detail {
+  display: block;
+}
+.external-result-text .result-block {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--sky);
+  border-radius: 18px;
+  box-shadow: 0 3px 16px var(--shadow);
+  padding: 20px 18px;
+  margin: 0 0 18px;
+  text-align: left;
+}
+.external-result-text .result-block h2 {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 20px;
+  line-height: 1.6;
+  color: var(--navy);
+  margin: 0 0 14px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+}
+.external-result-text .result-block p {
+  font-size: 17px;
+  line-height: 2.05;
+  color: var(--text-dark);
+  margin: 0 0 16px;
+}
+.external-result-text .result-block p:last-child {
+  margin-bottom: 0;
+}
+.external-result-text .result-block ul {
+  list-style: none;
+  padding: 0;
+  margin: 8px 0 16px;
+}
+.external-result-text .result-block li {
+  position: relative;
+  font-size: 17px;
+  line-height: 1.85;
+  color: var(--text-dark);
+  padding: 8px 10px 8px 28px;
+  margin-bottom: 8px;
+  background: var(--sky-pale);
+  border-radius: 12px;
+  border: 1px solid var(--border);
+}
+.external-result-text .result-block li::before {
+  content: '';
+  position: absolute;
+  left: 12px;
+  top: 1.22em;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--sky);
+}
+/* 外部HTML本文に切り替えるため、旧登録後プレビューは非表示 */
+#result-section .result-hero,
+#postPreviewCards {
+  display: none !important;
+}
+@media (max-width: 600px) {
+  .result-image-wrap { margin: 16px 0 16px; }
+  .external-result-text .result-block { padding: 18px 16px; border-radius: 16px; margin-bottom: 16px; }
+  .external-result-text .result-block h2 { font-size: 19px; }
+  .external-result-text .result-block p,
+  .external-result-text .result-block li { font-size: 16px; line-height: 2; }
+}
+
 </style>
 
 <div class="c1y-card">
@@ -3904,23 +4111,23 @@ function getC1YResultHtml(){
 `;
 }
 
-function showResult(){
-  const code=buildDiagnosisCode();
-  const preData=getGeneratedPreResult(code);
-  const postData=getGeneratedPostResult(code);
+async function showResult(){
+  const code = buildDiagnosisCode();
+  const resultImagePath = `image/results/${code}.png`;
+  const resultTextPath = `results/${code}.html`;
 
-  document.getElementById('introBlock').style.display='none';
-  document.getElementById('resultCode').textContent='';
-  document.getElementById('copyCodeValue').textContent=code;
+  document.getElementById('introBlock').style.display = 'none';
+  document.getElementById('resultCode').textContent = '';
+  document.getElementById('copyCodeValue').textContent = code;
 
-  document.getElementById('preLead').style.display='none';
-  document.getElementById('preLead').innerHTML='';
+  document.getElementById('preLead').style.display = 'none';
+  document.getElementById('preLead').innerHTML = '';
 
   const preLineCtaEl = document.getElementById('preLineCta');
-  preLineCtaEl.innerHTML='';
-  preLineCtaEl.style.display='none';
+  preLineCtaEl.innerHTML = '';
+  preLineCtaEl.style.display = 'none';
 
-  document.getElementById('receiveGuide').innerHTML=escapeHtml(COMMON_TEXTS.receiveGuide)
+  document.getElementById('receiveGuide').innerHTML = escapeHtml(COMMON_TEXTS.receiveGuide)
     .replace(/\r\n/g, '<br>')
     .replace(/\r/g, '<br>')
     .replace(/\n/g, '<br>')
@@ -3929,34 +4136,42 @@ function showResult(){
       '<span class="receive-guide-heading">【診断結果の受け取り方】</span>'
     );
 
-  document.getElementById('ctaLead').textContent=COMMON_TEXTS.ctaLead;
-  document.getElementById('postLead').innerHTML=formatJapaneseText(COMMON_TEXTS.postLineLead);
-  document.getElementById('lineTitle').innerHTML='';
+  document.getElementById('ctaLead').textContent = COMMON_TEXTS.ctaLead;
+  document.getElementById('lineTitle').innerHTML = '';
 
-  const pre=document.getElementById('preResultCards');
-  const post=document.getElementById('postPreviewCards');
+  const resultImageWrap = document.getElementById('resultImageWrap');
+  const externalResultText = document.getElementById('externalResultText');
+  const post = document.getElementById('postPreviewCards');
+  const postLead = document.getElementById('postLead');
 
-  if(code === 'C1Y'){
-    pre.innerHTML = getC1YResultHtml();
-  } else {
-    pre.innerHTML=[
-      createResultCardHtml('あなたを一言で表すと','',preData.catch),
-      createResultCardHtml('あなたのベース診断','',preData.body)
-    ].join('');
+  if(post) post.innerHTML = '';
+  if(postLead) postLead.innerHTML = '';
+
+  resultImageWrap.innerHTML = `
+    <img src="${resultImagePath}" alt="${code}の診断結果画像"
+      onerror="this.closest('.result-image-wrap').innerHTML='<div class=&quot;result-image-error&quot;>診断結果画像がまだ読み込めません。<br>画像ファイル名が <strong>${code}.png</strong> になっているか確認してください。</div>'">
+  `;
+
+  externalResultText.innerHTML = '<div class="result-card"><div class="result-card-body">診断結果の本文を読み込んでいます...</div></div>';
+
+  try {
+    const response = await fetch(resultTextPath, { cache: 'no-cache' });
+    if(!response.ok) throw new Error('result text not found');
+    const html = await response.text();
+    externalResultText.innerHTML = html;
+  } catch(error) {
+    externalResultText.innerHTML = `
+      <div class="external-result-error">
+        診断結果本文がまだ読み込めません。<br>
+        <strong>results/${code}.html</strong> が作成されているか確認してください。
+      </div>
+    `;
   }
 
-  post.innerHTML=[
-    createResultCardHtml('あなたを一言で表すと','',postData.oneWord),
-    createResultCardHtml('あなたの総合診断結果','',postData.total),
-    createResultCardHtml('仕事で活かせる強み','',postData.strength),
-    postData.weakness ? createResultCardHtml('つまずきやすいポイント','',postData.weakness) : '',
-    createResultCardHtml('自然に前へ進むためのヒント','',postData.hint),
-    postData.firstStep ? createResultCardHtml('今すぐ取れる最初の一歩','',postData.firstStep) : ''
-  ].join('');
-
-  resultSectionEl.style.display='block';
-  window.scrollTo({top:0, behavior:'smooth'});
+  resultSectionEl.style.display = 'block';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
+
 
 function setCopyButtonDone(){
   if(!copyCodeBtnEl) return;
