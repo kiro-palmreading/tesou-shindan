@@ -434,11 +434,99 @@ body {
   margin-bottom: 0 !important;
 }
 
+.external-result-text .result-detail {
+  counter-reset: resultStep;
+}
+
+.external-result-text .result-block {
+  position: relative;
+  overflow: hidden;
+}
+
 .external-result-text .result-block h2,
 .external-result-text .result-block h3 {
-  padding-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding-bottom: 10px;
   border-bottom: 1px solid var(--border);
-  margin-bottom: 14px !important;
+  margin-bottom: 15px !important;
+  color: var(--navy);
+}
+
+.external-result-text .result-block h2::before,
+.external-result-text .result-block h3::before {
+  counter-increment: resultStep;
+  content: counter(resultStep, decimal-leading-zero);
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 34px;
+  height: 24px;
+  padding: 0 7px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--sky-light), var(--sky));
+  color: #ffffff;
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.external-result-text .result-block--essence {
+  background: linear-gradient(180deg, #ffffff 0%, #f8fcff 100%);
+}
+
+.external-result-text .result-block--talent {
+  background: linear-gradient(180deg, #ffffff 0%, #f3fbff 100%);
+}
+
+.external-result-text .result-block--risk {
+  background: linear-gradient(180deg, #ffffff 0%, #fffdf8 100%);
+}
+
+.external-result-text .result-block--forward {
+  background: linear-gradient(180deg, #ffffff 0%, #f7fcff 100%);
+}
+
+.external-result-text .result-block--cta {
+  background: linear-gradient(180deg, #f8fcff 0%, #ffffff 100%);
+  border-color: rgba(91,163,217,0.38);
+}
+
+.external-result-text .result-block--final {
+  background: linear-gradient(180deg, #eef7ff 0%, #ffffff 100%);
+  border-color: rgba(91,163,217,0.45);
+  box-shadow: 0 6px 22px rgba(91,163,217,0.16);
+}
+
+.external-result-text .highlight-paragraph {
+  background: var(--sky-pale);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px 16px;
+  margin: 14px 0 18px;
+  color: var(--navy);
+  font-weight: 600;
+  line-height: 1.95;
+}
+
+.external-result-text .result-block--final p:first-child {
+  background: var(--sky-pale);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px 16px;
+  color: var(--navy);
+  font-weight: 600;
+}
+
+.external-result-text .result-block--final p:last-child {
+  font-family: 'Noto Serif JP', serif;
+  color: var(--navy);
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 0;
 }
 
 .external-result-text p {
@@ -467,29 +555,38 @@ body {
   list-style: none;
   margin: 14px 0 22px;
   padding: 0;
+  counter-reset: listItem;
 }
 
 .external-result-text li {
   position: relative;
   font-size: 17px;
-  line-height: 1.9;
+  line-height: 1.85;
   color: var(--text-dark);
-  background: transparent;
-  border: none;
-  border-radius: 0;
-  padding: 2px 0 2px 1.35em;
-  margin-bottom: 9px;
+  background: #f8fcff;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 12px 14px 12px 48px;
+  margin-bottom: 10px;
 }
 
 .external-result-text li::before {
-  content: "";
+  counter-increment: listItem;
+  content: counter(listItem, decimal-leading-zero);
   position: absolute;
-  left: 0.25em;
-  top: 1.03em;
-  width: 6px;
-  height: 6px;
+  left: 14px;
+  top: 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
   border-radius: 50%;
   background: var(--sky);
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1;
 }
 
 .external-result-error,
@@ -678,7 +775,23 @@ body {
   }
 
   .external-result-text p {
-    margin-bottom: 18px;
+    margin-bottom: 16px;
+  }
+
+  .external-result-text .highlight-paragraph,
+  .external-result-text .result-block--final p:first-child {
+    padding: 13px 14px;
+    line-height: 1.9;
+  }
+
+  .external-result-text li {
+    padding: 11px 12px 11px 44px;
+    line-height: 1.8;
+  }
+
+  .external-result-text li::before {
+    left: 12px;
+    top: 13px;
   }
 
   .external-result-text p:empty {
@@ -1185,8 +1298,10 @@ function cleanExternalHtml(html) {
 
   removeOneWordBlock(body);
   removeMarkdownArtifacts(body);
+  removeMarkdownTextNodes(body);
   mergeSpecificParagraphs(body);
   removeEmptyParagraphs(body);
+  enhanceResultBlocks(body);
 
   return body.innerHTML;
 }
@@ -1240,6 +1355,56 @@ function removeMarkdownArtifacts(root) {
     ) {
       el.remove();
     }
+  });
+}
+
+function removeMarkdownTextNodes(root) {
+  const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, null);
+  const textNodes = [];
+
+  while (walker.nextNode()) {
+    textNodes.push(walker.currentNode);
+  }
+
+  textNodes.forEach(node => {
+    node.nodeValue = node.nodeValue
+      .replace(/```html/gi, '')
+      .replace(/```text/gi, '')
+      .replace(/```/g, '')
+      .replace(/:::writing\{[^}]*\}/g, '')
+      .replace(/:::/g, '');
+  });
+}
+
+function enhanceResultBlocks(root) {
+  const blocks = Array.from(root.querySelectorAll('.result-block'));
+
+  blocks.forEach((block, index) => {
+    const heading = block.querySelector('h2, h3');
+    const headingText = heading ? heading.textContent.trim() : '';
+
+    if (headingText.includes('本質')) block.classList.add('result-block--essence');
+    if (headingText.includes('才能')) block.classList.add('result-block--talent');
+    if (headingText.includes('今のあなた')) block.classList.add('result-block--current');
+    if (headingText.includes('このまま進む')) block.classList.add('result-block--risk');
+    if (headingText.includes('あなたらしい進み方')) block.classList.add('result-block--forward');
+    if (headingText.includes('ここから先')) block.classList.add('result-block--cta');
+    if (!heading && index === blocks.length - 1) block.classList.add('result-block--final');
+
+    const paragraphs = Array.from(block.querySelectorAll('p'));
+
+    paragraphs.forEach(p => {
+      const text = p.textContent.replace(/\s+/g, '');
+
+      if (
+        text.includes('その両方を、順番に使う人です') ||
+        text.includes('そこが、あなたの大きな強みです') ||
+        text.includes('迷いは弱さではなく') ||
+        text.includes('あなた本来の姿ではありません')
+      ) {
+        p.classList.add('highlight-paragraph');
+      }
+    });
   });
 }
 
