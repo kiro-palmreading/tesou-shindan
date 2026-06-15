@@ -604,6 +604,103 @@ body {
   text-align: left;
 }
 
+
+/* ===== LINE登録後プレビュー（少しだけモザイク） ===== */
+.line-preview-section {
+  background: linear-gradient(180deg, #ffffff 0%, #f8fcff 100%);
+  border-radius: 18px;
+  padding: 24px 20px 22px;
+  margin-top: 18px;
+  box-shadow: 0 2px 12px var(--shadow);
+  border: 1px solid var(--border);
+  text-align: center;
+}
+
+.line-preview-title {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 19px;
+  line-height: 1.75;
+  color: var(--navy);
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.line-preview-lead {
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--text-mid);
+  margin-bottom: 16px;
+}
+
+.mosaic-preview {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  background: var(--sky-pale);
+  border: 1px solid var(--border);
+  padding: 14px;
+}
+
+.mosaic-preview-list {
+  filter: blur(3.2px);
+  user-select: none;
+  pointer-events: none;
+}
+
+.mosaic-card {
+  background: rgba(255,255,255,0.9);
+  border-radius: 13px;
+  padding: 14px;
+  margin-bottom: 10px;
+  border: 1px solid rgba(91,163,217,0.18);
+  text-align: left;
+}
+
+.mosaic-card:last-child {
+  margin-bottom: 0;
+}
+
+.mosaic-card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--navy);
+  line-height: 1.7;
+}
+
+.mosaic-card-text {
+  font-size: 14px;
+  color: var(--text-mid);
+  line-height: 1.7;
+  margin-top: 4px;
+}
+
+.mosaic-preview::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(255,255,255,0.16) 0%, rgba(255,255,255,0.74) 100%);
+  pointer-events: none;
+}
+
+.mosaic-lock-label {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  display: inline-block;
+  background: rgba(255,255,255,0.95);
+  color: var(--navy);
+  border: 1px solid var(--border);
+  box-shadow: 0 4px 16px rgba(91,163,217,0.18);
+  border-radius: 999px;
+  padding: 10px 18px;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.5;
+  white-space: nowrap;
+}
+
 /* ===== LINE導線 ===== */
 .copy-code-box {
   background: var(--white);
@@ -864,6 +961,29 @@ body {
       <div id="preResultCards">
         <div id="resultImageWrap" class="result-image-wrap"></div>
         <div id="externalResultText" class="external-result-text"></div>
+      </div>
+
+      <div class="line-preview-section">
+        <div class="line-preview-title">LINE登録後には、<br>さらに詳しい診断結果をお届けします</div>
+        <div class="line-preview-lead">あなたの強みの活かし方や、つまずきやすいポイントをさらに詳しく確認できます。</div>
+
+        <div class="mosaic-preview" aria-hidden="true">
+          <div class="mosaic-preview-list">
+            <div class="mosaic-card">
+              <div class="mosaic-card-title">あなたの強みを活かす具体的な一歩</div>
+              <div class="mosaic-card-text">今のあなたに合う進み方を、行動に移しやすい形で整理します。</div>
+            </div>
+            <div class="mosaic-card">
+              <div class="mosaic-card-title">つまずきやすいポイント</div>
+              <div class="mosaic-card-text">頑張っているのに止まりやすくなる理由を、タイプに合わせて確認します。</div>
+            </div>
+            <div class="mosaic-card">
+              <div class="mosaic-card-title">今のあなたに合う進み方</div>
+              <div class="mosaic-card-text">無理に別人にならず、強みを活かして進むヒントをお届けします。</div>
+            </div>
+          </div>
+          <div class="mosaic-lock-label">続きはLINEで受け取れます</div>
+        </div>
       </div>
 
       <div class="line-section">
@@ -1300,6 +1420,7 @@ function cleanExternalHtml(html) {
   removeMarkdownArtifacts(body);
   removeMarkdownTextNodes(body);
   mergeSpecificParagraphs(body);
+  formatFinalHintText(body);
   removeEmptyParagraphs(body);
   enhanceResultBlocks(body);
 
@@ -1427,15 +1548,29 @@ function mergeSpecificParagraphs(root) {
 
     if (isTarget) {
       paragraphs[i].textContent = 'あなたには、考えを形にする力があります。あとは、正解探しを終わらせるだけです。';
-      paragraphs[i + 1].textContent = '半年後、「あの時、受け取っておいてよかった」そう思えるヒントを、この先でお伝えします。';
+      paragraphs[i + 1].innerHTML = '半年後、<br>「あの時、受け取っておいてよかった」';
+      paragraphs[i + 2].innerHTML = 'そう思えるヒントを<br>この先でお伝えします';
 
-      paragraphs[i + 2].remove();
       paragraphs[i + 3].remove();
       paragraphs[i + 4].remove();
 
       break;
     }
   }
+}
+
+function formatFinalHintText(root) {
+  Array.from(root.querySelectorAll('p')).forEach(p => {
+    const normalized = p.textContent.replace(/\s+/g, '');
+
+    if (normalized === 'そう思えるヒントを、この先でお伝えします。') {
+      p.innerHTML = 'そう思えるヒントを<br>この先でお伝えします';
+    }
+
+    if (normalized === '半年後、「あの時、受け取っておいてよかった」そう思えるヒントを、この先でお伝えします。') {
+      p.innerHTML = '半年後、<br>「あの時、受け取っておいてよかった」<br><br>そう思えるヒントを<br>この先でお伝えします';
+    }
+  });
 }
 
 function removeEmptyParagraphs(root) {
