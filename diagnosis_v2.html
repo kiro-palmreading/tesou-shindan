@@ -415,7 +415,6 @@ body {
   text-align: left;
 }
 
-.external-result-text .result-block:first-child,
 .external-result-text [data-hide-title="true"],
 .external-result-text .result-catch,
 .external-result-text .one-word,
@@ -448,9 +447,7 @@ body {
 }
 
 .external-result-text p:empty {
-  display: block;
-  height: 18px;
-  margin: 0;
+  display: none;
 }
 
 .external-result-text br + br {
@@ -461,7 +458,7 @@ body {
 
 .external-result-text ul {
   list-style: none;
-  margin: 14px 0 18px;
+  margin: 14px 0 22px;
   padding: 0;
 }
 
@@ -474,7 +471,7 @@ body {
   border: none;
   border-radius: 0;
   padding: 2px 0 2px 1.35em;
-  margin-bottom: 8px;
+  margin-bottom: 9px;
 }
 
 .external-result-text li::before {
@@ -679,7 +676,7 @@ body {
   }
 
   .external-result-text p:empty {
-    height: 18px;
+    display: none;
   }
 }
 </style>
@@ -1182,8 +1179,8 @@ function cleanExternalHtml(html) {
   const body = doc.body || doc;
 
   removeOneWordBlock(body);
-  normalizeRequestedParagraphs(body);
-  normalizeEmptyParagraphs(body);
+  mergeSpecificParagraphs(body);
+  removeEmptyParagraphs(body);
 
   return body.innerHTML;
 }
@@ -1221,49 +1218,48 @@ function removeOneWordBlock(root) {
 }
 
 
-function normalizeRequestedParagraphs(root) {
-  const fullText = root.textContent.replace(/\s+/g, '');
-
-  const target =
-    'あなたには、考えを形にする力があります。' +
-    'あとは、正解探しを終わらせるだけです。' +
-    '半年後、' +
-    '「あの時、受け取っておいてよかった」' +
-    'そう思えるヒントを、この先でお伝えします。';
-
-  if (!fullText.includes(target)) {
-    return;
-  }
-
+function mergeSpecificParagraphs(root) {
   const paragraphs = Array.from(root.querySelectorAll('p'));
 
-  for (let i = 0; i < paragraphs.length; i++) {
-    const slice = paragraphs.slice(i, i + 6);
-    const combined = slice.map(p => p.textContent).join('').replace(/\s+/g, '');
+  for (let i = 0; i < paragraphs.length - 4; i++) {
+    const t0 = paragraphs[i].textContent.trim();
+    const t1 = paragraphs[i + 1].textContent.trim();
+    const t2 = paragraphs[i + 2].textContent.trim();
+    const t3 = paragraphs[i + 3].textContent.trim();
+    const t4 = paragraphs[i + 4].textContent.trim();
 
-    if (combined.includes(target)) {
+    const isTarget =
+      t0 === 'あなたには、考えを形にする力があります。' &&
+      t1 === 'あとは、正解探しを終わらせるだけです。' &&
+      t2 === '半年後、' &&
+      t3 === '「あの時、受け取っておいてよかった」' &&
+      t4 === 'そう思えるヒントを、この先でお伝えします。';
+
+    if (isTarget) {
       paragraphs[i].textContent = 'あなたには、考えを形にする力があります。あとは、正解探しを終わらせるだけです。';
       paragraphs[i + 1].textContent = '半年後、「あの時、受け取っておいてよかった」そう思えるヒントを、この先でお伝えします。';
 
-      for (let j = i + 2; j < i + 6; j++) {
-        if (paragraphs[j]) {
-          paragraphs[j].remove();
-        }
-      }
+      paragraphs[i + 2].remove();
+      paragraphs[i + 3].remove();
+      paragraphs[i + 4].remove();
 
       break;
     }
   }
 }
 
-function normalizeEmptyParagraphs(root) {
+function removeEmptyParagraphs(root) {
   Array.from(root.querySelectorAll('p')).forEach(p => {
     const text = p.textContent.replace(/\s+/g, '');
 
     if (!text) {
-      p.innerHTML = '&nbsp;';
+      p.remove();
     }
   });
+}
+
+function normalizeEmptyParagraphs(root) {
+  removeEmptyParagraphs(root);
 }
 
 function escapeHtml(str) {
