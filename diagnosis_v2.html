@@ -567,9 +567,9 @@ body {
 }
 .external-result-text .result-block p {
   font-size: 17px;
-  line-height: 2.05;
+  line-height: 1.82;
   color: var(--text-dark);
-  margin: 0 0 18px;
+  margin: 0 0 7px;
   letter-spacing: 0.02em;
 }
 .external-result-text .result-block p:last-child {
@@ -612,7 +612,8 @@ body {
   .external-result-text .result-block { padding: 18px 16px; border-radius: 16px; margin-bottom: 16px; }
   .external-result-text .result-block h2 { font-size: 19px; }
   .external-result-text .result-block p,
-  .external-result-text .result-block li { font-size: 16px; line-height: 2; }
+  .external-result-text .result-block li { font-size: 16px; line-height: 1.85; }
+  .external-result-text .result-block p { font-size: 16px; line-height: 1.82; margin-bottom: 7px; }
 }
 
 </style>
@@ -630,7 +631,7 @@ body {
 
 
   <button id="startDiagnosisBtn" class="fv-cta-button" type="button">
-    無料で診断してみる
+    無料で診断してみる ▶
   </button>
 </section>
 
@@ -3869,9 +3870,9 @@ function getC1YResultHtml(){
 }
 .external-result-text .result-block p {
   font-size: 17px;
-  line-height: 2.05;
+  line-height: 1.82;
   color: var(--text-dark);
-  margin: 0 0 18px;
+  margin: 0 0 7px;
   letter-spacing: 0.02em;
 }
 .external-result-text .result-block p:last-child {
@@ -3914,7 +3915,8 @@ function getC1YResultHtml(){
   .external-result-text .result-block { padding: 18px 16px; border-radius: 16px; margin-bottom: 16px; }
   .external-result-text .result-block h2 { font-size: 19px; }
   .external-result-text .result-block p,
-  .external-result-text .result-block li { font-size: 16px; line-height: 2; }
+  .external-result-text .result-block li { font-size: 16px; line-height: 1.85; }
+  .external-result-text .result-block p { font-size: 16px; line-height: 1.82; margin-bottom: 7px; }
 }
 
 </style>
@@ -4141,6 +4143,7 @@ function normalizeExternalResultHtml(html){
 
   wrapper.querySelectorAll('p, li').forEach(el => {
     el.innerHTML = el.innerHTML.replace(/\s+/g, ' ').trim();
+    if(!el.textContent.trim()) el.remove();
   });
 
   return wrapper.innerHTML;
