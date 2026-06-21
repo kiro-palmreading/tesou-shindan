@@ -486,6 +486,15 @@ body {
   display: none;
 }
 
+/* 句読点が行頭に来る崩れをできるだけ防ぐ調整 */
+.external-result-text,
+.line-preview-section,
+.line-section {
+  line-break: strict;
+  word-break: normal;
+  overflow-wrap: break-word;
+}
+
 .external-result-text ul {
   list-style: none;
   margin: 14px 0 22px;
@@ -739,6 +748,9 @@ body {
   cursor: pointer;
   text-decoration: none;
   width: 100%;
+  line-height: 1.65;
+  text-align: center;
+  white-space: normal;
   position: relative;
   z-index: 20;
   pointer-events: auto;
@@ -945,7 +957,7 @@ body {
         <div class="cta-lead" id="ctaLead"></div>
 
         <a id="lineBtn" href="https://lin.ee/OINIB8d" class="btn-line" target="_blank" rel="noopener noreferrer">
-          あなた専用の診断結果を受け取る
+          あなた専用の診断結果を<br>受け取る　▶
         </a>
 
         <p class="line-note">※無料・1分で登録できます</p>
@@ -1347,11 +1359,14 @@ function renderResultImage(code) {
 }
 
 function normalizeExternalResultHtml(html) {
-  let normalizedHtml = String(html)
-    // ① 指定文章は、必ずこの2行にそろえます。
-    .replace(/そう思えるヒントを\s*<br\s*\/?\s*>?\s*この先で\s*<br\s*\/?\s*>?\s*お伝えします/g, 'そう思えるヒントを<br>この先でお伝えします')
-    .replace(/そう思えるヒントをこの先で\s*<br\s*\/?\s*>\s*お伝えします/g, 'そう思えるヒントを<br>この先でお伝えします')
-    .replace(/そう思えるヒントをこの先で\s*お伝えします/g, 'そう思えるヒントを<br>この先でお伝えします');
+  let normalizedHtml = String(html);
+
+  // ① 指定文章は、必ずこの2行にそろえます。
+  // HTML内にスペースや<br>が混ざっていても吸収します。
+  normalizedHtml = normalizedHtml.replace(
+    /そう思えるヒントを(?:\s|　|<br\s*\/?\s*>)*この先で(?:\s|　|<br\s*\/?\s*>)*お伝えし(?:\s|　|<br\s*\/?\s*>)*ます[。.]?/g,
+    'そう思えるヒントを<br>この先でお伝えします。'
+  );
 
   // ② 句読点の直後に入っている手動改行は削除します。
   // 例：「ですが、<br>」→「ですが、」
@@ -1360,6 +1375,12 @@ function normalizeExternalResultHtml(html) {
   // ③ 句読点から行が始まってしまう手動改行も削除します。
   // 例：「<br>、」→「、」
   normalizedHtml = normalizedHtml.replace(/<br\s*\/?\s*>\s*([、。])/g, '$1');
+
+  // ④ ②③の処理で指定文章の改行が消えた場合に備えて、最後にもう一度固定します。
+  normalizedHtml = normalizedHtml.replace(
+    /そう思えるヒントを(?:\s|　|<br\s*\/?\s*>)*この先で(?:\s|　|<br\s*\/?\s*>)*お伝えし(?:\s|　|<br\s*\/?\s*>)*ます[。.]?/g,
+    'そう思えるヒントを<br>この先でお伝えします。'
+  );
 
   return normalizedHtml;
 }
