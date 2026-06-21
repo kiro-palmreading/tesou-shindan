@@ -557,6 +557,13 @@ body {
   text-align: center;
 }
 
+
+.fixed-result-line {
+  display: inline-block;
+  white-space: nowrap;
+  text-indent: 0;
+}
+
 .external-result-error,
 .result-image-error {
   background: var(--white);
@@ -1362,24 +1369,26 @@ function normalizeExternalResultHtml(html) {
   let normalizedHtml = String(html);
 
   // ① 指定文章は、必ずこの2行にそろえます。
-  // HTML内にスペースや<br>が混ざっていても吸収します。
+  // 文章の前に半角スペース・全角スペース・&nbsp; が入っていても削除します。
+  const fixedHintText = '<span class="fixed-result-line">そう思えるヒントを</span><br><span class="fixed-result-line">この先でお伝えします。</span>';
+
   normalizedHtml = normalizedHtml.replace(
-    /そう思えるヒントを(?:\s|　|<br\s*\/?\s*>)*この先で(?:\s|　|<br\s*\/?\s*>)*お伝えし(?:\s|　|<br\s*\/?\s*>)*ます[。.]?/g,
-    'そう思えるヒントを<br>この先でお伝えします。'
+    /(?:&nbsp;|\s|　)*そう思えるヒントを(?:&nbsp;|\s|　|<br\s*\/?\s*>)*この先で(?:&nbsp;|\s|　|<br\s*\/?\s*>)*お伝えし(?:&nbsp;|\s|　|<br\s*\/?\s*>)*ます[。.]?/g,
+    fixedHintText
   );
 
   // ② 句読点の直後に入っている手動改行は削除します。
   // 例：「ですが、<br>」→「ですが、」
-  normalizedHtml = normalizedHtml.replace(/([、。])\s*<br\s*\/?\s*>\s*/g, '$1');
+  normalizedHtml = normalizedHtml.replace(/([、。])(?:&nbsp;|\s|　)*<br\s*\/?\s*>(?:&nbsp;|\s|　)*/g, '$1');
 
   // ③ 句読点から行が始まってしまう手動改行も削除します。
   // 例：「<br>、」→「、」
-  normalizedHtml = normalizedHtml.replace(/<br\s*\/?\s*>\s*([、。])/g, '$1');
+  normalizedHtml = normalizedHtml.replace(/<br\s*\/?\s*>(?:&nbsp;|\s|　)*([、。])/g, '$1');
 
   // ④ ②③の処理で指定文章の改行が消えた場合に備えて、最後にもう一度固定します。
   normalizedHtml = normalizedHtml.replace(
-    /そう思えるヒントを(?:\s|　|<br\s*\/?\s*>)*この先で(?:\s|　|<br\s*\/?\s*>)*お伝えし(?:\s|　|<br\s*\/?\s*>)*ます[。.]?/g,
-    'そう思えるヒントを<br>この先でお伝えします。'
+    /(?:&nbsp;|\s|　)*そう思えるヒントを(?:&nbsp;|\s|　|<br\s*\/?\s*>)*この先で(?:&nbsp;|\s|　|<br\s*\/?\s*>)*お伝えし(?:&nbsp;|\s|　|<br\s*\/?\s*>)*ます[。.]?/g,
+    fixedHintText
   );
 
   return normalizedHtml;
