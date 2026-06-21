@@ -1294,14 +1294,21 @@ function renderResultImage(code) {
   resultImageWrapEl.innerHTML = '';
 
   const img = document.createElement('img');
-  img.src = `image/results/${code}.png`;
+
+  // 診断結果画像の場所
+  // 例：image/results/A1X.png
+  const imagePath = `image/results/${code}.png`;
+
+  // キャッシュ対策
+  // 古い画像が残らないように、毎回少し違うURLとして読み込ませます
+  img.src = `${imagePath}?v=${Date.now()}`;
   img.alt = `${code}の診断結果`;
 
   img.onerror = function() {
     resultImageWrapEl.innerHTML = `
       <div class="result-image-error">
         診断結果画像を読み込めませんでした。<br>
-        image/results/${escapeHtml(code)}.png が存在するか確認してください。
+        ${escapeHtml(imagePath)} が存在するか確認してください。
       </div>
     `;
   };
@@ -1312,8 +1319,12 @@ function renderResultImage(code) {
 async function loadExternalResultText(code) {
   externalResultTextEl.innerHTML = '';
 
+  // 診断結果HTMLの場所
+  // 例：results/A1X.html
+  const htmlPath = `results/${code}.html`;
+
   try {
-    const response = await fetch(`results/${code}.html`, {
+    const response = await fetch(`${htmlPath}?v=${Date.now()}`, {
       cache: 'no-store'
     });
 
@@ -1327,7 +1338,7 @@ async function loadExternalResultText(code) {
     externalResultTextEl.innerHTML = `
       <div class="external-result-error">
         診断結果本文を読み込めませんでした。<br>
-        results/${escapeHtml(code)}.html が存在するか確認してください。
+        ${escapeHtml(htmlPath)} が存在するか確認してください。
       </div>
     `;
   }
