@@ -524,6 +524,30 @@ body {
   line-height: 1;
 }
 
+
+
+/* ===== 改行の微調整 =====
+   句読点だけが次の行頭に回るのを避けるための指定です。
+   ※完全な自動制御は機種差がありますが、崩れにくくします。 */
+.external-result-text,
+.external-result-text p,
+.external-result-text li,
+.external-result-text .highlight-paragraph,
+.external-result-text .result-block--final p,
+.line-preview-title,
+.line-preview-lead,
+.line-benefits,
+.cta-lead {
+  line-break: strict;
+  word-break: normal;
+  overflow-wrap: break-word;
+}
+
+.external-result-text .highlight-paragraph,
+.external-result-text .result-block--final p:first-child {
+  text-align: center;
+}
+
 .external-result-error,
 .result-image-error {
   background: var(--white);
@@ -939,8 +963,8 @@ const COMMON_TEXTS = {
 2. 「LINE登録に進む」ボタンを押す。
 3. LINEでコピーした診断コードを送る。
 
-確認後、順次
-トータル診断結果をお届けします。
+確認後、順次トータル診断結果
+をお届けします。
 
 ※ひとつひとつ内容を確認しながらお届けしているため、少しお時間をいただく場合があります。`,
 
@@ -1323,10 +1347,21 @@ function renderResultImage(code) {
 }
 
 function normalizeExternalResultHtml(html) {
-  return String(html)
+  let normalizedHtml = String(html)
+    // ① 指定文章は、必ずこの2行にそろえます。
     .replace(/そう思えるヒントを\s*<br\s*\/?\s*>?\s*この先で\s*<br\s*\/?\s*>?\s*お伝えします/g, 'そう思えるヒントを<br>この先でお伝えします')
     .replace(/そう思えるヒントをこの先で\s*<br\s*\/?\s*>\s*お伝えします/g, 'そう思えるヒントを<br>この先でお伝えします')
     .replace(/そう思えるヒントをこの先で\s*お伝えします/g, 'そう思えるヒントを<br>この先でお伝えします');
+
+  // ② 句読点の直後に入っている手動改行は削除します。
+  // 例：「ですが、<br>」→「ですが、」
+  normalizedHtml = normalizedHtml.replace(/([、。])\s*<br\s*\/?\s*>\s*/g, '$1');
+
+  // ③ 句読点から行が始まってしまう手動改行も削除します。
+  // 例：「<br>、」→「、」
+  normalizedHtml = normalizedHtml.replace(/<br\s*\/?\s*>\s*([、。])/g, '$1');
+
+  return normalizedHtml;
 }
 
 async function loadExternalResultText(code) {
