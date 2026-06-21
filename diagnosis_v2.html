@@ -450,6 +450,7 @@ body {
   color: var(--navy);
   font-weight: 600;
   line-height: 1.95;
+  text-align: center;
 }
 
 .external-result-text .result-block--final p:first-child {
@@ -459,6 +460,7 @@ body {
   padding: 14px 16px;
   color: var(--navy);
   font-weight: 600;
+  text-align: center;
 }
 
 .external-result-text .result-block--final p:last-child {
@@ -878,7 +880,7 @@ body {
 
       <div class="line-preview-section">
         <div class="line-preview-title" id="linePreviewTitle">
-          LINE登録後には、<br>さらに詳しい診断結果をお届けします
+          LINE登録後には、さらに詳しい診断結果を<br>お届けします
         </div>
 
         <div class="line-preview-lead" id="linePreviewLead">
@@ -955,7 +957,7 @@ const LINE_PREVIEW_TEXTS = {
 };
 
 const DEFAULT_LINE_PREVIEW = {
-  title: `LINE登録後には、<br>さらに詳しい診断結果をお届けします`,
+  title: `LINE登録後には、さらに詳しい診断結果を<br>お届けします`,
   lead: `あなたの強みの活かし方や、つまずきやすいポイントをさらに詳しく確認できます。`
 };
 
@@ -1316,6 +1318,12 @@ function renderResultImage(code) {
   resultImageWrapEl.appendChild(img);
 }
 
+function normalizeExternalResultHtml(html) {
+  return String(html)
+    .replace(/そう思えるヒントをこの先で\s*<br\s*\/?\s*>\s*お伝えします/g, 'そう思えるヒントをこの先で<br>お伝えします')
+    .replace(/そう思えるヒントをこの先で\s*お伝えします/g, 'そう思えるヒントをこの先で<br>お伝えします');
+}
+
 async function loadExternalResultText(code) {
   externalResultTextEl.innerHTML = '';
 
@@ -1333,7 +1341,7 @@ async function loadExternalResultText(code) {
     }
 
     const html = await response.text();
-    externalResultTextEl.innerHTML = html;
+    externalResultTextEl.innerHTML = normalizeExternalResultHtml(html);
   } catch (error) {
     externalResultTextEl.innerHTML = `
       <div class="external-result-error">
