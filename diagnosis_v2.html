@@ -477,6 +477,9 @@ body {
   color: var(--text-dark);
   margin: 0 0 18px;
   padding: 0;
+  line-break: strict;
+  word-break: keep-all;
+  overflow-wrap: break-word;
 }
 
 .external-result-text p:empty {
@@ -880,7 +883,7 @@ body {
 
       <div class="line-preview-section">
         <div class="line-preview-title" id="linePreviewTitle">
-          LINE登録後には、さらに詳しい診断結果を<br>お届けします
+          LINE登録後には、さらに詳しい<br>診断結果をお届けします
         </div>
 
         <div class="line-preview-lead" id="linePreviewLead">
@@ -957,7 +960,7 @@ const LINE_PREVIEW_TEXTS = {
 };
 
 const DEFAULT_LINE_PREVIEW = {
-  title: `LINE登録後には、さらに詳しい診断結果を<br>お届けします`,
+  title: `LINE登録後には、さらに詳しい<br>診断結果をお届けします`,
   lead: `あなたの強みの活かし方や、つまずきやすいポイントをさらに詳しく確認できます。`
 };
 
@@ -1286,7 +1289,8 @@ function buildDiagnosisCode() {
 }
 
 function setLinePreviewText(code) {
-  const preview = LINE_PREVIEW_TEXTS[code] || DEFAULT_LINE_PREVIEW;
+  // LINE登録後プレビューは全診断結果で共通表示にします
+  const preview = DEFAULT_LINE_PREVIEW;
 
   linePreviewTitleEl.innerHTML = preview.title;
   linePreviewLeadEl.innerHTML = preview.lead;
@@ -1320,8 +1324,9 @@ function renderResultImage(code) {
 
 function normalizeExternalResultHtml(html) {
   return String(html)
-    .replace(/そう思えるヒントをこの先で\s*<br\s*\/?\s*>\s*お伝えします/g, 'そう思えるヒントをこの先で<br>お伝えします')
-    .replace(/そう思えるヒントをこの先で\s*お伝えします/g, 'そう思えるヒントをこの先で<br>お伝えします');
+    .replace(/そう思えるヒントを\s*<br\s*\/?\s*>?\s*この先で\s*<br\s*\/?\s*>?\s*お伝えします/g, 'そう思えるヒントを<br>この先でお伝えします')
+    .replace(/そう思えるヒントをこの先で\s*<br\s*\/?\s*>\s*お伝えします/g, 'そう思えるヒントを<br>この先でお伝えします')
+    .replace(/そう思えるヒントをこの先で\s*お伝えします/g, 'そう思えるヒントを<br>この先でお伝えします');
 }
 
 async function loadExternalResultText(code) {
