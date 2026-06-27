@@ -43,7 +43,7 @@ body {
 .fv-area {
   max-width: 1080px;
   margin: 0 auto;
-  padding: 0 10px 26px;
+  padding: 0 10px 18px;
   text-align: center;
   box-sizing: border-box;
 }
@@ -53,35 +53,6 @@ body {
   height: auto;
   display: block;
   pointer-events: none;
-}
-
-.fv-cta-button {
-  display: block;
-  width: 100%;
-  max-width: 440px;
-  margin: 24px auto 0;
-  padding: 17px 18px;
-  background: linear-gradient(135deg, #ff9a5a 0%, #f26b3a 100%);
-  color: #ffffff;
-  font-size: 18px;
-  font-weight: 700;
-  line-height: 1.4;
-  text-align: center;
-  text-decoration: none;
-  border: none;
-  border-radius: 999px;
-  box-shadow: 0 6px 16px rgba(242, 107, 58, 0.32);
-  box-sizing: border-box;
-  cursor: pointer;
-  position: relative;
-  z-index: 9999;
-  pointer-events: auto;
-  touch-action: manipulation;
-  font-family: 'Noto Sans JP', sans-serif;
-}
-
-.fv-cta-button:hover {
-  opacity: 0.92;
 }
 
 /* ===== 診断本体 ===== */
@@ -147,7 +118,7 @@ body {
   border-radius: 20px;
   box-shadow: 0 4px 24px var(--shadow);
   border: 1px solid var(--border);
-  margin-top: 28px;
+  margin-top: 20px;
   overflow: hidden;
   display: block;
   animation: fadeUp 0.4s ease forwards;
@@ -184,6 +155,14 @@ body {
   font-weight: 400;
   line-height: 1.7;
   color: var(--navy);
+}
+
+.q-note {
+  display: none;
+  margin-top: 8px;
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--text-mid);
 }
 
 .q-image-wrap {
@@ -486,7 +465,6 @@ body {
   display: none;
 }
 
-/* 句読点が行頭に来る崩れをできるだけ防ぐ調整 */
 .external-result-text,
 .line-preview-section,
 .line-section {
@@ -533,11 +511,7 @@ body {
   line-height: 1;
 }
 
-
-
-/* ===== 改行の微調整 =====
-   句読点だけが次の行頭に回るのを避けるための指定です。
-   ※完全な自動制御は機種差がありますが、崩れにくくします。 */
+/* ===== 改行の微調整 ===== */
 .external-result-text,
 .external-result-text p,
 .external-result-text li,
@@ -556,7 +530,6 @@ body {
 .external-result-text .result-block--final p:first-child {
   text-align: center;
 }
-
 
 .fixed-result-line {
   display: inline-block;
@@ -781,8 +754,7 @@ body {
 }
 
 .btn-copy-code,
-.btn-line,
-.fv-cta-button {
+.btn-line {
   touch-action: manipulation;
   -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
@@ -796,14 +768,7 @@ body {
 
 @media screen and (max-width: 480px) {
   .fv-area {
-    padding: 0 8px 24px;
-  }
-
-  .fv-cta-button {
-    max-width: 420px;
-    margin-top: 22px;
-    font-size: 17px;
-    padding: 16px 16px;
+    padding: 0 8px 18px;
   }
 }
 
@@ -867,13 +832,9 @@ body {
   <div class="fv-banner">
     <img src="image/fv/fv-main.png" alt="才能コンパス診断">
   </div>
-
-  <button id="startDiagnosisBtn" class="fv-cta-button" type="button">
-    無料で診断してみる ▶
-  </button>
 </section>
 
-<div id="diagnosisApp" style="display:none;">
+<div id="diagnosisApp" style="display:block;">
   <div class="header">
     <div class="progress-wrap">
       <div class="progress-labels">
@@ -898,6 +859,7 @@ body {
         </div>
 
         <div class="q-text" id="questionText"></div>
+        <div class="q-note" id="questionNote"></div>
       </div>
 
       <div class="q-image-wrap" id="questionImageWrap" style="display:none;">
@@ -1022,7 +984,8 @@ const IMAGE_ASSETS = {
 const QUESTION_FLOW = [
   {
     key: 'q3',
-    question: '下記のように、手のひらを横切る線がありますか？（マスカケ）',
+    question: '下記のように、手のひらを横切る線がありますか？',
+    note: '※迷ったら「ない」を選んでください',
     imageUrl: 'https://cdn.peraichi.com/userData/d6621e34-3268-445c-bb20-ddb971833921/img/eaf70000-69a9-4b09-87aa-c4f83616156e/_________200_x_200_px___11_.png',
     choices: [
       { value: 'M', label: 'ある', description: '' },
@@ -1127,12 +1090,10 @@ const QUESTION_FLOW = [
 let answers = {};
 let currentQuestionKey = 'q3';
 
-const fvAreaEl = document.getElementById('fvArea');
-const diagnosisAppEl = document.getElementById('diagnosisApp');
-const startDiagnosisBtnEl = document.getElementById('startDiagnosisBtn');
 const questionCardEl = document.getElementById('questionCard');
 const questionNumberEl = document.getElementById('questionNumber');
 const questionTextEl = document.getElementById('questionText');
+const questionNoteEl = document.getElementById('questionNote');
 const questionImageWrapEl = document.getElementById('questionImageWrap');
 const questionImageEl = document.getElementById('questionImage');
 const optionsContainerEl = document.getElementById('optionsContainer');
@@ -1149,13 +1110,6 @@ const copyCodeValueEl = document.getElementById('copyCodeValue');
 const copyCodeBtnEl = document.getElementById('copyCodeBtn');
 const linePreviewTitleEl = document.getElementById('linePreviewTitle');
 const linePreviewLeadEl = document.getElementById('linePreviewLead');
-
-startDiagnosisBtnEl.addEventListener('click', function() {
-  fvAreaEl.style.display = 'none';
-  diagnosisAppEl.style.display = 'block';
-  renderQuestion('q3');
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-});
 
 backBtnEl.addEventListener('click', goBack);
 nextBtnEl.addEventListener('click', goNext);
@@ -1255,6 +1209,14 @@ function renderQuestion(key) {
   questionNumberEl.textContent = `QUESTION ${String(displayIndex).padStart(2, '0')} / ${String(flowKeys.length).padStart(2, '0')}`;
   questionTextEl.textContent = q.question;
 
+  if (q.note) {
+    questionNoteEl.textContent = q.note;
+    questionNoteEl.style.display = 'block';
+  } else {
+    questionNoteEl.textContent = '';
+    questionNoteEl.style.display = 'none';
+  }
+
   if (q.imageUrl) {
     questionImageWrapEl.style.display = 'block';
     questionImageEl.src = q.imageUrl;
@@ -1285,7 +1247,6 @@ function renderQuestion(key) {
   nextBtnEl.textContent = getNextButtonLabel(key);
 
   updateProgress();
-  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 function selectChoice(questionKey, value, clickedElement) {
@@ -1316,11 +1277,15 @@ function goNext() {
   }
 
   renderQuestion(nextKey);
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 function goBack() {
   const prev = getPreviousQuestionKey(currentQuestionKey);
-  if (prev) renderQuestion(prev);
+  if (prev) {
+    renderQuestion(prev);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
 }
 
 function buildDiagnosisCode() {
@@ -1332,7 +1297,6 @@ function buildDiagnosisCode() {
 }
 
 function setLinePreviewText(code) {
-  // LINE登録後プレビューは全診断結果で共通表示にします
   const preview = DEFAULT_LINE_PREVIEW;
 
   linePreviewTitleEl.innerHTML = preview.title;
@@ -1343,13 +1307,8 @@ function renderResultImage(code) {
   resultImageWrapEl.innerHTML = '';
 
   const img = document.createElement('img');
-
-  // 診断結果画像の場所
-  // 例：image/results/A1X.png
   const imagePath = `image/results/${code}.png`;
 
-  // キャッシュ対策
-  // 古い画像が残らないように、毎回少し違うURLとして読み込ませます
   img.src = `${imagePath}?v=${Date.now()}`;
   img.alt = `${code}の診断結果`;
 
@@ -1368,8 +1327,6 @@ function renderResultImage(code) {
 function normalizeExternalResultHtml(html) {
   let normalizedHtml = String(html);
 
-  // ① 指定文章は、必ずこの2行にそろえます。
-  // 文章の前に半角スペース・全角スペース・&nbsp; が入っていても削除します。
   const fixedHintText = '<span class="fixed-result-line">そう思えるヒントを</span><br><span class="fixed-result-line">この先でお伝えします。</span>';
 
   normalizedHtml = normalizedHtml.replace(
@@ -1377,15 +1334,9 @@ function normalizeExternalResultHtml(html) {
     fixedHintText
   );
 
-  // ② 句読点の直後に入っている手動改行は削除します。
-  // 例：「ですが、<br>」→「ですが、」
   normalizedHtml = normalizedHtml.replace(/([、。])(?:&nbsp;|\s|　)*<br\s*\/?\s*>(?:&nbsp;|\s|　)*/g, '$1');
-
-  // ③ 句読点から行が始まってしまう手動改行も削除します。
-  // 例：「<br>、」→「、」
   normalizedHtml = normalizedHtml.replace(/<br\s*\/?\s*>(?:&nbsp;|\s|　)*([、。])/g, '$1');
 
-  // ④ ②③の処理で指定文章の改行が消えた場合に備えて、最後にもう一度固定します。
   normalizedHtml = normalizedHtml.replace(
     /(?:&nbsp;|\s|　)*そう思えるヒントを(?:&nbsp;|\s|　|<br\s*\/?\s*>)*この先で(?:&nbsp;|\s|　|<br\s*\/?\s*>)*お伝えし(?:&nbsp;|\s|　|<br\s*\/?\s*>)*ます[。.]?/g,
     fixedHintText
@@ -1397,8 +1348,6 @@ function normalizeExternalResultHtml(html) {
 async function loadExternalResultText(code) {
   externalResultTextEl.innerHTML = '';
 
-  // 診断結果HTMLの場所
-  // 例：results/A1X.html
   const htmlPath = `results/${code}.html`;
 
   try {
@@ -1449,6 +1398,8 @@ async function showResult() {
 
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
+
+renderQuestion('q3');
 </script>
 
 </body>
