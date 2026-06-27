@@ -1090,6 +1090,7 @@ const QUESTION_FLOW = [
 let answers = {};
 let currentQuestionKey = 'q3';
 
+const fvAreaEl = document.getElementById('fvArea');
 const questionCardEl = document.getElementById('questionCard');
 const questionNumberEl = document.getElementById('questionNumber');
 const questionTextEl = document.getElementById('questionText');
@@ -1198,6 +1199,12 @@ function updateProgress() {
 function renderQuestion(key) {
   const q = getQuestionConfig(key);
   currentQuestionKey = key;
+
+  if (key === 'q3') {
+    fvAreaEl.style.display = 'block';
+  } else {
+    fvAreaEl.style.display = 'none';
+  }
 
   const flowKeys = getVisibleFlowKeys();
   const displayIndex = Math.max(0, flowKeys.indexOf(key)) + 1;
@@ -1372,6 +1379,7 @@ async function loadExternalResultText(code) {
 }
 
 function diagnose() {
+  fvAreaEl.style.display = 'none';
   questionCardEl.style.display = 'none';
   loadingMsgEl.style.display = 'block';
   progressFillEl.style.width = '100%';
@@ -1383,6 +1391,8 @@ function diagnose() {
 
 async function showResult() {
   const code = buildDiagnosisCode();
+
+  fvAreaEl.style.display = 'none';
 
   renderResultImage(code);
   await loadExternalResultText(code);
