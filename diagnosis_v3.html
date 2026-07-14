@@ -1,12 +1,18 @@
-
-
-
 <!DOCTYPE html>
 <html lang="ja">
 <head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5QGZDWRNYE"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-5QGZDWRNYE');
+</script>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=375">
-<title>ビジネス手相診断</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>才能コンパス診断</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap');
 
@@ -25,7 +31,13 @@
   --shadow: rgba(91,163,217,0.14);
   --line: #06C755;
 }
-* { box-sizing: border-box; margin: 0; padding: 0; }
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 body {
   font-family: 'Noto Sans JP', sans-serif;
   background: var(--sky-bg);
@@ -35,98 +47,100 @@ body {
   -webkit-text-size-adjust: none;
   text-size-adjust: none;
 }
-.header {
-  background: linear-gradient(160deg, #f0f8ff 0%, #d8eef9 50%, #bfe0f5 100%);
+
+/* ===== FV ===== */
+.fv-area {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 14px 16px 4px;
   text-align: center;
-  padding: 40px 24px 30px;
-  border-bottom: 2px solid var(--sky-light);
+  box-sizing: border-box;
 }
-.header-badge {
-  display: inline-block;
-  font-size: 16px;
-  letter-spacing: 3px;
-  color: var(--sky);
-  border: 1px solid var(--sky);
-  padding: 5px 18px;
-  border-radius: 100px;
-  margin-bottom: 16px;
-  background: white;
-  font-weight: 500;
-}
-.header h1 {
-  font-family: 'Noto Serif JP', serif;
-  font-size: clamp(18px, 4.5vw, 26px);
-  font-weight: 500;
-  line-height: 1.7;
-  color: var(--navy);
-  margin-bottom: 14px;
-}
-.header-copy {
-  font-size: 18px;
-  color: var(--text-mid);
-  line-height: 2;
-  margin-bottom: 16px;
-}
-.progress-wrap { margin-top: 18px; }
-.progress-labels {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 6px;
-  gap: 8px;
-}
-.progress-lbl {
-  font-size: 15px;
-  letter-spacing: 1px;
-  color: var(--text-light);
-  transition: color 0.3s;
-  text-align: center;
-  flex: 1;
-}
-.progress-lbl.active { color: var(--sky); font-weight: 700; }
-.progress-lbl.done { color: var(--navy); }
-.progress-track {
-  height: 4px;
-  background: rgba(91,163,217,0.2);
-  border-radius: 4px;
+
+.fv-copy {
+  position: relative;
   overflow: hidden;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 18px 16px 17px;
+  box-shadow: 0 3px 18px var(--shadow);
 }
-.progress-fill {
-  height: 100%;
-  background: linear-gradient(90deg, var(--sky), var(--navy));
-  border-radius: 4px;
-  transition: width 0.5s ease;
-  width: 0%;
+
+.fv-label {
+  display: inline-block;
+  margin-bottom: 10px;
+  padding: 5px 11px;
+  border-radius: 999px;
+  background: var(--sky-pale);
+  border: 1px solid var(--border);
+  color: var(--navy-mid);
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.5;
+  letter-spacing: 0.02em;
 }
+
+.fv-lead {
+  color: var(--navy);
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.8;
+}
+
+.fv-title {
+  margin-top: 9px;
+  color: var(--navy);
+  font-family: 'Noto Serif JP', serif;
+  font-size: clamp(25px, 7vw, 32px);
+  font-weight: 700;
+  line-height: 1.35;
+  letter-spacing: 0.04em;
+}
+
+/* ===== 診断本体 ===== */
 .container {
   max-width: 640px;
   margin: 0 auto;
   padding: 0 16px 80px;
 }
+
 .q-card {
   background: var(--white);
   border-radius: 20px;
   box-shadow: 0 4px 24px var(--shadow);
   border: 1px solid var(--border);
-  margin-top: 28px;
+  margin-top: 10px;
   overflow: hidden;
   display: block;
   animation: fadeUp 0.4s ease forwards;
 }
+
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(14px); }
   to   { opacity: 1; transform: translateY(0); }
 }
+
 .q-header {
   padding: 20px 24px 16px;
   border-bottom: 1px solid var(--border);
   background: var(--sky-pale);
 }
+
 .q-num {
   font-size: 16px;
   letter-spacing: 3px;
   color: var(--sky);
   margin-bottom: 6px;
 }
+
+.question-main-instruction {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--text-mid);
+  margin: 2px 0 10px;
+}
+
 .q-text {
   font-family: 'Noto Serif JP', serif;
   font-size: clamp(18px, 4.5vw, 22px);
@@ -134,7 +148,19 @@ body {
   line-height: 1.7;
   color: var(--navy);
 }
-.q-image-wrap { padding: 16px 16px 0; }
+
+.q-note {
+  display: none;
+  margin-top: 8px;
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--text-mid);
+}
+
+.q-image-wrap {
+  padding: 16px 16px 0;
+}
+
 .q-image-wrap img {
   width: 100%;
   max-width: 260px;
@@ -145,12 +171,14 @@ body {
   background: white;
   padding: 8px;
 }
+
 .opts-1col {
   display: flex;
   flex-direction: column;
   gap: 10px;
   padding: 16px;
 }
+
 .opt-card {
   border: 2px solid var(--border);
   border-radius: 12px;
@@ -162,20 +190,24 @@ body {
   display: flex;
   flex-direction: column;
 }
+
 .opt-card:hover {
   border-color: var(--sky);
   transform: translateY(-3px);
   box-shadow: 0 6px 18px var(--shadow);
 }
+
 .opt-card.selected {
   border-color: var(--navy);
   background: var(--sky-pale);
   box-shadow: 0 4px 16px rgba(91,163,217,0.3);
 }
+
 .opt-card.text-only {
   padding: 14px 14px 12px;
   text-align: left;
 }
+
 .opt-card img {
   width: 100%;
   height: 220px;
@@ -184,6 +216,7 @@ body {
   padding: 12px;
   display: block;
 }
+
 .opt-label {
   font-size: 18px;
   color: var(--text-dark);
@@ -191,22 +224,32 @@ body {
   font-weight: 600;
   line-height: 1.5;
 }
-.opt-card.text-only .opt-label { padding: 0 0 6px; }
+
+.opt-card.text-only .opt-label {
+  padding: 0 0 6px;
+}
+
 .opt-desc {
   font-size: 17px;
   color: var(--text-mid);
   padding: 0 6px 10px;
   line-height: 1.6;
 }
-.opt-card.text-only .opt-desc { padding: 0; }
-.opt-check { display: none; color: var(--navy); margin-right: 2px; }
-.opt-card.selected .opt-check { display: inline; }
-.micro-hint {
-  text-align: center;
-  font-size: 17px;
-  color: var(--text-light);
-  padding: 2px 16px 10px;
+
+.opt-card.text-only .opt-desc {
+  padding: 0;
 }
+
+.opt-check {
+  display: none;
+  color: var(--navy);
+  margin-right: 2px;
+}
+
+.opt-card.selected .opt-check {
+  display: inline;
+}
+
 .nav-area {
   padding: 4px 16px 20px;
   display: flex;
@@ -214,6 +257,7 @@ body {
   justify-content: flex-end;
   align-items: center;
 }
+
 .btn-back {
   background: transparent;
   color: var(--text-light);
@@ -224,7 +268,9 @@ body {
   font-family: 'Noto Sans JP', sans-serif;
   cursor: pointer;
 }
-.btn-next, .btn-copy-code {
+
+.btn-next,
+.btn-copy-code {
   background: linear-gradient(135deg, var(--sky) 0%, var(--navy) 100%);
   color: white;
   border: none;
@@ -236,7 +282,12 @@ body {
   cursor: pointer;
   letter-spacing: 1px;
 }
-.btn-next:disabled { opacity: 0.35; cursor: not-allowed; }
+
+.btn-next:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
 .loading {
   text-align: center;
   padding: 48px 16px;
@@ -244,8 +295,12 @@ body {
   color: var(--text-mid);
   font-size: 16px;
 }
-#result-section { display: none; }
-/* ▼修正：診断結果タイトルの水色ボックスを削除し、文字だけで目立たせる */
+
+#result-section {
+  display: none;
+}
+
+/* ===== 診断結果 ===== */
 .result-title-area {
   background: transparent;
   border: none;
@@ -255,6 +310,7 @@ body {
   margin-top: 20px;
   text-align: center;
 }
+
 .result-title-area .result-badge {
   display: inline-block;
   font-family: 'Noto Serif JP', serif;
@@ -262,58 +318,329 @@ body {
   font-weight: 700;
   letter-spacing: 2px;
   color: var(--navy);
-  background: transparent;
-  border: none;
-  padding: 0;
-  border-radius: 0;
-  margin-bottom: 0;
 }
-.result-hero {
-  background: linear-gradient(160deg, #f0f8ff 0%, #d8eef9 60%, #bfe0f5 100%);
-  border-radius: 20px;
-  padding: 30px 24px 26px;
-  margin-top: 28px;
+
+.result-image-wrap {
+  margin-top: 18px;
   text-align: center;
-  border: 1px solid var(--sky-light);
+}
+
+.result-image-wrap img {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  border-radius: 18px;
+  border: 1px solid var(--border);
+  background: white;
   box-shadow: 0 4px 24px var(--shadow);
 }
-.result-badge {
-  display: inline-block;
-  font-size: 14px;
-  letter-spacing: 3px;
-  color: var(--sky);
-  background: white;
+
+.result-card,
+.external-result-text .result-block,
+.external-result-text article {
+  background: var(--white);
+  border-radius: 16px;
+  padding: 22px 22px;
+  margin-top: 16px;
+  box-shadow: 0 2px 12px var(--shadow);
   border: 1px solid var(--border);
-  padding: 5px 16px;
-  border-radius: 100px;
-  margin-bottom: 14px;
 }
-.result-code { font-size: 17px; color: var(--navy-mid); margin-bottom: 14px; font-weight: 700; }
-.result-empathy {
-  font-family: 'Noto Serif JP', serif;
-  font-size: 17px;
+
+.external-result-text section.result-detail {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  border-radius: 0;
+  padding: 0;
+  margin: 0;
+}
+
+.external-result-text {
+  margin-top: 14px;
   text-align: left;
-  color: var(--navy);
-  margin-bottom: 18px;
-  padding-bottom: 16px;
-  border-bottom: 1px solid var(--border);
-  line-height: 1.9;
-  white-space: pre-line;
 }
-.result-card {
+
+.external-result-text [data-hide-title="true"],
+.external-result-text .result-catch,
+.external-result-text .one-word,
+.external-result-text .catch-copy {
+  display: none !important;
+}
+
+.external-result-text .result-detail {
+  counter-reset: resultStep;
+}
+
+.external-result-text .result-block {
+  margin-top: 16px !important;
+  margin-bottom: 0 !important;
+  position: relative;
+  overflow: hidden;
+}
+
+.external-result-text .result-block h2,
+.external-result-text .result-block h3 {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 15px !important;
+  color: var(--navy);
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+.external-result-text .result-block h2::before,
+.external-result-text .result-block h3::before {
+  counter-increment: resultStep;
+  content: counter(resultStep, decimal-leading-zero);
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 34px;
+  height: 24px;
+  padding: 0 7px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--sky-light), var(--sky));
+  color: #ffffff;
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.external-result-text .highlight-paragraph {
+  background: var(--sky-pale);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px 16px;
+  margin: 14px 0 18px;
+  color: var(--navy);
+  font-weight: 600;
+  line-height: 1.95;
+  text-align: center;
+}
+
+.external-result-text .result-block--final p:first-child {
+  background: var(--sky-pale);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px 16px;
+  color: var(--navy);
+  font-weight: 600;
+  text-align: center;
+}
+
+.external-result-text .result-block--final p:last-child {
+  font-family: 'Noto Serif JP', serif;
+  color: var(--navy);
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 0;
+}
+
+.external-result-text p {
+  font-size: 17px;
+  line-height: 2.05;
+  color: var(--text-dark);
+  margin: 0 0 18px;
+  padding: 0;
+  line-break: strict;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+.external-result-text p:empty {
+  display: none;
+}
+
+.external-result-text,
+.line-preview-section,
+.line-section {
+  line-break: strict;
+  word-break: normal;
+  overflow-wrap: break-word;
+}
+
+.external-result-text ul {
+  list-style: none;
+  margin: 14px 0 22px;
+  padding: 0;
+  counter-reset: listItem;
+}
+
+.external-result-text li {
+  position: relative;
+  font-size: 17px;
+  line-height: 1.85;
+  color: var(--text-dark);
+  background: #f8fcff;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 12px 14px 12px 48px;
+  margin-bottom: 10px;
+}
+
+.external-result-text li::before {
+  counter-increment: listItem;
+  content: counter(listItem, decimal-leading-zero);
+  position: absolute;
+  left: 14px;
+  top: 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--sky);
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+/* ===== 改行の微調整 ===== */
+.external-result-text,
+.external-result-text p,
+.external-result-text li,
+.external-result-text .highlight-paragraph,
+.external-result-text .result-block--final p,
+.line-preview-title,
+.line-preview-lead,
+.line-benefits,
+.cta-lead {
+  line-break: strict;
+  word-break: normal;
+  overflow-wrap: break-word;
+}
+
+.external-result-text .highlight-paragraph,
+.external-result-text .result-block--final p:first-child {
+  text-align: center;
+}
+
+.fixed-result-line {
+  display: inline-block;
+  white-space: nowrap;
+  text-indent: 0;
+}
+
+.external-result-error,
+.result-image-error {
   background: var(--white);
   border-radius: 16px;
   padding: 20px 22px;
-  margin-top: 12px;
+  margin-top: 16px;
   box-shadow: 0 2px 12px var(--shadow);
   border: 1px solid var(--border);
-  border-left: 4px solid var(--sky);
+  border-left: 4px solid #d96b5b;
+  color: var(--text-mid);
+  font-size: 16px;
+  line-height: 1.9;
+  text-align: left;
 }
-.result-card-title { font-size: 17px; letter-spacing: 1px; color: var(--sky); margin-bottom: 4px; font-weight: 700; }
-.result-card-note { font-size: 14px; color: var(--text-light); margin-bottom: 10px; }
-.result-card-body { font-size: 17px; text-align: left; line-height: 1.9; color: var(--text-dark); white-space: pre-line; }
-.error-card { border-left-color: #d96b5b; }
-.error-card .result-card-title { color: #b54637; }
+
+/* ===== LINE登録後プレビュー ===== */
+.line-preview-section {
+  background: linear-gradient(180deg, #ffffff 0%, #f8fcff 100%);
+  border-radius: 18px;
+  padding: 24px 20px 22px;
+  margin-top: 18px;
+  box-shadow: 0 2px 12px var(--shadow);
+  border: 1px solid var(--border);
+  text-align: center;
+}
+
+.line-preview-title {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 19px;
+  line-height: 1.75;
+  color: var(--navy);
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.line-preview-lead {
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--text-mid);
+  margin-bottom: 16px;
+}
+
+.mosaic-preview {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  background: var(--sky-pale);
+  border: 1px solid var(--border);
+  padding: 14px;
+}
+
+.mosaic-preview-list {
+  filter: blur(3.2px);
+  user-select: none;
+  pointer-events: none;
+}
+
+.mosaic-card {
+  background: rgba(255,255,255,0.9);
+  border-radius: 13px;
+  padding: 14px;
+  margin-bottom: 10px;
+  border: 1px solid rgba(91,163,217,0.18);
+  text-align: left;
+}
+
+.mosaic-card:last-child {
+  margin-bottom: 0;
+}
+
+.mosaic-card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--navy);
+  line-height: 1.7;
+}
+
+.mosaic-card-text {
+  font-size: 14px;
+  color: var(--text-mid);
+  line-height: 1.7;
+  margin-top: 4px;
+}
+
+.mosaic-preview::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(255,255,255,0.16) 0%, rgba(255,255,255,0.74) 100%);
+  pointer-events: none;
+}
+
+.mosaic-lock-label {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  display: inline-block;
+  background: rgba(255,255,255,0.95);
+  color: var(--navy);
+  border: 1px solid var(--border);
+  box-shadow: 0 4px 16px rgba(91,163,217,0.18);
+  border-radius: 999px;
+  padding: 10px 18px;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.5;
+  white-space: nowrap;
+}
+
+/* ===== LINE導線 ===== */
 .copy-code-box {
   background: var(--white);
   border-radius: 16px;
@@ -323,7 +650,13 @@ body {
   border: 1px solid var(--border);
   text-align: center;
 }
-.copy-code-label { font-size: 16px; color: var(--text-mid); margin-bottom: 4px; }
+
+.copy-code-label {
+  font-size: 16px;
+  color: var(--text-mid);
+  margin-bottom: 4px;
+}
+
 .copy-code-value {
   font-size: 22px;
   font-weight: 700;
@@ -334,42 +667,24 @@ body {
   margin-bottom: 14px;
   letter-spacing: 2px;
 }
+
 .line-section {
   background: var(--white);
   border-radius: 16px;
   padding: 26px 22px;
-  margin-top: 12px;
+  margin-top: 18px;
   text-align: center;
   box-shadow: 0 2px 12px var(--shadow);
   border: 1px solid var(--border);
 }
-.line-title {
-  font-family: 'Noto Serif JP', serif;
-  font-size: 21px;
-  color: var(--navy);
-  margin-bottom: 10px;
-  font-weight: 500;
-  line-height: 1.6;
-}
-.line-q, .line-benefits, .line-note {
+
+.line-benefits,
+.line-note {
   text-align: left;
   white-space: pre-line;
   line-height: 2;
 }
-.line-note {
-  font-size: 12px;
-  color: var(--text-light);
-  line-height: 1.8;
-}
-.line-q { font-size: 17px; color: var(--text-mid); margin-bottom: 16px; }
-.cta-lead {
-  font-size: 17px;
-  color: var(--navy);
-  font-weight: 700;
-  line-height: 1.8;
-  margin: 14px 0 12px;
-  text-align: center;
-}
+
 .line-benefits {
   background: var(--sky-pale);
   border-radius: 10px;
@@ -379,12 +694,17 @@ body {
   color: var(--text-dark);
   border: 1px solid var(--border);
 }
-.receive-guide-heading {
-  display: block;
-  text-align: center;
+
+.cta-lead {
+  font-size: 17px;
+  color: var(--navy);
   font-weight: 700;
-  margin-bottom: 0;
+  line-height: 1.85;
+  margin: 14px 0 12px;
+  text-align: center;
+  white-space: normal;
 }
+
 .btn-line {
   display: flex;
   align-items: center;
@@ -400,36 +720,37 @@ body {
   cursor: pointer;
   text-decoration: none;
   width: 100%;
+  line-height: 1.65;
+  text-align: center;
+  white-space: normal;
   position: relative;
   z-index: 20;
   pointer-events: auto;
   -webkit-tap-highlight-color: transparent;
 }
 
-/* 2026-04-30 fix: コピー・LINEボタンを確実にタップできるようにする */
-.line-section, .copy-code-box, .btn-copy-code, .btn-line {
+.line-note {
+  font-size: 12px;
+  color: var(--text-light);
+  line-height: 1.8;
+  margin-top: 10px;
+}
+
+.line-section,
+.copy-code-box,
+.btn-copy-code,
+.btn-line {
   position: relative;
   z-index: 9999;
   pointer-events: auto !important;
 }
-#postLead, #postPreviewCards, .preview-wrap, .preview-blur {
-  pointer-events: none !important;
-}
-.btn-copy-code, .btn-line {
+
+.btn-copy-code,
+.btn-line {
   touch-action: manipulation;
   -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 
-.preview-wrap { position: relative; overflow: hidden; }
-.preview-wrap::after {
-  content: '';
-  position: absolute;
-  inset: auto 0 0 0;
-  height: 70px;
-  background: linear-gradient(transparent, white);
-  pointer-events: none;
-}
-.preview-blur { filter: blur(4px); user-select: none; }
 .footer {
   text-align: center;
   padding: 40px 0 20px;
@@ -437,193 +758,643 @@ body {
   color: var(--text-light);
 }
 
-
-/* 2026-04-30 update: FVバナー＋CTA。CTAクリック後に診断本体を表示 */
-.fv-area {
-  max-width: 1080px;
-  margin: 0 auto;
-  padding: 0 10px 24px;
-  text-align: center;
-  box-sizing: border-box;
-}
-.fv-banner img { width: 100%; height: auto; display: block; }
-.fv-cta-note { margin: 14px 0 5px; font-size: 14px; line-height: 1.5; color: #3A5A8C; font-weight: 500; }
-.fv-cta-push { margin: 0 0 10px; font-size: 17px; line-height: 1.65; color: #1A2B5C; font-weight: 600; }
-.fv-cta-button {
-  display: block; width: 100%; max-width: 440px; margin: 0 auto; padding: 17px 18px;
-  background: #F28B6B; color: #ffffff; font-size: 18px; font-weight: 700; line-height: 1.4;
-  text-align: center; text-decoration: none; border: none; border-radius: 999px;
-  box-shadow: 0 5px 14px rgba(0, 0, 0, 0.18); box-sizing: border-box; cursor: pointer;
-  font-family: 'Noto Sans JP', sans-serif;
-}
-.fv-cta-button:hover { opacity: 0.92; }
 @media screen and (max-width: 480px) {
-  .fv-area { padding: 0 8px 22px; }
-  .fv-cta-note { margin-top: 12px; font-size: 13px; }
-  .fv-cta-push { font-size: 16px; margin-bottom: 9px; }
-  .fv-cta-button { max-width: 420px; font-size: 17px; padding: 16px 16px; }
+  .fv-area {
+    padding: 10px 12px 2px;
+  }
+
+  .fv-copy {
+    padding: 15px 13px 14px;
+    border-radius: 16px;
+  }
+
+  .fv-label {
+    margin-bottom: 8px;
+    font-size: 12px;
+  }
+
+  .fv-lead {
+    font-size: 14px;
+    line-height: 1.75;
+  }
+
+  .fv-title {
+    margin-top: 7px;
+  }
+
+  .container {
+    padding-top: 0;
+  }
+
+  .q-card {
+    margin-top: 6px;
+  }
 }
 
 @media (max-width: 600px) {
-  .q-text { font-size: 19px; line-height: 1.8; }
-  .opt-label { font-size: 17px; }
-  .opt-desc { font-size: 16px; }
-  .opt-card img { height: 200px; }
-  .btn-next, .btn-copy-code { font-size: 17px; padding: 16px 32px; }
-  .btn-back { font-size: 16px; padding: 14px 20px; }
-  .result-card-body { font-size: 17px; line-height: 2.1; }
-  .header h1 { font-size: 22px; line-height: 1.8; }
-  .header-copy { font-size: 16px; line-height: 2.1; }
-  .header-badge { font-size: 13px; }
-  .progress-lbl { font-size: 12px; }
+  .q-text {
+    font-size: 19px;
+    line-height: 1.8;
+  }
+
+  .opt-label {
+    font-size: 17px;
+  }
+
+  .opt-desc {
+    font-size: 16px;
+  }
+
+  .opt-card img {
+    height: 200px;
+  }
+
+  .btn-next,
+  .btn-copy-code {
+    font-size: 17px;
+    padding: 16px 32px;
+  }
+
+  .btn-back {
+    font-size: 16px;
+    padding: 14px 20px;
+  }
+
+  .external-result-text p {
+    font-size: 17px;
+    line-height: 2.05;
+    margin-bottom: 16px;
+  }
+
+  .external-result-text .result-block,
+  .external-result-text article {
+    padding: 20px 18px;
+    margin-top: 17px !important;
+  }
+
+  .external-result-text li {
+    padding: 11px 12px 11px 44px;
+    line-height: 1.8;
+  }
+
+  .external-result-text li::before {
+    left: 12px;
+    top: 13px;
+  }
 }
-
-/* CTAクリック後に旧FVが出ないよう、旧ヒーロー文章は常に非表示 */
-#heroBlock, #introBlock { display: none !important; }
-#diagnosisApp .header { padding: 14px 24px 12px; }
-#diagnosisApp .progress-wrap { margin-top: 0; }
-
 </style>
 </head>
+
 <body>
-<!-- FVバナー＋CTAエリア：CTAクリックで診断本体を表示 -->
+
 <section class="fv-area" id="fvArea">
-  <div class="fv-banner">
-    <img
-      src="https://cdn.peraichi.com/userData/d6621e34-3268-445c-bb20-ddb971833921/img/a9ed149b-4461-4548-aa2a-7fb645b43718/____________2_.png"
-      alt="才能コンパス診断"
-    >
+  <div class="fv-copy">
+    <div class="fv-label">【無料・3分・その場で結果表示】</div>
+
+    <p class="fv-lead">
+      最大4問に答えるだけで、<br>
+      あなたの強みと、自分らしい進み方のヒントが分かる
+    </p>
+
+    <h1 class="fv-title">才能コンパス診断</h1>
   </div>
-
-  <p class="fv-cta-note">無料・1分・その場で結果表示</p>
-
-  <p class="fv-cta-push">
-    「これでいい」と思えたとき<br>
-    前に進める
-  </p>
-
-  <button id="startDiagnosisBtn" class="fv-cta-button" type="button">
-    今すぐ診断する ▶
-  </button>
 </section>
 
-<!-- 診断本体：最初は非表示。CTAクリック後に表示 -->
-<div id="diagnosisApp" style="display:none;">
-<div class="header">
-  <!-- 旧FV文章ブロックは削除：CTAクリック後はすぐ質問に入る -->
-  <div id="heroBlock" style="display:none;"></div>
-  <div id="introBlock" style="display:none;"></div>
-  <div class="progress-wrap">
-    <div class="progress-labels">
-      <span class="progress-lbl" id="pl1">マスカケ</span>
-      <span class="progress-lbl" id="pl2">知能線の始点</span>
-      <span class="progress-lbl" id="pl3">知能線の伸び</span>
-      <span class="progress-lbl" id="pl4">手型</span>
-    </div>
-    <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
-  </div>
-</div>
-<div class="container">
-  <div class="q-card" id="questionCard">
-    <div class="q-header">
-      <div class="q-num" id="questionNumber">QUESTION 01 / 04</div>
-      <div class="q-text" id="questionText"></div>
-    </div>
-    <div class="q-image-wrap" id="questionImageWrap" style="display:none;">
-      <img id="questionImage" src="" alt="">
-    </div>
-    <div class="opts-1col" id="optionsContainer"></div>
-    <div class="micro-hint">直感でひとつ選んでください</div>
-    <div class="nav-area">
-      <button class="btn-back" id="backBtn" type="button">戻る</button>
-      <button class="btn-next" id="nextBtn" type="button" disabled>次へ進む</button>
-    </div>
-  </div>
-  <div class="loading" id="loadingMsg">診断結果を読み込んでいます...</div>
-  <div id="result-section">
-    <div class="result-title-area">
-      <div class="result-badge">診断結果</div>
-      <div class="result-code" id="resultCode" style="display:none;"></div>
-      <div class="result-empathy" id="preLead" style="display:none;"></div>
-    </div>
-    <div id="preResultCards"></div>
-    <div class="line-section">
-      <div class="line-title" id="lineTitle"></div>
-      <div class="line-q" id="preLineCta"></div>
-      <div class="line-benefits" id="receiveGuide"></div>
-      <div class="copy-code-box">
-        <div class="copy-code-label">LINE送信用の診断コード</div>
-        <div class="copy-code-value" id="copyCodeValue">---</div>
-        <button class="btn-copy-code" id="copyCodeBtn" type="button" onclick="copyDiagnosisCodeNow(event)">📋 診断コードを<br>コピーする</button>
+<div id="diagnosisApp" style="display:block;">
+  <div class="container">
+    <div class="q-card" id="questionCard">
+      <div class="q-header">
+        <div class="q-num" id="questionNumber">QUESTION 01 / 04</div>
+
+        <div class="question-main-instruction">
+          利き手を見ながら、直感で質問に答えてください。
+        </div>
+
+        <div class="q-text" id="questionText"></div>
+        <div class="q-note" id="questionNote"></div>
       </div>
-      <div class="cta-lead" id="ctaLead"></div>
-      <a id="lineBtn" href="https://lin.ee/OINIB8d" class="btn-line" target="_blank" rel="noopener noreferrer" onclick="openLineNow(event)">あなた専用の診断結果を今すぐ受け取る</a>
-      <p class="line-note">※コピーした診断コードをLINEで送ってください</p>
-      
+
+      <div class="q-image-wrap" id="questionImageWrap" style="display:none;">
+        <img id="questionImage" src="" alt="">
+      </div>
+
+      <div class="opts-1col" id="optionsContainer"></div>
+
+      <div class="nav-area">
+        <button class="btn-back" id="backBtn" type="button">戻る</button>
+        <button class="btn-next" id="nextBtn" type="button" disabled>次へ進む</button>
+      </div>
     </div>
-    <div class="result-hero" style="margin-top:14px;">
-      <div class="result-badge">登録後に表示する想定内容</div>
-      <div class="result-empathy preview-blur preview-wrap" id="postLead"></div>
+
+    <div class="loading" id="loadingMsg">診断結果を読み込んでいます...</div>
+
+    <div id="result-section">
+      <div class="result-title-area">
+        <div class="result-badge">診断結果</div>
+      </div>
+
+      <div id="preResultCards">
+        <div id="resultImageWrap" class="result-image-wrap"></div>
+        <div id="externalResultText" class="external-result-text"></div>
+      </div>
+
+      <div class="line-preview-section">
+        <div class="line-preview-title" id="linePreviewTitle">
+          LINE登録後には、さらに詳しい<br>診断結果をお届けします。
+        </div>
+
+        <div class="line-preview-lead" id="linePreviewLead">
+          あなたの強みの活かし方や、つまずきやすいポイントをさらに詳しく確認できます。
+        </div>
+
+        <div class="mosaic-preview" aria-hidden="true">
+          <div class="mosaic-preview-list">
+            <div class="mosaic-card">
+              <div class="mosaic-card-title">あなたの強みを活かす具体的な一歩</div>
+              <div class="mosaic-card-text">今のあなたに合う進み方を、行動に移しやすい形で整理します。</div>
+            </div>
+            <div class="mosaic-card">
+              <div class="mosaic-card-title">つまずきやすいポイント</div>
+              <div class="mosaic-card-text">頑張っているのに止まりやすくなる理由を、タイプに合わせて確認します。</div>
+            </div>
+            <div class="mosaic-card">
+              <div class="mosaic-card-title">今のあなたに合う進み方</div>
+              <div class="mosaic-card-text">無理に別人にならず、強みを活かして進むヒントをお届けします。</div>
+            </div>
+          </div>
+          <div class="mosaic-lock-label">続きはLINEで受け取れます</div>
+        </div>
+      </div>
+
+      <div class="line-section">
+        <div class="line-benefits" id="receiveGuide"></div>
+
+        <div class="copy-code-box">
+          <div class="copy-code-label">LINE送信用の診断コード</div>
+          <div class="copy-code-value" id="copyCodeValue">---</div>
+          <button class="btn-copy-code" id="copyCodeBtn" type="button">診断コードを<br>コピーする</button>
+        </div>
+
+        <div class="cta-lead" id="ctaLead"></div>
+
+        <a id="lineBtn" href="https://lin.ee/OINIB8d" class="btn-line" target="_blank" rel="noopener noreferrer">
+          あなた専用の診断結果を<br>受け取る　▶
+        </a>
+
+        <p class="line-note">※無料・1分で登録できます。</p>
+      </div>
+
+      <div class="footer">ビジネス手相診断士 輝路(kiro) © 2026</div>
     </div>
-    <div id="postPreviewCards" class="preview-wrap preview-blur"></div>
   </div>
-  <div class="footer">ビジネス手相診断士 輝路(kiro) © 2026</div>
 </div>
-</div>
+
 <script>
-function generateResult(code) {
+const COMMON_TEXTS = {
+  receiveGuide: `【診断結果の受け取り方】
+1. 下記の「診断コードをコピーする」ボタンを押す。
+2. 「LINE登録に進む」ボタンを押す。
+3. LINEでコピーした診断コードを送る。
 
-  if (PRE_DIRECT_RESULT_MAP[code]) {
-    return PRE_DIRECT_RESULT_MAP[code].body;
+確認後、順次トータル診断結果
+をお届けします。
+
+※ひとつひとつ内容を確認しながらお届けしているため、少しお時間をいただく場合があります。`,
+
+  ctaLead: `強みを活かして、次の一歩を踏み出したい方は、今すぐ診断結果を受け取ってください。`
+};
+
+const LINE_PREVIEW_TEXTS = {
+  C1Y: {
+    title: `LINE登録後には、<br>
+迷いながらも<br>
+確かめ続けてしまう理由と、<br><br>
+分析力と直感を<br>
+前に進む力へ変えるヒントまで<br>
+確認できます`,
+    lead: `「また迷ってしまう私」ではなく、確かめながら進める自分の使い方が見えてきます。`
   }
+};
 
-  const handType = code.charAt(0);
-  const startType = code.charAt(1);
-  const endType = code.charAt(2);
+const DEFAULT_LINE_PREVIEW = {
+  title: `LINE登録後には、さらに詳しい<br>診断結果をお届けします。`,
+  lead: `あなたの強みの活かし方や、つまずきやすいポイントをさらに詳しく確認できます。`
+};
 
-  const foundation = PRE_FOUNDATION_MAP[handType]?.body || "";
-  const decision = PRE_DECISION_MAP[startType]?.body || "";
-  const third = PRE_THIRD_MAP[endType]?.body || "";
+const IMAGE_ASSETS = {
+  Q1_A: "https://cdn.peraichi.com/userData/d6621e34-3268-445c-bb20-ddb971833921/img/8d67ae3b-1e9e-4300-93e1-47a3844163b5/17.png",
+  Q1_B: "https://cdn.peraichi.com/userData/d6621e34-3268-445c-bb20-ddb971833921/img/820409af-d9ef-4172-88a0-4e9f63b013dd/21.png",
+  Q1_C: "https://cdn.peraichi.com/userData/d6621e34-3268-445c-bb20-ddb971833921/img/bbd8991d-8ead-45d8-a7ae-0dc8ce25e549/19.png",
+  Q1_D: "https://cdn.peraichi.com/userData/d6621e34-3268-445c-bb20-ddb971833921/img/19bcce50-e7d7-4f77-a95a-a6cdfddf7bd1/20.png",
+  Q1_E: "https://cdn.peraichi.com/userData/d6621e34-3268-445c-bb20-ddb971833921/img/bf039615-601c-4bdc-977d-489815b1796d/18.png",
 
-  let stopPattern = "";
+  Q2_1: "https://cdn.peraichi.com/userData/d6621e34-3268-445c-bb20-ddb971833921/img/910a7806-77f9-465b-9be4-055629b9a200/_________200_x_200_px___19_.png",
+  Q2_2: "https://cdn.peraichi.com/userData/d6621e34-3268-445c-bb20-ddb971833921/img/ed029380-714c-013e-0474-0a58a9feac02/2.png",
+  Q2_3: "https://cdn.peraichi.com/userData/d6621e34-3268-445c-bb20-ddb971833921/img/4c1f7d94-3a28-4579-9915-c45ad865489a/_________200_x_200_px___18_.png"
+};
 
-  if (startType === "1") {
-    stopPattern = "慎重に考えすぎて、動き出すまでに時間がかかることがあります。";
-  } else if (startType === "2") {
-    stopPattern = "動ける反面、方向が定まらないまま進んでしまうことがあります。";
-  } else if (startType === "3") {
-    stopPattern = "タイミングを見ているうちに、動き出しが遅れることがあります。";
+const QUESTION_FLOW = [
+  {
+    key: 'q3',
+    question: '下記のように、手のひらを横切る線がありますか？',
+    note: '※迷ったら「ない」を選んでください',
+    imageUrl: 'https://cdn.peraichi.com/userData/d6621e34-3268-445c-bb20-ddb971833921/img/eaf70000-69a9-4b09-87aa-c4f83616156e/_________200_x_200_px___11_.png',
+    choices: [
+      { value: 'M', label: 'ある', description: '' },
+      { value: 'NONE', label: 'ない', description: '' }
+    ]
+  },
+  {
+    key: 'q2',
+    question: '手のひらの中央あたりにある横線（知能線）は、どこから始まっていますか？',
+    imageUrl: '',
+    choices: [
+      {
+        value: '1',
+        label: '生命線の起点近くから',
+        description: '',
+        imageUrl: IMAGE_ASSETS.Q2_1
+      },
+      {
+        value: '2',
+        label: '生命線と離れている',
+        description: '',
+        imageUrl: IMAGE_ASSETS.Q2_2
+      },
+      {
+        value: '3',
+        label: '生命線の途中から',
+        description: '',
+        imageUrl: IMAGE_ASSETS.Q2_3
+      }
+    ]
+  },
+  {
+    key: 'q4',
+    question: '知能線は、どこまで伸びていますか？',
+    imageUrl: '',
+    choices: [
+      {
+        value: 'X',
+        label: '小指の下まで',
+        description: '長め・横に伸びている',
+        imageUrl: 'https://cdn.peraichi.com/userData/d6621e34-3268-445c-bb20-ddb971833921/img/ed6341d0-714c-013e-b9fa-0a58a9feac02/4.png'
+      },
+      {
+        value: 'Y',
+        label: '薬指の下くらい',
+        description: '短め・横に伸びている',
+        imageUrl: 'https://cdn.peraichi.com/userData/d6621e34-3268-445c-bb20-ddb971833921/img/ed024c50-714c-013e-0475-0a58a9feac02/5.png'
+      },
+      {
+        value: 'Z',
+        label: '手首方面まで',
+        description: '斜め下・手首方面に流れている',
+        imageUrl: 'https://cdn.peraichi.com/userData/d6621e34-3268-445c-bb20-ddb971833921/img/033891d0-714d-013e-ba02-0a58a9feac02/6.png'
+      },
+      {
+        value: 'W',
+        label: '二股に分かれている',
+        description: '一方は小指の下へ、もう一方は手首方面へ流れている',
+        imageUrl: 'https://cdn.peraichi.com/userData/d6621e34-3268-445c-bb20-ddb971833921/img/23a9ac40-2d94-4509-866f-df4d30e19df1/_________200_x_200_px___12_.png'
+      }
+    ]
+  },
+  {
+    key: 'q1',
+    question: '次の5つの手型の中で一番近いものを選んでください',
+    imageUrl: '',
+    choices: [
+      {
+        value: 'A',
+        label: '現実的でタフな手',
+        description: '手のひらが正方形に近く、縦横がほぼ同じ長さ／爪が四角い／指は短め／骨太タイプの方によく見られる',
+        imageUrl: IMAGE_ASSETS.Q1_A
+      },
+      {
+        value: 'B',
+        label: '感受性豊かな手',
+        description: '手のひらが縦に長い／指先が丸い',
+        imageUrl: IMAGE_ASSETS.Q1_B
+      },
+      {
+        value: 'C',
+        label: '分析好きの手',
+        description: '指の関節がはっきりしている／指は比較的長い／骨の目立つ細身体型の方によく見られる',
+        imageUrl: IMAGE_ASSETS.Q1_C
+      },
+      {
+        value: 'D',
+        label: 'エネルギッシュな手',
+        description: '指先がヘラのように広がっている／手のひらは縦よりも横がやや長い',
+        imageUrl: IMAGE_ASSETS.Q1_D
+      },
+      {
+        value: 'E',
+        label: '感性高い手',
+        description: '指は長くて細く、先がとがっている／手は縦に長く、繊細な印象／華奢な細身体型の方によく見られる',
+        imageUrl: IMAGE_ASSETS.Q1_E
+      }
+    ]
   }
+];
 
-  return `
-${foundation}
-${decision}
-${third}
+let answers = {};
+let currentQuestionKey = 'q3';
 
-ただ──
-${stopPattern}
+const fvAreaEl = document.getElementById('fvArea');
+const questionCardEl = document.getElementById('questionCard');
+const questionNumberEl = document.getElementById('questionNumber');
+const questionTextEl = document.getElementById('questionText');
+const questionNoteEl = document.getElementById('questionNote');
+const questionImageWrapEl = document.getElementById('questionImageWrap');
+const questionImageEl = document.getElementById('questionImage');
+const optionsContainerEl = document.getElementById('optionsContainer');
+const backBtnEl = document.getElementById('backBtn');
+const nextBtnEl = document.getElementById('nextBtn');
+const loadingMsgEl = document.getElementById('loadingMsg');
+const resultSectionEl = document.getElementById('result-section');
+const resultImageWrapEl = document.getElementById('resultImageWrap');
+const externalResultTextEl = document.getElementById('externalResultText');
+const receiveGuideEl = document.getElementById('receiveGuide');
+const ctaLeadEl = document.getElementById('ctaLead');
+const copyCodeValueEl = document.getElementById('copyCodeValue');
+const copyCodeBtnEl = document.getElementById('copyCodeBtn');
+const linePreviewTitleEl = document.getElementById('linePreviewTitle');
+const linePreviewLeadEl = document.getElementById('linePreviewLead');
 
-このまま進めてしまうと、
-あなたの強みが活かしきれない可能性があります。
+backBtnEl.addEventListener('click', goBack);
+nextBtnEl.addEventListener('click', goNext);
 
-この先では、
-あなたの強みの活かし方がわかります。
-`;
-}
+copyCodeBtnEl.addEventListener('click', async function() {
+  const code = copyCodeValueEl.textContent.trim();
 
-// ▼既存ロジックを壊さず上書き
-const originalMap = PRE_DIRECT_RESULT_MAP;
-
-PRE_DIRECT_RESULT_MAP = new Proxy(originalMap, {
-  get(target, prop) {
-    if (target[prop]) {
-      return target[prop];
-    }
-    return {
-      body: generateResult(prop)
-    };
+  try {
+    await navigator.clipboard.writeText(code);
+    copyCodeBtnEl.innerHTML = 'コピーしました';
+    setTimeout(function() {
+      copyCodeBtnEl.innerHTML = '診断コードを<br>コピーする';
+    }, 1600);
+  } catch (error) {
+    alert('コピーできない場合は、診断コードを長押ししてコピーしてください。');
   }
 });
+
+function escapeHtml(value) {
+  return String(value)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+function getQuestionConfig(key) {
+  return QUESTION_FLOW.find(q => q.key === key);
+}
+
+function isQuestionAnswered(key) {
+  return !!answers[key];
+}
+
+function getVisibleFlowKeys() {
+  if (answers.q3 === 'M') {
+    return ['q3', 'q2', 'q1'];
+  }
+
+  return ['q3', 'q2', 'q4', 'q1'];
+}
+
+function getNextQuestionKey(key) {
+  if (key === 'q3') return 'q2';
+  if (key === 'q2') return answers.q3 === 'M' ? 'q1' : 'q4';
+  if (key === 'q4') return 'q1';
+  return null;
+}
+
+function getPreviousQuestionKey(key) {
+  if (key === 'q1') return answers.q3 === 'M' ? 'q2' : 'q4';
+  if (key === 'q4') return 'q2';
+  if (key === 'q2') return 'q3';
+  return null;
+}
+
+function getNextButtonLabel(key) {
+  if (key === 'q1') return '診断結果を見る';
+  return '次へ進む';
+}
+
+function renderQuestion(key) {
+  const q = getQuestionConfig(key);
+  currentQuestionKey = key;
+
+  if (key === 'q3') {
+    fvAreaEl.style.display = 'block';
+  } else {
+    fvAreaEl.style.display = 'none';
+  }
+
+  const flowKeys = getVisibleFlowKeys();
+  const displayIndex = Math.max(0, flowKeys.indexOf(key)) + 1;
+
+  questionCardEl.style.display = 'block';
+  resultSectionEl.style.display = 'none';
+  loadingMsgEl.style.display = 'none';
+
+  questionNumberEl.textContent = `QUESTION ${String(displayIndex).padStart(2, '0')} / ${String(flowKeys.length).padStart(2, '0')}`;
+  questionTextEl.textContent = q.question;
+
+  if (q.note) {
+    questionNoteEl.textContent = q.note;
+    questionNoteEl.style.display = 'block';
+  } else {
+    questionNoteEl.textContent = '';
+    questionNoteEl.style.display = 'none';
+  }
+
+  if (q.imageUrl) {
+    questionImageWrapEl.style.display = 'block';
+    questionImageEl.src = q.imageUrl;
+    questionImageEl.alt = q.question;
+  } else {
+    questionImageWrapEl.style.display = 'none';
+    questionImageEl.src = '';
+  }
+
+  const selectedValue = answers[key] || '';
+
+  optionsContainerEl.innerHTML = q.choices.map(choice => {
+    const isSelected = selectedValue === choice.value;
+    const hasImage = !!choice.imageUrl;
+    const hasDesc = !!(choice.description && choice.description.trim());
+
+    return `
+      <div class="opt-card ${hasImage ? '' : 'text-only'} ${isSelected ? 'selected' : ''}" onclick="selectChoice('${q.key}', '${escapeHtml(choice.value)}', this)">
+        ${hasImage ? `<img src="${escapeHtml(choice.imageUrl)}" alt="${escapeHtml(choice.label)}">` : ''}
+        <div class="opt-label"><span class="opt-check">✓</span>${escapeHtml(choice.label)}</div>
+        ${hasDesc ? `<div class="opt-desc">${escapeHtml(choice.description)}</div>` : ''}
+      </div>
+    `;
+  }).join('');
+
+  backBtnEl.style.display = key === 'q3' ? 'none' : 'inline-block';
+  nextBtnEl.disabled = !isQuestionAnswered(key);
+  nextBtnEl.textContent = getNextButtonLabel(key);
+}
+
+function selectChoice(questionKey, value, clickedElement) {
+  answers[questionKey] = value;
+
+  if (questionKey === 'q3' && value === 'M') {
+    delete answers.q4;
+  }
+
+  optionsContainerEl.querySelectorAll('.opt-card').forEach(card => {
+    card.classList.remove('selected');
+  });
+
+  clickedElement.classList.add('selected');
+  nextBtnEl.disabled = false;
+  nextBtnEl.textContent = getNextButtonLabel(questionKey);
+}
+
+function goNext() {
+  if (!isQuestionAnswered(currentQuestionKey)) return;
+
+  const nextKey = getNextQuestionKey(currentQuestionKey);
+
+  if (nextKey === null) {
+    diagnose();
+    return;
+  }
+
+  renderQuestion(nextKey);
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function goBack() {
+  const prev = getPreviousQuestionKey(currentQuestionKey);
+  if (prev) {
+    renderQuestion(prev);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+}
+
+function buildDiagnosisCode() {
+  if (answers.q3 === 'M') {
+    return `${answers.q1}${answers.q2}M`;
+  }
+
+  return `${answers.q1}${answers.q2}${answers.q4}`;
+}
+
+function setLinePreviewText(code) {
+  const preview = DEFAULT_LINE_PREVIEW;
+
+  linePreviewTitleEl.innerHTML = preview.title;
+  linePreviewLeadEl.innerHTML = preview.lead;
+}
+
+function renderResultImage(code) {
+  resultImageWrapEl.innerHTML = '';
+
+  const img = document.createElement('img');
+  const imagePath = `image/results/${code}.png`;
+
+  img.src = `${imagePath}?v=${Date.now()}`;
+  img.alt = `${code}の診断結果`;
+
+  img.onerror = function() {
+    resultImageWrapEl.innerHTML = `
+      <div class="result-image-error">
+        診断結果画像を読み込めませんでした。<br>
+        ${escapeHtml(imagePath)} が存在するか確認してください。
+      </div>
+    `;
+  };
+
+  resultImageWrapEl.appendChild(img);
+}
+
+function normalizeExternalResultHtml(html) {
+  let normalizedHtml = String(html);
+
+  const fixedHintText = '<span class="fixed-result-line">そう思えるヒントを</span><br><span class="fixed-result-line">この先でお伝えします。</span>';
+
+  normalizedHtml = normalizedHtml.replace(
+    /(?:&nbsp;|\s|　)*そう思えるヒントを(?:&nbsp;|\s|　|<br\s*\/?\s*>)*この先で(?:&nbsp;|\s|　|<br\s*\/?\s*>)*お伝えし(?:&nbsp;|\s|　|<br\s*\/?\s*>)*ます[。.]?/g,
+    fixedHintText
+  );
+
+  normalizedHtml = normalizedHtml.replace(/([、。])(?:&nbsp;|\s|　)*<br\s*\/?\s*>(?:&nbsp;|\s|　)*/g, '$1');
+  normalizedHtml = normalizedHtml.replace(/<br\s*\/?\s*>(?:&nbsp;|\s|　)*([、。])/g, '$1');
+
+  normalizedHtml = normalizedHtml.replace(
+    /(?:&nbsp;|\s|　)*そう思えるヒントを(?:&nbsp;|\s|　|<br\s*\/?\s*>)*この先で(?:&nbsp;|\s|　|<br\s*\/?\s*>)*お伝えし(?:&nbsp;|\s|　|<br\s*\/?\s*>)*ます[。.]?/g,
+    fixedHintText
+  );
+
+  return normalizedHtml;
+}
+
+async function loadExternalResultText(code) {
+  externalResultTextEl.innerHTML = '';
+
+  const htmlPath = `results/${code}.html`;
+
+  try {
+    const response = await fetch(`${htmlPath}?v=${Date.now()}`, {
+      cache: 'no-store'
+    });
+
+    if (!response.ok) {
+      throw new Error('not found');
+    }
+
+    const html = await response.text();
+    externalResultTextEl.innerHTML = normalizeExternalResultHtml(html);
+  } catch (error) {
+    externalResultTextEl.innerHTML = `
+      <div class="external-result-error">
+        診断結果本文を読み込めませんでした。<br>
+        ${escapeHtml(htmlPath)} が存在するか確認してください。
+      </div>
+    `;
+  }
+}
+
+function diagnose() {
+  fvAreaEl.style.display = 'none';
+  questionCardEl.style.display = 'none';
+  loadingMsgEl.style.display = 'block';
+
+  setTimeout(function() {
+    showResult();
+  }, 500);
+}
+
+async function showResult() {
+  const code = buildDiagnosisCode();
+
+  fvAreaEl.style.display = 'none';
+
+  renderResultImage(code);
+  await loadExternalResultText(code);
+
+  setLinePreviewText(code);
+
+  receiveGuideEl.textContent = COMMON_TEXTS.receiveGuide;
+  ctaLeadEl.textContent = COMMON_TEXTS.ctaLead;
+  copyCodeValueEl.textContent = code;
+
+  loadingMsgEl.style.display = 'none';
+  resultSectionEl.style.display = 'block';
+
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+renderQuestion('q3');
 </script>
+
 </body>
 </html>
