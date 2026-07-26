@@ -1149,6 +1149,35 @@ const QUESTION_FLOW = [
 let answers = {};
 let currentQuestionKey = 'q3';
 
+// Googleアナリティクスへ同じ行動を重複送信しないための記録
+const sentAnalyticsEvents = new Set();
+
+function trackDiagnosisEvent(eventName, eventParams = {}) {
+  if (sentAnalyticsEvents.has(eventName)) return;
+
+  try {
+    if (typeof window.gtag === 'function') {
+      window.gtag('event', eventName, eventParams);
+      sentAnalyticsEvents.add(eventName);
+    }
+  } catch (error) {
+    // 記録に失敗しても、診断そのものは止めない
+    console.warn('Googleアナリティクスへの記録に失敗しました:', eventName, error);
+  }
+}
+
+function trackQuestionAnswer(questionKey) {
+  const flowKeys = getVisibleFlowKeys();
+  const displayIndex = flowKeys.indexOf(questionKey) + 1;
+
+  if (displayIndex < 1 || displayIndex > 4) return;
+
+  trackDiagnosisEvent(`diagnosis_q${displayIndex}`, {
+    question_key: questionKey,
+    question_total: flowKeys.length
+  });
+}
+
 const fvAreaEl = document.getElementById('fvArea');
 const questionCardEl = document.getElementById('questionCard');
 const questionNumberEl = document.getElementById('questionNumber');
@@ -1169,6 +1198,7 @@ const copyCodeValueEl = document.getElementById('copyCodeValue');
 const copyCodeBtnEl = document.getElementById('copyCodeBtn');
 const linePreviewTitleEl = document.getElementById('linePreviewTitle');
 const linePreviewLeadEl = document.getElementById('linePreviewLead');
+const lineBtnEl = document.getElementById('lineBtn');
 
 backBtnEl.addEventListener('click', goBack);
 nextBtnEl.addEventListener('click', goNext);
@@ -1185,6 +1215,12 @@ copyCodeBtnEl.addEventListener('click', async function() {
   } catch (error) {
     alert('コピーできない場合は、診断コードを長押ししてコピーしてください。');
   }
+});
+
+lineBtnEl.addEventListener('click', function() {
+  trackDiagnosisEvent('line_click', {
+    diagnosis_code: copyCodeValueEl.textContent.trim()
+  });
 });
 
 function escapeHtml(value) {
@@ -1297,6 +1333,9 @@ function selectChoice(questionKey, value, clickedElement) {
   if (questionKey === 'q3' && value === 'M') {
     delete answers.q4;
   }
+
+  // 画面に表示されている順番に合わせて、回答段階を1回だけ記録する
+  trackQuestionAnswer(questionKey);
 
   optionsContainerEl.querySelectorAll('.opt-card').forEach(card => {
     card.classList.remove('selected');
@@ -1438,6 +1477,11 @@ async function showResult() {
 
   loadingMsgEl.style.display = 'none';
   resultSectionEl.style.display = 'block';
+
+  trackDiagnosisEvent('diagnosis_complete', {
+    diagnosis_code: code,
+    question_total: getVisibleFlowKeys().length
+  });
 
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
