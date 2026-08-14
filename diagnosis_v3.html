@@ -631,79 +631,6 @@ body {
   line-height: 1.65;
 }
 
-.mosaic-preview {
-  position: relative;
-  border-radius: 16px;
-  overflow: hidden;
-  background: var(--sky-pale);
-  border: 1px solid var(--border);
-  padding: 9px;
-  max-height: 116px;
-}
-
-.mosaic-preview-list {
-  filter: blur(3.2px);
-  user-select: none;
-  pointer-events: none;
-}
-
-.mosaic-card {
-  background: rgba(255,255,255,0.9);
-  border-radius: 10px;
-  padding: 8px 10px;
-  margin-bottom: 6px;
-  border: 1px solid rgba(91,163,217,0.18);
-  text-align: left;
-}
-
-.mosaic-card:last-child {
-  margin-bottom: 0;
-}
-
-.mosaic-card-title {
-  font-size: 14px;
-  font-weight: 700;
-  color: var(--navy);
-  line-height: 1.55;
-}
-
-.mosaic-card-text {
-  font-size: 12px;
-  color: var(--text-mid);
-  line-height: 1.55;
-  margin-top: 2px;
-}
-
-.mosaic-preview::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(255,255,255,0.16) 0%, rgba(255,255,255,0.74) 100%);
-  pointer-events: none;
-}
-
-.mosaic-lock-label {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 2;
-  display: inline-block;
-  background: transparent;
-  color: var(--navy);
-  border: none;
-  box-shadow: none;
-  border-radius: 0;
-  padding: 4px 8px;
-  font-family: 'Noto Sans JP', sans-serif;
-  font-size: 14px;
-  font-weight: 700;
-  line-height: 1.5;
-  white-space: nowrap;
-  cursor: default;
-  pointer-events: none;
-}
-
 /* ===== LINE導線 ===== */
 .line-section {
   scroll-margin-top: 16px;
@@ -714,14 +641,6 @@ body {
   text-align: center;
   box-shadow: 0 2px 12px var(--shadow);
   border: 1px solid var(--border);
-}
-
-.line-delivery-note {
-  margin: 0 0 10px;
-  color: var(--navy);
-  font-size: 15px;
-  font-weight: 700;
-  line-height: 1.65;
 }
 
 .receive-guide {
@@ -868,42 +787,6 @@ body {
   line-height: 1.6;
   margin-top: 8px;
   text-align: center;
-}
-
-.supplemental-result {
-  margin-top: 14px;
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  background: rgba(255,255,255,0.72);
-  overflow: hidden;
-}
-
-.supplemental-result[hidden] {
-  display: none;
-}
-
-.supplemental-result summary {
-  padding: 14px 16px;
-  color: var(--navy-mid);
-  font-size: 14px;
-  font-weight: 700;
-  line-height: 1.6;
-  text-align: center;
-  cursor: pointer;
-}
-
-.supplemental-result .external-result-text {
-  margin: 0;
-  padding: 0 14px 14px;
-}
-
-.supplemental-result .result-block {
-  margin-top: 0 !important;
-}
-
-.supplemental-result .result-block h2::before,
-.supplemental-result .result-block h3::before {
-  display: none;
 }
 
 .line-section,
@@ -1099,25 +982,9 @@ body {
         </div>
 
         <div class="line-benefit-list" id="lineBenefitList"></div>
-
-        <div class="mosaic-preview">
-          <div class="mosaic-preview-list" aria-hidden="true">
-            <div class="mosaic-card">
-              <div class="mosaic-card-title">詳しい診断結果</div>
-              <div class="mosaic-card-text">あなたの特徴に合わせた具体的なヒントが続きます。</div>
-            </div>
-            <div class="mosaic-card">
-              <div class="mosaic-card-title">才能を前進につなげる方法</div>
-              <div class="mosaic-card-text">止まりやすい場面での判断と行動を整理します。</div>
-            </div>
-          </div>
-          <div class="mosaic-lock-label">続きはLINEで受け取れます</div>
-        </div>
       </div>
 
       <div class="line-section" id="lineActionSection">
-        <p class="line-delivery-note">LINE登録後には、さらに詳しい診断結果をお届けします。</p>
-
         <div class="receive-guide">
           <div class="receive-guide-title">【診断結果の受け取り方】</div>
           <ol class="receive-steps">
@@ -1148,11 +1015,6 @@ body {
 
         <p class="line-note">無料・1分で登録できます</p>
       </div>
-
-      <details class="supplemental-result" id="supplementalResult" hidden>
-        <summary>補足の診断メッセージを読む</summary>
-        <div class="external-result-text" id="supplementalResultContent"></div>
-      </details>
 
       <div class="footer">ビジネス手相診断士 輝路(kiro) © 2026</div>
     </div>
@@ -1355,8 +1217,6 @@ const copyStatusEl = document.getElementById('copyStatus');
 const linePreviewTitleEl = document.getElementById('linePreviewTitle');
 const linePreviewLeadEl = document.getElementById('linePreviewLead');
 const lineBenefitListEl = document.getElementById('lineBenefitList');
-const supplementalResultEl = document.getElementById('supplementalResult');
-const supplementalResultContentEl = document.getElementById('supplementalResultContent');
 const lineBtnEl = document.getElementById('lineBtn');
 
 backBtnEl.addEventListener('click', goBack);
@@ -1612,8 +1472,22 @@ function splitBenefitText(text, index) {
   };
 }
 
-function getBenefitsFromResultBlocks(blocks) {
-  const listItems = blocks.flatMap(block => Array.from(block.querySelectorAll('li')));
+function findLineBenefitSource(blocks) {
+  const explicitSource = blocks
+    .map(block => block.querySelector('.line-benefits-source'))
+    .find(Boolean);
+
+  if (explicitSource) return explicitSource;
+
+  return blocks
+    .flatMap(block => Array.from(block.querySelectorAll('ul')))
+    .find(list => list.querySelectorAll('li').length >= 3) || null;
+}
+
+function getBenefitsFromList(list) {
+  if (!list) return [];
+
+  const listItems = Array.from(list.querySelectorAll('li'));
 
   return listItems.slice(0, 3).map(function(item, index) {
     const titleElement = item.querySelector('strong, b, h4');
@@ -1647,7 +1521,7 @@ function renderLineBenefits(benefits) {
   }).join('');
 }
 
-function findSupplementalBlockIndex(blocks) {
+function findMainPointBlockIndex(blocks) {
   const headingPattern = /ここから先が本題|ここから先|本題/u;
   const headingIndex = blocks.findIndex(function(block) {
     const heading = block.querySelector('h2, h3');
@@ -1662,45 +1536,49 @@ function findSupplementalBlockIndex(blocks) {
   return blocks.length > 3 ? 3 : -1;
 }
 
-function getTypeSpecificCtaLead(blocks) {
+function findTypeSpecificCtaLead(blocks) {
   const paragraphs = blocks.flatMap(function(block) {
     return Array.from(block.querySelectorAll('p')).filter(paragraph => !paragraph.closest('li'));
   });
+  const explicitParagraph = paragraphs.find(paragraph => paragraph.classList.contains('cta-message-source'));
   const preferredParagraph = paragraphs.find(function(paragraph) {
     const text = normalizePlainText(paragraph.textContent);
     return /足りない|必要なのは|止まるため|前へ進む|前に進む/u.test(text) && text.length <= 180;
   });
   const fallbackParagraph = paragraphs.find(paragraph => normalizePlainText(paragraph.textContent).length <= 180);
-  const selectedParagraph = preferredParagraph || fallbackParagraph;
+  const selectedParagraph = explicitParagraph || preferredParagraph || fallbackParagraph;
 
-  return selectedParagraph ? normalizePlainText(selectedParagraph.textContent) : COMMON_TEXTS.ctaLead;
+  return {
+    text: selectedParagraph ? normalizePlainText(selectedParagraph.textContent) : COMMON_TEXTS.ctaLead,
+    source: explicitParagraph || preferredParagraph || null
+  };
 }
 
 function prepareSharedResultLayout() {
-  supplementalResultContentEl.innerHTML = '';
-  supplementalResultEl.hidden = true;
-  supplementalResultEl.open = false;
-
   const blocks = Array.from(externalResultTextEl.querySelectorAll('.result-block'));
-  const supplementalIndex = findSupplementalBlockIndex(blocks);
+  const mainPointIndex = findMainPointBlockIndex(blocks);
 
-  if (supplementalIndex < 0) {
+  if (mainPointIndex < 0) {
     renderLineBenefits([]);
     ctaLeadEl.textContent = COMMON_TEXTS.ctaLead;
     return;
   }
 
-  const supplementalBlocks = blocks.slice(supplementalIndex);
-  const benefits = getBenefitsFromResultBlocks(supplementalBlocks);
+  const mainPointBlocks = blocks.slice(mainPointIndex);
+  const benefitSource = findLineBenefitSource(mainPointBlocks);
+  const benefits = getBenefitsFromList(benefitSource);
+  const ctaLead = findTypeSpecificCtaLead(mainPointBlocks);
 
   renderLineBenefits(benefits);
-  ctaLeadEl.textContent = getTypeSpecificCtaLead(supplementalBlocks);
+  ctaLeadEl.textContent = ctaLead.text;
 
-  supplementalBlocks.forEach(function(block) {
-    supplementalResultContentEl.appendChild(block);
-  });
+  if (benefitSource && benefits.length === 3) {
+    benefitSource.remove();
+  }
 
-  supplementalResultEl.hidden = supplementalResultContentEl.children.length === 0;
+  if (ctaLead.source) {
+    ctaLead.source.remove();
+  }
 }
 
 function renderResultImage(code) {
