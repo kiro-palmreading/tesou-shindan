@@ -1,4 +1,249 @@
-<section class="result-detail" data-diagnosis-code="A1X">
+<section class="result-detail meta-result-detail" data-diagnosis-code="A1X">
+
+  <style>
+    /* ===== Meta広告用・診断タイプ ===== */
+    .external-result-text .meta-type-visual {
+      margin: 0 0 16px;
+      padding: 18px 14px 16px;
+      background: linear-gradient(180deg, #f8fcff 0%, #eef7ff 100%);
+      border: 1px solid #9fd0ea;
+      border-radius: 16px;
+      text-align: center;
+    }
+
+    .external-result-text .meta-type-name {
+      margin-bottom: 12px;
+      color: #083f5c;
+      font-family: 'Noto Serif JP', serif;
+      font-size: 23px;
+      font-weight: 700;
+      line-height: 1.55;
+    }
+
+    .external-result-text .meta-axis-tags {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 7px;
+      margin-bottom: 12px;
+    }
+
+    .external-result-text .meta-axis-tag {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 68px;
+      padding: 6px 12px;
+      background: #ffffff;
+      border: 1px solid #9fd0ea;
+      border-radius: 999px;
+      color: #1f6fb2;
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 1.4;
+    }
+
+    .external-result-text .meta-result-illustration {
+      display: block;
+      width: 210px;
+      max-width: 68%;
+      height: auto;
+      margin: 8px auto 0;
+      border: none;
+      border-radius: 12px;
+      box-shadow: none;
+      background: transparent;
+    }
+
+    .external-result-text .meta-summary {
+      margin-bottom: 0;
+      color: #083f5c;
+      font-weight: 500;
+      text-align: center;
+    }
+
+    /* ===== 4つの才能 ===== */
+    .external-result-text .meta-talent-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin: 14px 0 16px;
+    }
+
+    .external-result-text .meta-talent-card {
+      position: relative;
+      min-height: 116px;
+      padding: 42px 12px 14px;
+      background: #f8fcff;
+      border: 1px solid #9fd0ea;
+      border-radius: 14px;
+      color: #083f5c;
+      font-size: 15px;
+      font-weight: 700;
+      line-height: 1.7;
+      text-align: center;
+    }
+
+    .external-result-text .meta-talent-number {
+      position: absolute;
+      top: 10px;
+      left: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 26px;
+      height: 26px;
+      transform: translateX(-50%);
+      background: #1f6fb2;
+      border-radius: 50%;
+      color: #ffffff;
+      font-size: 11px;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    /* ===== 今の状態・流れ ===== */
+    .external-result-text .meta-flow {
+      display: grid;
+      gap: 5px;
+      margin: 16px 0;
+    }
+
+    .external-result-text .meta-flow-step {
+      padding: 9px 12px;
+      background: #f8fcff;
+      border: 1px solid #9fd0ea;
+      border-radius: 10px;
+      color: #083f5c;
+      font-size: 15px;
+      font-weight: 700;
+      line-height: 1.5;
+      text-align: center;
+    }
+
+    .external-result-text .meta-flow-step--last {
+      background: #fff7ef;
+      border-color: #edc18d;
+      color: #8a541b;
+    }
+
+    .external-result-text .meta-flow-arrow {
+      color: #1f6fb2;
+      font-size: 18px;
+      font-weight: 700;
+      line-height: 1;
+      text-align: center;
+    }
+
+    /* ===== このままだと ===== */
+    .external-result-text .meta-problem-box {
+      margin: 14px 0 0;
+      padding: 15px 16px;
+      background: #fff9f3;
+      border: 1px solid #edc18d;
+      border-left: 5px solid #d99548;
+      border-radius: 12px;
+    }
+
+    .external-result-text .meta-problem-box p {
+      margin-bottom: 10px;
+      color: #654321;
+    }
+
+    .external-result-text .meta-problem-box p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* ===== ここから先の問いカード ===== */
+    .external-result-text .meta-question-card {
+      position: relative;
+      margin: 34px 0 8px;
+      padding: 32px 18px 18px;
+      background: linear-gradient(145deg, #eef7ff 0%, #ffffff 100%);
+      border: 2px solid #9fd0ea;
+      border-radius: 18px;
+      box-shadow: 0 6px 18px rgba(31, 111, 178, 0.12);
+      text-align: center;
+    }
+
+    .external-result-text .meta-question-icon {
+      position: absolute;
+      top: -23px;
+      left: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 46px;
+      height: 46px;
+      transform: translateX(-50%);
+      background: #1f6fb2;
+      border: 4px solid #ffffff;
+      border-radius: 50%;
+      box-shadow: 0 3px 10px rgba(31, 111, 178, 0.2);
+      color: #ffffff;
+      font-family: 'Noto Serif JP', serif;
+      font-size: 24px;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .external-result-text .meta-question-label {
+      display: inline-block;
+      margin: 0 0 10px !important;
+      padding: 4px 12px !important;
+      background: #dcefff;
+      border-radius: 999px;
+      color: #1f6fb2 !important;
+      font-size: 13px !important;
+      font-weight: 700;
+      line-height: 1.5 !important;
+    }
+
+    .external-result-text .meta-question-text {
+      margin: 0 !important;
+      color: #083f5c !important;
+      font-family: 'Noto Serif JP', serif;
+      font-size: 18px !important;
+      font-weight: 700;
+      line-height: 1.95 !important;
+      text-align: center;
+    }
+
+    .external-result-text .meta-question-arrow {
+      margin-top: 10px;
+      color: #1f6fb2;
+      font-size: 24px;
+      font-weight: 700;
+      line-height: 1;
+      text-align: center;
+    }
+
+    @media screen and (max-width: 480px) {
+      .external-result-text .meta-type-name {
+        font-size: 21px;
+      }
+
+      .external-result-text .meta-result-illustration {
+        width: 190px;
+        max-width: 72%;
+      }
+
+      .external-result-text .meta-talent-card {
+        min-height: 112px;
+        padding: 40px 9px 12px;
+        font-size: 14px;
+        line-height: 1.65;
+      }
+
+      .external-result-text .meta-question-card {
+        padding: 31px 14px 16px;
+      }
+
+      .external-result-text .meta-question-text {
+        font-size: 17px !important;
+      }
+    }
+  </style>
 
   <div class="result-catch" data-hide-title="true">
     <p>【あなたを一言で表すと】</p>
@@ -8,40 +253,57 @@
   <article class="result-block">
     <h2>あなたの診断タイプ</h2>
 
-    <p class="highlight-paragraph">
-      <strong>整えながら進むビルダー</strong><br>
-      慎重 × 現実 × 効率
-    </p>
+    <div class="meta-type-visual">
+      <div class="meta-type-name">
+        整えながら進むビルダー
+      </div>
 
-    <p>
-      あなたは、曖昧なアイデアを整理し、無理なく続けられる形へ組み立てられる人です。
-    </p>
+      <div class="meta-axis-tags">
+        <span class="meta-axis-tag">慎重</span>
+        <span class="meta-axis-tag">現実</span>
+        <span class="meta-axis-tag">効率</span>
+      </div>
 
-    <p>
-      足元を確かめながら必要な手順を整え、決めたことを一つずつ現実にしていきます。
+      <img
+        class="meta-result-illustration"
+        src="image/results/A1X.png"
+        alt="整えながら進むビルダーのイラスト"
+      >
+    </div>
+
+    <p class="meta-summary">
+      曖昧なアイデアを整理し、無理なく続けられる形へ組み立てられる人です。
     </p>
   </article>
 
   <article class="result-block">
     <h2>あなたの4つの才能</h2>
 
-    <ul>
-      <li>
-        <strong>考えを具体的な形にする力</strong>
-      </li>
+    <div class="meta-talent-grid">
+      <div class="meta-talent-card">
+        <span class="meta-talent-number">01</span>
+        考えを具体的な<br>
+        形にする力
+      </div>
 
-      <li>
-        <strong>続けられる手順を組み立てる力</strong>
-      </li>
+      <div class="meta-talent-card">
+        <span class="meta-talent-number">02</span>
+        続けられる手順を<br>
+        組み立てる力
+      </div>
 
-      <li>
-        <strong>抜けや無駄を見つけ、改善する力</strong>
-      </li>
+      <div class="meta-talent-card">
+        <span class="meta-talent-number">03</span>
+        抜けや無駄を見つけ、<br>
+        改善する力
+      </div>
 
-      <li>
-        <strong>決めたことをコツコツ積み上げる力</strong>
-      </li>
-    </ul>
+      <div class="meta-talent-card">
+        <span class="meta-talent-number">04</span>
+        決めたことを<br>
+        積み上げる力
+      </div>
+    </div>
 
     <p>
       周りからも、「話が整理されていて分かりやすい」「安心して任せられる」と思われやすいタイプです。
@@ -55,15 +317,29 @@
       ただ今は、その才能を「前へ進むため」よりも、「失敗しないため」に使いすぎているかもしれません。
     </p>
 
-    <p class="highlight-paragraph">
-      確認する<br>
-      ↓<br>
-      修正点が見つかる<br>
-      ↓<br>
-      全体を見直す<br>
-      ↓<br>
-      公開が遅れる
-    </p>
+    <div class="meta-flow">
+      <div class="meta-flow-step">
+        確認する
+      </div>
+
+      <div class="meta-flow-arrow">↓</div>
+
+      <div class="meta-flow-step">
+        修正点が見つかる
+      </div>
+
+      <div class="meta-flow-arrow">↓</div>
+
+      <div class="meta-flow-step">
+        全体を見直す
+      </div>
+
+      <div class="meta-flow-arrow">↓</div>
+
+      <div class="meta-flow-step meta-flow-step--last">
+        公開や募集が遅れる
+      </div>
+    </div>
 
     <p>
       効率よく進みたいはずなのに、「もっと効率のよい方法」を探すことに、いちばん時間を使ってしまうことがあります。
@@ -73,13 +349,15 @@
   <article class="result-block">
     <h2>このままだと</h2>
 
-    <p>
-      発信やサービスを丁寧に整えているのに、公開や募集が遅れ、現実の反応を受け取れない状態が続いてしまいます。
-    </p>
+    <div class="meta-problem-box">
+      <p>
+        丁寧に整えているのに、公開や募集が遅れ、現実の反応を受け取れない状態が続いてしまいます。
+      </p>
 
-    <p>
-      すると、何を改善すべきか分からないまま、頭の中だけで確認と作り直しを重ねやすくなります。
-    </p>
+      <p>
+        すると、何を改善すべきか分からないまま、頭の中だけで確認と作り直しを重ねやすくなります。
+      </p>
+    </div>
 
     <p>
       問題は、慎重であることではありません。「どこまで確認できたら進んでよいのか」が、はっきりしていないことにあります。
@@ -93,13 +371,19 @@
       あなたの慎重さは、仕事の抜けや無駄を減らし、安心して続けられる形へ整えるための大切な才能です。
     </p>
 
-    <p>
-      けれど、その力を確認や修正だけに使い続けると、せっかく整えてきたものを届ける直前で止まりやすくなります。
-    </p>
+    <div class="meta-question-card">
+      <div class="meta-question-icon">？</div>
 
-    <p>
-      <strong>では、慎重さと改善力を活かしながら、仕事を一つずつ形にしていくには、どうすればよいのでしょうか。</strong>
-    </p>
+      <p class="meta-question-label">
+        あなたへの問い
+      </p>
+
+      <p class="meta-question-text">
+        では、慎重さと改善力を活かしながら、仕事を一つずつ形にしていくには、どうすればよいのでしょうか。
+      </p>
+
+      <div class="meta-question-arrow">↓</div>
+    </div>
 
     <ul class="line-benefits-source">
       <li>
