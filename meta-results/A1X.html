@@ -1,64 +1,28 @@
 <section class="result-detail meta-result-detail" data-diagnosis-code="A1X">
 
   <style>
-    /* ===== Meta広告用・診断タイプ ===== */
-    .external-result-text .meta-type-visual {
-      margin: 0 0 16px;
-      padding: 18px 14px 16px;
-      background: linear-gradient(180deg, #f8fcff 0%, #eef7ff 100%);
-      border: 1px solid #9fd0ea;
-      border-radius: 16px;
-      text-align: center;
-    }
-
-    .external-result-text .meta-type-name {
-      margin-bottom: 12px;
-      color: #083f5c;
-      font-family: 'Noto Serif JP', serif;
-      font-size: 23px;
-      font-weight: 700;
-      line-height: 1.55;
-    }
-
-    .external-result-text .meta-axis-tags {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 7px;
-      margin-bottom: 12px;
-    }
-
-    .external-result-text .meta-axis-tag {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-width: 68px;
-      padding: 6px 12px;
-      background: #ffffff;
-      border: 1px solid #9fd0ea;
-      border-radius: 999px;
-      color: #1f6fb2;
-      font-size: 14px;
-      font-weight: 700;
-      line-height: 1.4;
-    }
-
+    /* ===== 診断結果画像 ===== */
     .external-result-text .meta-result-illustration {
       display: block;
-      width: 210px;
-      max-width: 68%;
+      width: 100%;
+      max-width: 100%;
       height: auto;
-      margin: 8px auto 0;
+      margin: 0 auto 16px;
       border: none;
-      border-radius: 12px;
+      border-radius: 14px;
       box-shadow: none;
       background: transparent;
     }
 
     .external-result-text .meta-summary {
-      margin-bottom: 0;
+      margin: 0 !important;
+      padding: 14px 16px;
+      background: #eef7ff;
+      border: 1px solid #9fd0ea;
+      border-radius: 12px;
       color: #083f5c;
-      font-weight: 500;
+      font-weight: 600;
+      line-height: 1.85;
       text-align: center;
     }
 
@@ -102,7 +66,7 @@
       line-height: 1;
     }
 
-    /* ===== 今の状態・流れ ===== */
+    /* ===== 今の状態 ===== */
     .external-result-text .meta-flow {
       display: grid;
       gap: 5px;
@@ -137,7 +101,7 @@
 
     /* ===== このままだと ===== */
     .external-result-text .meta-problem-box {
-      margin: 14px 0 0;
+      margin: 14px 0 16px;
       padding: 15px 16px;
       background: #fff9f3;
       border: 1px solid #edc18d;
@@ -219,13 +183,9 @@
     }
 
     @media screen and (max-width: 480px) {
-      .external-result-text .meta-type-name {
-        font-size: 21px;
-      }
-
-      .external-result-text .meta-result-illustration {
-        width: 190px;
-        max-width: 72%;
+      .external-result-text .meta-summary {
+        padding: 13px 12px;
+        font-size: 16px;
       }
 
       .external-result-text .meta-talent-card {
@@ -253,23 +213,11 @@
   <article class="result-block">
     <h2>あなたの診断タイプ</h2>
 
-    <div class="meta-type-visual">
-      <div class="meta-type-name">
-        整えながら進むビルダー
-      </div>
-
-      <div class="meta-axis-tags">
-        <span class="meta-axis-tag">慎重</span>
-        <span class="meta-axis-tag">現実</span>
-        <span class="meta-axis-tag">効率</span>
-      </div>
-
-      <img
-        class="meta-result-illustration"
-        src="image/results/A1X.png"
-        alt="整えながら進むビルダーのイラスト"
-      >
-    </div>
+    <img
+      class="meta-result-illustration"
+      src="image/results/A1X.png"
+      alt="整えながら進むビルダーの診断結果画像"
+    >
 
     <p class="meta-summary">
       曖昧なアイデアを整理し、無理なく続けられる形へ組み立てられる人です。
