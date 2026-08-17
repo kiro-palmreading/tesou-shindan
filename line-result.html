@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
+  <!-- LINE登録後・本文左揃え完成版 -->
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-5QGZDWRNYE"></script>
   <script>
@@ -355,7 +356,7 @@
       background: #f8fcff;
       color: var(--navy-mid);
       font-weight: 500;
-      text-align: center;
+      text-align: left;
     }
 
     .result-block--final {
@@ -377,6 +378,12 @@
       font-size: 12px;
       line-height: 1.7;
       text-align: center;
+    }
+
+    /* 診断本文は、強調枠や引用文も含めて左揃えに統一 */
+    .result-content .result-block p,
+    .result-content .result-block li {
+      text-align: left !important;
     }
 
     @media (max-width: 420px) {
