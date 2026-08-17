@@ -1,260 +1,44 @@
-<section class="result-detail meta-result-detail" data-diagnosis-code="A1X">
-
-  <style>
-    /* ===== 診断結果画像 ===== */
-    .external-result-text .meta-result-illustration {
-      display: block;
-      width: 100%;
-      max-width: 100%;
-      height: auto;
-      margin: 0 auto 16px;
-      border: none;
-      border-radius: 14px;
-      box-shadow: none;
-      background: transparent;
-    }
-
-    .external-result-text .meta-summary {
-      margin: 0 !important;
-      padding: 14px 16px;
-      background: #eef7ff;
-      border: 1px solid #9fd0ea;
-      border-radius: 12px;
-      color: #083f5c;
-      font-weight: 600;
-      line-height: 1.85;
-      text-align: center;
-    }
-
-    /* ===== 4つの才能 ===== */
-    .external-result-text .meta-talent-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 10px;
-      margin: 14px 0 16px;
-    }
-
-    .external-result-text .meta-talent-card {
-      position: relative;
-      min-height: 116px;
-      padding: 42px 12px 14px;
-      background: #f8fcff;
-      border: 1px solid #9fd0ea;
-      border-radius: 14px;
-      color: #083f5c;
-      font-size: 15px;
-      font-weight: 700;
-      line-height: 1.7;
-      text-align: center;
-    }
-
-    .external-result-text .meta-talent-number {
-      position: absolute;
-      top: 10px;
-      left: 50%;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 26px;
-      height: 26px;
-      transform: translateX(-50%);
-      background: #1f6fb2;
-      border-radius: 50%;
-      color: #ffffff;
-      font-size: 11px;
-      font-weight: 700;
-      line-height: 1;
-    }
-
-    /* ===== 今の状態 ===== */
-    .external-result-text .meta-flow {
-      display: grid;
-      gap: 5px;
-      margin: 16px 0;
-    }
-
-    .external-result-text .meta-flow-step {
-      padding: 9px 12px;
-      background: #f8fcff;
-      border: 1px solid #9fd0ea;
-      border-radius: 10px;
-      color: #083f5c;
-      font-size: 15px;
-      font-weight: 700;
-      line-height: 1.5;
-      text-align: center;
-    }
-
-    .external-result-text .meta-flow-step--last {
-      background: #fff7ef;
-      border-color: #edc18d;
-      color: #8a541b;
-    }
-
-    .external-result-text .meta-flow-arrow {
-      color: #1f6fb2;
-      font-size: 18px;
-      font-weight: 700;
-      line-height: 1;
-      text-align: center;
-    }
-
-    /* ===== このままだと ===== */
-    .external-result-text .meta-problem-box {
-      margin: 14px 0 16px;
-      padding: 15px 16px;
-      background: #fff9f3;
-      border: 1px solid #edc18d;
-      border-left: 5px solid #d99548;
-      border-radius: 12px;
-    }
-
-    .external-result-text .meta-problem-box p {
-      margin-bottom: 10px;
-      color: #654321;
-    }
-
-    .external-result-text .meta-problem-box p:last-child {
-      margin-bottom: 0;
-    }
-
-    /* ===== ここから先の問いカード ===== */
-    .external-result-text .meta-question-card {
-      position: relative;
-      margin: 34px 0 8px;
-      padding: 32px 18px 18px;
-      background: linear-gradient(145deg, #eef7ff 0%, #ffffff 100%);
-      border: 2px solid #9fd0ea;
-      border-radius: 18px;
-      box-shadow: 0 6px 18px rgba(31, 111, 178, 0.12);
-      text-align: center;
-    }
-
-    .external-result-text .meta-question-icon {
-      position: absolute;
-      top: -23px;
-      left: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 46px;
-      height: 46px;
-      transform: translateX(-50%);
-      background: #1f6fb2;
-      border: 4px solid #ffffff;
-      border-radius: 50%;
-      box-shadow: 0 3px 10px rgba(31, 111, 178, 0.2);
-      color: #ffffff;
-      font-family: 'Noto Serif JP', serif;
-      font-size: 24px;
-      font-weight: 700;
-      line-height: 1;
-    }
-
-    .external-result-text .meta-question-label {
-      display: inline-block;
-      margin: 0 0 10px !important;
-      padding: 4px 12px !important;
-      background: #dcefff;
-      border-radius: 999px;
-      color: #1f6fb2 !important;
-      font-size: 13px !important;
-      font-weight: 700;
-      line-height: 1.5 !important;
-    }
-
-    .external-result-text .meta-question-text {
-      margin: 0 !important;
-      color: #083f5c !important;
-      font-family: 'Noto Serif JP', serif;
-      font-size: 18px !important;
-      font-weight: 700;
-      line-height: 1.95 !important;
-      text-align: center;
-    }
-
-    .external-result-text .meta-question-arrow {
-      margin-top: 10px;
-      color: #1f6fb2;
-      font-size: 24px;
-      font-weight: 700;
-      line-height: 1;
-      text-align: center;
-    }
-
-    @media screen and (max-width: 480px) {
-      .external-result-text .meta-summary {
-        padding: 13px 12px;
-        font-size: 16px;
-      }
-
-      .external-result-text .meta-talent-card {
-        min-height: 112px;
-        padding: 40px 9px 12px;
-        font-size: 14px;
-        line-height: 1.65;
-      }
-
-      .external-result-text .meta-question-card {
-        padding: 31px 14px 16px;
-      }
-
-      .external-result-text .meta-question-text {
-        font-size: 17px !important;
-      }
-    }
-  </style>
-
+<section class="result-detail" data-diagnosis-code="A1X">
   <div class="result-catch" data-hide-title="true">
     <p>【あなたを一言で表すと】</p>
     <p>整えながら進むビルダー</p>
   </div>
 
   <article class="result-block">
-    <h2>あなたの診断タイプ</h2>
+    <h2>あなたの本質</h2>
 
-    <img
-      class="meta-result-illustration"
-      src="image/results/A1X.png"
-      alt="整えながら進むビルダーの診断結果画像"
-    >
+    <p class="highlight-paragraph">
+      慎重 × 現実 × 効率
+    </p>
 
-    <p class="meta-summary">
-      曖昧なアイデアを整理し、無理なく続けられる形へ組み立てられる人です。
+    <p>
+      あなたは、思いつきや勢いだけで進むよりも、<br>
+      「本当に続けられるかな」<br>
+      「もっと無理のない方法はないかな」<br>
+      と、足元を確かめてから動く人です。
+    </p>
+
+    <p>
+      一度「これなら大丈夫」と納得できれば、必要な手順を組み立て、曖昧なアイデアを現実の仕事へ変えていけます。
+    </p>
+
+    <p>
+      勢いで始めるより、続けられる形まで整えてから進む。その丁寧さが、周りからの安心感や信頼につながっています。
     </p>
   </article>
 
   <article class="result-block">
-    <h2>あなたの4つの才能</h2>
+    <h2>あなたの4つの強み</h2>
 
-    <div class="meta-talent-grid">
-      <div class="meta-talent-card">
-        <span class="meta-talent-number">01</span>
-        考えを具体的な<br>
-        形にする力
-      </div>
-
-      <div class="meta-talent-card">
-        <span class="meta-talent-number">02</span>
-        続けられる手順を<br>
-        組み立てる力
-      </div>
-
-      <div class="meta-talent-card">
-        <span class="meta-talent-number">03</span>
-        抜けや無駄を見つけ、<br>
-        改善する力
-      </div>
-
-      <div class="meta-talent-card">
-        <span class="meta-talent-number">04</span>
-        決めたことを<br>
-        積み上げる力
-      </div>
-    </div>
+    <ul>
+      <li>曖昧な考えを具体的な形にする力</li>
+      <li>無理なく続けられる手順を組み立てる力</li>
+      <li>抜けや無駄に気づき、改善する力</li>
+      <li>決めたことをコツコツ積み上げる力</li>
+    </ul>
 
     <p>
-      周りからも、「話が整理されていて分かりやすい」「安心して任せられる」と思われやすいタイプです。
+      まだ輪郭のぼんやりしたものに線を引き、「では、まず何から始めればよいか」を考えられる。それが、あなたの大きな才能です。
     </p>
   </article>
 
@@ -265,50 +49,51 @@
       ただ今は、その才能を「前へ進むため」よりも、「失敗しないため」に使いすぎているかもしれません。
     </p>
 
-    <div class="meta-flow">
-      <div class="meta-flow-step">
-        確認する
-      </div>
-
-      <div class="meta-flow-arrow">↓</div>
-
-      <div class="meta-flow-step">
-        修正点が見つかる
-      </div>
-
-      <div class="meta-flow-arrow">↓</div>
-
-      <div class="meta-flow-step">
-        全体を見直す
-      </div>
-
-      <div class="meta-flow-arrow">↓</div>
-
-      <div class="meta-flow-step meta-flow-step--last">
-        公開や募集が遅れる
-      </div>
-    </div>
+    <p>
+      「最後に1か所だけ」と思って直し始めたはずなのに、気づけば前後の文章も、タイトルも書き直している。
+    </p>
 
     <p>
-      効率よく進みたいはずなのに、「もっと効率のよい方法」を探すことに、いちばん時間を使ってしまうことがあります。
+      画面の前では、何時間も頑張った。<br>
+      それなのに、投稿ボタンはまだ押せていない。<br>
+      そんな夜はありませんか？
+    </p>
+
+    <p>
+      サービスを作るときも、「案内の流れに抜けがあるかもしれない」「もっと効率のよい方法があるかもしれない」と、確認したいことが増えていきます。
+    </p>
+
+    <p>
+      効率よく進みたいはずなのに、「もっと効率のよい方法」を探すことに、いちばん時間を使ってしまうのです。
+    </p>
+
+    <p>
+      あなたに行動力がないのではありません。安心して届けるための確認が、届けることそのものより大きくなっているだけです。
     </p>
   </article>
 
   <article class="result-block">
     <h2>このままだと</h2>
 
-    <div class="meta-problem-box">
-      <p>
-        丁寧に整えているのに、公開や募集が遅れ、現実の反応を受け取れない状態が続いてしまいます。
-      </p>
-
-      <p>
-        すると、何を改善すべきか分からないまま、頭の中だけで確認と作り直しを重ねやすくなります。
-      </p>
-    </div>
+    <p>
+      確認や修正を重ねるほど、努力する時間は増えていきます。けれど、発信も、反応も、実績も増えにくくなります。
+    </p>
 
     <p>
-      問題は、慎重であることではありません。「どこまで確認できたら進んでよいのか」が、はっきりしていないことにあります。
+      そして、ほかの人が先に同じような発信や募集を始めているのを見ると、<br>
+      「私も、ずっと考えていたのに」<br>
+      「あのとき出していればよかった」<br>
+      と、悔しさが残ります。
+    </p>
+
+    <p>
+      本当は「整える力が強い人」なのに、いつの間にか、<br>
+      「私は行動できない人なのかもしれない」<br>
+      と、自分の才能まで疑い始めてしまうのです。
+    </p>
+
+    <p>
+      問題は、慎重であることではありません。「どこまで確認できたら進んでよいのか」という境界線が、まだ自分の中ではっきりしていないことにあります。
     </p>
   </article>
 
@@ -316,43 +101,46 @@
     <h2>ここから先が本題です</h2>
 
     <p>
-      あなたの慎重さは、仕事の抜けや無駄を減らし、安心して続けられる形へ整えるための大切な才能です。
+      あなたの慎重さは、本来、仕事の抜けや無駄を減らし、相手が安心して受け取れる形へ整えるための才能です。
     </p>
 
-    <div class="meta-question-card">
-      <div class="meta-question-icon">？</div>
+    <p>
+      何度も開いていた原稿を、落ち着いて公開できる。<br>
+      並んでいる選択肢から、今やることを1つ選べる。<br>
+      一日の終わりに、「今日は、ちゃんと前へ進めた」と思える。
+    </p>
 
-      <p class="meta-question-label">
-        あなたへの問い
-      </p>
+    <p>
+      そんな自分へ変わるために、慎重さを捨てる必要はありません。
+    </p>
 
-      <p class="meta-question-text">
-        では、慎重さと改善力を活かしながら、仕事を一つずつ形にしていくには、どうすればよいのでしょうか。
-      </p>
-
-      <div class="meta-question-arrow">↓</div>
-    </div>
+    <p class="highlight-paragraph">
+      では、<br>
+      「もう少し整えてから」を終わらせ、<br>
+      慎重さを“止まる理由”ではなく、<br>
+      “選ばれる安心感”へ変えるには、<br>
+      どうすればよいのでしょうか。
+    </p>
 
     <ul class="line-benefits-source">
       <li>
-        <strong>慎重な自分に合う進み方：</strong>
-        確認を重ねすぎず、前へ進むための考え方が分かります。
+        <strong>不安が残りやすい仕組み：</strong>
+        確認を重ねても「まだ足りない」と感じる理由が分かります。
       </li>
 
       <li>
-        <strong>次の一歩を選ぶための目安：</strong>
-        「ここまでで大丈夫」と判断するための目安が分かります。
+        <strong>進んでよいと判断する基準：</strong>
+        どこまで整えたら動くのか、自分に合う境界線が分かります。
       </li>
 
       <li>
-        <strong>仕事で才能を活かすヒント：</strong>
-        慎重さと改善力を、安心感や信頼につなげる3つのヒントが分かります。
+        <strong>慎重さを成果につなげる方法：</strong>
+        改善を繰り返すだけで終わらず、形にして届ける3つのコツが分かります。
       </li>
     </ul>
 
     <p class="cta-message-source">
-      あなたには、考えを具体的な形へ整える力も、続けられる手順を組み立てる力も、決めたことを着実に積み上げる力もあります。その才能を仕事でもっと活かすためのヒントを、LINEで受け取ってください。
+      あなたに足りないのは、行動力ではありません。慎重さと改善力を「止まるため」ではなく、「選ばれる仕事を形にするため」に使う方法を、LINEで受け取ってください。
     </p>
   </article>
-
 </section>
