@@ -1585,25 +1585,9 @@ function prepareSharedResultLayout() {
   }
 }
 
-function renderResultImage(code) {
+function renderResultImage() {
   resultImageWrapEl.innerHTML = '';
-
-  const img = document.createElement('img');
-  const imagePath = `image/results/${code}.png`;
-
-  img.src = `${imagePath}?v=${Date.now()}`;
-  img.alt = `${code}の診断結果`;
-
-  img.onerror = function() {
-    resultImageWrapEl.innerHTML = `
-      <div class="result-image-error">
-        診断結果画像を読み込めませんでした。<br>
-        ${escapeHtml(imagePath)} が存在するか確認してください。
-      </div>
-    `;
-  };
-
-  resultImageWrapEl.appendChild(img);
+  resultImageWrapEl.style.display = 'none';
 }
 
 function normalizeExternalResultHtml(html) {
@@ -1630,7 +1614,7 @@ function normalizeExternalResultHtml(html) {
 async function loadExternalResultText(code) {
   externalResultTextEl.innerHTML = '';
 
-  const htmlPath = `results/${code}.html`;
+  const htmlPath = `meta-results/${code}.html`;
 
   try {
     const response = await fetch(`${htmlPath}?v=${Date.now()}`, {
