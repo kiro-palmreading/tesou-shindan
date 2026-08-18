@@ -917,6 +917,102 @@ body {
     margin-top: 10px;
   }
 }
+
+
+/* ===== 診断結果：最終上書き（表示安定化） ===== */
+/* A1Xなど外部診断結果側の指定を、親CSSより確実に優先する */
+
+/* 「慎重 × 現実 × 効率」などタイプ3ワードは中央揃え */
+.external-result-text .type-keywords {
+  display: block !important;
+  width: 100% !important;
+  text-align: center !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+/* 「サービスづくり」「改善するとき」「アイデアを整理するとき」 */
+.external-result-text .talent-scene-grid {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  gap: 12px !important;
+}
+
+.external-result-text .talent-scene-card {
+  background: #EEF7FF !important;
+  border: 1px solid #CFE3F1 !important;
+  border-radius: 14px !important;
+  padding: 18px !important;
+  box-shadow: none !important;
+}
+
+.external-result-text .talent-scene-card strong {
+  display: block !important;
+  margin-bottom: 8px !important;
+  color: #083F5C !important;
+  font-size: 17px !important;
+  font-weight: 700 !important;
+}
+
+.external-result-text .talent-scene-card p {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* 「どこまで整えたら、進んでいいのか？」 */
+.external-result-text .key-message {
+  border-left: none !important;
+  border: 1px solid #DCECF5 !important;
+  padding: 18px 18px 18px 1em !important;
+  margin: 18px 0 !important;
+  background: #FFFFFF !important;
+  border-radius: 8px !important;
+  text-align: left !important;
+  font-size: 18px !important;
+  font-weight: 700 !important;
+  color: #083F5C !important;
+}
+
+/* LINE登録後に分かる3つのこと：盛り上げるベネフィットエリア */
+.line-preview-section {
+  background: linear-gradient(180deg, #FFFFFF 0%, #F1FFF6 100%) !important;
+  border: 1px solid #A9DFB9 !important;
+}
+
+.line-preview-title {
+  color: #0F6B3C !important;
+  font-family: 'Noto Sans JP', sans-serif !important;
+  font-size: 17px !important;
+  font-weight: 700 !important;
+}
+
+.line-preview-lead {
+  color: #365B46 !important;
+  font-size: 17px !important;
+  line-height: 1.75 !important;
+}
+
+.line-benefit-card {
+  background: #FBFFFC !important;
+  border: 1px solid #A9DFB9 !important;
+}
+
+.line-benefit-number {
+  background: #2FC66D !important;
+}
+
+.line-benefit-title {
+  color: #0F6B3C !important;
+  font-size: 17px !important;
+  line-height: 1.65 !important;
+}
+
+.line-benefit-text {
+  color: #274436 !important;
+  font-size: 17px !important;
+  line-height: 1.75 !important;
+}
+
 </style>
 </head>
 
