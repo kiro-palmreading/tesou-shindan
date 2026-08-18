@@ -126,6 +126,7 @@
       margin-bottom: 8px;
       color: #083f5c;
       font-size: 17px;
+      line-height: 1.5;
     }
 
     .talent-scene-card p {
@@ -216,14 +217,19 @@
 
     .key-message {
       margin: 18px 0 !important;
-      padding: 18px 18px 18px 26px;
+      padding: 18px 16px;
       background: #ffffff;
       border: 1px solid #dcecf5;
       border-radius: 8px;
       font-size: 18px !important;
       font-weight: 700;
       color: #083f5c;
-      text-align: left;
+      text-align: center;
+      line-height: 1.7;
+    }
+
+    .key-message-line {
+      display: block;
     }
 
     /* ========================================
@@ -251,6 +257,15 @@
 
       .type-keywords {
         font-size: 19px;
+      }
+
+      .talent-scene-card strong {
+        font-size: 17px;
+      }
+
+      .key-message {
+        font-size: 17px !important;
+        padding: 16px 14px;
       }
     }
   </style>
@@ -306,7 +321,7 @@
 
     <div class="talent-scene-grid">
       <div class="talent-scene-card">
-        <strong>サービスづくり</strong>
+        <strong>🛠️ サービスづくり</strong>
         <p>
           内容だけでなく、
           申し込み後の流れまで自然に考えられます。
@@ -314,7 +329,7 @@
       </div>
 
       <div class="talent-scene-card">
-        <strong>改善するとき</strong>
+        <strong>🔍 改善するとき</strong>
         <p>
           「ここで迷わないかな？」
           「もっと分かりやすくできないかな？」と、
@@ -323,7 +338,7 @@
       </div>
 
       <div class="talent-scene-card">
-        <strong>アイデアを整理するとき</strong>
+        <strong>🧩 アイデアを整理するとき</strong>
         <p>
           ぼんやりした案を、
           「では、まず何から始める？」
@@ -419,7 +434,8 @@
     </p>
 
     <p class="key-message">
-      「どこまで整えたら、進んでいいのか？」
+      <span class="key-message-line">「どこまで整えたら、</span>
+      <span class="key-message-line">進んでいいのか？」</span>
     </p>
 
     <p>
