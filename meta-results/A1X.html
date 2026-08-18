@@ -1,165 +1,511 @@
-<section class="result-detail" data-diagnosis-code="A1X" style="counter-reset: resultStep 0;">
-  <div class="result-catch" data-hide-title="true">
-    <p>【あなたを一言で表すと】</p>
-    <p>整えながら進むビルダー</p>
+<section class="result-detail result-detail--visual" data-diagnosis-code="A1X">
+
+  <style>
+    /* ========================================
+       A1X 診断結果：ビジュアル重視レイアウト
+    ======================================== */
+
+    .result-detail--visual {
+      max-width: 720px;
+      margin: 0 auto;
+      color: #24313a;
+      line-height: 1.8;
+    }
+
+    /* ---------- FV ---------- */
+
+    .diagnosis-result-fv {
+      margin: 0 0 28px;
+      padding: 0;
+    }
+
+    .diagnosis-result-fv img {
+      display: block;
+      width: 100%;
+      height: auto;
+      margin: 0 auto;
+    }
+
+
+    /* ---------- 共通ブロック ---------- */
+
+    .result-detail--visual .result-block {
+      margin: 0 16px 28px;
+      padding: 26px 20px;
+      background: #ffffff;
+      border: 1px solid #dcecf5;
+      border-radius: 18px;
+      box-sizing: border-box;
+    }
+
+    .result-detail--visual .result-block h2 {
+      margin: 0 0 18px;
+      color: #083f5c;
+      font-size: 22px;
+      line-height: 1.45;
+      text-align: center;
+    }
+
+    .result-detail--visual .result-block p {
+      margin: 0 0 16px;
+      font-size: 16px;
+      line-height: 1.9;
+    }
+
+    .result-detail--visual .result-block p:last-child {
+      margin-bottom: 0;
+    }
+
+
+    /* ---------- タイプ ---------- */
+
+    .type-keywords {
+      margin: 0 0 22px;
+      text-align: center;
+      font-size: 20px;
+      font-weight: 700;
+      color: #1f6fb2;
+      letter-spacing: 0.04em;
+    }
+
+    .type-point-list {
+      list-style: none;
+      margin: 0 0 20px;
+      padding: 0;
+    }
+
+    .type-point-list li {
+      position: relative;
+      margin-bottom: 12px;
+      padding: 14px 14px 14px 43px;
+      background: #f8fcff;
+      border-radius: 12px;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .type-point-list li::before {
+      content: "✓";
+      position: absolute;
+      left: 16px;
+      top: 14px;
+      color: #1f6fb2;
+      font-weight: 700;
+    }
+
+    .type-summary {
+      padding: 16px;
+      background: #eef7ff;
+      border-radius: 12px;
+      color: #314958;
+    }
+
+
+    /* ---------- 強みが出る場面 ---------- */
+
+    .talent-scene-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    .talent-scene-card {
+      padding: 18px;
+      border-radius: 14px;
+      background: #f8fcff;
+      border: 1px solid #d8ebf5;
+    }
+
+    .talent-scene-card strong {
+      display: block;
+      margin-bottom: 6px;
+      color: #083f5c;
+      font-size: 17px;
+    }
+
+    .talent-scene-card p {
+      margin: 0 !important;
+    }
+
+
+    /* ---------- 今のループ ---------- */
+
+    .loop-intro {
+      text-align: center;
+      font-weight: 700;
+      color: #314958;
+    }
+
+    .diagnosis-loop {
+      margin: 20px 0 8px;
+    }
+
+    .loop-step {
+      padding: 15px 14px;
+      background: #f8fcff;
+      border: 1px solid #cfe6f3;
+      border-radius: 12px;
+      text-align: center;
+      font-size: 16px;
+      font-weight: 700;
+      color: #083f5c;
+    }
+
+    .loop-arrow {
+      height: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #6f8798;
+      font-size: 24px;
+      font-weight: 700;
+    }
+
+    .loop-step--last {
+      background: #fff5f2;
+      border-color: #f2c9bf;
+      color: #9b4d3b;
+    }
+
+
+    /* ---------- このままだと ---------- */
+
+    .result-block--risk {
+      background: #fffaf7 !important;
+      border-color: #f1d9cf !important;
+    }
+
+    .risk-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .risk-list li {
+      position: relative;
+      margin-bottom: 13px;
+      padding: 0 0 0 30px;
+      font-size: 16px;
+      line-height: 1.75;
+    }
+
+    .risk-list li::before {
+      content: "●";
+      position: absolute;
+      left: 5px;
+      top: 0;
+      color: #d98670;
+      font-size: 11px;
+    }
+
+
+    /* ---------- 問題の正体 ---------- */
+
+    .result-block--key {
+      background: #eef7ff !important;
+      border-color: #bddcec !important;
+    }
+
+    .key-message {
+      margin: 18px 0 !important;
+      padding: 18px 14px;
+      background: #ffffff;
+      border-left: 4px solid #1f6fb2;
+      border-radius: 8px;
+      font-size: 18px !important;
+      font-weight: 700;
+      color: #083f5c;
+      text-align: center;
+    }
+
+
+    /* ---------- LINEで分かること ---------- */
+
+    .result-block--final {
+      background: #ffffff;
+    }
+
+    .line-benefits-source {
+      list-style: none;
+      margin: 20px 0 22px;
+      padding: 0;
+    }
+
+    .line-benefits-source li {
+      margin-bottom: 13px;
+      padding: 16px;
+      background: #f8fcff;
+      border: 1px solid #dcecf5;
+      border-radius: 13px;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .line-benefits-source strong {
+      display: block;
+      margin-bottom: 4px;
+      color: #083f5c;
+    }
+
+    .cta-message-source {
+      margin-top: 20px !important;
+      font-weight: 500;
+    }
+
+
+    /* ---------- スマホ ---------- */
+
+    @media (max-width: 600px) {
+
+      .result-detail--visual .result-block {
+        margin-left: 14px;
+        margin-right: 14px;
+        padding: 23px 17px;
+      }
+
+      .result-detail--visual .result-block h2 {
+        font-size: 21px;
+      }
+
+      .type-keywords {
+        font-size: 19px;
+      }
+
+    }
+
+  </style>
+
+
+  <!-- ========================================
+       診断結果FV
+  ======================================== -->
+
+  <div class="diagnosis-result-fv">
+    <img
+      src="meta-fv-results/A1X.png"
+      alt="才能コンパス診断 整えながら進むビルダー"
+      loading="eager"
+      fetchpriority="high"
+    >
   </div>
 
-  <!-- FV -->
-  <article class="result-visual-card" style="position: relative; isolation: isolate; padding: 20px 14px 18px; overflow: hidden; text-align: center;">
 
-    <!-- 左上のコンパス -->
-    <img
-      src="image/meta-result-compass.png"
-      alt=""
-      aria-hidden="true"
-      style="position: absolute; z-index: 0; top: -8%; left: -7%; display: block; width: 39%; max-width: none; height: auto; margin: 0; border: 0; border-radius: 0; box-shadow: none; background: transparent; opacity: 0.48; pointer-events: none;"
-    >
+  <!-- ========================================
+       あなたはこんなタイプ
+  ======================================== -->
 
-    <div style="position: relative; z-index: 2;">
+  <article class="result-block">
 
-      <!-- あなたを一言で表すと -->
-      <p style="display: inline-block; margin: 0 0 6px; padding: 4px 12px; border: 1px solid rgba(159, 208, 234, 0.75); border-radius: 999px; background: rgba(238, 247, 255, 0.94); color: #4f7187; font-size: 12px; font-weight: 700; line-height: 1.4;">
-        あなたを一言で表すと
-      </p>
+    <h2>あなたはこんなタイプです</h2>
 
-      <h1 style="margin: 0 0 15px; color: #083f5c; font-family: 'Noto Serif JP', serif; font-size: 21px; font-weight: 700; line-height: 1.4;">
-        整えながら進むビルダー
-      </h1>
-
-      <!-- あなたを形づくる3つの要素 -->
-      <p style="display: inline-block; margin: 0 0 6px; padding: 4px 12px; border: 1px solid rgba(159, 208, 234, 0.75); border-radius: 999px; background: rgba(238, 247, 255, 0.94); color: #4f7187; font-size: 12px; font-weight: 700; line-height: 1.4;">
-        あなたを形づくる3つの要素
-      </p>
-
-      <p style="margin: 0 0 16px; color: #083f5c; font-size: 18px; font-weight: 700; line-height: 1.45; letter-spacing: 0.04em;">
-        慎重
-        <span style="color: #1f6fb2; padding: 0 4px;">×</span>
-        現実
-        <span style="color: #1f6fb2; padding: 0 4px;">×</span>
-        効率
-      </p>
-
-      <!-- あなたの4つの強み -->
-      <div style="display: inline-block; margin: 0 0 11px; padding: 4px 12px; border: 1px solid rgba(159, 208, 234, 0.75); border-radius: 999px; background: rgba(238, 247, 255, 0.94); color: #4f7187; font-size: 12px; font-weight: 700; line-height: 1.4; text-align: center;">
-        あなたの4つの強み
-      </div>
-
-      <!-- 強みカード -->
-      <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 7px;">
-
-        <div style="display: flex; align-items: center; justify-content: flex-start; min-height: 68px; padding: 8px 12px; border: 1px solid rgba(159, 208, 234, 0.98); border-radius: 11px; background: rgba(248, 252, 255, 0.94); color: #083f5c; font-size: 16px; font-weight: 700; line-height: 1.45; text-align: left;">
-          <div style="width: 100%;">
-            <span style="color: #1f6fb2;">①</span>&nbsp;曖昧な考えを<br>
-            具体的な形にする力
-          </div>
-        </div>
-
-        <div style="display: flex; align-items: center; justify-content: flex-start; min-height: 68px; padding: 8px 12px; border: 1px solid rgba(159, 208, 234, 0.98); border-radius: 11px; background: rgba(248, 252, 255, 0.94); color: #083f5c; font-size: 16px; font-weight: 700; line-height: 1.45; text-align: left;">
-          <div style="width: 100%;">
-            <span style="color: #1f6fb2;">②</span>&nbsp;続けられる手順を<br>
-            組み立てる力
-          </div>
-        </div>
-
-        <div style="display: flex; align-items: center; justify-content: flex-start; min-height: 68px; padding: 8px 12px; border: 1px solid rgba(159, 208, 234, 0.98); border-radius: 11px; background: rgba(248, 252, 255, 0.94); color: #083f5c; font-size: 16px; font-weight: 700; line-height: 1.45; text-align: left;">
-          <div style="width: 100%;">
-            <span style="color: #1f6fb2;">③</span>&nbsp;抜けや無駄に気づき<br>
-            改善する力
-          </div>
-        </div>
-
-        <div style="display: flex; align-items: center; justify-content: flex-start; min-height: 68px; padding: 8px 12px; border: 1px solid rgba(159, 208, 234, 0.98); border-radius: 11px; background: rgba(248, 252, 255, 0.94); color: #083f5c; font-size: 16px; font-weight: 700; line-height: 1.45; text-align: left;">
-          <div style="width: 100%;">
-            <span style="color: #1f6fb2;">④</span>&nbsp;決めたことを<br>
-            積み上げる力
-          </div>
-        </div>
-
-      </div>
+    <div class="type-keywords">
+      慎重 × 現実 × 効率
     </div>
-  </article>
 
-  <!-- 4つの強みの下 -->
-  <article class="result-block">
-    <h2>あなたの本質</h2>
-
-    <p>
-      あなたは、勢いだけで始めるより、無理なく続けられる形まで整えてから進む人です。
-    </p>
-
-    <p>
-      一度「これなら大丈夫」と納得できれば、曖昧なアイデアを現実の仕事へ変えていけます。その丁寧さが、周りからの信頼につながっています。
-    </p>
-  </article>
-
-  <article class="result-block">
-    <h2>今のあなたの状態</h2>
-
-    <p>
-      「最後に1か所だけ」と直し始めたのに、気づけばタイトルまで書き直している。何時間も頑張ったのに、投稿ボタンはまだ押せていない。そんな夜はありませんか？
-    </p>
-
-    <p>
-      サービスでも、「抜けがあるかも」「もっとよい方法があるかも」と確認が増え、計画まで組み直したくなります。
-    </p>
-
-    <p>
-      行動力がないのではありません。安心するための確認が、届けることより大きくなっているだけです。
-    </p>
-  </article>
-
-  <article class="result-block">
-    <h2>このままだと</h2>
-
-    <p>
-      努力する時間は増えているのに、発信も、反応も、実績も増えにくくなります。
-    </p>
-
-    <p>
-      ほかの人が先に動く姿を見て、<br>
-      「私も、ずっと考えていたのに」<br>
-      と悔しくなることもあるでしょう。
-    </p>
-
-    <p>
-      やがて、本当は「整える力」があるのに、「私は行動できない人かも」と、自分の才能まで疑ってしまいます。
-    </p>
-  </article>
-
-  <article class="result-block result-block--final">
-    <h2>ここから先が本題です</h2>
-
-    <p>
-      慎重さは、本来、仕事の抜けを減らし、相手の安心と信頼をつくる才能です。捨てる必要はありません。
-    </p>
-
-    <p class="highlight-paragraph">
-      では、<br>
-      「もう少し整えてから」を終わらせ、<br>
-      慎重さを「止まる理由」ではなく、<br>
-      「選ばれる安心感」へ変えるには、<br>
-      どうすればよいのでしょうか。
-    </p>
-
-    <ul class="line-benefits-source">
+    <ul class="type-point-list">
       <li>
-        <strong>不安が残りやすい仕組み：</strong>
-        確認しても「まだ足りない」と感じる理由が分かります。
+        勢いだけで進むより、<strong>「無理なく続けられるか」</strong>を確かめてから動く
       </li>
 
       <li>
-        <strong>進んでよいと判断する基準：</strong>
-        どこまで整えたら動くのか、その境界線が分かります。
+        一度「これなら大丈夫」と納得すると、必要な手順を組み立てて形にできる
       </li>
 
       <li>
-        <strong>慎重さを成果につなげる方法：</strong>
-        整えたものを形にして届ける3つのコツが分かります。
+        アイデアを<strong>「誰に・何を・どの順番で届けるか」</strong>まで整理できる
       </li>
     </ul>
 
-    <p class="cta-message-source">
-      慎重さと改善力を「止まるため」ではなく、「選ばれる仕事を形にするため」に使う方法を、LINEで受け取ってください。
+    <p class="type-summary">
+      見切り発車は少し苦手。でも、怖くて動けない人ではありません。
+      あなたは「これなら大丈夫」と納得できれば、一つずつ着実に前へ進める人です。
     </p>
+
   </article>
+
+
+  <!-- ========================================
+       強みが出る場面
+  ======================================== -->
+
+  <article class="result-block">
+
+    <h2>こんな場面で強みが出ます</h2>
+
+    <div class="talent-scene-grid">
+
+      <div class="talent-scene-card">
+        <strong>サービスづくり</strong>
+        <p>
+          内容だけでなく、申し込み後の流れまで自然に考えられます。
+        </p>
+      </div>
+
+      <div class="talent-scene-card">
+        <strong>改善するとき</strong>
+        <p>
+          「ここで迷わないかな？」「もっと分かりやすくできないかな？」と、抜けやムダに気づけます。
+        </p>
+      </div>
+
+      <div class="talent-scene-card">
+        <strong>アイデアを整理するとき</strong>
+        <p>
+          ぼんやりした案を「では、まず何から始める？」という具体的な手順へ落とし込めます。
+        </p>
+      </div>
+
+    </div>
+
+  </article>
+
+
+  <!-- ========================================
+       今のあなたの状態
+  ======================================== -->
+
+  <article class="result-block">
+
+    <h2>今、こんなループに入っていませんか？</h2>
+
+    <p class="loop-intro">
+      「よし、これで出そう」と思ったはずなのに……
+    </p>
+
+    <div class="diagnosis-loop">
+
+      <div class="loop-step">
+        最後にもう一度、確認する
+      </div>
+
+      <div class="loop-arrow">
+        ↓
+      </div>
+
+      <div class="loop-step">
+        直したいところが見つかる
+      </div>
+
+      <div class="loop-arrow">
+        ↓
+      </div>
+
+      <div class="loop-step">
+        もっと良い方法を探し始める
+      </div>
+
+      <div class="loop-arrow">
+        ↓
+      </div>
+
+      <div class="loop-step loop-step--last">
+        結局、出すのが遅くなる
+      </div>
+
+    </div>
+
+    <p>
+      効率よく進みたいはずなのに、
+      <strong>「もっと効率のよい方法」を探すことに時間を使ってしまう。</strong>
+      これは、あなたに起こりやすい少し悩ましい矛盾です。
+    </p>
+
+  </article>
+
+
+  <!-- ========================================
+       このままだと
+  ======================================== -->
+
+  <article class="result-block result-block--risk">
+
+    <h2>この状態が続くと…</h2>
+
+    <ul class="risk-list">
+
+      <li>
+        発信するタイミングを逃しやすくなる
+      </li>
+
+      <li>
+        サービスを公開する時期が、どんどん後ろへ延びる
+      </li>
+
+      <li>
+        頑張っているのに「なかなか形にならない」と感じやすくなる
+      </li>
+
+      <li>
+        「私の判断で大丈夫かな？」と、自分の選択にも迷いやすくなる
+      </li>
+
+    </ul>
+
+  </article>
+
+
+  <!-- ========================================
+       問題の正体
+  ======================================== -->
+
+  <article class="result-block result-block--key">
+
+    <h2>でも、問題は「慎重さ」ではありません</h2>
+
+    <p>
+      あなたには、考えを整える力も、改善する力も、着実に積み上げる力もあります。
+    </p>
+
+    <p>
+      ただ今は、その力を
+      <strong>「前へ進むため」よりも「失敗しないため」</strong>
+      に使いすぎているのかもしれません。
+    </p>
+
+    <p class="key-message">
+      「どこまで整えたら、進んでいいのか？」
+    </p>
+
+    <p>
+      その判断基準が持てるようになると、
+      慎重さを捨てなくても、自分で区切りをつけて次の一歩を選びやすくなります。
+    </p>
+
+  </article>
+
+
+  <!-- ========================================
+       LINE登録後に分かること
+  ======================================== -->
+
+  <article class="result-block result-block--final">
+
+    <h2>LINE登録後に分かること</h2>
+
+    <ul class="line-benefits-source">
+
+      <li>
+        <strong>慎重な自分に合う考え方</strong>
+        確認を重ねすぎず、自分らしく前へ進むために何を大切にすればよいかが分かります。
+      </li>
+
+      <li>
+        <strong>「ここまでで大丈夫」の目安</strong>
+        迷いに区切りをつけ、次の一歩を選びやすくする判断基準が分かります。
+      </li>
+
+      <li>
+        <strong>強みを仕事に活かす3つのヒント</strong>
+        慎重さと改善力を、安心感や信頼につながる仕事の強みとして活かす方法が分かります。
+      </li>
+
+    </ul>
+
+    <p class="cta-message-source">
+      あなたには、曖昧な考えを現実的な形へ整え、決めたことを着実に積み上げる力があります。
+      その強みを活かしながら、自分らしく前へ進むためのヒントを、LINEで受け取ってください。
+    </p>
+
+  </article>
+
 </section>
