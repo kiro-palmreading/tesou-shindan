@@ -3,7 +3,7 @@
   <style>
     /* ========================================
        A1X 診断結果
-       スマホ・広告流入向けビジュアル重視
+       Meta広告流入・スマホ向け
     ======================================== */
 
     .result-detail--visual {
@@ -13,7 +13,10 @@
       line-height: 1.8;
     }
 
-    /* ---------- FV ---------- */
+
+    /* ========================================
+       FV
+    ======================================== */
 
     .diagnosis-result-fv {
       margin: 0 0 28px;
@@ -28,7 +31,9 @@
     }
 
 
-    /* ---------- 共通ブロック ---------- */
+    /* ========================================
+       共通ブロック
+    ======================================== */
 
     .result-detail--visual .result-block {
       margin: 0 16px 28px;
@@ -44,7 +49,9 @@
       color: #083f5c;
       font-size: 22px;
       line-height: 1.45;
-      text-align: center;
+
+      /* 左寄せ */
+      text-align: left;
     }
 
     .result-detail--visual .result-block p {
@@ -58,26 +65,27 @@
     }
 
 
-    /* ---------- タイプ ---------- */
+    /* ========================================
+       あなたはこんなタイプ
+    ======================================== */
 
     .type-keywords {
-      margin: 0 0 22px;
-      text-align: center;
+      margin: 0 0 20px;
       font-size: 20px;
       font-weight: 700;
       color: #1f6fb2;
       letter-spacing: 0.04em;
+      text-align: left;
     }
 
     .type-point-list {
-      list-style: none;
+      display: grid;
+      gap: 11px;
       margin: 0 0 20px;
-      padding: 0;
     }
 
-    .type-point-list li {
+    .type-point {
       position: relative;
-      margin-bottom: 12px;
       padding: 14px 14px 14px 43px;
       background: #f8fcff;
       border-radius: 12px;
@@ -85,7 +93,7 @@
       line-height: 1.7;
     }
 
-    .type-point-list li::before {
+    .type-point::before {
       content: "✓";
       position: absolute;
       left: 16px;
@@ -102,7 +110,9 @@
     }
 
 
-    /* ---------- 強みが出る場面 ---------- */
+    /* ========================================
+       強みが出る場面
+    ======================================== */
 
     .talent-scene-grid {
       display: grid;
@@ -111,7 +121,7 @@
     }
 
     .talent-scene-card {
-      padding: 18px;
+      padding: 17px 18px;
       border-radius: 14px;
       background: #f8fcff;
       border: 1px solid #d8ebf5;
@@ -119,7 +129,7 @@
 
     .talent-scene-card strong {
       display: block;
-      margin-bottom: 6px;
+      margin-bottom: 5px;
       color: #083f5c;
       font-size: 17px;
     }
@@ -129,16 +139,17 @@
     }
 
 
-    /* ---------- 今のループ ---------- */
+    /* ========================================
+       今のループ
+    ======================================== */
 
     .loop-intro {
-      text-align: center;
       font-weight: 700;
       color: #314958;
     }
 
     .diagnosis-loop {
-      margin: 20px 0 8px;
+      margin: 20px 0;
     }
 
     .loop-step {
@@ -169,42 +180,44 @@
     }
 
 
-    /* ---------- このままだと ---------- */
+    /* ========================================
+       この状態が続くと
+       ※ ul / li を使わない
+    ======================================== */
 
     .result-block--risk {
       background: #fffaf7 !important;
       border-color: #f1d9cf !important;
     }
 
-    .risk-list {
-      list-style: none;
-      margin: 0;
-      padding: 0;
+    .risk-items {
+      display: grid;
+      gap: 10px;
     }
 
-    .risk-list li {
+    .risk-item {
       position: relative;
-      margin-bottom: 13px;
-      padding-left: 30px;
+      padding: 13px 14px 13px 40px;
+      background: #ffffff;
+      border: 1px solid #f0ddd5;
+      border-radius: 11px;
       font-size: 16px;
-      line-height: 1.75;
+      line-height: 1.7;
     }
 
-    .risk-list li:last-child {
-      margin-bottom: 0;
-    }
-
-    .risk-list li::before {
+    .risk-item::before {
       content: "●";
       position: absolute;
-      left: 5px;
-      top: 1px;
+      left: 17px;
+      top: 15px;
       color: #d98670;
-      font-size: 11px;
+      font-size: 10px;
     }
 
 
-    /* ---------- 問題の正体 ---------- */
+    /* ========================================
+       問題の正体
+    ======================================== */
 
     .result-block--key {
       background: #eef7ff !important;
@@ -220,18 +233,23 @@
       font-size: 18px !important;
       font-weight: 700;
       color: #083f5c;
-      text-align: center;
+      text-align: left;
     }
 
 
-    /* ---------- 自動生成用データ ---------- */
+    /* ========================================
+       LINE自動生成用データ
+       DOMには残すが、直接は表示しない
+    ======================================== */
 
-    .result-source-data {
+    .result-block--source-only {
       display: none !important;
     }
 
 
-    /* ---------- スマホ ---------- */
+    /* ========================================
+       スマホ
+    ======================================== */
 
     @media (max-width: 600px) {
 
@@ -250,11 +268,12 @@
       }
 
     }
+
   </style>
 
 
   <!-- ========================================
-       診断結果FV
+       FV
   ======================================== -->
 
   <div class="diagnosis-result-fv">
@@ -268,7 +287,7 @@
 
 
   <!-- ========================================
-       あなたはこんなタイプ
+       01 あなたはこんなタイプです
   ======================================== -->
 
   <article class="result-block">
@@ -279,30 +298,31 @@
       慎重 × 現実 × 効率
     </div>
 
-    <ul class="type-point-list">
+    <div class="type-point-list">
 
-      <li>
+      <div class="type-point">
         勢いだけで進むより、
         <strong>「無理なく続けられるか」</strong>
         を確かめてから動く
-      </li>
+      </div>
 
-      <li>
+      <div class="type-point">
         一度「これなら大丈夫」と納得すると、
         必要な手順を組み立てて形にできる
-      </li>
+      </div>
 
-      <li>
+      <div class="type-point">
         アイデアを
         <strong>「誰に・何を・どの順番で届けるか」</strong>
         まで整理できる
-      </li>
+      </div>
 
-    </ul>
+    </div>
 
     <p class="type-summary">
-      見切り発車は少し苦手。でも、怖くて動けない人ではありません。
-      あなたは「これなら大丈夫」と納得できれば、
+      見切り発車は少し苦手。
+      でも、怖くて動けない人ではありません。
+      「これなら大丈夫」と納得できれば、
       一つずつ着実に前へ進める人です。
     </p>
 
@@ -310,7 +330,7 @@
 
 
   <!-- ========================================
-       強みが出る場面
+       02 こんな場面で強みが出ます
   ======================================== -->
 
   <article class="result-block">
@@ -322,7 +342,8 @@
       <div class="talent-scene-card">
         <strong>サービスづくり</strong>
         <p>
-          内容だけでなく、申し込み後の流れまで自然に考えられます。
+          内容だけでなく、
+          申し込み後の流れまで自然に考えられます。
         </p>
       </div>
 
@@ -338,7 +359,7 @@
       <div class="talent-scene-card">
         <strong>アイデアを整理するとき</strong>
         <p>
-          ぼんやりした案を
+          ぼんやりした案を、
           「では、まず何から始める？」
           という具体的な手順へ落とし込めます。
         </p>
@@ -350,7 +371,7 @@
 
 
   <!-- ========================================
-       今のあなたの状態
+       03 今のあなたの状態
   ======================================== -->
 
   <article class="result-block">
@@ -405,41 +426,41 @@
 
 
   <!-- ========================================
-       このままだと
+       04 この状態が続くと…
   ======================================== -->
 
   <article class="result-block result-block--risk">
 
     <h2>この状態が続くと…</h2>
 
-    <ul class="risk-list">
+    <div class="risk-items">
 
-      <li>
+      <div class="risk-item">
         発信するタイミングを逃しやすくなる
-      </li>
+      </div>
 
-      <li>
-        サービスを公開する時期が、どんどん後ろへ延びる
-      </li>
+      <div class="risk-item">
+        サービスを公開する時期が、
+        どんどん後ろへ延びる
+      </div>
 
-      <li>
+      <div class="risk-item">
         頑張っているのに
-        「なかなか形にならない」
-        と感じやすくなる
-      </li>
+        「なかなか形にならない」と感じやすくなる
+      </div>
 
-      <li>
+      <div class="risk-item">
         「私の判断で大丈夫かな？」と、
         自分の選択にも迷いやすくなる
-      </li>
+      </div>
 
-    </ul>
+    </div>
 
   </article>
 
 
   <!-- ========================================
-       問題の正体
+       05 問題の正体
   ======================================== -->
 
   <article class="result-block result-block--key">
@@ -467,50 +488,64 @@
     <p>
       その判断基準が持てるようになると、
       慎重さを捨てなくても、
-      自分で区切りをつけて次の一歩を選びやすくなります。
+      自分で区切りをつけて
+      次の一歩を選びやすくなります。
     </p>
 
   </article>
 
 
   <!-- ========================================
-       LINEブロック自動生成用データ
-       画面には直接表示しません
+       06 LINE登録後に分かること
+       自動生成用
+
+       ※元コードと同じ
+       result-block--final
+       line-benefits-source
+       cta-message-source
+       の構造を維持しています
   ======================================== -->
 
-  <div class="result-source-data">
+  <article
+    class="result-block result-block--final result-block--source-only"
+  >
+
+    <h2>ここから先が本題です</h2>
 
     <ul class="line-benefits-source">
 
       <li>
         <strong>慎重な自分に合う考え方：</strong>
-        確認を重ねすぎず、自分らしく前へ進むために
+        確認を重ねすぎず、
+        自分らしく前へ進むために
         何を大切にすればよいかが分かります。
       </li>
 
       <li>
         <strong>「ここまでで大丈夫」の目安：</strong>
         迷いに区切りをつけ、
-        次の一歩を選びやすくする判断基準が分かります。
+        次の一歩を選びやすくする
+        判断基準が分かります。
       </li>
 
       <li>
-        <strong>強みを仕事に活かす3つのヒント：</strong>
+        <strong>仕事で強みを活かすヒント：</strong>
         慎重さと改善力を、
         安心感や信頼につながる仕事の強みとして
-        活かす方法が分かります。
+        活かす3つのヒントが分かります。
       </li>
 
     </ul>
 
     <p class="cta-message-source">
-      あなたには、曖昧な考えを現実的な形へ整え、
+      あなたには、
+      曖昧な考えを現実的な形へ整え、
       決めたことを着実に積み上げる力があります。
-      その強みを活かしながら、
-      自分らしく前へ進むためのヒントを、
+      その強みを仕事に活かしながら、
+      自分らしく前へ進むための考え方を、
       LINEで受け取ってください。
     </p>
 
-  </div>
+  </article>
 
 </section>
