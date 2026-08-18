@@ -1476,16 +1476,19 @@ function splitBenefitText(text, index) {
   };
 }
 
-function findLineBenefitSource(blocks) {
-  const explicitSource = blocks
-    .map(block => block.querySelector('.line-benefits-source'))
-    .find(Boolean);
+/* =========================================================
+   LINE登録後に分かること・CTA文
+   専用クラスだけを読み取る安全版
+========================================================= */
 
-  if (explicitSource) return explicitSource;
+/*
+  LINE用の3項目は、
+  .line-benefits-source が付いているリストだけを使用します。
 
-  return blocks
-    .flatMap(block => Array.from(block.querySelectorAll('ul')))
-    .find(list => list.querySelectorAll('li').length >= 3) || null;
+  他の ul / li は絶対にLINE用として拾いません。
+*/
+function findLineBenefitSource() {
+  return externalResultTextEl.querySelector('.line-benefits-source');
 }
 
 function getBenefitsFromList(list) {
@@ -1502,13 +1505,17 @@ function getBenefitsFromList(list) {
     }
 
     const title = normalizePlainText(titleElement.textContent);
-    const text = normalizePlainText(fullText.replace(title, ''));
+    const text = normalizePlainText(
+      fullText.replace(titleElement.textContent, '')
+    );
 
     return {
       title: title || `受け取れるヒント ${String(index + 1).padStart(2, '0')}`,
       text: text || fullText
     };
-  }).filter(item => item.text);
+  }).filter(function(item) {
+    return item.text;
+  });
 }
 
 function renderLineBenefits(benefits) {
@@ -1525,58 +1532,42 @@ function renderLineBenefits(benefits) {
   }).join('');
 }
 
-function findMainPointBlockIndex(blocks) {
-  const headingPattern = /ここから先が本題|ここから先|本題/u;
-  const headingIndex = blocks.findIndex(function(block) {
-    const heading = block.querySelector('h2, h3');
-    return heading && headingPattern.test(normalizePlainText(heading.textContent));
-  });
+/*
+  CTA直前の文章は、
+  .cta-message-source が付いた文章だけを使用します。
 
-  if (headingIndex >= 0) return headingIndex;
+  本文中の「前へ進む」「必要なのは」などの文章は
+  CTAとして自動取得しません。
+*/
+function findTypeSpecificCtaLead() {
+  const explicitParagraph = externalResultTextEl.querySelector('.cta-message-source');
 
-  const finalClassIndex = blocks.findIndex(block => block.classList.contains('result-block--final'));
-  if (finalClassIndex >= 0) return finalClassIndex;
-
-  return blocks.length > 3 ? 3 : -1;
-}
-
-function findTypeSpecificCtaLead(blocks) {
-  const paragraphs = blocks.flatMap(function(block) {
-    return Array.from(block.querySelectorAll('p')).filter(paragraph => !paragraph.closest('li'));
-  });
-  const explicitParagraph = paragraphs.find(paragraph => paragraph.classList.contains('cta-message-source'));
-  const preferredParagraph = paragraphs.find(function(paragraph) {
-    const text = normalizePlainText(paragraph.textContent);
-    return /足りない|必要なのは|止まるため|前へ進む|前に進む/u.test(text) && text.length <= 180;
-  });
-  const fallbackParagraph = paragraphs.find(paragraph => normalizePlainText(paragraph.textContent).length <= 180);
-  const selectedParagraph = explicitParagraph || preferredParagraph || fallbackParagraph;
+  if (explicitParagraph) {
+    return {
+      text: normalizePlainText(explicitParagraph.textContent),
+      source: explicitParagraph
+    };
+  }
 
   return {
-    text: selectedParagraph ? normalizePlainText(selectedParagraph.textContent) : COMMON_TEXTS.ctaLead,
-    source: explicitParagraph || preferredParagraph || null
+    text: COMMON_TEXTS.ctaLead,
+    source: null
   };
 }
 
 function prepareSharedResultLayout() {
-  const blocks = Array.from(externalResultTextEl.querySelectorAll('.result-block'));
-  const mainPointIndex = findMainPointBlockIndex(blocks);
-
-  if (mainPointIndex < 0) {
-    renderLineBenefits([]);
-    ctaLeadEl.textContent = COMMON_TEXTS.ctaLead;
-    return;
-  }
-
-  const mainPointBlocks = blocks.slice(mainPointIndex);
-  const benefitSource = findLineBenefitSource(mainPointBlocks);
+  const benefitSource = findLineBenefitSource();
   const benefits = getBenefitsFromList(benefitSource);
-  const ctaLead = findTypeSpecificCtaLead(mainPointBlocks);
+  const ctaLead = findTypeSpecificCtaLead();
 
   renderLineBenefits(benefits);
   ctaLeadEl.textContent = ctaLead.text;
 
-  if (benefitSource && benefits.length === 3) {
+  /*
+    元データはLINEプレビューとCTAへ転記したあと、
+    診断本文側からだけ削除します。
+  */
+  if (benefitSource) {
     benefitSource.remove();
   }
 
