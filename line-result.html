@@ -140,7 +140,7 @@
     }
 
     .result-content {
-      margin-top: 16px;
+      margin-top: 0;
     }
 
     .result-detail {
@@ -410,14 +410,6 @@
 
 <body>
   <main class="page-shell">
-    <header class="page-header">
-      <div class="page-label">才能コンパス診断</div>
-      <h1 class="page-title">あなた専用の詳しい診断結果</h1>
-      <div class="diagnosis-code" id="diagnosisCode">
-        診断コードを確認しています
-      </div>
-    </header>
-
     <div class="loading" id="loadingMessage">
       診断結果を読み込んでいます...
     </div>
@@ -441,10 +433,6 @@
 
     const loadingMessage =
       document.getElementById('loadingMessage');
-
-    const diagnosisCode =
-      document.getElementById('diagnosisCode');
-
     function escapeHtml(value) {
       return String(value)
         .replaceAll('&', '&amp;')
@@ -535,9 +523,6 @@
       const code = getDiagnosisCode();
 
       if (!VALID_CODE_PATTERN.test(code)) {
-        diagnosisCode.textContent =
-          '診断コードが確認できません';
-
         showError(
           '診断結果を表示できませんでした。<br>' +
           'LINEに届いたリンクを、もう一度開いてください。'
@@ -545,10 +530,6 @@
 
         return;
       }
-
-      diagnosisCode.textContent =
-        `診断コード：${code}`;
-
       try {
         const path =
           `line-results/${code}.html`;
