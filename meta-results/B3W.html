@@ -1,209 +1,520 @@
-<section class="result-detail" data-diagnosis-code="B3W">
-  <div class="result-catch" data-hide-title="true">
-    <p>【あなたを一言で表すと】</p>
-    <p>練りながらつなぐコーディネーター</p>
+<section class="result-detail result-detail--visual" data-diagnosis-code="B3W">
+
+  <style>
+    /* ========================================
+       B3W 診断結果
+       Meta広告流入・スマホ向け
+    ======================================== */
+
+    .result-detail--visual {
+      max-width: 720px;
+      margin: 0 auto;
+      color: #24313a;
+      line-height: 1.8;
+    }
+
+    /* ========================================
+       FV
+    ======================================== */
+
+    .diagnosis-result-fv {
+      margin: 0 0 28px;
+      padding: 0;
+    }
+
+    .diagnosis-result-fv img {
+      display: block;
+      width: 100%;
+      height: auto;
+      margin: 0 auto;
+    }
+
+    /* ========================================
+       共通ブロック
+    ======================================== */
+
+    .result-detail--visual .result-block {
+      margin: 0 16px 28px;
+      padding: 26px 20px;
+      background: #ffffff;
+      border: 1px solid #dcecf5;
+      border-radius: 18px;
+      box-sizing: border-box;
+    }
+
+    .result-detail--visual .result-block h2 {
+      margin: 0 0 18px;
+      color: #083f5c;
+      font-size: 22px;
+      line-height: 1.45;
+      text-align: left;
+    }
+
+    .result-detail--visual .result-block p {
+      margin: 0 0 16px;
+      font-size: 16px;
+      line-height: 1.9;
+    }
+
+    .result-detail--visual .result-block p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* ========================================
+       あなたはこんなタイプ
+    ======================================== */
+
+    .type-keywords {
+      margin: 0 0 20px;
+      font-size: 20px;
+      font-weight: 700;
+      color: #1f6fb2;
+      letter-spacing: 0.04em;
+      text-align: center;
+    }
+
+    .type-point-list {
+      display: grid;
+      gap: 11px;
+      margin: 0 0 20px;
+    }
+
+    .type-point {
+      position: relative;
+      padding: 14px 14px 14px 43px;
+      background: #f8fcff;
+      border-radius: 12px;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .type-point::before {
+      content: "✓";
+      position: absolute;
+      left: 16px;
+      top: 14px;
+      color: #1f6fb2;
+      font-weight: 700;
+    }
+
+    .type-summary {
+      padding: 16px;
+      background: #eef7ff;
+      border-radius: 12px;
+      color: #314958;
+    }
+
+    /* ========================================
+       強みが出る場面
+    ======================================== */
+
+    .talent-scene-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    .talent-scene-card {
+      padding: 18px;
+      border-radius: 14px;
+      background: #eef7ff;
+      border: 1px solid #cfe3f1;
+    }
+
+    .talent-scene-card strong {
+      display: block;
+      margin-bottom: 8px;
+      color: #083f5c;
+      font-size: 17px;
+      line-height: 1.5;
+    }
+
+    .talent-scene-card p {
+      margin: 0 !important;
+    }
+
+    /* ========================================
+       今のループ
+    ======================================== */
+
+    .loop-intro {
+      font-weight: 700;
+      color: #314958;
+    }
+
+    .diagnosis-loop {
+      margin: 20px 0;
+    }
+
+    .loop-step {
+      padding: 15px 14px;
+      background: #f8fcff;
+      border: 1px solid #cfe6f3;
+      border-radius: 12px;
+      text-align: center;
+      font-size: 16px;
+      font-weight: 700;
+      color: #083f5c;
+    }
+
+    .loop-arrow {
+      height: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #6f8798;
+      font-size: 24px;
+      font-weight: 700;
+    }
+
+    .loop-step--last {
+      background: #fff5f2;
+      border-color: #f2c9bf;
+      color: #9b4d3b;
+    }
+
+    /* ========================================
+       この状態が続くと
+    ======================================== */
+
+    .result-block--risk {
+      background: #fffaf7 !important;
+      border-color: #f1d9cf !important;
+    }
+
+    .risk-items {
+      display: grid;
+      gap: 10px;
+    }
+
+    .risk-item {
+      position: relative;
+      padding: 13px 14px 13px 40px;
+      background: #ffffff;
+      border: 1px solid #f0ddd5;
+      border-radius: 11px;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .risk-item::before {
+      content: "●";
+      position: absolute;
+      left: 17px;
+      top: 15px;
+      color: #d98670;
+      font-size: 10px;
+    }
+
+    /* ========================================
+       問題の正体
+    ======================================== */
+
+    .result-block--key {
+      background: #eef7ff !important;
+      border-color: #bddcec !important;
+    }
+
+    .key-message {
+      margin: 18px 0 !important;
+      padding: 18px 16px;
+      background: #ffffff;
+      border: 1px solid #dcecf5;
+      border-radius: 8px;
+      font-size: 18px !important;
+      font-weight: 700;
+      color: #083f5c;
+      text-align: center;
+      line-height: 1.7;
+    }
+
+    .key-message-line {
+      display: block;
+    }
+
+    /* ========================================
+       LINE自動生成用データ
+    ======================================== */
+
+    .result-block--source-only {
+      display: none !important;
+    }
+
+    /* ========================================
+       スマホ
+    ======================================== */
+
+    @media (max-width: 600px) {
+      .result-detail--visual .result-block {
+        margin-left: 14px;
+        margin-right: 14px;
+        padding: 23px 17px;
+      }
+
+      .result-detail--visual .result-block h2 {
+        font-size: 21px;
+      }
+
+      .type-keywords {
+        font-size: 19px;
+      }
+
+      .talent-scene-card strong {
+        font-size: 17px;
+      }
+
+      .key-message {
+        font-size: 17px !important;
+        padding: 16px 14px;
+      }
+    }
+  </style>
+
+  <!-- FV -->
+  <div class="diagnosis-result-fv">
+    <img
+      src="meta-fv-results/B3W.png"
+      alt="才能コンパス診断 練りながらつなぐコーディネーター"
+      loading="eager"
+      fetchpriority="high"
+    >
   </div>
 
+  <!-- 01 -->
   <article class="result-block">
-    <h2>あなたの本質</h2>
+    <h2>あなたはこんなタイプです</h2>
 
-    <p class="highlight-paragraph">熟考 × 共感 × 多角的視点</p>
+    <div class="type-keywords">
+      熟考 × 共感 × 多角的視点
+    </div>
 
-    <p>
-      あなたは、思いついたことをそのまま外へ出すよりも、一度自分の中へ持ち帰り、じっくり考える人です。
-    </p>
+    <div class="type-point-list">
+      <div class="type-point">
+        すぐに結論を出さず、
+        <strong>まず自分の中でじっくり考えられる</strong>
+      </div>
 
-    <p>
-      「この人には、どう見えているのだろう」<br>
-      「別の立場から見たら、違う答えになるかもしれない」<br>
-      「それぞれの考えに、共通するものはないだろうか」<br>
-      と、さまざまな角度から物事を見ます。
-    </p>
+      <div class="type-point">
+        一つの意見だけでなく、
+        <strong>それぞれの立場や気持ちを丁寧に理解できる</strong>
+      </div>
 
-    <p>
-      一つの意見だけを正解にするのではなく、「こちらの考えにも一理ある」「でも、あちらの気持ちも分かる」と、それぞれの立場を理解できます。
-    </p>
+      <div class="type-point">
+        いくつもの視点の共通点を見つけ、
+        <strong>一つの伝わる形へつなげられる</strong>
+      </div>
+    </div>
 
-    <p>
-      そして、ばらばらに見える意見の中から共通点を探し、「目指しているところは、同じかもしれませんね」と、一つの話につなげていきます。
-    </p>
-
-    <p>
-      考えをまとめるまでには、少し時間がかかることもあります。
-    </p>
-
-    <p>
-      けれど、その分、表面的な答えでは終わりません。相手の気持ちも、別の見方も、自分なりの考えも丁寧に重ねます。
-    </p>
-
-    <p>
-      あなたは、いくつもの視点を深く考え、人や考えの間につながりを見つけていく人です。
+    <p class="type-summary">
+      あなたは、
+      一つの見方だけで答えを決める人ではありません。
+      人の気持ちやさまざまな視点をじっくり考え、
+      それらをつなぎながら、
+      みんなが受け取りやすい形へ整えていく人です。
     </p>
   </article>
 
+  <!-- 02 -->
   <article class="result-block">
-    <h2>あなたの才能</h2>
+    <h2>こんな場面で強みが出ます</h2>
 
-    <p>そんなあなたには、次のような力があります。</p>
+    <div class="talent-scene-grid">
+      <div class="talent-scene-card">
+        <strong>🤝 意見が分かれたとき</strong>
+        <p>
+          どちらか一方をすぐ否定せず、
+          それぞれが大切にしていることを考えながら、
+          共通する部分を見つけられます。
+        </p>
+      </div>
 
-    <ul>
-      <li>相手の言葉の奥にある気持ちを理解する力</li>
-      <li>一つの物事を、複数の角度から深く考える力</li>
-      <li>異なる意見や情報の共通点を見つける力</li>
-      <li>人や考えの間に入り、話をつなぐ力</li>
-    </ul>
+      <div class="talent-scene-card">
+        <strong>👀 別の立場から考えるとき</strong>
+        <p>
+          初心者、経験者、慎重な人など、
+          立場によってどう受け取るかを想像し、
+          複数の切り口を見つけられます。
+        </p>
+      </div>
+
+      <div class="talent-scene-card">
+        <strong>🧩 視点をつなぐとき</strong>
+        <p>
+          ばらばらに見える意見や情報から、
+          共通点や関係を見つけ、
+          新しい一つの形へまとめられます。
+        </p>
+      </div>
+    </div>
+  </article>
+
+  <!-- 03 -->
+  <article class="result-block">
+    <h2>今、こんなループに入っていませんか？</h2>
+
+    <p class="loop-intro">
+      「今回は、この切り口で」と決めたはずなのに……
+    </p>
+
+    <div class="diagnosis-loop">
+      <div class="loop-step">
+        1つの案をじっくり考える
+      </div>
+
+      <div class="loop-arrow">↓</div>
+
+      <div class="loop-step">
+        別の立場にもよさが見えてくる
+      </div>
+
+      <div class="loop-arrow">↓</div>
+
+      <div class="loop-step">
+        さらに別の切り口も比較したくなる
+      </div>
+
+      <div class="loop-arrow">↓</div>
+
+      <div class="loop-step loop-step--last">
+        案は深まるのに、出す1つが決まらない
+      </div>
+    </div>
 
     <p>
-      打ち合わせで意見が分かれたときも、どちらか一方をすぐに正しいと決めることはありません。
+      あなたは、
+      考えがまとまらないわけではありません。
+      むしろ、
+      <strong>考えるほど、よい案が増えていく</strong>
+      のです。
     </p>
 
     <p>
-      「この人は、安心して進めたいのかもしれない」「あの人は、今の機会を逃したくないのかもしれない」と、それぞれの言葉の背景まで考えられます。
+      初心者には、この伝え方。
+      経験者には、こちらの切り口。
+      慎重な人には、もう少し安心できる説明。
     </p>
 
     <p>
-      そして、「考え方は違っていても、目指しているところは同じかもしれません」と、意見の間にある共通点を見つけられます。
+      どの視点にもちゃんと理由があるから、
+      一つを選ぶほど、
+      選ばなかった案も気になってきます。
     </p>
 
     <p>
-      お客様の相談でも、目の前の悩みだけを見るわけではありません。
-    </p>
-
-    <p>
-      その人の立場、これまでの経験、周りとの関係、本人がまだ言葉にできていない思いまで丁寧に考えます。
-    </p>
-
-    <p>
-      そのため、相手自身も気づいていなかった考えを整理したり、別々に見えていた悩みのつながりを見つけたりできます。
-    </p>
-
-    <p>
-      チームの中でも、異なる意見をただ並べるのではなく、お互いが大切にしていることを分かりやすく伝え、話し合いを進められるでしょう。
-    </p>
-
-    <p>
-      周りからも「いろいろな見方ができるよね」「人の気持ちをよく分かっている」「考えが深いよね」「話をつなぐのが上手だね」と言われたことがあるかもしれません。
-    </p>
-
-    <p>
-      あなたは、ただ気づかいができる人ではありません。異なる立場を行き来しながら、誰か一人の考えだけでは見つからない答えを生み出せる人です。
-    </p>
-
-    <p>
-      人の気持ちを理解する共感力、さまざまな角度から深く考える力、異なる意見をつなぐ力。その組み合わせが、あなたの大きな才能です。
+      気づけば頭の中では編集会議。
+      <strong>
+        全員に発言権があり、
+        しかも議長だけがまだ決まっていない。
+      </strong>
+      そんな状態になることもあるかもしれません。
     </p>
   </article>
 
-  <article class="result-block">
-    <h2>今のあなたの状態</h2>
+  <!-- 04 -->
+  <article class="result-block result-block--risk">
+    <h2>この状態が続くと…</h2>
+
+    <div class="risk-items">
+      <div class="risk-item">
+        書き出しや切り口の案が増え、
+        どれを完成させるか決めにくくなる
+      </div>
+
+      <div class="risk-item">
+        いろいろな人への配慮を入れるほど、
+        発信やサービスの中心がぼやけやすくなる
+      </div>
+
+      <div class="risk-item">
+        よい案を捨てたくないため、
+        比較や組み替えに時間を使い続けやすくなる
+      </div>
+
+      <div class="risk-item">
+        本当は多くの視点を持っているのに、
+        「自分には軸がない」と感じやすくなる
+      </div>
+    </div>
+  </article>
+
+  <!-- 05 -->
+  <article class="result-block result-block--key">
+    <h2>でも、問題は「視点が多いこと」ではありません</h2>
 
     <p>
-      ただ今は、その視野の広さと考える力が、少しだけ空回りしているかもしれません。
+      いろいろな立場を理解し、
+      複数の切り口を見つけられることは、
+      あなたの大きな強みです。
     </p>
 
     <p>
-      誰かの意見を聞くと、その内容だけでなく、なぜそう考えたのか、その人が何を大切にしているのかまで考えます。
+      ただ、
+      見えているすべての視点を
+      同じ重要度で比較し続けると、
+      どれも選ぶ理由があるように見えてきます。
+    </p>
+
+    <p class="key-message">
+      <span class="key-message-line">今回は、誰を主役にするのか。</span>
+      <span class="key-message-line">その人に、何を1つ持ち帰ってほしいのか。</span>
     </p>
 
     <p>
-      別の人から違う意見を聞けば、「こちらの考えにも理由がある」と感じます。
+      この基準がないままだと、
+      別の立場が見えるたびに、
+      今選んでいる案をもう一度比較したくなります。
     </p>
 
     <p>
-      どちらの話も理解できるため、簡単には一つの考えを選べません。
-    </p>
-
-    <p>
-      「この人の気持ちも大切にしたい」「あの人の考えも置き去りにしたくない」と、それぞれが納得できる形を探し始めます。
-    </p>
-
-    <p>
-      一つの方法を考えると、「別の立場の人には合わないかもしれない」と気づく。別の案を考えると、「今度はこちらの人が納得しにくいかもしれない」と、また考えます。
-    </p>
-
-    <p>
-      頭の中の会議には、少しずつ参加者が増えていく。しかも、全員の話に一理あるため、なかなか閉会できません。そんなことはないでしょうか。
-    </p>
-
-    <p>
-      チームの中でも、異なる意見の間に入り、お互いの気持ちを理解しようとします。
-    </p>
-
-    <p>
-      そのため、話をまとめようとしているうちに、自分がどう考えていたのかが、少し分かりにくくなることがあります。
-    </p>
-
-    <p>
-      お客様のために何かを考えるときにも、「この人には、こちらが合いそう」「でも、別の人には違う形が必要かもしれない」と、いくつもの可能性が浮かびます。
-    </p>
-
-    <p>
-      あなたは、何も決められない人ではありません。かなり考え、人の気持ちも丁寧に受け取り、みんなにとってよい形を探しています。
-    </p>
-
-    <p>
-      それでも一日の終わりには、「今日は、たくさん考えた。でも、結局どうすればよいのだろう」と、少し疲れてしまうことがあります。
-    </p>
-
-    <p>
-      あなたに自分の軸がないわけではありません。それぞれの立場にある大切なものへ気づけるため、どの考えも簡単には外したくないのです。
-    </p>
-
-    <p>
-      今、自分の才能を活かしにくくなっているのは、多くの視点が見えるからではありません。見えているすべての視点を、同じように大切にしようとしているからかもしれません。
+      反対に、
+      今回の主役と中心を決められるようになると、
+      <strong>ほかの視点を捨てずに、今届ける1つを選べます。</strong>
     </p>
   </article>
 
-  <article class="result-block result-block--final">
+  <!-- 06 LINE自動生成用 -->
+  <article class="result-block result-block--final result-block--source-only">
     <h2>ここから先が本題です</h2>
-
-    <p>
-      ここまで読んで、「そうそう。どの意見にも大切なものが見えるから、簡単には決められないのよね」と感じたでしょうか。
-    </p>
-
-    <p>
-      手相から見えているあなたの熟考する力、共感力、多角的な視点は、人の気持ちや異なる意見を丁寧に受け取り、その間につながりを見つけるための大切な強みです。
-    </p>
-
-    <p>
-      一つの立場だけで決めつけず、さまざまな角度から考えられる。言葉の奥にある気持ちを理解できる。異なる意見に共通するものを見つけ、話をつなげられる。
-    </p>
-
-    <p>
-      こうした場面で、あなたの才能は、お客様との信頼や、周りの人と協力して仕事を進める力につながります。
-    </p>
-
-    <p>
-      けれど、見えているすべての立場を同じように大切にしようとすると、あなたが感じたことや考えたことまで、たくさんの意見の中に埋もれてしまいます。
-    </p>
-
-    <p>
-      あなたらしい進み方のヒントは、視野を狭くしたり、人の意見を切り捨てたりすることではありません。人の気持ちや異なる考えを丁寧に受け取り、それらをつなぐ力として仕事に活かすことです。
-    </p>
-
-    <p>
-      では、人の気持ちを理解する力、さまざまな角度から深く考える力、異なる意見をつなぐ力を、仕事にどう活かしていけばよいのでしょうか。
-    </p>
 
     <ul class="line-benefits-source">
       <li>
-        <strong>多くの視点を持つ自分に合う進み方：</strong>
-        さまざまな立場から考えられる特徴を大切にしながら、その力を仕事で活かすヒントが分かります。
+        <strong>考えるほど、伝えたい相手や切り口が増えていく理由：</strong>
+        熟考力、共感力、多角的な視点が順番に働くことで、
+        なぜ1つの案から別の有力案が次々に生まれるのかが分かります。
       </li>
 
       <li>
-        <strong>人や意見をつなぐ力を仕事に活かすヒント：</strong>
-        異なる考えにある共通点を見つけられる力を、お客様との関係や周りとの仕事に活かすヒントが分かります。
+        <strong>どの視点を今選ぶか、自信を持って決める基準：</strong>
+        今回の主役を1人に決め、
+        その人に持ち帰ってほしいことを1つ選ぶ方法が分かります。
       </li>
 
       <li>
-        <strong>仕事で熟考・共感・多角的な視点を活かすヒント：</strong>
-        深く考える力、人の気持ちを受け取る力、異なる立場をつなぐ力を、相談対応やチームでの仕事へ活かすヒントが分かります。
+        <strong>熟考力と多角的な視点を、伝わる形へ変えるヒント：</strong>
+        視点を中心・補足・次回へ分け、
+        比較を終える条件を決め、
+        実際の1人へ確かめる
+        3つのコツが分かります。
       </li>
     </ul>
 
     <p class="cta-message-source">
-      あなたにはすでに、人の気持ちを深く理解する力も、さまざまな角度から考える力も、異なる意見をつなぐ力もあります。その才能を仕事でもっと活かすためのヒントを、LINEで受け取ってください。
+      あなたには、
+      人の気持ちを深く理解する力も、
+      さまざまな角度から考える力も、
+      異なる視点を一つの形へつなぐ力もあります。
+      必要なのは、
+      視野を狭くすることでも、
+      よい案を捨てることでもありません。
+      今回は誰を主役にするのか。
+      その人に何を1つ届けるのか。
+      ほかの視点は、補足なのか次回なのか。
+      そこを分けられるようになると、
+      いくつもの案を大切にしながらも、
+      今出す1つを自分で決めやすくなります。
+      あなたに合う視点の選び方を、
+      LINEで受け取ってください。
     </p>
   </article>
+
 </section>
