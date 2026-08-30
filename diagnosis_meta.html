@@ -1080,7 +1080,8 @@ body {
         </div>
 
         <div class="line-preview-lead" id="linePreviewLead">
-          このタイプの特徴に合わせて、<br>次の内容をお届けします。
+          このタイプの特徴に合わせて、<br>
+          次の内容をお届けします。
         </div>
 
         <div class="line-benefit-list" id="lineBenefitList"></div>
@@ -1094,7 +1095,9 @@ body {
             <li>「あなた専用の診断結果を受け取る　▶」ボタンを押す。</li>
             <li>LINEでコピーした診断コードを送る。</li>
           </ol>
-          <p class="receive-guide-note">※ひとつひとつ内容を確認しながらお届けしているため、少しお時間をいただく場合があります。</p>
+          <p class="receive-guide-note">
+            診断コードを送信後、すぐに詳しい診断結果をお届けします。
+          </p>
         </div>
 
         <div class="copy-code-box">
@@ -1269,7 +1272,6 @@ const QUESTION_FLOW = [
 let answers = {};
 let currentQuestionKey = 'q3';
 
-// Googleアナリティクスへ同じ行動を重複送信しないための記録
 const sentAnalyticsEvents = new Set();
 
 function trackDiagnosisEvent(eventName, eventParams = {}) {
@@ -1281,7 +1283,6 @@ function trackDiagnosisEvent(eventName, eventParams = {}) {
       sentAnalyticsEvents.add(eventName);
     }
   } catch (error) {
-    // 記録に失敗しても、診断そのものは止めない
     console.warn('Googleアナリティクスへの記録に失敗しました:', eventName, error);
   }
 }
@@ -1495,7 +1496,6 @@ function selectChoice(questionKey, value, clickedElement) {
     delete answers.q4;
   }
 
-  // 画面に表示されている順番に合わせて、回答段階を1回だけ記録する
   trackQuestionAnswer(questionKey);
 
   optionsContainerEl.querySelectorAll('.opt-card').forEach(card => {
@@ -1539,7 +1539,7 @@ function buildDiagnosisCode() {
 
 function setLinePreviewText() {
   linePreviewTitleEl.innerHTML = 'LINE登録後に分かる<br>3つのこと';
-  linePreviewLeadEl.textContent = DEFAULT_LINE_PREVIEW.lead;
+  linePreviewLeadEl.innerHTML = 'このタイプの特徴に合わせて、<br>次の内容をお届けします。';
 }
 
 function normalizePlainText(value) {
@@ -1579,12 +1579,6 @@ function splitBenefitText(text, index) {
    専用クラスだけを読み取る安全版
 ========================================================= */
 
-/*
-  LINE用の3項目は、
-  .line-benefits-source が付いているリストだけを使用します。
-
-  他の ul / li は絶対にLINE用として拾いません。
-*/
 function findLineBenefitSource() {
   return externalResultTextEl.querySelector('.line-benefits-source');
 }
@@ -1630,13 +1624,6 @@ function renderLineBenefits(benefits) {
   }).join('');
 }
 
-/*
-  CTA直前の文章は、
-  .cta-message-source が付いた文章だけを使用します。
-
-  本文中の「前へ進む」「必要なのは」などの文章は
-  CTAとして自動取得しません。
-*/
 function findTypeSpecificCtaLead() {
   const explicitParagraph = externalResultTextEl.querySelector('.cta-message-source');
 
@@ -1661,10 +1648,6 @@ function prepareSharedResultLayout() {
   renderLineBenefits(benefits);
   ctaLeadEl.textContent = ctaLead.text;
 
-  /*
-    元データはLINEプレビューとCTAへ転記したあと、
-    診断本文側からだけ削除します。
-  */
   if (benefitSource) {
     benefitSource.remove();
   }
