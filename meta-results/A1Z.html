@@ -1,197 +1,509 @@
-<section class="result-detail" data-diagnosis-code="A1Z">
-  <div class="result-catch" data-hide-title="true">
-    <p>【あなたを一言で表すと】</p>
-    <p>自分らしさを育てるデザイナー</p>
+<section class="result-detail result-detail--visual" data-diagnosis-code="A1Z">
+
+  <style>
+    /* ========================================
+       A1Z 診断結果
+       Meta広告流入・スマホ向け
+    ======================================== */
+
+    .result-detail--visual {
+      max-width: 720px;
+      margin: 0 auto;
+      color: #24313a;
+      line-height: 1.8;
+    }
+
+    /* ========================================
+       FV
+    ======================================== */
+
+    .diagnosis-result-fv {
+      margin: 0 0 28px;
+      padding: 0;
+    }
+
+    .diagnosis-result-fv img {
+      display: block;
+      width: 100%;
+      height: auto;
+      margin: 0 auto;
+    }
+
+    /* ========================================
+       共通ブロック
+    ======================================== */
+
+    .result-detail--visual .result-block {
+      margin: 0 16px 28px;
+      padding: 26px 20px;
+      background: #ffffff;
+      border: 1px solid #dcecf5;
+      border-radius: 18px;
+      box-sizing: border-box;
+    }
+
+    .result-detail--visual .result-block h2 {
+      margin: 0 0 18px;
+      color: #083f5c;
+      font-size: 22px;
+      line-height: 1.45;
+      text-align: left;
+    }
+
+    .result-detail--visual .result-block p {
+      margin: 0 0 16px;
+      font-size: 16px;
+      line-height: 1.9;
+    }
+
+    .result-detail--visual .result-block p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* ========================================
+       あなたはこんなタイプ
+    ======================================== */
+
+    .type-keywords {
+      margin: 0 0 20px;
+      font-size: 20px;
+      font-weight: 700;
+      color: #1f6fb2;
+      letter-spacing: 0.04em;
+      text-align: center;
+    }
+
+    .type-point-list {
+      display: grid;
+      gap: 11px;
+      margin: 0 0 20px;
+    }
+
+    .type-point {
+      position: relative;
+      padding: 14px 14px 14px 43px;
+      background: #f8fcff;
+      border-radius: 12px;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .type-point::before {
+      content: "✓";
+      position: absolute;
+      left: 16px;
+      top: 14px;
+      color: #1f6fb2;
+      font-weight: 700;
+    }
+
+    .type-summary {
+      padding: 16px;
+      background: #eef7ff;
+      border-radius: 12px;
+      color: #314958;
+    }
+
+    /* ========================================
+       強みが出る場面
+    ======================================== */
+
+    .talent-scene-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    .talent-scene-card {
+      padding: 18px;
+      border-radius: 14px;
+      background: #eef7ff;
+      border: 1px solid #cfe3f1;
+    }
+
+    .talent-scene-card strong {
+      display: block;
+      margin-bottom: 8px;
+      color: #083f5c;
+      font-size: 17px;
+      line-height: 1.5;
+    }
+
+    .talent-scene-card p {
+      margin: 0 !important;
+    }
+
+    /* ========================================
+       今のループ
+    ======================================== */
+
+    .loop-intro {
+      font-weight: 700;
+      color: #314958;
+    }
+
+    .diagnosis-loop {
+      margin: 20px 0;
+    }
+
+    .loop-step {
+      padding: 15px 14px;
+      background: #f8fcff;
+      border: 1px solid #cfe6f3;
+      border-radius: 12px;
+      text-align: center;
+      font-size: 16px;
+      font-weight: 700;
+      color: #083f5c;
+    }
+
+    .loop-arrow {
+      height: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #6f8798;
+      font-size: 24px;
+      font-weight: 700;
+    }
+
+    .loop-step--last {
+      background: #fff5f2;
+      border-color: #f2c9bf;
+      color: #9b4d3b;
+    }
+
+    /* ========================================
+       この状態が続くと
+    ======================================== */
+
+    .result-block--risk {
+      background: #fffaf7 !important;
+      border-color: #f1d9cf !important;
+    }
+
+    .risk-items {
+      display: grid;
+      gap: 10px;
+    }
+
+    .risk-item {
+      position: relative;
+      padding: 13px 14px 13px 40px;
+      background: #ffffff;
+      border: 1px solid #f0ddd5;
+      border-radius: 11px;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .risk-item::before {
+      content: "●";
+      position: absolute;
+      left: 17px;
+      top: 15px;
+      color: #d98670;
+      font-size: 10px;
+    }
+
+    /* ========================================
+       問題の正体
+    ======================================== */
+
+    .result-block--key {
+      background: #eef7ff !important;
+      border-color: #bddcec !important;
+    }
+
+    .key-message {
+      margin: 18px 0 !important;
+      padding: 18px 16px;
+      background: #ffffff;
+      border: 1px solid #dcecf5;
+      border-radius: 8px;
+      font-size: 18px !important;
+      font-weight: 700;
+      color: #083f5c;
+      text-align: center;
+      line-height: 1.7;
+    }
+
+    .key-message-line {
+      display: block;
+    }
+
+    /* ========================================
+       LINE自動生成用データ
+    ======================================== */
+
+    .result-block--source-only {
+      display: none !important;
+    }
+
+    /* ========================================
+       スマホ
+    ======================================== */
+
+    @media (max-width: 600px) {
+      .result-detail--visual .result-block {
+        margin-left: 14px;
+        margin-right: 14px;
+        padding: 23px 17px;
+      }
+
+      .result-detail--visual .result-block h2 {
+        font-size: 21px;
+      }
+
+      .type-keywords {
+        font-size: 19px;
+      }
+
+      .talent-scene-card strong {
+        font-size: 17px;
+      }
+
+      .key-message {
+        font-size: 17px !important;
+        padding: 16px 14px;
+      }
+    }
+  </style>
+
+  <!-- FV -->
+  <div class="diagnosis-result-fv">
+    <img
+      src="meta-fv-results/A1Z.png"
+      alt="才能コンパス診断 自分らしさを育てるデザイナー"
+      loading="eager"
+      fetchpriority="high"
+    >
   </div>
 
+  <!-- 01 -->
   <article class="result-block">
-    <h2>あなたの本質</h2>
+    <h2>あなたはこんなタイプです</h2>
 
-    <p class="highlight-paragraph">
+    <div class="type-keywords">
       慎重 × 現実 × 感性
-    </p>
+    </div>
 
-    <p>
-      あなたは、ただ現実だけを見る人ではありません。<br>
-      「ちゃんと形になるかな」<br>
-      「無理なく続けられるかな」<br>
-      を大切にしながら、<br>
-      「本当は、どうしたいんだろう」<br>
-      「どんな形なら、私らしいと思えるだろう」<br>
-      と、自分の内側にも丁寧に問いかけます。
-    </p>
+    <div class="type-point-list">
+      <div class="type-point">
+        現実的に続けられるかを考えながら、
+        <strong>自分が本当に納得できる形</strong>
+        も大切にする
+      </div>
 
-    <p>
-      売れそうだから、みんながやっているから、効率がよさそうだから。それだけでは、なかなか動けません。
-    </p>
+      <div class="type-point">
+        言葉や見せ方の
+        <strong>小さな違和感に気づきやすい</strong>
+      </div>
 
-    <p>
-      どれほど正しい方法でも、自分の感覚とどこかズレていると、「うーん、間違ってはいない。でも、何かが違う」と、心の中に小さな引っかかりが残るからです。
-    </p>
+      <div class="type-point">
+        頭の中にあるイメージを、
+        <strong>現実に届く形へ整えていける</strong>
+      </div>
+    </div>
 
-    <p>
-      あなたは、自分の感覚だけで進む人でも、現実に合わせるだけの人でもありません。
-    </p>
-
-    <p>
-      頭の中にあるイメージを整理し、自分らしさと現実の両方を大切にしながら、無理なく続けられる形をつくっていく人です。
+    <p class="type-summary">
+      売れそうだから、流行っているから。
+      それだけでは、なかなか動けません。
+      自分らしさと現実の両方を大切にしながら、
+      納得できる形を育てていく人です。
     </p>
   </article>
 
+  <!-- 02 -->
   <article class="result-block">
-    <h2>あなたの才能</h2>
+    <h2>こんな場面で強みが出ます</h2>
 
-    <p>
-      そんなあなたには、次のような力があります。
-    </p>
+    <div class="talent-scene-grid">
+      <div class="talent-scene-card">
+        <strong>✍️ 発信を整えるとき</strong>
+        <p>
+          言葉だけでなく、
+          写真や色、文章の流れまで見ながら、
+          全体の雰囲気をそろえられます。
+        </p>
+      </div>
 
-    <ul>
-      <li>細かな違和感に気づく力</li>
-      <li>頭の中のイメージを形に近づける力</li>
-      <li>自分らしい世界観を育てる力</li>
-      <li>感性を現実へ落とし込む力</li>
-    </ul>
+      <div class="talent-scene-card">
+        <strong>🎨 世界観をつくるとき</strong>
+        <p>
+          「どんな気持ちで受け取ってほしいか」まで考え、
+          自分らしい見せ方へ整えていけます。
+        </p>
+      </div>
 
-    <p>
-      人が見過ごしてしまうような、<br>
-      「この言葉だけ、少し雰囲気が違う」<br>
-      「内容はよいけれど、この見せ方では伝わりにくい」<br>
-      「きれいにまとまっているけれど、私が伝えたい温度とは違う」<br>
-      という小さなズレにも気づけます。
-    </p>
-
-    <p>
-      周りからも「あなたらしい雰囲気だね」「独特の感性があるね」「細かいところまで、よく見ているね」と言われたことがあるかもしれません。
-    </p>
-
-    <p>
-      発信の言葉だけでなく、写真や色、文章の流れまでそろえる。サービスをつくるときも、内容を並べるだけでなく、「この人に、どんな気持ちで受け取ってほしいのか」まで考えられます。
-    </p>
-
-    <p>
-      あなたは、ただ感覚が豊かなだけではありません。
-    </p>
-
-    <p>
-      見た目だけでなく、その奥にある意味まで一致させながら、頭の中のイメージを現実の形へ変えていける。その丁寧な感性が、あなたの大きな才能です。
-    </p>
+      <div class="talent-scene-card">
+        <strong>🔎 違和感を見つけるとき</strong>
+        <p>
+          「ここだけ少し違う」と感じる部分に気づき、
+          より自然で伝わりやすい形へ近づけられます。
+        </p>
+      </div>
+    </div>
   </article>
 
+  <!-- 03 -->
   <article class="result-block">
-    <h2>今のあなたの状態</h2>
+    <h2>今、こんなループに入っていませんか？</h2>
+
+    <p class="loop-intro">
+      「よし、できた」と思ったはずなのに……
+    </p>
+
+    <div class="diagnosis-loop">
+      <div class="loop-step">
+        発信やサービスを形にする
+      </div>
+
+      <div class="loop-arrow">↓</div>
+
+      <div class="loop-step">
+        小さな違和感が気になる
+      </div>
+
+      <div class="loop-arrow">↓</div>
+
+      <div class="loop-step">
+        1か所直すと、別のところも気になる
+      </div>
+
+      <div class="loop-arrow">↓</div>
+
+      <div class="loop-step loop-step--last">
+        「あと少し」が続いて、なかなか出せない
+      </div>
+    </div>
 
     <p>
-      ただ今は、その感性が少しだけ、前へ進むことを難しくしているかもしれません。
+      保存したデータには、
+      「完成版」「完成版2」「最終版」「本当の最終版」。
     </p>
 
     <p>
-      発信を書き終えても、「言いたいことは合っている。でも、なんだか私の言葉じゃない気がする」と感じる。
+      少し笑ってしまうような名前ですが、
+      あなたにとっては、
+      <strong>どの修正も本気</strong>
+      なのだと思います。
     </p>
 
     <p>
-      プロフィールを整えても、「きれいにはまとまった。でも、少し“よそ行きの私”になっているかも」と思う。
+      適当に出したくない。
+      自分の名前で届けるなら、
+      納得できる形にしたい。
     </p>
 
     <p>
-      サービスをつくっても、「形にはなっている。でも、まだ完全にはしっくり来ない」と感じることがあります。
-    </p>
-
-    <p>
-      そこで言葉を1つ変えると、前後の文章が気になる。文章を整えたら、今度は写真が合わない気がする。写真を変えたら、全体の色まで違って見えてくる。
-    </p>
-
-    <p>
-      最初は1か所だけ直すつもりだったのに、気づけば全体を見直している。そんなことはないでしょうか。
-    </p>
-
-    <p>
-      保存しているデータには、<br>
-      「完成版」<br>
-      「完成版2」<br>
-      「最終版」<br>
-      「本当の最終版」<br>
-      が並んでいる。けれど、本人の中では、まだ最終ではありません。
-    </p>
-
-    <p>
-      少しクスッとしてしまいますが、あなたにとっては、どの修正も真剣です。
-    </p>
-
-    <p>
-      自分の名前で届けるなら、納得できる形にしたい。その気持ちがあるからこそ、簡単には「これで完成」と言えないのです。
-    </p>
-
-    <p>
-      すでに発信を書き、サービスをつくり、何度も丁寧に改善しています。
-    </p>
-
-    <p>
-      周りからは「もう十分できているよ」と言われる状態でも、自分の中では「うん。でも、あと少しだけ……」が残る。その“あと少し”を追いかけるうちに、出すタイミングが遠ざかってしまいます。
-    </p>
-
-    <p>
-      そのため、一日の終わりに作業画面を閉じながら、「今日もたくさん直した。でも、結局まだ出せていない」と、ため息をつきたくなることもあるかもしれません。
-    </p>
-
-    <p>
-      あなたが止まっているのは、感性が足りないからではありません。むしろ、細かな違和感まで感じ取れるからです。
-    </p>
-
-    <p>
-      問題は、「自分らしさを守るために直したい部分」と「人に見せる直前だから気になっている部分」が、同じ“しっくり来ない”という感覚で表れやすいことにあります。
+      その気持ちがあるからこそ、
+      <strong>「もう十分できている」と言われても、
+      自分ではあと少しが気になる</strong>
+      のです。
     </p>
   </article>
 
-  <article class="result-block result-block--final">
+  <!-- 04 -->
+  <article class="result-block result-block--risk">
+    <h2>この状態が続くと…</h2>
+
+    <div class="risk-items">
+      <div class="risk-item">
+        発信やサービスが、
+        公開直前で止まりやすくなる
+      </div>
+
+      <div class="risk-item">
+        細かな修正に時間を使い、
+        本当に進めたい仕事が後回しになる
+      </div>
+
+      <div class="risk-item">
+        すでに形になっているものまで、
+        「まだ足りない」と感じやすくなる
+      </div>
+
+      <div class="risk-item">
+        自分らしさを大切にするほど、
+        「これで出して大丈夫かな」と迷いやすくなる
+      </div>
+    </div>
+  </article>
+
+  <!-- 05 -->
+  <article class="result-block result-block--key">
+    <h2>でも、問題は「感性が細かすぎること」ではありません</h2>
+
+    <p>
+      あなたの感性は、
+      ほかの人が見過ごすような小さなズレに気づき、
+      自分らしい形へ近づけるための大切な力です。
+    </p>
+
+    <p>
+      ただ、
+      しっくり来ないと感じたとき、
+      その理由がいつも同じとは限りません。
+    </p>
+
+    <p class="key-message">
+      <span class="key-message-line">本当に、自分らしさからズレているのか。</span>
+      <span class="key-message-line">それとも、人に見せるのが少し不安なだけなのか。</span>
+    </p>
+
+    <p>
+      この2つは感覚がよく似ています。
+      だから、見分けられないまま全部直そうとすると、
+      「もう少し」が終わらなくなります。
+    </p>
+
+    <p>
+      違和感の正体を見分けられるようになると、
+      感性を置き去りにせず、
+      <strong>今の自分が選んだ形として外へ出しやすくなります。</strong>
+    </p>
+  </article>
+
+  <!-- 06 LINE自動生成用 -->
+  <article class="result-block result-block--final result-block--source-only">
     <h2>ここから先が本題です</h2>
-
-    <p>
-      ここまで読んで、「そうそう。“あと少し”のはずなのに、なぜか終わらないのよね」と、心当たりがあったでしょうか。
-    </p>
-
-    <p>
-      手相から見えているあなたの感性は、人が見過ごすような小さな違いに気づき、自分らしい世界観を育てるための大切な強みです。
-    </p>
-
-    <p>
-      さらに、現実を見る力も持っているため、頭の中のイメージを、言葉や発信、サービスなどの形へ近づけていけます。
-    </p>
-
-    <p>
-      だから、「しっくり来るかどうか」という感覚を、無理に手放す必要はありません。
-    </p>
-
-    <p>
-      ただ、気になるところをすべて直そうとすると、せっかく形になっているものまで、なかなか外へ出せなくなります。
-    </p>
-
-    <p>
-      あなたらしい進み方を見つけるヒントは、違和感をすべてなくすことではなく、その感覚とどのように付き合うかにありそうです。
-    </p>
-
-    <p>
-      では、細かな違和感に気づく感性を大切にしながら、自分らしい形を仕事として育てていくには、どのような考え方が合っているのでしょうか。
-    </p>
 
     <ul class="line-benefits-source">
       <li>
-        <strong>感性を大切にしながら進む考え方：</strong>
-        小さな違和感に振り回されず、自分の感覚を大切にするために何を意識すればよいかが分かります。
+        <strong>形にしたあとも違和感が消えにくい理由：</strong>
+        十分にできているのに、
+        なぜ小さなズレが気になり続けるのかが分かります。
       </li>
 
       <li>
-        <strong>自分らしい形を選ぶための目安：</strong>
-        もう少し整えるのか、今の形を選ぶのかを考えるための、自分に合った目安が分かります。
+        <strong>直すべき違和感の見分け方：</strong>
+        自分らしさからズレているのか、
+        人に見せる不安から気になっているのかを
+        判断する目安が分かります。
       </li>
 
       <li>
-        <strong>仕事で感性を活かすヒント：</strong>
-        感じ取る力と世界観を、発信やサービスの魅力として活かす3つのヒントが分かります。
+        <strong>感性を守りながら前へ進むコツ：</strong>
+        すべてを直し続けるのではなく、
+        今直す部分と次に育てる部分を分ける
+        3つのヒントが分かります。
       </li>
     </ul>
 
     <p class="cta-message-source">
-      あなたには、細かな違いを感じ取り、頭の中のイメージを自分らしい形へ近づける力があります。その強みを仕事に活かしながら、自分らしい形を育てていくための考え方を、LINEで受け取ってください。
+      あなたには、
+      細かな違和感を感じ取る力も、
+      それを自分らしい形へ整える力もあります。
+      必要なのは、感性を鈍らせることではありません。
+      今感じている違和感が、
+      本当に直すべきものなのか、
+      それとも外へ出す前の迷いなのか。
+      そこを見分けられるようになると、
+      「もう少し整えてから」ではなく、
+      「これが今の私の形」と納得して進みやすくなります。
+      あなたに合う判断の仕方を、LINEで受け取ってください。
     </p>
   </article>
+
 </section>
