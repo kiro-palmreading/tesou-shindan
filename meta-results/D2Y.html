@@ -1,237 +1,498 @@
-<section class="result-detail" data-diagnosis-code="D2Y">
-  <div class="result-catch" data-hide-title="true">
-    <p>【あなたを一言で表すと】</p>
-    <p>飛び込んで切り拓くエクスプローラー</p>
+<section class="result-detail result-detail--visual" data-diagnosis-code="D2Y">
+
+  <style>
+    /* ========================================
+       D2Y 診断結果
+       Meta広告流入・スマホ向け
+    ======================================== */
+
+    .result-detail--visual {
+      max-width: 720px;
+      margin: 0 auto;
+      color: #24313a;
+      line-height: 1.8;
+    }
+
+    /* ========================================
+       FV
+    ======================================== */
+
+    .diagnosis-result-fv {
+      margin: 0 0 28px;
+      padding: 0;
+    }
+
+    .diagnosis-result-fv img {
+      display: block;
+      width: 100%;
+      height: auto;
+      margin: 0 auto;
+    }
+
+    /* ========================================
+       共通ブロック
+    ======================================== */
+
+    .result-detail--visual .result-block {
+      margin: 0 16px 28px;
+      padding: 26px 20px;
+      background: #ffffff;
+      border: 1px solid #dcecf5;
+      border-radius: 18px;
+      box-sizing: border-box;
+    }
+
+    .result-detail--visual .result-block h2 {
+      margin: 0 0 18px;
+      color: #083f5c;
+      font-size: 22px;
+      line-height: 1.45;
+      text-align: left;
+    }
+
+    .result-detail--visual .result-block p {
+      margin: 0 0 16px;
+      font-size: 16px;
+      line-height: 1.9;
+    }
+
+    .result-detail--visual .result-block p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* ========================================
+       あなたはこんなタイプ
+    ======================================== */
+
+    .type-keywords {
+      margin: 0 0 20px;
+      font-size: 20px;
+      font-weight: 700;
+      color: #1f6fb2;
+      letter-spacing: 0.04em;
+      text-align: center;
+    }
+
+    .type-point-list {
+      display: grid;
+      gap: 11px;
+      margin: 0 0 20px;
+    }
+
+    .type-point {
+      position: relative;
+      padding: 14px 14px 14px 43px;
+      background: #f8fcff;
+      border-radius: 12px;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .type-point::before {
+      content: "✓";
+      position: absolute;
+      left: 16px;
+      top: 14px;
+      color: #1f6fb2;
+      font-weight: 700;
+    }
+
+    .type-summary {
+      padding: 16px;
+      background: #eef7ff;
+      border-radius: 12px;
+      color: #314958;
+    }
+
+    /* ========================================
+       強みが出る場面
+    ======================================== */
+
+    .talent-scene-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    .talent-scene-card {
+      padding: 18px;
+      border-radius: 14px;
+      background: #eef7ff;
+      border: 1px solid #cfe3f1;
+    }
+
+    .talent-scene-card strong {
+      display: block;
+      margin-bottom: 8px;
+      color: #083f5c;
+      font-size: 17px;
+      line-height: 1.5;
+    }
+
+    .talent-scene-card p {
+      margin: 0 !important;
+    }
+
+    /* ========================================
+       今のループ
+    ======================================== */
+
+    .loop-intro {
+      font-weight: 700;
+      color: #314958;
+    }
+
+    .diagnosis-loop {
+      margin: 20px 0;
+    }
+
+    .loop-step {
+      padding: 15px 14px;
+      background: #f8fcff;
+      border: 1px solid #cfe6f3;
+      border-radius: 12px;
+      text-align: center;
+      font-size: 16px;
+      font-weight: 700;
+      color: #083f5c;
+    }
+
+    .loop-arrow {
+      height: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #6f8798;
+      font-size: 24px;
+      font-weight: 700;
+    }
+
+    .loop-step--last {
+      background: #fff5f2;
+      border-color: #f2c9bf;
+      color: #9b4d3b;
+    }
+
+    /* ========================================
+       この状態が続くと
+    ======================================== */
+
+    .result-block--risk {
+      background: #fffaf7 !important;
+      border-color: #f1d9cf !important;
+    }
+
+    .risk-items {
+      display: grid;
+      gap: 10px;
+    }
+
+    .risk-item {
+      position: relative;
+      padding: 13px 14px 13px 40px;
+      background: #ffffff;
+      border: 1px solid #f0ddd5;
+      border-radius: 11px;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .risk-item::before {
+      content: "●";
+      position: absolute;
+      left: 17px;
+      top: 15px;
+      color: #d98670;
+      font-size: 10px;
+    }
+
+    /* ========================================
+       問題の正体
+    ======================================== */
+
+    .result-block--key {
+      background: #eef7ff !important;
+      border-color: #bddcec !important;
+    }
+
+    .key-message {
+      margin: 18px 0 !important;
+      padding: 18px 16px;
+      background: #ffffff;
+      border: 1px solid #dcecf5;
+      border-radius: 8px;
+      font-size: 18px !important;
+      font-weight: 700;
+      color: #083f5c;
+      text-align: center;
+      line-height: 1.7;
+    }
+
+    .key-message-line {
+      display: block;
+    }
+
+    /* ========================================
+       LINE自動生成用データ
+    ======================================== */
+
+    .result-block--source-only {
+      display: none !important;
+    }
+
+    /* ========================================
+       スマホ
+    ======================================== */
+
+    @media (max-width: 600px) {
+      .result-detail--visual .result-block {
+        margin-left: 14px;
+        margin-right: 14px;
+        padding: 23px 17px;
+      }
+
+      .result-detail--visual .result-block h2 {
+        font-size: 21px;
+      }
+
+      .type-keywords {
+        font-size: 19px;
+      }
+
+      .talent-scene-card strong {
+        font-size: 17px;
+      }
+
+      .key-message {
+        font-size: 17px !important;
+        padding: 16px 14px;
+      }
+    }
+  </style>
+
+  <!-- FV -->
+  <div class="diagnosis-result-fv">
+    <img
+      src="meta-fv-results/D2Y.png"
+      alt="才能コンパス診断 飛び込んで切り拓くエクスプローラー"
+      loading="eager"
+      fetchpriority="high"
+    >
   </div>
 
+  <!-- 01 -->
   <article class="result-block">
-    <h2>あなたの本質</h2>
+    <h2>あなたはこんなタイプです</h2>
 
-    <p class="highlight-paragraph">行動 × 突破 × 直感</p>
+    <div class="type-keywords">
+      行動 × 突破 × 直感
+    </div>
 
-    <p>
-      あなたは、何かを見たり聞いたりしたときに、<br>
-      「面白そう」<br>
-      「これをやってみたい」<br>
-      「今なら、こちらへ進めそう」<br>
-      と、心が動いた方向へ素早く踏み出せる人です。
-    </p>
+    <div class="type-point-list">
+      <div class="type-point">
+        「面白そう」と感じると、
+        <strong>まず実際に試してみる</strong>
+        ことができる
+      </div>
 
-    <p>
-      すべての情報を集め、完璧な準備が整うまで待つタイプではありません。
-    </p>
+      <div class="type-point">
+        人や情報との出会いから、
+        <strong>まだ形になっていない可能性</strong>
+        をすばやく感じ取る
+      </div>
 
-    <p>
-      まずは試してみる。実際に人と関わってみる。動いた先で見つけたものから、次の方向を考える。
-    </p>
+      <div class="type-point">
+        停滞を感じても、
+        新しい入口を見つけて
+        自分から流れを変えていける
+      </div>
+    </div>
 
-    <p>
-      そんな進み方を自然に選びます。
-    </p>
-
-    <p>
-      周りの人が「もう少し様子を見よう」と立ち止まっているときにも、「やってみなければ分からないよね」と、新しい世界へ飛び込めます。
-    </p>
-
-    <p>
-      しかも、ただ勢いだけで動く人ではありません。
-    </p>
-
-    <p>
-      人との会話やちょっとした出来事から、<br>
-      「これから、こちらが面白くなりそう」<br>
-      「この二つを組み合わせたら、新しいものが生まれそう」<br>
-      と、まだ形になっていない可能性を感じ取れます。
-    </p>
-
-    <p>
-      あなたは、すでにある道を丁寧になぞる人ではありません。直感で新しい入口を見つけ、自分の行動によって、その先の道を切り拓いていく人です。
+    <p class="type-summary">
+      あなたは、すでにある道を
+      丁寧になぞる人ではありません。
+      直感で新しい入口を見つけ、
+      まず飛び込んでみることで、
+      その先の道を切り拓いていく人です。
     </p>
   </article>
 
+  <!-- 02 -->
   <article class="result-block">
-    <h2>あなたの才能</h2>
+    <h2>こんな場面で強みが出ます</h2>
 
-    <p>そんなあなたには、次のような力があります。</p>
+    <div class="talent-scene-grid">
+      <div class="talent-scene-card">
+        <strong>🚀 新しいことを始めるとき</strong>
+        <p>
+          周りが様子を見ている場面でも、
+          「やってみないと分からない」と
+          最初の一歩を軽やかに踏み出せます。
+        </p>
+      </div>
 
-    <ul>
-      <li>興味を持ったことへ、すぐに行動を起こす力</li>
-      <li>まだ形になっていない可能性を感じ取る力</li>
-      <li>ひらめきを、現実の動きへ変える力</li>
-      <li>停滞した状況に、新しい道をつくる力</li>
-    </ul>
+      <div class="talent-scene-card">
+        <strong>💡 新しい可能性を見つけるとき</strong>
+        <p>
+          人の話や発信、ちょっとした出来事から、
+          「この先、面白くなりそう」という
+          新しい流れを感じ取れます。
+        </p>
+      </div>
 
-    <p>
-      あなたは、「面白そう」と思うだけで終わる人ではありません。
+      <div class="talent-scene-card">
+        <strong>🧭 停滞を突破するとき</strong>
+        <p>
+          動きが止まっていても、
+          「別の入口から試してみよう」と
+          新しい展開を作ることができます。
+        </p>
+      </div>
+    </div>
+  </article>
+
+  <!-- 03 -->
+  <article class="result-block">
+    <h2>今、こんなループに入っていませんか？</h2>
+
+    <p class="loop-intro">
+      「まず、この方向でやってみよう」と始めたはずなのに……
     </p>
 
-    <p>
-      興味を持った場所へ行ってみる。気になる人へ連絡してみる。思いついたことを、まず一つ形にしてみる。
-    </p>
+    <div class="diagnosis-loop">
+      <div class="loop-step">
+        面白い可能性を見つける
+      </div>
+
+      <div class="loop-arrow">↓</div>
+
+      <div class="loop-step">
+        すぐに行動してみる
+      </div>
+
+      <div class="loop-arrow">↓</div>
+
+      <div class="loop-step">
+        また別の面白い可能性が見える
+      </div>
+
+      <div class="loop-arrow">↓</div>
+
+      <div class="loop-step loop-step--last">
+        今のものを育てる前に、次へ動きたくなる
+      </div>
+    </div>
 
     <p>
-      頭の中にある可能性を、実際の経験へ変えられます。
-    </p>
-
-    <p>
-      たとえば、新しい仕事の話を聞いたときも、「自分にはまだ早いかもしれない」と引き返すより、「まずは関わってみよう」と一歩を出せるのではないでしょうか。
-    </p>
-
-    <p>
-      実際に関わることで、新しい人とのつながりや、それまで知らなかった自分の力を見つけられます。
-    </p>
-
-    <p>
-      仕事が行き詰まっているときにも、今ある方法だけにこだわりません。
-    </p>
-
-    <p>
-      「別の入口から進めないだろうか」「今まで組み合わせていなかったものを使えないだろうか」と、新しい突破口を見つけられます。
-    </p>
-
-    <p>
-      新しい企画についても、「いつかできたらいいね」で終わらず、「まず、ここまでやってみよう」と、周りを動かす最初の一歩をつくれるでしょう。
-    </p>
-
-    <p>
-      周りからも、「行動が早いよね」「フットワークが軽いね」「面白いことによく気づくね」「一緒にいると、新しいことが始まりそう」と言われたことがあるかもしれません。
-    </p>
-
-    <p>
-      あなたは、ただ好奇心が強い人ではありません。まだ誰も形にしていない可能性へ飛び込み、現実の経験や仕事へ変えられる人です。
-    </p>
-
-    <p>
-      人や仕事が止まっている場面に新しい入口をつくり、今までになかった流れを生み出せることが、あなたの大きな才能です。
+      あなたは、何もしていないわけではありません。
+      むしろ、
+      <strong>
+        かなり動き、かなり試し、
+        たくさんの最初の一歩を踏み出しています。
+      </strong>
+      ただ、新しい可能性を見つけるアンテナが強いため、
+      今取り組んでいるものが育つ前に、
+      次の入口の方が魅力的に見えやすいのです。
     </p>
   </article>
 
-  <article class="result-block">
-    <h2>今のあなたの状態</h2>
+  <!-- 04 -->
+  <article class="result-block result-block--risk">
+    <h2>この状態が続くと…</h2>
+
+    <div class="risk-items">
+      <div class="risk-item">
+        発信テーマを育てる前に、
+        また別のテーマへ興味が移りやすくなる
+      </div>
+
+      <div class="risk-item">
+        今のサービスを案内している途中で、
+        次の商品や企画を作りたくなる
+      </div>
+
+      <div class="risk-item">
+        最初の一歩は増えるのに、
+        一つの仕事が育つところまで見届けにくくなる
+      </div>
+
+      <div class="risk-item">
+        本当は可能性を見つける力が高いのに、
+        「私は飽きっぽいのかも」と感じやすくなる
+      </div>
+    </div>
+  </article>
+
+  <!-- 05 -->
+  <article class="result-block result-block--key">
+    <h2>でも、問題は「新しいことに興味を持つこと」ではありません</h2>
 
     <p>
-      ただ今は、その行動力と直感が、少しだけ空回りしているかもしれません。
+      あなたには、
+      行動を起こす力も、
+      新しい可能性を見つける力も、
+      停滞した状況を突破する力もあります。
     </p>
 
     <p>
-      「これをやってみたい」と思うと、動き出すのは早い。新しい仕事を始める。気になる人に会う。思いついた企画を形にする。
+      ただ今は、
+      新しい可能性が見えるたびに
+      <strong>
+        「今の仕事を広げる材料」ではなく
+        「今の仕事から離れる理由」
+      </strong>
+      になっているのかもしれません。
+    </p>
+
+    <p class="key-message">
+      <span class="key-message-line">「今、面白いか？」だけではなく、</span>
+      <span class="key-message-line">「続けた先にも意味があるか？」</span>
     </p>
 
     <p>
-      ところが、動いている途中で、また新しい可能性が目に入ります。
-    </p>
-
-    <p>
-      「こちらも面白そう」「この組み合わせなら、もっと新しいことができそう」と、次に進めそうな入口が見えてきます。
-    </p>
-
-    <p>
-      今の仕事を進めている途中なのに、次の企画が浮かぶ。サービスを届けている間に、別の形を思いつく。一人と話したことから、また新しい仕事の可能性が広がる。
-    </p>
-
-    <p>
-      どれも、思いついただけの夢ではありません。あなたには、それを実際に動かせる行動力があります。
-    </p>
-
-    <p>
-      そのため、「こちらも試してみよう」と、すぐに次の一歩を踏み出します。
-    </p>
-
-    <p>
-      気づけば、取り組んでいる仕事、始めたばかりの企画、これから試したいことが、いくつも同時に並んでいることがあります。
-    </p>
-
-    <p>
-      机の上には、いくつもの場所へ向かう地図が広がっている。しかも、どの道にも面白そうな景色が見える。これは、一つに目を向け続けるのが難しくなります。
-    </p>
-
-    <p>
-      あなたは、何もしていないわけではありません。かなり動いています。多くのことを試し、人にも会い、経験も増やしています。
-    </p>
-
-    <p>
-      それなのに、ふと振り返ったとき、「いろいろ始めたけれど、自分は今、何を育てているんだろう」と感じることがあります。
-    </p>
-
-    <p>
-      新しいことを始めた直後は、とても気持ちが動く。けれど、少し慣れた頃に、また別の可能性が見えてくる。
-    </p>
-
-    <p>
-      すると、今取り組んでいるものよりも、これから始めるものの方が、魅力的に見えることもあるでしょう。
-    </p>
-
-    <p>
-      あなたに根気がないわけではありません。
-    </p>
-
-    <p>
-      新しい可能性を感じ取るアンテナがあり、それを行動へ移す力も強いのです。そのため、一つの道を進んでいる間にも、別の入口を見つけられます。
-    </p>
-
-    <p>
-      今、一つの仕事が育っている実感を持ちにくくなっているのは、行動力が足りないからではありません。新しい可能性へ気づくたびに、そこにも自分の力を使いたくなっているからかもしれません。
+      この視点が持てるようになると、
+      新しい可能性を捨てなくても、
+      今育てているものを手放さずに、
+      ひらめきを次の展開へ活かしやすくなります。
     </p>
   </article>
 
-  <article class="result-block result-block--final">
+  <!-- 06 LINE自動生成用 -->
+  <article class="result-block result-block--final result-block--source-only">
     <h2>ここから先が本題です</h2>
-
-    <p>
-      ここまで読んで、「そうそう。一つのことを進めている途中で、また次の面白い入口が見えてくるのよね」と思ったでしょうか。
-    </p>
-
-    <p>
-      手相から見えているあなたの行動力、突破力、直感は、まだ形になっていない可能性を感じ取り、自分の行動で新しい道を切り拓くための大切な才能です。
-    </p>
-
-    <p>
-      面白い可能性にいち早く気づける。周りが迷っている間に、最初の一歩を踏み出せる。今までの方法で行き詰まったときにも、別の入口を見つけられる。
-    </p>
-
-    <p>
-      こうした才能は、新しい仕事や企画を立ち上げるとき、まだ前例の少ないことへ挑戦するとき、停滞した状況に新しい流れをつくるときなどに、大きく活かされます。
-    </p>
-
-    <p>
-      また、新しい人や場所へ飛び込み、そこで得た経験やつながりから、次の仕事を生み出せることも、あなたの強みです。
-    </p>
-
-    <p>
-      あなたの好奇心や直感は、次々に別のことへ移るためだけにあるものではありません。
-    </p>
-
-    <p>
-      今取り組んでいる仕事に新しい展開を加えたり、周りの人がまだ気づいていない可能性を形にしたりするためにも活かせます。
-    </p>
-
-    <p>
-      あなたらしい進み方のヒントは、好奇心を抑えたり、新しいものを見ないようにしたりすることではありません。可能性を感じ取る直感と、すぐに踏み出せる力を、新しい仕事や流れを生み出すために活かすことにありそうです。
-    </p>
-
-    <p>
-      <strong>では、可能性を感じ取る直感、すぐに行動へ移す力、まだ道のない場所を切り拓く力を、仕事にどう活かしていけばよいのでしょうか。</strong>
-    </p>
 
     <ul class="line-benefits-source">
       <li>
-        <strong>直感で飛び込める自分に合う進み方：</strong>
-        面白いと感じたことへ素早く踏み出せる自分の特徴を、仕事の中で活かすヒントが分かります。
+        <strong>次々と新しい可能性が気になる理由：</strong>
+        行動、突破、直感が同時に働くことで、
+        なぜ今の方向を育てている途中でも
+        次の入口へ心が動きやすいのかが分かります。
       </li>
 
       <li>
-        <strong>行動力と突破力を仕事に活かすヒント：</strong>
-        周りが迷っている場面でも、新しい一歩や流れをつくれる才能を活かすヒントが分かります。
+        <strong>今育てるものと、新しく試すものの分け方：</strong>
+        新しい案を「可能性リスト」へ残しながら、
+        今の仕事の中心を守る考え方が分かります。
       </li>
 
       <li>
-        <strong>仕事で新しい可能性を見つける力を活かすヒント：</strong>
-        人や出来事から感じ取ったひらめきを、新しい仕事や企画へ変えるヒントが分かります。
+        <strong>ひらめきと行動力を成果へ変える3つのヒント：</strong>
+        面白さだけで乗り換えず、
+        「続けた先に何が残るか」を見ながら
+        次の方向を選ぶ方法が分かります。
       </li>
     </ul>
 
     <p class="cta-message-source">
-      あなたにはすでに、新しい可能性を感じ取る直感も、すぐに行動へ移す力も、まだ道のない場所を切り拓く力もあります。その才能を仕事でもっと活かすためのヒントを、LINEで受け取ってください。
+      あなたには、
+      新しい可能性をすばやく見つけ、
+      まず行動することで
+      まだない道を切り拓く力があります。
+      そのひらめきと行動力を、
+      次々に消費するのではなく
+      一つの仕事へ育てるための考え方を、
+      LINEで受け取ってください。
     </p>
   </article>
+
 </section>
