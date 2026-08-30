@@ -1,201 +1,521 @@
-<section class="result-detail" data-diagnosis-code="B3Y">
-  <div class="result-catch" data-hide-title="true">
-    <p>【あなたを一言で表すと】</p>
-    <p>じっくり選んで進むトラベラー</p>
+<section class="result-detail result-detail--visual" data-diagnosis-code="B3Y">
+
+  <style>
+    /* ========================================
+       B3Y 診断結果
+       Meta広告流入・スマホ向け
+    ======================================== */
+
+    .result-detail--visual {
+      max-width: 720px;
+      margin: 0 auto;
+      color: #24313a;
+      line-height: 1.8;
+    }
+
+    /* ========================================
+       FV
+    ======================================== */
+
+    .diagnosis-result-fv {
+      margin: 0 0 28px;
+      padding: 0;
+    }
+
+    .diagnosis-result-fv img {
+      display: block;
+      width: 100%;
+      height: auto;
+      margin: 0 auto;
+    }
+
+    /* ========================================
+       共通ブロック
+    ======================================== */
+
+    .result-detail--visual .result-block {
+      margin: 0 16px 28px;
+      padding: 26px 20px;
+      background: #ffffff;
+      border: 1px solid #dcecf5;
+      border-radius: 18px;
+      box-sizing: border-box;
+    }
+
+    .result-detail--visual .result-block h2 {
+      margin: 0 0 18px;
+      color: #083f5c;
+      font-size: 22px;
+      line-height: 1.45;
+      text-align: left;
+    }
+
+    .result-detail--visual .result-block p {
+      margin: 0 0 16px;
+      font-size: 16px;
+      line-height: 1.9;
+    }
+
+    .result-detail--visual .result-block p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* ========================================
+       あなたはこんなタイプ
+    ======================================== */
+
+    .type-keywords {
+      margin: 0 0 20px;
+      font-size: 20px;
+      font-weight: 700;
+      color: #1f6fb2;
+      letter-spacing: 0.04em;
+      text-align: center;
+    }
+
+    .type-point-list {
+      display: grid;
+      gap: 11px;
+      margin: 0 0 20px;
+    }
+
+    .type-point {
+      position: relative;
+      padding: 14px 14px 14px 43px;
+      background: #f8fcff;
+      border-radius: 12px;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .type-point::before {
+      content: "✓";
+      position: absolute;
+      left: 16px;
+      top: 14px;
+      color: #1f6fb2;
+      font-weight: 700;
+    }
+
+    .type-summary {
+      padding: 16px;
+      background: #eef7ff;
+      border-radius: 12px;
+      color: #314958;
+    }
+
+    /* ========================================
+       強みが出る場面
+    ======================================== */
+
+    .talent-scene-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    .talent-scene-card {
+      padding: 18px;
+      border-radius: 14px;
+      background: #eef7ff;
+      border: 1px solid #cfe3f1;
+    }
+
+    .talent-scene-card strong {
+      display: block;
+      margin-bottom: 8px;
+      color: #083f5c;
+      font-size: 17px;
+      line-height: 1.5;
+    }
+
+    .talent-scene-card p {
+      margin: 0 !important;
+    }
+
+    /* ========================================
+       今のループ
+    ======================================== */
+
+    .loop-intro {
+      font-weight: 700;
+      color: #314958;
+    }
+
+    .diagnosis-loop {
+      margin: 20px 0;
+    }
+
+    .loop-step {
+      padding: 15px 14px;
+      background: #f8fcff;
+      border: 1px solid #cfe6f3;
+      border-radius: 12px;
+      text-align: center;
+      font-size: 16px;
+      font-weight: 700;
+      color: #083f5c;
+    }
+
+    .loop-arrow {
+      height: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #6f8798;
+      font-size: 24px;
+      font-weight: 700;
+    }
+
+    .loop-step--last {
+      background: #fff5f2;
+      border-color: #f2c9bf;
+      color: #9b4d3b;
+    }
+
+    /* ========================================
+       この状態が続くと
+    ======================================== */
+
+    .result-block--risk {
+      background: #fffaf7 !important;
+      border-color: #f1d9cf !important;
+    }
+
+    .risk-items {
+      display: grid;
+      gap: 10px;
+    }
+
+    .risk-item {
+      position: relative;
+      padding: 13px 14px 13px 40px;
+      background: #ffffff;
+      border: 1px solid #f0ddd5;
+      border-radius: 11px;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .risk-item::before {
+      content: "●";
+      position: absolute;
+      left: 17px;
+      top: 15px;
+      color: #d98670;
+      font-size: 10px;
+    }
+
+    /* ========================================
+       問題の正体
+    ======================================== */
+
+    .result-block--key {
+      background: #eef7ff !important;
+      border-color: #bddcec !important;
+    }
+
+    .key-message {
+      margin: 18px 0 !important;
+      padding: 18px 16px;
+      background: #ffffff;
+      border: 1px solid #dcecf5;
+      border-radius: 8px;
+      font-size: 18px !important;
+      font-weight: 700;
+      color: #083f5c;
+      text-align: center;
+      line-height: 1.7;
+    }
+
+    .key-message-line {
+      display: block;
+    }
+
+    /* ========================================
+       LINE自動生成用データ
+    ======================================== */
+
+    .result-block--source-only {
+      display: none !important;
+    }
+
+    /* ========================================
+       スマホ
+    ======================================== */
+
+    @media (max-width: 600px) {
+      .result-detail--visual .result-block {
+        margin-left: 14px;
+        margin-right: 14px;
+        padding: 23px 17px;
+      }
+
+      .result-detail--visual .result-block h2 {
+        font-size: 21px;
+      }
+
+      .type-keywords {
+        font-size: 19px;
+      }
+
+      .talent-scene-card strong {
+        font-size: 17px;
+      }
+
+      .key-message {
+        font-size: 17px !important;
+        padding: 16px 14px;
+      }
+    }
+  </style>
+
+  <!-- FV -->
+  <div class="diagnosis-result-fv">
+    <img
+      src="meta-fv-results/B3Y.png"
+      alt="才能コンパス診断 じっくり選んで進むトラベラー"
+      loading="eager"
+      fetchpriority="high"
+    >
   </div>
 
+  <!-- 01 -->
   <article class="result-block">
-    <h2>あなたの本質</h2>
+    <h2>あなたはこんなタイプです</h2>
 
-    <p class="highlight-paragraph">熟考 × 共感 × 直感</p>
+    <div class="type-keywords">
+      熟考 × 共感 × 直感
+    </div>
 
-    <p>
-      あなたは、思いついたらすぐに動くというよりも、まずは自分の中でじっくり考えたい人です。
-    </p>
+    <div class="type-point-list">
+      <div class="type-point">
+        思いつきだけで決めず、
+        <strong>まず自分の中でじっくり考えられる</strong>
+      </div>
 
-    <p>
-      「相手は、どう感じるだろう」<br>
-      「今の自分に、本当に合っているだろうか」<br>
-      「心から納得して選べるだろうか」<br>
-      と、一つずつ丁寧に確かめます。
-    </p>
+      <div class="type-point">
+        自分の気持ちだけでなく、
+        <strong>周りの人の立場や思いも丁寧に受け取れる</strong>
+      </div>
 
-    <p>
-      人から意見を聞いたときも、すぐに賛成したり、反対したりするわけではありません。
-    </p>
+      <div class="type-point">
+        いろいろ考えた最後には、
+        <strong>自分の感覚で「今はこちら」と選べる</strong>
+      </div>
+    </div>
 
-    <p>
-      その人がなぜそう考えたのか、どのような気持ちで話しているのかまで受け取り、一度自分の中へ持ち帰ります。
-    </p>
-
-    <p>
-      そして、十分に考えたあとで、「やっぱり、私はこれがいい」「今は、こちらへ進みたい」と、最後は自分の感覚で選びます。
-    </p>
-
-    <p>
-      決めるまでには、少し時間がかかることもあります。けれど、いつまでも人任せにしているわけではありません。
-    </p>
-
-    <p>
-      周りの声も大切にしながら、自分の内側にある答えを確かめて進む。あなたは、人とのつながりを大切にしながら、自分に合う道を選べる人です。
+    <p class="type-summary">
+      あなたは、
+      人の意見に流されるだけの人ではありません。
+      周りの声を大切に受け取りながら、
+      自分の中でもじっくり考え、
+      最後は自分に合う道を選んでいく人です。
     </p>
   </article>
 
+  <!-- 02 -->
   <article class="result-block">
-    <h2>あなたの才能</h2>
+    <h2>こんな場面で強みが出ます</h2>
 
-    <p>そんなあなたには、次のような力があります。</p>
+    <div class="talent-scene-grid">
+      <div class="talent-scene-card">
+        <strong>🤝 相手の話を受け止めるとき</strong>
+        <p>
+          すぐに賛成・反対を決めず、
+          「なぜそう感じたのだろう」と
+          相手の背景まで丁寧に考えられます。
+        </p>
+      </div>
 
-    <ul>
-      <li>相手の気持ちや立場を丁寧に理解する力</li>
-      <li>一つのことを、自分のペースで深く考える力</li>
-      <li>周りの声に流されず、自分で答えを選ぶ力</li>
-      <li>最後は直感で、自分に合う方向を見極める力</li>
-    </ul>
+      <div class="talent-scene-card">
+        <strong>🔍 選択肢を見極めるとき</strong>
+        <p>
+          売れそうかだけではなく、
+          無理なく続けられるか、
+          人との関係も大切にできるかまで考えられます。
+        </p>
+      </div>
+
+      <div class="talent-scene-card">
+        <strong>🧭 最後の方向を選ぶとき</strong>
+        <p>
+          いろいろな材料を考えたうえで、
+          「今の自分にはこちら」と、
+          最後は自分の感覚で選べます。
+        </p>
+      </div>
+    </div>
+  </article>
+
+  <!-- 03 -->
+  <article class="result-block">
+    <h2>今、こんなループに入っていませんか？</h2>
+
+    <p class="loop-intro">
+      一度は「この方向で」と決めたはずなのに……
+    </p>
+
+    <div class="diagnosis-loop">
+      <div class="loop-step">
+        じっくり考えて、1つの方向を選ぶ
+      </div>
+
+      <div class="loop-arrow">↓</div>
+
+      <div class="loop-step">
+        新しい意見や情報が入ってくる
+      </div>
+
+      <div class="loop-arrow">↓</div>
+
+      <div class="loop-step">
+        「こちらも大切かも」と比較し直す
+      </div>
+
+      <div class="loop-arrow">↓</div>
+
+      <div class="loop-step loop-step--last">
+        一度決めた行き先が、また「再検索中」になる
+      </div>
+    </div>
 
     <p>
-      誰かから相談を受けたときも、その場ですぐに答えを出すより、まずは相手の話を丁寧に受け取ります。
+      あなたは、
+      決められないわけではありません。
+      <strong>一度ちゃんと考えて、自分なりに選んでいます。</strong>
     </p>
 
     <p>
-      「この人は、どうしてそう感じたのだろう」「言葉の奥には、別の気持ちがあるかもしれない」と、表面には出ていない思いまで考えられます。
+      ただ、誰かから違う意見を聞けば、
+      「その考えにも理由がある」と思える。
+      新しい可能性が見えれば、
+      「こちらも今の自分に合うかもしれない」と感じる。
     </p>
 
     <p>
-      そして、相手の立場や状況を十分に考えたうえで、「私は、こう思う」「今なら、こちらがよさそう」と、自分なりの答えを伝えられます。
+      すると、
+      今の方向と新しい方向をもう一度比べ、
+      相手の気持ちも、自分の感覚も、
+      改めて確認したくなります。
     </p>
 
     <p>
-      仕事を選ぶときも、流行や周りの成功例だけでは決めません。
-    </p>
-
-    <p>
-      自分が納得して取り組めるか。関わる人を大切にできるか。今の自分に無理がないか。さまざまなことを考えたうえで、自分の感覚を確かめます。
-    </p>
-
-    <p>
-      数字や条件だけでは決めにくいことでも、その場の空気や相手との関係、自分の中にある小さな違和感まで受け取って判断できます。
-    </p>
-
-    <p>
-      周りからも「よく考えているよね」「人の話を丁寧に聞くよね」「判断が慎重だね」「ちゃんと自分の考えを持っているよね」と言われたことがあるかもしれません。
-    </p>
-
-    <p>
-      あなたは、ただ迷いやすい人ではありません。人の気持ちやさまざまな条件を受け取ったうえで、自分の感覚と照らし合わせ、納得できる答えを選べる人です。
-    </p>
-
-    <p>
-      相手を理解する共感力、じっくり考える力、最後は自分の感覚で選ぶ直感。その組み合わせが、あなたの大きな才能です。
+      気づけば心の中の行き先表示が、
+      <strong>何度も「再検索中」。</strong>
+      しかも、どの道にもちゃんと選ぶ理由があるから、
+      簡単には終わりません。
     </p>
   </article>
 
-  <article class="result-block">
-    <h2>今のあなたの状態</h2>
+  <!-- 04 -->
+  <article class="result-block result-block--risk">
+    <h2>この状態が続くと…</h2>
+
+    <div class="risk-items">
+      <div class="risk-item">
+        一度決めた方向でも、
+        新しい意見が入るたびに再検討しやすくなる
+      </div>
+
+      <div class="risk-item">
+        発信やサービスが育つ前に、
+        別の可能性との比較へ戻りやすくなる
+      </div>
+
+      <div class="risk-item">
+        どの道にもよさが見えるため、
+        今の選択へ集中する時間が短くなりやすい
+      </div>
+
+      <div class="risk-item">
+        「また迷っている」と感じ、
+        自分には軸がないように思いやすくなる
+      </div>
+    </div>
+  </article>
+
+  <!-- 05 -->
+  <article class="result-block result-block--key">
+    <h2>でも、問題は「考え直すこと」ではありません</h2>
 
     <p>
-      ただ今は、その丁寧に考える力と共感力が、少しだけ空回りしているかもしれません。
+      人の声を受け取り、
+      自分にも相手にも無理のない方向を
+      丁寧に選べることは、
+      あなたの大きな強みです。
     </p>
 
     <p>
-      仕事の方向についてじっくり考え、「よし、今はこの方向で進もう」と決める。そのときは、自分なりにきちんと納得しています。
+      ただ、
+      新しい声や可能性が入るたびに、
+      一度決めた理由まで白紙に戻してしまうと、
+      選んだ道を育てる時間がなくなります。
+    </p>
+
+    <p class="key-message">
+      <span class="key-message-line">新しい事実が増えたのか。</span>
+      <span class="key-message-line">それとも、新しい可能性が見えただけなのか。</span>
     </p>
 
     <p>
-      ところが、誰かから新しい意見を聞くと、「その考え方も、たしかに分かる」「今の私には、こちらの方が合うかもしれない」と、別の可能性が気になり始めます。
+      この違いを分けないままだと、
+      「こちらもよさそう」と感じるたびに、
+      選択そのものを考え直したくなります。
     </p>
 
     <p>
-      お客様から違う希望を聞けば、「この人の話を聞くと、別の形も必要な気がする」と考える。周りの人が新しい仕事を始めたと知れば、「私にも、別の道があるのかもしれない」と感じます。
-    </p>
-
-    <p>
-      あなたは、その場ですぐに方向を変えるわけではありません。一度持ち帰り、今の方向と新しく見えた可能性をじっくり比べます。
-    </p>
-
-    <p>
-      相手の気持ちも考える。自分の感覚にも問いかける。今まで積み重ねてきたことも振り返る。
-    </p>
-
-    <p>
-      そうして、ようやく決めたはずなのに、別の声が入ると、また考え始めます。
-    </p>
-
-    <p>
-      心の中の行き先表示が、何度も「再検索中」になるような状態です。そんなことはないでしょうか。
-    </p>
-
-    <p>
-      ノートには、それぞれの方向のよいところが並んでいるかもしれません。今の仕事を続ける理由も、新しい仕事が気になる理由も、どちらにも納得できる部分があります。
-    </p>
-
-    <p>
-      あなたは、何も決められない人ではありません。かなり考え、自分とも向き合い、周りの声も丁寧に受け取っています。
-    </p>
-
-    <p>
-      それでも一日の終わりには、「こんなに考えているのに、私はどこへ向かいたいんだろう」と、少し心細くなることがあります。
-    </p>
-
-    <p>
-      あなたに自分の軸がないわけではありません。自分の気持ちだけでなく、関わる人の気持ちや、今の自分に合っているかまで大切にしたいのです。
-    </p>
-
-    <p>
-      今、自分の感覚を確かめにくくなっているのは、考えが足りないからではありません。人の声を丁寧に受け取れるため、どの考えにも大切なものが見えてくるからかもしれません。
+      反対に、
+      一度決めた理由を残したまま
+      新しい声を受け取れるようになると、
+      <strong>人の意見も大切にしながら、自分で選んだ道を育てていけます。</strong>
     </p>
   </article>
 
-  <article class="result-block result-block--final">
+  <!-- 06 LINE自動生成用 -->
+  <article class="result-block result-block--final result-block--source-only">
     <h2>ここから先が本題です</h2>
-
-    <p>
-      ここまで読んで、「そうそう。きちんと考えて決めたはずなのに、人の話を聞くとまた考え始めるのよね」と感じたでしょうか。
-    </p>
-
-    <p>
-      手相から見えているあなたの熟考する力、共感力、直感は、人の気持ちや周りの状況を丁寧に受け取り、自分が納得できる答えを選ぶための大切な強みです。
-    </p>
-
-    <p>
-      相手が言葉にできていない気持ちまで考えられる。周りの意見をそのまま受け入れず、自分の中でじっくり確かめられる。数字や条件だけでは決めにくいことも、最後は自分の感覚で選べる。
-    </p>
-
-    <p>
-      こうした場面で、あなたの才能は、お客様との信頼や、自分らしい仕事の選択につながります。
-    </p>
-
-    <p>
-      けれど、人の声を受け取るたびに、これまで考えてきたことを最初から見直していると、自分の中にある答えが分かりにくくなってしまいます。
-    </p>
-
-    <p>
-      あなたらしい進み方のヒントは、人の意見を聞かないことでも、深く考えることをやめることでもありません。周りの声を大切にしながら、自分が考えて感じたことも、仕事の選択に活かすことです。
-    </p>
-
-    <p>
-      では、人の気持ちを丁寧に受け取る力、じっくり考える力、最後は自分の感覚で選ぶ力を、仕事にどう活かしていけばよいのでしょうか。
-    </p>
 
     <ul class="line-benefits-source">
       <li>
-        <strong>じっくり選ぶ自分に合う進み方：</strong>
-        人の声も自分の感覚も大切にできる特徴を、仕事で活かすヒントが分かります。
+        <strong>考え抜いて決めたあとも、別の道が気になりやすくなる理由：</strong>
+        熟考力、共感力、直感が順番に働くことで、
+        なぜ新しい意見や可能性が入るたびに
+        再検討したくなるのかが分かります。
       </li>
 
       <li>
-        <strong>自分の直感を仕事に活かすヒント：</strong>
-        周りの意見を受け取ったあとに、自分の中に生まれた感覚をどのように捉えればよいのか、その目安が分かります。
+        <strong>人の声と、自分の本音を混ぜずに整理する方法：</strong>
+        自分の希望と人からの期待を分け、
+        一度決めた理由を判断材料として残す方法が分かります。
       </li>
 
       <li>
-        <strong>仕事で熟考・共感・直感を活かすヒント：</strong>
-        人の気持ちを受け取る力、深く考える力、自分の感覚で選ぶ力を、お客様との関係や仕事の選択へ活かすヒントが分かります。
+        <strong>熟考力と直感を、積み上がる選択へ変えるヒント：</strong>
+        決めた理由を残し、
+        新しい案はすぐ変更せず、
+        あらかじめ決めた日や条件で見直す
+        3つのコツが分かります。
       </li>
     </ul>
 
     <p class="cta-message-source">
-      あなたにはすでに、人の気持ちを丁寧に理解する力も、深く考える力も、最後は自分の感覚で選ぶ力もあります。その才能を仕事でもっと活かすためのヒントを、LINEで受け取ってください。
+      あなたには、
+      相手の気持ちを受け取る力も、
+      自分の中で深く考える力も、
+      最後は自分に合う方向を選ぶ直感もあります。
+      必要なのは、
+      人の声を聞かないことでも、
+      一度決めたら絶対に変えないことでもありません。
+      自分は何を望んでいるのか。
+      周りからどんな声を受け取っているのか。
+      そして、なぜ今の方向を選んだのか。
+      それを分けて残しておくことで、
+      新しい可能性が見えても、
+      今まで考えてきたことを簡単に白紙へ戻さずに済みます。
+      あなたに合う選択の育て方を、
+      LINEで受け取ってください。
     </p>
   </article>
+
 </section>
