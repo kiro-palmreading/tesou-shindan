@@ -1,218 +1,501 @@
-<section class="result-detail" data-diagnosis-code="D2M">
-  <div class="result-catch" data-hide-title="true">
-    <p>【あなたを一言で表すと】</p>
-    <p>一気に突き進むチャレンジャー</p>
+<section class="result-detail result-detail--visual" data-diagnosis-code="D2M">
+
+  <style>
+    /* ========================================
+       D2M 診断結果
+       Meta広告流入・スマホ向け
+    ======================================== */
+
+    .result-detail--visual {
+      max-width: 720px;
+      margin: 0 auto;
+      color: #24313a;
+      line-height: 1.8;
+    }
+
+    /* ========================================
+       FV
+    ======================================== */
+
+    .diagnosis-result-fv {
+      margin: 0 0 28px;
+      padding: 0;
+    }
+
+    .diagnosis-result-fv img {
+      display: block;
+      width: 100%;
+      height: auto;
+      margin: 0 auto;
+    }
+
+    /* ========================================
+       共通ブロック
+    ======================================== */
+
+    .result-detail--visual .result-block {
+      margin: 0 16px 28px;
+      padding: 26px 20px;
+      background: #ffffff;
+      border: 1px solid #dcecf5;
+      border-radius: 18px;
+      box-sizing: border-box;
+    }
+
+    .result-detail--visual .result-block h2 {
+      margin: 0 0 18px;
+      color: #083f5c;
+      font-size: 22px;
+      line-height: 1.45;
+      text-align: left;
+    }
+
+    .result-detail--visual .result-block p {
+      margin: 0 0 16px;
+      font-size: 16px;
+      line-height: 1.9;
+    }
+
+    .result-detail--visual .result-block p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* ========================================
+       あなたはこんなタイプ
+    ======================================== */
+
+    .type-keywords {
+      margin: 0 0 20px;
+      font-size: 20px;
+      font-weight: 700;
+      color: #1f6fb2;
+      letter-spacing: 0.04em;
+      text-align: center;
+    }
+
+    .type-point-list {
+      display: grid;
+      gap: 11px;
+      margin: 0 0 20px;
+    }
+
+    .type-point {
+      position: relative;
+      padding: 14px 14px 14px 43px;
+      background: #f8fcff;
+      border-radius: 12px;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .type-point::before {
+      content: "✓";
+      position: absolute;
+      left: 16px;
+      top: 14px;
+      color: #1f6fb2;
+      font-weight: 700;
+    }
+
+    .type-summary {
+      padding: 16px;
+      background: #eef7ff;
+      border-radius: 12px;
+      color: #314958;
+    }
+
+    /* ========================================
+       強みが出る場面
+    ======================================== */
+
+    .talent-scene-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    .talent-scene-card {
+      padding: 18px;
+      border-radius: 14px;
+      background: #eef7ff;
+      border: 1px solid #cfe3f1;
+    }
+
+    .talent-scene-card strong {
+      display: block;
+      margin-bottom: 8px;
+      color: #083f5c;
+      font-size: 17px;
+      line-height: 1.5;
+    }
+
+    .talent-scene-card p {
+      margin: 0 !important;
+    }
+
+    /* ========================================
+       今のループ
+    ======================================== */
+
+    .loop-intro {
+      font-weight: 700;
+      color: #314958;
+    }
+
+    .diagnosis-loop {
+      margin: 20px 0;
+    }
+
+    .loop-step {
+      padding: 15px 14px;
+      background: #f8fcff;
+      border: 1px solid #cfe6f3;
+      border-radius: 12px;
+      text-align: center;
+      font-size: 16px;
+      font-weight: 700;
+      color: #083f5c;
+    }
+
+    .loop-arrow {
+      height: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #6f8798;
+      font-size: 24px;
+      font-weight: 700;
+    }
+
+    .loop-step--last {
+      background: #fff5f2;
+      border-color: #f2c9bf;
+      color: #9b4d3b;
+    }
+
+    /* ========================================
+       この状態が続くと
+    ======================================== */
+
+    .result-block--risk {
+      background: #fffaf7 !important;
+      border-color: #f1d9cf !important;
+    }
+
+    .risk-items {
+      display: grid;
+      gap: 10px;
+    }
+
+    .risk-item {
+      position: relative;
+      padding: 13px 14px 13px 40px;
+      background: #ffffff;
+      border: 1px solid #f0ddd5;
+      border-radius: 11px;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .risk-item::before {
+      content: "●";
+      position: absolute;
+      left: 17px;
+      top: 15px;
+      color: #d98670;
+      font-size: 10px;
+    }
+
+    /* ========================================
+       問題の正体
+    ======================================== */
+
+    .result-block--key {
+      background: #eef7ff !important;
+      border-color: #bddcec !important;
+    }
+
+    .key-message {
+      margin: 18px 0 !important;
+      padding: 18px 16px;
+      background: #ffffff;
+      border: 1px solid #dcecf5;
+      border-radius: 8px;
+      font-size: 18px !important;
+      font-weight: 700;
+      color: #083f5c;
+      text-align: center;
+      line-height: 1.7;
+    }
+
+    .key-message-line {
+      display: block;
+    }
+
+    /* ========================================
+       LINE自動生成用データ
+    ======================================== */
+
+    .result-block--source-only {
+      display: none !important;
+    }
+
+    /* ========================================
+       スマホ
+    ======================================== */
+
+    @media (max-width: 600px) {
+      .result-detail--visual .result-block {
+        margin-left: 14px;
+        margin-right: 14px;
+        padding: 23px 17px;
+      }
+
+      .result-detail--visual .result-block h2 {
+        font-size: 21px;
+      }
+
+      .type-keywords {
+        font-size: 19px;
+      }
+
+      .talent-scene-card strong {
+        font-size: 17px;
+      }
+
+      .key-message {
+        font-size: 17px !important;
+        padding: 16px 14px;
+      }
+    }
+  </style>
+
+  <!-- FV -->
+  <div class="diagnosis-result-fv">
+    <img
+      src="meta-fv-results/D2M.png"
+      alt="才能コンパス診断 一気に突き進むチャレンジャー"
+      loading="eager"
+      fetchpriority="high"
+    >
   </div>
 
+  <!-- 01 -->
   <article class="result-block">
-    <h2>あなたの本質</h2>
+    <h2>あなたはこんなタイプです</h2>
 
-    <p class="highlight-paragraph">行動 × 突破 × 集中</p>
+    <div class="type-keywords">
+      行動 × 突破 × 集中
+    </div>
 
-    <p>
-      あなたは、何かを見たり聞いたりしたときに、<br>
-      「面白そう」<br>
-      「これをやってみたい」<br>
-      「今なら、一気に進められそう」<br>
-      と、心が動いた方向へ素早く踏み出せる人です。
-    </p>
+    <div class="type-point-list">
+      <div class="type-point">
+        「面白そう」と感じると、
+        <strong>まずやってみる</strong>
+        ことができる
+      </div>
 
-    <p>
-      すべての準備が整うまで待つよりも、まずはやってみる。実際に取り組みながら、必要なことを覚えていく。
-    </p>
+      <div class="type-point">
+        一度「これだ」と思うと、
+        <strong>時間を忘れるほど集中して</strong>
+        一気に進められる
+      </div>
 
-    <p>
-      そんな進み方を自然に選びます。
-    </p>
+      <div class="type-point">
+        停滞している状況でも、
+        自分から動いて
+        新しい流れを作っていける
+      </div>
+    </div>
 
-    <p>
-      周りの人が「もう少し考えてから」と立ち止まっているときにも、「まずは動かしてみよう」と、停滞した状況へ踏み込めます。
-    </p>
-
-    <p>
-      そして、一度「これだ」と感じたときの集中力には、目を見張るものがあります。
-    </p>
-
-    <p>
-      必要な情報を集める。企画を考える。形にするためのものを、一気につくる。気づけば、短い期間で周りが驚くところまで進んでいることもあるでしょう。
-    </p>
-
-    <p>
-      あなたは、興味を持ったものを遠くから眺める人ではありません。実際に飛び込み、深く入り込み、自分の力で新しい道を切り拓いていく人です。
+    <p class="type-summary">
+      あなたは、興味を持ったことを
+      中途半端に眺める人ではありません。
+      実際に飛び込み、
+      深く掘り下げながら、
+      短い期間でも一気に形へ近づけていく人です。
     </p>
   </article>
 
+  <!-- 02 -->
   <article class="result-block">
-    <h2>あなたの才能</h2>
+    <h2>こんな場面で強みが出ます</h2>
 
-    <p>そんなあなたには、次のような力があります。</p>
+    <div class="talent-scene-grid">
+      <div class="talent-scene-card">
+        <strong>🚀 新しいことを始めるとき</strong>
+        <p>
+          周りがまだ考えている場面でも、
+          「まずやってみよう」と
+          最初の一歩をすぐに踏み出せます。
+        </p>
+      </div>
 
-    <ul>
-      <li>興味を持ったことへ、すぐに行動を起こす力</li>
-      <li>停滞している状況を突破する力</li>
-      <li>一つのことへ、一気に集中する力</li>
-      <li>短い期間で、仕事を大きく前進させる力</li>
-    </ul>
+      <div class="talent-scene-card">
+        <strong>🔥 一気に形にするとき</strong>
+        <p>
+          スイッチが入ると、
+          情報を集め、企画を考え、
+          必要なものを短期間で作り上げられます。
+        </p>
+      </div>
 
-    <p>
-      あなたは、ただ勢いだけで動く人ではありません。
+      <div class="talent-scene-card">
+        <strong>🎯 深く掘り下げるとき</strong>
+        <p>
+          興味を持ったテーマへ深く入り込み、
+          必要な知識や技術を吸収しながら、
+          自分の仕事へ活かせます。
+        </p>
+      </div>
+    </div>
+  </article>
+
+  <!-- 03 -->
+  <article class="result-block">
+    <h2>今、こんなループに入っていませんか？</h2>
+
+    <p class="loop-intro">
+      「これだ」と夢中で始めたはずなのに……
     </p>
 
-    <p>
-      「これを形にしたい」と思ったことには深く入り込み、必要な知識や技術を、驚くほどの速さで吸収できます。
-    </p>
+    <div class="diagnosis-loop">
+      <div class="loop-step">
+        新しいことに興味を持つ
+      </div>
+
+      <div class="loop-arrow">↓</div>
+
+      <div class="loop-step">
+        一気に集中して進める
+      </div>
+
+      <div class="loop-arrow">↓</div>
+
+      <div class="loop-step">
+        熱が少し落ち着いてくる
+      </div>
+
+      <div class="loop-arrow">↓</div>
+
+      <div class="loop-step loop-step--last">
+        新しい興味へ、また集中したくなる
+      </div>
+    </div>
 
     <p>
-      たとえば、新しい企画を任されたとき。
-    </p>
-
-    <p>
-      何から始めるのかを考え、必要な情報を集め、実際に使うものまで一気につくり上げられるのではないでしょうか。
-    </p>
-
-    <p>
-      仕事が途中で止まっているときにも、「では、ここから動かしてみよう」と、すぐに手をつけられます。
-    </p>
-
-    <p>
-      難しい問題があっても、その問題へ集中し、解決の糸口が見つかるまで深く向き合えるでしょう。
-    </p>
-
-    <p>
-      新しい分野へ飛び込んだときも、表面的に知るだけでは終わりません。
-    </p>
-
-    <p>
-      関連することを次々に調べる。実際に試す。経験したことを自分の仕事へ取り入れる。そうして、周りの人よりも早く力を身につけていきます。
-    </p>
-
-    <p>
-      周りからも、「行動が早いよね」「スイッチが入るとすごいね」「短期間で、よくそこまで進められるね」「難しい状況でも頼りになる」と言われたことがあるかもしれません。
-    </p>
-
-    <p>
-      あなたは、ただ集中力が高い人ではありません。新しい挑戦へ飛び込み、大きな熱量を注いで、止まっていたものを一気に動かせる人です。
-    </p>
-
-    <p>
-      周りがなかなか手をつけられない仕事にも思い切って踏み込み、短期間で形へ近づけられることが、あなたの大きな才能です。
+      あなたは、集中できていないわけではありません。
+      むしろ、
+      <strong>
+        スイッチが入ったときには、
+        周りが驚くほど一気に進められます。
+      </strong>
+      ただ、ある程度形ができ、
+      継続や細かな調整が必要な段階になると、
+      最初の強い熱が落ち着いてきます。
+      そのときに新しい刺激が現れると、
+      またそちらへ集中したくなりやすいのです。
     </p>
   </article>
 
-  <article class="result-block">
-    <h2>今のあなたの状態</h2>
+  <!-- 04 -->
+  <article class="result-block result-block--risk">
+    <h2>この状態が続くと…</h2>
+
+    <div class="risk-items">
+      <div class="risk-item">
+        発信を一気に作れても、
+        継続して届ける前に別のテーマが気になりやすくなる
+      </div>
+
+      <div class="risk-item">
+        サービスが完成間近でも、
+        最後の調整や案内の段階で別の企画へ興味が移りやすくなる
+      </div>
+
+      <div class="risk-item">
+        短期間で多くのものを作っているのに、
+        成果になるところまで見届けにくくなる
+      </div>
+
+      <div class="risk-item">
+        本当は集中力が高いのに、
+        「私は飽きっぽいのかも」と感じやすくなる
+      </div>
+    </div>
+  </article>
+
+  <!-- 05 -->
+  <article class="result-block result-block--key">
+    <h2>でも、問題は「熱が落ち着くこと」ではありません</h2>
 
     <p>
-      ただ今は、その行動力と集中力が、少しだけ空回りしているかもしれません。
+      あなたには、
+      行動を起こす力も、
+      停滞を突破する力も、
+      一つのことへ大きなエネルギーを注ぐ力もあります。
     </p>
 
     <p>
-      「これをやってみたい」と思った瞬間に、強いスイッチが入る。
+      ただ今は、
+      最初の強い熱量が落ち着いたことを
+      <strong>
+        「次の段階へ入ったサイン」ではなく
+        「もう興味がなくなったサイン」
+      </strong>
+      と受け取りやすいのかもしれません。
+    </p>
+
+    <p class="key-message">
+      <span class="key-message-line">「熱が下がったから終わり」ではなく、</span>
+      <span class="key-message-line">「ここから続け方を変える」</span>
     </p>
 
     <p>
-      必要なことを調べる。企画を考える。使うものをつくる。最初の数日間は、時間を忘れるほど夢中になれます。
-    </p>
-
-    <p>
-      ところが、ある程度形が見えてくると、最初に感じていた強い熱が、少しずつ落ち着いてきます。
-    </p>
-
-    <p>
-      同じことを繰り返す。細かな部分を整える。できたものを届け続ける。そうした段階に入ると、「前ほど気持ちが動かない」と感じることがあります。
-    </p>
-
-    <p>
-      そこへ新しいアイデアが現れると、また強いスイッチが入ります。
-    </p>
-
-    <p>
-      「こちらの方が面白そう」「今度は、もっと大きく進められそう」と感じ、新しいことへ集中したくなります。
-    </p>
-
-    <p>
-      今まで取り組んでいた仕事が完成に近づいていても、頭の中では、すでに次の企画が動き始めている。
-    </p>
-
-    <p>
-      気づけば、完成間近の仕事と、勢いよく始まった新しい仕事が、いくつも並んでいることがあります。
-    </p>
-
-    <p>
-      あなたは、何もしていないわけではありません。むしろ、動いているときは誰よりも動いています。
-    </p>
-
-    <p>
-      集中しているときには、周りが驚くほど取り組み、短期間で多くのものをつくっています。
-    </p>
-
-    <p>
-      それなのに、ふと振り返ったとき、「ここまで進めたのに、なぜまだ届けていないのだろう」と、自分を責めたくなることがあります。
-    </p>
-
-    <p>
-      あなたに一つのことを続ける力がないわけではありません。
-    </p>
-
-    <p>
-      一度に注ぐ力がとても大きいため、その熱が落ち着いたときの変化も、大きく感じやすいのです。
-    </p>
-
-    <p>
-      さらに、次の挑戦を見つければ、そこへすぐに飛び込める行動力もあります。
-    </p>
-
-    <p>
-      今、自分の才能を活かしきれていないと感じるのは、集中力が足りないからではありません。大きな熱量を注げるものが現れるたびに、集中する先も新しく動いているからかもしれません。
+      この切り替えができるようになると、
+      毎日同じ熱量を保たなくても、
+      強く集中できる時期と
+      淡々と続ける時期を使い分けながら、
+      一つの仕事を完成まで運びやすくなります。
     </p>
   </article>
 
-  <article class="result-block result-block--final">
+  <!-- 06 LINE自動生成用 -->
+  <article class="result-block result-block--final result-block--source-only">
     <h2>ここから先が本題です</h2>
-
-    <p>
-      ここまで読んで、「そうそう。スイッチが入ると一気に進められるけれど、次の面白いものにもすぐ反応するのよね」と思ったでしょうか。
-    </p>
-
-    <p>
-      手相から見えているあなたの行動力、突破力、集中力は、新しい挑戦へ素早く飛び込み、難しい仕事や停滞した状況を、一気に前へ進めるための大切な才能です。
-    </p>
-
-    <p>
-      興味を持ったことへすぐに行動できる。一つのことへ大きな熱量を注げる。周りが立ち止まるような場面でも、思い切って問題の中へ入っていける。
-    </p>
-
-    <p>
-      こうした才能は、新しい企画を立ち上げるとき、短期間で仕事を前進させる必要があるとき、難しい問題を集中して乗り越えるときなどに、大きく活かされます。
-    </p>
-
-    <p>
-      けれど、興味を持ったものへすぐに飛び込める力と、一つのことへ深く集中する力が同時に働くと、どこへ力を注げば、自分らしい仕事として活かせるのか分かりにくくなることがあります。
-    </p>
-
-    <p>
-      <strong>では、すぐに行動へ移す力、停滞を突破する力、一つのことへ一気に集中する力を、仕事にどう活かしていけばよいのでしょうか。</strong>
-    </p>
 
     <ul class="line-benefits-source">
       <li>
-        <strong>夢中になると一気に進められる自分に合う進み方：</strong>
-        強い集中力と行動力を持つ自分に合った進み方のヒントが分かります。
+        <strong>最初は夢中なのに、途中で熱が落ち着く理由：</strong>
+        行動、突破、集中が同時に働くことで、
+        なぜ新しい段階では一気に進めても、
+        継続する段階で感覚が変わりやすいのかが分かります。
       </li>
 
       <li>
-        <strong>行動力と突破力を仕事に活かすヒント：</strong>
-        新しい挑戦へ飛び込み、止まっているものを動かせる才能の活かし方が分かります。
+        <strong>集中力の波との付き合い方：</strong>
+        最初に完成地点を決め、
+        熱量が低い日のための
+        最低限の行動を用意する考え方が分かります。
       </li>
 
       <li>
-        <strong>仕事で集中力を活かすヒント：</strong>
-        一つのことへ大きな熱量を注げる力を、自分らしい仕事へつなげるヒントが分かります。
+        <strong>強い集中力を成果へ変える3つのヒント：</strong>
+        新しい興味をすぐに追いかけず、
+        今の仕事へ区切りをつけてから
+        次の候補を検討する方法が分かります。
       </li>
     </ul>
 
     <p class="cta-message-source">
-      あなたにはすでに、興味を持ったことへすぐに行動する力も、停滞した状況を突破する力も、一つのことへ一気に集中する力もあります。その才能を仕事でもっと活かすためのヒントを、LINEで受け取ってください。
+      あなたには、
+      思いついた瞬間に動き、
+      一つのことへ大きなエネルギーを注ぎ、
+      短期間で一気に進める力があります。
+      その集中力の波を活かしながら、
+      一つの仕事を完成と成果までつなげるための考え方を、
+      LINEで受け取ってください。
     </p>
   </article>
+
 </section>
