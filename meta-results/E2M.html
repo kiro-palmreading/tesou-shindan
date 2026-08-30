@@ -1,457 +1,499 @@
-<section class="result-detail" data-diagnosis-code="E2M">
+<section class="result-detail result-detail--visual" data-diagnosis-code="E2M">
 
-  <div class="result-catch" data-hide-title="true">
-    <p>【あなたを一言で表すと】</p>
-    <p>夢中で形にするヴィジョナリー</p>
+  <style>
+    /* ========================================
+       E2M 診断結果
+       Meta広告流入・スマホ向け
+    ======================================== */
+
+    .result-detail--visual {
+      max-width: 720px;
+      margin: 0 auto;
+      color: #24313a;
+      line-height: 1.8;
+    }
+
+    /* ========================================
+       FV
+    ======================================== */
+
+    .diagnosis-result-fv {
+      margin: 0 0 28px;
+      padding: 0;
+    }
+
+    .diagnosis-result-fv img {
+      display: block;
+      width: 100%;
+      height: auto;
+      margin: 0 auto;
+    }
+
+    /* ========================================
+       共通ブロック
+    ======================================== */
+
+    .result-detail--visual .result-block {
+      margin: 0 16px 28px;
+      padding: 26px 20px;
+      background: #ffffff;
+      border: 1px solid #dcecf5;
+      border-radius: 18px;
+      box-sizing: border-box;
+    }
+
+    .result-detail--visual .result-block h2 {
+      margin: 0 0 18px;
+      color: #083f5c;
+      font-size: 22px;
+      line-height: 1.45;
+      text-align: left;
+    }
+
+    .result-detail--visual .result-block p {
+      margin: 0 0 16px;
+      font-size: 16px;
+      line-height: 1.9;
+    }
+
+    .result-detail--visual .result-block p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* ========================================
+       あなたはこんなタイプ
+    ======================================== */
+
+    .type-keywords {
+      margin: 0 0 20px;
+      font-size: 20px;
+      font-weight: 700;
+      color: #1f6fb2;
+      letter-spacing: 0.04em;
+      text-align: center;
+    }
+
+    .type-point-list {
+      display: grid;
+      gap: 11px;
+      margin: 0 0 20px;
+    }
+
+    .type-point {
+      position: relative;
+      padding: 14px 14px 14px 43px;
+      background: #f8fcff;
+      border-radius: 12px;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .type-point::before {
+      content: "✓";
+      position: absolute;
+      left: 16px;
+      top: 14px;
+      color: #1f6fb2;
+      font-weight: 700;
+    }
+
+    .type-summary {
+      padding: 16px;
+      background: #eef7ff;
+      border-radius: 12px;
+      color: #314958;
+    }
+
+    /* ========================================
+       強みが出る場面
+    ======================================== */
+
+    .talent-scene-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    .talent-scene-card {
+      padding: 18px;
+      border-radius: 14px;
+      background: #eef7ff;
+      border: 1px solid #cfe3f1;
+    }
+
+    .talent-scene-card strong {
+      display: block;
+      margin-bottom: 8px;
+      color: #083f5c;
+      font-size: 17px;
+      line-height: 1.5;
+    }
+
+    .talent-scene-card p {
+      margin: 0 !important;
+    }
+
+    /* ========================================
+       今のループ
+    ======================================== */
+
+    .loop-intro {
+      font-weight: 700;
+      color: #314958;
+    }
+
+    .diagnosis-loop {
+      margin: 20px 0;
+    }
+
+    .loop-step {
+      padding: 15px 14px;
+      background: #f8fcff;
+      border: 1px solid #cfe6f3;
+      border-radius: 12px;
+      text-align: center;
+      font-size: 16px;
+      font-weight: 700;
+      color: #083f5c;
+    }
+
+    .loop-arrow {
+      height: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #6f8798;
+      font-size: 24px;
+      font-weight: 700;
+    }
+
+    .loop-step--last {
+      background: #fff5f2;
+      border-color: #f2c9bf;
+      color: #9b4d3b;
+    }
+
+    /* ========================================
+       この状態が続くと
+    ======================================== */
+
+    .result-block--risk {
+      background: #fffaf7 !important;
+      border-color: #f1d9cf !important;
+    }
+
+    .risk-items {
+      display: grid;
+      gap: 10px;
+    }
+
+    .risk-item {
+      position: relative;
+      padding: 13px 14px 13px 40px;
+      background: #ffffff;
+      border: 1px solid #f0ddd5;
+      border-radius: 11px;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .risk-item::before {
+      content: "●";
+      position: absolute;
+      left: 17px;
+      top: 15px;
+      color: #d98670;
+      font-size: 10px;
+    }
+
+    /* ========================================
+       問題の正体
+    ======================================== */
+
+    .result-block--key {
+      background: #eef7ff !important;
+      border-color: #bddcec !important;
+    }
+
+    .key-message {
+      margin: 18px 0 !important;
+      padding: 18px 16px;
+      background: #ffffff;
+      border: 1px solid #dcecf5;
+      border-radius: 8px;
+      font-size: 18px !important;
+      font-weight: 700;
+      color: #083f5c;
+      text-align: center;
+      line-height: 1.7;
+    }
+
+    .key-message-line {
+      display: block;
+    }
+
+    /* ========================================
+       LINE自動生成用データ
+    ======================================== */
+
+    .result-block--source-only {
+      display: none !important;
+    }
+
+    /* ========================================
+       スマホ
+    ======================================== */
+
+    @media (max-width: 600px) {
+      .result-detail--visual .result-block {
+        margin-left: 14px;
+        margin-right: 14px;
+        padding: 23px 17px;
+      }
+
+      .result-detail--visual .result-block h2 {
+        font-size: 21px;
+      }
+
+      .type-keywords {
+        font-size: 19px;
+      }
+
+      .talent-scene-card strong {
+        font-size: 17px;
+      }
+
+      .key-message {
+        font-size: 17px !important;
+        padding: 16px 14px;
+      }
+    }
+  </style>
+
+  <!-- FV -->
+  <div class="diagnosis-result-fv">
+    <img
+      src="meta-fv-results/E2M.png"
+      alt="才能コンパス診断 夢中で形にするヴィジョナリー"
+      loading="eager"
+      fetchpriority="high"
+    >
   </div>
 
+  <!-- 01 -->
   <article class="result-block">
-    <h2>あなたの本質</h2>
+    <h2>あなたはこんなタイプです</h2>
 
-    <p class="highlight-paragraph">
+    <div class="type-keywords">
       行動 × 世界観 × 集中
-    </p>
+    </div>
 
-    <p>
-      あなたは、自分の中に、
-      「こんな世界をつくりたい」
-      というイメージが浮かぶと、
-      すぐに形にし始められる人です。
-    </p>
+    <div class="type-point-list">
+      <div class="type-point">
+        「これを形にしたい」と感じると、
+        <strong>すぐ実際に手を動かし始められる</strong>
+      </div>
 
-    <p>
-      ただ理想を思い描き、
-      頭の中で楽しむだけではありません。
-    </p>
+      <div class="type-point">
+        一つのテーマへ入り込むと、
+        <strong>周りが驚くほど深く集中できる</strong>
+      </div>
 
-    <p>
-      「これを伝えてみたい」<br>
-      「この形なら、誰かの役に立つかもしれない」<br>
-      「まずは、自分でつくってみよう」
-    </p>
+      <div class="type-point">
+        自分の理想を細部まで磨き、
+        <strong>独自の世界観を仕事として育てられる</strong>
+      </div>
+    </div>
 
-    <p>
-      と感じると、
-      実際に手を動かし始めます。
-    </p>
-
-    <p>
-      あなたにとっての世界観は、
-      見た目の雰囲気だけではありません。
-    </p>
-
-    <p>
-      自分が大切にしたい考え。<br>
-      仕事を通して届けたい価値。<br>
-      相手に体験してほしいこと。<br>
-      その先に実現したい未来。
-    </p>
-
-    <p>
-      そうした思い全体が、
-      一つの世界観としてつながっています。
-    </p>
-
-    <p>
-      さらに、一度、
-      「これを形にしたい」
-      と思ったときの集中力には、
-      目を見張るものがあります。
-    </p>
-
-    <p>
-      必要なことを調べる。<br>
-      実際に試してみる。<br>
-      細かな部分までつくり込む。<br>
-      自分が納得できるところまで深める。
-    </p>
-
-    <p>
-      周りが驚くほどのエネルギーを、
-      一つのものへ注ぐことができます。
-    </p>
-
-    <p>
-      あなたは、ただ夢を見る人でも、
+    <p class="type-summary">
+      あなたは、ただ理想を思い描く人でも、
       勢いだけで動く人でもありません。
-    </p>
-
-    <p>
-      心に描いた世界へ深く入り込み、
-      自分の手で現実の形へ変えていく人です。
+      心に浮かんだ世界をすぐ形にし、
+      そこへ深く集中しながら、
+      自分にしか作れない価値へ
+      育てていく人です。
     </p>
   </article>
 
+  <!-- 02 -->
   <article class="result-block">
-    <h2>あなたの才能</h2>
+    <h2>こんな場面で強みが出ます</h2>
 
-    <p>
-      そんなあなたには、
-    </p>
+    <div class="talent-scene-grid">
+      <div class="talent-scene-card">
+        <strong>🚀 理想を形にするとき</strong>
+        <p>
+          「こんなものを届けたい」と思うと、
+          考えるだけで終わらず、
+          すぐ制作へ移ることができます。
+        </p>
+      </div>
 
-    <ul>
-      <li>心に描いた理想をすぐに形にする力</li>
-      <li>一つのテーマへ深く集中する力</li>
-      <li>細かな部分まで世界観を表現する力</li>
-      <li>思い描いたものを独自の価値へ育てる力</li>
-    </ul>
+      <div class="talent-scene-card">
+        <strong>🎯 一つのテーマを深めるとき</strong>
+        <p>
+          表面的な内容で終わらせず、
+          必要なことを調べ、試しながら、
+          テーマの奥まで掘り下げられます。
+        </p>
+      </div>
 
-    <p>
-      があります。
-    </p>
-
-    <p>
-      仕事や日常の中で、
-    </p>
-
-    <p>
-      「動き始めると早いよね」<br>
-      「集中するとすごいよね」<br>
-      「細かなところまでつくり込むよね」<br>
-      「独自のこだわりがあるよね」
-    </p>
-
-    <p>
-      と言われたことはありませんか？
-    </p>
-
-    <p>
-      あなたは、ただ作業が早い人ではありません。
-    </p>
-
-    <p>
-      自分がつくりたい世界を思い描きながら、
-      一つひとつの要素を、
-      その世界につながる形へ変えていけます。
-    </p>
-
-    <p>
-      たとえば、発信をつくるときにも、
-      表面的な言葉を並べるだけではありません。
-    </p>
-
-    <p>
-      本当に伝えたいことは何か。<br>
-      どの言葉なら、思いまで伝わるか。<br>
-      どのような雰囲気なら、自分らしさを表せるか。<br>
-      読んだ人に、何を感じてほしいのか。
-    </p>
-
-    <p>
-      そこまで深く入り込み、
-      自分なりの表現へ育てられます。
-    </p>
-
-    <p>
-      サービスや企画をつくるときも同じです。
-    </p>
-
-    <p>
-      内容だけではなく、
-    </p>
-
-    <p>
-      名前。<br>
-      言葉や見せ方。<br>
-      資料やデザイン。<br>
-      相手が体験する流れ。<br>
-      全体から伝わる空気。
-    </p>
-
-    <p>
-      それらを一つの世界として考えられます。
-    </p>
-
-    <p>
-      「形になれば、それでよい」
-      と簡単に終わらせず、
-    </p>
-
-    <p>
-      「この部分も、世界観とつながっている」<br>
-      「ここまで整えると、届けたい価値がもっと伝わる」
-    </p>
-
-    <p>
-      と、細かなところまで深められます。
-    </p>
-
-    <p>
-      また、新しい分野に興味を持ったときにも、
-      短い時間で深く入り込めます。
-    </p>
-
-    <p>
-      関連する情報を集める。<br>
-      必要な技術を身につける。<br>
-      実際に試して理解を深める。<br>
-      自分の仕事へ取り入れる。
-    </p>
-
-    <p>
-      そうして、心に描いたものを、
-      単なるアイデアではなく、
-      自分にしかつくれない仕事へ近づけていきます。
-    </p>
-
-    <p>
-      理想を行動へ移す力と、
-      一つの世界へ深く没頭できる集中力。
-    </p>
-
-    <p>
-      その組み合わせが、
-      あなたの大きな才能です。
-    </p>
+      <div class="talent-scene-card">
+        <strong>✨ 世界観を磨くとき</strong>
+        <p>
+          言葉や見せ方、資料、届ける流れまで、
+          自分の理想につながる形へ
+          丁寧に作り込むことができます。
+        </p>
+      </div>
+    </div>
   </article>
 
+  <!-- 03 -->
   <article class="result-block">
-    <h2>今のあなたの状態</h2>
+    <h2>今、こんなループに入っていませんか？</h2>
 
-    <p>
-      ただ今は、その集中力とつくり込む力が、
-      少しだけ空回りしているかもしれません。
+    <p class="loop-intro">
+      「今日は、これを形にしよう」と始めたはずなのに……
     </p>
 
-    <p>
-      たとえば、発信を書き始めたときには、
-    </p>
+    <div class="diagnosis-loop">
+      <div class="loop-step">
+        思いついたものをすぐ作り始める
+      </div>
+
+      <div class="loop-arrow">↓</div>
+
+      <div class="loop-step">
+        一つのテーマへ深く集中する
+      </div>
+
+      <div class="loop-arrow">↓</div>
+
+      <div class="loop-step">
+        細かな不足や改善点が次々に見える
+      </div>
+
+      <div class="loop-arrow">↓</div>
+
+      <div class="loop-step loop-step--last">
+        作り込みすぎて、届ける前に疲れてしまう
+      </div>
+    </div>
 
     <p>
-      「今日は、このことを伝えよう」<br>
-      「今感じていることを、言葉にしてみたい」
-    </p>
-
-    <p>
-      と思っています。
-    </p>
-
-    <p>
-      ところが、書いているうちに、
-    </p>
-
-    <p>
-      「この説明も入れた方が、深く伝わりそう」<br>
-      「この部分は、もう少し丁寧に書きたい」<br>
-      「画像も、世界観に合うものへ変えたい」<br>
-      「全体の流れも整えた方がよさそう」
-    </p>
-
-    <p>
-      と、気になる部分が増えていきます。
-    </p>
-
-    <p>
-      最初は一つの文章を書くつもりだったのに、
-      言葉を調べ、画像を探し、
-      全体の見せ方までつくり始める。
-    </p>
-
-    <p>
-      気づけば、一つの発信に
-      何時間も集中していることがあります。
-    </p>
-
-    <p>
-      ようやく形になったころには、
-    </p>
-
-    <p>
-      「今日は、かなり頑張った」<br>
-      「でも、このあとのことを考える力が残っていない」
-    </p>
-
-    <p>
-      という状態になることもあるでしょう。
-    </p>
-
-    <p>
-      サービスをつくるときも同じです。
-    </p>
-
-    <p>
-      最初は、必要な内容が
-      ある程度そろっていたはずなのに、
-    </p>
-
-    <p>
-      「この資料もあった方が役立つかもしれない」<br>
-      「もう一つ説明を加えたい」<br>
-      「この体験まで含めて、自分の世界観として届けたい」<br>
-      「ここも、もう少し丁寧につくり込みたい」
-    </p>
-
-    <p>
-      と、深めたい部分が増えていきます。
-    </p>
-
-    <p>
-      一つの部分をつくり込むと、
-      その隣にある部分も気になります。
-    </p>
-
-    <p>
-      資料を増やす。<br>
-      内容を深める。<br>
-      見せ方を整える。<br>
-      体験全体を考え直す。
-    </p>
-
-    <p>
-      そうそう、部屋の一角を整えるつもりだったのに、
-      気づけば家全体の模様替えが始まっているような状態です。
-    </p>
-
-    <p>
-      あなたの中では、
-      つくっているものが確実に深まっています。
-    </p>
-
-    <p>
-      内容も豊かになっている。<br>
-      世界観も細かなところまで表れている。<br>
-      自分にしかつくれない形へ近づいている。
-    </p>
-
-    <p>
-      それなのに、一日の終わりには、
-    </p>
-
-    <p>
-      「今日も、ずっとつくっていた」<br>
-      「でも、まだ終わった気がしない」<br>
-      「ここまで集中したのに、何が完成したのだろう」
-    </p>
-
-    <p>
-      と、少し疲れてしまうことがあるかもしれません。
-    </p>
-
-    <p>
-      そして、
-    </p>
-
-    <p>
-      「私は、要領が悪いのかな」<br>
-      「一つのことへ時間をかけすぎなのかな」<br>
-      「これだけ動いているのに、なぜ仕事が進んでいないように感じるのだろう」
-    </p>
-
-    <p>
-      と、自分を責めたくなることもあるでしょう。
-    </p>
-
-    <p>
-      けれど、あなたに行動する力がないわけではありません。
-    </p>
-
-    <p>
-      むしろ、最初の一歩は早く、
-      一つのものへ多くの時間と気持ちを注いでいます。
-    </p>
-
-    <p>
-      自分の中にある世界を、
-      中途半端な形で終わらせたくない。
-    </p>
-
-    <p>
-      その思いがあるからこそ、
-      深められる部分が見つかるたびに、
-      さらに集中したくなるのです。
-    </p>
-
-    <p>
-      行動へ移す力。<br>
-      自分の世界観を大切にする力。<br>
-      一つのことへ深く集中する力。
-    </p>
-
-    <p>
-      その3つが同時に働くことで、
-      どこへ、どれだけ力を注げばよいのか、
-      分かりにくくなっているのです。
+      あなたは、行動力がなくて
+      止まっているわけではありません。
+      むしろ、
+      <strong>
+        最初の一歩は早く、
+        そのあとも大きな時間とエネルギーを注いでいます。
+      </strong>
+      ただ、深めることへ集中するほど、
+      「もう少し良くできる」と改善点が増え、
+      実際に届けるところまで
+      力を残しにくくなるのです。
     </p>
   </article>
 
-  <article class="result-block result-block--final">
+  <!-- 04 -->
+  <article class="result-block result-block--risk">
+    <h2>この状態が続くと…</h2>
+
+    <div class="risk-items">
+      <div class="risk-item">
+        一つの投稿へ時間をかけすぎて、
+        公開や次の発信まで手が回りにくくなる
+      </div>
+
+      <div class="risk-item">
+        サービスへ資料や説明を加え続け、
+        募集や案内が後回しになりやすくなる
+      </div>
+
+      <div class="risk-item">
+        内容はどんどん深まっているのに、
+        お客様の反応を受け取る機会が少なくなる
+      </div>
+
+      <div class="risk-item">
+        本当はかなり行動しているのに、
+        「頑張っているわりに仕事が進んでいない」と感じやすくなる
+      </div>
+    </div>
+  </article>
+
+  <!-- 05 -->
+  <article class="result-block result-block--key">
+    <h2>でも、問題は「深く作り込むこと」ではありません</h2>
+
+    <p>
+      あなたには、
+      理想を具体的な形へ変える力も、
+      一つのテーマへ集中する力も、
+      完成度を高める力もあります。
+    </p>
+
+    <p>
+      ただ今は、
+      深めたい内容が
+      <strong>
+        「今回の価値を届けるために必要なこと」なのか
+        「次に育ててもよいこと」なのか
+      </strong>
+      を分けないまま、
+      今の制作へ加え続けているのかもしれません。
+    </p>
+
+    <p class="key-message">
+      <span class="key-message-line">「今回届けたい変化に必要か？」</span>
+      <span class="key-message-line">「次に深めても問題ない内容か？」</span>
+    </p>
+
+    <p>
+      この区切りを持てるようになると、
+      世界観や深さを失わなくても、
+      今必要なところで一度完成させ、
+      誰かへ届けた反応をもとに
+      次の深さへ育てていきやすくなります。
+    </p>
+  </article>
+
+  <!-- 06 LINE自動生成用 -->
+  <article class="result-block result-block--final result-block--source-only">
     <h2>ここから先が本題です</h2>
-
-    <p>
-      あなたが一つのものへ夢中になるのは、
-      周りが見えていないからでも、
-      要領が悪いからでもありません。
-    </p>
-
-    <p>
-      心に描いた世界を、
-      自分の手で現実にしたいという
-      強い思いがあるからです。
-    </p>
-
-    <p>
-      さらに、イメージだけで終わらせず、
-      細かな部分まで形にできる集中力もあります。
-    </p>
-
-    <p>
-      その才能は、
-    </p>
-
-    <p>
-      新しい企画を一気に形にするとき。<br>
-      一つのテーマを深く掘り下げるとき。<br>
-      独自のサービスや作品をつくるとき。<br>
-      自分の世界観を仕事として表現するとき。
-    </p>
-
-    <p>
-      さまざまな場面で活かせます。
-    </p>
-
-    <p>
-      けれど、すぐに形へ移す行動力と、
-      自分の世界観を深める力、
-      そして一つのことへ集中する力が同時に働くと、
-      どこへ、どれだけ力を向ければよいのか、
-      分かりにくくなることがあります。
-    </p>
-
-    <p>
-      それは、あなたに完成させる力がないからでも、
-      集中力が足りないからでもありません。
-    </p>
-
-    <p>
-      あなたが持っている才能を、
-      仕事の中でどう活かせばよいのかが、
-      まだ見えにくくなっているだけです。
-    </p>
-
-    <p>
-      <strong>では、理想をすぐに形にする力、一つのテーマへ深く集中する力、自分の世界観を独自の価値へ育てる力を、仕事にどう活かしていけばよいのでしょうか。</strong>
-    </p>
 
     <ul class="line-benefits-source">
       <li>
-        <strong>夢中になると深くつくり込みたくなる自分に合う進み方</strong><br>
-        行動力と集中力を活かすためのヒントが分かります。
+        <strong>作り始める前に完成地点を決める方法：</strong>
+        「受け取った人に、何ができるようになってほしいか」を
+        一つ決め、
+        今回届ける価値を明確にする方法が分かります。
       </li>
+
       <li>
-        <strong>自分の世界観を仕事に活かすヒント</strong><br>
-        心に描いた理想を現実へ移す才能の活かし方が見えてきます。
+        <strong>どこまで作り込めば十分かを判断する方法：</strong>
+        修正回数や時間、追加する内容などに
+        あらかじめ終了条件を決め、
+        今回と次回を分ける考え方が分かります。
       </li>
+
       <li>
-        <strong>仕事で集中力を活かすヒント</strong><br>
-        一つのテーマを深く掘り下げられる才能の活かし方が分かります。
+        <strong>集中力を成果へ変える3つのヒント：</strong>
+        「一つ作ったら、一つ届ける」をルールにし、
+        外からの反応を受け取ってから
+        本当に必要な部分を深める方法が分かります。
       </li>
     </ul>
 
     <p class="cta-message-source">
-      あなたにはすでに、理想をすぐに形にする力も、
-      一つのテーマへ深く集中する力も、
-      自分の世界観を独自の価値へ育てる力もあります。
-      その才能を仕事でもっと活かすためのヒントを、
+      あなたには、
+      心に描いた世界をすぐ形にし、
+      一つのテーマへ深く集中しながら、
+      独自の価値へ育てる力があります。
+      その行動力と集中力を、
+      一つの作品を終わらなくするためではなく、
+      必要な人へ届く仕事と成果へ変えるために使う考え方を、
       LINEで受け取ってください。
     </p>
   </article>
