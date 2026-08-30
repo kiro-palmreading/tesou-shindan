@@ -1,229 +1,499 @@
-<section class="result-detail" data-diagnosis-code="D2X">
-  <div class="result-catch" data-hide-title="true">
-    <p>【あなたを一言で表すと】</p>
-    <p>走りながら形にするエンジニア</p>
+<section class="result-detail result-detail--visual" data-diagnosis-code="D2X">
+
+  <style>
+    /* ========================================
+       D2X 診断結果
+       Meta広告流入・スマホ向け
+    ======================================== */
+
+    .result-detail--visual {
+      max-width: 720px;
+      margin: 0 auto;
+      color: #24313a;
+      line-height: 1.8;
+    }
+
+    /* ========================================
+       FV
+    ======================================== */
+
+    .diagnosis-result-fv {
+      margin: 0 0 28px;
+      padding: 0;
+    }
+
+    .diagnosis-result-fv img {
+      display: block;
+      width: 100%;
+      height: auto;
+      margin: 0 auto;
+    }
+
+    /* ========================================
+       共通ブロック
+    ======================================== */
+
+    .result-detail--visual .result-block {
+      margin: 0 16px 28px;
+      padding: 26px 20px;
+      background: #ffffff;
+      border: 1px solid #dcecf5;
+      border-radius: 18px;
+      box-sizing: border-box;
+    }
+
+    .result-detail--visual .result-block h2 {
+      margin: 0 0 18px;
+      color: #083f5c;
+      font-size: 22px;
+      line-height: 1.45;
+      text-align: left;
+    }
+
+    .result-detail--visual .result-block p {
+      margin: 0 0 16px;
+      font-size: 16px;
+      line-height: 1.9;
+    }
+
+    .result-detail--visual .result-block p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* ========================================
+       あなたはこんなタイプ
+    ======================================== */
+
+    .type-keywords {
+      margin: 0 0 20px;
+      font-size: 20px;
+      font-weight: 700;
+      color: #1f6fb2;
+      letter-spacing: 0.04em;
+      text-align: center;
+    }
+
+    .type-point-list {
+      display: grid;
+      gap: 11px;
+      margin: 0 0 20px;
+    }
+
+    .type-point {
+      position: relative;
+      padding: 14px 14px 14px 43px;
+      background: #f8fcff;
+      border-radius: 12px;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .type-point::before {
+      content: "✓";
+      position: absolute;
+      left: 16px;
+      top: 14px;
+      color: #1f6fb2;
+      font-weight: 700;
+    }
+
+    .type-summary {
+      padding: 16px;
+      background: #eef7ff;
+      border-radius: 12px;
+      color: #314958;
+    }
+
+    /* ========================================
+       強みが出る場面
+    ======================================== */
+
+    .talent-scene-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    .talent-scene-card {
+      padding: 18px;
+      border-radius: 14px;
+      background: #eef7ff;
+      border: 1px solid #cfe3f1;
+    }
+
+    .talent-scene-card strong {
+      display: block;
+      margin-bottom: 8px;
+      color: #083f5c;
+      font-size: 17px;
+      line-height: 1.5;
+    }
+
+    .talent-scene-card p {
+      margin: 0 !important;
+    }
+
+    /* ========================================
+       今のループ
+    ======================================== */
+
+    .loop-intro {
+      font-weight: 700;
+      color: #314958;
+    }
+
+    .diagnosis-loop {
+      margin: 20px 0;
+    }
+
+    .loop-step {
+      padding: 15px 14px;
+      background: #f8fcff;
+      border: 1px solid #cfe6f3;
+      border-radius: 12px;
+      text-align: center;
+      font-size: 16px;
+      font-weight: 700;
+      color: #083f5c;
+    }
+
+    .loop-arrow {
+      height: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #6f8798;
+      font-size: 24px;
+      font-weight: 700;
+    }
+
+    .loop-step--last {
+      background: #fff5f2;
+      border-color: #f2c9bf;
+      color: #9b4d3b;
+    }
+
+    /* ========================================
+       この状態が続くと
+    ======================================== */
+
+    .result-block--risk {
+      background: #fffaf7 !important;
+      border-color: #f1d9cf !important;
+    }
+
+    .risk-items {
+      display: grid;
+      gap: 10px;
+    }
+
+    .risk-item {
+      position: relative;
+      padding: 13px 14px 13px 40px;
+      background: #ffffff;
+      border: 1px solid #f0ddd5;
+      border-radius: 11px;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .risk-item::before {
+      content: "●";
+      position: absolute;
+      left: 17px;
+      top: 15px;
+      color: #d98670;
+      font-size: 10px;
+    }
+
+    /* ========================================
+       問題の正体
+    ======================================== */
+
+    .result-block--key {
+      background: #eef7ff !important;
+      border-color: #bddcec !important;
+    }
+
+    .key-message {
+      margin: 18px 0 !important;
+      padding: 18px 16px;
+      background: #ffffff;
+      border: 1px solid #dcecf5;
+      border-radius: 8px;
+      font-size: 18px !important;
+      font-weight: 700;
+      color: #083f5c;
+      text-align: center;
+      line-height: 1.7;
+    }
+
+    .key-message-line {
+      display: block;
+    }
+
+    /* ========================================
+       LINE自動生成用データ
+    ======================================== */
+
+    .result-block--source-only {
+      display: none !important;
+    }
+
+    /* ========================================
+       スマホ
+    ======================================== */
+
+    @media (max-width: 600px) {
+      .result-detail--visual .result-block {
+        margin-left: 14px;
+        margin-right: 14px;
+        padding: 23px 17px;
+      }
+
+      .result-detail--visual .result-block h2 {
+        font-size: 21px;
+      }
+
+      .type-keywords {
+        font-size: 19px;
+      }
+
+      .talent-scene-card strong {
+        font-size: 17px;
+      }
+
+      .key-message {
+        font-size: 17px !important;
+        padding: 16px 14px;
+      }
+    }
+  </style>
+
+  <!-- FV -->
+  <div class="diagnosis-result-fv">
+    <img
+      src="meta-fv-results/D2X.png"
+      alt="才能コンパス診断 走りながら形にするエンジニア"
+      loading="eager"
+      fetchpriority="high"
+    >
   </div>
 
+  <!-- 01 -->
   <article class="result-block">
-    <h2>あなたの本質</h2>
+    <h2>あなたはこんなタイプです</h2>
 
-    <p class="highlight-paragraph">行動 × 突破 × 論理</p>
+    <div class="type-keywords">
+      行動 × 突破 × 論理
+    </div>
 
-    <p>
-      あなたは、何かを思いついたときに、<br>
-      「まずは、やってみよう」<br>
-      「動かしてみれば、次に必要なことが分かりそう」<br>
-      と、すぐに一歩を踏み出せる人です。
-    </p>
+    <div class="type-point-list">
+      <div class="type-point">
+        じっくり準備するより、
+        <strong>「まずやってみよう」</strong>
+        と動きながら答えを探す
+      </div>
 
-    <p>
-      すべての準備が整うまで、じっと待つタイプではありません。
-    </p>
+      <div class="type-point">
+        停滞を感じると、
+        <strong>「何を変えれば前へ進むか」</strong>
+        をすぐに考えられる
+      </div>
 
-    <p>
-      今できるところから始める。止まっているものがあれば、自分から動かす。問題が起きたら、その場で次の方法を考える。
-    </p>
+      <div class="type-point">
+        実際の結果を見ながら、
+        問題点や無駄を見つけて改善できる
+      </div>
+    </div>
 
-    <p>
-      あなたの中には、今ある状況を変え、物事を前へ進めたいという強い力があります。
-    </p>
-
-    <p>
-      ただし、勢いだけで突き進むわけではありません。
-    </p>
-
-    <p>
-      実際に動きながら、<br>
-      「どこを変えれば進みやすくなるだろう」<br>
-      「どのような順番なら、実行できるだろう」<br>
-      「もっと分かりやすい形にできないだろうか」<br>
-      と、考えを整理します。
-    </p>
-
-    <p>
-      あなたは、動くことと考えることを別々に行う人ではありません。走りながら道を整え、止まっているものを現実に動く形へ変えていく人です。
+    <p class="type-summary">
+      あなたは、動くことと考えることを
+      別々に行う人ではありません。
+      まず現実を動かし、
+      その結果を見ながら改善を重ね、
+      よりよい形へ育てていく人です。
     </p>
   </article>
 
+  <!-- 02 -->
   <article class="result-block">
-    <h2>あなたの才能</h2>
+    <h2>こんな場面で強みが出ます</h2>
 
-    <p>そんなあなたには、次のような力があります。</p>
+    <div class="talent-scene-grid">
+      <div class="talent-scene-card">
+        <strong>🚀 まず動かすとき</strong>
+        <p>
+          周りが考え続けている場面でも、
+          「やってみないと分からない」と
+          最初の一歩を踏み出せます。
+        </p>
+      </div>
 
-    <ul>
-      <li>考え込む前に、まず行動を起こす力</li>
-      <li>停滞している状況を突破する力</li>
-      <li>問題を整理し、次にできることを考える力</li>
-      <li>曖昧な考えを、実行できる形へ変える力</li>
-    </ul>
+      <div class="talent-scene-card">
+        <strong>🔍 問題点を見つけるとき</strong>
+        <p>
+          実際に動かした結果から、
+          「ここが分かりにくい」
+          「この流れには無駄がある」と
+          改善点を見つけられます。
+        </p>
+      </div>
 
-    <p>
-      あなたは、問題に気づいても、そのまま眺めて終わる人ではありません。
+      <div class="talent-scene-card">
+        <strong>🛠️ よりよい形へ改善するとき</strong>
+        <p>
+          問題を見つけて終わらず、
+          「それなら、こうしてみよう」と
+          次の行動へすぐにつなげられます。
+        </p>
+      </div>
+    </div>
+  </article>
+
+  <!-- 03 -->
+  <article class="result-block">
+    <h2>今、こんなループに入っていませんか？</h2>
+
+    <p class="loop-intro">
+      「まず、この方法でやってみよう」と始めたはずなのに……
     </p>
 
-    <p>
-      「ここで止まっているなら、まずこれを試してみよう」「この部分を変えれば、もう一度動き出せそう」と、すぐに次の行動を考えます。
-    </p>
+    <div class="diagnosis-loop">
+      <div class="loop-step">
+        まず行動してみる
+      </div>
+
+      <div class="loop-arrow">↓</div>
+
+      <div class="loop-step">
+        少し停滞すると改善点を探す
+      </div>
+
+      <div class="loop-arrow">↓</div>
+
+      <div class="loop-step">
+        もっと良さそうな方法を思いつく
+      </div>
+
+      <div class="loop-arrow">↓</div>
+
+      <div class="loop-step loop-step--last">
+        結果が見える前に、また別の方法へ変える
+      </div>
+    </div>
 
     <p>
-      たとえば、話し合いが長く続いているのに、何も決まらないとき。
-    </p>
-
-    <p>
-      「では、まずここから始めてみませんか」「必要なことを、この順番で進めてみましょう」と、話を現実の動きへ変えられるでしょう。
-    </p>
-
-    <p>
-      新しい企画についても、アイデアを出すだけでは終わりません。
-    </p>
-
-    <p>
-      何から始めるのか。誰が何を担当するのか。どのような順番なら進められるのか。その場で考えながら、実行できる形へ組み立てていきます。
-    </p>
-
-    <p>
-      予定どおりに進まないことが起きても、最初の計画にこだわり続けません。
-    </p>
-
-    <p>
-      「今の状況なら、こちらの方法がよさそう」と、別の進み方を考え、止まりかけた仕事をもう一度動かせます。
-    </p>
-
-    <p>
-      周りからも、「行動が早いよね」「話を前へ進めてくれるね」「問題が起きても頼りになる」「形にするのが上手だね」と言われたことがあるかもしれません。
-    </p>
-
-    <p>
-      あなたは、ただ忙しく動く人ではありません。行き詰まっている状況に突破口をつくり、周りの人も動ける形へ変えられる人です。
-    </p>
-
-    <p>
-      まだ曖昧な考えや、途中で止まっている仕事を、現実に動くものへ変えられることが、あなたの大きな才能です。
+      あなたは、動いていないわけではありません。
+      むしろ、
+      <strong>
+        かなり動き、かなり考え、
+        かなり改善しています。
+      </strong>
+      ただ、改善案が浮かぶスピードに対して、
+      現実の結果が見えるまでには少し時間がかかります。
+      そのため、今の方法が本当に良かったのかを確かめる前に、
+      次の方法へ切り替えたくなりやすいのです。
     </p>
   </article>
 
-  <article class="result-block">
-    <h2>今のあなたの状態</h2>
+  <!-- 04 -->
+  <article class="result-block result-block--risk">
+    <h2>この状態が続くと…</h2>
+
+    <div class="risk-items">
+      <div class="risk-item">
+        発信のテーマや見せ方を頻繁に変え、
+        何が反応につながったのか分かりにくくなる
+      </div>
+
+      <div class="risk-item">
+        サービスを改善するたびに、
+        内容や価格、導線まで同時に変えやすくなる
+      </div>
+
+      <div class="risk-item">
+        たくさん行動しているのに、
+        「何を育てているのか」が見えにくくなる
+      </div>
+
+      <div class="risk-item">
+        本当は行動力も改善力も高いのに、
+        「自分は続けるのが苦手なのかも」と感じやすくなる
+      </div>
+    </div>
+  </article>
+
+  <!-- 05 -->
+  <article class="result-block result-block--key">
+    <h2>でも、問題は「改善すること」ではありません</h2>
 
     <p>
-      ただ今は、その行動力と突破力が、少しだけ空回りしているかもしれません。
+      あなたには、
+      行動を起こす力も、
+      停滞を突破する力も、
+      問題点を見つけて改善する力もあります。
     </p>
 
     <p>
-      仕事の中に止まっているところを見つけると、「ここを変えれば進みそう」と、すぐに手を入れたくなります。
+      ただ今は、
+      改善するたびに
+      <strong>
+        「一部分を変えること」と
+        「方向そのものを変えること」
+      </strong>
+      が一緒になっているのかもしれません。
+    </p>
+
+    <p class="key-message">
+      <span class="key-message-line">「これは、今の方向を育てる改善か？」</span>
+      <span class="key-message-line">「それとも、方向そのものを変える判断か？」</span>
     </p>
 
     <p>
-      一つの問題を直していると、その周りにある別の問題にも気づきます。
-    </p>
-
-    <p>
-      「こちらの流れも変えた方がよさそう」「この部分まで一緒に整えた方が早そう」と、見直す範囲が少しずつ広がっていきます。
-    </p>
-
-    <p>
-      最初は一つの作業を進めるつもりだったのに、気づけば仕事全体を組み直している。そんなことはないでしょうか。
-    </p>
-
-    <p>
-      新しい企画を始めたあとにも、「こちらの方が進めやすそう」と思えば、すぐにやり方を変えられます。
-    </p>
-
-    <p>
-      さらに別の問題が起きると、また新しい方法を考える。あなたの手元には、いつも次に試せる案があります。
-    </p>
-
-    <p>
-      そのため、周りから見ると、次々に仕事を動かしている人に見えるでしょう。
-    </p>
-
-    <p>
-      けれど、自分では、「ずっと動いているのに、どこまで進んだのだろう」と感じることがあります。
-    </p>
-
-    <p>
-      昨日整えた仕事を、今日は別の方法へ組み直している。今の問題を解決している途中で、次に動かしたいことも見つかる。
-    </p>
-
-    <p>
-      気づけば、自分が始めた仕事だけでなく、周りで止まっていることまで引き受けている場合もあります。
-    </p>
-
-    <p>
-      あなたは、何も続けられない人ではありません。むしろ、止まっている状態をそのままにできないほど、前へ進める力を持っています。
-    </p>
-
-    <p>
-      誰かが困っていれば方法を考える。流れが止まれば、自分から動く。問題があれば、その場で修正する。
-    </p>
-
-    <p>
-      その力をさまざまなところへ使ううちに、自分が本来進めたかった仕事へ注ぐ力が少なくなることもあるでしょう。
-    </p>
-
-    <p>
-      今、自分の才能を活かしきれていないと感じるのは、行動力が足りないからではありません。止まっているものを見つけるたびに、そのすべてを自分で動かそうとしているからかもしれません。
+      この違いが分かるようになると、
+      改善する力を失わなくても、
+      一つの方向へ結果を積み重ねながら
+      仕事を育てやすくなります。
     </p>
   </article>
 
-  <article class="result-block result-block--final">
+  <!-- 06 LINE自動生成用 -->
+  <article class="result-block result-block--final result-block--source-only">
     <h2>ここから先が本題です</h2>
-
-    <p>
-      ここまで読んで、「そうそう。気づくと、自分の仕事以外のことまで動かしているのよね」と思ったでしょうか。
-    </p>
-
-    <p>
-      手相から見えているあなたの行動力、突破力、論理的に考える力は、止まっている状況に突破口をつくり、曖昧な考えを現実に動く形へ変えるための大切な才能です。
-    </p>
-
-    <p>
-      完璧な準備を待たずに、まず一歩を踏み出せる。問題が起きても、その場で次の方法を考えられる。複雑な話を整理し、周りの人も動ける順番へ変えられる。
-    </p>
-
-    <p>
-      こうした才能は、新しい企画を立ち上げるとき、途中で止まっている仕事を立て直すとき、まだ形になっていないアイデアを現実へ動かすときなどに、大きく活かされます。
-    </p>
-
-    <p>
-      また、周りの人が「難しそう」と立ち止まっている場面でも、今できることを見つけ、最初の一歩をつくれることがあなたの強みです。
-    </p>
-
-    <p>
-      あなたの行動力や突破力は、目の前にある問題を次々に引き受けるためだけにあるものではありません。
-    </p>
-
-    <p>
-      自分が実現したいことを動かしたり、周りと力を合わせて新しい流れをつくったりするためにも活かせます。
-    </p>
-
-    <p>
-      あなたらしい進み方のヒントは、動く速さを無理に抑えることではありません。まず動ける力と、現実的な形へ組み立てる力の両方を、新しい仕事や企画を前へ進めるために活かすことにありそうです。
-    </p>
-
-    <p>
-      <strong>では、まず行動を起こす力、停滞した状況を突破する力、考えたことを実行できる形へ組み立てる力を、仕事にどう活かしていけばよいのでしょうか。</strong>
-    </p>
 
     <ul class="line-benefits-source">
       <li>
-        <strong>走りながら形にする自分に合う進み方：</strong>
-        まず動き、現実の中で進め方を考えられる自分の特徴を活かすヒントが分かります。
+        <strong>「もっと良いやり方」が止まらなくなる理由：</strong>
+        行動、突破、論理が同時に働くことで、
+        なぜ改善案が次々と浮かび、
+        今の方法を変えたくなりやすいのかが分かります。
       </li>
 
       <li>
-        <strong>行動力と突破力を仕事に活かすヒント：</strong>
-        止まっている状況に働きかけ、新しい動きを生み出せる才能を活かすヒントが分かります。
+        <strong>改善と方向転換の見分け方：</strong>
+        一度に変えるものを一つにし、
+        今の方向を育てる改善なのか、
+        方向そのものを変える判断なのかを整理する方法が分かります。
       </li>
 
       <li>
-        <strong>仕事で実行できる形へ組み立てる力を活かすヒント：</strong>
-        曖昧な考えや途中で止まっている仕事を、現実に動かせる形へ変える才能を活かすヒントが分かります。
+        <strong>行動力を成果へ変える3つのヒント：</strong>
+        確かめる期間や回数を決め、
+        実際の結果を見ながら
+        一つの方向へ改善を積み重ねる方法が分かります。
       </li>
     </ul>
 
     <p class="cta-message-source">
-      あなたにはすでに、まず行動を起こす力も、停滞した状況を突破する力も、考えたことを実行できる形へ組み立てる力もあります。その才能を仕事でもっと活かすためのヒントを、LINEで受け取ってください。
+      あなたには、
+      まず動き出し、
+      結果を見ながら問題点を見つけ、
+      よりよい形へ改善していく力があります。
+      その行動力と改善力を、
+      忙しさではなく一つの成果へつなげる考え方を、
+      LINEで受け取ってください。
     </p>
   </article>
+
 </section>
