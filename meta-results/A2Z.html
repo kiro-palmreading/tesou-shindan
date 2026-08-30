@@ -1,161 +1,518 @@
-<section class="result-detail" data-diagnosis-code="A2Z">
-  <div class="result-catch" data-hide-title="true">
-    <p>【あなたを一言で表すと】</p>
-    <p>表現しながら育てるデザイナー</p>
+<section class="result-detail result-detail--visual" data-diagnosis-code="A2Z">
+
+  <style>
+    /* ========================================
+       A2Z 診断結果
+       Meta広告流入・スマホ向け
+    ======================================== */
+
+    .result-detail--visual {
+      max-width: 720px;
+      margin: 0 auto;
+      color: #24313a;
+      line-height: 1.8;
+    }
+
+    /* ========================================
+       FV
+    ======================================== */
+
+    .diagnosis-result-fv {
+      margin: 0 0 28px;
+      padding: 0;
+    }
+
+    .diagnosis-result-fv img {
+      display: block;
+      width: 100%;
+      height: auto;
+      margin: 0 auto;
+    }
+
+    /* ========================================
+       共通ブロック
+    ======================================== */
+
+    .result-detail--visual .result-block {
+      margin: 0 16px 28px;
+      padding: 26px 20px;
+      background: #ffffff;
+      border: 1px solid #dcecf5;
+      border-radius: 18px;
+      box-sizing: border-box;
+    }
+
+    .result-detail--visual .result-block h2 {
+      margin: 0 0 18px;
+      color: #083f5c;
+      font-size: 22px;
+      line-height: 1.45;
+      text-align: left;
+    }
+
+    .result-detail--visual .result-block p {
+      margin: 0 0 16px;
+      font-size: 16px;
+      line-height: 1.9;
+    }
+
+    .result-detail--visual .result-block p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* ========================================
+       あなたはこんなタイプ
+    ======================================== */
+
+    .type-keywords {
+      margin: 0 0 20px;
+      font-size: 20px;
+      font-weight: 700;
+      color: #1f6fb2;
+      letter-spacing: 0.04em;
+      text-align: center;
+    }
+
+    .type-point-list {
+      display: grid;
+      gap: 11px;
+      margin: 0 0 20px;
+    }
+
+    .type-point {
+      position: relative;
+      padding: 14px 14px 14px 43px;
+      background: #f8fcff;
+      border-radius: 12px;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .type-point::before {
+      content: "✓";
+      position: absolute;
+      left: 16px;
+      top: 14px;
+      color: #1f6fb2;
+      font-weight: 700;
+    }
+
+    .type-summary {
+      padding: 16px;
+      background: #eef7ff;
+      border-radius: 12px;
+      color: #314958;
+    }
+
+    /* ========================================
+       強みが出る場面
+    ======================================== */
+
+    .talent-scene-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    .talent-scene-card {
+      padding: 18px;
+      border-radius: 14px;
+      background: #eef7ff;
+      border: 1px solid #cfe3f1;
+    }
+
+    .talent-scene-card strong {
+      display: block;
+      margin-bottom: 8px;
+      color: #083f5c;
+      font-size: 17px;
+      line-height: 1.5;
+    }
+
+    .talent-scene-card p {
+      margin: 0 !important;
+    }
+
+    /* ========================================
+       今のループ
+    ======================================== */
+
+    .loop-intro {
+      font-weight: 700;
+      color: #314958;
+    }
+
+    .diagnosis-loop {
+      margin: 20px 0;
+    }
+
+    .loop-step {
+      padding: 15px 14px;
+      background: #f8fcff;
+      border: 1px solid #cfe6f3;
+      border-radius: 12px;
+      text-align: center;
+      font-size: 16px;
+      font-weight: 700;
+      color: #083f5c;
+    }
+
+    .loop-arrow {
+      height: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #6f8798;
+      font-size: 24px;
+      font-weight: 700;
+    }
+
+    .loop-step--last {
+      background: #fff5f2;
+      border-color: #f2c9bf;
+      color: #9b4d3b;
+    }
+
+    /* ========================================
+       この状態が続くと
+    ======================================== */
+
+    .result-block--risk {
+      background: #fffaf7 !important;
+      border-color: #f1d9cf !important;
+    }
+
+    .risk-items {
+      display: grid;
+      gap: 10px;
+    }
+
+    .risk-item {
+      position: relative;
+      padding: 13px 14px 13px 40px;
+      background: #ffffff;
+      border: 1px solid #f0ddd5;
+      border-radius: 11px;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .risk-item::before {
+      content: "●";
+      position: absolute;
+      left: 17px;
+      top: 15px;
+      color: #d98670;
+      font-size: 10px;
+    }
+
+    /* ========================================
+       問題の正体
+    ======================================== */
+
+    .result-block--key {
+      background: #eef7ff !important;
+      border-color: #bddcec !important;
+    }
+
+    .key-message {
+      margin: 18px 0 !important;
+      padding: 18px 16px;
+      background: #ffffff;
+      border: 1px solid #dcecf5;
+      border-radius: 8px;
+      font-size: 18px !important;
+      font-weight: 700;
+      color: #083f5c;
+      text-align: center;
+      line-height: 1.7;
+    }
+
+    .key-message-line {
+      display: block;
+    }
+
+    /* ========================================
+       LINE自動生成用データ
+    ======================================== */
+
+    .result-block--source-only {
+      display: none !important;
+    }
+
+    /* ========================================
+       スマホ
+    ======================================== */
+
+    @media (max-width: 600px) {
+      .result-detail--visual .result-block {
+        margin-left: 14px;
+        margin-right: 14px;
+        padding: 23px 17px;
+      }
+
+      .result-detail--visual .result-block h2 {
+        font-size: 21px;
+      }
+
+      .type-keywords {
+        font-size: 19px;
+      }
+
+      .talent-scene-card strong {
+        font-size: 17px;
+      }
+
+      .key-message {
+        font-size: 17px !important;
+        padding: 16px 14px;
+      }
+    }
+  </style>
+
+  <!-- FV -->
+  <div class="diagnosis-result-fv">
+    <img
+      src="meta-fv-results/A2Z.png"
+      alt="才能コンパス診断 表現しながら育てるデザイナー"
+      loading="eager"
+      fetchpriority="high"
+    >
   </div>
 
+  <!-- 01 -->
   <article class="result-block">
-    <h2>あなたの本質</h2>
+    <h2>あなたはこんなタイプです</h2>
 
-    <p class="highlight-paragraph">行動 × 現実 × 感性</p>
+    <div class="type-keywords">
+      行動 × 現実 × 感性
+    </div>
 
-    <p>
-      あなたは、頭の中で答えが完成するまで待つよりも、<br>
-      「まず、やってみよう」<br>
-      「実際に出したら、何を感じるだろう」<br>
-      と、動くことで自分の答えを見つけていくタイプです。
-    </p>
+    <div class="type-point-list">
+      <div class="type-point">
+        頭の中だけで考えるより、
+        <strong>まず表現してみることで答えを見つける</strong>
+      </div>
 
-    <p>
-      発信してみる。サービスを形にしてみる。新しい表現を試してみる。そのときに生まれた感覚を手がかりに、「これは私に合っている」「ここは少し違う気がする」と、方向を確かめます。
-    </p>
+      <div class="type-point">
+        実際に出してみたときの感覚から、
+        <strong>自分に合う・合わないを素早く感じ取れる</strong>
+      </div>
 
-    <p>
-      ただ、現実的にできるかどうかだけで判断する人ではありません。「私は、これを心地よく続けられるか」「この表現は、本当に私らしいか」という感覚も大切にします。
-    </p>
+      <div class="type-point">
+        言葉や写真、デザインなどを使いながら、
+        <strong>自分らしい世界観を育てていける</strong>
+      </div>
+    </div>
 
-    <p>
-      あなたは、動きながら自分の内側を確かめ、表現しながら自分らしい世界観を育てていく人です。
+    <p class="type-summary">
+      あなたは、
+      最初から完成した答えを持っている人ではありません。
+      表現して、感じて、少しずつ調整しながら、
+      自分らしい形を育てていく人です。
     </p>
   </article>
 
+  <!-- 02 -->
   <article class="result-block">
-    <h2>あなたの才能</h2>
+    <h2>こんな場面で強みが出ます</h2>
 
-    <p>そんなあなたには、次のような力があります。</p>
+    <div class="talent-scene-grid">
+      <div class="talent-scene-card">
+        <strong>✍️ 感じたことを表現するとき</strong>
+        <p>
+          心の中にあるものを、
+          言葉や写真、デザインなど、
+          自分なりの形にして外へ出せます。
+        </p>
+      </div>
 
-    <ul>
-      <li>感じたことを表現へ変える力</li>
-      <li>自分らしい見せ方を見つける力</li>
-      <li>独自の世界観を育てる力</li>
-      <li>動きながらイメージを形にする力</li>
-    </ul>
+      <div class="talent-scene-card">
+        <strong>🎨 世界観を育てるとき</strong>
+        <p>
+          実際に表現しながら、
+          「これは好き」「ここは違う」と感じ取り、
+          少しずつ自分らしい雰囲気へ近づけられます。
+        </p>
+      </div>
+
+      <div class="talent-scene-card">
+        <strong>🔄 表現を調整するとき</strong>
+        <p>
+          相手の反応や自分の感覚を見ながら、
+          今の自分に合う見せ方へ
+          柔軟に整えていけます。
+        </p>
+      </div>
+    </div>
+  </article>
+
+  <!-- 03 -->
+  <article class="result-block">
+    <h2>今、こんなループに入っていませんか？</h2>
+
+    <p class="loop-intro">
+      「今度こそ、これが私らしい」と思ったのに……
+    </p>
+
+    <div class="diagnosis-loop">
+      <div class="loop-step">
+        まず表現してみる
+      </div>
+
+      <div class="loop-arrow">↓</div>
+
+      <div class="loop-step">
+        小さな違和感に気づく
+      </div>
+
+      <div class="loop-arrow">↓</div>
+
+      <div class="loop-step">
+        言葉や見せ方を変え始める
+      </div>
+
+      <div class="loop-arrow">↓</div>
+
+      <div class="loop-step loop-step--last">
+        気づけば、方向そのものまで変わっている
+      </div>
+    </div>
 
     <p>
-      何かを感じたとき、それを心の中にしまっておくだけではありません。言葉、写真、色、デザイン、サービスなど、自分なりの形にして外へ出せます。
+      あなたは、
+      何も形にしていないわけではありません。
+      ちゃんと動き、ちゃんと表現しています。
     </p>
 
     <p>
-      周りからも「あなたらしいよね」「独特の雰囲気があるよね」「その発想、おもしろいね」と言われたことがあるかもしれません。
+      ただ、
+      <strong>
+        「なんか違う」と感じたときに、
+        表現だけでなく方向まで変えやすい
+      </strong>
+      のです。
     </p>
 
     <p>
-      あなたは、ただ感覚で動く人ではありません。表現してみたときの手応えや、受け取った人の反応を見ながら、「この方向は、もっと育てられそう」「ここは、今の私には少し違うかも」と、現実の中で調整できます。
+      少し前には、
+      「これが今の私らしい」と思っていたのに、
+      数日後には、
+      「これは少し前の私かも」と感じる。
     </p>
 
     <p>
-      最初から完成した世界観を探すのではなく、出して、感じて、少しずつ深めていく。その過程から、ほかの人にはない雰囲気や魅力を育てられることが、あなたの大きな才能です。
+      発信を見返して、
+      <strong>
+        「この投稿とこの投稿、本当に同じ人が書いたのかな」
+      </strong>
+      と、自分で少し笑ってしまうこともあるかもしれません。
     </p>
   </article>
 
-  <article class="result-block">
-    <h2>今のあなたの状態</h2>
+  <!-- 04 -->
+  <article class="result-block result-block--risk">
+    <h2>この状態が続くと…</h2>
+
+    <div class="risk-items">
+      <div class="risk-item">
+        発信の雰囲気や世界観が、
+        短い期間で何度も変わりやすくなる
+      </div>
+
+      <div class="risk-item">
+        サービスを形にしても、
+        違和感が出るたびにつくり直しやすくなる
+      </div>
+
+      <div class="risk-item">
+        自分らしさを探しているうちに、
+        今ある魅力まで見えにくくなる
+      </div>
+
+      <div class="risk-item">
+        動いているのに、
+        「私の軸はどこにあるんだろう」と感じやすくなる
+      </div>
+    </div>
+  </article>
+
+  <!-- 05 -->
+  <article class="result-block result-block--key">
+    <h2>でも、問題は「感性が揺れやすいこと」ではありません</h2>
 
     <p>
-      ただ今は、その才能が少しだけ空回りしているかもしれません。
+      あなたは、
+      実際に表現したからこそ見える小さなズレに
+      気づける人です。
     </p>
 
     <p>
-      発信を始める。サービスを形にする。新しい表現を試してみる。ここまでは、きちんとできます。ところが、実際に外へ出してみると、「うーん、なんか違う気がする」が始まります。
+      その違和感は、
+      自分らしい世界観を育てるための大切な手がかりです。
+    </p>
+
+    <p class="key-message">
+      <span class="key-message-line">変えるべきなのは、方向そのものなのか。</span>
+      <span class="key-message-line">それとも、表現の一部だけなのか。</span>
     </p>
 
     <p>
-      発信では「もっと私らしい言葉がある気がする」。プロフィールでは「別の見せ方の方が、今の私に合うかも」。サービスでは「悪くはない。でも、もっとしっくり来る形がありそう」と感じます。
+      ここを分けずに判断すると、
+      少し言葉が合わないだけでも、
+      すべてを白紙に戻したくなってしまいます。
     </p>
 
     <p>
-      すると、言葉を変える。次は写真を変える。写真を変えると、今度は色や雰囲気も合わないように見えてくる。最初は表現を少し調整するつもりだったのに、気づけば方向そのものが変わっている。そんなことはないでしょうか。
-    </p>
-
-    <p>
-      少し前までは「これが今の私らしい」と思っていたのに、数日後に見ると「これは、少し前の私かも」と感じる。自分の変化に気づくのが早いぶん、昨日までの表現が急に“前のシーズン”に見えてしまうのです。
-    </p>
-
-    <p>
-      発信一覧を眺めながら、「この投稿と、この投稿、本当に同じ人が書いたのかな」と、自分で少しクスッとしてしまうこともあるかもしれません。
-    </p>
-
-    <p>
-      あなたは、何も形にしていないわけではありません。動き、表現し、そのたびに自分の感覚を確かめています。
-    </p>
-
-    <p>
-      ただ、違和感を覚えるたびに世界観や方向まで変えるため、1つの表現が育つ前に、次の形へ移りやすくなっています。
-    </p>
-
-    <p>
-      新しい表現を始めた直後は「今度こそ、しっくり来る」と感じる。けれど、細かな違和感が見えてくると、「やっぱり、こちらではなかったのかも」と、また次の形を探し始めます。
-    </p>
-
-    <p>
-      そのため、一日の終わりに「これだけ動いているのに、私らしさが積み上がっていない気がする」と、不安になることもあるかもしれません。
-    </p>
-
-    <p>
-      あなたに感性や自分らしさが足りないわけではありません。感じ取る力が豊かだからこそ、表現したあとにも新しい可能性や細かな違和感が見えてくるのです。
-    </p>
-
-    <p>
-      今、少し迷いやすくなっているのは、その違和感を「方向を変えた方がよい合図」として受け取るのか、「今の表現を育てるための気づき」として受け取るのかが、分かりにくくなっていることにあります。
+      反対に、
+      残したい中心と、変えてよい表現を分けられると、
+      「もっと私らしい形」を探し直さなくても、
+      <strong>今ある世界観を深めていける</strong>
+      ようになります。
     </p>
   </article>
 
-  <article class="result-block result-block--final">
+  <!-- 06 LINE自動生成用 -->
+  <article class="result-block result-block--final result-block--source-only">
     <h2>ここから先が本題です</h2>
-
-    <p>
-      ここまで読んで、「そうそう。“今度こそ私らしい”を、何度も更新しているのよね」と思ったでしょうか。
-    </p>
-
-    <p>
-      手相から見えているあなたの感性と行動力は、心の中にあるイメージを実際の表現へ変え、そこから自分らしい世界観を育てるための大切な強みです。
-    </p>
-
-    <p>
-      発信やサービスを実際に外へ出せるからこそ、「これは好き」「ここは少し違う」と、自分の感覚を確かめられます。その小さな気づきを重ねることで、ほかの人にはつくれない表現を育てていけます。
-    </p>
-
-    <p>
-      一方で、違和感が出るたびに全体を変えていると、すでに育ち始めているあなたらしさまで置き去りになってしまいます。
-    </p>
-
-    <p>
-      あなたらしい進み方を見つけるヒントは、違和感をなくすことではなく、その感覚を今の表現へどのように活かすかにありそうです。
-    </p>
-
-    <p>
-      では、動きながら感じたことを大切にし、自分らしい世界観を仕事の中で育てていくには、どのような考え方が合っているのでしょうか。
-    </p>
 
     <ul class="line-benefits-source">
       <li>
-        <strong>動きながら育てる自分に合う考え方：</strong>
-        表現したあとに違和感が出ても、自分らしさを見失わずに進むための考え方が分かります。
+        <strong>もっと自分らしい形があると感じ続ける理由：</strong>
+        表現してみたあとに生まれる違和感が、
+        なぜ方向そのものへの迷いにつながりやすいのかが分かります。
       </li>
 
       <li>
-        <strong>自分らしさを確かめる目安：</strong>
-        今の表現を育てるときに、どの感覚を大切にすればよいのかが分かります。
+        <strong>方向と表現を見分ける判断基準：</strong>
+        今感じている違和感が、
+        進む方向を変えるサインなのか、
+        表現だけを調整すればよいのかを見分ける目安が分かります。
       </li>
 
       <li>
-        <strong>仕事で感性と行動力を活かすヒント：</strong>
-        発信やサービスを重ねながら、あなたらしい世界観を育てるヒントが分かります。
+        <strong>感性を世界観へ育てるヒント：</strong>
+        変えない中心を決め、
+        違和感の場所を見極め、
+        1つの世界観をまとまりで試す3つのコツが分かります。
       </li>
     </ul>
 
     <p class="cta-message-source">
-      あなたにはすでに、感じたことを表現する力も、実際に動きながら形にする力もあります。その強みを活かし、自分らしい世界観を仕事の中で育てていくための考え方を、LINEで受け取ってください。
+      あなたには、
+      感じる力も、
+      それを表現へ変える力も、
+      動きながら自分らしい形へ育てる力もあります。
+      必要なのは、
+      違和感をなくすことではありません。
+      今変えるべきなのは方向なのか、
+      それとも表現の一部なのか。
+      そこを見分けられるようになると、
+      何度も最初からつくり直さずに、
+      今ある世界観を少しずつ深めていけます。
+      あなたに合う見極め方を、
+      LINEで受け取ってください。
     </p>
   </article>
+
 </section>
