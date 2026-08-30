@@ -1,166 +1,521 @@
-<section class="result-detail" data-diagnosis-code="B1X">
-  <div class="result-catch" data-hide-title="true">
-    <p>【あなたを一言で表すと】</p>
-    <p>丁寧に整えて届けるプランナー</p>
+<section class="result-detail result-detail--visual" data-diagnosis-code="B1X">
+
+  <style>
+    /* ========================================
+       B1X 診断結果
+       Meta広告流入・スマホ向け
+    ======================================== */
+
+    .result-detail--visual {
+      max-width: 720px;
+      margin: 0 auto;
+      color: #24313a;
+      line-height: 1.8;
+    }
+
+    /* ========================================
+       FV
+    ======================================== */
+
+    .diagnosis-result-fv {
+      margin: 0 0 28px;
+      padding: 0;
+    }
+
+    .diagnosis-result-fv img {
+      display: block;
+      width: 100%;
+      height: auto;
+      margin: 0 auto;
+    }
+
+    /* ========================================
+       共通ブロック
+    ======================================== */
+
+    .result-detail--visual .result-block {
+      margin: 0 16px 28px;
+      padding: 26px 20px;
+      background: #ffffff;
+      border: 1px solid #dcecf5;
+      border-radius: 18px;
+      box-sizing: border-box;
+    }
+
+    .result-detail--visual .result-block h2 {
+      margin: 0 0 18px;
+      color: #083f5c;
+      font-size: 22px;
+      line-height: 1.45;
+      text-align: left;
+    }
+
+    .result-detail--visual .result-block p {
+      margin: 0 0 16px;
+      font-size: 16px;
+      line-height: 1.9;
+    }
+
+    .result-detail--visual .result-block p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* ========================================
+       あなたはこんなタイプ
+    ======================================== */
+
+    .type-keywords {
+      margin: 0 0 20px;
+      font-size: 20px;
+      font-weight: 700;
+      color: #1f6fb2;
+      letter-spacing: 0.04em;
+      text-align: center;
+    }
+
+    .type-point-list {
+      display: grid;
+      gap: 11px;
+      margin: 0 0 20px;
+    }
+
+    .type-point {
+      position: relative;
+      padding: 14px 14px 14px 43px;
+      background: #f8fcff;
+      border-radius: 12px;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .type-point::before {
+      content: "✓";
+      position: absolute;
+      left: 16px;
+      top: 14px;
+      color: #1f6fb2;
+      font-weight: 700;
+    }
+
+    .type-summary {
+      padding: 16px;
+      background: #eef7ff;
+      border-radius: 12px;
+      color: #314958;
+    }
+
+    /* ========================================
+       強みが出る場面
+    ======================================== */
+
+    .talent-scene-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    .talent-scene-card {
+      padding: 18px;
+      border-radius: 14px;
+      background: #eef7ff;
+      border: 1px solid #cfe3f1;
+    }
+
+    .talent-scene-card strong {
+      display: block;
+      margin-bottom: 8px;
+      color: #083f5c;
+      font-size: 17px;
+      line-height: 1.5;
+    }
+
+    .talent-scene-card p {
+      margin: 0 !important;
+    }
+
+    /* ========================================
+       今のループ
+    ======================================== */
+
+    .loop-intro {
+      font-weight: 700;
+      color: #314958;
+    }
+
+    .diagnosis-loop {
+      margin: 20px 0;
+    }
+
+    .loop-step {
+      padding: 15px 14px;
+      background: #f8fcff;
+      border: 1px solid #cfe6f3;
+      border-radius: 12px;
+      text-align: center;
+      font-size: 16px;
+      font-weight: 700;
+      color: #083f5c;
+    }
+
+    .loop-arrow {
+      height: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #6f8798;
+      font-size: 24px;
+      font-weight: 700;
+    }
+
+    .loop-step--last {
+      background: #fff5f2;
+      border-color: #f2c9bf;
+      color: #9b4d3b;
+    }
+
+    /* ========================================
+       この状態が続くと
+    ======================================== */
+
+    .result-block--risk {
+      background: #fffaf7 !important;
+      border-color: #f1d9cf !important;
+    }
+
+    .risk-items {
+      display: grid;
+      gap: 10px;
+    }
+
+    .risk-item {
+      position: relative;
+      padding: 13px 14px 13px 40px;
+      background: #ffffff;
+      border: 1px solid #f0ddd5;
+      border-radius: 11px;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .risk-item::before {
+      content: "●";
+      position: absolute;
+      left: 17px;
+      top: 15px;
+      color: #d98670;
+      font-size: 10px;
+    }
+
+    /* ========================================
+       問題の正体
+    ======================================== */
+
+    .result-block--key {
+      background: #eef7ff !important;
+      border-color: #bddcec !important;
+    }
+
+    .key-message {
+      margin: 18px 0 !important;
+      padding: 18px 16px;
+      background: #ffffff;
+      border: 1px solid #dcecf5;
+      border-radius: 8px;
+      font-size: 18px !important;
+      font-weight: 700;
+      color: #083f5c;
+      text-align: center;
+      line-height: 1.7;
+    }
+
+    .key-message-line {
+      display: block;
+    }
+
+    /* ========================================
+       LINE自動生成用データ
+    ======================================== */
+
+    .result-block--source-only {
+      display: none !important;
+    }
+
+    /* ========================================
+       スマホ
+    ======================================== */
+
+    @media (max-width: 600px) {
+      .result-detail--visual .result-block {
+        margin-left: 14px;
+        margin-right: 14px;
+        padding: 23px 17px;
+      }
+
+      .result-detail--visual .result-block h2 {
+        font-size: 21px;
+      }
+
+      .type-keywords {
+        font-size: 19px;
+      }
+
+      .talent-scene-card strong {
+        font-size: 17px;
+      }
+
+      .key-message {
+        font-size: 17px !important;
+        padding: 16px 14px;
+      }
+    }
+  </style>
+
+  <!-- FV -->
+  <div class="diagnosis-result-fv">
+    <img
+      src="meta-fv-results/B1X.png"
+      alt="才能コンパス診断 丁寧に整えて届けるプランナー"
+      loading="eager"
+      fetchpriority="high"
+    >
   </div>
 
+  <!-- 01 -->
   <article class="result-block">
-    <h2>あなたの本質</h2>
+    <h2>あなたはこんなタイプです</h2>
 
-    <p class="highlight-paragraph">慎重 × 共感 × 論理</p>
+    <div class="type-keywords">
+      慎重 × 共感 × 論理
+    </div>
 
-    <p>
-      あなたは、ただ情報を伝える人ではありません。何かを伝えるときには、<br>
-      「相手は、どう感じるだろう」<br>
-      「この言い方で、嫌な気持ちにならないかな」<br>
-      「どの順番なら、分かりやすいだろう」<br>
-      と、受け取る人のことを自然に考えます。
-    </p>
+    <div class="type-point-list">
+      <div class="type-point">
+        何かを伝えるとき、
+        <strong>相手がどう感じるかを自然に考えられる</strong>
+      </div>
 
-    <p>
-      言いたいことをそのまま口にするより、一度自分の中で整える。相手の気持ちを想像し、誤解されにくい言葉を選んでから届けたいのです。
-    </p>
+      <div class="type-point">
+        強すぎる言い方や誤解を避けながら、
+        <strong>安心して受け取れる言葉を選べる</strong>
+      </div>
 
-    <p>
-      相手の表情や声の変化に気づく。その場の空気を読む。きつく聞こえない言葉を選ぶ。複雑な話を分かりやすく整理する。そんなことを自然に行っています。
-    </p>
+      <div class="type-point">
+        複雑な内容でも、
+        <strong>順番を整理して分かりやすく伝えられる</strong>
+      </div>
+    </div>
 
-    <p>
-      あなたは、自分の言いたいことだけを押し通す人ではありません。相手の気持ちを大切にしながら、安心して受け取れる形へ整えていく人です。
+    <p class="type-summary">
+      あなたは、
+      自分が言いたいことだけを押し出す人ではありません。
+      相手の気持ちを考えながら、
+      必要な情報を整理し、
+      安心して受け取れる形へ整えて届ける人です。
     </p>
   </article>
 
+  <!-- 02 -->
   <article class="result-block">
-    <h2>あなたの才能</h2>
+    <h2>こんな場面で強みが出ます</h2>
 
-    <p>そんなあなたには、次のような力があります。</p>
+    <div class="talent-scene-grid">
+      <div class="talent-scene-card">
+        <strong>💬 誰かに説明するとき</strong>
+        <p>
+          相手がどこで迷いそうかを想像しながら、
+          初めて聞く人にも分かる言葉や順番へ
+          整えることができます。
+        </p>
+      </div>
 
-    <ul>
-      <li>相手の気持ちや反応を細やかに察する力</li>
-      <li>複雑な内容を分かりやすく整理する力</li>
-      <li>相手が安心できる言葉を選ぶ力</li>
-      <li>丁寧な対話によって信頼関係を築く力</li>
-    </ul>
+      <div class="talent-scene-card">
+        <strong>🤝 相談を受けるとき</strong>
+        <p>
+          表面的な言葉だけでなく、
+          「本当は何を気にしているのだろう」と考え、
+          安心して話せる空気をつくれます。
+        </p>
+      </div>
+
+      <div class="talent-scene-card">
+        <strong>🧩 発信やサービスを整えるとき</strong>
+        <p>
+          自分が伝えたいことと、
+          相手が知りたいことを整理し、
+          分かりやすい形へ組み立てられます。
+        </p>
+      </div>
+    </div>
+  </article>
+
+  <!-- 03 -->
+  <article class="result-block">
+    <h2>今、こんなループに入っていませんか？</h2>
+
+    <p class="loop-intro">
+      「きちんと伝えたい」と思うほど……
+    </p>
+
+    <div class="diagnosis-loop">
+      <div class="loop-step">
+        まず伝えたいことを書く
+      </div>
+
+      <div class="loop-arrow">↓</div>
+
+      <div class="loop-step">
+        「強く聞こえないかな」と言い換える
+      </div>
+
+      <div class="loop-arrow">↓</div>
+
+      <div class="loop-step">
+        誤解を防ぐために説明を足す
+      </div>
+
+      <div class="loop-arrow">↓</div>
+
+      <div class="loop-step loop-step--last">
+        丁寧なのに、いちばん大事なことが埋もれる
+      </div>
+    </div>
 
     <p>
-      誰かから相談されたときも、すぐに正論を返すのではありません。「この人は、今どんな気持ちなんだろう」「本当に聞きたいことは、別にあるのかもしれない」と考えながら、言葉を選びます。
+      あなたは、
+      伝えたいことがないわけではありません。
+      むしろ、
+      <strong>相手にきちんと受け取ってほしい気持ちが強い</strong>
+      のです。
     </p>
 
     <p>
-      周りからも「話しやすいよね」「説明が分かりやすい」「安心して相談できる」と言われたことがあるかもしれません。
+      本文を書いたあとに補足を足す。
+      その補足にも、
+      「念のため」と説明を加える。
     </p>
 
     <p>
-      あなたは、ただ優しい人ではありません。相手の気持ちをくみ取ったうえで、必要な情報を整理し、受け取りやすい形にできる人です。
+      気づけば、
+      <strong>
+        本文、補足、念のための説明、
+        その補足に対する補足。
+      </strong>
     </p>
 
     <p>
-      発信やサービスでも、自分が伝えたいこと、相手が不安に感じそうなこと、事前に説明しておいた方がよいことを丁寧に考え、順番や言葉を工夫できます。
-    </p>
-
-    <p>
-      お客様が今どこで迷っているのかを感じ取り、必要な情報を分かりやすく整理する。相手が安心して次へ進める道筋をつくれることが、あなたの大きな才能です。
+      そして読み返したとき、
+      「ところで、私は何をいちばん伝えたかったんだっけ？」
+      となることもあるかもしれません。
     </p>
   </article>
 
-  <article class="result-block">
-    <h2>今のあなたの状態</h2>
+  <!-- 04 -->
+  <article class="result-block result-block--risk">
+    <h2>この状態が続くと…</h2>
+
+    <div class="risk-items">
+      <div class="risk-item">
+        説明が増え続け、
+        文章の中心が見えにくくなる
+      </div>
+
+      <div class="risk-item">
+        強みやサービスの魅力を控えめに書きすぎ、
+        本来の価値が伝わりにくくなる
+      </div>
+
+      <div class="risk-item">
+        丁寧に説明したのに、
+        「結局、何の話？」と思われやすくなる
+      </div>
+
+      <div class="risk-item">
+        反応が弱いほど、
+        「もっと説明しなければ」とさらに言葉を増やしやすくなる
+      </div>
+    </div>
+  </article>
+
+  <!-- 05 -->
+  <article class="result-block result-block--key">
+    <h2>でも、問題は「丁寧すぎること」ではありません</h2>
 
     <p>
-      ただ今は、その才能が少しだけ空回りしているかもしれません。
+      あなたの配慮は、
+      相手に安心感や信頼を与えるための
+      大きな強みです。
     </p>
 
     <p>
-      発信を書いていると、「この言い方では、少し強すぎるかな」と気になる。そこで、やわらかい表現へ変えると、「これでは、意味が伝わりにくいかも」と説明を足す。さらに、「このケースには当てはまらない人もいるよね」と、注釈を加えます。
+      ただ、
+      相手が理解するために必要な説明と、
+      誤解される不安をなくすための説明が
+      同じ「丁寧さ」に見えやすいのです。
+    </p>
+
+    <p class="key-message">
+      <span class="key-message-line">相手が理解するために、本当に必要なのは何か。</span>
+      <span class="key-message-line">今足している説明は、誰のためのものなのか。</span>
     </p>
 
     <p>
-      最初は、1つのことを伝えたかっただけ。それなのに、気づけば、本文、補足、念のための説明、その補足に対する補足と、文章が少しずつ増えていきます。
+      この違いを分けないままだと、
+      相手を思うほど言葉が増え、
+      かえって要点へたどり着きにくくなります。
     </p>
 
     <p>
-      発信を書き始めたときには、言いたいことがはっきりしていた。でも、読み返すと、「ところで、私は何をいちばん伝えたかったんだっけ？」となる。そんなことはないでしょうか。
-    </p>
-
-    <p>
-      プロフィールでは、「こんなことを自分で言って、大丈夫かな」と、実績や強みを控えめに書き直す。
-    </p>
-
-    <p>
-      サービスを案内するときも、「押し売りだと思われないかな」「期待させすぎない方がいいよね」と考え、肝心の魅力より、注意書きの方が堂々としてしまいます。
-    </p>
-
-    <p>
-      あなたの文章の主役が、いつの間にか注釈へ席を譲っているような状態です。
-    </p>
-
-    <p>
-      少しクスッとしてしまいますが、どの一文も相手を思って加えたものです。誤解されたくない。嫌な気持ちにさせたくない。きちんと納得して受け取ってほしい。その気持ちがあるからこそ、簡単には削れません。
-    </p>
-
-    <p>
-      サービスを整えるときにも、「ここで迷う人がいるかもしれない」「この場合の説明も必要かもしれない」と考え、案内や手順を増やしたくなることがあります。
-    </p>
-
-    <p>
-      けれど、配慮を重ねるほど情報が増え、相手にとって本当に必要なことが見えにくくなります。詳しく説明したはずなのに、「結局、どうすればよいですか？」と聞かれると、さらに説明を足したくなるのです。
-    </p>
-
-    <p>
-      あなたに伝える力がないわけではありません。むしろ、相手の気持ちを考えながら、分かりやすく整理して伝えられる人です。
-    </p>
-
-    <p>
-      今、その強みを活かしにくくなっているのは、「相手が安心して進むために必要な配慮」と「誤解や失敗を避けるために増やしている配慮」が、どちらも同じ“丁寧さ”に見えているからかもしれません。
+      反対に、
+      まず中心をはっきり伝え、
+      必要な説明だけを適切な場所へ置けるようになると、
+      <strong>あなたの丁寧さが、分かりやすさと安心感の両方につながります。</strong>
     </p>
   </article>
 
-  <article class="result-block result-block--final">
+  <!-- 06 LINE自動生成用 -->
+  <article class="result-block result-block--final result-block--source-only">
     <h2>ここから先が本題です</h2>
-
-    <p>
-      ここまで読んで、「そうそう。相手のために丁寧に考えているうちに、情報が増えてしまうのよね」と思ったでしょうか。
-    </p>
-
-    <p>
-      手相から見えているあなたの慎重さ、共感力、整理力は、相手の気持ちを丁寧に受け止め、複雑な状況を分かりやすく整えるための大切な強みです。
-    </p>
-
-    <p>
-      お客様がどこで不安を感じているのかに気づける。話がまとまっていないときにも、必要なことを整理できる。相手が安心して次へ進めるように、順番を考えて伝えられる。こうした場面で、あなたの強みは信頼を生み出します。
-    </p>
-
-    <p>
-      けれど、すべての不安や誤解を先回りして防ごうとすると、必要なことまで多くの説明に埋もれ、あなた自身もどこへ向かえばよいのか分かりにくくなってしまいます。
-    </p>
-
-    <p>
-      あなたらしい進み方を見つけるヒントは、慎重さや気配りを減らすことではありません。相手の気持ちを丁寧に受け止めながら、必要なことを整理し、お互いが安心して進める道筋をつくることにありそうです。
-    </p>
-
-    <p>
-      では、慎重に考える力、相手を思いやる力、分かりやすく整理する力を活かしながら、自分にも相手にも無理のない形で仕事を進めるには、どのような考え方が合っているのでしょうか。
-    </p>
 
     <ul class="line-benefits-source">
       <li>
-        <strong>慎重に考える自分に合う進み方：</strong>
-        丁寧に確かめたい自分の特徴を大切にしながら、考えを前へ進めるための捉え方が分かります。
+        <strong>誤解されたくないほど言葉が増える理由：</strong>
+        相手への共感、慎重さ、論理的な整理が重なることで、
+        なぜ説明を足し続けやすくなるのかが分かります。
       </li>
 
       <li>
-        <strong>相手への配慮を活かすための目安：</strong>
-        相手が安心して進むために必要な配慮を、どのように捉えればよいのか、その目安が分かります。
+        <strong>必要な説明と、不安から足している説明の見分け方：</strong>
+        相手が理解するために必要な言葉と、
+        すべての反応へ備えるための言葉を
+        分ける基準が分かります。
       </li>
 
       <li>
-        <strong>仕事で共感力と整理力を活かすヒント：</strong>
-        相手の気持ちをくみ取る力と、複雑なことを整理する力を、お客様との対話やサービスづくりへ活かすヒントが分かります。
+        <strong>共感力と整理力を、伝わる言葉へ変えるヒント：</strong>
+        結論を1文にし、
+        届ける相手を1人に絞り、
+        説明を本文・補足・別の場所へ分ける
+        3つのコツが分かります。
       </li>
     </ul>
 
     <p class="cta-message-source">
-      あなたにはすでに、相手の気持ちを丁寧に受け止める力も、複雑なことを分かりやすく整理する力もあります。その強みを活かし、自分にも相手にも安心できる道筋をつくりながら仕事を進めるための考え方を、LINEで受け取ってください。
+      あなたには、
+      相手を思いやる力も、
+      複雑な内容を整理する力も、
+      安心して受け取れる言葉を選ぶ力もあります。
+      必要なのは、
+      配慮を減らすことではありません。
+      まず何を伝えたいのかをはっきりさせ、
+      誰に届けるのかを決め、
+      必要な説明を必要な場所へ置くことです。
+      そうすると、
+      丁寧さのために言葉を増やし続けなくても、
+      やさしく、分かりやすく、
+      信頼の伝わる文章へ整えやすくなります。
+      あなたに合う言葉の絞り方を、
+      LINEで受け取ってください。
     </p>
   </article>
+
 </section>
