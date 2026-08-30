@@ -1,177 +1,516 @@
-<section class="result-detail" data-diagnosis-code="B1Y">
-  <div class="result-catch" data-hide-title="true">
-    <p>【あなたを一言で表すと】</p>
-    <p>相手を感じて動くトラベラー</p>
+<section class="result-detail result-detail--visual" data-diagnosis-code="B1Y">
+
+  <style>
+    /* ========================================
+       B1Y 診断結果
+       Meta広告流入・スマホ向け
+    ======================================== */
+
+    .result-detail--visual {
+      max-width: 720px;
+      margin: 0 auto;
+      color: #24313a;
+      line-height: 1.8;
+    }
+
+    /* ========================================
+       FV
+    ======================================== */
+
+    .diagnosis-result-fv {
+      margin: 0 0 28px;
+      padding: 0;
+    }
+
+    .diagnosis-result-fv img {
+      display: block;
+      width: 100%;
+      height: auto;
+      margin: 0 auto;
+    }
+
+    /* ========================================
+       共通ブロック
+    ======================================== */
+
+    .result-detail--visual .result-block {
+      margin: 0 16px 28px;
+      padding: 26px 20px;
+      background: #ffffff;
+      border: 1px solid #dcecf5;
+      border-radius: 18px;
+      box-sizing: border-box;
+    }
+
+    .result-detail--visual .result-block h2 {
+      margin: 0 0 18px;
+      color: #083f5c;
+      font-size: 22px;
+      line-height: 1.45;
+      text-align: left;
+    }
+
+    .result-detail--visual .result-block p {
+      margin: 0 0 16px;
+      font-size: 16px;
+      line-height: 1.9;
+    }
+
+    .result-detail--visual .result-block p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* ========================================
+       あなたはこんなタイプ
+    ======================================== */
+
+    .type-keywords {
+      margin: 0 0 20px;
+      font-size: 20px;
+      font-weight: 700;
+      color: #1f6fb2;
+      letter-spacing: 0.04em;
+      text-align: center;
+    }
+
+    .type-point-list {
+      display: grid;
+      gap: 11px;
+      margin: 0 0 20px;
+    }
+
+    .type-point {
+      position: relative;
+      padding: 14px 14px 14px 43px;
+      background: #f8fcff;
+      border-radius: 12px;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .type-point::before {
+      content: "✓";
+      position: absolute;
+      left: 16px;
+      top: 14px;
+      color: #1f6fb2;
+      font-weight: 700;
+    }
+
+    .type-summary {
+      padding: 16px;
+      background: #eef7ff;
+      border-radius: 12px;
+      color: #314958;
+    }
+
+    /* ========================================
+       強みが出る場面
+    ======================================== */
+
+    .talent-scene-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    .talent-scene-card {
+      padding: 18px;
+      border-radius: 14px;
+      background: #eef7ff;
+      border: 1px solid #cfe3f1;
+    }
+
+    .talent-scene-card strong {
+      display: block;
+      margin-bottom: 8px;
+      color: #083f5c;
+      font-size: 17px;
+      line-height: 1.5;
+    }
+
+    .talent-scene-card p {
+      margin: 0 !important;
+    }
+
+    /* ========================================
+       今のループ
+    ======================================== */
+
+    .loop-intro {
+      font-weight: 700;
+      color: #314958;
+    }
+
+    .diagnosis-loop {
+      margin: 20px 0;
+    }
+
+    .loop-step {
+      padding: 15px 14px;
+      background: #f8fcff;
+      border: 1px solid #cfe6f3;
+      border-radius: 12px;
+      text-align: center;
+      font-size: 16px;
+      font-weight: 700;
+      color: #083f5c;
+    }
+
+    .loop-arrow {
+      height: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #6f8798;
+      font-size: 24px;
+      font-weight: 700;
+    }
+
+    .loop-step--last {
+      background: #fff5f2;
+      border-color: #f2c9bf;
+      color: #9b4d3b;
+    }
+
+    /* ========================================
+       この状態が続くと
+    ======================================== */
+
+    .result-block--risk {
+      background: #fffaf7 !important;
+      border-color: #f1d9cf !important;
+    }
+
+    .risk-items {
+      display: grid;
+      gap: 10px;
+    }
+
+    .risk-item {
+      position: relative;
+      padding: 13px 14px 13px 40px;
+      background: #ffffff;
+      border: 1px solid #f0ddd5;
+      border-radius: 11px;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .risk-item::before {
+      content: "●";
+      position: absolute;
+      left: 17px;
+      top: 15px;
+      color: #d98670;
+      font-size: 10px;
+    }
+
+    /* ========================================
+       問題の正体
+    ======================================== */
+
+    .result-block--key {
+      background: #eef7ff !important;
+      border-color: #bddcec !important;
+    }
+
+    .key-message {
+      margin: 18px 0 !important;
+      padding: 18px 16px;
+      background: #ffffff;
+      border: 1px solid #dcecf5;
+      border-radius: 8px;
+      font-size: 18px !important;
+      font-weight: 700;
+      color: #083f5c;
+      text-align: center;
+      line-height: 1.7;
+    }
+
+    .key-message-line {
+      display: block;
+    }
+
+    /* ========================================
+       LINE自動生成用データ
+    ======================================== */
+
+    .result-block--source-only {
+      display: none !important;
+    }
+
+    /* ========================================
+       スマホ
+    ======================================== */
+
+    @media (max-width: 600px) {
+      .result-detail--visual .result-block {
+        margin-left: 14px;
+        margin-right: 14px;
+        padding: 23px 17px;
+      }
+
+      .result-detail--visual .result-block h2 {
+        font-size: 21px;
+      }
+
+      .type-keywords {
+        font-size: 19px;
+      }
+
+      .talent-scene-card strong {
+        font-size: 17px;
+      }
+
+      .key-message {
+        font-size: 17px !important;
+        padding: 16px 14px;
+      }
+    }
+  </style>
+
+  <!-- FV -->
+  <div class="diagnosis-result-fv">
+    <img
+      src="meta-fv-results/B1Y.png"
+      alt="才能コンパス診断 相手を感じて動くトラベラー"
+      loading="eager"
+      fetchpriority="high"
+    >
   </div>
 
+  <!-- 01 -->
   <article class="result-block">
-    <h2>あなたの本質</h2>
+    <h2>あなたはこんなタイプです</h2>
 
-    <p class="highlight-paragraph">慎重 × 共感 × 直感</p>
+    <div class="type-keywords">
+      慎重 × 共感 × 直感
+    </div>
 
-    <p>
-      あなたは、「自分がどうしたいか」だけでなく、<br>
-      「相手は、どう感じるだろう」<br>
-      「今、どんな言葉を求めているだろう」<br>
-      ということも自然に考えられるタイプです。
-    </p>
+    <div class="type-point-list">
+      <div class="type-point">
+        自分の考えだけでなく、
+        <strong>相手がどう感じているかを自然に察する</strong>
+      </div>
 
-    <p>
-      何かを始める前には、「この方法で大丈夫かな」「相手に負担をかけないかな」と慎重に確かめます。けれど、安心して動けると思えば、そこからの一歩は軽やかです。
-    </p>
+      <div class="type-point">
+        動く前には、
+        <strong>相手に負担がないかを慎重に確かめる</strong>
+      </div>
 
-    <p>
-      まず試してみる。相手の表情や言葉を感じ取る。そして、「こちらの方が喜んでもらえそう」と思えば、すぐに調整できます。
-    </p>
+      <div class="type-point">
+        実際の反応を感じ取ると、
+        <strong>その場に合う形へすぐ調整できる</strong>
+      </div>
+    </div>
 
-    <p>
-      あなたは、自分の考えだけを押し通す人ではありません。相手やその場の空気を感じ取りながら、お互いに無理なく進める道を見つけていく人です。
+    <p class="type-summary">
+      あなたは、
+      自分の考えだけを押し通す人ではありません。
+      相手の気持ちや場の空気を感じながら、
+      お互いに心地よく進める方法を見つけていく人です。
     </p>
   </article>
 
+  <!-- 02 -->
   <article class="result-block">
-    <h2>あなたの才能</h2>
+    <h2>こんな場面で強みが出ます</h2>
 
-    <p>そんなあなたには、次のような力があります。</p>
+    <div class="talent-scene-grid">
+      <div class="talent-scene-card">
+        <strong>🤝 人と話すとき</strong>
+        <p>
+          表情や声の調子など、
+          言葉になっていない変化にも気づき、
+          相手が話しやすい空気をつくれます。
+        </p>
+      </div>
 
-    <ul>
-      <li>相手の気持ちや変化を細やかに察する力</li>
-      <li>安心できると判断したら、一歩を踏み出す力</li>
-      <li>その場の反応を感じ取り、柔軟に動く力</li>
-      <li>人の緊張を和らげ、距離を縮める力</li>
-    </ul>
+      <div class="talent-scene-card">
+        <strong>💬 相手に合わせて伝えるとき</strong>
+        <p>
+          「今は別の言い方の方がよさそう」と感じたら、
+          その場で説明や伝え方を調整できます。
+        </p>
+      </div>
+
+      <div class="talent-scene-card">
+        <strong>🌱 関係を育てるとき</strong>
+        <p>
+          一方的に進めるのではなく、
+          相手の反応を受け取りながら、
+          安心できる次の一歩をつくれます。
+        </p>
+      </div>
+    </div>
+  </article>
+
+  <!-- 03 -->
+  <article class="result-block">
+    <h2>今、こんなループに入っていませんか？</h2>
+
+    <p class="loop-intro">
+      「相手に喜んでもらいたい」と思うほど……
+    </p>
+
+    <div class="diagnosis-loop">
+      <div class="loop-step">
+        相手を考えて発信やサービスをつくる
+      </div>
+
+      <div class="loop-arrow">↓</div>
+
+      <div class="loop-step">
+        反応が少し弱いように感じる
+      </div>
+
+      <div class="loop-arrow">↓</div>
+
+      <div class="loop-step">
+        「別の形の方がよいかも」と考える
+      </div>
+
+      <div class="loop-arrow">↓</div>
+
+      <div class="loop-step loop-step--last">
+        相手に合わせるたび、自分の方向も変わる
+      </div>
+    </div>
 
     <p>
-      誰かと話しているときも、言葉だけを聞いているわけではありません。表情、声の調子、返事をするまでの間。そうした小さな変化から、「少し不安なのかもしれない」「別の言い方をした方が、伝わりそう」と気づけます。
+      あなたは、
+      人に流されたいわけではありません。
+      むしろ、
+      <strong>相手にちゃんと喜んでもらいたい</strong>
+      のだと思います。
     </p>
 
     <p>
-      周りからも「話しやすいよね」「気づかいが上手だよね」「フットワークが軽いよね」と言われたことがあるかもしれません。
+      ただ、返事が少し遅い。
+      投稿への反応が少ない。
+      表情がいつもより硬く見える。
     </p>
 
     <p>
-      あなたは、ただ優しい人ではありません。相手の様子を感じ取りながら、その場に合う行動を自然に選べる人です。
+      それだけでも、
+      「何か違ったのかもしれない」と
+      相手の気持ちを先回りして考えやすいのです。
     </p>
 
     <p>
-      お客様が不安そうであれば、安心できるように声をかける。相談を受けたときも、相手の様子を見ながら、聞くことと伝えることのバランスを調整する。
-    </p>
-
-    <p>
-      あらかじめ決めた方法にこだわらず、目の前の人に合わせて心地よい関わり方を見つけられます。
-    </p>
-
-    <p>
-      相手へ安心感を与えながら、その場に必要な一歩をつくれることが、あなたの大きな才能です。
+      返信を待つ数時間で、
+      頭の中には相手の気持ちを想像した物語が何話分も完成。
+      でも返ってきたのは、
+      <strong>「遅くなってごめんなさい。忙しくて」</strong>
+      の一言だった、ということもあるかもしれません。
     </p>
   </article>
 
-  <article class="result-block">
-    <h2>今のあなたの状態</h2>
+  <!-- 04 -->
+  <article class="result-block result-block--risk">
+    <h2>この状態が続くと…</h2>
+
+    <div class="risk-items">
+      <div class="risk-item">
+        反応が弱いと感じるたびに、
+        発信のテーマや伝え方を変えやすくなる
+      </div>
+
+      <div class="risk-item">
+        相手に合わせるほど、
+        自分が本当に届けたいものが見えにくくなる
+      </div>
+
+      <div class="risk-item">
+        1人の反応を大きく受け止め、
+        全体の方向まで見直しやすくなる
+      </div>
+
+      <div class="risk-item">
+        「私は人に流されているのかも」と、
+        本来の共感力まで疑いやすくなる
+      </div>
+    </div>
+  </article>
+
+  <!-- 05 -->
+  <article class="result-block result-block--key">
+    <h2>でも、問題は「人の反応を見ること」ではありません</h2>
 
     <p>
-      ただ今は、その才能が少しだけ空回りしているかもしれません。
+      あなたの共感力は、
+      相手に合った形を考え、
+      信頼関係を育てるための大きな強みです。
     </p>
 
     <p>
-      慎重に考えて、「この内容なら、きっと喜んでもらえそう」と行動する。けれど、思ったほど反応がないと、「みんなが求めているのは、別のことかもしれない」と気になります。
+      ただ、
+      実際に起きたことと、
+      「きっと、こう思われた」と想像したことが、
+      同じ相手の反応に見えやすいのです。
+    </p>
+
+    <p class="key-message">
+      <span class="key-message-line">実際に起きたことは何なのか。</span>
+      <span class="key-message-line">そこから、自分は何を想像したのか。</span>
     </p>
 
     <p>
-      サービスを案内しても、すぐに申し込みが入らないと、「この形では、相手に負担なのかもしれない」「もっと気軽な内容の方が喜ばれるかも」と考えます。
+      この2つを分けないままだと、
+      相手が何も求めていなくても、
+      自分の方から方向を変えたくなってしまいます。
     </p>
 
     <p>
-      誰かから違う意見を聞くと、「やっぱり、こちらに合わせた方がいいかな」と、次の案が浮かびます。
-    </p>
-
-    <p>
-      相手の反応を感じ取るのが早く、方向を調整するのも早い。そのため、まだ今の形を十分に届けていない段階でも、「このままでは、喜んでもらえないかもしれない」と変えたくなるのです。
-    </p>
-
-    <p>
-      一人のお客様の反応が気になると、サービスの内容を変える。別の人から違う意見を聞くと、今度はそちらに合わせたくなる。
-    </p>
-
-    <p>
-      気づけば、「今日は誰に合わせた私で仕事をしよう？」という状態になっている。そんなことはないでしょうか。
-    </p>
-
-    <p>
-      あなたは、何もしていないわけではありません。かなり動き、相手を見て、その都度、より喜ばれる形を考えています。
-    </p>
-
-    <p>
-      けれど、相手の反応が変わるたびに自分の方向まで変えていると、「お客様が求めているものは、何だろう」と考えるうちに、「ところで、私は何を大切にしたかったんだろう」が分からなくなってしまいます。
-    </p>
-
-    <p>
-      しかも、相手がはっきり「これは求めていません」と言ったわけではないこともあります。
-    </p>
-
-    <p>
-      返事が少し遅い。いつもより表情が硬く見えた。会話があまり弾まなかった。それだけでも、「何か違ったのかもしれない」という心配が始まります。
-    </p>
-
-    <p>
-      返信を待つ数時間で、相手の気持ちを想像した物語が何話分もできてしまう。でも、返ってきたのは「遅くなってごめんなさい。忙しくて」の一言だった。そんな経験もあるかもしれません。
-    </p>
-
-    <p>
-      あなたが人の反応を気にしすぎる人なのではありません。それだけ、相手の小さな変化へ気づける人なのです。
-    </p>
-
-    <p>
-      今、自分の方向まで変えたくなってしまうのは、相手の気持ちを大切にするあまり、自分の中で感じていることや、本来大切にしたかったことを後ろへ置きやすくなっているからかもしれません。
+      反対に、
+      事実を確かめたうえで相手の声を使えるようになると、
+      <strong>自分が届けたい中心を守りながら、必要な部分だけを調整できます。</strong>
     </p>
   </article>
 
-  <article class="result-block result-block--final">
+  <!-- 06 LINE自動生成用 -->
+  <article class="result-block result-block--final result-block--source-only">
     <h2>ここから先が本題です</h2>
-
-    <p>
-      ここまで読んで、「そうそう。相手のことを考えているうちに、自分がどうしたかったのか分からなくなることがあるのよね」と思ったでしょうか。
-    </p>
-
-    <p>
-      手相から見えているあなたの慎重さ、共感力、直感は、相手の気持ちを丁寧に感じ取り、お互いが安心できるタイミングで一歩を踏み出すための大切な強みです。
-    </p>
-
-    <p>
-      相手が不安を口にする前に気づける。相手の様子を見ながら、その場に合う関わり方を選べる。「今なら大丈夫そう」と感じたときには、考えすぎず行動できる。こうした場面で、あなたの強みは人との信頼を育てます。
-    </p>
-
-    <p>
-      けれど、相手がどう感じるかを先回りして考えすぎると、自分の直感や、本来大切にしたかった方向まで見えにくくなってしまいます。
-    </p>
-
-    <p>
-      あなたらしい進み方を見つけるヒントは、相手の反応を気にしないようにすることではありません。相手と自分の両方が安心できるところを丁寧に確かめながら、その場で感じたことを次の一歩へ活かすことにありそうです。
-    </p>
-
-    <p>
-      では、慎重に確かめる力、人の気持ちを感じる力、直感的に動く力を活かしながら、相手との信頼と自分らしい仕事の両方を育てるには、どのような考え方が合っているのでしょうか。
-    </p>
 
     <ul class="line-benefits-source">
       <li>
-        <strong>慎重さと直感を持つ自分に合う進み方：</strong>
-        相手にも自分にも無理がないことを確かめながら、自分の感覚を次の一歩へ活かすための考え方が分かります。
+        <strong>相手に合わせた方がよいかもが繰り返される理由：</strong>
+        共感力、慎重さ、直感が連続して働くことで、
+        なぜ確認する前に方向転換したくなりやすいのかが分かります。
       </li>
 
       <li>
-        <strong>相手を思いやりながら自分も大切にする目安：</strong>
-        相手の様子が気になったときに、自分の気持ちや直感をどのように捉えればよいのか、その目安が分かります。
+        <strong>反応の事実と、自分の想像を見分ける基準：</strong>
+        実際に起きたことと、
+        そこから自分が解釈した相手の気持ちを
+        分けて考える方法が分かります。
       </li>
 
       <li>
-        <strong>仕事で共感力と直感を活かすヒント：</strong>
-        人の気持ちを感じる力と、その場に合う一歩を選ぶ力を、お客様との関係や自分らしい仕事へ活かすヒントが分かります。
+        <strong>共感力と直感を、自分らしい仕事へつなげるヒント：</strong>
+        届けたい中心を決め、
+        事実と想像を分け、
+        1人ではなく複数の反応から判断する
+        3つのコツが分かります。
       </li>
     </ul>
 
     <p class="cta-message-source">
-      あなたにはすでに、人の気持ちを細やかに感じる力も、安心できるタイミングを見極めて動く力もあります。その強みを活かし、相手とのつながりを大切にしながら、自分らしい仕事を育てるための考え方を、LINEで受け取ってください。
+      あなたには、
+      人の気持ちを感じる力も、
+      相手に合わせて調整する力もあります。
+      必要なのは、
+      人の反応を気にしなくなることではありません。
+      実際に何が起きたのか。
+      自分はそこから何を想像したのか。
+      その2つを分けられるようになると、
+      相手の声を大切にしながらも、
+      自分が届けたい中心まで毎回変えずに済みます。
+      共感力を自分を見失う原因ではなく、
+      人とつながりながら仕事を育てる力へ変える方法を、
+      LINEで受け取ってください。
     </p>
   </article>
+
 </section>
