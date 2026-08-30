@@ -1,201 +1,518 @@
-<section class="result-detail" data-diagnosis-code="A2X">
-  <div class="result-catch" data-hide-title="true">
-    <p>【あなたを一言で表すと】</p>
-    <p>動きながら磨くビルダー</p>
+<section class="result-detail result-detail--visual" data-diagnosis-code="A2X">
+
+  <style>
+    /* ========================================
+       A2X 診断結果
+       Meta広告流入・スマホ向け
+    ======================================== */
+
+    .result-detail--visual {
+      max-width: 720px;
+      margin: 0 auto;
+      color: #24313a;
+      line-height: 1.8;
+    }
+
+    /* ========================================
+       FV
+    ======================================== */
+
+    .diagnosis-result-fv {
+      margin: 0 0 28px;
+      padding: 0;
+    }
+
+    .diagnosis-result-fv img {
+      display: block;
+      width: 100%;
+      height: auto;
+      margin: 0 auto;
+    }
+
+    /* ========================================
+       共通ブロック
+    ======================================== */
+
+    .result-detail--visual .result-block {
+      margin: 0 16px 28px;
+      padding: 26px 20px;
+      background: #ffffff;
+      border: 1px solid #dcecf5;
+      border-radius: 18px;
+      box-sizing: border-box;
+    }
+
+    .result-detail--visual .result-block h2 {
+      margin: 0 0 18px;
+      color: #083f5c;
+      font-size: 22px;
+      line-height: 1.45;
+      text-align: left;
+    }
+
+    .result-detail--visual .result-block p {
+      margin: 0 0 16px;
+      font-size: 16px;
+      line-height: 1.9;
+    }
+
+    .result-detail--visual .result-block p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* ========================================
+       あなたはこんなタイプ
+    ======================================== */
+
+    .type-keywords {
+      margin: 0 0 20px;
+      font-size: 20px;
+      font-weight: 700;
+      color: #1f6fb2;
+      letter-spacing: 0.04em;
+      text-align: center;
+    }
+
+    .type-point-list {
+      display: grid;
+      gap: 11px;
+      margin: 0 0 20px;
+    }
+
+    .type-point {
+      position: relative;
+      padding: 14px 14px 14px 43px;
+      background: #f8fcff;
+      border-radius: 12px;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .type-point::before {
+      content: "✓";
+      position: absolute;
+      left: 16px;
+      top: 14px;
+      color: #1f6fb2;
+      font-weight: 700;
+    }
+
+    .type-summary {
+      padding: 16px;
+      background: #eef7ff;
+      border-radius: 12px;
+      color: #314958;
+    }
+
+    /* ========================================
+       強みが出る場面
+    ======================================== */
+
+    .talent-scene-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    .talent-scene-card {
+      padding: 18px;
+      border-radius: 14px;
+      background: #eef7ff;
+      border: 1px solid #cfe3f1;
+    }
+
+    .talent-scene-card strong {
+      display: block;
+      margin-bottom: 8px;
+      color: #083f5c;
+      font-size: 17px;
+      line-height: 1.5;
+    }
+
+    .talent-scene-card p {
+      margin: 0 !important;
+    }
+
+    /* ========================================
+       今のループ
+    ======================================== */
+
+    .loop-intro {
+      font-weight: 700;
+      color: #314958;
+    }
+
+    .diagnosis-loop {
+      margin: 20px 0;
+    }
+
+    .loop-step {
+      padding: 15px 14px;
+      background: #f8fcff;
+      border: 1px solid #cfe6f3;
+      border-radius: 12px;
+      text-align: center;
+      font-size: 16px;
+      font-weight: 700;
+      color: #083f5c;
+    }
+
+    .loop-arrow {
+      height: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #6f8798;
+      font-size: 24px;
+      font-weight: 700;
+    }
+
+    .loop-step--last {
+      background: #fff5f2;
+      border-color: #f2c9bf;
+      color: #9b4d3b;
+    }
+
+    /* ========================================
+       この状態が続くと
+    ======================================== */
+
+    .result-block--risk {
+      background: #fffaf7 !important;
+      border-color: #f1d9cf !important;
+    }
+
+    .risk-items {
+      display: grid;
+      gap: 10px;
+    }
+
+    .risk-item {
+      position: relative;
+      padding: 13px 14px 13px 40px;
+      background: #ffffff;
+      border: 1px solid #f0ddd5;
+      border-radius: 11px;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .risk-item::before {
+      content: "●";
+      position: absolute;
+      left: 17px;
+      top: 15px;
+      color: #d98670;
+      font-size: 10px;
+    }
+
+    /* ========================================
+       問題の正体
+    ======================================== */
+
+    .result-block--key {
+      background: #eef7ff !important;
+      border-color: #bddcec !important;
+    }
+
+    .key-message {
+      margin: 18px 0 !important;
+      padding: 18px 16px;
+      background: #ffffff;
+      border: 1px solid #dcecf5;
+      border-radius: 8px;
+      font-size: 18px !important;
+      font-weight: 700;
+      color: #083f5c;
+      text-align: center;
+      line-height: 1.7;
+    }
+
+    .key-message-line {
+      display: block;
+    }
+
+    /* ========================================
+       LINE自動生成用データ
+    ======================================== */
+
+    .result-block--source-only {
+      display: none !important;
+    }
+
+    /* ========================================
+       スマホ
+    ======================================== */
+
+    @media (max-width: 600px) {
+      .result-detail--visual .result-block {
+        margin-left: 14px;
+        margin-right: 14px;
+        padding: 23px 17px;
+      }
+
+      .result-detail--visual .result-block h2 {
+        font-size: 21px;
+      }
+
+      .type-keywords {
+        font-size: 19px;
+      }
+
+      .talent-scene-card strong {
+        font-size: 17px;
+      }
+
+      .key-message {
+        font-size: 17px !important;
+        padding: 16px 14px;
+      }
+    }
+  </style>
+
+  <!-- FV -->
+  <div class="diagnosis-result-fv">
+    <img
+      src="meta-fv-results/A2X.png"
+      alt="才能コンパス診断 動きながら磨くビルダー"
+      loading="eager"
+      fetchpriority="high"
+    >
   </div>
 
+  <!-- 01 -->
   <article class="result-block">
-    <h2>あなたの本質</h2>
+    <h2>あなたはこんなタイプです</h2>
 
-    <p class="highlight-paragraph">
+    <div class="type-keywords">
       行動 × 現実 × 論理
-    </p>
+    </div>
 
-    <p>
-      あなたは、じっくり考えてから動くよりも、<br>
-      「まずやってみよう」<br>
-      「試してから考えよう」<br>
-      と、実際に動くことで答えを見つけていくタイプです。
-    </p>
+    <div class="type-point-list">
+      <div class="type-point">
+        じっくり考え続けるより、
+        <strong>まず試してから答えを見つける</strong>
+        のが得意
+      </div>
 
-    <p>
-      頭の中だけで考え続けるより、一度形にしてみた方が、何を直せばよいのかが見えてくる。そんな感覚を持っています。
-    </p>
+      <div class="type-point">
+        実際に動いたあと、
+        <strong>どこを直せばよいかを素早く見つけられる</strong>
+      </div>
 
-    <p>
-      ただし、勢いだけで突っ走る人ではありません。動いたあとは、<br>
-      「もっと分かりやすくできないかな」<br>
-      「無駄になっているところはないかな」<br>
-      「もっと使いやすい形にできないかな」<br>
-      と、現実を見ながら改善します。
-    </p>
+      <div class="type-point">
+        無駄や分かりにくさに気づき、
+        <strong>より成果につながる形へ改善できる</strong>
+      </div>
+    </div>
 
-    <p>
-      まず動く。結果を見る。よりよい形へ直していく。
-    </p>
-
-    <p>
-      あなたは、行動力と改善力の両方を使いながら、現実を少しずつよくしていく人です。
+    <p class="type-summary">
+      あなたは、
+      完璧な計画をつくってから動く人ではありません。
+      まず現実の中で試し、
+      そこで得た反応を使って、
+      よりよい形へ磨いていける人です。
     </p>
   </article>
 
+  <!-- 02 -->
   <article class="result-block">
-    <h2>あなたの才能</h2>
+    <h2>こんな場面で強みが出ます</h2>
 
-    <p>
-      そんなあなたには、次のような力があります。
-    </p>
+    <div class="talent-scene-grid">
+      <div class="talent-scene-card">
+        <strong>🚀 新しいことを始めるとき</strong>
+        <p>
+          「もっと準備してから」と長く止まらず、
+          まず形にして試すことができます。
+        </p>
+      </div>
 
-    <ul>
-      <li>まず行動して試す力</li>
-      <li>現実の中から問題点を見つける力</li>
-      <li>改善を素早く積み重ねる力</li>
-      <li>より効率的な方法を考える力</li>
-    </ul>
+      <div class="talent-scene-card">
+        <strong>🔍 問題点を見つけるとき</strong>
+        <p>
+          実際の反応を見ながら、
+          分かりにくいところや無駄な部分に
+          素早く気づけます。
+        </p>
+      </div>
 
-    <p>
-      何かを思いついたときも、「もっと勉強してから」と長く温めるより、「ひとまず形にしてみよう」と動き始められます。
-    </p>
-
-    <p>
-      周りからも「行動が早いよね」「対応が早いよね」「改善するのが上手だよね」と思われやすいタイプです。
-    </p>
-
-    <p>
-      発信を出して反応が弱ければ、タイトルや伝え方を見直す。
-    </p>
-
-    <p>
-      サービスを届けて、お客様が迷うところに気づけば、案内の流れを変える。実際に起きたことを見て、次の一手を考えられます。
-    </p>
-
-    <p>
-      あなたは、ただ数多く行動する人ではありません。行動によって得た材料を使い、より現実的で、使いやすい形へ磨いていける人です。
-    </p>
-
-    <p>
-      机の上で完璧な計画をつくるより、現実の中で試作品を育てていく。その行動力と改善力が、あなたの大きな才能です。
-    </p>
+      <div class="talent-scene-card">
+        <strong>🛠️ 改善するとき</strong>
+        <p>
+          「では、どこを変えればよい？」と考え、
+          今あるものをより使いやすく、
+          成果につながる形へ整えられます。
+        </p>
+      </div>
+    </div>
   </article>
 
+  <!-- 03 -->
   <article class="result-block">
-    <h2>今のあなたの状態</h2>
+    <h2>今、こんなループに入っていませんか？</h2>
+
+    <p class="loop-intro">
+      動き出すまでは早いのに……
+    </p>
+
+    <div class="diagnosis-loop">
+      <div class="loop-step">
+        まずやってみる
+      </div>
+
+      <div class="loop-arrow">↓</div>
+
+      <div class="loop-step">
+        すぐに改善点が見つかる
+      </div>
+
+      <div class="loop-arrow">↓</div>
+
+      <div class="loop-step">
+        もっとよい方法を試したくなる
+      </div>
+
+      <div class="loop-arrow">↓</div>
+
+      <div class="loop-step loop-step--last">
+        気づけば、土台からつくり直している
+      </div>
+    </div>
 
     <p>
-      ただ今は、その才能が少しだけ空回りしているかもしれません。
+      あなたは、
+      止まっているわけではありません。
+      むしろ、かなり動いています。
     </p>
 
     <p>
-      何かを思いつく。すぐに始める。実際に試してみる。ここまでは、とても早い。
+      ただ、
+      <strong>
+        少し直すつもりだったものが、
+        気づけば別のやり方になっている
+      </strong>
+      ことがあるのです。
     </p>
 
     <p>
-      ところが、動き始めると、すぐに改善点が目に入ります。
+      もっと効率よく進みたいと思っているのに、
+      方法を変えるたびに、
+      新しいやり方を覚え直したり、
+      仕組みをつくり直したりする。
     </p>
 
     <p>
-      発信を数回出したところで、「別のテーマの方が反応がよさそう」と感じる。
-    </p>
-
-    <p>
-      サービスを案内し始めたところで、「別の見せ方の方が申し込みにつながりそう」と思う。
-    </p>
-
-    <p>
-      新しい方法を知ると、「今のやり方より、こちらの方が効率的かも」と試したくなります。
-    </p>
-
-    <p>
-      すると、変える。試す。また変える。さらに別の方法を試す、という流れが始まります。
-    </p>
-
-    <p>
-      最初は、少しだけ改善するつもりだった。それなのに、見直しているうちに発信のテーマが変わり、サービスの見せ方も変わる。
-    </p>
-
-    <p>
-      気づけば、改善ではなく、土台から新しくなっている。そんなことはないでしょうか。
-    </p>
-
-    <p>
-      行動は早い。手も止まっていない。新しい方法も、かなり試している。
-    </p>
-
-    <p>
-      それなのに、少し前につくったものを見ると、「今は、もう別のやり方をしているんだよね」となる。過去の行動と、今の取り組みがつながりにくくなっていくのです。
-    </p>
-
-    <p>
-      効率よく進みたいはずなのに、方法を切り替えるたびに、使い方を覚え直したり、仕組みをつくり直したりしている。
-    </p>
-
-    <p>
-      少しクスッとしてしまいますが、近道を探していたはずが、曲がり角だけが増えているような状態です。
-    </p>
-
-    <p>
-      あなたは、止まっているわけではありません。むしろ、かなり動き、試し、改善しています。
-    </p>
-
-    <p>
-      だからこそ、一日の終わりに「今日もいろいろ動いた。でも、何が積み上がったんだろう」と感じると、余計にもどかしいのです。
-    </p>
-
-    <p>
-      問題は、改善することではありません。行動の中で見つけた改善点を、今までつくってきたものへどのようにつなげればよいのかが、まだはっきりしていないことにあります。
+      近道を探していたはずなのに、
+      曲がり角だけが増えている。
+      そんな感覚になることもあるかもしれません。
     </p>
   </article>
 
-  <article class="result-block result-block--final">
+  <!-- 04 -->
+  <article class="result-block result-block--risk">
+    <h2>この状態が続くと…</h2>
+
+    <div class="risk-items">
+      <div class="risk-item">
+        発信やサービスのやり方が、
+        短い期間で何度も変わりやすくなる
+      </div>
+
+      <div class="risk-item">
+        試したことは多いのに、
+        何が効果的だったのか分かりにくくなる
+      </div>
+
+      <div class="risk-item">
+        改善するたびに土台まで変わり、
+        過去の積み上げを活かしにくくなる
+      </div>
+
+      <div class="risk-item">
+        かなり動いているのに、
+        「何が残ったんだろう」と感じやすくなる
+      </div>
+    </div>
+  </article>
+
+  <!-- 05 -->
+  <article class="result-block result-block--key">
+    <h2>でも、問題は「改善すること」ではありません</h2>
+
+    <p>
+      あなたの改善力は、
+      行動を成果へ近づけるための大きな強みです。
+    </p>
+
+    <p>
+      ただ、改善点が見えるたびに
+      すべてを変えてしまうと、
+      何がよかったのか、
+      何を残すべきだったのかまで
+      分からなくなってしまいます。
+    </p>
+
+    <p class="key-message">
+      <span class="key-message-line">今、変えるべきなのはどこなのか。</span>
+      <span class="key-message-line">逆に、何はそのまま残すのか。</span>
+    </p>
+
+    <p>
+      この区別ができるようになると、
+      毎回つくり直さなくても、
+      今までの行動を活かしながら
+      改善を重ねられるようになります。
+    </p>
+
+    <p>
+      そしてあなたの速い行動力は、
+      バラバラな試行錯誤ではなく、
+      <strong>積み上がる成果</strong>
+      へ変わりやすくなります。
+    </p>
+  </article>
+
+  <!-- 06 LINE自動生成用 -->
+  <article class="result-block result-block--final result-block--source-only">
     <h2>ここから先が本題です</h2>
-
-    <p>
-      ここまで読んで、「そうそう。少し直すつもりが、いつの間にか別の企画になっているのよね」と思ったでしょうか。
-    </p>
-
-    <p>
-      手相から見えているあなたの行動力は、考えているだけでは分からないことを、実際に試しながら確かめるための大切な強みです。
-    </p>
-
-    <p>
-      さらに、現実の中から問題点を見つけ、より分かりやすく、使いやすい形へ整える力も持っています。
-    </p>
-
-    <p>
-      だから、まず動くことも、見つけた問題をすぐに直したくなることも、あなたらしさの一部です。
-    </p>
-
-    <p>
-      ただ、改善するたびに土台までつくり直すと、これまでの行動から得た経験や工夫が、1つの形として積み上がりにくくなります。
-    </p>
-
-    <p>
-      あなたらしい進み方を見つけるヒントは、改善を止めることではなく、今までの行動をどのように活かしながら整えるかにありそうです。
-    </p>
-
-    <p>
-      では、行動力と改善力を仕事に活かしながら、これまでの積み重ねも大切にして自分らしく進むには、どのような考え方が合っているのでしょうか。
-    </p>
 
     <ul class="line-benefits-source">
       <li>
-        <strong>改善したくなる自分に合う考え方：</strong>
-        新しい方法を見つけたときも、今までの行動を活かしながら進むために何を大切にすればよいかが分かります。
+        <strong>もっと効率のよい方法が気になる理由：</strong>
+        行動して改善点に気づける人ほど、
+        なぜ次の方法へ目が向きやすいのかが分かります。
       </li>
 
       <li>
-        <strong>自分に合った見直し方の目安：</strong>
-        今の形へどこまで手を入れるかを考えるための、自分に合った目安が分かります。
+        <strong>何を残し、何を変えるかの判断基準：</strong>
+        少し反応が弱いときに、
+        土台まで変える必要があるのか、
+        一部だけ直せばよいのかを判断する考え方が分かります。
       </li>
 
       <li>
-        <strong>仕事で行動力と改善力を活かすヒント：</strong>
-        試して気づき、整えていく力を、信頼される仕事へ育てる3つのヒントが分かります。
+        <strong>行動を積み上がる成果へ変えるヒント：</strong>
+        変えない土台を決め、
+        試す回数や期限を区切り、
+        一度に1つずつ改善する3つのコツが分かります。
       </li>
     </ul>
 
     <p class="cta-message-source">
-      あなたには、まず行動して確かめ、現実の中で見つけた問題をよりよい形へ整える力があります。その強みを仕事に活かしながら、これまでの積み重ねも大切にして進むための考え方を、LINEで受け取ってください。
+      あなたには、
+      まず動く力も、
+      現実を見て改善する力もあります。
+      必要なのは、
+      改善をやめることではありません。
+      今回は何を残すのか。
+      そして、どこだけを変えるのか。
+      その判断ができるようになると、
+      今までの行動を捨てずに、
+      結果につながる形へ磨いていけます。
+      あなたに合う改善の進め方を、
+      LINEで受け取ってください。
     </p>
   </article>
+
 </section>
