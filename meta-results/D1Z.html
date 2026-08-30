@@ -1,231 +1,508 @@
-<section class="result-detail" data-diagnosis-code="D1Z">
-  <div class="result-catch" data-hide-title="true">
-    <p>【あなたを一言で表すと】</p>
-    <p>丁寧に作り込むクラフター</p>
+<section class="result-detail result-detail--visual" data-diagnosis-code="D1Z">
+
+  <style>
+    .result-detail--visual {
+      max-width: 720px;
+      margin: 0 auto;
+      color: #24313a;
+      line-height: 1.8;
+    }
+
+    .diagnosis-result-fv {
+      margin: 0 0 28px;
+      padding: 0;
+    }
+
+    .diagnosis-result-fv img {
+      display: block;
+      width: 100%;
+      height: auto;
+      margin: 0 auto;
+    }
+
+    .result-detail--visual .result-block {
+      margin: 0 16px 28px;
+      padding: 26px 20px;
+      background: #ffffff;
+      border: 1px solid #dcecf5;
+      border-radius: 18px;
+      box-sizing: border-box;
+    }
+
+    .result-detail--visual .result-block h2 {
+      margin: 0 0 18px;
+      color: #083f5c;
+      font-size: 22px;
+      line-height: 1.45;
+      text-align: left;
+    }
+
+    .result-detail--visual .result-block p {
+      margin: 0 0 16px;
+      font-size: 16px;
+      line-height: 1.9;
+    }
+
+    .result-detail--visual .result-block p:last-child {
+      margin-bottom: 0;
+    }
+
+    .type-keywords {
+      margin: 0 0 20px;
+      font-size: 20px;
+      font-weight: 700;
+      color: #1f6fb2;
+      letter-spacing: 0.04em;
+      text-align: center;
+    }
+
+    .type-point-list {
+      display: grid;
+      gap: 11px;
+      margin: 0 0 20px;
+    }
+
+    .type-point {
+      position: relative;
+      padding: 14px 14px 14px 43px;
+      background: #f8fcff;
+      border-radius: 12px;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .type-point::before {
+      content: "✓";
+      position: absolute;
+      left: 16px;
+      top: 14px;
+      color: #1f6fb2;
+      font-weight: 700;
+    }
+
+    .type-summary {
+      padding: 16px;
+      background: #eef7ff;
+      border-radius: 12px;
+      color: #314958;
+    }
+
+    .talent-scene-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    .talent-scene-card {
+      padding: 18px;
+      border-radius: 14px;
+      background: #eef7ff;
+      border: 1px solid #cfe3f1;
+    }
+
+    .talent-scene-card strong {
+      display: block;
+      margin-bottom: 8px;
+      color: #083f5c;
+      font-size: 17px;
+      line-height: 1.5;
+    }
+
+    .talent-scene-card p {
+      margin: 0 !important;
+    }
+
+    .loop-intro {
+      font-weight: 700;
+      color: #314958;
+    }
+
+    .diagnosis-loop {
+      margin: 20px 0;
+    }
+
+    .loop-step {
+      padding: 15px 14px;
+      background: #f8fcff;
+      border: 1px solid #cfe6f3;
+      border-radius: 12px;
+      text-align: center;
+      font-size: 16px;
+      font-weight: 700;
+      color: #083f5c;
+    }
+
+    .loop-arrow {
+      height: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #6f8798;
+      font-size: 24px;
+      font-weight: 700;
+    }
+
+    .loop-step--last {
+      background: #fff5f2;
+      border-color: #f2c9bf;
+      color: #9b4d3b;
+    }
+
+    .result-block--risk {
+      background: #fffaf7 !important;
+      border-color: #f1d9cf !important;
+    }
+
+    .risk-items {
+      display: grid;
+      gap: 10px;
+    }
+
+    .risk-item {
+      position: relative;
+      padding: 13px 14px 13px 40px;
+      background: #ffffff;
+      border: 1px solid #f0ddd5;
+      border-radius: 11px;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .risk-item::before {
+      content: "●";
+      position: absolute;
+      left: 17px;
+      top: 15px;
+      color: #d98670;
+      font-size: 10px;
+    }
+
+    .result-block--key {
+      background: #eef7ff !important;
+      border-color: #bddcec !important;
+    }
+
+    .key-message {
+      margin: 18px 0 !important;
+      padding: 18px 16px;
+      background: #ffffff;
+      border: 1px solid #dcecf5;
+      border-radius: 8px;
+      font-size: 18px !important;
+      font-weight: 700;
+      color: #083f5c;
+      text-align: center;
+      line-height: 1.7;
+    }
+
+    .key-message-line {
+      display: block;
+    }
+
+    .result-block--source-only {
+      display: none !important;
+    }
+
+    @media (max-width: 600px) {
+      .result-detail--visual .result-block {
+        margin-left: 14px;
+        margin-right: 14px;
+        padding: 23px 17px;
+      }
+
+      .result-detail--visual .result-block h2 {
+        font-size: 21px;
+      }
+
+      .type-keywords {
+        font-size: 19px;
+      }
+
+      .talent-scene-card strong {
+        font-size: 17px;
+      }
+
+      .key-message {
+        font-size: 17px !important;
+        padding: 16px 14px;
+      }
+    }
+  </style>
+
+  <!-- 診断結果FV：ページ最上部 -->
+  <div class="diagnosis-result-fv">
+    <img
+      src="meta-fv-results/D1Z.png"
+      alt="才能コンパス診断 D1Z 診断結果"
+    >
   </div>
 
+  <!-- 01 あなたはこんなタイプです -->
   <article class="result-block">
-    <h2>あなたの本質</h2>
+    <h2>あなたはこんなタイプです</h2>
 
-    <p class="highlight-paragraph">慎重 × 突破 × 感性</p>
-
-    <p>
-      あなたは、新しいものに出会うと、心の中にあるスイッチが自然に入る人です。
+    <p class="type-keywords">
+      慎重 × 突破 × 感性
     </p>
 
-    <p>
-      今までになかった表現に触れたとき。新しい仕事の形を知ったとき。自分の中に新しいイメージが浮かんだとき。
-    </p>
+    <div class="type-point-list">
 
-    <p>
-      「これをやってみたい」<br>
-      「こんなものをつくれたら面白そう」<br>
-      と、気持ちが動きます。
-    </p>
+      <div class="type-point">
+        新しいものに触れると、
+        <strong>「これを形にしたい」と心が動く</strong>
+      </div>
 
-    <p>
-      あなたの中には、今までと同じ場所にとどまるのではなく、自分の手で新しいものを生み出したいという力があります。
-    </p>
+      <div class="type-point">
+        勢いだけで出すのではなく、
+        <strong>自分らしいかを丁寧に確かめる</strong>
+      </div>
 
-    <p>
-      ただし、面白そうという気持ちだけで、そのまま進むわけではありません。
-    </p>
+      <div class="type-point">
+        細かな違和感に気づき、
+        <strong>世界観や表現を磨き込める</strong>
+      </div>
 
-    <p>
-      「これは、本当に自分らしいだろうか」<br>
-      「この形なら、安心して届けられるだろうか」<br>
-      「細かなところまで、きちんと整っているだろうか」<br>
-      と、自分の感覚を丁寧に確かめます。
-    </p>
+    </div>
 
-    <p>
-      あなたは、勢いだけで新しいものをつくる人ではありません。頭の中にあるイメージと現実の形を見比べながら、自分が納得できるものへ丁寧に仕上げていく人です。
+    <p class="type-summary">
+      あなたは、新しいものを思いつくだけの人ではありません。
+      「こんな形を作りたい」というイメージを、
+      自分の感覚に合う形へ丁寧に整えながら、
+      現実に生み出していく人です。
     </p>
   </article>
 
+  <!-- 02 こんな場面で強みが出ます -->
   <article class="result-block">
-    <h2>あなたの才能</h2>
+    <h2>こんな場面で強みが出ます</h2>
 
-    <p>そんなあなたには、次のような力があります。</p>
+    <div class="talent-scene-grid">
 
-    <ul>
-      <li>新しい魅力や可能性を感じ取る力</li>
-      <li>頭の中にあるイメージを形にする力</li>
-      <li>細かな違いや違和感に気づく力</li>
-      <li>自分らしい表現を丁寧につくり込む力</li>
-    </ul>
+      <div class="talent-scene-card">
+        <strong>💡 新しい魅力を見つけるとき</strong>
+        <p>
+          まだ形になっていないものにも、
+          「これは面白くなりそう」と
+          新しい可能性を感じ取れます。
+        </p>
+      </div>
+
+      <div class="talent-scene-card">
+        <strong>🎨 自分らしい形へ整えるとき</strong>
+        <p>
+          言葉の温度や写真の雰囲気、
+          全体の印象まで見ながら、
+          自分が届けたい世界観へ近づけられます。
+        </p>
+      </div>
+
+      <div class="talent-scene-card">
+        <strong>🛠️ イメージを形にするとき</strong>
+        <p>
+          頭の中にあるアイデアを、
+          相手が実際に受け取れる形まで
+          丁寧に作り込めます。
+        </p>
+      </div>
+
+    </div>
+  </article>
+
+  <!-- 03 今、こんなループに入っていませんか？ -->
+  <article class="result-block">
+    <h2>今、こんなループに入っていませんか？</h2>
+
+    <p class="loop-intro">
+      「これ、やってみたい」と思ったはずなのに……
+    </p>
+
+    <div class="diagnosis-loop">
+
+      <div class="loop-step">
+        新しいアイデアにワクワクする
+      </div>
+
+      <div class="loop-arrow">↓</div>
+
+      <div class="loop-step">
+        実際の形へ作り始める
+      </div>
+
+      <div class="loop-arrow">↓</div>
+
+      <div class="loop-step">
+        「なんか違う」と細かなズレに気づく
+      </div>
+
+      <div class="loop-arrow">↓</div>
+
+      <div class="loop-step loop-step--last">
+        修正が広がり、方向まで見直したくなる
+      </div>
+
+    </div>
 
     <p>
-      あなたは、新しいアイデアを思いつくだけの人ではありません。
+      あなたは、アイデアがないわけではありません。
     </p>
 
     <p>
-      そのアイデアを、どのような言葉で表すのか。どのような雰囲気にするのか。受け取る人に、どのような印象を持ってほしいのか。細かなところまで考えられます。
+      むしろ、
+      <strong>「こんなものを作りたい」というイメージは、かなり見えています。</strong>
     </p>
 
     <p>
-      たとえば、サービスをつくるときにも、内容をそろえるだけではありません。
+      ところが、実際に形にすると、
+      「言いたいことは合っている。でも少し私らしくない」
+      「悪くはない。でも、何かが違う」と、
+      小さなズレが見えてきます。
     </p>
 
     <p>
-      申し込む前にどのような印象を受けるか。実際にサービスを受ける時間を、どのように過ごしてほしいか。終わったあとに、どのような気持ちを持ち帰ってほしいか。
+      そこで言葉を直す。
+      すると写真が気になる。
+      写真を変えると、今度は全体の見せ方まで気になってくる。
     </p>
 
     <p>
-      相手が受け取る時間全体を、一つの体験として考えられます。
+      気づけば、
+      <strong>
+        新しい世界へ出発するつもりだったのに、
+        玄関で服を替え、靴を替え、バッグまで替えて、
+        出発時間を過ぎている。
+      </strong>
     </p>
 
     <p>
-      発信や資料をつくるときも、内容が伝わればよいとは考えません。
-    </p>
-
-    <p>
-      言葉の温度。写真や色から伝わる雰囲気。文章の流れ。全体を見たときに感じる印象。そうした部分まで、自分が届けたいものに合わせようとします。
-    </p>
-
-    <p>
-      周りからも、「細かなところまでよく見ているね」「あなたがつくるものには雰囲気がある」「丁寧につくられているね」「その表現はあなたらしい」と言われたことがあるかもしれません。
-    </p>
-
-    <p>
-      あなたは、ただ感性が豊かな人ではありません。頭の中にあるイメージを、言葉やサービス、目に見える形へ変えられる人です。
-    </p>
-
-    <p>
-      まだ存在していないものを、自分の感性を込めて丁寧に生み出せることが、あなたの大きな才能です。
+      そんな状態になることもあるかもしれません。
     </p>
   </article>
 
-  <article class="result-block">
-    <h2>今のあなたの状態</h2>
+  <!-- 04 この状態が続くと… -->
+  <article class="result-block result-block--risk">
+    <h2>この状態が続くと…</h2>
+
+    <div class="risk-items">
+
+      <div class="risk-item">
+        小さな違和感から修正範囲が広がり、
+        発信やサービスを外へ出すのが遅くなる
+      </div>
+
+      <div class="risk-item">
+        表現を整えているうちに、
+        テーマやサービスの方向まで見直したくなる
+      </div>
+
+      <div class="risk-item">
+        たくさん作業しているのに、
+        公開や募集など現実の一歩が増えにくくなる
+      </div>
+
+      <div class="risk-item">
+        本当は丁寧に作り込んでいるのに、
+        「自分は一つのことを続けられない」と感じやすくなる
+      </div>
+
+    </div>
+  </article>
+
+  <!-- 05 問題の正体 -->
+  <article class="result-block result-block--key">
+    <h2>でも、問題は「違和感に気づくこと」ではありません</h2>
 
     <p>
-      ただ今は、その慎重さと繊細な感性が、少しだけ空回りしているかもしれません。
+      言葉や見せ方の小さなズレまで感じ取れることは、
+      自分らしいものを生み出すための
+      あなたの大きな強みです。
     </p>
 
     <p>
-      「これをつくりたい」と、新しいイメージが浮かぶ。最初は気持ちが動き、わくわくしながら形にしていきます。
+      ただ、その違和感をすべて
+      「方向そのものが違うサイン」と考えると、
+      一部分を直すだけでよかったものまで、
+      最初から作り直しやすくなります。
+    </p>
+
+    <p class="key-message">
+      <span class="key-message-line">
+        本当に、表現の核からズレているのか。
+      </span>
+      <span class="key-message-line">
+        それとも、細かな違和感が気になっているだけなのか。
+      </span>
     </p>
 
     <p>
-      ところが、ある程度できたところで、「悪くはないけれど、何かが違う」と感じます。
-    </p>
-
-    <p>
-      そこで、言葉を変える。色や見せ方を変える。全体の流れも少し整えてみる。
-    </p>
-
-    <p>
-      一か所がしっくりくると、今度は別のところが気になってきます。
-    </p>
-
-    <p>
-      「この部分だけ、少し雰囲気が違う」「こちらを変えるなら、全体も合わせた方がよさそう」と、整えたい範囲が広がっていきます。
-    </p>
-
-    <p>
-      最初は新しい世界へ出発するつもりだったのに、玄関で服が気になり、靴を替え、バッグも選び直し、気づけば出発時間を過ぎている。そんなことはないでしょうか。
-    </p>
-
-    <p>
-      あなたの中では、どの変更にもきちんと理由があります。
-    </p>
-
-    <p>
-      自分の名前で届けるなら、納得できる形にしたい。自分らしくないものを、勢いだけで外へ出したくない。受け取る人にも、心地よく感じてもらいたい。
-    </p>
-
-    <p>
-      そのため、「これくらいで十分」と簡単には思えません。
-    </p>
-
-    <p>
-      発信だけでなく、新しいサービスや仕事についても、「もっと自分に合う形があるかもしれない」と、整え直したくなることがあります。
-    </p>
-
-    <p>
-      内容を考える。見せ方を整える。もう一度、自分の感覚を確かめる。そうしているうちに、最初に感じていた「やってみたい」という気持ちが、少しずつ遠くなることもあるでしょう。
-    </p>
-
-    <p>
-      あなたは、何もしていないわけではありません。かなり考えています。実際につくっています。そして、自分らしいものへ近づけようと何度も手を動かしています。
-    </p>
-
-    <p>
-      それなのに、一日の終わりには、「今日もたくさん整えたけれど、まだ届けられる状態ではない」と感じることがあります。
-    </p>
-
-    <p>
-      あなたに形にする力がないわけではありません。
-    </p>
-
-    <p>
-      ほかの人が見過ごす小さな違いに気づける。頭の中にあるイメージと、目の前にある形のズレを感じ取れる。そして、その違いを丁寧に整えられる人なのです。
-    </p>
-
-    <p>
-      今、新しいものを外へ出しにくくなっているのは、感性が足りないからではありません。自分の感性を大切にしているからこそ、まだ整えられる部分がよく見えているのかもしれません。
+      大切なのは、
+      違和感をなくすことではなく、
+      この違いを見分けられるようになることです。
     </p>
   </article>
 
+  <!-- 06 クロージング -->
   <article class="result-block result-block--final">
-    <h2>ここから先が本題です</h2>
+    <h2>最後に</h2>
 
     <p>
-      ここまで読んで、「そうそう。一つ整えると、また別のところが気になってくるのよね」と思ったでしょうか。
+      あなたには、
+      新しいものを形にし、
+      自分らしく磨く力があります。
     </p>
 
     <p>
-      手相から見えているあなたの慎重さ、突破力、感性は、新しい魅力や可能性を感じ取り、まだ存在していないものを、自分らしく丁寧に形にするための大切な才能です。
+      大切なのは、
     </p>
 
     <p>
-      新しい表現や仕事の可能性へ気づける。頭の中にあるイメージを、実際の形へ変えられる。ほかの人が見過ごす細かな違いに気づき、より魅力が伝わる形へ磨いていける。
+      <strong>
+        「本当に方向が違うのか」<br>
+        「細かな違和感なのか」
+      </strong>
     </p>
 
     <p>
-      こうした才能は、新しい商品やサービスをつくるとき、独自の表現を生み出すとき、相手の心に残る体験を考えるときなどに、大きく活かされます。
+      を見分けられること。
     </p>
 
     <p>
-      また、目新しいだけのものではなく、自分が心から納得できるものへ丁寧に仕上げられることも、あなたの強みです。
+      あなたの感性を、
+      作り直すためではなく、
+      自分らしいものを現実へ生み出すために使っていきましょう。
     </p>
+  </article>
 
-    <p>
-      あなたの慎重さや細かな違いに気づく感性は、新しい挑戦を引き戻すためにあるものではありません。
-    </p>
-
-    <p>
-      ほかの人には簡単につくれない、あなたならではの魅力や世界観を形にするために活かせます。
-    </p>
-
-    <p>
-      あなたらしい進み方のヒントは、細かなところを気にしないようにすることでも、自分らしさを薄めて急いで出すことでもありません。新しいものを生み出す力と、丁寧につくり込む感性の両方を、自分にしかできない仕事へ活かすことにありそうです。
-    </p>
-
-    <p>
-      <strong>では、新しい魅力を感じ取る力、自分らしさを丁寧に確かめる力、まだ存在していないものを形にする力を、仕事にどう活かしていけばよいのでしょうか。</strong>
-    </p>
+  <!-- LINE登録後に分かる3つのこと：自動取得用 -->
+  <article class="result-block result-block--source-only">
 
     <ul class="line-benefits-source">
+
       <li>
-        <strong>丁寧に形をつくる自分に合う進み方：</strong>
-        自分の感覚を大切にしながら、新しいものを生み出せる特徴を仕事に活かすヒントが分かります。
+        <strong>「なんか違う」が起こる理由：</strong>
+        慎重さ、突破力、感性が同時に働くことで、
+        なぜ新しいことを形にするほど細かなズレが気になりやすくなるのかが分かります。
       </li>
 
       <li>
-        <strong>突破力と感性を仕事に活かすヒント：</strong>
-        新しい可能性へ踏み出す力と、細かな違いに気づく感性を活かすヒントが分かります。
+        <strong>方向を変えるべき違和感の見分け方：</strong>
+        「今回の表現の核」と細かな好みを分け、
+        今直すべき部分と、あとから育てられる部分を判断する方法が分かります。
       </li>
 
       <li>
-        <strong>仕事で自分らしい表現を活かすヒント：</strong>
-        頭の中にあるイメージや世界観を、言葉やサービス、相手が受け取る体験へ活かすヒントが分かります。
+        <strong>感性を守りながら外へ出す3つのコツ：</strong>
+        表現の核を決め、試作版として外へ出し、
+        一度に一か所だけ整えながら自分らしい形を育てる方法が分かります。
       </li>
+
     </ul>
 
     <p class="cta-message-source">
-      あなたにはすでに、新しい魅力を感じ取る力も、頭の中のイメージを形にする力も、自分らしく丁寧につくり込む感性もあります。その才能を仕事でもっと活かすためのヒントを、LINEで受け取ってください。
+      あなたには、新しいものを形にし、自分らしく磨く力があります。
+      大切なのは、「本当に方向が違うのか」「細かな違和感なのか」を見分けられること。
+      あなたに合う「自分らしい形の育て方」を、LINEで受け取ってください。
     </p>
+
   </article>
+
 </section>
