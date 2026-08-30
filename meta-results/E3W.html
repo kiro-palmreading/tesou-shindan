@@ -1,454 +1,498 @@
-<section class="result-detail" data-diagnosis-code="E3W">
+<section class="result-detail result-detail--visual" data-diagnosis-code="E3W">
 
-  <div class="result-catch" data-hide-title="true">
-    <p>【あなたを一言で表すと】</p>
-    <p>可能性を織りなすコネクター</p>
+  <style>
+    /* ========================================
+       E3W 診断結果
+       Meta広告流入・スマホ向け
+    ======================================== */
+
+    .result-detail--visual {
+      max-width: 720px;
+      margin: 0 auto;
+      color: #24313a;
+      line-height: 1.8;
+    }
+
+    /* ========================================
+       FV
+    ======================================== */
+
+    .diagnosis-result-fv {
+      margin: 0 0 28px;
+      padding: 0;
+    }
+
+    .diagnosis-result-fv img {
+      display: block;
+      width: 100%;
+      height: auto;
+      margin: 0 auto;
+    }
+
+    /* ========================================
+       共通ブロック
+    ======================================== */
+
+    .result-detail--visual .result-block {
+      margin: 0 16px 28px;
+      padding: 26px 20px;
+      background: #ffffff;
+      border: 1px solid #dcecf5;
+      border-radius: 18px;
+      box-sizing: border-box;
+    }
+
+    .result-detail--visual .result-block h2 {
+      margin: 0 0 18px;
+      color: #083f5c;
+      font-size: 22px;
+      line-height: 1.45;
+      text-align: left;
+    }
+
+    .result-detail--visual .result-block p {
+      margin: 0 0 16px;
+      font-size: 16px;
+      line-height: 1.9;
+    }
+
+    .result-detail--visual .result-block p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* ========================================
+       あなたはこんなタイプ
+    ======================================== */
+
+    .type-keywords {
+      margin: 0 0 20px;
+      font-size: 20px;
+      font-weight: 700;
+      color: #1f6fb2;
+      letter-spacing: 0.04em;
+      text-align: center;
+    }
+
+    .type-point-list {
+      display: grid;
+      gap: 11px;
+      margin: 0 0 20px;
+    }
+
+    .type-point {
+      position: relative;
+      padding: 14px 14px 14px 43px;
+      background: #f8fcff;
+      border-radius: 12px;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .type-point::before {
+      content: "✓";
+      position: absolute;
+      left: 16px;
+      top: 14px;
+      color: #1f6fb2;
+      font-weight: 700;
+    }
+
+    .type-summary {
+      padding: 16px;
+      background: #eef7ff;
+      border-radius: 12px;
+      color: #314958;
+    }
+
+    /* ========================================
+       強みが出る場面
+    ======================================== */
+
+    .talent-scene-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    .talent-scene-card {
+      padding: 18px;
+      border-radius: 14px;
+      background: #eef7ff;
+      border: 1px solid #cfe3f1;
+    }
+
+    .talent-scene-card strong {
+      display: block;
+      margin-bottom: 8px;
+      color: #083f5c;
+      font-size: 17px;
+      line-height: 1.5;
+    }
+
+    .talent-scene-card p {
+      margin: 0 !important;
+    }
+
+    /* ========================================
+       今のループ
+    ======================================== */
+
+    .loop-intro {
+      font-weight: 700;
+      color: #314958;
+    }
+
+    .diagnosis-loop {
+      margin: 20px 0;
+    }
+
+    .loop-step {
+      padding: 15px 14px;
+      background: #f8fcff;
+      border: 1px solid #cfe6f3;
+      border-radius: 12px;
+      text-align: center;
+      font-size: 16px;
+      font-weight: 700;
+      color: #083f5c;
+    }
+
+    .loop-arrow {
+      height: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #6f8798;
+      font-size: 24px;
+      font-weight: 700;
+    }
+
+    .loop-step--last {
+      background: #fff5f2;
+      border-color: #f2c9bf;
+      color: #9b4d3b;
+    }
+
+    /* ========================================
+       この状態が続くと
+    ======================================== */
+
+    .result-block--risk {
+      background: #fffaf7 !important;
+      border-color: #f1d9cf !important;
+    }
+
+    .risk-items {
+      display: grid;
+      gap: 10px;
+    }
+
+    .risk-item {
+      position: relative;
+      padding: 13px 14px 13px 40px;
+      background: #ffffff;
+      border: 1px solid #f0ddd5;
+      border-radius: 11px;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .risk-item::before {
+      content: "●";
+      position: absolute;
+      left: 17px;
+      top: 15px;
+      color: #d98670;
+      font-size: 10px;
+    }
+
+    /* ========================================
+       問題の正体
+    ======================================== */
+
+    .result-block--key {
+      background: #eef7ff !important;
+      border-color: #bddcec !important;
+    }
+
+    .key-message {
+      margin: 18px 0 !important;
+      padding: 18px 16px;
+      background: #ffffff;
+      border: 1px solid #dcecf5;
+      border-radius: 8px;
+      font-size: 18px !important;
+      font-weight: 700;
+      color: #083f5c;
+      text-align: center;
+      line-height: 1.7;
+    }
+
+    .key-message-line {
+      display: block;
+    }
+
+    /* ========================================
+       LINE自動生成用データ
+    ======================================== */
+
+    .result-block--source-only {
+      display: none !important;
+    }
+
+    /* ========================================
+       スマホ
+    ======================================== */
+
+    @media (max-width: 600px) {
+      .result-detail--visual .result-block {
+        margin-left: 14px;
+        margin-right: 14px;
+        padding: 23px 17px;
+      }
+
+      .result-detail--visual .result-block h2 {
+        font-size: 21px;
+      }
+
+      .type-keywords {
+        font-size: 19px;
+      }
+
+      .talent-scene-card strong {
+        font-size: 17px;
+      }
+
+      .key-message {
+        font-size: 17px !important;
+        padding: 16px 14px;
+      }
+    }
+  </style>
+
+  <!-- FV -->
+  <div class="diagnosis-result-fv">
+    <img
+      src="meta-fv-results/E3W.png"
+      alt="才能コンパス診断 可能性を織りなすコネクター"
+      loading="eager"
+      fetchpriority="high"
+    >
   </div>
 
+  <!-- 01 -->
   <article class="result-block">
-    <h2>あなたの本質</h2>
+    <h2>あなたはこんなタイプです</h2>
 
-    <p class="highlight-paragraph">
+    <div class="type-keywords">
       熟考 × 世界観 × 多角的視点
-    </p>
+    </div>
 
-    <p>
-      あなたは、自分の中にある世界観を大切にしながら、
-      さまざまな視点や可能性を深く考える人です。
-    </p>
+    <div class="type-point-list">
+      <div class="type-point">
+        一つの案だけで決めず、
+        <strong>さまざまな角度から可能性をじっくり考える</strong>
+      </div>
 
-    <p>
-      一つの案が浮かんでも、
-      すぐに「これが答え」と決めるわけではありません。
-    </p>
+      <div class="type-point">
+        一見別々に見えるものから、
+        <strong>共通点や新しいつながりを見つけられる</strong>
+      </div>
 
-    <p>
-      「別の角度から見ると、どうだろう」<br>
-      「このアイデアと、以前の経験もつながりそう」<br>
-      「違う立場の人には、別の価値があるかもしれない」
-    </p>
+      <div class="type-point">
+        複数の視点や経験を、
+        <strong>一つの意味ある世界観へ束ねられる</strong>
+      </div>
+    </div>
 
-    <p>
-      と、いくつもの視点から
-      じっくり考えを深めます。
-    </p>
-
-    <p>
-      あなたにとっての世界観は、
-      自分の好みだけでつくるものではありません。
-    </p>
-
-    <p>
-      これまで経験してきたこと。<br>
-      今、大切にしたい考え。<br>
-      関わる人が持っている思い。<br>
-      その先に生まれる可能性。
-    </p>
-
-    <p>
-      そうしたものすべてが、
-      一つの世界としてつながっています。
-    </p>
-
-    <p>
-      そのため、一見すると
-      関係がないように見えるものにも、
-    </p>
-
-    <p>
-      「この2つには、共通する意味がありそう」<br>
-      「別々の経験だけれど、同じ価値につながっているかもしれない」
-    </p>
-
-    <p>
-      と、その間にあるつながりを見つけられます。
-    </p>
-
-    <p>
+    <p class="type-summary">
       あなたは、ただ選択肢が多い人ではありません。
-    </p>
-
-    <p>
-      異なる経験や考えを深く見つめ、
-      自分なりの意味を持った
-      新しい世界へ織り上げていく人です。
+      さまざまな可能性を丁寧に見渡し、
+      一見別々に見えるものの中からつながりを見つけ、
+      自分にしか作れない新しい形へ
+      育てていく人です。
     </p>
   </article>
 
+  <!-- 02 -->
   <article class="result-block">
-    <h2>あなたの才能</h2>
+    <h2>こんな場面で強みが出ます</h2>
 
-    <p>
-      そんなあなたには、
-    </p>
+    <div class="talent-scene-grid">
+      <div class="talent-scene-card">
+        <strong>👀 可能性を広く見るとき</strong>
+        <p>
+          一つの答えへ急いで決めず、
+          別の立場や切り口から
+          新しい可能性を見つけられます。
+        </p>
+      </div>
 
-    <ul>
-      <li>一つの物事をさまざまな角度から深く見る力</li>
-      <li>人が見落としている可能性を見つける力</li>
-      <li>異なる経験や考えの共通点を見つける力</li>
-      <li>複数の視点を新しい世界観へ織り上げる力</li>
-    </ul>
+      <div class="talent-scene-card">
+        <strong>🧩 共通点を見つけるとき</strong>
+        <p>
+          これまでの経験やアイデアなど、
+          一見別々に見えるものの中から
+          共通する意味を見つけられます。
+        </p>
+      </div>
 
-    <p>
-      があります。
-    </p>
-
-    <p>
-      仕事や日常の中で、
-    </p>
-
-    <p>
-      「いろいろな見方ができるよね」<br>
-      「発想が柔軟だね」<br>
-      「そんなつながり、よく見つけたね」<br>
-      「全体を見ながら考えられるよね」
-    </p>
-
-    <p>
-      と言われたことはありませんか？
-    </p>
-
-    <p>
-      あなたは、ただ案をたくさん出す人ではありません。
-    </p>
-
-    <p>
-      一つひとつの案について、
-    </p>
-
-    <p>
-      どのような意味があるのか。<br>
-      誰にとって価値があるのか。<br>
-      ほかの経験と、どこでつながるのか。<br>
-      組み合わせることで、何が生まれるのか。
-    </p>
-
-    <p>
-      そこまで深く考えられます。
-    </p>
-
-    <p>
-      たとえば、誰かの経験や得意なことについて
-      話を聞いているとき。
-    </p>
-
-    <p>
-      本人には別々に見えている経験の中から、
-    </p>
-
-    <p>
-      「どちらにも、同じ強みが表れている」<br>
-      「一見違う仕事だけれど、大切にしているものは共通している」<br>
-      「この2つをつなぐと、新しい価値になりそう」
-    </p>
-
-    <p>
-      と、共通する意味を見つけられます。
-    </p>
-
-    <p>
-      発信を考えるときにも、
-     一つのテーマだけを切り離して見るのではありません。
-    </p>
-
-    <p>
-      過去に伝えてきたこと。<br>
-      今届けたい考え。<br>
-      相手が抱えている悩み。<br>
-      これから伝えたい世界。
-    </p>
-
-    <p>
-      それぞれのつながりを考えながら、
-      全体に流れるテーマを見つけられます。
-    </p>
-
-    <p>
-      サービスや企画をつくるときにも、
-      今ある内容だけを見て終わる人ではありません。
-    </p>
-
-    <p>
-      自分の経験を別の形で活かせないか。<br>
-      違う分野の考えを組み合わせられないか。<br>
-      ほかの立場の人にも、新しい価値を届けられないか。
-    </p>
-
-    <p>
-      さまざまな可能性を考えながら、
-      まだ存在していない仕事の形を思い描けます。
-    </p>
-
-    <p>
-      人と人をつなぐ。<br>
-      経験と経験をつなぐ。<br>
-      過去の出来事と、これからの可能性をつなぐ。
-    </p>
-
-    <p>
-      そして、それらを一つの意味ある世界へ
-      織り上げられることが、
-      あなたの大きな才能です。
-    </p>
+      <div class="talent-scene-card">
+        <strong>🧶 世界観へつなげるとき</strong>
+        <p>
+          お客様の悩み、自分の経験、
+          今届けたい価値などをつなぎ、
+          一つの企画や仕事へまとめられます。
+        </p>
+      </div>
+    </div>
   </article>
 
+  <!-- 03 -->
   <article class="result-block">
-    <h2>今のあなたの状態</h2>
+    <h2>今、こんなループに入っていませんか？</h2>
 
-    <p>
-      ただ今は、その多角的に深く考える力が、
-      少しだけ前へ進むことを難しくしているかもしれません。
+    <p class="loop-intro">
+      「まずは、この案から始めよう」と思ったはずなのに……
     </p>
 
-    <p>
-      たとえば、発信のテーマを一つ考え、
-    </p>
+    <div class="diagnosis-loop">
+      <div class="loop-step">
+        一つの案をじっくり考える
+      </div>
+
+      <div class="loop-arrow">↓</div>
+
+      <div class="loop-step">
+        別のつながりや可能性が見えてくる
+      </div>
+
+      <div class="loop-arrow">↓</div>
+
+      <div class="loop-step">
+        ほかの案との関係まで整理したくなる
+      </div>
+
+      <div class="loop-arrow">↓</div>
+
+      <div class="loop-step loop-step--last">
+        全体を組み直し、最初の入口が決まらなくなる
+      </div>
+    </div>
 
     <p>
-      「まずは、これについて書いてみよう」<br>
-      「今は、この内容を伝えたい」
-    </p>
-
-    <p>
-      と思う。
-    </p>
-
-    <p>
-      ところが、書き始める前に、
-    </p>
-
-    <p>
-      「このテーマは、別の悩みにもつながっていそう」<br>
-      「違う切り口から伝えた方が、世界観が深くなるかも」<br>
-      「今後つくりたい仕事とのつながりも考えておきたい」
-    </p>
-
-    <p>
-      と、別の可能性が次々に見えてきます。
-    </p>
-
-    <p>
-      そこで、発信全体の構成を考える。<br>
-      テーマ同士のつながりを書き出す。<br>
-      どの順番で伝えるかを組み直す。
-    </p>
-
-    <p>
-      一つの発信について考えていたはずなのに、
-      頭の中には、もっと大きな世界が
-     でき始めています。
-    </p>
-
-    <p>
-      ただ、最初の一つだけは、
-      まだ外へ出ていないことがあります。
-    </p>
-
-    <p>
-      サービスをつくるときも同じです。
-    </p>
-
-    <p>
-      「この人に向けた内容にしよう」
-      と考えていたはずなのに、
-    </p>
-
-    <p>
-      「別の悩みを持つ人にも役立ちそう」<br>
-      「この経験も組み合わせられるかもしれない」<br>
-      「個別で届ける形も、講座にする形もありそう」<br>
-      「ほかの人と一緒につくる可能性もあるかもしれない」
-    </p>
-
-    <p>
-      と、複数の展開が見えてきます。
-    </p>
-
-    <p>
-      どの案も、自分の世界観と
-      どこかでつながっています。
-    </p>
-
-    <p>
-      そのため、一つを選ぼうとすると、
-    </p>
-
-    <p>
-      「ほかの大切な可能性を、切り離してしまうかもしれない」<br>
-      「もっと全体がつながる形があるのではないか」
-    </p>
-
-    <p>
-      と感じます。
-    </p>
-
-    <p>
-      すると、
-    </p>
-
-    <p>
-      深く考える<br>
-      ↓<br>
-      新しいつながりが見える<br>
-      ↓<br>
-      可能性が広がる<br>
-      ↓<br>
-      全体を組み直す<br>
-      ↓<br>
-      さらに別のつながりが見える
-    </p>
-
-    <p>
-      という流れになりやすくなります。
-    </p>
-
-    <p>
-      そうそう、頭の中では、
-      点と点を結ぶ線がどんどん増えています。
-    </p>
-
-    <p>
-      すてきな模様は見えてきているのに、
-      どこが最初の一目なのかだけが
-      分かりにくくなっているのです。
-    </p>
-
-    <p>
-      あなたは、何もしていないわけではありません。
-    </p>
-
-    <p>
-      かなり深く考えています。<br>
-      かなり多くの可能性を見つけています。<br>
-      自分の世界観も、確実に育っています。
-    </p>
-
-    <p>
-      それなのに、一日の終わりには、
-    </p>
-
-    <p>
-      「今日も、いろいろなつながりを考えた」<br>
-      「でも、現実ではまだ始まっていない」<br>
-      「私は、どこから形にすればよいのだろう」
-    </p>
-
-    <p>
-      と、少し疲れてしまうことがあるかもしれません。
-    </p>
-
-    <p>
-      そして、
-    </p>
-
-    <p>
-      「私は、決めるのが苦手なのかな」<br>
-      「考えをまとめる力がないのかな」<br>
-      「可能性を広げすぎているのかな」
-    </p>
-
-    <p>
-      と、自分を責めたくなることもあるでしょう。
-    </p>
-
-    <p>
-      けれど、あなたに決める力がないわけではありません。
-    </p>
-
-    <p>
-      一つの可能性を選んだあとにも、
-      それとつながる別の価値が見えているのです。
-    </p>
-
-    <p>
-      深く考える力。<br>
-      自分の世界観を大切にする力。<br>
-      さまざまな角度から可能性を見る力。
-    </p>
-
-    <p>
-      その3つが同時に働くことで、
-      どこへ力を向ければよいのか、
-      分かりにくくなっているのです。
+      あなたは、決める力がなくて
+      止まっているわけではありません。
+      むしろ、
+      <strong>
+        見えている可能性をできるだけ活かし、
+        意味のある一つの世界へつなげようとしています。
+      </strong>
+      ただ、考えるほど新しいつながりが見えてくるため、
+      すべてを整理してからでないと
+      最初の一つを選びにくくなりやすいのです。
     </p>
   </article>
 
-  <article class="result-block result-block--final">
+  <!-- 04 -->
+  <article class="result-block result-block--risk">
+    <h2>この状態が続くと…</h2>
+
+    <div class="risk-items">
+      <div class="risk-item">
+        一つの発信を始める前に、
+        テーマ同士のつながりや全体構成まで考え続けやすくなる
+      </div>
+
+      <div class="risk-item">
+        サービスの対象や提供方法について複数の展開が見え、
+        最初の形を決めにくくなる
+      </div>
+
+      <div class="risk-item">
+        メモや構想は増えているのに、
+        現実へ出したものがなかなか増えにくくなる
+      </div>
+
+      <div class="risk-item">
+        本当は可能性を見つける力が高いのに、
+        「結局どこから始めればいいのだろう」と感じやすくなる
+      </div>
+    </div>
+  </article>
+
+  <!-- 05 -->
+  <article class="result-block result-block--key">
+    <h2>でも、問題は「可能性がたくさん見えること」ではありません</h2>
+
+    <p>
+      あなたには、
+      物事を多角的に見る力も、
+      人が見落とす可能性を見つける力も、
+      異なる視点を一つの世界観へつなげる力もあります。
+    </p>
+
+    <p>
+      ただ今は、
+      見えている可能性が
+      <strong>
+        「今始める入口」と
+        「あとから育てる展開」
+      </strong>
+      に分かれていないのかもしれません。
+    </p>
+
+    <p class="key-message">
+      <span class="key-message-line">「今、最初に試せる入口はどれか？」</span>
+      <span class="key-message-line">「次やその先へ残す可能性はどれか？」</span>
+    </p>
+
+    <p>
+      この順番を決められるようになると、
+      可能性を捨てなくても、
+      今始められる一つを選びながら、
+      ほかのアイデアも
+      次の展開へつなげていきやすくなります。
+    </p>
+  </article>
+
+  <!-- 06 LINE自動生成用 -->
+  <article class="result-block result-block--final result-block--source-only">
     <h2>ここから先が本題です</h2>
-
-    <p>
-      あなたに多くの可能性が見えるのは、
-      考えがまとまっていないからではありません。
-    </p>
-
-    <p>
-      一見すると別々に見える経験や考えの中から、
-      共通する意味を見つけられるからです。
-    </p>
-
-    <p>
-      さらに、目の前にあるものだけではなく、
-      それらをつないだ先に生まれる
-      新しい可能性まで思い描けます。
-    </p>
-
-    <p>
-      その才能は、
-    </p>
-
-    <p>
-      複雑な情報や考えを整理するとき。<br>
-      人の経験や強みをつなぐとき。<br>
-      新しい企画やサービスを考えるとき。<br>
-      複数の視点から、独自の世界観を生み出すとき。
-    </p>
-
-    <p>
-      さまざまな仕事の場面で活かせます。
-    </p>
-
-    <p>
-      けれど、自分の世界観を深く考える力と、
-      多くの可能性を見つける力が同時に働くと、
-      どのつながりを大切にすればよいのか、
-      分かりにくくなることがあります。
-    </p>
-
-    <p>
-      それは、あなたの世界観が曖昧だからでも、
-      考えをまとめる力が足りないからでもありません。
-    </p>
-
-    <p>
-      あなたが持っている才能を、
-      仕事の中でどう活かせばよいのかが、
-      まだ見えにくくなっているだけです。
-    </p>
-
-    <p>
-      <strong>では、自分の世界観を深く考える力、異なる可能性のつながりを見つける力、複数の視点を新しい意味へ織り上げる力を、仕事にどう活かしていけばよいのでしょうか。</strong>
-    </p>
 
     <ul class="line-benefits-source">
       <li>
-        <strong>多くのつながりをじっくり考える自分に合う進み方</strong><br>
-        熟考する力と広い視野を活かすためのヒントが分かります。
+        <strong>複数の可能性に共通する中心の見つけ方：</strong>
+        「誰の力になりたいか」
+        「どんな変化を届けたいか」
+        「何を大切にしたいか」を整理し、
+        仕事の中心線を見つける方法が分かります。
       </li>
+
       <li>
-        <strong>自分の世界観と多角的な視点を仕事に活かすヒント</strong><br>
-        異なる可能性の共通点を見つける才能の活かし方が見えてきます。
+        <strong>今取り組むことと、後から広げることの分け方：</strong>
+        可能性を
+        「今・次・その先」に分け、
+        捨てずに育てる順番を決める方法が分かります。
       </li>
+
       <li>
-        <strong>仕事で人や考えをつなぐ力を活かすヒント</strong><br>
-        複数の視点を新しい意味へ織り上げる才能の活かし方が分かります。
+        <strong>熟考と多角的視点を積み上げへ変える3つのヒント：</strong>
+        「一番よい案」ではなく
+        「最初に試せる入口」を選び、
+        現実の反応から次の可能性をつなげる方法が分かります。
       </li>
     </ul>
 
     <p class="cta-message-source">
-      あなたにはすでに、自分の世界観を深く考える力も、
-      異なる可能性のつながりを見つける力も、
-      複数の視点を新しい意味へ織り上げる力もあります。
-      その才能を仕事でもっと活かすためのヒントを、
+      あなたには、
+      さまざまな可能性を見つけ、
+      一見別々に見えるものをつなぎ、
+      自分にしか作れない世界観へ育てる力があります。
+      その熟考と多角的視点を、
+      すべてを考え終えるまで立ち止まるためではなく、
+      可能性を順番に現実へ移しながら
+      独自の仕事へ育てるために使う考え方を、
       LINEで受け取ってください。
     </p>
   </article>
