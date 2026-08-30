@@ -1,346 +1,527 @@
-<section class="result-detail" data-diagnosis-code="D1X">
+<section class="result-detail result-detail--visual" data-diagnosis-code="D1X">
 
-  <!-- 診断結果FV：ページ最上部 -->
-  <div class="result-fv" style="width: 100%; margin: 0 auto 24px;">
+  <style>
+    /* ========================================
+       D1X 診断結果
+       Meta広告流入・スマホ向け
+    ======================================== */
+
+    .result-detail--visual {
+      max-width: 720px;
+      margin: 0 auto;
+      color: #24313a;
+      line-height: 1.8;
+    }
+
+    /* ========================================
+       FV
+    ======================================== */
+
+    .diagnosis-result-fv {
+      margin: 0 0 28px;
+      padding: 0;
+    }
+
+    .diagnosis-result-fv img {
+      display: block;
+      width: 100%;
+      height: auto;
+      margin: 0 auto;
+    }
+
+    /* ========================================
+       共通ブロック
+    ======================================== */
+
+    .result-detail--visual .result-block {
+      margin: 0 16px 28px;
+      padding: 26px 20px;
+      background: #ffffff;
+      border: 1px solid #dcecf5;
+      border-radius: 18px;
+      box-sizing: border-box;
+    }
+
+    .result-detail--visual .result-block h2 {
+      margin: 0 0 18px;
+      color: #083f5c;
+      font-size: 22px;
+      line-height: 1.45;
+      text-align: left;
+    }
+
+    .result-detail--visual .result-block p {
+      margin: 0 0 16px;
+      font-size: 16px;
+      line-height: 1.9;
+    }
+
+    .result-detail--visual .result-block p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* ========================================
+       あなたはこんなタイプ
+    ======================================== */
+
+    .type-keywords {
+      margin: 0 0 20px;
+      font-size: 20px;
+      font-weight: 700;
+      color: #1f6fb2;
+      letter-spacing: 0.04em;
+      text-align: center;
+    }
+
+    .type-point-list {
+      display: grid;
+      gap: 11px;
+      margin: 0 0 20px;
+    }
+
+    .type-point {
+      position: relative;
+      padding: 14px 14px 14px 43px;
+      background: #f8fcff;
+      border-radius: 12px;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .type-point::before {
+      content: "✓";
+      position: absolute;
+      left: 16px;
+      top: 14px;
+      color: #1f6fb2;
+      font-weight: 700;
+    }
+
+    .type-summary {
+      padding: 16px;
+      background: #eef7ff;
+      border-radius: 12px;
+      color: #314958;
+    }
+
+    /* ========================================
+       強みが出る場面
+    ======================================== */
+
+    .talent-scene-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    .talent-scene-card {
+      padding: 18px;
+      border-radius: 14px;
+      background: #eef7ff;
+      border: 1px solid #cfe3f1;
+    }
+
+    .talent-scene-card strong {
+      display: block;
+      margin-bottom: 8px;
+      color: #083f5c;
+      font-size: 17px;
+      line-height: 1.5;
+    }
+
+    .talent-scene-card p {
+      margin: 0 !important;
+    }
+
+    /* ========================================
+       今のループ
+    ======================================== */
+
+    .loop-intro {
+      font-weight: 700;
+      color: #314958;
+    }
+
+    .diagnosis-loop {
+      margin: 20px 0;
+    }
+
+    .loop-step {
+      padding: 15px 14px;
+      background: #f8fcff;
+      border: 1px solid #cfe6f3;
+      border-radius: 12px;
+      text-align: center;
+      font-size: 16px;
+      font-weight: 700;
+      color: #083f5c;
+    }
+
+    .loop-arrow {
+      height: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #6f8798;
+      font-size: 24px;
+      font-weight: 700;
+    }
+
+    .loop-step--last {
+      background: #fff5f2;
+      border-color: #f2c9bf;
+      color: #9b4d3b;
+    }
+
+    /* ========================================
+       この状態が続くと
+    ======================================== */
+
+    .result-block--risk {
+      background: #fffaf7 !important;
+      border-color: #f1d9cf !important;
+    }
+
+    .risk-items {
+      display: grid;
+      gap: 10px;
+    }
+
+    .risk-item {
+      position: relative;
+      padding: 13px 14px 13px 40px;
+      background: #ffffff;
+      border: 1px solid #f0ddd5;
+      border-radius: 11px;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .risk-item::before {
+      content: "●";
+      position: absolute;
+      left: 17px;
+      top: 15px;
+      color: #d98670;
+      font-size: 10px;
+    }
+
+    /* ========================================
+       問題の正体
+    ======================================== */
+
+    .result-block--key {
+      background: #eef7ff !important;
+      border-color: #bddcec !important;
+    }
+
+    .key-message {
+      margin: 18px 0 !important;
+      padding: 18px 16px;
+      background: #ffffff;
+      border: 1px solid #dcecf5;
+      border-radius: 8px;
+      font-size: 18px !important;
+      font-weight: 700;
+      color: #083f5c;
+      text-align: center;
+      line-height: 1.7;
+    }
+
+    .key-message-line {
+      display: block;
+    }
+
+    /* ========================================
+       LINE自動生成用データ
+    ======================================== */
+
+    .result-block--source-only {
+      display: none !important;
+    }
+
+    /* ========================================
+       スマホ
+    ======================================== */
+
+    @media (max-width: 600px) {
+      .result-detail--visual .result-block {
+        margin-left: 14px;
+        margin-right: 14px;
+        padding: 23px 17px;
+      }
+
+      .result-detail--visual .result-block h2 {
+        font-size: 21px;
+      }
+
+      .type-keywords {
+        font-size: 19px;
+      }
+
+      .talent-scene-card strong {
+        font-size: 17px;
+      }
+
+      .key-message {
+        font-size: 17px !important;
+        padding: 16px 14px;
+      }
+    }
+  </style>
+
+  <!-- FV -->
+  <div class="diagnosis-result-fv">
     <img
       src="meta-fv-results/D1X.png"
-      alt="才能コンパス診断 D1X 診断結果"
-      style="display: block; width: 100%; height: auto;"
+      alt="才能コンパス診断 確かめて組み立てるエンジニア"
+      loading="eager"
+      fetchpriority="high"
     >
   </div>
 
+  <!-- 01 -->
   <article class="result-block">
-    <h2>詳しい診断結果</h2>
+    <h2>あなたはこんなタイプです</h2>
+
+    <div class="type-keywords">
+      慎重 × 突破 × 論理
+    </div>
+
+    <div class="type-point-list">
+      <div class="type-point">
+        今の状態に不便や限界を感じると、
+        <strong>「もっとよくできる」と突破口を探せる</strong>
+      </div>
+
+      <div class="type-point">
+        新しいことへ進む前に、
+        <strong>リスクや必要な準備を現実的に確認できる</strong>
+      </div>
+
+      <div class="type-point">
+        必要な条件が見えると、
+        <strong>実行できる手順へ組み立て、一気に進められる</strong>
+      </div>
+    </div>
+
+    <p class="type-summary">
+      あなたは、
+      勢いだけで現状を壊す人ではありません。
+      「ここは変えたい」という突破力を持ちながら、
+      安全性や手順を確かめ、
+      現実的な進め方をつくってから動く人です。
+    </p>
+  </article>
+
+  <!-- 02 -->
+  <article class="result-block">
+    <h2>こんな場面で強みが出ます</h2>
+
+    <div class="talent-scene-grid">
+      <div class="talent-scene-card">
+        <strong>🔧 停滞の原因を見つけるとき</strong>
+        <p>
+          当たり前になっている不便や非効率にも気づき、
+          「ここは変えられる」と
+          改善の入口を見つけられます。
+        </p>
+      </div>
+
+      <div class="talent-scene-card">
+        <strong>🧩 実行手順を組み立てるとき</strong>
+        <p>
+          誰に、何を、どの順番で進めるかを整理し、
+          アイデアを現実的な形へ
+          落とし込めます。
+        </p>
+      </div>
+
+      <div class="talent-scene-card">
+        <strong>🚀 準備が整って動き出すとき</strong>
+        <p>
+          「この条件なら進める」と納得すると、
+          迷い続けず、
+          一気に現実を動かせます。
+        </p>
+      </div>
+    </div>
+  </article>
+
+  <!-- 03 -->
+  <article class="result-block">
+    <h2>今、こんなループに入っていませんか？</h2>
+
+    <p class="loop-intro">
+      「これは試してみたい」と思ったはずなのに……
+    </p>
+
+    <div class="diagnosis-loop">
+      <div class="loop-step">
+        新しい方法や挑戦に可能性を感じる
+      </div>
+
+      <div class="loop-arrow">↓</div>
+
+      <div class="loop-step">
+        動く前にリスクや必要な準備を確認する
+      </div>
+
+      <div class="loop-arrow">↓</div>
+
+      <div class="loop-step">
+        確認するほど、新しい心配や条件が見つかる
+      </div>
+
+      <div class="loop-arrow">↓</div>
+
+      <div class="loop-step loop-step--last">
+        準備は増えるのに、最初の一歩が遠ざかる
+      </div>
+    </div>
 
     <p>
-      あなたが「やってみたい」と思いながら、動く直前にブレーキをかけやすいのは、3つの特徴が同時に働くためです。
+      あなたは、
+      やりたいことがないわけではありません。
+      むしろ、
+      <strong>「今の状況を変えたい」という気持ちは、かなりはっきりしています。</strong>
     </p>
 
     <p>
-      一つ目は、失敗や困ることを避けるために、動く前の安全を確かめようとする「慎重」の力です。
+      ただ、動こうとすると、
+      「誤解されないか」
+      「本当に申し込んでもらえるか」
+      「想定外のことに対応できるか」と、
+      確認したいことが増えていきます。
     </p>
 
     <p>
-      あなたは、思いついたことへすぐ飛び込むのではなく、
+      一つ調べれば安心するはずが、
+      「ここも決めておこう」
+      「この場合も考えておこう」と、
+      次の準備が見えてきます。
     </p>
 
     <p>
-      「大きな損失につながらないか」<br>
-      「途中で続けられなくならないか」<br>
-      「周りへ迷惑をかけることはないか」
-    </p>
-
-    <p>
-      と、先のことまで考えます。
-    </p>
-
-    <p>
-      二つ目は、停滞した状態を抜け出し、新しい流れをつくろうとする「突破」の力です。
-    </p>
-
-    <p>
-      今のやり方に限界を感じると、
-    </p>
-
-    <p>
-      「このままでは終わりたくない」<br>
-      「新しい方法を試して、状況を変えたい」
-    </p>
-
-    <p>
-      という強いエネルギーが湧いてきます。
-    </p>
-
-    <p>
-      三つ目は、納得できる筋道を組み立て、現実的に進めようとする「論理」の力です。
-    </p>
-
-    <p>
-      あなたは、ただ勢いに任せるのではなく、
-    </p>
-
-    <p>
-      「何から始めるのか」<br>
-      「どのような手順で進めるのか」<br>
-      「どんな結果なら続けるのか」
-    </p>
-
-    <p>
-      を整理してから動こうとします。
-    </p>
-
-    <p>
-      つまり、あなたの中では、
-    </p>
-
-    <p>
-      「早く現状を変えたい」という突破力と、<br>
-      「失敗しないように確かめたい」という慎重さと、<br>
-      「筋道が通ってから進みたい」という論理性が、
-    </p>
-
-    <p>
-      同時に働いているのです。
-    </p>
-
-    <p>
-      そのため、進みたい気持ちはあるのに、動く前にすべての不確実さをなくそうとしてしまいます。
-    </p>
-
-    <p>
-      けれど、新しい挑戦には、実際に動かなければ分からないことが必ずあります。
-    </p>
-
-    <p>
-      その部分まで事前に答えを出そうとすると、確認事項だけが増え、突破力を使う機会を失ってしまうのです。
-    </p>
-
-    <p>
+      気づけば、
       <strong>
-        あなたに必要なのは、すべての不安をなくしてから動くことではなく、安全に試せる範囲を決めて、現実から答えを集めることです。
+        募集ボタンを1回押すための準備が、
+        立派な長期プロジェクトになっている。
       </strong>
-    </p>
-
-    <p>
-      その3つを、一つの仕事を育てる力へ変えていきましょう。
+      そんな状態になることもあるかもしれません。
     </p>
   </article>
 
-  <article class="result-block">
-    <h2>慎重さを行動へつなげる3つのコツ</h2>
+  <!-- 04 -->
+  <article class="result-block result-block--risk">
+    <h2>この状態が続くと…</h2>
+
+    <div class="risk-items">
+      <div class="risk-item">
+        確認事項が増えるほど、
+        発信や募集を始める時期が遅くなりやすい
+      </div>
+
+      <div class="risk-item">
+        「まだ足りない」と感じ、
+        本来なくても始められる準備まで増えやすくなる
+      </div>
+
+      <div class="risk-item">
+        情報や資料は増えるのに、
+        現実から得られる反応や判断材料が増えにくくなる
+      </div>
+
+      <div class="risk-item">
+        他の人が先に動くのを見て、
+        「自分も考えていたのに」と後悔しやすくなる
+      </div>
+    </div>
+  </article>
+
+  <!-- 05 -->
+  <article class="result-block result-block--key">
+    <h2>でも、問題は「慎重に確かめること」ではありません</h2>
 
     <p>
-      あなたのタイプに合うコツは、次の3つです。
+      新しいことへ進む前に、
+      大きなリスクや必要な条件を確認できることは、
+      あなたの大きな強みです。
     </p>
 
     <p>
-      <strong>1．不安を「今、確認すること」と「試して確かめること」に分ける</strong>
+      ただ、
+      新しい挑戦には
+      「動く前に確認できること」と
+      「実際に動かなければ分からないこと」があります。
+    </p>
+
+    <p class="key-message">
+      <span class="key-message-line">これは、始める前に確認すべき危険なのか。</span>
+      <span class="key-message-line">それとも、動いて初めて分かることなのか。</span>
     </p>
 
     <p>
-      不安が浮かんだら、すぐに準備を増やすのではなく、まず二つに分けてください。
+      この違いが曖昧なままだと、
+      動かなければ分からないことまで
+      事前に答えを出そうとして、
+      準備だけが増え続けます。
     </p>
 
     <p>
-      動く前に確認するのは、
-    </p>
-
-    <ul>
-      <li>失って困る金額はいくらか</li>
-      <li>お客様や周囲へ大きな迷惑をかける可能性はないか</li>
-      <li>元に戻せない重大な問題はないか</li>
-    </ul>
-
-    <p>
-      という、安全に関わることです。
-    </p>
-
-    <p>
-      一方で、
-    </p>
-
-    <ul>
-      <li>本当に需要があるか</li>
-      <li>どの言葉に反応してもらえるか</li>
-      <li>自分が続けやすい方法はどれか</li>
-    </ul>
-
-    <p>
-      ということは、実際に試して確かめるものです。
-    </p>
-
-    <p>
-      たとえば、新しいサービスに申し込みが入るかどうかは、調査だけでは分かりません。
-    </p>
-
-    <p>
-      実際に案内し、反応を見る必要があります。
-    </p>
-
-    <p>
-      不安があるからといって、すべて準備不足というわけではありません。
-    </p>
-
-    <p>
-      「今、確認できる危険なのか、試してみないと答えが出ないことなのか」
-    </p>
-
-    <p>
-      を整理するだけで、必要以上に準備を増やしにくくなります。
-    </p>
-
-    <p>
-      <strong>2．完成版ではなく「最小サイズの実験」をつくる</strong>
-    </p>
-
-    <p>
-      あなたは新しいことを始めるとき、最初からきちんとした形をつくろうとしやすい人です。
-    </p>
-
-    <p>
-      サービス内容を完成させる。
-    </p>
-
-    <p>
-      告知ページを作り込む。
-    </p>
-
-    <p>
-      発信を何本も準備する。
-    </p>
-
-    <p>
-      申し込み後の流れまで、すべて整える。
-    </p>
-
-    <p>
-      これでは、最初の一歩が大きくなり、慎重さも強くなります。
-    </p>
-
-    <p>
-      そこで、完成させてから出すのではなく、小さく試せる形へ変えてください。
-    </p>
-
-    <p>
-      たとえば、
-    </p>
-
-    <ul>
-      <li>まず発信を1本だけ出す</li>
-      <li>興味があるか、3人に聞いてみる</li>
-      <li>1名限定の体験版として提供する</li>
-      <li>新しい方法を1週間だけ試す</li>
-    </ul>
-
-    <p>
-      という形です。
-    </p>
-
-    <p>
-      最初から成功させることが目的ではありません。
-    </p>
-
-    <p>
-      現実から、次の判断に使える情報を一つ集めることが目的です。
-    </p>
-
-    <p>
-      あなたは、材料があれば論理的に改善できます。
-    </p>
-
-    <p>
-      だからこそ、考えるための材料を、頭の中ではなく現実から集めることが大切です。
-    </p>
-
-    <p>
-      <strong>3．動く前に「進む条件」と「見直す条件」を決める</strong>
-    </p>
-
-    <p>
-      あなたは動く直前になると、そのときの不安によって判断が変わりやすくなります。
-    </p>
-
-    <p>
-      そこで、気持ちが揺れる前に、判断条件を決めてください。
-    </p>
-
-    <p>
-      たとえば、
-    </p>
-
-    <ul>
-      <li>準備費用が1万円以内なら試す</li>
-      <li>3人に案内して、1人でも興味を示したら続ける</li>
-      <li>今月末まで試してから見直す</li>
-      <li>反応がなければ、テーマではなく伝え方を変える</li>
-    </ul>
-
-    <p>
-      というように、具体的な条件を決めます。
-    </p>
-
-    <p>
-      同時に、
-    </p>
-
-    <ul>
-      <li>ここまで損失が出たら一度止める</li>
-      <li>この条件が守れない場合は見直す</li>
-    </ul>
-
-    <p>
-      という停止条件も決めておきます。
-    </p>
-
-    <p>
-      進む条件と止める条件の両方があれば、
-    </p>
-
-    <p>
-      「何となく不安だから、やめておこう」
-    </p>
-
-    <p>
-      「何となくよさそうだから、無理に続けよう」
-    </p>
-
-    <p>
-      という判断を減らせます。
+      反対に、
+      安全に関わる条件だけを先に確認できれば、
+      <strong>慎重さを残したまま、小さく現実を動かし始められます。</strong>
     </p>
   </article>
 
-  <article class="result-block">
-    <h2>あなたの強みの活かし方</h2>
+  <!-- 06 LINE自動生成用 -->
+  <article class="result-block result-block--final result-block--source-only">
+    <h2>ここから先が本題です</h2>
 
-    <p>
-      あなたの慎重さは、行動を止めるためにあるのではありません。
-    </p>
+    <ul class="line-benefits-source">
+      <li>
+        <strong>やってみたいことほど、動く直前に不安が強くなる理由：</strong>
+        慎重さ、突破力、論理的な思考が同時に働くことで、
+        なぜ「現状を変えたい」と思うほど、
+        動く前に不確実さをなくそうとしやすくなるのかが分かります。
+      </li>
 
-    <p>
-      安全に試せる範囲を決めるためにあります。
-    </p>
+      <li>
+        <strong>確認を重ねても「まだ足りない」と感じる理由と、その分け方：</strong>
+        不安を
+        「動く前に確認する安全上のこと」と
+        「動いてから確かめること」に分け、
+        必要以上に準備を増やさない方法が分かります。
+      </li>
 
-    <p>
-      あなたの論理性は、動く前にすべての答えを出すためにあるのではありません。
-    </p>
-
-    <p>
-      試した結果を整理し、次の一手を考えるためにあります。
-    </p>
-
-    <p>
-      そして、あなたの突破力は、無謀に飛び込むためではありません。
-    </p>
-
-    <p>
-      小さく確かめながら、停滞した現実を動かすためにあります。
-    </p>
-  </article>
-
-  <article class="result-block result-block--final">
-    <h2>今日からできる最初の一歩</h2>
-
-    <p>
-      今、「やってみたい」と思いながら止めていることを一つ選び、次の4つを書き出してください。
-    </p>
-
-    <ul>
-      <li>今回、確かめたいこと</li>
-      <li>失っても困らない時間や金額の上限</li>
-      <li>最小サイズで試すなら、何ができるか</li>
-      <li>いつまでに試すか</li>
+      <li>
+        <strong>慎重さと突破力を、前進する力へ変えるヒント：</strong>
+        完成版ではなく最小サイズの実験をつくり、
+        進む条件と見直す条件を先に決めてから
+        小さく現実を動かす3つのコツが分かります。
+      </li>
     </ul>
 
-    <p>
-      書き終えたら、発信を1本出す、1人に案内する、体験版を募集するなど、最小サイズの行動を予定に入れてください。
-    </p>
-
-    <p>
-      完全に安心できてから動く必要はありません。
-    </p>
-
-    <p>
-      安全に試せる形を組み立てたら、そこから先の答えは、動いた現実に教えてもらいましょう。
+    <p class="cta-message-source">
+      あなたには、
+      現状の問題に気づく力も、
+      新しい流れをつくろうとする力も、
+      現実的な手順を組み立てる力もあります。
+      必要なのは、
+      不安をなくしてから動くことではありません。
+      今気になっていることは、
+      始める前に確認しなければ大きな問題になることなのか。
+      それとも、
+      実際に試して初めて分かることなのか。
+      安全に試せる時間や金額はどのくらいなのか。
+      どんな小さな形なら、
+      今すぐ現実から判断材料を集められるのか。
+      そこを決められるようになると、
+      慎重さを失わずに、
+      停滞している状況へ最初の一歩を入れられます。
+      あなたに合う「安全に突破する」進み方を、
+      LINEで受け取ってください。
     </p>
   </article>
 
