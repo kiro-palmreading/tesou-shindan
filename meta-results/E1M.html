@@ -1,489 +1,499 @@
-<section class="result-detail" data-diagnosis-code="E1M">
+<section class="result-detail result-detail--visual" data-diagnosis-code="E1M">
 
-  <div class="result-catch" data-hide-title="true">
-    <p>【あなたを一言で表すと】</p>
-    <p>納得を深めるヴィジョナリー</p>
+  <style>
+    /* ========================================
+       E1M 診断結果
+       Meta広告流入・スマホ向け
+    ======================================== */
+
+    .result-detail--visual {
+      max-width: 720px;
+      margin: 0 auto;
+      color: #24313a;
+      line-height: 1.8;
+    }
+
+    /* ========================================
+       FV
+    ======================================== */
+
+    .diagnosis-result-fv {
+      margin: 0 0 28px;
+      padding: 0;
+    }
+
+    .diagnosis-result-fv img {
+      display: block;
+      width: 100%;
+      height: auto;
+      margin: 0 auto;
+    }
+
+    /* ========================================
+       共通ブロック
+    ======================================== */
+
+    .result-detail--visual .result-block {
+      margin: 0 16px 28px;
+      padding: 26px 20px;
+      background: #ffffff;
+      border: 1px solid #dcecf5;
+      border-radius: 18px;
+      box-sizing: border-box;
+    }
+
+    .result-detail--visual .result-block h2 {
+      margin: 0 0 18px;
+      color: #083f5c;
+      font-size: 22px;
+      line-height: 1.45;
+      text-align: left;
+    }
+
+    .result-detail--visual .result-block p {
+      margin: 0 0 16px;
+      font-size: 16px;
+      line-height: 1.9;
+    }
+
+    .result-detail--visual .result-block p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* ========================================
+       あなたはこんなタイプ
+    ======================================== */
+
+    .type-keywords {
+      margin: 0 0 20px;
+      font-size: 20px;
+      font-weight: 700;
+      color: #1f6fb2;
+      letter-spacing: 0.04em;
+      text-align: center;
+    }
+
+    .type-point-list {
+      display: grid;
+      gap: 11px;
+      margin: 0 0 20px;
+    }
+
+    .type-point {
+      position: relative;
+      padding: 14px 14px 14px 43px;
+      background: #f8fcff;
+      border-radius: 12px;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .type-point::before {
+      content: "✓";
+      position: absolute;
+      left: 16px;
+      top: 14px;
+      color: #1f6fb2;
+      font-weight: 700;
+    }
+
+    .type-summary {
+      padding: 16px;
+      background: #eef7ff;
+      border-radius: 12px;
+      color: #314958;
+    }
+
+    /* ========================================
+       強みが出る場面
+    ======================================== */
+
+    .talent-scene-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    .talent-scene-card {
+      padding: 18px;
+      border-radius: 14px;
+      background: #eef7ff;
+      border: 1px solid #cfe3f1;
+    }
+
+    .talent-scene-card strong {
+      display: block;
+      margin-bottom: 8px;
+      color: #083f5c;
+      font-size: 17px;
+      line-height: 1.5;
+    }
+
+    .talent-scene-card p {
+      margin: 0 !important;
+    }
+
+    /* ========================================
+       今のループ
+    ======================================== */
+
+    .loop-intro {
+      font-weight: 700;
+      color: #314958;
+    }
+
+    .diagnosis-loop {
+      margin: 20px 0;
+    }
+
+    .loop-step {
+      padding: 15px 14px;
+      background: #f8fcff;
+      border: 1px solid #cfe6f3;
+      border-radius: 12px;
+      text-align: center;
+      font-size: 16px;
+      font-weight: 700;
+      color: #083f5c;
+    }
+
+    .loop-arrow {
+      height: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #6f8798;
+      font-size: 24px;
+      font-weight: 700;
+    }
+
+    .loop-step--last {
+      background: #fff5f2;
+      border-color: #f2c9bf;
+      color: #9b4d3b;
+    }
+
+    /* ========================================
+       この状態が続くと
+    ======================================== */
+
+    .result-block--risk {
+      background: #fffaf7 !important;
+      border-color: #f1d9cf !important;
+    }
+
+    .risk-items {
+      display: grid;
+      gap: 10px;
+    }
+
+    .risk-item {
+      position: relative;
+      padding: 13px 14px 13px 40px;
+      background: #ffffff;
+      border: 1px solid #f0ddd5;
+      border-radius: 11px;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .risk-item::before {
+      content: "●";
+      position: absolute;
+      left: 17px;
+      top: 15px;
+      color: #d98670;
+      font-size: 10px;
+    }
+
+    /* ========================================
+       問題の正体
+    ======================================== */
+
+    .result-block--key {
+      background: #eef7ff !important;
+      border-color: #bddcec !important;
+    }
+
+    .key-message {
+      margin: 18px 0 !important;
+      padding: 18px 16px;
+      background: #ffffff;
+      border: 1px solid #dcecf5;
+      border-radius: 8px;
+      font-size: 18px !important;
+      font-weight: 700;
+      color: #083f5c;
+      text-align: center;
+      line-height: 1.7;
+    }
+
+    .key-message-line {
+      display: block;
+    }
+
+    /* ========================================
+       LINE自動生成用データ
+    ======================================== */
+
+    .result-block--source-only {
+      display: none !important;
+    }
+
+    /* ========================================
+       スマホ
+    ======================================== */
+
+    @media (max-width: 600px) {
+      .result-detail--visual .result-block {
+        margin-left: 14px;
+        margin-right: 14px;
+        padding: 23px 17px;
+      }
+
+      .result-detail--visual .result-block h2 {
+        font-size: 21px;
+      }
+
+      .type-keywords {
+        font-size: 19px;
+      }
+
+      .talent-scene-card strong {
+        font-size: 17px;
+      }
+
+      .key-message {
+        font-size: 17px !important;
+        padding: 16px 14px;
+      }
+    }
+  </style>
+
+  <!-- FV -->
+  <div class="diagnosis-result-fv">
+    <img
+      src="meta-fv-results/E1M.png"
+      alt="才能コンパス診断 納得を深めるヴィジョナリー"
+      loading="eager"
+      fetchpriority="high"
+    >
   </div>
 
+  <!-- 01 -->
   <article class="result-block">
-    <h2>あなたの本質</h2>
+    <h2>あなたはこんなタイプです</h2>
 
-    <p class="highlight-paragraph">
+    <div class="type-keywords">
       慎重 × 世界観 × 集中
-    </p>
+    </div>
 
-    <p>
-      あなたは、自分の中にある世界観を大切にしながら、
-      心から意味を感じられるものを
-      深く育てたい人です。
-    </p>
+    <div class="type-point-list">
+      <div class="type-point">
+        周りの正解をそのまま使わず、
+        <strong>「本当に自分が届けたいものか」</strong>
+        を丁寧に確かめる
+      </div>
 
-    <p>
-      周りで評価されている方法でも、
-      自分の考えと合わなければ、
-      そのまま取り入れることはありません。
-    </p>
+      <div class="type-point">
+        表面的な答えで終わらせず、
+        <strong>一つのテーマを深く掘り下げられる</strong>
+      </div>
 
-    <p>
-      「私は、本当にこれを届けたいのだろうか」<br>
-      「この考えを、自分の言葉で説明できるだろうか」<br>
-      「自分が大切にしたい価値と、きちんとつながっているだろうか」
-    </p>
+      <div class="type-point">
+        納得して選んだものへ、
+        <strong>集中して粘り強く磨き続けられる</strong>
+      </div>
+    </div>
 
-    <p>
-      と、自分の中で丁寧に確かめます。
-    </p>
-
-    <p>
-      あなたにとっての世界観は、
-      見た目の雰囲気だけではありません。
-    </p>
-
-    <p>
-      何を信じて仕事をするのか。<br>
-      どのような価値を届けたいのか。<br>
-      どんな姿勢で人と関わりたいのか。<br>
-      その仕事を通して、どのような未来をつくりたいのか。
-    </p>
-
-    <p>
-      そうした考えや価値観が、
-      一つの世界観としてつながっています。
-    </p>
-
-    <p>
-      さらに、あなたは、
-      興味を持ったことへ浅く触れて終わる人ではありません。
-    </p>
-
-    <p>
-      背景まで調べる。<br>
-      自分の経験と結びつける。<br>
-      本当に大切なものを考える。<br>
-      自分なりの答えが見つかるまで深める。
-    </p>
-
-    <p>
-      一つのテーマへ長く向き合いながら、
-      自分の考えとして育てていきます。
-    </p>
-
-    <p>
+    <p class="type-summary">
       あなたは、ただこだわりが強い人ではありません。
-    </p>
-
-    <p>
-      自分が信じられる価値を深く追究し、
-      一貫した仕事や専門性へ育てていく人です。
+      自分が信じられるものを丁寧に見極め、
+      一つのテーマへ深く向き合いながら、
+      簡単には真似できない価値へ
+      育てていく人です。
     </p>
   </article>
 
+  <!-- 02 -->
   <article class="result-block">
-    <h2>あなたの才能</h2>
+    <h2>こんな場面で強みが出ます</h2>
 
-    <p>
-      そんなあなたには、
-    </p>
+    <div class="talent-scene-grid">
+      <div class="talent-scene-card">
+        <strong>🔍 本質を掘り下げるとき</strong>
+        <p>
+          表面的な情報だけで終わらせず、
+          背景や理由まで考えながら、
+          自分なりの答えへ深められます。
+        </p>
+      </div>
 
-    <ul>
-      <li>物事の意味や本質を深く掘り下げる力</li>
-      <li>一つのテーマへ長く集中する力</li>
-      <li>自分なりの価値観や考えを育てる力</li>
-      <li>信じられるものを専門性へ変えていく力</li>
-    </ul>
+      <div class="talent-scene-card">
+        <strong>🎯 一つのテーマへ集中するとき</strong>
+        <p>
+          「これを育てたい」と決めたものへ
+          大きなエネルギーを注ぎ、
+          細かなところまで丁寧に磨けます。
+        </p>
+      </div>
 
-    <p>
-      があります。
-    </p>
-
-    <p>
-      仕事や日常の中で、
-    </p>
-
-    <p>
-      「一つのことを深く考えられるよね」<br>
-      「自分なりの考えを持っているよね」<br>
-      「言葉に重みがあるよね」<br>
-      「一度決めると、最後まで向き合うよね」
-    </p>
-
-    <p>
-      と言われたことはありませんか？
-    </p>
-
-    <p>
-      あなたは、ただ知識を増やす人ではありません。
-    </p>
-
-    <p>
-      学んだことをそのまま覚えるのではなく、
-    </p>
-
-    <p>
-      「これは、どういう意味なのだろう」<br>
-      「自分の経験と、どこでつながっているのだろう」<br>
-      「自分の仕事では、どのような価値になるだろう」
-    </p>
-
-    <p>
-      と考え、自分なりの理解へ変えていきます。
-    </p>
-
-    <p>
-      たとえば、一つの分野について学ぶときにも、
-      表面的な方法だけを覚えて終わることはありません。
-    </p>
-
-    <p>
-      その考えが生まれた背景。<br>
-      本当に大切な土台。<br>
-      自分の価値観とつながる部分。<br>
-      自分だからこそ加えられる視点。
-    </p>
-
-    <p>
-      そこまで深く考えられます。
-    </p>
-
-    <p>
-      そのため、学んだことを、
-      誰かから借りた言葉のままではなく、
-      自分の考えとして語れるようになります。
-    </p>
-
-    <p>
-      発信でも、情報を分かりやすく
-      まとめるだけではありません。
-    </p>
-
-    <p>
-      なぜ、このテーマを伝えたいのか。<br>
-      自分は、どこに価値を感じているのか。<br>
-      読んだ人に、どのような考えを持ち帰ってほしいのか。
-    </p>
-
-    <p>
-      そこまで掘り下げられるため、
-      あなたの言葉には一貫した考えと深さが生まれます。
-    </p>
-
-    <p>
-      サービスや仕事をつくるときにも、
-      見た目を整えるだけでは終わりません。
-    </p>
-
-    <p>
-      本当に相手の役に立つ内容か。<br>
-      自分が責任を持って届けられるか。<br>
-      自分の考えや価値観が反映されているか。<br>
-      長く大切にできる仕事になっているか。
-    </p>
-
-    <p>
-      そこまで真剣に向き合えます。
-    </p>
-
-    <p>
-      一つのテーマを深く追究する。<br>
-      自分なりの考えを育てる。<br>
-      簡単には真似できない専門性をつくる。<br>
-      仕事全体に一貫した世界観を持たせる。
-    </p>
-
-    <p>
-      そうした場面で発揮される集中力と深さが、
-      あなたの大きな才能です。
-    </p>
+      <div class="talent-scene-card">
+        <strong>🧭 自分の基準を育てるとき</strong>
+        <p>
+          誰かの正解に合わせるのではなく、
+          経験や価値観と結びつけながら、
+          一貫した考えへ育てられます。
+        </p>
+      </div>
+    </div>
   </article>
 
+  <!-- 03 -->
   <article class="result-block">
-    <h2>今のあなたの状態</h2>
+    <h2>今、こんなループに入っていませんか？</h2>
 
-    <p>
-      ただ今は、その深く考える力と集中力が、
-      少しだけ前へ進むことを難しくしているかもしれません。
+    <p class="loop-intro">
+      「これで出そう」と思えるところまで作ったはずなのに……
     </p>
 
-    <p>
-      たとえば、発信を書き終え、
-    </p>
+    <div class="diagnosis-loop">
+      <div class="loop-step">
+        納得できる形まで深く考える
+      </div>
+
+      <div class="loop-arrow">↓</div>
+
+      <div class="loop-step">
+        「まだ足りない」と改善点に気づく
+      </div>
+
+      <div class="loop-arrow">↓</div>
+
+      <div class="loop-step">
+        その部分へ集中してさらに深める
+      </div>
+
+      <div class="loop-arrow">↓</div>
+
+      <div class="loop-step loop-step--last">
+        完成の基準が遠ざかり、また作り直したくなる
+      </div>
+    </div>
 
     <p>
-      「伝えたいことは、まとまった」<br>
-      「今の自分なりに、きちんと書けた」
-    </p>
-
-    <p>
-      と思う。
-    </p>
-
-    <p>
-      ところが、公開前にもう一度読み返すと、
-    </p>
-
-    <p>
-      「まだ説明が浅い気がする」<br>
-      「この言葉では、本当に伝えたい意味まで届かないかも」<br>
-      「もう少し深めてから出した方がよいのではないか」
-    </p>
-
-    <p>
-      と、足りない部分が見つかります。
-    </p>
-
-    <p>
-      そこで、一文を追加する。
-    </p>
-
-    <p>
-      すると、前後のつながりが気になり、
-      別の部分も直したくなります。
-    </p>
-
-    <p>
-      全体を整えたころには、
-    </p>
-
-    <p>
-      「そもそも、最初の切り口から考え直した方がよいかもしれない」
-    </p>
-
-    <p>
-      と感じ始めます。
-    </p>
-
-    <p>
-      サービスをつくるときも同じです。
-    </p>
-
-    <p>
-      内容は、ある程度形になっている。<br>
-      誰に届けたいのかも見えている。<br>
-      自分が大切にしたい考えも入っている。
-    </p>
-
-    <p>
-      それでも、
-    </p>
-
-    <p>
-      「この状態で、本当に責任を持って届けられるだろうか」<br>
-      「もう少し学んでからの方がよいかもしれない」<br>
-      「もっと納得できる内容があるような気がする」
-    </p>
-
-    <p>
-      と、完成が遠く感じられます。
-    </p>
-
-    <p>
-      あなたは、一度向き合い始めると、
-      深く集中できます。
-    </p>
-
-    <p>
-      情報を調べる。<br>
-      自分の経験を振り返る。<br>
-      内容をもう一度考える。<br>
-      より納得できる表現へ整える。
-    </p>
-
-    <p>
-      考えるほど、理解は深まっていきます。
-    </p>
-
-    <p>
-      けれど、理解が深まるほど、
-      まだ考えていなかった部分にも気づきます。
-    </p>
-
-    <p>
-      一つの疑問を掘り下げると、
-      その奥から別の問いが見つかる。
-    </p>
-
-    <p>
-      そうそう、かなり深いところまで来たはずなのに、
-      「もう少し先がありそう」
-      と感じるのです。
-    </p>
-
-    <p>
-      すると、
-    </p>
-
-    <p>
-      考える<br>
-      ↓<br>
-      深く理解する<br>
-      ↓<br>
-      足りない部分に気づく<br>
-      ↓<br>
-      もう一度整える<br>
-      ↓<br>
-      さらに深めたくなる
-    </p>
-
-    <p>
-      という流れになりやすくなります。
-    </p>
-
-    <p>
-      あなたは、何もしていないわけではありません。
-    </p>
-
-    <p>
-      かなり考えています。<br>
-      かなり集中しています。<br>
-      自分の仕事へ真剣に向き合っています。
-    </p>
-
-    <p>
-      頭の中では、
-      自分なりの考えも世界観も、
-      確実に育っています。
-    </p>
-
-    <p>
-      それなのに、一日の終わりには、
-    </p>
-
-    <p>
-      「今日も、ずっと考えていた」<br>
-      「でも、まだ外へ出せていない」<br>
-      「私は、いつになったら納得できるのだろう」
-    </p>
-
-    <p>
-      と、少し苦しくなることがあるかもしれません。
-    </p>
-
-    <p>
-      そして、
-    </p>
-
-    <p>
-      「私は、こだわりすぎているのかな」<br>
-      「完璧を求めすぎているのかな」<br>
-      「これだけ集中しているのに、なぜ形にならないのだろう」
-    </p>
-
-    <p>
-      と、自分を責めたくなることもあるでしょう。
-    </p>
-
-    <p>
-      けれど、あなたに行動する力がないわけではありません。
-    </p>
-
-    <p>
-      自分が信じていないものを、
-      もっともらしく届けたくないのです。
-    </p>
-
-    <p>
-      自分の名前で出すなら、
-      心から意味を感じられるものにしたい。
-    </p>
-
-    <p>
-      その誠実さがあるからこそ、
-      簡単には区切りをつけられません。
-    </p>
-
-    <p>
-      慎重に確かめる力。<br>
-      自分の世界観を深く育てる力。<br>
-      一つのことへ集中する力。
-    </p>
-
-    <p>
-      その3つが同時に働くことで、
-      どこへ、どれだけ力を注げばよいのか、
-      分かりにくくなっているのです。
+      あなたは、行動力がなくて
+      止まっているわけではありません。
+      むしろ、
+      <strong>
+        中途半端なものを届けたくないという思いから、
+        かなり深く真剣に向き合っています。
+      </strong>
+      ただ、理解が深まるほど
+      新しい不足や改善点も見えてくるため、
+      「もう少しだけ」が続き、
+      どこで完成とするかが
+      分かりにくくなりやすいのです。
     </p>
   </article>
 
-  <article class="result-block result-block--final">
+  <!-- 04 -->
+  <article class="result-block result-block--risk">
+    <h2>この状態が続くと…</h2>
+
+    <div class="risk-items">
+      <div class="risk-item">
+        発信を完成させても、
+        「まだ説明が浅い」と感じて公開を延ばしやすくなる
+      </div>
+
+      <div class="risk-item">
+        サービスが形になっていても、
+        学びや改善を追加して完成条件を増やしやすくなる
+      </div>
+
+      <div class="risk-item">
+        長く集中して取り組んでいるのに、
+        外へ出た成果や実績が増えにくくなる
+      </div>
+
+      <div class="risk-item">
+        本当は深く考える力が高いのに、
+        「いつまでたっても納得できない」と感じやすくなる
+      </div>
+    </div>
+  </article>
+
+  <!-- 05 -->
+  <article class="result-block result-block--key">
+    <h2>でも、問題は「深く考えること」ではありません</h2>
+
+    <p>
+      あなたには、
+      物事の本質を深く掘り下げる力も、
+      一つのテーマへ集中する力も、
+      納得したものを高い水準まで育てる力もあります。
+    </p>
+
+    <p>
+      ただ今は、
+      完成の基準が
+      <strong>
+        「今の目的を果たせる状態」ではなく
+        「これ以上直すところがない状態」
+      </strong>
+      になっているのかもしれません。
+    </p>
+
+    <p class="key-message">
+      <span class="key-message-line">「今の目的を果たせているか？」</span>
+      <span class="key-message-line">「次に育てればよい改善は何か？」</span>
+    </p>
+
+    <p>
+      この区切りを持てるようになると、
+      こだわりや深さを失わなくても、
+      今届けられる価値を一度外へ出し、
+      実際の反応を受け取りながら
+      次の深さへ育てていきやすくなります。
+    </p>
+  </article>
+
+  <!-- 06 LINE自動生成用 -->
+  <article class="result-block result-block--final result-block--source-only">
     <h2>ここから先が本題です</h2>
-
-    <p>
-      あなたが簡単に納得できないのは、
-      自信がないからでも、
-      決める力が足りないからでもありません。
-    </p>
-
-    <p>
-      自分の仕事を、
-      表面的なものにしたくないのです。
-    </p>
-
-    <p>
-      学んだことを自分なりに理解し、
-      経験や価値観と結びつけ、
-      心から信じられるものとして届けたい。
-    </p>
-
-    <p>
-      その深さが、
-      あなたの仕事に専門性と一貫性を生み出します。
-    </p>
-
-    <p>
-      一つの分野を深く追究するとき。<br>
-      自分なりの考えや理念を育てるとき。<br>
-      長く大切にできる仕事をつくるとき。<br>
-      誰にも簡単には真似できない専門性を築くとき。
-    </p>
-
-    <p>
-      あなたの慎重さと世界観、
-      そして一つのことへ集中する力は、
-      さまざまな仕事の場面で活かせます。
-    </p>
-
-    <p>
-      けれど、自分が納得できるまで深める力と、
-      一つのことへ集中する力が同時に働くと、
-      どこまで取り組めばよいのか、
-      分かりにくくなることがあります。
-    </p>
-
-    <p>
-      それは、あなたに専門性がないからでも、
-      世界観が定まっていないからでもありません。
-    </p>
-
-    <p>
-      あなたが持っている才能を、
-      仕事の中でどう活かせばよいのかが、
-      まだ見えにくくなっているだけです。
-    </p>
-
-    <p>
-      <strong>では、自分の世界観を深く育てる力、一つのテーマを掘り下げる力、信じられるものへ集中して取り組む力を、仕事にどう活かしていけばよいのでしょうか。</strong>
-    </p>
 
     <ul class="line-benefits-source">
       <li>
-        <strong>納得できるまで深く考える自分に合う進み方</strong><br>
-        慎重さと集中力を活かすためのヒントが分かります。
+        <strong>どこまで整えたら「今は完成」と言えるのか：</strong>
+        あらかじめ3つの完成条件を決め、
+        「これ以上直せない」ではなく
+        「今の目的を果たしているか」で判断する方法が分かります。
       </li>
+
       <li>
-        <strong>自分の世界観を仕事に活かすヒント</strong><br>
-        大切にしている価値観を一貫した仕事へつなげる才能の活かし方が見えてきます。
+        <strong>改善点が見つかっても全体を作り直さない方法：</strong>
+        気づいた改善を
+        「今直すもの」と「次に育てるもの」に分け、
+        今回必要な部分だけを整える考え方が分かります。
       </li>
+
       <li>
-        <strong>仕事で集中力を活かすヒント</strong><br>
-        一つのテーマを深く追究できる才能の活かし方が分かります。
+        <strong>集中力を成果へ変える3つのヒント：</strong>
+        一つの方向を育てる期間を先に決め、
+        頭の中の違和感だけではなく、
+        実際の反応をもとに次の改善を決める方法が分かります。
       </li>
     </ul>
 
     <p class="cta-message-source">
-      あなたにはすでに、自分の世界観を深く育てる力も、
-      一つのテーマを掘り下げる力も、
-      信じられるものへ集中して取り組む力もあります。
-      その才能を仕事でもっと活かすためのヒントを、
+      あなたには、
+      自分が信じられるものを深く掘り下げ、
+      一つのテーマへ集中し、
+      簡単には真似できない価値へ育てる力があります。
+      その慎重さと世界観と集中力を、
+      完成を先延ばしにするためではなく、
+      人に届く仕事と実績へ変えるための考え方を、
       LINEで受け取ってください。
     </p>
   </article>
