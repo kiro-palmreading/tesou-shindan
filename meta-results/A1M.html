@@ -1,194 +1,516 @@
-<section class="result-detail" data-diagnosis-code="A1M">
-  <div class="result-catch" data-hide-title="true">
-    <p>【あなたを一言で表すと】</p>
-    <p>信念を貫くスペシャリスト</p>
+<section class="result-detail result-detail--visual" data-diagnosis-code="A1M">
+
+  <style>
+    /* ========================================
+       A1M 診断結果
+       Meta広告流入・スマホ向け
+    ======================================== */
+
+    .result-detail--visual {
+      max-width: 720px;
+      margin: 0 auto;
+      color: #24313a;
+      line-height: 1.8;
+    }
+
+    /* ========================================
+       FV
+    ======================================== */
+
+    .diagnosis-result-fv {
+      margin: 0 0 28px;
+      padding: 0;
+    }
+
+    .diagnosis-result-fv img {
+      display: block;
+      width: 100%;
+      height: auto;
+      margin: 0 auto;
+    }
+
+    /* ========================================
+       共通ブロック
+    ======================================== */
+
+    .result-detail--visual .result-block {
+      margin: 0 16px 28px;
+      padding: 26px 20px;
+      background: #ffffff;
+      border: 1px solid #dcecf5;
+      border-radius: 18px;
+      box-sizing: border-box;
+    }
+
+    .result-detail--visual .result-block h2 {
+      margin: 0 0 18px;
+      color: #083f5c;
+      font-size: 22px;
+      line-height: 1.45;
+      text-align: left;
+    }
+
+    .result-detail--visual .result-block p {
+      margin: 0 0 16px;
+      font-size: 16px;
+      line-height: 1.9;
+    }
+
+    .result-detail--visual .result-block p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* ========================================
+       あなたはこんなタイプ
+    ======================================== */
+
+    .type-keywords {
+      margin: 0 0 20px;
+      font-size: 20px;
+      font-weight: 700;
+      color: #1f6fb2;
+      letter-spacing: 0.04em;
+      text-align: center;
+    }
+
+    .type-point-list {
+      display: grid;
+      gap: 11px;
+      margin: 0 0 20px;
+    }
+
+    .type-point {
+      position: relative;
+      padding: 14px 14px 14px 43px;
+      background: #f8fcff;
+      border-radius: 12px;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .type-point::before {
+      content: "✓";
+      position: absolute;
+      left: 16px;
+      top: 14px;
+      color: #1f6fb2;
+      font-weight: 700;
+    }
+
+    .type-summary {
+      padding: 16px;
+      background: #eef7ff;
+      border-radius: 12px;
+      color: #314958;
+    }
+
+    /* ========================================
+       強みが出る場面
+    ======================================== */
+
+    .talent-scene-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    .talent-scene-card {
+      padding: 18px;
+      border-radius: 14px;
+      background: #eef7ff;
+      border: 1px solid #cfe3f1;
+    }
+
+    .talent-scene-card strong {
+      display: block;
+      margin-bottom: 8px;
+      color: #083f5c;
+      font-size: 17px;
+      line-height: 1.5;
+    }
+
+    .talent-scene-card p {
+      margin: 0 !important;
+    }
+
+    /* ========================================
+       今のループ
+    ======================================== */
+
+    .loop-intro {
+      font-weight: 700;
+      color: #314958;
+    }
+
+    .diagnosis-loop {
+      margin: 20px 0;
+    }
+
+    .loop-step {
+      padding: 15px 14px;
+      background: #f8fcff;
+      border: 1px solid #cfe6f3;
+      border-radius: 12px;
+      text-align: center;
+      font-size: 16px;
+      font-weight: 700;
+      color: #083f5c;
+    }
+
+    .loop-arrow {
+      height: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #6f8798;
+      font-size: 24px;
+      font-weight: 700;
+    }
+
+    .loop-step--last {
+      background: #fff5f2;
+      border-color: #f2c9bf;
+      color: #9b4d3b;
+    }
+
+    /* ========================================
+       この状態が続くと
+    ======================================== */
+
+    .result-block--risk {
+      background: #fffaf7 !important;
+      border-color: #f1d9cf !important;
+    }
+
+    .risk-items {
+      display: grid;
+      gap: 10px;
+    }
+
+    .risk-item {
+      position: relative;
+      padding: 13px 14px 13px 40px;
+      background: #ffffff;
+      border: 1px solid #f0ddd5;
+      border-radius: 11px;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .risk-item::before {
+      content: "●";
+      position: absolute;
+      left: 17px;
+      top: 15px;
+      color: #d98670;
+      font-size: 10px;
+    }
+
+    /* ========================================
+       問題の正体
+    ======================================== */
+
+    .result-block--key {
+      background: #eef7ff !important;
+      border-color: #bddcec !important;
+    }
+
+    .key-message {
+      margin: 18px 0 !important;
+      padding: 18px 16px;
+      background: #ffffff;
+      border: 1px solid #dcecf5;
+      border-radius: 8px;
+      font-size: 18px !important;
+      font-weight: 700;
+      color: #083f5c;
+      text-align: center;
+      line-height: 1.7;
+    }
+
+    .key-message-line {
+      display: block;
+    }
+
+    /* ========================================
+       LINE自動生成用データ
+    ======================================== */
+
+    .result-block--source-only {
+      display: none !important;
+    }
+
+    /* ========================================
+       スマホ
+    ======================================== */
+
+    @media (max-width: 600px) {
+      .result-detail--visual .result-block {
+        margin-left: 14px;
+        margin-right: 14px;
+        padding: 23px 17px;
+      }
+
+      .result-detail--visual .result-block h2 {
+        font-size: 21px;
+      }
+
+      .type-keywords {
+        font-size: 19px;
+      }
+
+      .talent-scene-card strong {
+        font-size: 17px;
+      }
+
+      .key-message {
+        font-size: 17px !important;
+        padding: 16px 14px;
+      }
+    }
+  </style>
+
+  <!-- FV -->
+  <div class="diagnosis-result-fv">
+    <img
+      src="meta-fv-results/A1M.png"
+      alt="才能コンパス診断 信念を貫くスペシャリスト"
+      loading="eager"
+      fetchpriority="high"
+    >
   </div>
 
+  <!-- 01 -->
   <article class="result-block">
-    <h2>あなたの本質</h2>
+    <h2>あなたはこんなタイプです</h2>
 
-    <p class="highlight-paragraph">
+    <div class="type-keywords">
       慎重 × 現実 × 集中
-    </p>
+    </div>
 
-    <p>
-      あなたは、周りの流れに合わせて、なんとなく動く人ではありません。何かを選ぶときには、<br>
-      「私は、本当にこれをやりたいのか」<br>
-      「現実の中で、きちんと形にできるのか」<br>
-      「時間や力を注ぐだけの価値があるのか」<br>
-      と、自分の中で確かめます。
-    </p>
+    <div class="type-point-list">
+      <div class="type-point">
+        何かを選ぶときは、
+        <strong>本当に力を注ぐ価値があるか</strong>
+        をじっくり確かめる
+      </div>
 
-    <p>
-      誰かに勧められたから、今、流行っているから、成功している人がやっているから。それだけでは、簡単に「やります」とは言えません。
-    </p>
+      <div class="type-point">
+        一度「これだ」と思えるものが見つかると、
+        <strong>深く集中して掘り下げられる</strong>
+      </div>
 
-    <p>
-      自分なりに考え、心から納得したうえで選びたいのです。
-    </p>
+      <div class="type-point">
+        周りに流されず、
+        <strong>自分で納得した答えを大切にできる</strong>
+      </div>
+    </div>
 
-    <p>
-      そして、一度「これだ」と思えるものが見つかると、ほかのことが目に入らなくなるほど深く集中できます。
-    </p>
-
-    <p>
-      中途半端に手を広げるよりも、1つのことを掘り下げ、自分なりの答えへたどり着きたい。
-    </p>
-
-    <p>
-      あなたは、自分で選んだ答えに大きなエネルギーを注ぎ、現実の形へ育てていく人です。
+    <p class="type-summary">
+      あなたは、
+      何となく始めるより、
+      自分で納得してから本気になりたい人です。
+      方向が決まれば、
+      大きな集中力を使って、
+      その答えを現実の形へ育てていけます。
     </p>
   </article>
 
+  <!-- 02 -->
   <article class="result-block">
-    <h2>あなたの才能</h2>
+    <h2>こんな場面で強みが出ます</h2>
 
-    <p>
-      そんなあなたには、次のような力があります。
-    </p>
+    <div class="talent-scene-grid">
+      <div class="talent-scene-card">
+        <strong>🔬 深く掘り下げるとき</strong>
+        <p>
+          表面的な理解で終わらせず、
+          「なぜそうなるのか」まで考え、
+          自分なりの答えを見つけられます。
+        </p>
+      </div>
 
-    <ul>
-      <li>1つのことに深く集中する力</li>
-      <li>納得するまで追求する力</li>
-      <li>自分の信念を貫く力</li>
-      <li>選んだものに大きなエネルギーを注ぐ力</li>
-    </ul>
+      <div class="talent-scene-card">
+        <strong>🎯 1つに集中するとき</strong>
+        <p>
+          やると決めたものには、
+          時間もエネルギーも惜しまず注ぎ、
+          深い専門性へ育てていけます。
+        </p>
+      </div>
 
-    <p>
-      興味を持ったことは、表面的に知るだけでは終わりません。<br>
-      「なぜ、そうなるのか」<br>
-      「もっと深いところに理由があるのではないか」<br>
-      「自分なら、どう形にするか」<br>
-      と、納得できるところまで掘り下げます。
-    </p>
-
-    <p>
-      周りからも「集中すると、すごいよね」「一度ハマると、とことん深いよね」「自分の考えをしっかり持っているよね」と言われたことがあるかもしれません。
-    </p>
-
-    <p>
-      サービスをつくるときにも、形だけ整えて終わるのではありません。
-    </p>
-
-    <p>
-      「本当に相手の役に立つものになっているか」「自分が責任を持って届けられる内容か」と、深いところまで考えられます。
-    </p>
-
-    <p>
-      いったん方向が定まれば、周りが驚くほどの没入力を発揮し、知識や経験を自分だけの強みへ育てていける。
-    </p>
-
-    <p>
-      その熱量と一貫した信念が、あなたの大きな才能です。
-    </p>
+      <div class="talent-scene-card">
+        <strong>🧱 サービスを磨くとき</strong>
+        <p>
+          形だけ整えるのではなく、
+          本当に役立つ内容になっているかまで
+          丁寧に考えられます。
+        </p>
+      </div>
+    </div>
   </article>
 
+  <!-- 03 -->
   <article class="result-block">
-    <h2>今のあなたの状態</h2>
+    <h2>今、こんなループに入っていませんか？</h2>
+
+    <p class="loop-intro">
+      「やるなら、本気でやりたい」と思うほど……
+    </p>
+
+    <div class="diagnosis-loop">
+      <div class="loop-step">
+        本当にこの方向でよいか考える
+      </div>
+
+      <div class="loop-arrow">↓</div>
+
+      <div class="loop-step">
+        調べて、準備を深める
+      </div>
+
+      <div class="loop-arrow">↓</div>
+
+      <div class="loop-step">
+        もっと納得できる答えを探す
+      </div>
+
+      <div class="loop-arrow">↓</div>
+
+      <div class="loop-step loop-step--last">
+        準備は進むのに、なかなか始まらない
+      </div>
+    </div>
 
     <p>
-      ただ今は、その才能が少しだけ空回りしているかもしれません。
+      あなたは、
+      やる気がないわけではありません。
+      むしろ、
+      <strong>始めるなら本気で取り組みたい</strong>
+      のだと思います。
     </p>
 
     <p>
-      発信を書いても、「まだ自分の考えを十分に伝えきれていない」と感じる。
+      下書きもある。
+      資料もそろっている。
+      頭の中では、その先の展開まで見えている。
     </p>
 
     <p>
-      サービスをつくっても、「出すからには、本当に価値があると思える形にしたい」と、さらに内容を深めたくなる。
+      それでも、
+      <strong>「これでいく」という最終許可だけが下りない。</strong>
     </p>
 
     <p>
-      ようやく方向性が見えてきても、「もっと納得できる答えがあるかもしれない」と、もう一度考え直すことがあります。
-    </p>
-
-    <p>
-      調べる。考える。準備する。もう少し深く調べる。
-    </p>
-
-    <p>
-      気づけば、1つのテーマについて専門家に負けないほど詳しくなっている。でも、まだ始まってはいない。そんなことはないでしょうか。
-    </p>
-
-    <p>
-      下書きは、かなりの完成度。資料もしっかりそろい、頭の中ではその先の展開まで見えている。
-    </p>
-
-    <p>
-      準備はほぼフル装備なのに、「これでいく」という最終許可だけが、まだ下りていない。あなたの中では、そんな状態が起きやすいのです。
-    </p>
-
-    <p>
-      あなたは、やる気がないわけではありません。むしろ、本気で取り組みたいからこそ、中途半端な状態で始めたくないのです。
-    </p>
-
-    <p>
-      一度選んだら、自分は本気で取り組むと分かっている。だからこそ、最初の決断が重くなります。
-    </p>
-
-    <p>
-      その結果、頭の中ではかなり準備が進んでいるのに、現実だけが動いていない。
-    </p>
-
-    <p>
-      そして一日の終わりに、「これだけ考えているのに、私はいつ始めるんだろう」と、もどかしくなることがあります。
-    </p>
-
-    <p>
-      あなたに行動力がないわけではありません。大きな集中力を持っているからこそ、その力を注ぐ方向を慎重に選びたいのです。
+      そのため、
+      かなり準備しているのに、
+      「私はいつ始めるんだろう」と
+      自分でももどかしくなることがあります。
     </p>
   </article>
 
-  <article class="result-block result-block--final">
+  <!-- 04 -->
+  <article class="result-block result-block--risk">
+    <h2>この状態が続くと…</h2>
+
+    <div class="risk-items">
+      <div class="risk-item">
+        調べることや準備することばかり増え、
+        外へ出すタイミングが遅くなる
+      </div>
+
+      <div class="risk-item">
+        すでに十分考えているのに、
+        「まだ足りない」と感じやすくなる
+      </div>
+
+      <div class="risk-item">
+        決断そのものが重くなり、
+        最初の一歩を選びにくくなる
+      </div>
+
+      <div class="risk-item">
+        本来は強みである集中力を、
+        現実の成果につなげにくくなる
+      </div>
+    </div>
+  </article>
+
+  <!-- 05 -->
+  <article class="result-block result-block--key">
+    <h2>でも、問題は「考えすぎること」だけではありません</h2>
+
+    <p>
+      あなたは、一度決めたら本気になる人です。
+      だからこそ、
+      最初の決断にも大きな意味を持たせやすくなります。
+    </p>
+
+    <p>
+      気づかないうちに、
+      「これを選んだら、ずっと続ける」
+      「途中で変えてはいけない」
+      くらいの重さを感じているのかもしれません。
+    </p>
+
+    <p class="key-message">
+      <span class="key-message-line">今決めることは、</span>
+      <span class="key-message-line">一生の答えなのでしょうか。</span>
+    </p>
+
+    <p>
+      守りたいものと、
+      動きながら変えてよいものを分けられると、
+      すべてに100％納得してからでなくても、
+      最初の一歩を選びやすくなります。
+    </p>
+
+    <p>
+      あなたの集中力は、
+      準備を続けるためだけではなく、
+      <strong>自分の答えを現実の中で確かめるために使える力</strong>
+      でもあります。
+    </p>
+  </article>
+
+  <!-- 06 LINE自動生成用 -->
+  <article class="result-block result-block--final result-block--source-only">
     <h2>ここから先が本題です</h2>
-
-    <p>
-      ここまで読んで、「そうそう。始めたくないのではなく、始めるなら本気でやりたいのよ」と思ったでしょうか。
-    </p>
-
-    <p>
-      手相から見えているあなたの集中力は、1つのことを深く追い、知識や経験を自分だけの専門性へ育てるための大切な強みです。
-    </p>
-
-    <p>
-      さらに、慎重に現実を確かめる力も持っているため、自分が本当に価値を感じたものへ、責任を持って取り組めます。
-    </p>
-
-    <p>
-      だから、軽い気持ちで選べないことも、深く考えてから始めたいことも、あなたらしさの一部です。
-    </p>
-
-    <p>
-      ただ、始める前から確かな答えを求め続けると、せっかくの集中力が、仕事を育てることよりも、進む方向を探すことへ使われやすくなります。
-    </p>
-
-    <p>
-      あなたらしい進み方を見つけるヒントは、集中力を弱めることではなく、その大きな力をどこへ向けるかにありそうです。
-    </p>
-
-    <p>
-      では、慎重に見極める力と深く集中する力を仕事に活かしながら、自分らしい一歩を選ぶには、どのような考え方が合っているのでしょうか。
-    </p>
 
     <ul class="line-benefits-source">
       <li>
-        <strong>本気で取り組みたい自分に合う考え方：</strong>
-        納得できる答えを探し続けるのではなく、自分の強みを活かして進むために何を大切にすればよいかが分かります。
+        <strong>納得できる答えを探し続けてしまう理由：</strong>
+        本気で取り組みたい人ほど、
+        なぜ最初の決断が重くなりやすいのかが分かります。
       </li>
 
       <li>
-        <strong>自分らしい一歩を選ぶための目安：</strong>
-        すべてに確信が持てないときでも、自分に合った方向を考えるための目安が分かります。
+        <strong>信念を守りながら動く判断基準：</strong>
+        絶対に大切にしたいことと、
+        実際に動きながら変えてよい部分を
+        分ける考え方が分かります。
       </li>
 
       <li>
-        <strong>仕事で集中力を活かすヒント：</strong>
-        深く追求する力と信念を、自分だけの専門性として育てる3つのヒントが分かります。
+        <strong>集中力を成果につなげるヒント：</strong>
+        100％の確信を待たずに、
+        区切りをつけて本気で試し、
+        今の答えを現実へ出す3つのコツが分かります。
       </li>
     </ul>
 
     <p class="cta-message-source">
-      あなたには、自分が価値を感じたものを深く追い、知識や経験を自分だけの専門性へ育てる力があります。その強みを仕事に活かしながら、自分らしい一歩を選ぶための考え方を、LINEで受け取ってください。
+      あなたには、
+      深く考える力も、
+      1つのことへ大きなエネルギーを注ぐ力もあります。
+      必要なのは、
+      納得をあきらめることではありません。
+      最初の決断にすべての答えを求めず、
+      守りたいものを持ったまま、
+      現実の中で確かめていくことです。
+      自分の信念を曲げずに動き始めるための考え方を、
+      LINEで受け取ってください。
     </p>
   </article>
+
 </section>
