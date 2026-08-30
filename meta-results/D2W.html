@@ -1,236 +1,498 @@
-<section class="result-detail" data-diagnosis-code="D2W">
-  <div class="result-catch" data-hide-title="true">
-    <p>【あなたを一言で表すと】</p>
-    <p>動きながら束ねるプロデューサー</p>
+<section class="result-detail result-detail--visual" data-diagnosis-code="D2W">
+
+  <style>
+    /* ========================================
+       D2W 診断結果
+       Meta広告流入・スマホ向け
+    ======================================== */
+
+    .result-detail--visual {
+      max-width: 720px;
+      margin: 0 auto;
+      color: #24313a;
+      line-height: 1.8;
+    }
+
+    /* ========================================
+       FV
+    ======================================== */
+
+    .diagnosis-result-fv {
+      margin: 0 0 28px;
+      padding: 0;
+    }
+
+    .diagnosis-result-fv img {
+      display: block;
+      width: 100%;
+      height: auto;
+      margin: 0 auto;
+    }
+
+    /* ========================================
+       共通ブロック
+    ======================================== */
+
+    .result-detail--visual .result-block {
+      margin: 0 16px 28px;
+      padding: 26px 20px;
+      background: #ffffff;
+      border: 1px solid #dcecf5;
+      border-radius: 18px;
+      box-sizing: border-box;
+    }
+
+    .result-detail--visual .result-block h2 {
+      margin: 0 0 18px;
+      color: #083f5c;
+      font-size: 22px;
+      line-height: 1.45;
+      text-align: left;
+    }
+
+    .result-detail--visual .result-block p {
+      margin: 0 0 16px;
+      font-size: 16px;
+      line-height: 1.9;
+    }
+
+    .result-detail--visual .result-block p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* ========================================
+       あなたはこんなタイプ
+    ======================================== */
+
+    .type-keywords {
+      margin: 0 0 20px;
+      font-size: 20px;
+      font-weight: 700;
+      color: #1f6fb2;
+      letter-spacing: 0.04em;
+      text-align: center;
+    }
+
+    .type-point-list {
+      display: grid;
+      gap: 11px;
+      margin: 0 0 20px;
+    }
+
+    .type-point {
+      position: relative;
+      padding: 14px 14px 14px 43px;
+      background: #f8fcff;
+      border-radius: 12px;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .type-point::before {
+      content: "✓";
+      position: absolute;
+      left: 16px;
+      top: 14px;
+      color: #1f6fb2;
+      font-weight: 700;
+    }
+
+    .type-summary {
+      padding: 16px;
+      background: #eef7ff;
+      border-radius: 12px;
+      color: #314958;
+    }
+
+    /* ========================================
+       強みが出る場面
+    ======================================== */
+
+    .talent-scene-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    .talent-scene-card {
+      padding: 18px;
+      border-radius: 14px;
+      background: #eef7ff;
+      border: 1px solid #cfe3f1;
+    }
+
+    .talent-scene-card strong {
+      display: block;
+      margin-bottom: 8px;
+      color: #083f5c;
+      font-size: 17px;
+      line-height: 1.5;
+    }
+
+    .talent-scene-card p {
+      margin: 0 !important;
+    }
+
+    /* ========================================
+       今のループ
+    ======================================== */
+
+    .loop-intro {
+      font-weight: 700;
+      color: #314958;
+    }
+
+    .diagnosis-loop {
+      margin: 20px 0;
+    }
+
+    .loop-step {
+      padding: 15px 14px;
+      background: #f8fcff;
+      border: 1px solid #cfe6f3;
+      border-radius: 12px;
+      text-align: center;
+      font-size: 16px;
+      font-weight: 700;
+      color: #083f5c;
+    }
+
+    .loop-arrow {
+      height: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #6f8798;
+      font-size: 24px;
+      font-weight: 700;
+    }
+
+    .loop-step--last {
+      background: #fff5f2;
+      border-color: #f2c9bf;
+      color: #9b4d3b;
+    }
+
+    /* ========================================
+       この状態が続くと
+    ======================================== */
+
+    .result-block--risk {
+      background: #fffaf7 !important;
+      border-color: #f1d9cf !important;
+    }
+
+    .risk-items {
+      display: grid;
+      gap: 10px;
+    }
+
+    .risk-item {
+      position: relative;
+      padding: 13px 14px 13px 40px;
+      background: #ffffff;
+      border: 1px solid #f0ddd5;
+      border-radius: 11px;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .risk-item::before {
+      content: "●";
+      position: absolute;
+      left: 17px;
+      top: 15px;
+      color: #d98670;
+      font-size: 10px;
+    }
+
+    /* ========================================
+       問題の正体
+    ======================================== */
+
+    .result-block--key {
+      background: #eef7ff !important;
+      border-color: #bddcec !important;
+    }
+
+    .key-message {
+      margin: 18px 0 !important;
+      padding: 18px 16px;
+      background: #ffffff;
+      border: 1px solid #dcecf5;
+      border-radius: 8px;
+      font-size: 18px !important;
+      font-weight: 700;
+      color: #083f5c;
+      text-align: center;
+      line-height: 1.7;
+    }
+
+    .key-message-line {
+      display: block;
+    }
+
+    /* ========================================
+       LINE自動生成用データ
+    ======================================== */
+
+    .result-block--source-only {
+      display: none !important;
+    }
+
+    /* ========================================
+       スマホ
+    ======================================== */
+
+    @media (max-width: 600px) {
+      .result-detail--visual .result-block {
+        margin-left: 14px;
+        margin-right: 14px;
+        padding: 23px 17px;
+      }
+
+      .result-detail--visual .result-block h2 {
+        font-size: 21px;
+      }
+
+      .type-keywords {
+        font-size: 19px;
+      }
+
+      .talent-scene-card strong {
+        font-size: 17px;
+      }
+
+      .key-message {
+        font-size: 17px !important;
+        padding: 16px 14px;
+      }
+    }
+  </style>
+
+  <!-- FV -->
+  <div class="diagnosis-result-fv">
+    <img
+      src="meta-fv-results/D2W.png"
+      alt="才能コンパス診断 動きながら束ねるプロデューサー"
+      loading="eager"
+      fetchpriority="high"
+    >
   </div>
 
+  <!-- 01 -->
   <article class="result-block">
-    <h2>あなたの本質</h2>
+    <h2>あなたはこんなタイプです</h2>
 
-    <p class="highlight-paragraph">行動 × 突破 × 多角的視点</p>
+    <div class="type-keywords">
+      行動 × 突破 × 多角的視点
+    </div>
 
-    <p>
-      あなたは、何かを思いついたときに、<br>
-      「まずは、やってみよう」<br>
-      「実際に動けば、見えてくることがありそう」<br>
-      と、すぐに一歩を踏み出せる人です。
-    </p>
+    <div class="type-point-list">
+      <div class="type-point">
+        じっくり考えてからではなく、
+        <strong>「まずやってみよう」</strong>
+        と動きながら答えを見つける
+      </div>
 
-    <p>
-      頭の中ですべてを決めてから始めるよりも、まずは形にする。人へ話してみる。実際に動かしながら、次の展開を考える。
-    </p>
+      <div class="type-point">
+        一つの案に対しても、
+        <strong>相手や伝え方など複数の角度</strong>
+        から考えられる
+      </div>
 
-    <p>
-      そんな進み方を自然に選びます。
-    </p>
+      <div class="type-point">
+        実際に得た反応や新しい視点を組み合わせ、
+        次の展開へつなげられる
+      </div>
+    </div>
 
-    <p>
-      さらに、あなたは一つの見方だけで物事を判断しません。
-    </p>
-
-    <p>
-      「こちらの立場から見ると、どうだろう」<br>
-      「別の人と組んだら、新しい形にできそう」<br>
-      「このアイデアは、違う場面にも活かせるかもしれない」<br>
-      と、いくつもの可能性を見つけます。
-    </p>
-
-    <p>
-      そして、見つけた人やアイデアを、ばらばらのままにはしておきません。
-    </p>
-
-    <p>
-      「これとこれをつないだら、面白いことが始まりそう」と考え、実際の企画や仕事へ動かしていきます。
-    </p>
-
-    <p>
-      あなたは、決められた形の中で動く人ではありません。人やアイデアをつなぎながら、今までになかった流れを生み出す人です。
+    <p class="type-summary">
+      あなたは、決められた一つの見方に
+      従う人ではありません。
+      まず動いてみて、
+      そこで集まったさまざまな視点を束ねながら、
+      新しい企画や流れを生み出していく人です。
     </p>
   </article>
 
+  <!-- 02 -->
   <article class="result-block">
-    <h2>あなたの才能</h2>
+    <h2>こんな場面で強みが出ます</h2>
 
-    <p>そんなあなたには、次のような力があります。</p>
+    <div class="talent-scene-grid">
+      <div class="talent-scene-card">
+        <strong>🚀 まず動かすとき</strong>
+        <p>
+          頭の中だけで考え続けるより、
+          発信する、人に話す、試作品を作るなど、
+          すぐに現実を動かせます。
+        </p>
+      </div>
 
-    <ul>
-      <li>思いついたことへ、すぐに行動を起こす力</li>
-      <li>一つの物事を、さまざまな角度から見る力</li>
-      <li>人やアイデアの間に、新しいつながりを見つける力</li>
-      <li>停滞した状況に、新しい企画や流れをつくる力</li>
-    </ul>
+      <div class="talent-scene-card">
+        <strong>👀 別の角度を見つけるとき</strong>
+        <p>
+          「初心者には？」
+          「別の伝え方なら？」と、
+          一つの企画を複数の立場から見ることができます。
+        </p>
+      </div>
 
-    <p>
-      あなたは、一つのアイデアを思いついて、それだけで終わる人ではありません。
+      <div class="talent-scene-card">
+        <strong>🧩 視点を束ねるとき</strong>
+        <p>
+          行動して得た反応やアイデアを組み合わせ、
+          一つの企画から
+          新しい展開を生み出せます。
+        </p>
+      </div>
+    </div>
+  </article>
+
+  <!-- 03 -->
+  <article class="result-block">
+    <h2>今、こんなループに入っていませんか？</h2>
+
+    <p class="loop-intro">
+      「今回は、この形でやってみよう」と始めたはずなのに……
     </p>
 
-    <p>
-      「この人の経験と組み合わせられそう」「別の場所で使えば、違う人にも役立ちそう」と、その先に広がる可能性まで見つけられます。
-    </p>
+    <div class="diagnosis-loop">
+      <div class="loop-step">
+        一つの案で動き始める
+      </div>
+
+      <div class="loop-arrow">↓</div>
+
+      <div class="loop-step">
+        動いたことで、別の角度が見える
+      </div>
+
+      <div class="loop-arrow">↓</div>
+
+      <div class="loop-step">
+        その視点も企画へ加えたくなる
+      </div>
+
+      <div class="loop-arrow">↓</div>
+
+      <div class="loop-step loop-step--last">
+        やることが増え、全部が途中になりやすい
+      </div>
+    </div>
 
     <p>
-      たとえば、新しい企画について話しているときも、内容だけを考えるのではありません。
-    </p>
-
-    <p>
-      誰と一緒に取り組めるか。今ある経験や得意なことをどう活かせるか。ほかの企画と組み合わせられないか。さまざまな角度から、全体を見渡せます。
-    </p>
-
-    <p>
-      そして、「では、一度やってみましょう」と、話を実際の行動へ移せる人です。
-    </p>
-
-    <p>
-      意見の違う人がいる場面でも、どちらか一方を選ぶだけではありません。
-    </p>
-
-    <p>
-      「それぞれのよさを活かしたら、新しい形にできるかもしれない」と、両方の間に別の道をつくれます。
-    </p>
-
-    <p>
-      動きが止まっている場面でも、「この人へ声をかけてみよう」「別の方法と組み合わせてみよう」と、新しい展開をつくれるでしょう。
-    </p>
-
-    <p>
-      周りからも、「行動が早いよね」「いろいろな可能性に気づくね」「人をつなぐのが上手」「一緒にいると新しい企画が生まれるね」と言われたことがあるかもしれません。
-    </p>
-
-    <p>
-      あなたは、ただ発想が豊かな人ではありません。見つけた可能性を実際に動かし、人やアイデアを新しい仕事へつなげられる人です。
-    </p>
-
-    <p>
-      まだ別々に存在しているものを組み合わせ、今までになかった企画や流れを生み出せることが、あなたの大きな才能です。
+      あなたは、動けていないわけではありません。
+      むしろ、
+      <strong>
+        かなり動き、かなり考え、
+        多くの可能性を見つけています。
+      </strong>
+      ただ、一つの案を動かすたびに
+      新しい立場や切り口が見えるため、
+      それをすべて取り入れようとすると、
+      最初はシンプルだった企画が
+      少しずつ大きくなりやすいのです。
     </p>
   </article>
 
-  <article class="result-block">
-    <h2>今のあなたの状態</h2>
+  <!-- 04 -->
+  <article class="result-block result-block--risk">
+    <h2>この状態が続くと…</h2>
+
+    <div class="risk-items">
+      <div class="risk-item">
+        一つの発信へ伝えたいことを足しすぎて、
+        一番伝えたい内容が見えにくくなる
+      </div>
+
+      <div class="risk-item">
+        サービスの形や届け方を増やし、
+        同時に進める企画が増えていく
+      </div>
+
+      <div class="risk-item">
+        たくさん動いているのに、
+        どれを中心に育てるのか分かりにくくなる
+      </div>
+
+      <div class="risk-item">
+        本当は視野が広いのに、
+        「私は一つに絞れないのかも」と感じやすくなる
+      </div>
+    </div>
+  </article>
+
+  <!-- 05 -->
+  <article class="result-block result-block--key">
+    <h2>でも、問題は「いろいろな角度が見えること」ではありません</h2>
 
     <p>
-      ただ今は、その行動力と視野の広さが、少しだけ空回りしているかもしれません。
+      あなたには、
+      行動を起こす力も、
+      複数の角度から見る力も、
+      異なる視点を新しい価値へ束ねる力もあります。
     </p>
 
     <p>
-      「これをやってみよう」と、一つの企画を始める。実際に動くと、そこから人との出会いや新しい情報が生まれます。
+      ただ今は、
+      新しく見つけた視点を
+      <strong>
+        「あとで使えるもの」ではなく
+        「今すぐ形にするもの」
+      </strong>
+      として扱いすぎているのかもしれません。
+    </p>
+
+    <p class="key-message">
+      <span class="key-message-line">「今、使う視点はどれか？」</span>
+      <span class="key-message-line">「あとで使えばよい視点はどれか？」</span>
     </p>
 
     <p>
-      すると、「この人とも一緒にできそう」「こちらのアイデアも加えられそう」と、次の可能性が見えてきます。
-    </p>
-
-    <p>
-      一つの仕事を進めている途中で、別の企画が浮かぶ。今のサービスを届けながら、違う形への広がりも見えてくる。
-    </p>
-
-    <p>
-      どの案にも、それぞれのよさがあります。
-    </p>
-
-    <p>
-      しかも、あなたには思いついたことを実際に動かせる力があるため、「こちらも試してみよう」と、いくつもの企画を同時に始められます。
-    </p>
-
-    <p>
-      最初は一つだった仕事に、新しい内容が加わる。関わる人が増える。さらに別の展開も始まる。
-    </p>
-
-    <p>
-      気づけば、自分が企画者であり、調整役であり、実際に動かす人でもある。いくつもの役割を一人で担っていることがあります。
-    </p>
-
-    <p>
-      頭の中では、さまざまな人やアイデアが次々に手を挙げています。しかも、どの提案にも面白い可能性がある。これは、簡単には却下できません。
-    </p>
-
-    <p>
-      あなたは、何もしていないわけではありません。かなり動いています。人にも声をかけています。そして、いくつもの案を実際の形へ変えています。
-    </p>
-
-    <p>
-      それなのに、ふと振り返ると、「いろいろ始めたけれど、今いちばん力を注いでいるのは何だろう」と感じることがあります。
-    </p>
-
-    <p>
-      やることが増えるほど、一つひとつへ使える時間は少なくなる。新しい企画を動かすたびに、すでに始めた仕事の続きが後ろへ回る。
-    </p>
-
-    <p>
-      そのため、かなり動いているのに、どれも途中に見えてしまうことがあります。
-    </p>
-
-    <p>
-      あなたに形にする力がないわけではありません。
-    </p>
-
-    <p>
-      一つの物事から、多くの可能性が見える。別々の人やアイデアをつなげられる。そして、考えて終わらず、実際に動かせる人なのです。
-    </p>
-
-    <p>
-      今、自分の才能を活かしきれていないと感じるのは、行動力が足りないからではありません。見つけた可能性のすべてに、自分で関わろうとしているからかもしれません。
+      この順番を決められるようになると、
+      視野の広さを失わなくても、
+      今選んだ一つを形にしながら、
+      ほかのアイデアも次の展開へ活かしやすくなります。
     </p>
   </article>
 
-  <article class="result-block result-block--final">
+  <!-- 06 LINE自動生成用 -->
+  <article class="result-block result-block--final result-block--source-only">
     <h2>ここから先が本題です</h2>
-
-    <p>
-      ここまで読んで、「そうそう。一つ動かすと、そこからまた別の企画が生まれるのよね」と思ったでしょうか。
-    </p>
-
-    <p>
-      手相から見えているあなたの行動力、突破力、多角的な視点は、人やアイデアの間に新しいつながりを見つけ、実際の企画や仕事へ動かすための大切な才能です。
-    </p>
-
-    <p>
-      思いついたことへすぐに一歩を踏み出せる。一つの物事をさまざまな角度から見られる。別々に存在している人や経験をつなぎ、新しい仕事へ変えられる。
-    </p>
-
-    <p>
-      こうした才能は、新しい企画を立ち上げるとき、異なる得意分野を持つ人と仕事をするとき、止まっている状況に新しい動きを生み出すときなどに、大きく活かされます。
-    </p>
-
-    <p>
-      また、まだ誰も気づいていない組み合わせを見つけ、「一緒にやってみませんか」と周りを動かせることも、あなたの強みです。
-    </p>
-
-    <p>
-      あなたの視野の広さや行動力は、見つけたすべての可能性を一人で抱えるためにあるものではありません。
-    </p>
-
-    <p>
-      人が持っている力を見つけ、それぞれが活躍できる新しい場や仕事を生み出すためにも活かせます。
-    </p>
-
-    <p>
-      あなたらしい進み方のヒントは、可能性を見つけないようにすることでも、発想を一つに狭めることでもありません。人やアイデアをつなぐ力と、実際に動かす突破力を、新しい企画や仕事を生み出すために活かすことにありそうです。
-    </p>
-
-    <p>
-      <strong>では、思いついたことをすぐに動かす力、人やアイデアをつなぐ力、新しい企画や流れを生み出す力を、仕事にどう活かしていけばよいのでしょうか。</strong>
-    </p>
 
     <ul class="line-benefits-source">
       <li>
-        <strong>動きながら束ねる自分に合う進み方：</strong>
-        まず行動し、人との関わりの中から新しい展開を見つけられる特徴を活かすヒントが分かります。
+        <strong>動き始めるほど切り口が増える理由：</strong>
+        行動、突破、多角的視点が同時に働くことで、
+        なぜ一つの企画を動かすほど
+        新しい可能性が見えやすくなるのかが分かります。
       </li>
 
       <li>
-        <strong>行動力と多角的な視点を仕事に活かすヒント：</strong>
-        さまざまな可能性を見つけ、実際の企画へ動かせる才能を活かすヒントが分かります。
+        <strong>「今使う視点」の選び方：</strong>
+        今回届ける一人と一つの変化を決め、
+        浮かんだ視点を
+        「今・次・保留」に分ける考え方が分かります。
       </li>
 
       <li>
-        <strong>仕事で人やアイデアを束ねる力を活かすヒント：</strong>
-        別々の得意分野や経験をつなぎ、新しい仕事や流れを生み出す才能を活かすヒントが分かります。
+        <strong>多角的な視点を成果へ変える3つのヒント：</strong>
+        一つの切り口を決めた回数や期間まで確かめ、
+        そのあとで次の視点を加える方法が分かります。
       </li>
     </ul>
 
     <p class="cta-message-source">
-      あなたにはすでに、思いついたことをすぐに動かす力も、人やアイデアをつなぐ力も、新しい企画や流れを生み出す力もあります。その才能を仕事でもっと活かすためのヒントを、LINEで受け取ってください。
+      あなたには、
+      まず動き出し、
+      そこで見つけた複数の視点を
+      新しい企画や価値へ束ねる力があります。
+      その視野の広さを分散させず、
+      一つの仕事へ順番に積み上げるための考え方を、
+      LINEで受け取ってください。
     </p>
   </article>
+
 </section>
