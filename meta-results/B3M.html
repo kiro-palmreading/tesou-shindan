@@ -1,210 +1,519 @@
-<section class="result-detail" data-diagnosis-code="B3M">
-  <div class="result-catch" data-hide-title="true">
-    <p>【あなたを一言で表すと】</p>
-    <p>想いを練り上げるプロフェッショナル</p>
+<section class="result-detail result-detail--visual" data-diagnosis-code="B3M">
+
+  <style>
+    /* ========================================
+       B3M 診断結果
+       Meta広告流入・スマホ向け
+    ======================================== */
+
+    .result-detail--visual {
+      max-width: 720px;
+      margin: 0 auto;
+      color: #24313a;
+      line-height: 1.8;
+    }
+
+    /* ========================================
+       FV
+    ======================================== */
+
+    .diagnosis-result-fv {
+      margin: 0 0 28px;
+      padding: 0;
+    }
+
+    .diagnosis-result-fv img {
+      display: block;
+      width: 100%;
+      height: auto;
+      margin: 0 auto;
+    }
+
+    /* ========================================
+       共通ブロック
+    ======================================== */
+
+    .result-detail--visual .result-block {
+      margin: 0 16px 28px;
+      padding: 26px 20px;
+      background: #ffffff;
+      border: 1px solid #dcecf5;
+      border-radius: 18px;
+      box-sizing: border-box;
+    }
+
+    .result-detail--visual .result-block h2 {
+      margin: 0 0 18px;
+      color: #083f5c;
+      font-size: 22px;
+      line-height: 1.45;
+      text-align: left;
+    }
+
+    .result-detail--visual .result-block p {
+      margin: 0 0 16px;
+      font-size: 16px;
+      line-height: 1.9;
+    }
+
+    .result-detail--visual .result-block p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* ========================================
+       あなたはこんなタイプ
+    ======================================== */
+
+    .type-keywords {
+      margin: 0 0 20px;
+      font-size: 20px;
+      font-weight: 700;
+      color: #1f6fb2;
+      letter-spacing: 0.04em;
+      text-align: center;
+    }
+
+    .type-point-list {
+      display: grid;
+      gap: 11px;
+      margin: 0 0 20px;
+    }
+
+    .type-point {
+      position: relative;
+      padding: 14px 14px 14px 43px;
+      background: #f8fcff;
+      border-radius: 12px;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .type-point::before {
+      content: "✓";
+      position: absolute;
+      left: 16px;
+      top: 14px;
+      color: #1f6fb2;
+      font-weight: 700;
+    }
+
+    .type-summary {
+      padding: 16px;
+      background: #eef7ff;
+      border-radius: 12px;
+      color: #314958;
+    }
+
+    /* ========================================
+       強みが出る場面
+    ======================================== */
+
+    .talent-scene-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    .talent-scene-card {
+      padding: 18px;
+      border-radius: 14px;
+      background: #eef7ff;
+      border: 1px solid #cfe3f1;
+    }
+
+    .talent-scene-card strong {
+      display: block;
+      margin-bottom: 8px;
+      color: #083f5c;
+      font-size: 17px;
+      line-height: 1.5;
+    }
+
+    .talent-scene-card p {
+      margin: 0 !important;
+    }
+
+    /* ========================================
+       今のループ
+    ======================================== */
+
+    .loop-intro {
+      font-weight: 700;
+      color: #314958;
+    }
+
+    .diagnosis-loop {
+      margin: 20px 0;
+    }
+
+    .loop-step {
+      padding: 15px 14px;
+      background: #f8fcff;
+      border: 1px solid #cfe6f3;
+      border-radius: 12px;
+      text-align: center;
+      font-size: 16px;
+      font-weight: 700;
+      color: #083f5c;
+    }
+
+    .loop-arrow {
+      height: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #6f8798;
+      font-size: 24px;
+      font-weight: 700;
+    }
+
+    .loop-step--last {
+      background: #fff5f2;
+      border-color: #f2c9bf;
+      color: #9b4d3b;
+    }
+
+    /* ========================================
+       この状態が続くと
+    ======================================== */
+
+    .result-block--risk {
+      background: #fffaf7 !important;
+      border-color: #f1d9cf !important;
+    }
+
+    .risk-items {
+      display: grid;
+      gap: 10px;
+    }
+
+    .risk-item {
+      position: relative;
+      padding: 13px 14px 13px 40px;
+      background: #ffffff;
+      border: 1px solid #f0ddd5;
+      border-radius: 11px;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .risk-item::before {
+      content: "●";
+      position: absolute;
+      left: 17px;
+      top: 15px;
+      color: #d98670;
+      font-size: 10px;
+    }
+
+    /* ========================================
+       問題の正体
+    ======================================== */
+
+    .result-block--key {
+      background: #eef7ff !important;
+      border-color: #bddcec !important;
+    }
+
+    .key-message {
+      margin: 18px 0 !important;
+      padding: 18px 16px;
+      background: #ffffff;
+      border: 1px solid #dcecf5;
+      border-radius: 8px;
+      font-size: 18px !important;
+      font-weight: 700;
+      color: #083f5c;
+      text-align: center;
+      line-height: 1.7;
+    }
+
+    .key-message-line {
+      display: block;
+    }
+
+    /* ========================================
+       LINE自動生成用データ
+    ======================================== */
+
+    .result-block--source-only {
+      display: none !important;
+    }
+
+    /* ========================================
+       スマホ
+    ======================================== */
+
+    @media (max-width: 600px) {
+      .result-detail--visual .result-block {
+        margin-left: 14px;
+        margin-right: 14px;
+        padding: 23px 17px;
+      }
+
+      .result-detail--visual .result-block h2 {
+        font-size: 21px;
+      }
+
+      .type-keywords {
+        font-size: 19px;
+      }
+
+      .talent-scene-card strong {
+        font-size: 17px;
+      }
+
+      .key-message {
+        font-size: 17px !important;
+        padding: 16px 14px;
+      }
+    }
+  </style>
+
+  <!-- FV -->
+  <div class="diagnosis-result-fv">
+    <img
+      src="meta-fv-results/B3M.png"
+      alt="才能コンパス診断 想いを練り上げるプロフェッショナル"
+      loading="eager"
+      fetchpriority="high"
+    >
   </div>
 
+  <!-- 01 -->
   <article class="result-block">
-    <h2>あなたの本質</h2>
+    <h2>あなたはこんなタイプです</h2>
 
-    <p class="highlight-paragraph">熟考 × 共感 × 集中</p>
+    <div class="type-keywords">
+      熟考 × 共感 × 集中
+    </div>
 
-    <p>
-      あなたは、人の気持ちやその場の空気を敏感に感じ取りながらも、ただ周りに合わせる人ではありません。
-    </p>
+    <div class="type-point-list">
+      <div class="type-point">
+        すぐに答えを出すより、
+        <strong>自分の中でじっくり想いを深められる</strong>
+      </div>
 
-    <p>
-      心の奥には、<br>
-      「私は、何を大切にしたいのか」<br>
-      「この仕事を通して、何を届けたいのか」<br>
-      「自分が本当に信じられるものは何か」<br>
-      という、自分なりの軸があります。
-    </p>
+      <div class="type-point">
+        自分の気持ちだけでなく、
+        <strong>相手にとって本当に価値があるかまで考えられる</strong>
+      </div>
 
-    <p>
-      何かを決めるときも、勢いやその場の雰囲気だけでは動きません。
-    </p>
+      <div class="type-point">
+        一度「これだ」と納得したものには、
+        <strong>深く集中して力を注げる</strong>
+      </div>
+    </div>
 
-    <p>
-      相手の気持ちを受け取る。自分の中へ持ち帰る。一人でじっくり考える。そうして、自分が心から納得できる答えを探します。
-    </p>
-
-    <p>
-      決めるまでには、少し時間がかかるかもしれません。
-    </p>
-
-    <p>
-      けれど、一度「これだ」と納得すると強い人です。一つのテーマを深く掘り下げ、自分なりの考えや仕事へ育てていけます。
-    </p>
-
-    <p>
-      周りの流行や、その場だけの評価に簡単には振り回されません。自分が意味を感じたことへ、長く力を注げます。
-    </p>
-
-    <p>
-      あなたは、ただ優しい人でも、ただ考え込む人でもありません。相手への思いやりと自分の信念を大切にしながら、想いを仕事へ変えていく人です。
+    <p class="type-summary">
+      あなたは、
+      周りに合わせるだけの人でも、
+      ただ考え込む人でもありません。
+      人の気持ちを大切にしながら、
+      自分が心から信じられる答えを深く探し、
+      その想いを仕事へ育てていく人です。
     </p>
   </article>
 
+  <!-- 02 -->
   <article class="result-block">
-    <h2>あなたの才能</h2>
+    <h2>こんな場面で強みが出ます</h2>
 
-    <p>そんなあなたには、次のような力があります。</p>
+    <div class="talent-scene-grid">
+      <div class="talent-scene-card">
+        <strong>🤝 相手の本音を深く考えるとき</strong>
+        <p>
+          その場の言葉だけで終わらず、
+          「本当に必要なのは何だろう」と
+          あとからも相手の気持ちを深めて考えられます。
+        </p>
+      </div>
 
-    <ul>
-      <li>相手の言葉の奥にある気持ちを理解する力</li>
-      <li>一つのテーマを、時間をかけて深く考える力</li>
-      <li>自分なりの答えを見つけるまで向き合う力</li>
-      <li>大切だと思ったことへ、集中して力を注ぐ力</li>
-    </ul>
+      <div class="talent-scene-card">
+        <strong>🔍 大切なテーマを掘り下げるとき</strong>
+        <p>
+          「なぜこれを届けたいのか」
+          「本当に価値があるのか」と、
+          表面的な答えで終わらず深く考え抜けます。
+        </p>
+      </div>
+
+      <div class="talent-scene-card">
+        <strong>🎯 信じた方向を育てるとき</strong>
+        <p>
+          一度、自分なりの意味を見つけると、
+          必要なことを調べ、
+          一つのテーマへ集中して育てていけます。
+        </p>
+      </div>
+    </div>
+  </article>
+
+  <!-- 03 -->
+  <article class="result-block">
+    <h2>今、こんなループに入っていませんか？</h2>
+
+    <p class="loop-intro">
+      大切な想いは、すでにあるはずなのに……
+    </p>
+
+    <div class="diagnosis-loop">
+      <div class="loop-step">
+        自分の想いをじっくり考える
+      </div>
+
+      <div class="loop-arrow">↓</div>
+
+      <div class="loop-step">
+        相手に本当に役立つかも確かめる
+      </div>
+
+      <div class="loop-arrow">↓</div>
+
+      <div class="loop-step">
+        「もっと納得できる答えがあるかも」と深める
+      </div>
+
+      <div class="loop-arrow">↓</div>
+
+      <div class="loop-step loop-step--last">
+        想いは育つのに、外へ出す地点が決まらない
+      </div>
+    </div>
 
     <p>
-      お客様から相談を受けたときも、その場で答えられることだけで終わりにはしません。
+      あなたは、
+      何もできていないわけではありません。
+      むしろ、
+      <strong>考えるたびに、想いも内容もかなり深まっています。</strong>
     </p>
 
     <p>
-      「この人にとって、本当に必要な言葉は何だろう」「表面的な悩みの奥に、別の気持ちがあるのでは」と、あとからもう一度考えることがあります。
+      発信を書けば、
+      言葉だけでなく
+      「本当に伝えたいことは何か」まで掘り下げる。
     </p>
 
     <p>
-      何気なく聞いた一言が心に残り、時間がたってから、「本当に困っていたのは、こちらかもしれない」と気づくこともあるでしょう。
+      サービスを考えれば、
+      内容だけでなく
+      「本当に相手の役に立つのか」
+      「自分が責任を持って届けられるのか」まで考える。
     </p>
 
     <p>
-      あなたは、一度受け取った人の気持ちや問いを、簡単には忘れません。自分の中で何度も考え、より深く理解しようとします。
-    </p>
-
-    <p>
-      サービスをつくるときにも、流行っている形をそのまま取り入れるだけではありません。
-    </p>
-
-    <p>
-      「誰のためにつくるのか」「自分は、なぜこれを届けたいのか」「本当に価値があると言えるのか」と、自分の中で丁寧に確かめます。
-    </p>
-
-    <p>
-      方向が定まると、必要なことを調べ、知識を深め、細かなところまで集中して取り組めます。
-    </p>
-
-    <p>
-      周りからも「人のことをよく考えているね」「芯があるよね」「一度決めると強いよね」「そこまで深く考えていたんだ」と言われたことがあるかもしれません。
-    </p>
-
-    <p>
-      あなたは、ただ考える時間が長い人ではありません。人の気持ちを受け取ったうえで、自分なりの答えが見つかるまで深く向き合える人です。
-    </p>
-
-    <p>
-      相手を深く理解する共感力、一つのテーマを考え抜く力、納得したことへ集中できる力。その組み合わせが、あなたの大きな才能です。
+      気づけば、
+      <strong>下書きばかりが立派に育ち、公開日だけがなかなか育たない。</strong>
+      頭の中では何度も届けているのに、
+      現実ではまだ外へ出ていないこともあるかもしれません。
     </p>
   </article>
 
-  <article class="result-block">
-    <h2>今のあなたの状態</h2>
+  <!-- 04 -->
+  <article class="result-block result-block--risk">
+    <h2>この状態が続くと…</h2>
+
+    <div class="risk-items">
+      <div class="risk-item">
+        考えるほど納得の条件が増え、
+        発信やサービスを出す時期が遅くなる
+      </div>
+
+      <div class="risk-item">
+        小さな迷いから、
+        「本当にこの方向でよいのか」まで戻りやすくなる
+      </div>
+
+      <div class="risk-item">
+        知識や内容は深まっているのに、
+        現実の反応を受け取る機会が増えにくくなる
+      </div>
+
+      <div class="risk-item">
+        本来は育てるための集中力を、
+        「正しい答えを探すこと」に使い続けやすくなる
+      </div>
+    </div>
+  </article>
+
+  <!-- 05 -->
+  <article class="result-block result-block--key">
+    <h2>でも、問題は「深く納得したいこと」ではありません</h2>
 
     <p>
-      ただ今は、その深く考える力と集中力が、少しだけ空回りしているかもしれません。
+      自分の想いにも、
+      受け取る人にも誠実でありたい。
+      一度選ぶなら、
+      心から信じられる方向へ力を注ぎたい。
     </p>
 
     <p>
-      誰かから相談を受けると、その場で話したことだけでなく、言葉になっていなかった気持ちまで考えます。
+      その真剣さがあるからこそ、
+      あなたの仕事には深みが生まれます。
+    </p>
+
+    <p class="key-message">
+      <span class="key-message-line">まだ、大切なことが決まっていないのか。</span>
+      <span class="key-message-line">それとも、決めたものを外へ出すのが不安なのか。</span>
     </p>
 
     <p>
-      「本当に伝えたかったのは、別のことかもしれない」「もっと役に立てることがあるのでは」と、話が終わったあとも考え続けます。
+      この違いを分けないままだと、
+      少し迷いが残るだけでも、
+      「もっと考えなければ」と感じやすくなります。
     </p>
 
     <p>
-      一つの疑問について調べ始めると、その先に新しい疑問が見つかります。
-    </p>
-
-    <p>
-      「もっと深い理由がありそう」「こちらのことも理解した方がよいかもしれない」と、考える範囲が少しずつ広がっていきます。
-    </p>
-
-    <p>
-      最初は一つのことを考えていたはずなのに、気づけば、かなり大きなテーマになっている。そんなことはないでしょうか。
-    </p>
-
-    <p>
-      発信やサービスについて考えるときにも、「この言葉で、本当に伝わるだろうか」「もっと深いところまで考えた方がよいのでは」と、自分の想いを掘り下げます。
-    </p>
-
-    <p>
-      考えるほど、新しい気づきや伝えたいことが増えていきます。そのため、最初につくろうとしていたものより、内容が大きくなることがあります。
-    </p>
-
-    <p>
-      下書きや資料は増えている。頭の中では、自分なりの考えも深まっている。それでも、まだ十分ではないように感じます。
-    </p>
-
-    <p>
-      あなたは、何もしていないわけではありません。かなり考え、人の気持ちとも、自分の想いとも真剣に向き合っています。
-    </p>
-
-    <p>
-      それでも一日の終わりには、「今日もずっと考えていた。でも、まだ答えが出ていない」と、少し苦しくなることがあります。
-    </p>
-
-    <p>
-      あなたに行動力がないわけではありません。自分の想いにも、受け取る人にも、誠実でありたいのです。
-    </p>
-
-    <p>
-      今、自分の才能を活かしにくくなっているのは、考える力が足りないからではありません。一つのことを深く考えられるため、納得できる答えを探すことへ集中しすぎているからかもしれません。
+      反対に、
+      今すでに決まっている大切なものを見つけられると、
+      <strong>迷いが少し残っていても、その答えを現実の中で育て始められます。</strong>
     </p>
   </article>
 
-  <article class="result-block result-block--final">
+  <!-- 06 LINE自動生成用 -->
+  <article class="result-block result-block--final result-block--source-only">
     <h2>ここから先が本題です</h2>
-
-    <p>
-      ここまで読んで、「そうそう。一度気になると、納得できる答えが見つかるまで考え続けてしまうのよね」と感じたでしょうか。
-    </p>
-
-    <p>
-      手相から見えているあなたの熟考する力、共感力、集中力は、人の気持ちを深く理解し、一つのテーマを掘り下げ、自分ならではの仕事へつなげるための大切な強みです。
-    </p>
-
-    <p>
-      相手がうまく言葉にできない気持ちまで考えられる。一つの問いを簡単に終わらせず、自分なりの答えが見つかるまで向き合える。大切だと思ったことへ、長く集中して力を注げる。
-    </p>
-
-    <p>
-      こうした場面で、あなたの才能は、お客様との深い信頼や、自分ならではの専門性につながります。
-    </p>
-
-    <p>
-      けれど、自分の中だけで答えを探すことへ集中しすぎると、これまで考えてきたことや積み重ねた知識を、仕事で活かす機会が少なくなってしまいます。
-    </p>
-
-    <p>
-      あなたらしい進み方のヒントは、深く考えることをやめたり、納得できないまま進んだりすることではありません。人の気持ちから受け取った問いを、自分が深く取り組みたい仕事に活かすことです。
-    </p>
-
-    <p>
-      では、人の気持ちを深く理解する力、一つのことを考え抜く力、納得したことへ集中する力を、仕事にどう活かしていけばよいのでしょうか。
-    </p>
 
     <ul class="line-benefits-source">
       <li>
-        <strong>深く考えて取り組む自分に合う進み方：</strong>
-        一つのことをじっくり考えられる特徴を大切にしながら、その力を仕事で活かすヒントが分かります。
+        <strong>深く考えるほど、まだ納得できないと感じやすくなる理由：</strong>
+        熟考力、共感力、集中力が順番に働くことで、
+        なぜ自分の想い・相手への価値・本気で取り組める確信まで
+        すべて確かめたくなるのかが分かります。
       </li>
 
       <li>
-        <strong>共感力を専門性へつなげるヒント：</strong>
-        人の気持ちや悩みを深く受け取る力を、自分ならではの知識や仕事へ活かすヒントが分かります。
+        <strong>本当に見直すべき迷いと、進むときに生まれる不安の見分け方：</strong>
+        誰のためか、何を届けたいか、なぜ自分が届けたいかという
+        「納得の核」を言葉にし、
+        迷いの正体を見分ける方法が分かります。
       </li>
 
       <li>
-        <strong>仕事で熟考・共感・集中力を活かすヒント：</strong>
-        深く考える力、人の気持ちを理解する力、一つのことへ集中する力を、お客様との関係や専門性へ活かすヒントが分かります。
+        <strong>熟考力と集中力を、現実の成果へつなげるヒント：</strong>
+        迷いを信念のズレ・未確認の心配・追求したい気持ちに分け、
+        一定の期間や回数は一つの方向へ集中して
+        確信を育てる3つのコツが分かります。
       </li>
     </ul>
 
     <p class="cta-message-source">
-      あなたにはすでに、人の気持ちを深く理解する力も、一つのことを考え抜く力も、納得したことへ集中できる力もあります。その才能を仕事でもっと活かすためのヒントを、LINEで受け取ってください。
+      あなたには、
+      人の気持ちを深く理解する力も、
+      自分なりの答えを見つける力も、
+      信じたものへ集中する力もあります。
+      必要なのは、
+      納得することをあきらめることではありません。
+      誰のために行うのか。
+      何を届けたいのか。
+      なぜ自分が届けたいのか。
+      その核が決まっているなら、
+      残っている迷いすべてに答えが出るまで待たなくても大丈夫です。
+      実際に届けることでしか得られない材料を集めながら、
+      今の答えを確信へ育てていくことができます。
+      あなたに合う納得の育て方を、
+      LINEで受け取ってください。
     </p>
   </article>
+
 </section>
