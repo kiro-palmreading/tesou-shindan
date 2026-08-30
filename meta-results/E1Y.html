@@ -1,501 +1,496 @@
-<section class="result-detail" data-diagnosis-code="E1Y">
+<section class="result-detail result-detail--visual" data-diagnosis-code="E1Y">
 
-  <div class="result-catch" data-hide-title="true">
-    <p>【あなたを一言で表すと】</p>
-    <p>見極めて進むアドベンチャラー</p>
+  <style>
+    /* ========================================
+       E1Y 診断結果
+       Meta広告流入・スマホ向け
+    ======================================== */
+
+    .result-detail--visual {
+      max-width: 720px;
+      margin: 0 auto;
+      color: #24313a;
+      line-height: 1.8;
+    }
+
+    /* ========================================
+       FV
+    ======================================== */
+
+    .diagnosis-result-fv {
+      margin: 0 0 28px;
+      padding: 0;
+    }
+
+    .diagnosis-result-fv img {
+      display: block;
+      width: 100%;
+      height: auto;
+      margin: 0 auto;
+    }
+
+    /* ========================================
+       共通ブロック
+    ======================================== */
+
+    .result-detail--visual .result-block {
+      margin: 0 16px 28px;
+      padding: 26px 20px;
+      background: #ffffff;
+      border: 1px solid #dcecf5;
+      border-radius: 18px;
+      box-sizing: border-box;
+    }
+
+    .result-detail--visual .result-block h2 {
+      margin: 0 0 18px;
+      color: #083f5c;
+      font-size: 22px;
+      line-height: 1.45;
+      text-align: left;
+    }
+
+    .result-detail--visual .result-block p {
+      margin: 0 0 16px;
+      font-size: 16px;
+      line-height: 1.9;
+    }
+
+    .result-detail--visual .result-block p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* ========================================
+       あなたはこんなタイプ
+    ======================================== */
+
+    .type-keywords {
+      margin: 0 0 20px;
+      font-size: 20px;
+      font-weight: 700;
+      color: #1f6fb2;
+      letter-spacing: 0.04em;
+      text-align: center;
+    }
+
+    .type-point-list {
+      display: grid;
+      gap: 11px;
+      margin: 0 0 20px;
+    }
+
+    .type-point {
+      position: relative;
+      padding: 14px 14px 14px 43px;
+      background: #f8fcff;
+      border-radius: 12px;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .type-point::before {
+      content: "✓";
+      position: absolute;
+      left: 16px;
+      top: 14px;
+      color: #1f6fb2;
+      font-weight: 700;
+    }
+
+    .type-summary {
+      padding: 16px;
+      background: #eef7ff;
+      border-radius: 12px;
+      color: #314958;
+    }
+
+    /* ========================================
+       強みが出る場面
+    ======================================== */
+
+    .talent-scene-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    .talent-scene-card {
+      padding: 18px;
+      border-radius: 14px;
+      background: #eef7ff;
+      border: 1px solid #cfe3f1;
+    }
+
+    .talent-scene-card strong {
+      display: block;
+      margin-bottom: 8px;
+      color: #083f5c;
+      font-size: 17px;
+      line-height: 1.5;
+    }
+
+    .talent-scene-card p {
+      margin: 0 !important;
+    }
+
+    /* ========================================
+       今のループ
+    ======================================== */
+
+    .loop-intro {
+      font-weight: 700;
+      color: #314958;
+    }
+
+    .diagnosis-loop {
+      margin: 20px 0;
+    }
+
+    .loop-step {
+      padding: 15px 14px;
+      background: #f8fcff;
+      border: 1px solid #cfe6f3;
+      border-radius: 12px;
+      text-align: center;
+      font-size: 16px;
+      font-weight: 700;
+      color: #083f5c;
+    }
+
+    .loop-arrow {
+      height: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #6f8798;
+      font-size: 24px;
+      font-weight: 700;
+    }
+
+    .loop-step--last {
+      background: #fff5f2;
+      border-color: #f2c9bf;
+      color: #9b4d3b;
+    }
+
+    /* ========================================
+       この状態が続くと
+    ======================================== */
+
+    .result-block--risk {
+      background: #fffaf7 !important;
+      border-color: #f1d9cf !important;
+    }
+
+    .risk-items {
+      display: grid;
+      gap: 10px;
+    }
+
+    .risk-item {
+      position: relative;
+      padding: 13px 14px 13px 40px;
+      background: #ffffff;
+      border: 1px solid #f0ddd5;
+      border-radius: 11px;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .risk-item::before {
+      content: "●";
+      position: absolute;
+      left: 17px;
+      top: 15px;
+      color: #d98670;
+      font-size: 10px;
+    }
+
+    /* ========================================
+       問題の正体
+    ======================================== */
+
+    .result-block--key {
+      background: #eef7ff !important;
+      border-color: #bddcec !important;
+    }
+
+    .key-message {
+      margin: 18px 0 !important;
+      padding: 18px 16px;
+      background: #ffffff;
+      border: 1px solid #dcecf5;
+      border-radius: 8px;
+      font-size: 18px !important;
+      font-weight: 700;
+      color: #083f5c;
+      text-align: center;
+      line-height: 1.7;
+    }
+
+    .key-message-line {
+      display: block;
+    }
+
+    /* ========================================
+       LINE自動生成用データ
+    ======================================== */
+
+    .result-block--source-only {
+      display: none !important;
+    }
+
+    /* ========================================
+       スマホ
+    ======================================== */
+
+    @media (max-width: 600px) {
+      .result-detail--visual .result-block {
+        margin-left: 14px;
+        margin-right: 14px;
+        padding: 23px 17px;
+      }
+
+      .result-detail--visual .result-block h2 {
+        font-size: 21px;
+      }
+
+      .type-keywords {
+        font-size: 19px;
+      }
+
+      .talent-scene-card strong {
+        font-size: 17px;
+      }
+
+      .key-message {
+        font-size: 17px !important;
+        padding: 16px 14px;
+      }
+    }
+  </style>
+
+  <!-- FV -->
+  <div class="diagnosis-result-fv">
+    <img
+      src="meta-fv-results/E1Y.png"
+      alt="才能コンパス診断 見極めて進むアドベンチャラー"
+      loading="eager"
+      fetchpriority="high"
+    >
   </div>
 
+  <!-- 01 -->
   <article class="result-block">
-    <h2>あなたの本質</h2>
+    <h2>あなたはこんなタイプです</h2>
 
-    <p class="highlight-paragraph">
+    <div class="type-keywords">
       慎重 × 世界観 × 直感
-    </p>
+    </div>
 
-    <p>
-      あなたは、自分の中にある世界観や、
-      大切にしたい価値観を守りながら、
-      進む方向を選びたい人です。
-    </p>
+    <div class="type-point-list">
+      <div class="type-point">
+        周りの正解だけで決めず、
+        <strong>「今の自分に合っているか」</strong>
+        を丁寧に確かめる
+      </div>
 
-    <p>
-      何かを選ぶときにも、
-    </p>
+      <div class="type-point">
+        人の反応や場の空気など、
+        <strong>言葉になりにくい変化まで感じ取れる</strong>
+      </div>
 
-    <p>
-      「多くの人が選んでいるから」<br>
-      「一般的には、この方法がよいと言われているから」
-    </p>
+      <div class="type-point">
+        「こちらかもしれない」と感じると、
+        <strong>自分らしさを守りながら新しい方向へ進める</strong>
+      </div>
+    </div>
 
-    <p>
-      という理由だけでは決めません。
-    </p>
-
-    <p>
-      「今の自分にも合っているだろうか」<br>
-      「自分が大切にしたいものと、つながっているだろうか」<br>
-      「この方向へ進む自分を、自然に思い描けるだろうか」
-    </p>
-
-    <p>
-      と、自分の感覚を丁寧に確かめます。
-    </p>
-
-    <p>
-      あなたにとっての世界観は、
-      見た目の雰囲気だけではありません。
-    </p>
-
-    <p>
-      どのような考えを大切にしたいのか。<br>
-      どんな仕事を届けたいのか。<br>
-      どのような人と関わりたいのか。<br>
-      その仕事を通して、何を感じてほしいのか。
-    </p>
-
-    <p>
-      そうしたものすべてが、
-      一つの世界観としてつながっています。
-    </p>
-
-    <p>
-      さらに、あなたは、
-      言葉では説明しにくい変化にもよく気づきます。
-    </p>
-
-    <p>
-      その場の空気。<br>
-      相手の表情や反応。<br>
-      仕事をしているときの自分の気持ち。<br>
-      以前は合っていたものが、今は少し違って感じる感覚。
-    </p>
-
-    <p>
-      そうした小さな変化を受け取りながら、
-      自分にとって意味のある方向を考えます。
-    </p>
-
-    <p>
+    <p class="type-summary">
       あなたは、誰かが決めた正解へ
       自分を合わせる人ではありません。
-    </p>
-
-    <p>
-      自分の内側にある感覚を丁寧に受け取り、
-      まだはっきりとは見えていない可能性を
-      見つけていく人です。
+      自分の内側にある感覚を確かめながら、
+      今の自分に合う道を見極め、
+      自分なりのタイミングで進んでいく人です。
     </p>
   </article>
 
+  <!-- 02 -->
   <article class="result-block">
-    <h2>あなたの才能</h2>
+    <h2>こんな場面で強みが出ます</h2>
 
-    <p>
-      そんなあなたには、
-    </p>
+    <div class="talent-scene-grid">
+      <div class="talent-scene-card">
+        <strong>🧭 自分に合う方向を選ぶとき</strong>
+        <p>
+          条件だけで決めるのではなく、
+          「無理なく続けられるか」
+          「自分らしいか」まで見ながら選べます。
+        </p>
+      </div>
 
-    <ul>
-      <li>自分が大切にしたい価値観を感じ取る力</li>
-      <li>空気や流れの小さな変化に気づく力</li>
-      <li>まだ言葉になっていない可能性を見つける力</li>
-      <li>自分らしい世界観と仕事を結びつける力</li>
-    </ul>
+      <div class="talent-scene-card">
+        <strong>👀 変化の兆しを感じるとき</strong>
+        <p>
+          周囲の空気や人の反応、
+          自分自身の小さな変化から、
+          今の流れを感じ取れます。
+        </p>
+      </div>
 
-    <p>
-      があります。
-    </p>
-
-    <p>
-      仕事や日常の中で、
-    </p>
-
-    <p>
-      「自分の感覚を大切にしているよね」<br>
-      「小さな変化によく気づくよね」<br>
-      「独自の雰囲気があるよね」<br>
-      「人とは違う可能性を見つけるよね」
-    </p>
-
-    <p>
-      と言われたことはありませんか？
-    </p>
-
-    <p>
-      あなたは、ただ気分で物事を選ぶ人ではありません。
-    </p>
-
-    <p>
-      表面上の条件がよく見えても、
-      自分が大切にしたいものとズレていると、
-    </p>
-
-    <p>
-      「悪くはない。でも、何かが違う」
-    </p>
-
-    <p>
-      と感じ取れます。
-    </p>
-
-    <p>
-      反対に、まだ十分に説明できない段階でも、
-    </p>
-
-    <p>
-      「この方向には、何か大切なものがありそう」<br>
-      「まだ形になっていないけれど、可能性を感じる」
-    </p>
-
-    <p>
-      と、ほかの人が見過ごしている魅力に
-      気づくことがあります。
-    </p>
-
-    <p>
-      たとえば、誰かの話を聞いているとき。
-    </p>
-
-    <p>
-      相手が話した内容だけではなく、
-      声の調子や表情の変化から、
-    </p>
-
-    <p>
-      「本当に大切にしたいのは、こちらかもしれない」<br>
-      「まだ言葉になっていない思いがありそう」
-    </p>
-
-    <p>
-      と感じることができます。
-    </p>
-
-    <p>
-      新しい企画やサービスを考えるときにも、
-      内容や条件だけを見ているわけではありません。
-    </p>
-
-    <p>
-      その仕事から、どんな空気が伝わるのか。<br>
-      自分が大切にしたい価値とつながっているか。<br>
-      受け取る人に、どのような感覚を残せるか。
-    </p>
-
-    <p>
-      そこまで含めて、
-      仕事全体を感じ取れます。
-    </p>
-
-    <p>
-      発信でも、反応が期待できそうなテーマを
-      そのまま選ぶのではありません。
-    </p>
-
-    <p>
-      自分が本当に伝えたいことか。<br>
-      今の自分の世界観とつながっているか。<br>
-      言葉の奥にある思いまで、自分らしいか。
-    </p>
-
-    <p>
-      そのような部分まで丁寧に受け取れるため、
-      あなたの言葉や仕事には、
-      一貫した空気が生まれます。
-    </p>
-
-    <p>
-      目に見える情報だけではなく、
-      その奥にある感覚や変化を受け取り、
-      新しい可能性を見つけられる。
-    </p>
-
-    <p>
-      その繊細な直感と、
-      自分らしい世界観を守る力が、
-      あなたの大きな才能です。
-    </p>
+      <div class="talent-scene-card">
+        <strong>🚀 今の自分に合わせて進むとき</strong>
+        <p>
+          以前の方法へ固執せず、
+          自分や環境の変化に合わせて、
+          自然な形へ方向を調整できます。
+        </p>
+      </div>
+    </div>
   </article>
 
+  <!-- 03 -->
   <article class="result-block">
-    <h2>今のあなたの状態</h2>
+    <h2>今、こんなループに入っていませんか？</h2>
 
-    <p>
-      ただ今は、その才能が少しだけ、
-      前へ進むことを難しくしているかもしれません。
+    <p class="loop-intro">
+      「今は、この方向でいこう」と選んだはずなのに……
     </p>
 
-    <p>
-      たとえば、仕事の方向性について考え、
-    </p>
+    <div class="diagnosis-loop">
+      <div class="loop-step">
+        今の自分に合う方向を選ぶ
+      </div>
+
+      <div class="loop-arrow">↓</div>
+
+      <div class="loop-step">
+        少し違和感や変化を感じる
+      </div>
+
+      <div class="loop-arrow">↓</div>
+
+      <div class="loop-step">
+        新しい可能性が魅力的に見える
+      </div>
+
+      <div class="loop-arrow">↓</div>
+
+      <div class="loop-step loop-step--last">
+        「こちらの方が合うかも」と方向を見直したくなる
+      </div>
+    </div>
 
     <p>
-      「今は、このテーマを大切にしたい」<br>
-      「この形なら、自分らしく続けられそう」
-    </p>
-
-    <p>
-      と思う。
-    </p>
-
-    <p>
-      そこまで、何も考えずに
-      選んだわけではありません。
-    </p>
-
-    <p>
-      自分の気持ちを確かめ、
-      大切にしたいものを考え、
-      今の自分に合っているかも感じ取っています。
-    </p>
-
-    <p>
-      ところが、しばらくすると、
-    </p>
-
-    <p>
-      「今の私は、少し変わってきた気がする」<br>
-      「以前ほど、このテーマにしっくり来ていないかも」<br>
-      「もっと自然に伝えられることがあるのではないか」
-    </p>
-
-    <p>
-      と感じ始めます。
-    </p>
-
-    <p>
-      そこへ、魅力的な発信や
-      新しい仕事の形が目に入ると、
-    </p>
-
-    <p>
-      「この世界観の方が、今の自分に近いかもしれない」<br>
-      「こちらの方向なら、もっと自分らしくいられそう」<br>
-      「今は、変化する時期なのかもしれない」
-    </p>
-
-    <p>
-      と、新しい可能性が気になります。
-    </p>
-
-    <p>
-      サービスをつくるときも同じです。
-    </p>
-
-    <p>
-      内容を考え、名前を決め、
-      「この形で届けよう」
-      と思ったあとに、
-    </p>
-
-    <p>
-      「少し堅い印象になっている気がする」<br>
-      「今の自分が届けたいものとは、少し違うかもしれない」<br>
-      「もっと自然な形があるような気がする」
-    </p>
-
-    <p>
-      と、感覚が揺れ始めます。
-    </p>
-
-    <p>
-      そこで、見せ方を変える。
-    </p>
-
-    <p>
-      すると今度は、
-      内容とのつながりが気になります。
-    </p>
-
-    <p>
-      内容を変えると、
-      届ける相手やサービス名まで
-      考え直したくなります。
-    </p>
-
-    <p>
-      少し整えるつもりだったのに、
-      いつの間にか方向そのものを
-      見直していることがあります。
-    </p>
-
-    <p>
-      そうそう、最初は服を一枚着替えるつもりだったのに、
-      気づけば行き先まで考え直しているような状態です。
-    </p>
-
-    <p>
-      あなたは、何もしていないわけではありません。
-    </p>
-
-    <p>
-      かなり考えています。<br>
-      自分の感覚にも丁寧に向き合っています。<br>
-      自分が大切にしたいものも、真剣に探しています。
-    </p>
-
-    <p>
-      それなのに、一日の終わりには、
-    </p>
-
-    <p>
-      「今日も、いろいろ考えた」<br>
-      「でも、また別の方向が気になっている」<br>
-      「私は、一つのことを続けられないのかな」
-    </p>
-
-    <p>
-      と、少し不安になることがあるかもしれません。
-    </p>
-
-    <p>
-      あなたは、簡単に飽きているわけではありません。
-    </p>
-
-    <p>
-      今の自分の感覚とズレたまま
-      進み続けたくないのです。
-    </p>
-
-    <p>
-      ただ、あなたは小さな変化にも気づけるため、
-      新しい方向に少しでも魅力を感じると、
-    </p>
-
-    <p>
-      「こちらの方が、本当の自分に合っているのではないか」
-    </p>
-
-    <p>
-      という気持ちが生まれやすくなります。
-    </p>
-
-    <p>
-      すると、
-    </p>
-
-    <p>
-      今の方向を選ぶ<br>
-      ↓<br>
-      小さな違和感に気づく<br>
-      ↓<br>
-      新しい可能性が目に入る<br>
-      ↓<br>
-      そちらの方が自分に合うように感じる<br>
-      ↓<br>
-      もう一度考える
-    </p>
-
-    <p>
-      という流れになりやすくなります。
-    </p>
-
-    <p>
-      「私は、迷いやすいのかな」<br>
-      「自分の判断を信じられていないのかな」<br>
-      「また途中で方向を変えてしまうかもしれない」
-    </p>
-
-    <p>
-      そう思っているとしたら、
-      あなたに選ぶ力がないからではありません。
-    </p>
-
-    <p>
-      自分の内側の変化にも、
-      周りに生まれた新しい可能性にも、
-      敏感に気づけるのです。
-    </p>
-
-    <p>
-      慎重に確かめる力。<br>
-      自分の世界観を大切にする力。<br>
-      小さな変化を感じ取る直感。
-    </p>
-
-    <p>
-      その3つが同時に働くことで、
-      どこへ力を向ければよいのか、
-      分かりにくくなっているのです。
+      あなたは、簡単に飽きて
+      方向を変えているわけではありません。
+      むしろ、
+      <strong>
+        今の自分に合うものを選びたいからこそ、
+        小さな違和感や変化まで丁寧に感じ取っています。
+      </strong>
+      ただ、新しい方向に魅力を感じると、
+      「こちらの方が本当の自分に合うのでは」と思い、
+      今までの選択まで見直したくなりやすいのです。
     </p>
   </article>
 
-  <article class="result-block result-block--final">
+  <!-- 04 -->
+  <article class="result-block result-block--risk">
+    <h2>この状態が続くと…</h2>
+
+    <div class="risk-items">
+      <div class="risk-item">
+        発信テーマを決めても、
+        少し違和感が出るたびに別の方向が気になりやすくなる
+      </div>
+
+      <div class="risk-item">
+        サービスの一部分を調整するつもりが、
+        内容や届ける相手まで見直したくなる
+      </div>
+
+      <div class="risk-item">
+        いろいろ試しているのに、
+        一つの仕事が積み上がっている感覚を持ちにくくなる
+      </div>
+
+      <div class="risk-item">
+        本当は選ぶ感覚が鋭いのに、
+        「私は迷いやすいのかも」と感じやすくなる
+      </div>
+    </div>
+  </article>
+
+  <!-- 05 -->
+  <article class="result-block result-block--key">
+    <h2>でも、問題は「新しい方向が気になること」ではありません</h2>
+
+    <p>
+      あなたには、
+      今の自分に合うものを見極める力も、
+      空気や流れの変化を感じ取る力も、
+      自分らしく方向を調整する力もあります。
+    </p>
+
+    <p>
+      ただ今は、
+      新しく感じた可能性を
+      <strong>
+        「確かめてみる候補」ではなく
+        「今の方向を変えるべき答え」
+      </strong>
+      として受け取りやすいのかもしれません。
+    </p>
+
+    <p class="key-message">
+      <span class="key-message-line">「本当に今の方向が合わなくなったのか？」</span>
+      <span class="key-message-line">「一部分を調整すればよいのか？」</span>
+    </p>
+
+    <p>
+      この違いを確かめられるようになると、
+      直感を無視しなくても、
+      今までの積み上げを残しながら、
+      より自分らしい方向へ少しずつ育てていけます。
+    </p>
+  </article>
+
+  <!-- 06 LINE自動生成用 -->
+  <article class="result-block result-block--final result-block--source-only">
     <h2>ここから先が本題です</h2>
-
-    <p>
-      あなたが小さな違和感に気づくのは、
-      自分の軸がないからでも、
-      気持ちが変わりやすいからでもありません。
-    </p>
-
-    <p>
-      自分の中にある価値観や、
-      大切にしたい世界観を、
-      細かなところまで感じ取れるからです。
-    </p>
-
-    <p>
-      さらに、周りの空気や人の反応から、
-      まだ言葉になっていない変化にも気づけます。
-    </p>
-
-    <p>
-      その感覚は、
-      自分らしい仕事を考えるときだけではなく、
-    </p>
-
-    <p>
-      人の気持ちを理解するとき。<br>
-      新しい企画の可能性を感じ取るとき。<br>
-      これまでとは違う価値を見つけるとき。<br>
-      発信やサービスの世界観を考えるとき。
-    </p>
-
-    <p>
-      さまざまな場面で活かせる才能です。
-    </p>
-
-    <p>
-      けれど、自分の世界観を大切にする力と、
-      小さな変化を感じ取る直感が同時に働くと、
-      どの感覚に意味があるのか、
-      分かりにくくなることがあります。
-    </p>
-
-    <p>
-      それは、あなたに自分らしさがないからでも、
-      直感が間違っているからでもありません。
-    </p>
-
-    <p>
-      あなたが持っている才能を、
-      仕事の中でどう活かせばよいのかが、
-      まだ見えにくくなっているだけです。
-    </p>
-
-    <p>
-      <strong>では、自分の世界観を大切にする力、小さな変化や可能性を感じ取る直感、自分にとって意味のある方向を見つける力を、仕事にどう活かしていけばよいのでしょうか。</strong>
-    </p>
 
     <ul class="line-benefits-source">
       <li>
-        <strong>自分の感覚を丁寧に確かめる自分に合う進み方</strong><br>
-        慎重さと直感を活かすためのヒントが分かります。
+        <strong>「今の自分に合う道」の選び方：</strong>
+        自分にとって大切な3つの判断軸を決め、
+        感覚だけでなく具体的な基準でも
+        今の方向を確かめる方法が分かります。
       </li>
+
       <li>
-        <strong>自分の世界観を仕事に活かすヒント</strong><br>
-        大切にしている価値観を形にする才能の活かし方が見えてきます。
+        <strong>新しい直感を確かめる方法：</strong>
+        今の仕事をすぐ手放さず、
+        新しいテーマや方法を小さく試しながら、
+        本当に自分に合うかを見る方法が分かります。
       </li>
+
       <li>
-        <strong>仕事で変化を感じ取る力を活かすヒント</strong><br>
-        小さな違いや新しい可能性に気づく才能の活かし方が分かります。
+        <strong>直感を積み上げへ変えるヒント：</strong>
+        方向を見直す日と判断材料を先に決め、
+        「続ける・調整する・方向転換する」を
+        分けて考える方法が分かります。
       </li>
     </ul>
 
     <p class="cta-message-source">
-      あなたにはすでに、自分の世界観を大切にする力も、
-      小さな変化や可能性を感じ取る直感も、
-      自分にとって意味のある方向を見つける力もあります。
-      その才能を仕事でもっと活かすためのヒントを、
+      あなたには、
+      自分らしい世界観を守りながら、
+      今の自分に合う方向を感じ取り、
+      変化の中でも道を選び直せる力があります。
+      その直感を、
+      すぐに乗り換える理由ではなく、
+      今の仕事を確かめ、育てるために使う考え方を、
       LINEで受け取ってください。
     </p>
   </article>
