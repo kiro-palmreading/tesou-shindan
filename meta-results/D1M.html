@@ -1,247 +1,497 @@
-<section class="result-detail" data-diagnosis-code="D1M">
-  <div class="result-catch" data-hide-title="true">
-    <p>【あなたを一言で表すと】</p>
-    <p>本気を見極めて挑むチャレンジャー</p>
+<section class="result-detail result-detail--visual" data-diagnosis-code="D1M">
+
+  <style>
+    /* ========================================
+       D1M 診断結果
+       Meta広告流入・スマホ向け
+    ======================================== */
+
+    .result-detail--visual {
+      max-width: 720px;
+      margin: 0 auto;
+      color: #24313a;
+      line-height: 1.8;
+    }
+
+    /* ========================================
+       FV
+    ======================================== */
+
+    .diagnosis-result-fv {
+      margin: 0 0 28px;
+      padding: 0;
+    }
+
+    .diagnosis-result-fv img {
+      display: block;
+      width: 100%;
+      height: auto;
+      margin: 0 auto;
+    }
+
+    /* ========================================
+       共通ブロック
+    ======================================== */
+
+    .result-detail--visual .result-block {
+      margin: 0 16px 28px;
+      padding: 26px 20px;
+      background: #ffffff;
+      border: 1px solid #dcecf5;
+      border-radius: 18px;
+      box-sizing: border-box;
+    }
+
+    .result-detail--visual .result-block h2 {
+      margin: 0 0 18px;
+      color: #083f5c;
+      font-size: 22px;
+      line-height: 1.45;
+      text-align: left;
+    }
+
+    .result-detail--visual .result-block p {
+      margin: 0 0 16px;
+      font-size: 16px;
+      line-height: 1.9;
+    }
+
+    .result-detail--visual .result-block p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* ========================================
+       あなたはこんなタイプ
+    ======================================== */
+
+    .type-keywords {
+      margin: 0 0 20px;
+      font-size: 20px;
+      font-weight: 700;
+      color: #1f6fb2;
+      letter-spacing: 0.04em;
+      text-align: center;
+    }
+
+    .type-point-list {
+      display: grid;
+      gap: 11px;
+      margin: 0 0 20px;
+    }
+
+    .type-point {
+      position: relative;
+      padding: 14px 14px 14px 43px;
+      background: #f8fcff;
+      border-radius: 12px;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .type-point::before {
+      content: "✓";
+      position: absolute;
+      left: 16px;
+      top: 14px;
+      color: #1f6fb2;
+      font-weight: 700;
+    }
+
+    .type-summary {
+      padding: 16px;
+      background: #eef7ff;
+      border-radius: 12px;
+      color: #314958;
+    }
+
+    /* ========================================
+       強みが出る場面
+    ======================================== */
+
+    .talent-scene-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    .talent-scene-card {
+      padding: 18px;
+      border-radius: 14px;
+      background: #eef7ff;
+      border: 1px solid #cfe3f1;
+    }
+
+    .talent-scene-card strong {
+      display: block;
+      margin-bottom: 8px;
+      color: #083f5c;
+      font-size: 17px;
+      line-height: 1.5;
+    }
+
+    .talent-scene-card p {
+      margin: 0 !important;
+    }
+
+    /* ========================================
+       今のループ
+    ======================================== */
+
+    .loop-intro {
+      font-weight: 700;
+      color: #314958;
+    }
+
+    .diagnosis-loop {
+      margin: 20px 0;
+    }
+
+    .loop-step {
+      padding: 15px 14px;
+      background: #f8fcff;
+      border: 1px solid #cfe6f3;
+      border-radius: 12px;
+      text-align: center;
+      font-size: 16px;
+      font-weight: 700;
+      color: #083f5c;
+    }
+
+    .loop-arrow {
+      height: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #6f8798;
+      font-size: 24px;
+      font-weight: 700;
+    }
+
+    .loop-step--last {
+      background: #fff5f2;
+      border-color: #f2c9bf;
+      color: #9b4d3b;
+    }
+
+    /* ========================================
+       この状態が続くと
+    ======================================== */
+
+    .result-block--risk {
+      background: #fffaf7 !important;
+      border-color: #f1d9cf !important;
+    }
+
+    .risk-items {
+      display: grid;
+      gap: 10px;
+    }
+
+    .risk-item {
+      position: relative;
+      padding: 13px 14px 13px 40px;
+      background: #ffffff;
+      border: 1px solid #f0ddd5;
+      border-radius: 11px;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .risk-item::before {
+      content: "●";
+      position: absolute;
+      left: 17px;
+      top: 15px;
+      color: #d98670;
+      font-size: 10px;
+    }
+
+    /* ========================================
+       問題の正体
+    ======================================== */
+
+    .result-block--key {
+      background: #eef7ff !important;
+      border-color: #bddcec !important;
+    }
+
+    .key-message {
+      margin: 18px 0 !important;
+      padding: 18px 16px;
+      background: #ffffff;
+      border: 1px solid #dcecf5;
+      border-radius: 8px;
+      font-size: 18px !important;
+      font-weight: 700;
+      color: #083f5c;
+      text-align: center;
+      line-height: 1.7;
+    }
+
+    .key-message-line {
+      display: block;
+    }
+
+    /* ========================================
+       LINE自動生成用データ
+    ======================================== */
+
+    .result-block--source-only {
+      display: none !important;
+    }
+
+    /* ========================================
+       スマホ
+    ======================================== */
+
+    @media (max-width: 600px) {
+      .result-detail--visual .result-block {
+        margin-left: 14px;
+        margin-right: 14px;
+        padding: 23px 17px;
+      }
+
+      .result-detail--visual .result-block h2 {
+        font-size: 21px;
+      }
+
+      .type-keywords {
+        font-size: 19px;
+      }
+
+      .talent-scene-card strong {
+        font-size: 17px;
+      }
+
+      .key-message {
+        font-size: 17px !important;
+        padding: 16px 14px;
+      }
+    }
+  </style>
+
+  <!-- FV -->
+  <div class="diagnosis-result-fv">
+    <img
+      src="meta-fv-results/D1M.png"
+      alt="才能コンパス診断 本気を見極めて挑むチャレンジャー"
+      loading="eager"
+      fetchpriority="high"
+    >
   </div>
 
+  <!-- 01 -->
   <article class="result-block">
-    <h2>あなたの本質</h2>
+    <h2>あなたはこんなタイプです</h2>
 
-    <p class="highlight-paragraph">慎重 × 突破 × 集中</p>
+    <div class="type-keywords">
+      慎重 × 突破 × 集中
+    </div>
 
-    <p>
-      あなたは、今の状況をそのまま受け入れ続ける人ではありません。
-    </p>
+    <div class="type-point-list">
+      <div class="type-point">
+        今の状態に停滞を感じると、
+        <strong>「新しいことへ挑戦したい」</strong>
+        と気持ちが動く
+      </div>
 
-    <p>
-      興味をひかれる仕事に出会ったとき。新しいアイデアが浮かんだとき。これまでとは違う可能性を見つけたとき。
-    </p>
+      <div class="type-point">
+        何となく始めるのではなく、
+        <strong>「本気で向き合う価値があるか」</strong>
+        を確かめてから動く
+      </div>
 
-    <p>
-      「これをやってみたい」<br>
-      「ここへ挑戦したら、今の状況を変えられるかもしれない」<br>
-      と、心が動きます。
-    </p>
+      <div class="type-point">
+        一度「これでいこう」と決めると、
+        深く集中しながら成果へ育てていける
+      </div>
+    </div>
 
-    <p>
-      あなたの中には、今いる場所から一歩抜け出し、新しいことへ挑戦したいという強い力があります。
-    </p>
-
-    <p>
-      ただし、面白そうだからという理由だけで、そのまま始めるわけではありません。
-    </p>
-
-    <p>
-      「本当に、ここへ力を注いでよいだろうか」<br>
-      「自分にとって、取り組む意味があるだろうか」<br>
-      「責任を持って続けられるだろうか」<br>
-      と、慎重に確かめます。
-    </p>
-
-    <p>
-      なぜなら、あなたにとって挑戦することは、軽いお試しではないからです。
-    </p>
-
-    <p>
-      一度「これでいこう」と決めたら、深く入り込みます。もっと知りたい。もっと上達したい。もっとよいものへ育てたいと、大きな力を注ぎます。
-    </p>
-
-    <p>
-      あなたは、何となく始め、何となく続ける人ではありません。挑戦する価値を丁寧に確かめ、納得したものへ本気で向き合う人です。
+    <p class="type-summary">
+      あなたは、何となく始め、
+      何となく続ける人ではありません。
+      挑戦する価値があるものを見極め、
+      納得できたものへ
+      大きなエネルギーを注いでいく人です。
     </p>
   </article>
 
+  <!-- 02 -->
   <article class="result-block">
-    <h2>あなたの才能</h2>
+    <h2>こんな場面で強みが出ます</h2>
 
-    <p>そんなあなたには、次のような力があります。</p>
+    <div class="talent-scene-grid">
+      <div class="talent-scene-card">
+        <strong>🔥 新しい挑戦を始めるとき</strong>
+        <p>
+          「このままでは終わりたくない」と感じると、
+          現状を変える新しい可能性を見つけられます。
+        </p>
+      </div>
 
-    <ul>
-      <li>現状を変える新しい挑戦を見つける力</li>
-      <li>困難なことにも思い切って踏み込む力</li>
-      <li>納得したものへ深く集中する力</li>
-      <li>一つの挑戦を、自分ならではの仕事へ育てる力</li>
-    </ul>
+      <div class="talent-scene-card">
+        <strong>🎯 一つのテーマを深めるとき</strong>
+        <p>
+          「これをやる」と決まれば、
+          表面的に終わらず、
+          必要な知識や技術を深く掘り下げられます。
+        </p>
+      </div>
 
-    <p>
-      あなたは、ただ新しいことが好きな人ではありません。
+      <div class="talent-scene-card">
+        <strong>🚀 成果へ育てるとき</strong>
+        <p>
+          一度スイッチが入ると、
+          何度も試しながら、
+          一つの挑戦を専門性や成果へ育てていけます。
+        </p>
+      </div>
+    </div>
+  </article>
+
+  <!-- 03 -->
+  <article class="result-block">
+    <h2>今、こんなループに入っていませんか？</h2>
+
+    <p class="loop-intro">
+      「これ、やってみたい」と思ったはずなのに……
     </p>
 
-    <p>
-      「ここには取り組む意味がある」「この仕事なら、自分の力を注ぎたい」と感じたものへ、真剣に向き合えます。
-    </p>
+    <div class="diagnosis-loop">
+      <div class="loop-step">
+        新しい挑戦に興味を持つ
+      </div>
+
+      <div class="loop-arrow">↓</div>
+
+      <div class="loop-step">
+        「本気になれるか」を慎重に考える
+      </div>
+
+      <div class="loop-arrow">↓</div>
+
+      <div class="loop-step">
+        もっと本気になれそうな候補を探す
+      </div>
+
+      <div class="loop-arrow">↓</div>
+
+      <div class="loop-step loop-step--last">
+        本気を出す準備はあるのに、まだ始められない
+      </div>
+    </div>
 
     <p>
-      たとえば、新しい仕事を始めるときも、表面的な知識を得ただけでは満足しません。
-    </p>
-
-    <p>
-      必要な情報を調べる。技術を身につける。何度も試す。細かなところまで考え、よりよい形を探す。
-    </p>
-
-    <p>
-      そうしているうちに、気づけば周りの人よりも詳しくなり、その分野について自分なりの考えを持てるようになります。
-    </p>
-
-    <p>
-      サービスをつくるときにも、「形になれば、それでよい」とは考えません。
-    </p>
-
-    <p>
-      自分が責任を持って届けられるか。受け取る人にとって意味があるか。もっと深くつくり込めるところはないか。最後まで真剣に向き合います。
-    </p>
-
-    <p>
-      途中で難しい問題が起きたときも、簡単には投げ出しません。
-    </p>
-
-    <p>
-      「どうすれば越えられるだろう」「ここを抜けたら、もっとよい形にできそう」と考え、粘り強く取り組めます。
-    </p>
-
-    <p>
-      周りからも、「スイッチが入るとすごいね」「一度決めると強いね」「やると決めたら徹底しているね」「そこまで深く取り組めるのはすごい」と言われたことがあるかもしれません。
-    </p>
-
-    <p>
-      あなたは、ただ集中力が高い人ではありません。価値を感じたものに深く向き合い、困難を越えながら、新しい仕事や専門性へ育てられる人です。
-    </p>
-
-    <p>
-      周りの人が途中で諦めるような挑戦にも、本気で取り組み、自分なりの形へ育てられることが、あなたの大きな才能です。
+      あなたには、
+      やる気がないわけでも、
+      興味がないわけでもありません。
+      むしろ、
+      <strong>
+        「やるなら、きちんと取り組みたい」
+        「中途半端な挑戦にはしたくない」
+      </strong>
+      という気持ちが強い人です。
+      だからこそ、
+      「本当にここへ力を注いでよいのか」と考え、
+      スタート地点で止まりやすくなるのです。
     </p>
   </article>
 
-  <article class="result-block">
-    <h2>今のあなたの状態</h2>
+  <!-- 04 -->
+  <article class="result-block result-block--risk">
+    <h2>この状態が続くと…</h2>
+
+    <div class="risk-items">
+      <div class="risk-item">
+        発信したいテーマがあっても、
+        「本当に続けたいか」を考えすぎて始めにくくなる
+      </div>
+
+      <div class="risk-item">
+        サービスのアイデアがあっても、
+        本気で作る価値があるか迷い、募集まで進みにくくなる
+      </div>
+
+      <div class="risk-item">
+        興味のある仕事や学びがあっても、
+        始める前に長く続けられる確信を求めやすくなる
+      </div>
+
+      <div class="risk-item">
+        本当は集中力が高いのに、
+        「自分には本当にやりたいことがないのかも」と感じやすくなる
+      </div>
+    </div>
+  </article>
+
+  <!-- 05 -->
+  <article class="result-block result-block--key">
+    <h2>でも、問題は「本気になれていないこと」ではありません</h2>
 
     <p>
-      ただ今は、その慎重さと集中力が、少しだけかみ合いにくくなっているかもしれません。
+      あなたには、
+      現状を変える挑戦を見つける力も、
+      納得したものへ深く集中する力も、
+      一度決めたことを成果へ育てる力もあります。
     </p>
 
     <p>
-      「これをやってみたい」と思うものを見つける。新しい仕事や学びに興味を持ち、始めたあとのことまで想像します。
+      ただ今は、
+      始める前から
+      <strong>
+        「この先も本気で続けられるか」
+      </strong>
+      という答えを求めすぎているのかもしれません。
+    </p>
+
+    <p class="key-message">
+      <span class="key-message-line">「本気になれるか？」ではなく、</span>
+      <span class="key-message-line">「もう少し知りたいか？」</span>
     </p>
 
     <p>
-      ところが、実際に始めようとすると、「本当に、ここへ力を注いでよいのだろうか」と、慎重な気持ちが出てきます。
-    </p>
-
-    <p>
-      「一時的に興味を持っているだけかもしれない」「もっと自分が夢中になれるものがあるかもしれない」と、自分の気持ちを確かめたくなります。
-    </p>
-
-    <p>
-      そこで、もう少し調べる。似ている仕事や学びと比べる。長く続けられそうかを考える。
-    </p>
-
-    <p>
-      すると、一つの候補へ気持ちが傾いたところで、別の魅力的な可能性が見つかります。
-    </p>
-
-    <p>
-      「こちらも面白そう」「あちらの方が、自分の経験を活かせるかもしれない」と、また考えたくなる。
-    </p>
-
-    <p>
-      気づけば、本気を出す準備はできているのに、その本気を向ける先だけが決まっていないことがあります。
-    </p>
-
-    <p>
-      全力で走れるように靴ひもまで結んだのに、どのコースを走るかを考えながら、スタート地点に立ち続けているような状態です。
-    </p>
-
-    <p>
-      あなたは、怠けているわけではありません。やる気がないわけでもありません。
-    </p>
-
-    <p>
-      むしろ、「やるなら、きちんと取り組みたい」「中途半端な挑戦にはしたくない」という気持ちを強く持っています。
-    </p>
-
-    <p>
-      一度始めたら、自分が時間も気持ちも大きく注ぐことを分かっています。
-    </p>
-
-    <p>
-      調べ始めれば、とことん調べる。つくり始めれば、納得できるまでつくり込む。目標が決まれば、ほかのことが目に入らなくなるほど集中する。
-    </p>
-
-    <p>
-      その自分を知っているからこそ、「本当に、ここへ力を注いでよいのか」という確認が重くなるのです。
-    </p>
-
-    <p>
-      あなたに覚悟が足りないわけではありません。
-    </p>
-
-    <p>
-      一つのことへ深く集中できるからこそ、始めるものを軽く選びたくないのです。そして、自分の大きな力を、できるだけ意味のあるものへ使いたいと思っています。
-    </p>
-
-    <p>
-      今、新しい挑戦へ踏み出しにくくなっているのは、本気になれるものがないからではありません。本気で取り組みたい気持ちが強いからこそ、興味を持っただけでは、まだ自分に許可を出せないのかもしれません。
+      最初の一歩では、
+      一生続ける覚悟まで決める必要はありません。
+      まず実際に触れてみることで、
+      あなたの集中力を向ける価値があるものかを
+      見極めやすくなります。
     </p>
   </article>
 
-  <article class="result-block result-block--final">
+  <!-- 06 LINE自動生成用 -->
+  <article class="result-block result-block--final result-block--source-only">
     <h2>ここから先が本題です</h2>
-
-    <p>
-      ここまで読んで、「そうそう。始めたら本気になると分かっているから、簡単には選べないのよね」と思ったでしょうか。
-    </p>
-
-    <p>
-      手相から見えているあなたの慎重さ、突破力、集中力は、価値を感じた挑戦へ本気で踏み込み、困難を越えながら、自分ならではの仕事へ育てるための大切な才能です。
-    </p>
-
-    <p>
-      今の状況を変える新しい可能性に気づける。簡単には越えられない壁にも挑戦できる。一度「これだ」と決めたことには、大きな力を注ぎ、深く育てられる。
-    </p>
-
-    <p>
-      こうした才能は、新しい分野へ挑戦するとき、難しい仕事を任されたとき、長い時間をかけて一つの仕事や専門性を育てるときなどに、大きく活かされます。
-    </p>
-
-    <p>
-      また、周りの人が「難しそう」と諦める場面でも、価値があると感じたことなら、粘り強く突破口を探せることがあなたの強みです。
-    </p>
-
-    <p>
-      あなたの慎重さは、挑戦を避けるためにあるものではありません。
-    </p>
-
-    <p>
-      自分の大きなエネルギーを、本当に大切にしたい仕事へ向け、責任を持って育てるためにも活かせます。
-    </p>
-
-    <p>
-      あなたらしい進み方のヒントは、何にでも勢いで飛び込むことでも、最初から強い覚悟を求めることでもありません。新しい道へ挑む力と、一つのことへ深く集中できる力を、自分が価値を感じる仕事へ活かすことにありそうです。
-    </p>
-
-    <p>
-      <strong>では、新しいことへ挑戦する力、困難を越える突破力、一つのことへ深く集中できる力を、仕事にどう活かしていけばよいのでしょうか。</strong>
-    </p>
 
     <ul class="line-benefits-source">
       <li>
-        <strong>本気を見極めて挑む自分に合う進み方：</strong>
-        大切なことを慎重に確かめ、納得したものへ力を注げる自分の特徴を活かすヒントが分かります。
+        <strong>始める前に「本気になれるか」を考えてしまう理由：</strong>
+        慎重さ、突破力、集中力が同時に働くことで、
+        なぜ小さな挑戦まで大きな決断に感じやすいのかが分かります。
       </li>
 
       <li>
-        <strong>突破力と集中力を仕事に活かすヒント：</strong>
-        困難なことにも踏み込み、一つの挑戦へ深く向き合える才能を活かすヒントが分かります。
+        <strong>挑戦する価値を見極める考え方：</strong>
+        最初から覚悟を決めるのではなく、
+        「もう少し知りたいか」を基準に
+        最初の一歩を選ぶ方法が分かります。
       </li>
 
       <li>
-        <strong>仕事で本気を注げる力を活かすヒント：</strong>
-        自分が価値を感じたことを、簡単にはまねできない仕事や専門性へ育てるヒントが分かります。
+        <strong>突破力と集中力を前進へ変える3つのヒント：</strong>
+        回数や期間を決めて仮挑戦し、
+        実際に取り組んだあとの反応から
+        本気を向ける先を見極める方法が分かります。
       </li>
     </ul>
 
     <p class="cta-message-source">
-      あなたにはすでに、新しいことへ挑戦する力も、困難を越える力も、一つのことへ深く集中する力もあります。その才能を仕事でもっと活かすためのヒントを、LINEで受け取ってください。
+      あなたには、
+      挑戦する価値があるものを見極め、
+      一度決めたことへ大きなエネルギーを注ぐ力があります。
+      その集中力を活かしながら、
+      気になる可能性へ最初の一歩を踏み出すための考え方を、
+      LINEで受け取ってください。
     </p>
   </article>
+
 </section>
