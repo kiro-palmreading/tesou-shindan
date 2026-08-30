@@ -1,169 +1,516 @@
-<section class="result-detail" data-diagnosis-code="B1Z">
-  <div class="result-catch" data-hide-title="true">
-    <p>【あなたを一言で表すと】</p>
-    <p>心を込めて紡ぐストーリーテラー</p>
+<section class="result-detail result-detail--visual" data-diagnosis-code="B1Z">
+
+  <style>
+    /* ========================================
+       B1Z 診断結果
+       Meta広告流入・スマホ向け
+    ======================================== */
+
+    .result-detail--visual {
+      max-width: 720px;
+      margin: 0 auto;
+      color: #24313a;
+      line-height: 1.8;
+    }
+
+    /* ========================================
+       FV
+    ======================================== */
+
+    .diagnosis-result-fv {
+      margin: 0 0 28px;
+      padding: 0;
+    }
+
+    .diagnosis-result-fv img {
+      display: block;
+      width: 100%;
+      height: auto;
+      margin: 0 auto;
+    }
+
+    /* ========================================
+       共通ブロック
+    ======================================== */
+
+    .result-detail--visual .result-block {
+      margin: 0 16px 28px;
+      padding: 26px 20px;
+      background: #ffffff;
+      border: 1px solid #dcecf5;
+      border-radius: 18px;
+      box-sizing: border-box;
+    }
+
+    .result-detail--visual .result-block h2 {
+      margin: 0 0 18px;
+      color: #083f5c;
+      font-size: 22px;
+      line-height: 1.45;
+      text-align: left;
+    }
+
+    .result-detail--visual .result-block p {
+      margin: 0 0 16px;
+      font-size: 16px;
+      line-height: 1.9;
+    }
+
+    .result-detail--visual .result-block p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* ========================================
+       あなたはこんなタイプ
+    ======================================== */
+
+    .type-keywords {
+      margin: 0 0 20px;
+      font-size: 20px;
+      font-weight: 700;
+      color: #1f6fb2;
+      letter-spacing: 0.04em;
+      text-align: center;
+    }
+
+    .type-point-list {
+      display: grid;
+      gap: 11px;
+      margin: 0 0 20px;
+    }
+
+    .type-point {
+      position: relative;
+      padding: 14px 14px 14px 43px;
+      background: #f8fcff;
+      border-radius: 12px;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .type-point::before {
+      content: "✓";
+      position: absolute;
+      left: 16px;
+      top: 14px;
+      color: #1f6fb2;
+      font-weight: 700;
+    }
+
+    .type-summary {
+      padding: 16px;
+      background: #eef7ff;
+      border-radius: 12px;
+      color: #314958;
+    }
+
+    /* ========================================
+       強みが出る場面
+    ======================================== */
+
+    .talent-scene-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    .talent-scene-card {
+      padding: 18px;
+      border-radius: 14px;
+      background: #eef7ff;
+      border: 1px solid #cfe3f1;
+    }
+
+    .talent-scene-card strong {
+      display: block;
+      margin-bottom: 8px;
+      color: #083f5c;
+      font-size: 17px;
+      line-height: 1.5;
+    }
+
+    .talent-scene-card p {
+      margin: 0 !important;
+    }
+
+    /* ========================================
+       今のループ
+    ======================================== */
+
+    .loop-intro {
+      font-weight: 700;
+      color: #314958;
+    }
+
+    .diagnosis-loop {
+      margin: 20px 0;
+    }
+
+    .loop-step {
+      padding: 15px 14px;
+      background: #f8fcff;
+      border: 1px solid #cfe6f3;
+      border-radius: 12px;
+      text-align: center;
+      font-size: 16px;
+      font-weight: 700;
+      color: #083f5c;
+    }
+
+    .loop-arrow {
+      height: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #6f8798;
+      font-size: 24px;
+      font-weight: 700;
+    }
+
+    .loop-step--last {
+      background: #fff5f2;
+      border-color: #f2c9bf;
+      color: #9b4d3b;
+    }
+
+    /* ========================================
+       この状態が続くと
+    ======================================== */
+
+    .result-block--risk {
+      background: #fffaf7 !important;
+      border-color: #f1d9cf !important;
+    }
+
+    .risk-items {
+      display: grid;
+      gap: 10px;
+    }
+
+    .risk-item {
+      position: relative;
+      padding: 13px 14px 13px 40px;
+      background: #ffffff;
+      border: 1px solid #f0ddd5;
+      border-radius: 11px;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .risk-item::before {
+      content: "●";
+      position: absolute;
+      left: 17px;
+      top: 15px;
+      color: #d98670;
+      font-size: 10px;
+    }
+
+    /* ========================================
+       問題の正体
+    ======================================== */
+
+    .result-block--key {
+      background: #eef7ff !important;
+      border-color: #bddcec !important;
+    }
+
+    .key-message {
+      margin: 18px 0 !important;
+      padding: 18px 16px;
+      background: #ffffff;
+      border: 1px solid #dcecf5;
+      border-radius: 8px;
+      font-size: 18px !important;
+      font-weight: 700;
+      color: #083f5c;
+      text-align: center;
+      line-height: 1.7;
+    }
+
+    .key-message-line {
+      display: block;
+    }
+
+    /* ========================================
+       LINE自動生成用データ
+    ======================================== */
+
+    .result-block--source-only {
+      display: none !important;
+    }
+
+    /* ========================================
+       スマホ
+    ======================================== */
+
+    @media (max-width: 600px) {
+      .result-detail--visual .result-block {
+        margin-left: 14px;
+        margin-right: 14px;
+        padding: 23px 17px;
+      }
+
+      .result-detail--visual .result-block h2 {
+        font-size: 21px;
+      }
+
+      .type-keywords {
+        font-size: 19px;
+      }
+
+      .talent-scene-card strong {
+        font-size: 17px;
+      }
+
+      .key-message {
+        font-size: 17px !important;
+        padding: 16px 14px;
+      }
+    }
+  </style>
+
+  <!-- FV -->
+  <div class="diagnosis-result-fv">
+    <img
+      src="meta-fv-results/B1Z.png"
+      alt="才能コンパス診断 心を込めて紡ぐストーリーテラー"
+      loading="eager"
+      fetchpriority="high"
+    >
   </div>
 
+  <!-- 01 -->
   <article class="result-block">
-    <h2>あなたの本質</h2>
+    <h2>あなたはこんなタイプです</h2>
 
-    <p class="highlight-paragraph">慎重 × 共感 × 感性</p>
+    <div class="type-keywords">
+      慎重 × 共感 × 感性
+    </div>
 
-    <p>
-      あなたは、人の気持ちやその場の空気を感じ取りながら、<br>
-      「私は、どう感じるだろう」<br>
-      「どんな形なら、自分らしく届けられるだろう」<br>
-      という自分の感覚も大切にするタイプです。
-    </p>
+    <div class="type-point-list">
+      <div class="type-point">
+        相手の気持ちを感じながら、
+        <strong>自分がどう感じるかも大切にできる</strong>
+      </div>
 
-    <p>
-      自分がよいと思ったことを、一方的に押し出すのではありません。「相手は、どう受け取るだろう」「もっと安心できる形にした方がよいかな」と考えながら、慎重に形を整えます。
-    </p>
+      <div class="type-point">
+        言葉そのものだけでなく、
+        <strong>相手が受け取る温度や雰囲気まで考えられる</strong>
+      </div>
 
-    <p>
-      相手の感情を察する。場の雰囲気を読み取る。言葉にならない感覚を表現する。自分らしい空気感をつくる。そんなことを自然に行っています。
-    </p>
+      <div class="type-point">
+        言葉になりにくい思いを、
+        <strong>自分らしい表現へ変えて届けられる</strong>
+      </div>
+    </div>
 
-    <p>
-      あなたは、ただ周りに合わせる人ではありません。相手への思いやりと、自分の内側にある感性。その両方を大切にしながら、人の心へ届く仕事を育てていく人です。
+    <p class="type-summary">
+      あなたは、
+      自分の言いたいことだけを押し出す人ではありません。
+      相手への思いやりと自分の感性、
+      その両方を大切にしながら、
+      心へ届く表現を育てていく人です。
     </p>
   </article>
 
+  <!-- 02 -->
   <article class="result-block">
-    <h2>あなたの才能</h2>
+    <h2>こんな場面で強みが出ます</h2>
 
-    <p>そんなあなたには、次のような力があります。</p>
+    <div class="talent-scene-grid">
+      <div class="talent-scene-card">
+        <strong>💬 気持ちを言葉にするとき</strong>
+        <p>
+          まだうまく言葉になっていない思いをくみ取り、
+          相手が受け取りやすい表現へ
+          やわらかく言い換えられます。
+        </p>
+      </div>
 
-    <ul>
-      <li>言葉にならない感覚を丁寧に捉える力</li>
-      <li>相手の気持ちへやさしく寄り添う力</li>
-      <li>自分らしい世界観を育てる力</li>
-      <li>安心感のある言葉や場を生み出す力</li>
-    </ul>
+      <div class="talent-scene-card">
+        <strong>🤝 相手に寄り添うとき</strong>
+        <p>
+          表面的な言葉だけで判断せず、
+          その奥にある気持ちまで想像しながら、
+          安心できる言葉を選べます。
+        </p>
+      </div>
+
+      <div class="talent-scene-card">
+        <strong>🎨 世界観を伝えるとき</strong>
+        <p>
+          情報だけを並べるのではなく、
+          言葉の温度や余韻まで整えながら、
+          自分らしい雰囲気をつくれます。
+        </p>
+      </div>
+    </div>
+  </article>
+
+  <!-- 03 -->
+  <article class="result-block">
+    <h2>今、こんなループに入っていませんか？</h2>
+
+    <p class="loop-intro">
+      「これ、私らしい」と思える言葉が浮かんでも……
+    </p>
+
+    <div class="diagnosis-loop">
+      <div class="loop-step">
+        自分らしい言葉を書く
+      </div>
+
+      <div class="loop-arrow">↓</div>
+
+      <div class="loop-step">
+        「浮いて見えないかな」と不安になる
+      </div>
+
+      <div class="loop-arrow">↓</div>
+
+      <div class="loop-step">
+        無難な表現へ整える
+      </div>
+
+      <div class="loop-arrow">↓</div>
+
+      <div class="loop-step loop-step--last">
+        きれいだけれど、自分らしさまで薄くなる
+      </div>
+    </div>
 
     <p>
-      誰かの悩みを聞いたときも、すぐに答えを出そうとはしません。相手の言葉の奥にある、「本当は、こう感じているのかもしれない」という気持ちまで、丁寧に受け取ろうとします。
+      あなたの中には、
+      本当は伝えたい言葉があります。
+      自分なりの世界観もあります。
     </p>
 
     <p>
-      そして、その人がまだうまく言葉にできていない思いを、「もしかして、こういうことではありませんか？」と、やわらかく表現できます。
+      ただ、公開する直前になると、
+      「重く見えないかな」
+      「変わっていると思われないかな」と、
+      相手の反応まで細かく想像します。
     </p>
 
     <p>
-      周りからも「あなたと話すと安心する」「気持ちを分かってもらえた気がする」「独特の雰囲気があるよね」と言われたことがあるかもしれません。
+      そこで、
+      個性的な言葉を整え、
+      感情が見えるところを少し控えめにし、
+      無難な表現へ近づけていく。
     </p>
 
     <p>
-      相談を受けるときにも、相手が緊張せずに話せる空気をつくる。サービスをつくるときにも、内容だけでなく、「どのような気持ちで受け取ってほしいか」まで考える。
-    </p>
-
-    <p>
-      人の心に寄り添いながら、自分にしか生み出せない言葉や雰囲気、体験へ変えていけることが、あなたの大きな才能です。
+      気づけば文章はきれいにまとまっているのに、
+      <strong>あなたらしさだけが校正されてしまっている。</strong>
+      そんなこともあるかもしれません。
     </p>
   </article>
 
-  <article class="result-block">
-    <h2>今のあなたの状態</h2>
+  <!-- 04 -->
+  <article class="result-block result-block--risk">
+    <h2>この状態が続くと…</h2>
+
+    <div class="risk-items">
+      <div class="risk-item">
+        自分らしい言葉ほど公開前に削り、
+        発信が無難になりやすくなる
+      </div>
+
+      <div class="risk-item">
+        プロフィールやサービスから、
+        本当に大切にしている思いが見えにくくなる
+      </div>
+
+      <div class="risk-item">
+        読みやすいのに、
+        「なぜあなたから受け取りたいのか」が伝わりにくくなる
+      </div>
+
+      <div class="risk-item">
+        丁寧に書いたあとでも、
+        「これは本当に私の言葉かな」と感じやすくなる
+      </div>
+    </div>
+  </article>
+
+  <!-- 05 -->
+  <article class="result-block result-block--key">
+    <h2>でも、問題は「人に合わせること」ではありません</h2>
 
     <p>
-      ただ今は、その才能が少しだけ空回りしているかもしれません。
+      あなたの共感力は、
+      相手に安心して受け取ってもらうための強みです。
     </p>
 
     <p>
-      発信を書いていて、「この表現、すごく私らしい」と思える言葉が浮かぶ。けれど、読み返すと、「少し変わって見えるかな」「こんなことを書いたら、浮いてしまうかも」と気になります。
+      そして感性は、
+      ほかの人には書けない言葉や世界観を
+      生み出すための強みです。
+    </p>
+
+    <p class="key-message">
+      <span class="key-message-line">相手へ届くように整えているのか。</span>
+      <span class="key-message-line">それとも、浮かないように自分を薄めているのか。</span>
     </p>
 
     <p>
-      そこで一般的な言葉へ置き換えると、今度は「間違ってはいない。でも、なんだか私の言葉ではない」と感じる。
+      この違いが分からないままだと、
+      配慮するほど自分の色まで削ってしまいます。
     </p>
 
     <p>
-      自分らしい表現へ戻し、また不安になって無難な言葉へ変える。そんなことはないでしょうか。
-    </p>
-
-    <p>
-      サービスをつくるときにも、本当は「こんな気持ちで受け取ってほしい」「こんな時間を届けたい」という想いがあります。
-    </p>
-
-    <p>
-      けれど、「一般的な形の方が安心してもらえそう」「ほかの人と同じ流れにした方が分かりやすいかも」と考え、自分が大切にしたかった雰囲気や関わり方を控えめにしてしまいます。
-    </p>
-
-    <p>
-      お客様と向き合うときにも、本当はもう少し丁寧に話を聞きたいと思っているのに、「早く答えを出した方が喜ばれるかもしれない」と、相手が求めていそうな形へ合わせたくなることがあります。
-    </p>
-
-    <p>
-      一つひとつは、相手を思って選んだことです。けれど、それを重ねるうちに、自分が仕事で大切にしたかったことが、少しずつ後ろへ下がってしまいます。
-    </p>
-
-    <p>
-      まるで色を選ぶたびに、「こちらの方が周りになじむかな」と薄め続け、最後には何色だったのか分からなくなるような状態です。
-    </p>
-
-    <p>
-      あなたは、何も感じていないわけではありません。届けたい思いも、自分なりの世界観も育っています。
-    </p>
-
-    <p>
-      ただ、相手の反応を細やかに想像できるため、「この人には合わないかもしれない」「誰かを置き去りにしてしまうかもしれない」という心配も生まれます。
-    </p>
-
-    <p>
-      その結果、人に寄り添おうとするほど、自分が大切にしたかった感覚や仕事への想いが薄くなり、「これは、本当に私が届けたかったものだったかな」と寂しくなることがあります。
-    </p>
-
-    <p>
-      あなたに自分らしさがないわけではありません。今、自分らしい仕事の形を見つけにくくなっているのは、「相手が安心できるように整えている」のか、「周りに合わせるために自分の感覚を抑えている」のか、その違いが分かりにくくなっているからかもしれません。
+      反対に、
+      相手が理解しやすい部分は整えつつ、
+      本当に届けたい言葉を残せるようになると、
+      <strong>安心感とあなたらしさの両方が伝わる表現</strong>
+      へ変わっていきます。
     </p>
   </article>
 
-  <article class="result-block result-block--final">
+  <!-- 06 LINE自動生成用 -->
+  <article class="result-block result-block--final result-block--source-only">
     <h2>ここから先が本題です</h2>
-
-    <p>
-      ここまで読んで、「そうそう。相手を大切にしようとするほど、自分が本当に届けたかったものが分からなくなることがあるのよね」と思ったでしょうか。
-    </p>
-
-    <p>
-      手相から見えているあなたの慎重さ、共感力、感性は、相手の言葉にならない思いを丁寧にくみ取り、自分らしい雰囲気や体験を通して、心へ届けるための大切な強みです。
-    </p>
-
-    <p>
-      相手が安心して話せる空気をつくれる。本人も気づいていない気持ちを、やわらかく言葉にできる。サービスに、自分らしい温度や世界観を込められる。こうした場面で、あなたの強みは人との信頼を育てます。
-    </p>
-
-    <p>
-      けれど、相手へ合わせることばかりを考えていると、自分が心から大切にしたいことや、仕事に込めたい想いまで見えにくくなってしまいます。
-    </p>
-
-    <p>
-      あなたらしい進み方を見つけるヒントは、相手への配慮を手放すことでも、自分らしさを強く押し出すことでもありません。相手の心を感じながら、自分の中で大切にしている感覚や価値観も、仕事の形に残していくことにありそうです。
-    </p>
-
-    <p>
-      では、慎重に相手を思いやる力、人の気持ちを感じる力、自分らしい感性を活かしながら、相手にも自分にも心地よい仕事を育てるには、どのような考え方が合っているのでしょうか。
-    </p>
 
     <ul class="line-benefits-source">
       <li>
-        <strong>慎重に人と関わる自分に合う進み方：</strong>
-        相手の気持ちを大切にしながら、自分の感覚や想いも置き去りにせず進むための考え方が分かります。
+        <strong>浮きたくないほど、自分の色を削りやすくなる理由：</strong>
+        感性、共感力、慎重さが順番に働くことで、
+        なぜ公開直前に自分らしい言葉を変えたくなるのかが分かります。
       </li>
 
       <li>
-        <strong>自分の感覚を仕事で大切にするための目安：</strong>
-        相手へ合わせたくなったときに、自分が仕事へ込めたい想いをどのように捉えればよいのか、その目安が分かります。
+        <strong>配慮と、自分を抑える遠慮の見分け方：</strong>
+        相手に具体的な困りごとが起きる表現なのか、
+        ただ「全員には好かれないかも」と不安になっているだけなのかを
+        判断する基準が分かります。
       </li>
 
       <li>
-        <strong>仕事で共感力と感性を活かすヒント：</strong>
-        人の気持ちを感じる力と自分らしい世界観を、お客様との関わりやサービスづくりへ活かすヒントが分かります。
+        <strong>共感力と感性を、自分らしい発信へ変えるヒント：</strong>
+        守る1文を決め、
+        配慮と遠慮を分け、
+        1つの発信に自分だけの要素を残す
+        3つのコツが分かります。
       </li>
     </ul>
 
     <p class="cta-message-source">
-      あなたにはすでに、人の気持ちへやさしく寄り添う力も、自分にしか生み出せない感覚や世界観もあります。その強みを活かし、相手への思いやりと自分らしさの両方を大切にできる仕事を育てるための考え方を、LINEで受け取ってください。
+      あなたには、
+      人の気持ちを感じる力も、
+      言葉にならない思いを表現する力も、
+      自分らしい世界観を育てる力もあります。
+      必要なのは、
+      相手への配慮を減らすことでも、
+      無理に目立つことでもありません。
+      どの言葉は相手へ届くように整えるのか。
+      そして、どの言葉は自分らしさとして残すのか。
+      その違いが分かるようになると、
+      やさしさの中にあなた自身の色が残る発信へ
+      育てていけます。
+      あなたに合う言葉の守り方を、
+      LINEで受け取ってください。
     </p>
   </article>
+
 </section>
