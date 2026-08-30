@@ -1,193 +1,522 @@
-<section class="result-detail" data-diagnosis-code="A2M">
-  <div class="result-catch" data-hide-title="true">
-    <p>【あなたを一言で表すと】</p>
-    <p>熱量で駆けるスペシャリスト</p>
+<section class="result-detail result-detail--visual" data-diagnosis-code="A2M">
+
+  <style>
+    /* ========================================
+       A2M 診断結果
+       Meta広告流入・スマホ向け
+    ======================================== */
+
+    .result-detail--visual {
+      max-width: 720px;
+      margin: 0 auto;
+      color: #24313a;
+      line-height: 1.8;
+    }
+
+    /* ========================================
+       FV
+    ======================================== */
+
+    .diagnosis-result-fv {
+      margin: 0 0 28px;
+      padding: 0;
+    }
+
+    .diagnosis-result-fv img {
+      display: block;
+      width: 100%;
+      height: auto;
+      margin: 0 auto;
+    }
+
+    /* ========================================
+       共通ブロック
+    ======================================== */
+
+    .result-detail--visual .result-block {
+      margin: 0 16px 28px;
+      padding: 26px 20px;
+      background: #ffffff;
+      border: 1px solid #dcecf5;
+      border-radius: 18px;
+      box-sizing: border-box;
+    }
+
+    .result-detail--visual .result-block h2 {
+      margin: 0 0 18px;
+      color: #083f5c;
+      font-size: 22px;
+      line-height: 1.45;
+      text-align: left;
+    }
+
+    .result-detail--visual .result-block p {
+      margin: 0 0 16px;
+      font-size: 16px;
+      line-height: 1.9;
+    }
+
+    .result-detail--visual .result-block p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* ========================================
+       あなたはこんなタイプ
+    ======================================== */
+
+    .type-keywords {
+      margin: 0 0 20px;
+      font-size: 20px;
+      font-weight: 700;
+      color: #1f6fb2;
+      letter-spacing: 0.04em;
+      text-align: center;
+    }
+
+    .type-point-list {
+      display: grid;
+      gap: 11px;
+      margin: 0 0 20px;
+    }
+
+    .type-point {
+      position: relative;
+      padding: 14px 14px 14px 43px;
+      background: #f8fcff;
+      border-radius: 12px;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .type-point::before {
+      content: "✓";
+      position: absolute;
+      left: 16px;
+      top: 14px;
+      color: #1f6fb2;
+      font-weight: 700;
+    }
+
+    .type-summary {
+      padding: 16px;
+      background: #eef7ff;
+      border-radius: 12px;
+      color: #314958;
+    }
+
+    /* ========================================
+       強みが出る場面
+    ======================================== */
+
+    .talent-scene-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    .talent-scene-card {
+      padding: 18px;
+      border-radius: 14px;
+      background: #eef7ff;
+      border: 1px solid #cfe3f1;
+    }
+
+    .talent-scene-card strong {
+      display: block;
+      margin-bottom: 8px;
+      color: #083f5c;
+      font-size: 17px;
+      line-height: 1.5;
+    }
+
+    .talent-scene-card p {
+      margin: 0 !important;
+    }
+
+    /* ========================================
+       今のループ
+    ======================================== */
+
+    .loop-intro {
+      font-weight: 700;
+      color: #314958;
+    }
+
+    .diagnosis-loop {
+      margin: 20px 0;
+    }
+
+    .loop-step {
+      padding: 15px 14px;
+      background: #f8fcff;
+      border: 1px solid #cfe6f3;
+      border-radius: 12px;
+      text-align: center;
+      font-size: 16px;
+      font-weight: 700;
+      color: #083f5c;
+    }
+
+    .loop-arrow {
+      height: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #6f8798;
+      font-size: 24px;
+      font-weight: 700;
+    }
+
+    .loop-step--last {
+      background: #fff5f2;
+      border-color: #f2c9bf;
+      color: #9b4d3b;
+    }
+
+    /* ========================================
+       この状態が続くと
+    ======================================== */
+
+    .result-block--risk {
+      background: #fffaf7 !important;
+      border-color: #f1d9cf !important;
+    }
+
+    .risk-items {
+      display: grid;
+      gap: 10px;
+    }
+
+    .risk-item {
+      position: relative;
+      padding: 13px 14px 13px 40px;
+      background: #ffffff;
+      border: 1px solid #f0ddd5;
+      border-radius: 11px;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .risk-item::before {
+      content: "●";
+      position: absolute;
+      left: 17px;
+      top: 15px;
+      color: #d98670;
+      font-size: 10px;
+    }
+
+    /* ========================================
+       問題の正体
+    ======================================== */
+
+    .result-block--key {
+      background: #eef7ff !important;
+      border-color: #bddcec !important;
+    }
+
+    .key-message {
+      margin: 18px 0 !important;
+      padding: 18px 16px;
+      background: #ffffff;
+      border: 1px solid #dcecf5;
+      border-radius: 8px;
+      font-size: 18px !important;
+      font-weight: 700;
+      color: #083f5c;
+      text-align: center;
+      line-height: 1.7;
+    }
+
+    .key-message-line {
+      display: block;
+    }
+
+    /* ========================================
+       LINE自動生成用データ
+    ======================================== */
+
+    .result-block--source-only {
+      display: none !important;
+    }
+
+    /* ========================================
+       スマホ
+    ======================================== */
+
+    @media (max-width: 600px) {
+      .result-detail--visual .result-block {
+        margin-left: 14px;
+        margin-right: 14px;
+        padding: 23px 17px;
+      }
+
+      .result-detail--visual .result-block h2 {
+        font-size: 21px;
+      }
+
+      .type-keywords {
+        font-size: 19px;
+      }
+
+      .talent-scene-card strong {
+        font-size: 17px;
+      }
+
+      .key-message {
+        font-size: 17px !important;
+        padding: 16px 14px;
+      }
+    }
+  </style>
+
+  <!-- FV -->
+  <div class="diagnosis-result-fv">
+    <img
+      src="meta-fv-results/A2M.png"
+      alt="才能コンパス診断 熱量で駆けるスペシャリスト"
+      loading="eager"
+      fetchpriority="high"
+    >
   </div>
 
+  <!-- 01 -->
   <article class="result-block">
-    <h2>あなたの本質</h2>
+    <h2>あなたはこんなタイプです</h2>
 
-    <p class="highlight-paragraph">
+    <div class="type-keywords">
       行動 × 現実 × 集中
-    </p>
+    </div>
 
-    <p>
-      あなたは、長く考え続けるよりも、<br>
-      「まず、やってみよう」<br>
-      「動けば、答えが見えてくる」<br>
-      と、行動の中で確かめていくタイプです。
-    </p>
+    <div class="type-point-list">
+      <div class="type-point">
+        長く迷うより、
+        <strong>まず動いて答えを確かめる</strong>
+        ことが得意
+      </div>
 
-    <p>
-      そして、「これだ」「私は、これをやりたい」と思えるものに出会うと、驚くほどの集中力を発揮します。
-    </p>
+      <div class="type-point">
+        「これだ」と思えるものには、
+        <strong>大きなエネルギーを一気に注げる</strong>
+      </div>
 
-    <p>
-      興味を持ったことには、大きなエネルギーを注ぐ。自分が価値を感じたことには、迷わず一直線に進む。
-    </p>
+      <div class="type-point">
+        一度スイッチが入ると、
+        <strong>周りの雑音を気にせず深く集中できる</strong>
+      </div>
+    </div>
 
-    <p>
-      一度スイッチが入ると、周りの雑音が気にならなくなるほど没頭できます。
-    </p>
-
-    <p>
-      あなたは、なんとなく始め、なんとなく続ける人ではありません。心から納得したものへ全力で向き合い、現実の形にしていく人です。
+    <p class="type-summary">
+      あなたは、
+      なんとなく始めて、なんとなく続ける人ではありません。
+      心から価値を感じたものに全力で向き合い、
+      短い時間でも一気に形へ近づけられる人です。
     </p>
   </article>
 
+  <!-- 02 -->
   <article class="result-block">
-    <h2>あなたの才能</h2>
+    <h2>こんな場面で強みが出ます</h2>
 
-    <p>
-      そんなあなたには、次のような力があります。
-    </p>
+    <div class="talent-scene-grid">
+      <div class="talent-scene-card">
+        <strong>🚀 新しいことを始めるとき</strong>
+        <p>
+          周りがまだ様子を見ていても、
+          「やってみれば分かる」と
+          すぐに最初の一歩を踏み出せます。
+        </p>
+      </div>
 
-    <ul>
-      <li>迷うより先に行動する力</li>
-      <li>1つのことへ深く集中する力</li>
-      <li>大きなエネルギーを一気に注ぐ力</li>
-      <li>自分で決めたことを貫く力</li>
-    </ul>
+      <div class="talent-scene-card">
+        <strong>🔥 一気に形にするとき</strong>
+        <p>
+          必要な情報を集め、
+          短期間に集中して、
+          発信やサービスを大きく前へ進められます。
+        </p>
+      </div>
 
-    <p>
-      周りがまだ様子を見ているときにも、「やってみれば分かる」と、最初の一歩を踏み出せます。
-    </p>
-
-    <p>
-      そして、手応えを感じると、そこからの速さはさらに増します。
-    </p>
-
-    <p>
-      必要な情報を一気に集める。短期間で形をつくる。決めた目標へ向かって、集中して進める。
-    </p>
-
-    <p>
-      周りからも「スイッチが入ると、すごいよね」「行動力があるよね」「一度決めると強いよね」と言われたことがあるかもしれません。
-    </p>
-
-    <p>
-      あなたは、ただ勢いで動く人ではありません。自分が本当に価値を感じたものに、時間も力も惜しまず注げる人です。
-    </p>
-
-    <p>
-      人が何日もかけて進めることを、集中した数時間で一気に形にする。「これをやる」と決めたら、周りの意見に簡単には流されない。
-    </p>
-
-    <p>
-      その行動力と没入力が、あなたの大きな才能です。
-    </p>
+      <div class="talent-scene-card">
+        <strong>🎯 目標へ集中するとき</strong>
+        <p>
+          「これをやる」と決めたら、
+          周りに流されず、
+          大きなエネルギーを注ぎ続けられます。
+        </p>
+      </div>
+    </div>
   </article>
 
+  <!-- 03 -->
   <article class="result-block">
-    <h2>今のあなたの状態</h2>
+    <h2>今、こんなループに入っていませんか？</h2>
+
+    <p class="loop-intro">
+      「これだ！」と夢中になって始めたのに……
+    </p>
+
+    <div class="diagnosis-loop">
+      <div class="loop-step">
+        一気に動き始める
+      </div>
+
+      <div class="loop-arrow">↓</div>
+
+      <div class="loop-step">
+        高い集中力でどんどん進める
+      </div>
+
+      <div class="loop-arrow">↓</div>
+
+      <div class="loop-step">
+        少しずつ熱量が落ち着いてくる
+      </div>
+
+      <div class="loop-arrow">↓</div>
+
+      <div class="loop-step loop-step--last">
+        「もう違うのかも」と手が止まる
+      </div>
+    </div>
 
     <p>
-      ただ今は、その才能が少しだけ空回りしているかもしれません。
+      あなたは、
+      本気ではなかったわけではありません。
+      むしろ、
+      <strong>最初からかなり本気だった</strong>
+      のだと思います。
     </p>
 
     <p>
-      「これだ！」と思うものを見つける。すぐに動く。一気に調べる。夢中になって形にする。ここまでは、とても速いのです。
+      スイッチが入っているときは、
+      驚くほど進められる。
+      けれど、その熱量が落ち着いた瞬間、
+      前ほど動けない自分に戸惑いやすい。
     </p>
 
     <p>
-      発信を始めた頃は、「伝えたいことが、まだまだある」と、次々に書ける。
+      すると、
+      <strong>
+        全力で続けるか、
+        いったん離れるか
+      </strong>
+      の2択になりやすくなります。
     </p>
 
     <p>
-      サービスをつくり始めると、時間を忘れるほど集中し、短期間で一気に進められます。
-    </p>
-
-    <p>
-      ところが、高い熱量が少し落ち着くと、「あれ？　前ほど気持ちが乗らない」という瞬間がやってきます。
-    </p>
-
-    <p>
-      最初の勢いがなくなっただけなのに、「本当にやりたいことではなかったのかな」「この方向で合っているのかな」と、急に自信が揺らぐのです。
-    </p>
-
-    <p>
-      昨日まで夢中になっていたものを開いても、なかなか手が動かない。
-    </p>
-
-    <p>
-      すると、「やるなら、ちゃんとやりたい」「中途半端に続けても意味がない」という気持ちが出てきて、全力で取り組むか、いったん離れるかの2択になりやすくなります。
-    </p>
-
-    <p>
-      あなたのやる気のスイッチは、明るさを少しずつ調整する照明というより、パチンと入るブレーカーに近いのかもしれません。
-    </p>
-
-    <p>
-      入っているときは驚くほど進む。けれど、落ちると、部屋ごと暗くなったように感じる。そんなことはないでしょうか。
-    </p>
-
-    <p>
-      あなたは、やる気がないわけではありません。むしろ、かなり動き、集中し、そのたびに大きなエネルギーを使っています。
-    </p>
-
-    <p>
-      ただ、最初から全力で走るため、熱量が落ち着いたときに、「続ける力までなくなった」ように感じやすいのです。
-    </p>
-
-    <p>
-      そして、「あれほど夢中だったのに、どうして今は動けないんだろう」と、自分でも寂しくなることがあります。
-    </p>
-
-    <p>
-      問題は、熱量に波があることではありません。熱量が高いときの自分だけを“本気の自分”だと思い、気持ちが落ち着いたときの自分を信じにくくなることにあります。
+      あれほど夢中だったのに、
+      「どうして今は手が動かないんだろう」と
+      少し寂しくなることもあるかもしれません。
     </p>
   </article>
 
-  <article class="result-block result-block--final">
+  <!-- 04 -->
+  <article class="result-block result-block--risk">
+    <h2>この状態が続くと…</h2>
+
+    <div class="risk-items">
+      <div class="risk-item">
+        勢いよく始めたものが、
+        完成する手前で止まりやすくなる
+      </div>
+
+      <div class="risk-item">
+        熱量が下がるたびに、
+        「この方向は違うのかも」と感じやすくなる
+      </div>
+
+      <div class="risk-item">
+        100％で動けない日は、
+        ほとんど何もしなくなりやすい
+      </div>
+
+      <div class="risk-item">
+        本来は強みである集中力を、
+        一時的な勢いで終わらせやすくなる
+      </div>
+    </div>
+  </article>
+
+  <!-- 05 -->
+  <article class="result-block result-block--key">
+    <h2>でも、問題は「熱量に波があること」ではありません</h2>
+
+    <p>
+      どれだけ好きな仕事でも、
+      最初と同じ高揚感が
+      ずっと続くわけではありません。
+    </p>
+
+    <p>
+      形が見えてきたあとには、
+      同じことを続けたり、
+      細かく整えたり、
+      反応を待ったりする時間もやってきます。
+    </p>
+
+    <p class="key-message">
+      <span class="key-message-line">熱量が下がったから、終わりなのか。</span>
+      <span class="key-message-line">それとも、進み方を変える時期なのか。</span>
+    </p>
+
+    <p>
+      この2つを同じにしてしまうと、
+      気持ちが落ち着くたびに、
+      今の挑戦そのものを手放したくなります。
+    </p>
+
+    <p>
+      でも、熱量に合わせて進み方を変えられると、
+      いつも全力でなくても、
+      <strong>今の挑戦とのつながりを切らずに進める</strong>
+      ようになります。
+    </p>
+  </article>
+
+  <!-- 06 LINE自動生成用 -->
+  <article class="result-block result-block--final result-block--source-only">
     <h2>ここから先が本題です</h2>
-
-    <p>
-      ここまで読んで、「そうそう。スイッチが入っているときの私は、かなり強いのよね」と思ったでしょうか。
-    </p>
-
-    <p>
-      手相から見えているあなたの行動力と集中力は、価値を感じたものへ大きなエネルギーを注ぎ、短期間で現実の形へ近づけるための強みです。
-    </p>
-
-    <p>
-      その熱量があるからこそ、人より早く動き、多くのことを学び、自分だけの知識や経験を深めていけます。
-    </p>
-
-    <p>
-      だから、夢中になったときの勢いも、深く集中できることも、無理に抑える必要はありません。
-    </p>
-
-    <p>
-      ただ、いつも同じ強さで熱量が続くとは限りません。気持ちが落ち着いたからといって、これまで注いできた力や、仕事の価値までなくなったわけではないのです。
-    </p>
-
-    <p>
-      あなたらしい進み方を見つけるヒントは、熱量をいつも高く保つことではなく、その波とどのように付き合うかにありそうです。
-    </p>
-
-    <p>
-      では、行動力と集中力を仕事に活かしながら、熱量に波があるときも自分らしく進むには、どのような考え方が合っているのでしょうか。
-    </p>
 
     <ul class="line-benefits-source">
       <li>
-        <strong>熱量に波がある自分に合う考え方：</strong>
-        気持ちが落ち着いたときにも、自分の力を否定せずに進むために何を大切にすればよいかが分かります。
+        <strong>最初は夢中なのに、途中で熱量が落ちる理由：</strong>
+        行動の速さと集中力が重なることで、
+        なぜ高い熱量を一気に使いやすいのかが分かります。
       </li>
 
       <li>
-        <strong>自分に合った続け方の目安：</strong>
-        今の仕事を続けるのか、少し見直すのかを考えるための、自分に合った目安が分かります。
+        <strong>熱量が低いときの判断基準：</strong>
+        今の方向を見直すべきなのか、
+        ただ熱量が落ち着いているだけなのかを
+        判断する考え方が分かります。
       </li>
 
       <li>
-        <strong>仕事で集中力を活かすヒント：</strong>
-        行動力と没入力を、自分だけの知識や専門性として育てる3つのヒントが分かります。
+        <strong>行動力と集中力を成果へつなげるヒント：</strong>
+        完成地点を決め、
+        熱量が低い日の最低ラインをつくり、
+        大きな判断を急がない3つのコツが分かります。
       </li>
     </ul>
 
     <p class="cta-message-source">
-      あなたには、価値を感じたものへ大きな力を注ぎ、短期間で現実の形へ近づける力があります。その強みを仕事に活かしながら、熱量に波があるときも自分らしく進むための考え方を、LINEで受け取ってください。
+      あなたには、
+      勢いよく動く力も、
+      1つのことへ深く集中する力もあります。
+      必要なのは、
+      ずっと同じ熱量を保つことではありません。
+      熱量が高い日は大きく進む。
+      低い日は、小さくつなぐ。
+      そして、決めた地点まで進んでから
+      続けるかどうかを考える。
+      その進み方ができるようになると、
+      あなたの集中力は
+      一時的な勢いではなく、
+      形に残る成果へつながりやすくなります。
+      あなたに合う続け方を、
+      LINEで受け取ってください。
     </p>
   </article>
+
 </section>
