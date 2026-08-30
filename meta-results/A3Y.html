@@ -1,165 +1,517 @@
-<section class="result-detail" data-diagnosis-code="A3Y">
-  <div class="result-catch" data-hide-title="true">
-    <p>【あなたを一言で表すと】</p>
-    <p>見極めてから踏み出すパイオニア</p>
+<section class="result-detail result-detail--visual" data-diagnosis-code="A3Y">
+
+  <style>
+    /* ========================================
+       A3Y 診断結果
+       Meta広告流入・スマホ向け
+    ======================================== */
+
+    .result-detail--visual {
+      max-width: 720px;
+      margin: 0 auto;
+      color: #24313a;
+      line-height: 1.8;
+    }
+
+    /* ========================================
+       FV
+    ======================================== */
+
+    .diagnosis-result-fv {
+      margin: 0 0 28px;
+      padding: 0;
+    }
+
+    .diagnosis-result-fv img {
+      display: block;
+      width: 100%;
+      height: auto;
+      margin: 0 auto;
+    }
+
+    /* ========================================
+       共通ブロック
+    ======================================== */
+
+    .result-detail--visual .result-block {
+      margin: 0 16px 28px;
+      padding: 26px 20px;
+      background: #ffffff;
+      border: 1px solid #dcecf5;
+      border-radius: 18px;
+      box-sizing: border-box;
+    }
+
+    .result-detail--visual .result-block h2 {
+      margin: 0 0 18px;
+      color: #083f5c;
+      font-size: 22px;
+      line-height: 1.45;
+      text-align: left;
+    }
+
+    .result-detail--visual .result-block p {
+      margin: 0 0 16px;
+      font-size: 16px;
+      line-height: 1.9;
+    }
+
+    .result-detail--visual .result-block p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* ========================================
+       あなたはこんなタイプ
+    ======================================== */
+
+    .type-keywords {
+      margin: 0 0 20px;
+      font-size: 20px;
+      font-weight: 700;
+      color: #1f6fb2;
+      letter-spacing: 0.04em;
+      text-align: center;
+    }
+
+    .type-point-list {
+      display: grid;
+      gap: 11px;
+      margin: 0 0 20px;
+    }
+
+    .type-point {
+      position: relative;
+      padding: 14px 14px 14px 43px;
+      background: #f8fcff;
+      border-radius: 12px;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .type-point::before {
+      content: "✓";
+      position: absolute;
+      left: 16px;
+      top: 14px;
+      color: #1f6fb2;
+      font-weight: 700;
+    }
+
+    .type-summary {
+      padding: 16px;
+      background: #eef7ff;
+      border-radius: 12px;
+      color: #314958;
+    }
+
+    /* ========================================
+       強みが出る場面
+    ======================================== */
+
+    .talent-scene-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    .talent-scene-card {
+      padding: 18px;
+      border-radius: 14px;
+      background: #eef7ff;
+      border: 1px solid #cfe3f1;
+    }
+
+    .talent-scene-card strong {
+      display: block;
+      margin-bottom: 8px;
+      color: #083f5c;
+      font-size: 17px;
+      line-height: 1.5;
+    }
+
+    .talent-scene-card p {
+      margin: 0 !important;
+    }
+
+    /* ========================================
+       今のループ
+    ======================================== */
+
+    .loop-intro {
+      font-weight: 700;
+      color: #314958;
+    }
+
+    .diagnosis-loop {
+      margin: 20px 0;
+    }
+
+    .loop-step {
+      padding: 15px 14px;
+      background: #f8fcff;
+      border: 1px solid #cfe6f3;
+      border-radius: 12px;
+      text-align: center;
+      font-size: 16px;
+      font-weight: 700;
+      color: #083f5c;
+    }
+
+    .loop-arrow {
+      height: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #6f8798;
+      font-size: 24px;
+      font-weight: 700;
+    }
+
+    .loop-step--last {
+      background: #fff5f2;
+      border-color: #f2c9bf;
+      color: #9b4d3b;
+    }
+
+    /* ========================================
+       この状態が続くと
+    ======================================== */
+
+    .result-block--risk {
+      background: #fffaf7 !important;
+      border-color: #f1d9cf !important;
+    }
+
+    .risk-items {
+      display: grid;
+      gap: 10px;
+    }
+
+    .risk-item {
+      position: relative;
+      padding: 13px 14px 13px 40px;
+      background: #ffffff;
+      border: 1px solid #f0ddd5;
+      border-radius: 11px;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .risk-item::before {
+      content: "●";
+      position: absolute;
+      left: 17px;
+      top: 15px;
+      color: #d98670;
+      font-size: 10px;
+    }
+
+    /* ========================================
+       問題の正体
+    ======================================== */
+
+    .result-block--key {
+      background: #eef7ff !important;
+      border-color: #bddcec !important;
+    }
+
+    .key-message {
+      margin: 18px 0 !important;
+      padding: 18px 16px;
+      background: #ffffff;
+      border: 1px solid #dcecf5;
+      border-radius: 8px;
+      font-size: 18px !important;
+      font-weight: 700;
+      color: #083f5c;
+      text-align: center;
+      line-height: 1.7;
+    }
+
+    .key-message-line {
+      display: block;
+    }
+
+    /* ========================================
+       LINE自動生成用データ
+    ======================================== */
+
+    .result-block--source-only {
+      display: none !important;
+    }
+
+    /* ========================================
+       スマホ
+    ======================================== */
+
+    @media (max-width: 600px) {
+      .result-detail--visual .result-block {
+        margin-left: 14px;
+        margin-right: 14px;
+        padding: 23px 17px;
+      }
+
+      .result-detail--visual .result-block h2 {
+        font-size: 21px;
+      }
+
+      .type-keywords {
+        font-size: 19px;
+      }
+
+      .talent-scene-card strong {
+        font-size: 17px;
+      }
+
+      .key-message {
+        font-size: 17px !important;
+        padding: 16px 14px;
+      }
+    }
+  </style>
+
+  <!-- FV -->
+  <div class="diagnosis-result-fv">
+    <img
+      src="meta-fv-results/A3Y.png"
+      alt="才能コンパス診断 見極めてから踏み出すパイオニア"
+      loading="eager"
+      fetchpriority="high"
+    >
   </div>
 
+  <!-- 01 -->
   <article class="result-block">
-    <h2>あなたの本質</h2>
+    <h2>あなたはこんなタイプです</h2>
 
-    <p class="highlight-paragraph">熟考 × 現実 × 直感</p>
+    <div class="type-keywords">
+      熟考 × 現実 × 直感
+    </div>
 
-    <p>
-      あなたは、思いついたらすぐ動く人ではありません。まずは一人でじっくり考え、情報を頭の中で並べ、自分なりに納得できるところまで整理します。
-    </p>
+    <div class="type-point-list">
+      <div class="type-point">
+        すぐに決めるより、
+        <strong>まず自分の中でじっくり考えたい</strong>
+      </div>
 
-    <p>
-      「現実的に続けられるかな」<br>
-      「今の私に合っているかな」<br>
-      「ほかに見落としている可能性はないかな」<br>
-      と、さまざまな角度から考えます。
-    </p>
+      <div class="type-point">
+        現実的に続けられるかも見ながら、
+        <strong>いくつもの可能性を比較できる</strong>
+      </div>
 
-    <p>
-      けれど、ずっと決められないわけではありません。考え抜いたあと、ある瞬間に「やっぱり、これでいこう」と、自分の感覚で答えを選べます。
-    </p>
+      <div class="type-point">
+        考え抜いた最後には、
+        <strong>自分の感覚を信じて1つを選べる</strong>
+      </div>
+    </div>
 
-    <p>
-      周りから見れば急に決めたようでも、あなたの中では、それまで考えてきたものが一つにつながった瞬間です。
-    </p>
-
-    <p>
-      あなたは、勢いだけで進む人ではありません。自分のペースで考えを深め、最後は自分の感覚を信じて方向を選ぶ人です。
+    <p class="type-summary">
+      あなたは、
+      勢いだけで決める人ではありません。
+      自分なりに考えを深め、
+      最後は「今の自分なら、これ」と
+      納得できる方向を選ぶ人です。
     </p>
   </article>
 
+  <!-- 02 -->
   <article class="result-block">
-    <h2>あなたの才能</h2>
+    <h2>こんな場面で強みが出ます</h2>
 
-    <p>そんなあなたには、次のような力があります。</p>
+    <div class="talent-scene-grid">
+      <div class="talent-scene-card">
+        <strong>🔍 選択肢を見極めるとき</strong>
+        <p>
+          目先のよさだけで決めず、
+          現実性や自分との相性まで考えて
+          選ぶことができます。
+        </p>
+      </div>
 
-    <ul>
-      <li>自分のペースで深く考える力</li>
-      <li>情報や気持ちを納得できるまで整理する力</li>
-      <li>最後は自分の感覚で決める力</li>
-      <li>人に流されず、独自の視点で選ぶ力</li>
-    </ul>
+      <div class="talent-scene-card">
+        <strong>🧠 自分の考えを整理するとき</strong>
+        <p>
+          人の意見をそのまま受け入れず、
+          一度自分の中へ持ち帰って、
+          納得できる答えへ整理できます。
+        </p>
+      </div>
+
+      <div class="talent-scene-card">
+        <strong>🧭 最後の方向を決めるとき</strong>
+        <p>
+          十分に考えたあとは、
+          自分の感覚を信じて
+          「これでいこう」と選ぶことができます。
+        </p>
+      </div>
+    </div>
+  </article>
+
+  <!-- 03 -->
+  <article class="result-block">
+    <h2>今、こんなループに入っていませんか？</h2>
+
+    <p class="loop-intro">
+      「よし、これでいこう」と決めたはずなのに……
+    </p>
+
+    <div class="diagnosis-loop">
+      <div class="loop-step">
+        時間をかけて考え、1つを選ぶ
+      </div>
+
+      <div class="loop-arrow">↓</div>
+
+      <div class="loop-step">
+        実際に動き始める
+      </div>
+
+      <div class="loop-arrow">↓</div>
+
+      <div class="loop-step">
+        また別の考えや可能性が浮かぶ
+      </div>
+
+      <div class="loop-arrow">↓</div>
+
+      <div class="loop-step loop-step--last">
+        「最初の選択でよかった？」と再び考え始める
+      </div>
+    </div>
 
     <p>
-      誰かから「こちらの方がいいよ」「普通は、この方法でしょ」と言われても、そのまま受け入れるわけではありません。
+      あなたは、
+      決められないわけではありません。
+      むしろ、
+      <strong>かなり考えたうえで、ちゃんと決めています。</strong>
     </p>
 
     <p>
-      いったん自分の中へ持ち帰り、「本当に、私にも合うだろうか」と考えます。
+      ただ、決断したあとも、
+      あなたの思考は止まりません。
     </p>
 
     <p>
-      周りからも「よく考えているよね」「自分の考えを持っているよね」「最後は、ちゃんと自分で決めるよね」と言われたことがあるかもしれません。
+      新しい情報が入ったり、
+      実際にやってみて小さな違和感が出たりすると、
+      <strong>「別の答えの方がよかったのでは？」</strong>
+      と、また考えたくなるのです。
     </p>
 
     <p>
-      仕事の方向を選ぶときも、目先のよさだけでは判断しません。自分が続けられるか、今の仕事とどうつながるか、本当に納得して取り組めるか。そこまで考えたうえで、「今の私なら、こちら」と選べます。
-    </p>
-
-    <p>
-      あなたは、ただ考え込む人ではありません。人の意見や現実的な条件も踏まえながら、自分なりの答えへたどり着ける人です。
-    </p>
-
-    <p>
-      時間をかけて考えたからこそ、最後は直感的に決められる。その熟考と決断の両方を持っていることが、あなたの大きな才能です。
+      結論を出したはずなのに、
+      頭の中では再審議。
+      しかも、議題を出すのも、反対意見を出すのも、
+      最終判断を待っているのも、すべてあなた。
     </p>
   </article>
 
-  <article class="result-block">
-    <h2>今のあなたの状態</h2>
+  <!-- 04 -->
+  <article class="result-block result-block--risk">
+    <h2>この状態が続くと…</h2>
+
+    <div class="risk-items">
+      <div class="risk-item">
+        決めたあとも別案が気になり、
+        今の方向へ力を注ぎにくくなる
+      </div>
+
+      <div class="risk-item">
+        小さな違和感が出るたびに、
+        最初の決断そのものを疑いやすくなる
+      </div>
+
+      <div class="risk-item">
+        行動しているのに、
+        前へ進んでいる実感を持ちにくくなる
+      </div>
+
+      <div class="risk-item">
+        「自分で決めても、また迷ってしまう」と、
+        自分の判断への信頼が揺らぎやすくなる
+      </div>
+    </div>
+  </article>
+
+  <!-- 05 -->
+  <article class="result-block result-block--key">
+    <h2>でも、問題は「考え直すこと」ではありません</h2>
 
     <p>
-      ただ今は、その才能が少しだけ空回りしているかもしれません。
+      動き始めたあとだからこそ、
+      新しく見えることがあります。
+      別案が浮かぶこと自体は、
+      決して悪いことではありません。
     </p>
 
     <p>
-      方向について時間をかけて考える。発信のテーマやサービスの内容も、いろいろな可能性を比べる。そして最後に、「よし、これでいこう」と決める。ここまでは、きちんとできています。
+      ただ、新しく思いついたことをすべて
+      「最初の選択が間違っていたサイン」と受け取ると、
+      どの方向にも十分な時間を与えられなくなります。
+    </p>
+
+    <p class="key-message">
+      <span class="key-message-line">本当に新しい事実が増えたのか。</span>
+      <span class="key-message-line">それとも、新しい考えが浮かんだだけなのか。</span>
     </p>
 
     <p>
-      ところが、実際に動き始めても、頭の中の思考は完全には止まりません。
+      この違いを分けられるようになると、
+      別案が浮かんでも、
+      すぐに最初の選択を白紙へ戻さなくて済みます。
     </p>
 
     <p>
-      発信を数回続けると、「別のテーマの方が、もっと深く伝えられたかもしれない」。サービスを形にしている途中で、「違う切り口の方が、今の自分には合っていたかもしれない」。方向を決めたあとでも、「もう少し考えていたら、別の答えを選んでいたかも」と、新しい案が浮かびます。
-    </p>
-
-    <p>
-      決める前にも、かなり考えた。でも、決めたあとも、かなり考えている。いわば、結論が出たあとも、頭の中では“再審議”が続いている状態です。
-    </p>
-
-    <p>
-      しかも、議題を持ち込む人も、反対意見を出す人も、最終判断を待っている人も、すべてあなた。そんなことはないでしょうか。
-    </p>
-
-    <p>
-      今の方向も、よく考えた末に選んだものなので、すぐに変えることもできません。今の道を進みながら、頭の中では別の道も検討している。そのため、行動しているはずなのに、気持ちは少し後ろへ引っ張られます。
-    </p>
-
-    <p>
-      あなたは、何も決めていないわけではありません。むしろ、かなり考え抜いて決めています。
-    </p>
-
-    <p>
-      ただ、決めたあとも思考が働き続けるため、小さな違和感や別案が見つかるたびに、「最初の選択が間違っていたのかもしれない」と感じやすくなります。
-    </p>
-
-    <p>
-      今、選んだ方向を信じにくくなっているのは、決める力がないからではありません。あとから浮かんだ考えを、「方向を変える合図」として受け取るのか、「今の方向を深めるための気づき」として受け取るのかが、分かりにくくなっているのかもしれません。
+      考え直す力を、
+      自分の決断を疑うためではなく、
+      <strong>選んだ方向を育てるために使える</strong>
+      ようになります。
     </p>
   </article>
 
-  <article class="result-block result-block--final">
+  <!-- 06 LINE自動生成用 -->
+  <article class="result-block result-block--final result-block--source-only">
     <h2>ここから先が本題です</h2>
-
-    <p>
-      ここまで読んで、「そうそう。あれだけ考えて決めたのに、あとからまた考え始めるのよね」と思ったでしょうか。
-    </p>
-
-    <p>
-      手相から見えているあなたの熟考力と直感は、現実的な条件を丁寧に考えたうえで、自分が納得できる方向を選ぶための大切な強みです。
-    </p>
-
-    <p>
-      人の意見をそのまま受け入れるのではなく、自分に合うかを考えられる。いくつもの可能性を比べたあと、最後は自分の感覚で決められる。この力があるからこそ、人に流されず、自分らしい仕事を選べます。
-    </p>
-
-    <p>
-      けれど、あとから別案が浮かぶたびに最初の選択まで疑っていると、せっかく考え抜いて選んだ方向へ、十分な力を注ぎにくくなります。
-    </p>
-
-    <p>
-      あなたらしい進み方を見つけるヒントは、考え直すことをやめるのではなく、あとから浮かんだ考えを、選んだ道を深めるために活かすことにありそうです。
-    </p>
-
-    <p>
-      では、考え抜く力と直感を活かしながら、自分で選んだ方向を信じて仕事を育てていくには、どのような考え方が合っているのでしょうか。
-    </p>
 
     <ul class="line-benefits-source">
       <li>
-        <strong>考え直しが生まれやすい自分に合う考え方：</strong>
-        決めたあとにも新しい案が浮かぶ自分の特徴を大切にしながら、選んだ方向を育てるための考え方が分かります。
+        <strong>考え抜いて決めたあとも迷いやすい理由：</strong>
+        決断したあとにも思考が続くことで、
+        なぜ別の可能性が気になりやすいのかが分かります。
       </li>
 
       <li>
-        <strong>自分の選択を育てるための目安：</strong>
-        あとから別案が浮かんだときに、その考えをどのように受け取ればよいのか、その目安が分かります。
+        <strong>方向を変える迷いと、今を磨く迷いの見分け方：</strong>
+        新しい事実が増えたのか、
+        新しい考えが浮かんだだけなのかを
+        判断する目安が分かります。
       </li>
 
       <li>
-        <strong>仕事で熟考と直感を活かすヒント：</strong>
-        深く考える力と自分の感覚で選ぶ力を、自分らしい発信やサービスへ活かすヒントが分かります。
+        <strong>熟考と直感を前進する力へ変えるヒント：</strong>
+        選んだ理由を残し、
+        見直す時期を決め、
+        それまでは方向を大きく変えない
+        3つのコツが分かります。
       </li>
     </ul>
 
     <p class="cta-message-source">
-      あなたにはすでに、納得できるまで考える力も、最後は自分の感覚で選ぶ力もあります。その強みを活かし、自分で選んだ仕事を信じて育てるための考え方を、LINEで受け取ってください。
+      あなたには、
+      深く考える力も、
+      最後は自分の感覚で選ぶ力もあります。
+      必要なのは、
+      決めたあとに考えることをやめることではありません。
+      あとから浮かんだ考えを、
+      最初の選択を否定する材料にするのか、
+      今の方向を育てる材料にするのか。
+      そこを見分けられるようになると、
+      自分で選んだ道へ、
+      今までより安心して力を注ぎやすくなります。
+      あなたに合う見極め方を、
+      LINEで受け取ってください。
     </p>
   </article>
+
 </section>
