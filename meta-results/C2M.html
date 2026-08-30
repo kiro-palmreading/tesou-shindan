@@ -1,229 +1,529 @@
-<section class="result-detail" data-diagnosis-code="C2M">
-  <div class="result-catch" data-hide-title="true">
-    <p>【あなたを一言で表すと】</p>
-    <p>動きながら究めるマイスター</p>
+<section class="result-detail result-detail--visual" data-diagnosis-code="C2M">
+
+  <style>
+    /* ========================================
+       C2M 診断結果
+       Meta広告流入・スマホ向け
+    ======================================== */
+
+    .result-detail--visual {
+      max-width: 720px;
+      margin: 0 auto;
+      color: #24313a;
+      line-height: 1.8;
+    }
+
+    /* ========================================
+       FV
+    ======================================== */
+
+    .diagnosis-result-fv {
+      margin: 0 0 28px;
+      padding: 0;
+    }
+
+    .diagnosis-result-fv img {
+      display: block;
+      width: 100%;
+      height: auto;
+      margin: 0 auto;
+    }
+
+    /* ========================================
+       共通ブロック
+    ======================================== */
+
+    .result-detail--visual .result-block {
+      margin: 0 16px 28px;
+      padding: 26px 20px;
+      background: #ffffff;
+      border: 1px solid #dcecf5;
+      border-radius: 18px;
+      box-sizing: border-box;
+    }
+
+    .result-detail--visual .result-block h2 {
+      margin: 0 0 18px;
+      color: #083f5c;
+      font-size: 22px;
+      line-height: 1.45;
+      text-align: left;
+    }
+
+    .result-detail--visual .result-block p {
+      margin: 0 0 16px;
+      font-size: 16px;
+      line-height: 1.9;
+    }
+
+    .result-detail--visual .result-block p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* ========================================
+       あなたはこんなタイプ
+    ======================================== */
+
+    .type-keywords {
+      margin: 0 0 20px;
+      font-size: 20px;
+      font-weight: 700;
+      color: #1f6fb2;
+      letter-spacing: 0.04em;
+      text-align: center;
+    }
+
+    .type-point-list {
+      display: grid;
+      gap: 11px;
+      margin: 0 0 20px;
+    }
+
+    .type-point {
+      position: relative;
+      padding: 14px 14px 14px 43px;
+      background: #f8fcff;
+      border-radius: 12px;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .type-point::before {
+      content: "✓";
+      position: absolute;
+      left: 16px;
+      top: 14px;
+      color: #1f6fb2;
+      font-weight: 700;
+    }
+
+    .type-summary {
+      padding: 16px;
+      background: #eef7ff;
+      border-radius: 12px;
+      color: #314958;
+    }
+
+    /* ========================================
+       強みが出る場面
+    ======================================== */
+
+    .talent-scene-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    .talent-scene-card {
+      padding: 18px;
+      border-radius: 14px;
+      background: #eef7ff;
+      border: 1px solid #cfe3f1;
+    }
+
+    .talent-scene-card strong {
+      display: block;
+      margin-bottom: 8px;
+      color: #083f5c;
+      font-size: 17px;
+      line-height: 1.5;
+    }
+
+    .talent-scene-card p {
+      margin: 0 !important;
+    }
+
+    /* ========================================
+       今のループ
+    ======================================== */
+
+    .loop-intro {
+      font-weight: 700;
+      color: #314958;
+    }
+
+    .diagnosis-loop {
+      margin: 20px 0;
+    }
+
+    .loop-step {
+      padding: 15px 14px;
+      background: #f8fcff;
+      border: 1px solid #cfe6f3;
+      border-radius: 12px;
+      text-align: center;
+      font-size: 16px;
+      font-weight: 700;
+      color: #083f5c;
+    }
+
+    .loop-arrow {
+      height: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #6f8798;
+      font-size: 24px;
+      font-weight: 700;
+    }
+
+    .loop-step--last {
+      background: #fff5f2;
+      border-color: #f2c9bf;
+      color: #9b4d3b;
+    }
+
+    /* ========================================
+       この状態が続くと
+    ======================================== */
+
+    .result-block--risk {
+      background: #fffaf7 !important;
+      border-color: #f1d9cf !important;
+    }
+
+    .risk-items {
+      display: grid;
+      gap: 10px;
+    }
+
+    .risk-item {
+      position: relative;
+      padding: 13px 14px 13px 40px;
+      background: #ffffff;
+      border: 1px solid #f0ddd5;
+      border-radius: 11px;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .risk-item::before {
+      content: "●";
+      position: absolute;
+      left: 17px;
+      top: 15px;
+      color: #d98670;
+      font-size: 10px;
+    }
+
+    /* ========================================
+       問題の正体
+    ======================================== */
+
+    .result-block--key {
+      background: #eef7ff !important;
+      border-color: #bddcec !important;
+    }
+
+    .key-message {
+      margin: 18px 0 !important;
+      padding: 18px 16px;
+      background: #ffffff;
+      border: 1px solid #dcecf5;
+      border-radius: 8px;
+      font-size: 18px !important;
+      font-weight: 700;
+      color: #083f5c;
+      text-align: center;
+      line-height: 1.7;
+    }
+
+    .key-message-line {
+      display: block;
+    }
+
+    /* ========================================
+       LINE自動生成用データ
+    ======================================== */
+
+    .result-block--source-only {
+      display: none !important;
+    }
+
+    /* ========================================
+       スマホ
+    ======================================== */
+
+    @media (max-width: 600px) {
+      .result-detail--visual .result-block {
+        margin-left: 14px;
+        margin-right: 14px;
+        padding: 23px 17px;
+      }
+
+      .result-detail--visual .result-block h2 {
+        font-size: 21px;
+      }
+
+      .type-keywords {
+        font-size: 19px;
+      }
+
+      .talent-scene-card strong {
+        font-size: 17px;
+      }
+
+      .key-message {
+        font-size: 17px !important;
+        padding: 16px 14px;
+      }
+    }
+  </style>
+
+  <!-- FV -->
+  <div class="diagnosis-result-fv">
+    <img
+      src="meta-fv-results/C2M.png"
+      alt="才能コンパス診断 動きながら究めるマイスター"
+      loading="eager"
+      fetchpriority="high"
+    >
   </div>
 
+  <!-- 01 -->
   <article class="result-block">
-    <h2>あなたの本質</h2>
+    <h2>あなたはこんなタイプです</h2>
 
-    <p class="highlight-paragraph">行動 × 分析 × 集中</p>
+    <div class="type-keywords">
+      行動 × 分析 × 集中
+    </div>
 
-    <p>
-      あなたは、すべてを理解してから動き出すというより、<br>
-      「まずは、やってみよう」<br>
-      「実際に試せば、分かることがありそう」<br>
-      と、行動へ移せる人です。
-    </p>
+    <div class="type-point-list">
+      <div class="type-point">
+        考え込みすぎる前に、
+        <strong>まず試して現実から答えを探せる</strong>
+      </div>
 
-    <p>
-      ただし、いろいろなことを浅く試して終わるわけではありません。
-    </p>
+      <div class="type-point">
+        動いた結果から、
+        <strong>表面ではなく原因や本質まで深く分析できる</strong>
+      </div>
 
-    <p>
-      実際に取り組んだあとは、<br>
-      「なぜ、この結果になったのだろう」<br>
-      「本当に大切なのは、どこだろう」<br>
-      「もっと深く理解できることはないだろうか」<br>
-      と、起きたことを掘り下げます。
-    </p>
+      <div class="type-point">
+        「ここには価値がある」と納得すると、
+        <strong>一つの方向へ深く集中して育てられる</strong>
+      </div>
+    </div>
 
-    <p>
-      そして、自分なりに「ここには価値がある」と思えるものを見つけると、強い集中力を発揮します。
-    </p>
-
-    <p>
-      必要なことを学ぶ。何度も試す。結果を分析する。自分が納得できるところまで深めていく。
-    </p>
-
-    <p>
-      あなたは、誰かが出した答えをそのまま信じる人ではありません。実際に動いて確かめたことを、自分なりの知識や技術へ変えていく人です。
+    <p class="type-summary">
+      あなたは、
+      ただ勢いよく動く人でも、
+      分析だけで終わる人でもありません。
+      まず試し、
+      現実の結果から本質を見極め、
+      自分が信じられる方向を深く究めていく人です。
     </p>
   </article>
 
+  <!-- 02 -->
   <article class="result-block">
-    <h2>あなたの才能</h2>
+    <h2>こんな場面で強みが出ます</h2>
 
-    <p>そんなあなたには、次のような力があります。</p>
+    <div class="talent-scene-grid">
+      <div class="talent-scene-card">
+        <strong>🚀 まず試して確かめるとき</strong>
+        <p>
+          完璧な理解を待つより、
+          実際に行動することで
+          現実の判断材料を集められます。
+        </p>
+      </div>
 
-    <ul>
-      <li>考え込む前に、まず試してみる力</li>
-      <li>結果の奥にある原因や本質を見抜く力</li>
-      <li>一つのことを繰り返し試し、深く理解する力</li>
-      <li>納得した仕事へ集中し、専門性を高める力</li>
-    </ul>
+      <div class="talent-scene-card">
+        <strong>🔍 結果の本質を掘り下げるとき</strong>
+        <p>
+          「なぜ、この結果になったのか」と、
+          表面的な原因だけで終わらず、
+          根本まで深く分析できます。
+        </p>
+      </div>
+
+      <div class="talent-scene-card">
+        <strong>🎯 価値あるものを究めるとき</strong>
+        <p>
+          自分なりに納得したことには、
+          必要なことを深く学び、
+          精度を高めながら専門性へ育てていけます。
+        </p>
+      </div>
+    </div>
+  </article>
+
+  <!-- 03 -->
+  <article class="result-block">
+    <h2>今、こんなループに入っていませんか？</h2>
+
+    <p class="loop-intro">
+      「これでいこう」と勢いよく進み始めたはずなのに……
+    </p>
+
+    <div class="diagnosis-loop">
+      <div class="loop-step">
+        1つの方向で一気に動き始める
+      </div>
+
+      <div class="loop-arrow">↓</div>
+
+      <div class="loop-step">
+        結果を深く分析し、疑問を見つける
+      </div>
+
+      <div class="loop-arrow">↓</div>
+
+      <div class="loop-step">
+        「そもそも方向が違うのかも」と考え始める
+      </div>
+
+      <div class="loop-arrow">↓</div>
+
+      <div class="loop-step loop-step--last">
+        一度止まり、土台から見直したくなる
+      </div>
+    </div>
 
     <p>
-      あなたは、仕事を一度経験しただけで、「だいたい分かった」と終わる人ではありません。
+      あなたは、
+      行動できない人ではありません。
+      むしろ、
+      <strong>スイッチが入れば、一気に進められる人です。</strong>
     </p>
 
     <p>
-      「なぜ、今回はうまくいったのだろう」「前回との違いは何だろう」「もっとよくするために、何を学べばよいだろう」と考えます。
+      ただ、途中で一つ疑問が見つかると、
+      「この部分だけの問題なのか」
+      「もっと根本に原因があるのか」と、
+      深く掘り下げ始めます。
     </p>
 
     <p>
-      たとえば、お客様から相談を受けたときも、その場で答えて終わるのではありません。
+      そして、
+      「方法を直せばよい」から
+      「そもそも、この方向でよいのか」まで、
+      問いが大きくなることがあります。
     </p>
 
     <p>
-      あとから、「本当の原因は別のところにあったかもしれない」「もっと役立つ伝え方がありそう」と考え、必要なことを調べることがあるのではないでしょうか。
-    </p>
-
-    <p>
-      仕事の中で繰り返し起きる問題にも、「その都度対応すればよい」とは考えません。なぜ同じことが起きるのかを分析し、根本にある原因を見つけようとします。
-    </p>
-
-    <p>
-      そして、「ここをもっと深めたい」と思えるテーマが見つかると、周りが驚くほど夢中になれます。
-    </p>
-
-    <p>
-      関連する知識を学ぶ。実際に試して確かめる。細かな違いを比べる。経験を重ねながら、自分なりの答えをつくっていく。
-    </p>
-
-    <p>
-      周りからも、「行動が早いよね」「考えが深いね」「そこまで詳しく調べたんだね」「一度集中するとすごいよね」と言われたことがあるかもしれません。
-    </p>
-
-    <p>
-      あなたは、ただ知識が豊富な人ではありません。学んだことを実際に使い、その結果を分析しながら、本当に役立つ知識や技術へ変えられる人です。
-    </p>
-
-    <p>
-      実践を重ねるほど理解が深まり、自分にしかできない仕事へ育てていけることが、あなたの大きな才能です。
+      気づけば、
+      <strong>
+        アクセルを踏んで走っていたところへ、
+        頭の中の分析担当から
+        「一度、路肩に止めてください」と連絡が入る。
+      </strong>
+      そんな状態になることもあるかもしれません。
     </p>
   </article>
 
-  <article class="result-block">
-    <h2>今のあなたの状態</h2>
+  <!-- 04 -->
+  <article class="result-block result-block--risk">
+    <h2>この状態が続くと…</h2>
+
+    <div class="risk-items">
+      <div class="risk-item">
+        小さな疑問から、
+        仕事の方向そのものまで見直しやすくなる
+      </div>
+
+      <div class="risk-item">
+        ある程度形になったところで止まり、
+        一つの方向へ集中する期間が短くなりやすい
+      </div>
+
+      <div class="risk-item">
+        疑問が出るたびに土台から作り直し、
+        今までの積み上げを活かしにくくなる
+      </div>
+
+      <div class="risk-item">
+        本気で取り組んでいるのに、
+        「自分はブレやすいのかも」と感じやすくなる
+      </div>
+    </div>
+  </article>
+
+  <!-- 05 -->
+  <article class="result-block result-block--key">
+    <h2>でも、問題は「途中で疑問を持つこと」ではありません</h2>
 
     <p>
-      ただ今は、その分析力と集中力が、少しだけ空回りしているかもしれません。
+      動いた結果を深く分析し、
+      「本当にこの方向へ力を注いでよいのか」と
+      確かめられることは、
+      あなたの大きな強みです。
     </p>
 
     <p>
-      「これをやってみよう」と思ったら、動き出すのは比較的早い。必要なことを調べ、実際に試し、一気に形にすることもできます。
+      ただ、
+      一つの疑問を
+      「今の方法の問題」なのか
+      「仕事の軸そのものの問題」なのか分けないまま考えると、
+      問いが一気に大きくなります。
+    </p>
+
+    <p class="key-message">
+      <span class="key-message-line">今、疑問なのは「軸」なのか。</span>
+      <span class="key-message-line">それとも、軸を届ける「方法」なのか。</span>
     </p>
 
     <p>
-      ところが、取り組んでいる途中で一つ気になることが見つかると、そこから深い分析が始まります。
+      この違いが曖昧なままだと、
+      方法に小さな問題が出るたびに、
+      「この仕事そのものが違うのでは」と感じやすくなります。
     </p>
 
     <p>
-      「なぜ、ここだけうまくいかないのだろう」「もっと根本に原因があるのではないか」「きちんと理解してから先へ進みたい」と、気になったことを掘り下げます。
-    </p>
-
-    <p>
-      最初は一つの疑問を調べるつもりだったのに、調べるほど新しい疑問が出てくる。
-    </p>
-
-    <p>
-      新しい情報を知ると、「ここも確かめたい」「この違いも理解しておきたい」と、さらに深く入り込んでいきます。
-    </p>
-
-    <p>
-      気づけば、仕事を完成させるために始めた調査が、それだけで一つの研究になっていることがあります。
-    </p>
-
-    <p>
-      発信を書いているときも、一つの言葉が気になって調べ始める。すると、その言葉の背景や関連する情報まで気になり、最初に書こうとしていた内容よりも、調べたことの方が大きくなっていきます。
-    </p>
-
-    <p>
-      サービスをつくるときにも、「もっと役立つ内容にしたい」と考え、知識や資料を増やしていきます。
-    </p>
-
-    <p>
-      一つ加えると、別の部分も深めたくなる。細かなところまで理解できるほど、「まだ知らないこと」も見えるようになります。
-    </p>
-
-    <p>
-      あなたは、何もしていないわけではありません。かなり動いています。学んでいます。そして、仕事をよりよいものへ育てようと真剣に向き合っています。
-    </p>
-
-    <p>
-      それなのに、一日の終わりには、「今日もずっと取り組んでいたけれど、完成には近づいたのかな」と感じることがあります。
-    </p>
-
-    <p>
-      頭の中では理解が深まり、知識も増えている。けれど、最初に取り組んでいた仕事は、まだ途中に残っている。
-    </p>
-
-    <p>
-      あなたに仕事を終わらせる力がないわけではありません。一つの問題を見つけたときに、表面だけを整えて済ませたくないのです。
-    </p>
-
-    <p>
-      力を注ぐなら、意味のあるものにしたい。自分の名前で届けるなら、中途半端にはしたくない。その真剣さが、あなたをさらに深いところへ向かわせます。
-    </p>
-
-    <p>
-      今、持っている才能を仕事へ活かしきれていないと感じるのは、集中力が足りないからではありません。その大きな集中力が、仕事を届けることよりも、まだ分からないことを究める方へ向かいやすくなっているからかもしれません。
+      反対に、
+      軸と方法を分けて考えられるようになると、
+      <strong>今の方向を残したまま、疑問を深める材料として使えます。</strong>
     </p>
   </article>
 
-  <article class="result-block result-block--final">
+  <!-- 06 LINE自動生成用 -->
+  <article class="result-block result-block--final result-block--source-only">
     <h2>ここから先が本題です</h2>
-
-    <p>
-      ここまで読んで、「そうそう。一つ気になると、納得できるまで調べたくなるのよね」と思ったでしょうか。
-    </p>
-
-    <p>
-      手相から見えているあなたの行動力、分析力、集中力は、実際の経験から本質を見つけ、一つの仕事を深く究めるための大切な才能です。
-    </p>
-
-    <p>
-      まず試してみることができる。起きたことを表面だけで終わらせず、原因まで掘り下げられる。価値を感じたテーマには、時間を忘れるほど集中できる。
-    </p>
-
-    <p>
-      こうした才能は、専門的な知識や技術が必要な仕事、経験を重ねるほど深みが増す仕事、一つのテーマを長く追究する仕事などで、大きく活かされます。
-    </p>
-
-    <p>
-      また、人が見過ごしてしまう細かな違いに気づき、何度も試しながら仕事の精度を高められることも、あなたの強みです。
-    </p>
-
-    <p>
-      あなたが積み重ねた経験や、自分なりに深く考えてきたことは、誰かが簡単にまねできるものではありません。それらは、あなたならではの専門性をつくる大切な材料になります。
-    </p>
-
-    <p>
-      ただし、あなたの集中力は、まだ分からないことを調べ続けるためだけにあるものではありません。
-    </p>
-
-    <p>
-      すでに得た知識や経験を実際の仕事で活かし、必要な人へ届けるためにも、その力を使えます。
-    </p>
-
-    <p>
-      あなたらしい進み方のヒントは、深く考えることをやめることではありません。実際に取り組む中で深めてきた知識や技術を、自分にしかできない仕事へつなげていくことにありそうです。
-    </p>
-
-    <p>
-      <strong>では、まず試してみる力、物事の本質を深く分析する力、一つのことへ集中できる力を、仕事にどう活かしていけばよいのでしょうか。</strong>
-    </p>
 
     <ul class="line-benefits-source">
       <li>
-        <strong>動きながら究める自分に合う進み方：</strong>
-        実際に試しながら理解を深められる自分の特徴を、仕事の中で活かすヒントが分かります。
+        <strong>動き始めたあとに、納得が揺らぎやすくなる理由：</strong>
+        行動力、分析力、集中力が強く働くことで、
+        なぜ一つの改善点から
+        「方向そのものが違うかもしれない」まで考えが広がるのかが分かります。
       </li>
 
       <li>
-        <strong>分析力と集中力を仕事に活かすヒント：</strong>
-        一つのことを深く掘り下げられる力を、自分ならではの知識や技術へつなげるヒントが分かります。
+        <strong>深めるべき疑問と、方向を見直す疑問の見分け方：</strong>
+        「誰のどんな問題に役立ちたいか」という信じる軸と、
+        「今どんな方法なら届くと考えているか」という
+        確かめる仮説を分ける方法が分かります。
       </li>
 
       <li>
-        <strong>仕事で専門性を育てるヒント：</strong>
-        これまで積み重ねてきた経験や学びを、自分にしかできない仕事へ活かすヒントが分かります。
+        <strong>行動力と集中力を、一つの成果へつなげるヒント：</strong>
+        疑問を「事実・問い・検証」へ変え、
+        見直す回数や日を先に決め、
+        それまでは一つの方向へ集中して確かめる
+        3つのコツが分かります。
       </li>
     </ul>
 
     <p class="cta-message-source">
-      あなたにはすでに、まず試してみる力も、経験から本質を見抜く力も、一つのことへ深く集中する力もあります。その才能を仕事でもっと活かすためのヒントを、LINEで受け取ってください。
+      あなたには、
+      まず現実で試す力も、
+      結果の本質を深く分析する力も、
+      納得したものへ集中して育てる力もあります。
+      必要なのは、
+      疑問を無視して走り続けることでも、
+      疑問が出るたびに全部を作り直すことでもありません。
+      今も信じている軸は何なのか。
+      現在疑問なのは、軸そのものなのか、
+      それとも今試している方法なのか。
+      その疑問を確かめるには、
+      次に何を試せばよいのか。
+      そこを分けられるようになると、
+      疑問を止まる理由にせず、
+      今の答えを深める材料として使えます。
+      あなたに合う軸の深め方を、
+      LINEで受け取ってください。
     </p>
   </article>
+
 </section>
