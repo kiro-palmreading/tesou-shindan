@@ -1,233 +1,522 @@
-<section class="result-detail" data-diagnosis-code="C3X">
-  <div class="result-catch" data-hide-title="true">
-    <p>【あなたを一言で表すと】</p>
-    <p>突き詰めて組み立てるアナリスト</p>
+<section class="result-detail result-detail--visual" data-diagnosis-code="C3X">
+
+  <style>
+    /* ========================================
+       C3X 診断結果
+       Meta広告流入・スマホ向け
+    ======================================== */
+
+    .result-detail--visual {
+      max-width: 720px;
+      margin: 0 auto;
+      color: #24313a;
+      line-height: 1.8;
+    }
+
+    /* ========================================
+       FV
+    ======================================== */
+
+    .diagnosis-result-fv {
+      margin: 0 0 28px;
+      padding: 0;
+    }
+
+    .diagnosis-result-fv img {
+      display: block;
+      width: 100%;
+      height: auto;
+      margin: 0 auto;
+    }
+
+    /* ========================================
+       共通ブロック
+    ======================================== */
+
+    .result-detail--visual .result-block {
+      margin: 0 16px 28px;
+      padding: 26px 20px;
+      background: #ffffff;
+      border: 1px solid #dcecf5;
+      border-radius: 18px;
+      box-sizing: border-box;
+    }
+
+    .result-detail--visual .result-block h2 {
+      margin: 0 0 18px;
+      color: #083f5c;
+      font-size: 22px;
+      line-height: 1.45;
+      text-align: left;
+    }
+
+    .result-detail--visual .result-block p {
+      margin: 0 0 16px;
+      font-size: 16px;
+      line-height: 1.9;
+    }
+
+    .result-detail--visual .result-block p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* ========================================
+       あなたはこんなタイプ
+    ======================================== */
+
+    .type-keywords {
+      margin: 0 0 20px;
+      font-size: 20px;
+      font-weight: 700;
+      color: #1f6fb2;
+      letter-spacing: 0.04em;
+      text-align: center;
+    }
+
+    .type-point-list {
+      display: grid;
+      gap: 11px;
+      margin: 0 0 20px;
+    }
+
+    .type-point {
+      position: relative;
+      padding: 14px 14px 14px 43px;
+      background: #f8fcff;
+      border-radius: 12px;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .type-point::before {
+      content: "✓";
+      position: absolute;
+      left: 16px;
+      top: 14px;
+      color: #1f6fb2;
+      font-weight: 700;
+    }
+
+    .type-summary {
+      padding: 16px;
+      background: #eef7ff;
+      border-radius: 12px;
+      color: #314958;
+    }
+
+    /* ========================================
+       強みが出る場面
+    ======================================== */
+
+    .talent-scene-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    .talent-scene-card {
+      padding: 18px;
+      border-radius: 14px;
+      background: #eef7ff;
+      border: 1px solid #cfe3f1;
+    }
+
+    .talent-scene-card strong {
+      display: block;
+      margin-bottom: 8px;
+      color: #083f5c;
+      font-size: 17px;
+      line-height: 1.5;
+    }
+
+    .talent-scene-card p {
+      margin: 0 !important;
+    }
+
+    /* ========================================
+       今のループ
+    ======================================== */
+
+    .loop-intro {
+      font-weight: 700;
+      color: #314958;
+    }
+
+    .diagnosis-loop {
+      margin: 20px 0;
+    }
+
+    .loop-step {
+      padding: 15px 14px;
+      background: #f8fcff;
+      border: 1px solid #cfe6f3;
+      border-radius: 12px;
+      text-align: center;
+      font-size: 16px;
+      font-weight: 700;
+      color: #083f5c;
+    }
+
+    .loop-arrow {
+      height: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #6f8798;
+      font-size: 24px;
+      font-weight: 700;
+    }
+
+    .loop-step--last {
+      background: #fff5f2;
+      border-color: #f2c9bf;
+      color: #9b4d3b;
+    }
+
+    /* ========================================
+       この状態が続くと
+    ======================================== */
+
+    .result-block--risk {
+      background: #fffaf7 !important;
+      border-color: #f1d9cf !important;
+    }
+
+    .risk-items {
+      display: grid;
+      gap: 10px;
+    }
+
+    .risk-item {
+      position: relative;
+      padding: 13px 14px 13px 40px;
+      background: #ffffff;
+      border: 1px solid #f0ddd5;
+      border-radius: 11px;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .risk-item::before {
+      content: "●";
+      position: absolute;
+      left: 17px;
+      top: 15px;
+      color: #d98670;
+      font-size: 10px;
+    }
+
+    /* ========================================
+       問題の正体
+    ======================================== */
+
+    .result-block--key {
+      background: #eef7ff !important;
+      border-color: #bddcec !important;
+    }
+
+    .key-message {
+      margin: 18px 0 !important;
+      padding: 18px 16px;
+      background: #ffffff;
+      border: 1px solid #dcecf5;
+      border-radius: 8px;
+      font-size: 18px !important;
+      font-weight: 700;
+      color: #083f5c;
+      text-align: center;
+      line-height: 1.7;
+    }
+
+    .key-message-line {
+      display: block;
+    }
+
+    /* ========================================
+       LINE自動生成用データ
+    ======================================== */
+
+    .result-block--source-only {
+      display: none !important;
+    }
+
+    /* ========================================
+       スマホ
+    ======================================== */
+
+    @media (max-width: 600px) {
+      .result-detail--visual .result-block {
+        margin-left: 14px;
+        margin-right: 14px;
+        padding: 23px 17px;
+      }
+
+      .result-detail--visual .result-block h2 {
+        font-size: 21px;
+      }
+
+      .type-keywords {
+        font-size: 19px;
+      }
+
+      .talent-scene-card strong {
+        font-size: 17px;
+      }
+
+      .key-message {
+        font-size: 17px !important;
+        padding: 16px 14px;
+      }
+    }
+  </style>
+
+  <!-- FV -->
+  <div class="diagnosis-result-fv">
+    <img
+      src="meta-fv-results/C3X.png"
+      alt="才能コンパス診断 突き詰めて組み立てるアナリスト"
+      loading="eager"
+      fetchpriority="high"
+    >
   </div>
 
+  <!-- 01 -->
   <article class="result-block">
-    <h2>あなたの本質</h2>
+    <h2>あなたはこんなタイプです</h2>
 
-    <p class="highlight-paragraph">熟考 × 分析 × 論理</p>
+    <div class="type-keywords">
+      熟考 × 分析 × 論理
+    </div>
 
-    <p>
-      あなたは、思いついたことをそのまま始めるよりも、まずは自分の中でじっくり考えたい人です。
-    </p>
+    <div class="type-point-list">
+      <div class="type-point">
+        すぐに動くより、
+        <strong>まず情報を整理してから考えを組み立てたい</strong>
+      </div>
 
-    <p>
-      「なぜ、この問題が起きているのだろう」<br>
-      「本当に大切なのは、どこだろう」<br>
-      「どのように組み立てれば、全体がうまくつながるだろう」<br>
-      と、一つずつ確かめます。
-    </p>
+      <div class="type-point">
+        複雑な問題を分解し、
+        <strong>原因や選択肢を細かく比較できる</strong>
+      </div>
 
-    <p>
-      目に入った情報を、そのまま受け取るわけではありません。
-    </p>
+      <div class="type-point">
+        複数の条件から、
+        <strong>現実的で筋の通った答えを設計できる</strong>
+      </div>
+    </div>
 
-    <p>
-      情報を分けて考える。原因と結果のつながりを確かめる。いくつかの可能性を比べる。そうして、自分なりに筋の通った答えを組み立てていきます。
-    </p>
-
-    <p>
-      そのため、答えを出すまでには少し時間がかかることがあるかもしれません。
-    </p>
-
-    <p>
-      けれど、いったん考えがまとまると、「つまり、問題はここです」「この順番で考えると分かりやすそうです」と、複雑な話を整理して伝えられます。
-    </p>
-
-    <p>
-      あなたは、ただ考えることが好きな人ではありません。物事を深く読み解き、現実で使える形へ組み立てていく人です。
+    <p class="type-summary">
+      あなたは、
+      ただ考える時間が長い人ではありません。
+      複雑な情報を整理し、
+      条件や可能性を一つずつ検討しながら、
+      現実で使える設計図へ組み立てていく人です。
     </p>
   </article>
 
+  <!-- 02 -->
   <article class="result-block">
-    <h2>あなたの才能</h2>
+    <h2>こんな場面で強みが出ます</h2>
 
-    <p>そんなあなたには、次のような力があります。</p>
+    <div class="talent-scene-grid">
+      <div class="talent-scene-card">
+        <strong>🧩 複雑な問題を整理するとき</strong>
+        <p>
+          絡み合った情報を一つずつ分け、
+          何が原因で、
+          どこから考えればよいのかを整理できます。
+        </p>
+      </div>
 
-    <ul>
-      <li>複雑な情報を分けて整理する力</li>
-      <li>表面に隠れている問題の原因を見つける力</li>
-      <li>一つの物事を、時間をかけて深く考える力</li>
-      <li>筋道の通った形へ組み立てる力</li>
-    </ul>
+      <div class="talent-scene-card">
+        <strong>🔍 選択肢を比較するとき</strong>
+        <p>
+          それぞれのメリットだけでなく、
+          弱点や条件まで見ながら、
+          冷静に違いを判断できます。
+        </p>
+      </div>
+
+      <div class="talent-scene-card">
+        <strong>🏗️ 現実的な設計をするとき</strong>
+        <p>
+          誰に、何を、どの順番で届けるかまで考え、
+          無理なく進められる形へ
+          組み立てられます。
+        </p>
+      </div>
+    </div>
+  </article>
+
+  <!-- 03 -->
+  <article class="result-block">
+    <h2>今、こんなループに入っていませんか？</h2>
+
+    <p class="loop-intro">
+      「そろそろ決められそう」と思ったはずなのに……
+    </p>
+
+    <div class="diagnosis-loop">
+      <div class="loop-step">
+        じっくり考えて、情報を整理する
+      </div>
+
+      <div class="loop-arrow">↓</div>
+
+      <div class="loop-step">
+        複数の案や条件を比較する
+      </div>
+
+      <div class="loop-arrow">↓</div>
+
+      <div class="loop-step">
+        新しい判断条件に気づく
+      </div>
+
+      <div class="loop-arrow">↓</div>
+
+      <div class="loop-step loop-step--last">
+        比較項目が増え、結論をもう一度見直す
+      </div>
+    </div>
 
     <p>
-      あなたは、問題が起きたときに、目の前の部分だけを直して終わる人ではありません。
+      あなたは、
+      答えが見えていないわけではありません。
+      むしろ、
+      <strong>かなり細かいところまで設計できています。</strong>
     </p>
 
     <p>
-      「なぜ、この問題が起きたのだろう」「ほかの部分と、どのようにつながっているのだろう」と、背景や全体の流れまで考えます。
+      ただ、
+      一つの条件を整理すると、
+      「では、続けやすさは？」
+      「費用や時間は？」
+      「将来広げるなら？」と、
+      次の判断材料が見えてきます。
     </p>
 
     <p>
-      たとえば、仕事が思うように進んでいないときにも、ただ「もっと頑張ろう」とは考えません。
+      しかも、
+      どの条件にもちゃんと意味があるため、
+      「これは考えなくていい」と
+      簡単には切り離せません。
     </p>
 
     <p>
-      どの段階で止まっているのか。必要な情報が足りないのか。仕事の順番に無理があるのか。複数の問題が重なっているのか。一つずつ分けながら、原因を探せます。
-    </p>
-
-    <p>
-      誰かからまとまりのない相談を受けたときも、話を急いで結論へ運ぶのではありません。
-    </p>
-
-    <p>
-      話の中から大切な部分を拾い、「今起きていることと、本当に困っていることを分けて考えてみましょう」と、相手にも分かりやすい形へ整理できます。
-    </p>
-
-    <p>
-      新しい仕事やサービスを考えるときには、思いついた内容だけを見るのではありません。
-    </p>
-
-    <p>
-      全体に矛盾がないか。実際に進められる形になっているか。途中で困るところはないか。長く続けられる流れになっているか。細かな部分まで考えながら、全体を組み立てられます。
-    </p>
-
-    <p>
-      周りからも、「話が整理されていて分かりやすい」「問題点を見つけるのが上手だね」「そこまで考えていたんだね」「安心して任せられる」と言われたことがあるかもしれません。
-    </p>
-
-    <p>
-      あなたは、ただ知識を集める人ではありません。ばらばらの情報から大切なものを見つけ、誰かが理解し、実際に使える形へ変えられる人です。
-    </p>
-
-    <p>
-      複雑な問題を深く考え、無理のない一つの形へ組み立てられることが、あなたの大きな才能です。
+      気づけば、
+      <strong>設計図はかなり立派なのに、肝心の工事はまだ始まっていない。</strong>
+      そんな状態になることもあるかもしれません。
     </p>
   </article>
 
-  <article class="result-block">
-    <h2>今のあなたの状態</h2>
+  <!-- 04 -->
+  <article class="result-block result-block--risk">
+    <h2>この状態が続くと…</h2>
+
+    <div class="risk-items">
+      <div class="risk-item">
+        比較する条件が増え続け、
+        一つの結論へ決める時期が遅くなる
+      </div>
+
+      <div class="risk-item">
+        より効率的な方法を探すほど、
+        一度まとまった設計を組み直しやすくなる
+      </div>
+
+      <div class="risk-item">
+        頭の中の設計は精密になるのに、
+        現実から得られる判断材料が増えにくくなる
+      </div>
+
+      <div class="risk-item">
+        かなり考えているのに、
+        「自分は決断できない」と感じやすくなる
+      </div>
+    </div>
+  </article>
+
+  <!-- 05 -->
+  <article class="result-block result-block--key">
+    <h2>でも、問題は「深く比較すること」ではありません</h2>
 
     <p>
-      ただ今は、その考える力と分析力が、少しだけ空回りしているかもしれません。
+      複雑な条件を整理し、
+      現実的で筋の通った答えを組み立てられることは、
+      あなたの大きな強みです。
     </p>
 
     <p>
-      「今回は、これを形にしよう」と決める。ところが、取りかかる前に、「この部分は、もう少し考えた方がよいかもしれない」と、気になるところが見つかります。
+      ただ、
+      比較の途中で見つけた条件を
+      すべて今回の判断に加えていくと、
+      「決めるための条件」そのものが増え続けます。
+    </p>
+
+    <p class="key-message">
+      <span class="key-message-line">今の判断で、本当に外せない条件は何なのか。</span>
+      <span class="key-message-line">何は、実際に動いたあとで確かめればよいのか。</span>
     </p>
 
     <p>
-      その部分を考えていると、今度は関連する別の問題が見えてくる。
+      この境界線がないままだと、
+      よりよい答えを探すほど、
+      「まだ決めるには早い」と感じやすくなります。
     </p>
 
     <p>
-      「ここを変えるなら、前の部分も見直した方がよさそう」「こちらの条件も確かめておいた方がよいかもしれない」と、考える範囲が少しずつ広がっていきます。
-    </p>
-
-    <p>
-      一つの疑問を整理すると、その下から、また別の疑問が出てくる。まるで、引き出しを整理していたら、その奥からもう一つ引き出しが出てくるような状態です。
-    </p>
-
-    <p>
-      発信を書くときも、「この説明だけでは分かりにくいかもしれない」と、背景から整理したくなります。
-    </p>
-
-    <p>
-      背景を加えると文章が長くなる。そこで削ってみると、「これでは意味が正しく伝わらないかもしれない」と、また考え直したくなります。
-    </p>
-
-    <p>
-      サービスをつくるときにも、内容だけでなく、届ける流れや説明、申し込み後の対応まで、細かなところが見えてきます。
-    </p>
-
-    <p>
-      一つずつ考えているうちに、頭の中の設計図はかなり立派になっている。けれど、実際に人へ届ける形は、まだ途中に残っている。そんなことはないでしょうか。
-    </p>
-
-    <p>
-      あなたは、何もしていないわけではありません。かなり考えています。情報も整理しています。そして、現実で困らない形をつくろうと真剣に向き合っています。
-    </p>
-
-    <p>
-      それなのに、一日の終わりには、「今日もずっと考えていたけれど、何を形にできたんだろう」と感じることがあります。
-    </p>
-
-    <p>
-      周りから見れば、すでに十分まとまっているように見えるかもしれません。
-    </p>
-
-    <p>
-      けれど、あなたには、まだ整理できていない部分や、全体とうまくつながっていないところが見えています。
-    </p>
-
-    <p>
-      そのため、「もう少し考えれば、もっとよい形にできる」「今出すより、きちんと整えてから届けたい」と思うのです。
-    </p>
-
-    <p>
-      あなたに行動力がないわけではありません。物事を深く考えられるからこそ、簡単な答えや、その場しのぎの形では納得できないのです。
-    </p>
-
-    <p>
-      今、考えていることを形にしにくくなっているのは、答えが見つからないからではありません。全体がきれいにつながるところまで考えようとして、確認したいことが増えているからかもしれません。
+      反対に、
+      今決める条件と、あとで確かめる条件を分けられると、
+      <strong>分析力を手放さずに、今ある答えから着工できます。</strong>
     </p>
   </article>
 
-  <article class="result-block result-block--final">
+  <!-- 06 LINE自動生成用 -->
+  <article class="result-block result-block--final result-block--source-only">
     <h2>ここから先が本題です</h2>
-
-    <p>
-      ここまで読んで、「そうそう。一つ整理すると、また次に考えたいことが見つかるのよね」と思ったでしょうか。
-    </p>
-
-    <p>
-      手相から見えているあなたの熟考力、分析力、論理的に考える力は、複雑な問題を一つずつ読み解き、現実で使える形へ組み立てるための大切な才能です。
-    </p>
-
-    <p>
-      表面に見えている問題だけでなく、その背景や原因まで考えられる。ばらばらの情報を整理し、つながりを見つけられる。複雑な内容を、ほかの人にも理解しやすい形へ変えられる。
-    </p>
-
-    <p>
-      こうした才能は、仕事の計画を立てるとき、複雑な問題を整理するとき、誰かの考えを分かりやすくまとめるときなどに、大きく活かされます。
-    </p>
-
-    <p>
-      また、目先の問題だけを解決するのではなく、あとから同じことで困らないように、全体の流れや土台まで考えられることも、あなたの強みです。
-    </p>
-
-    <p>
-      あなたが時間をかけて考えてきたことは、単なる準備ではありません。その中には、ほかの人が気づかなかった問題や、仕事を分かりやすくするための考えが、すでにたくさん含まれています。
-    </p>
-
-    <p>
-      ただし、あなたの思考力は、まだ足りないところを探し続けるためだけにあるものではありません。
-    </p>
-
-    <p>
-      考えてきたことを人に伝えたり、複雑な問題を解決したり、仕事の流れを整えたりするためにも、その力を使えます。
-    </p>
-
-    <p>
-      あなたらしい進み方のヒントは、考える時間を無理に減らすことではありません。深く考えて見つけた答えを、誰かが実際に使える仕事の形へ変えていくことにありそうです。
-    </p>
-
-    <p>
-      <strong>では、複雑な情報を整理する力、問題の本質を深く考える力、筋道の通った形へ組み立てる力を、仕事にどう活かしていけばよいのでしょうか。</strong>
-    </p>
 
     <ul class="line-benefits-source">
       <li>
-        <strong>じっくり考える自分に合う進み方：</strong>
-        時間をかけて考えを深められる自分の特徴を、仕事の中で活かすヒントが分かります。
+        <strong>考えるほど判断条件が増え、結論が遠ざかる理由：</strong>
+        熟考、分析、論理的な思考が同時に働くことで、
+        なぜ比較している途中にも
+        新しい条件や検討項目が増えていくのかが分かります。
       </li>
 
       <li>
-        <strong>分析力と構成力を仕事に活かすヒント：</strong>
-        複雑な情報や問題を整理し、分かりやすい形へ組み立てる才能を活かすヒントが分かります。
+        <strong>今決めることと、動いたあとに確かめることの分け方：</strong>
+        今回外せない判断基準を3つまでに絞り、
+        始める前に必要な情報と、
+        実際に試して初めて分かる情報を分ける方法が分かります。
       </li>
 
       <li>
-        <strong>仕事で論理的に考える力を活かすヒント：</strong>
-        原因やつながりを丁寧に考える力を、人への説明や仕事の流れづくりに活かすヒントが分かります。
+        <strong>熟考と分析を、現実の前進へ変えるヒント：</strong>
+        今の答えを「仮決定」とし、
+        回数や期間と見直す日をセットで決め、
+        それまでは同じ方向を試す
+        3つのコツが分かります。
       </li>
     </ul>
 
     <p class="cta-message-source">
-      あなたにはすでに、複雑な情報を整理する力も、問題の本質を深く考える力も、筋道の通った形へ組み立てる力もあります。その才能を仕事でもっと活かすためのヒントを、LINEで受け取ってください。
+      あなたには、
+      複雑な情報を整理する力も、
+      問題を深く分析する力も、
+      現実的な答えを組み立てる力もあります。
+      必要なのは、
+      考えることを減らすことではありません。
+      今回、絶対に外せない条件は何なのか。
+      何は始める前に分かっている必要があるのか。
+      そして何は、
+      実際に動いてから確かめればよいのか。
+      そこを分けられるようになると、
+      すべての条件がそろうまで待たず、
+      今ある設計図から現実の一歩を始められます。
+      あなたに合う「考えてから動く」の区切り方を、
+      LINEで受け取ってください。
     </p>
   </article>
+
 </section>
