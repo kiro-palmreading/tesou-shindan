@@ -1,443 +1,498 @@
-<section class="result-detail" data-diagnosis-code="D3X">
+<section class="result-detail result-detail--visual" data-diagnosis-code="D3X">
 
-  <div class="result-catch" data-hide-title="true">
-    <p>【あなたを一言で表すと】</p>
-    <p>じっくり組み立てるエンジニア</p>
+  <style>
+    /* ========================================
+       D3X 診断結果
+       Meta広告流入・スマホ向け
+    ======================================== */
+
+    .result-detail--visual {
+      max-width: 720px;
+      margin: 0 auto;
+      color: #24313a;
+      line-height: 1.8;
+    }
+
+    /* ========================================
+       FV
+    ======================================== */
+
+    .diagnosis-result-fv {
+      margin: 0 0 28px;
+      padding: 0;
+    }
+
+    .diagnosis-result-fv img {
+      display: block;
+      width: 100%;
+      height: auto;
+      margin: 0 auto;
+    }
+
+    /* ========================================
+       共通ブロック
+    ======================================== */
+
+    .result-detail--visual .result-block {
+      margin: 0 16px 28px;
+      padding: 26px 20px;
+      background: #ffffff;
+      border: 1px solid #dcecf5;
+      border-radius: 18px;
+      box-sizing: border-box;
+    }
+
+    .result-detail--visual .result-block h2 {
+      margin: 0 0 18px;
+      color: #083f5c;
+      font-size: 22px;
+      line-height: 1.45;
+      text-align: left;
+    }
+
+    .result-detail--visual .result-block p {
+      margin: 0 0 16px;
+      font-size: 16px;
+      line-height: 1.9;
+    }
+
+    .result-detail--visual .result-block p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* ========================================
+       あなたはこんなタイプ
+    ======================================== */
+
+    .type-keywords {
+      margin: 0 0 20px;
+      font-size: 20px;
+      font-weight: 700;
+      color: #1f6fb2;
+      letter-spacing: 0.04em;
+      text-align: center;
+    }
+
+    .type-point-list {
+      display: grid;
+      gap: 11px;
+      margin: 0 0 20px;
+    }
+
+    .type-point {
+      position: relative;
+      padding: 14px 14px 14px 43px;
+      background: #f8fcff;
+      border-radius: 12px;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .type-point::before {
+      content: "✓";
+      position: absolute;
+      left: 16px;
+      top: 14px;
+      color: #1f6fb2;
+      font-weight: 700;
+    }
+
+    .type-summary {
+      padding: 16px;
+      background: #eef7ff;
+      border-radius: 12px;
+      color: #314958;
+    }
+
+    /* ========================================
+       強みが出る場面
+    ======================================== */
+
+    .talent-scene-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    .talent-scene-card {
+      padding: 18px;
+      border-radius: 14px;
+      background: #eef7ff;
+      border: 1px solid #cfe3f1;
+    }
+
+    .talent-scene-card strong {
+      display: block;
+      margin-bottom: 8px;
+      color: #083f5c;
+      font-size: 17px;
+      line-height: 1.5;
+    }
+
+    .talent-scene-card p {
+      margin: 0 !important;
+    }
+
+    /* ========================================
+       今のループ
+    ======================================== */
+
+    .loop-intro {
+      font-weight: 700;
+      color: #314958;
+    }
+
+    .diagnosis-loop {
+      margin: 20px 0;
+    }
+
+    .loop-step {
+      padding: 15px 14px;
+      background: #f8fcff;
+      border: 1px solid #cfe6f3;
+      border-radius: 12px;
+      text-align: center;
+      font-size: 16px;
+      font-weight: 700;
+      color: #083f5c;
+    }
+
+    .loop-arrow {
+      height: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #6f8798;
+      font-size: 24px;
+      font-weight: 700;
+    }
+
+    .loop-step--last {
+      background: #fff5f2;
+      border-color: #f2c9bf;
+      color: #9b4d3b;
+    }
+
+    /* ========================================
+       この状態が続くと
+    ======================================== */
+
+    .result-block--risk {
+      background: #fffaf7 !important;
+      border-color: #f1d9cf !important;
+    }
+
+    .risk-items {
+      display: grid;
+      gap: 10px;
+    }
+
+    .risk-item {
+      position: relative;
+      padding: 13px 14px 13px 40px;
+      background: #ffffff;
+      border: 1px solid #f0ddd5;
+      border-radius: 11px;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .risk-item::before {
+      content: "●";
+      position: absolute;
+      left: 17px;
+      top: 15px;
+      color: #d98670;
+      font-size: 10px;
+    }
+
+    /* ========================================
+       問題の正体
+    ======================================== */
+
+    .result-block--key {
+      background: #eef7ff !important;
+      border-color: #bddcec !important;
+    }
+
+    .key-message {
+      margin: 18px 0 !important;
+      padding: 18px 16px;
+      background: #ffffff;
+      border: 1px solid #dcecf5;
+      border-radius: 8px;
+      font-size: 18px !important;
+      font-weight: 700;
+      color: #083f5c;
+      text-align: center;
+      line-height: 1.7;
+    }
+
+    .key-message-line {
+      display: block;
+    }
+
+    /* ========================================
+       LINE自動生成用データ
+    ======================================== */
+
+    .result-block--source-only {
+      display: none !important;
+    }
+
+    /* ========================================
+       スマホ
+    ======================================== */
+
+    @media (max-width: 600px) {
+      .result-detail--visual .result-block {
+        margin-left: 14px;
+        margin-right: 14px;
+        padding: 23px 17px;
+      }
+
+      .result-detail--visual .result-block h2 {
+        font-size: 21px;
+      }
+
+      .type-keywords {
+        font-size: 19px;
+      }
+
+      .talent-scene-card strong {
+        font-size: 17px;
+      }
+
+      .key-message {
+        font-size: 17px !important;
+        padding: 16px 14px;
+      }
+    }
+  </style>
+
+  <!-- FV -->
+  <div class="diagnosis-result-fv">
+    <img
+      src="meta-fv-results/D3X.png"
+      alt="才能コンパス診断 じっくり組み立てるエンジニア"
+      loading="eager"
+      fetchpriority="high"
+    >
   </div>
 
+  <!-- 01 -->
   <article class="result-block">
-    <h2>あなたの本質</h2>
+    <h2>あなたはこんなタイプです</h2>
 
-    <p class="highlight-paragraph">
+    <div class="type-keywords">
       熟考 × 突破 × 論理
-    </p>
+    </div>
 
-    <p>
-      あなたは、目の前に問題が起きたとき、
-      思いついた方法をすぐに試すというよりも、
-      まずは状況をじっくり考える人です。
-    </p>
+    <div class="type-point-list">
+      <div class="type-point">
+        勢いだけで始めるより、
+        <strong>「どうすれば現実に進められるか」</strong>
+        を考えてから動く
+      </div>
 
-    <p>
-      「なぜ、ここで止まっているのだろう」<br>
-      「どこから手をつければ、無理なく動かせるだろう」<br>
-      「もっと筋の通った進め方があるのではないか」
-    </p>
+      <div class="type-point">
+        必要な情報や手順を整理し、
+        <strong>起こりそうな問題まで先回りして考えられる</strong>
+      </div>
 
-    <p>
-      そのように、起きていることを一つずつ整理しながら、
-      現実的な答えを組み立てていきます。
-    </p>
+      <div class="type-point">
+        「この方法なら進められる」と納得すると、
+        <strong>計画を現実の行動へつなげられる</strong>
+      </div>
+    </div>
 
-    <p>
-      けれど、あなたは、
-      安全な場所で考え続けたい人ではありません。
-    </p>
-
-    <p>
-      心の奥には、
-    </p>
-
-    <p>
-      「今の状態を変えたい」<br>
-      「止まっているものを前へ進めたい」<br>
-      「まだ形になっていないものを、現実にしたい」
-    </p>
-
-    <p>
-      という、強いエネルギーがあります。
-    </p>
-
-    <p>
-      そのため、ただ問題を分析するだけでは終わりません。
-    </p>
-
-    <p>
-      必要なものを整理する。<br>
-      進める順番を考える。<br>
-      起こりそうな問題を想像する。<br>
-      現実に動かせる形へ組み立てる。
-    </p>
-
-    <p>
-      あなたは、複雑な状況の中から道筋を見つけ、
-      止まっているものを前へ動かそうとする人です。
+    <p class="type-summary">
+      あなたは、安全な場所で
+      考え続けたい人ではありません。
+      現状を変えるために、
+      実行できる道筋をじっくり組み立て、
+      納得した形から現実を動かしていく人です。
     </p>
   </article>
 
+  <!-- 02 -->
   <article class="result-block">
-    <h2>あなたの才能</h2>
+    <h2>こんな場面で強みが出ます</h2>
 
-    <p>
-      そんなあなたには、
-    </p>
+    <div class="talent-scene-grid">
+      <div class="talent-scene-card">
+        <strong>🧩 計画を組み立てるとき</strong>
+        <p>
+          頭の中のアイデアを、
+          「何が必要か」
+          「どの順番で進めるか」という
+          現実的な道筋へ落とし込めます。
+        </p>
+      </div>
 
-    <ul>
-      <li>複雑な状況を落ち着いて整理する力</li>
-      <li>問題が起きている原因を深く考える力</li>
-      <li>アイデアを実行できる道筋へ変える力</li>
-      <li>停滞している状況に突破口をつくる力</li>
-    </ul>
+      <div class="talent-scene-card">
+        <strong>🔍 問題を先回りして見つけるとき</strong>
+        <p>
+          実際に始めた場面を想像しながら、
+          途中で起こりそうな問題や
+          必要な準備に気づけます。
+        </p>
+      </div>
 
-    <p>
-      があります。
-    </p>
-
-    <p>
-      仕事や日常の中で、
-    </p>
-
-    <p>
-      「よくそこまで考えているね」<br>
-      「話が整理されていて分かりやすい」<br>
-      「計画が現実的だよね」<br>
-      「安心して任せられる」
-    </p>
-
-    <p>
-      と言われたことはありませんか？
-    </p>
-
-    <p>
-      あなたは、ただ慎重に計画を立てる人ではありません。
-    </p>
-
-    <p>
-      まだ曖昧なアイデアに対しても、
-    </p>
-
-    <p>
-      「実現するためには、何が必要か」<br>
-      「どの順番なら、無理なく進められるか」<br>
-      「どこに問題が起こりそうか」<br>
-      「どうすれば、現実の中で続けられるか」
-    </p>
-
-    <p>
-      と考え、具体的な形へ落とし込めます。
-    </p>
-
-    <p>
-      たとえば、誰かが、
-      「こんなことができたらいいな」
-      と話しているとき。
-    </p>
-
-    <p>
-      あなたは、そのアイデアを聞きながら、
-    </p>
-
-    <p>
-      「まず、ここを整理すると進めやすそう」<br>
-      「この部分を変えれば、現実にできるかもしれない」<br>
-      「この順番なら、無理なく形にできそう」
-    </p>
-
-    <p>
-      と、実現までの流れを思い描けます。
-    </p>
-
-    <p>
-      仕事が思うように進んでいない場面でも、
-      ただ「もっと頑張ろう」と考えるのではありません。
-    </p>
-
-    <p>
-      何が止まる原因になっているのか。<br>
-      どこを変えれば流れが動くのか。<br>
-      今ある条件の中で、何ができるのか。
-    </p>
-
-    <p>
-      そうしたことを丁寧に考え、
-      現実的な突破口を見つけられます。
-    </p>
-
-    <p>
-      発信やサービスを考えるときも、
-      アイデアを出すだけではありません。
-    </p>
-
-    <p>
-      伝えたいことを整理し、
-      相手が理解しやすい流れを考え、
-      一つの仕事として成り立つ形へ組み立てていけます。
-    </p>
-
-    <p>
-      まだまとまっていない考えを、
-      現実に動かせる設計図へ変えられる。
-    </p>
-
-    <p>
-      その深く考える力と、
-      状況を突破するための構成力が、
-      あなたの大きな才能です。
-    </p>
+      <div class="talent-scene-card">
+        <strong>🚀 アイデアを現実へ動かすとき</strong>
+        <p>
+          「この方法なら進められる」と納得できれば、
+          考えただけで終わらせず、
+          計画を現実へつなげられます。
+        </p>
+      </div>
+    </div>
   </article>
 
+  <!-- 03 -->
   <article class="result-block">
-    <h2>今のあなたの状態</h2>
+    <h2>今、こんなループに入っていませんか？</h2>
 
-    <p>
-      ただ今は、その才能が少しだけ、
-      前へ進むことを難しくしているかもしれません。
+    <p class="loop-intro">
+      「ここまで整えれば始められそう」と思ったはずなのに……
     </p>
 
-    <p>
-      たとえば、新しいサービスを考え、
-    </p>
+    <div class="diagnosis-loop">
+      <div class="loop-step">
+        実行までの手順を考える
+      </div>
+
+      <div class="loop-arrow">↓</div>
+
+      <div class="loop-step">
+        先の問題や不足に気づく
+      </div>
+
+      <div class="loop-arrow">↓</div>
+
+      <div class="loop-step">
+        対策や準備をさらに加える
+      </div>
+
+      <div class="loop-arrow">↓</div>
+
+      <div class="loop-step loop-step--last">
+        スタートに必要な条件が増えていく
+      </div>
+    </div>
 
     <p>
-      「この内容なら形にできそう」<br>
-      「ここまで整えれば始められそう」
-    </p>
-
-    <p>
-      と思う。
-    </p>
-
-    <p>
-      ところが、具体的に考え始めると、
-    </p>
-
-    <p>
-      「申し込んだあとの流れも決めておいた方がよい」<br>
-      「予想外の質問が来たら、どう答えよう」<br>
-      「無理なく続けられる形になっているだろうか」<br>
-      「もっと分かりやすい仕組みにできるかもしれない」
-    </p>
-
-    <p>
-      と、新しい確認事項が見えてきます。
-    </p>
-
-    <p>
-      一つの問題を整理すると、
-      その先にある別の問題へ気づく。
-    </p>
-
-    <p>
-      その問題への対応を考えると、
-      今度は関連する部分も整えたくなる。
-    </p>
-
-    <p>
-      気づけば、サービスの内容だけではなく、
-    </p>
-
-    <p>
-      案内文。<br>
-      申し込みの流れ。<br>
-      提供後のフォロー。<br>
-      今後の展開。
-    </p>
-
-    <p>
-      そこまで、すべて組み立てようとしていることがあります。
-    </p>
-
-    <p>
-      発信でも同じです。
-    </p>
-
-    <p>
-      「今回は、この内容を伝えよう」
-      と決めたはずなのに、
-    </p>
-
-    <p>
-      「先に前提を説明した方がよいかもしれない」<br>
-      「この言葉では、誤解される可能性がある」<br>
-      「次の発信とのつながりも考えておきたい」<br>
-      「全体の流れから見直した方が、筋が通るかもしれない」
-    </p>
-
-    <p>
-      と、考える範囲が広がっていきます。
-    </p>
-
-    <p>
-      今日出す予定だった一つの発信が、
-      気づけば発信全体の設計図へ変わっている。
-    </p>
-
-    <p>
-      そうそう、設計図はかなり立派なのです。
-    </p>
-
-    <p>
-      ただ、最初の一つだけが、
-      まだ外へ出ていないことがあります。
-    </p>
-
-    <p>
-      あなたは、何もしていないわけではありません。
-    </p>
-
-    <p>
-      かなり考えています。<br>
-      かなり具体的に組み立てています。<br>
-      起こりそうな問題も、丁寧に想像しています。
-    </p>
-
-    <p>
-      頭の中では、
-      仕事の全体像が少しずつ完成へ近づいています。
-    </p>
-
-    <p>
-      それなのに、一日の終わりには、
-    </p>
-
-    <p>
-      「今日もたくさん考えた」<br>
-      「でも、現実には何が進んだのだろう」
-    </p>
-
-    <p>
-      と、もどかしくなることがあるかもしれません。
-    </p>
-
-    <p>
-      そして、
-    </p>
-
-    <p>
-      「私は、行動するのが遅いのかな」<br>
-      「いつも準備ばかり増えてしまう」<br>
-      「考えるほど、始めにくくなっている気がする」
-    </p>
-
-    <p>
-      と、自分を責めたくなることもあるでしょう。
-    </p>
-
-    <p>
-      けれど、あなたに行動する力がないわけではありません。
-    </p>
-
-    <p>
-      現実をきちんと動かしたいからこそ、
-      問題が起きにくい道筋を考えているのです。
-    </p>
-
-    <p>
-      しかも、あなたは深く考えられるため、
-      一つの計画を具体的にするほど、
-      まだ決まっていない部分にも気づけます。
-    </p>
-
-    <p>
-      すると、
-    </p>
-
-    <p>
-      考える<br>
-      ↓<br>
-      道筋を組み立てる<br>
-      ↓<br>
-      新しい問題に気づく<br>
-      ↓<br>
-      計画を見直す<br>
-      ↓<br>
-      さらに考える
-    </p>
-
-    <p>
-      という流れになりやすくなります。
-    </p>
-
-    <p>
-      本当は、止まっているものを前へ進めたい。
-    </p>
-
-    <p>
-      けれど、考えるほど、
-      その前に整えておきたいことが増えていく。
-    </p>
-
-    <p>
-      深く考える力と、
-      現状を突破したい気持ちの両方が強いからこそ、
-      どこへ力を向ければよいのか、
-      分かりにくくなっているのです。
+      あなたは、準備だけして
+      動きたくないわけではありません。
+      むしろ、
+      <strong>
+        前へ進むためにかなり真剣に考え、
+        具体的な計画を作っています。
+      </strong>
+      ただ、一つの計画を詳しく考えるほど、
+      「ここも必要」
+      「この問題にも備えた方がよい」と、
+      次の確認事項が見えてきやすいのです。
     </p>
   </article>
 
-  <article class="result-block result-block--final">
+  <!-- 04 -->
+  <article class="result-block result-block--risk">
+    <h2>この状態が続くと…</h2>
+
+    <div class="risk-items">
+      <div class="risk-item">
+        サービスの内容だけでなく、
+        提供後の流れや将来の展開まで準備したくなる
+      </div>
+
+      <div class="risk-item">
+        今日出すはずの発信が、
+        発信全体の設計へ広がりやすくなる
+      </div>
+
+      <div class="risk-item">
+        頭の中ではかなり先まで進んでいるのに、
+        現実の最初の一歩が遅れやすくなる
+      </div>
+
+      <div class="risk-item">
+        本当は計画力が高いのに、
+        「私は決断が遅いのかも」と感じやすくなる
+      </div>
+    </div>
+  </article>
+
+  <!-- 05 -->
+  <article class="result-block result-block--key">
+    <h2>でも、問題は「じっくり考えること」ではありません</h2>
+
+    <p>
+      あなたには、
+      状況を整理する力も、
+      実行までの道筋を考える力も、
+      問題を事前に見つける力もあります。
+    </p>
+
+    <p>
+      ただ今は、
+      見えている確認事項が
+      <strong>
+        「始める前に決めること」と
+        「始めたあとで決めればよいこと」
+      </strong>
+      に分かれていないのかもしれません。
+    </p>
+
+    <p class="key-message">
+      <span class="key-message-line">「今、決めないと始められないことは何か？」</span>
+      <span class="key-message-line">「動いたあとでも決められることは何か？」</span>
+    </p>
+
+    <p>
+      この違いが分かるようになると、
+      思考力や計画力を失わなくても、
+      今必要なところまで整えた段階で
+      現実から次の情報を受け取りにいけるようになります。
+    </p>
+  </article>
+
+  <!-- 06 LINE自動生成用 -->
+  <article class="result-block result-block--final result-block--source-only">
     <h2>ここから先が本題です</h2>
-
-    <p>
-      あなたの熟考力と論理的な思考は、
-      本来、複雑な仕事を現実へつなげるための才能です。
-    </p>
-
-    <p>
-      曖昧な状況を整理できる。<br>
-      問題の原因を深く考えられる。<br>
-      まだ形になっていないものに、道筋をつくれる。<br>
-      止まっている状況の中から、突破口を探せる。
-    </p>
-
-    <p>
-      これは、誰にでもできることではありません。
-    </p>
-
-    <p>
-      先が見えない企画を整理するとき。<br>
-      複雑な問題の原因を明らかにするとき。<br>
-      アイデアを実行できる形へ変えるとき。<br>
-      周りが止まっている状況に、道筋をつくるとき。
-    </p>
-
-    <p>
-      あなたの才能は、
-      さまざまな仕事の場面で力を発揮します。
-    </p>
-
-    <p>
-      けれど、深く考える力と、
-      現実をきちんと動かしたい気持ちが同時に働くと、
-      考える範囲がどこまでも広がり、
-      どこへ力を向ければよいのか分かりにくくなることがあります。
-    </p>
-
-    <p>
-      それは、あなたの計画力が足りないからでも、
-      前へ進む力がないからでもありません。
-    </p>
-
-    <p>
-      あなたが持っている才能を、
-      仕事の中でどう使えばよいのかが、
-      まだ見えにくくなっているだけです。
-    </p>
-
-    <p>
-      <strong>では、複雑な状況をじっくり考える力、現実的な道筋を組み立てる力、停滞したものを前へ動かす力を、仕事にどう活かしていけばよいのでしょうか。</strong>
-    </p>
 
     <ul class="line-benefits-source">
       <li>
-        <strong>深く考える自分に合う進み方</strong><br>
-        熟考する力を仕事で活かすためのヒントが分かります。
+        <strong>考えるほど確認事項が増える理由：</strong>
+        熟考、突破、論理が同時に働くことで、
+        なぜ前へ進むための計画が
+        スタート条件を増やしやすくなるのかが分かります。
       </li>
+
       <li>
-        <strong>論理的に組み立てる力を仕事に活かすヒント</strong><br>
-        複雑な状況を整理できる才能の活かし方が見えてきます。
+        <strong>「今決めること」の見分け方：</strong>
+        確認事項を
+        「開始前」と「開始後」に分け、
+        今必要な準備だけを残す考え方が分かります。
       </li>
+
       <li>
-        <strong>仕事で突破力を活かすヒント</strong><br>
-        止まっている状況を前へ動かす力の活かし方が分かります。
+        <strong>計画力を実行へ変える3つのヒント：</strong>
+        完成形ではなく最初に確かめる形を作り、
+        「この3つがそろったら始める」と
+        開始条件を決める方法が分かります。
       </li>
     </ul>
 
     <p class="cta-message-source">
-      あなたにはすでに、複雑なことを深く考える力も、
-      現実的な道筋を組み立てる力も、
-      停滞した状況に突破口を見つける力もあります。
-      その才能を仕事でもっと活かすためのヒントを、
+      あなたには、
+      じっくり考えながら
+      実行できる道筋を組み立て、
+      アイデアを現実へつなげる力があります。
+      その計画力を、
+      スタートを遠ざけるためではなく
+      挑戦を現実へ変えるために使う考え方を、
       LINEで受け取ってください。
     </p>
   </article>
