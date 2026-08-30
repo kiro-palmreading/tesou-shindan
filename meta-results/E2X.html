@@ -1,501 +1,496 @@
-<section class="result-detail" data-diagnosis-code="E2X">
+<section class="result-detail result-detail--visual" data-diagnosis-code="E2X">
 
-  <div class="result-catch" data-hide-title="true">
-    <p>【あなたを一言で表すと】</p>
-    <p>感覚を現実にするアーキテクト</p>
+  <style>
+    /* ========================================
+       E2X 診断結果
+       Meta広告流入・スマホ向け
+    ======================================== */
+
+    .result-detail--visual {
+      max-width: 720px;
+      margin: 0 auto;
+      color: #24313a;
+      line-height: 1.8;
+    }
+
+    /* ========================================
+       FV
+    ======================================== */
+
+    .diagnosis-result-fv {
+      margin: 0 0 28px;
+      padding: 0;
+    }
+
+    .diagnosis-result-fv img {
+      display: block;
+      width: 100%;
+      height: auto;
+      margin: 0 auto;
+    }
+
+    /* ========================================
+       共通ブロック
+    ======================================== */
+
+    .result-detail--visual .result-block {
+      margin: 0 16px 28px;
+      padding: 26px 20px;
+      background: #ffffff;
+      border: 1px solid #dcecf5;
+      border-radius: 18px;
+      box-sizing: border-box;
+    }
+
+    .result-detail--visual .result-block h2 {
+      margin: 0 0 18px;
+      color: #083f5c;
+      font-size: 22px;
+      line-height: 1.45;
+      text-align: left;
+    }
+
+    .result-detail--visual .result-block p {
+      margin: 0 0 16px;
+      font-size: 16px;
+      line-height: 1.9;
+    }
+
+    .result-detail--visual .result-block p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* ========================================
+       あなたはこんなタイプ
+    ======================================== */
+
+    .type-keywords {
+      margin: 0 0 20px;
+      font-size: 20px;
+      font-weight: 700;
+      color: #1f6fb2;
+      letter-spacing: 0.04em;
+      text-align: center;
+    }
+
+    .type-point-list {
+      display: grid;
+      gap: 11px;
+      margin: 0 0 20px;
+    }
+
+    .type-point {
+      position: relative;
+      padding: 14px 14px 14px 43px;
+      background: #f8fcff;
+      border-radius: 12px;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .type-point::before {
+      content: "✓";
+      position: absolute;
+      left: 16px;
+      top: 14px;
+      color: #1f6fb2;
+      font-weight: 700;
+    }
+
+    .type-summary {
+      padding: 16px;
+      background: #eef7ff;
+      border-radius: 12px;
+      color: #314958;
+    }
+
+    /* ========================================
+       強みが出る場面
+    ======================================== */
+
+    .talent-scene-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    .talent-scene-card {
+      padding: 18px;
+      border-radius: 14px;
+      background: #eef7ff;
+      border: 1px solid #cfe3f1;
+    }
+
+    .talent-scene-card strong {
+      display: block;
+      margin-bottom: 8px;
+      color: #083f5c;
+      font-size: 17px;
+      line-height: 1.5;
+    }
+
+    .talent-scene-card p {
+      margin: 0 !important;
+    }
+
+    /* ========================================
+       今のループ
+    ======================================== */
+
+    .loop-intro {
+      font-weight: 700;
+      color: #314958;
+    }
+
+    .diagnosis-loop {
+      margin: 20px 0;
+    }
+
+    .loop-step {
+      padding: 15px 14px;
+      background: #f8fcff;
+      border: 1px solid #cfe6f3;
+      border-radius: 12px;
+      text-align: center;
+      font-size: 16px;
+      font-weight: 700;
+      color: #083f5c;
+    }
+
+    .loop-arrow {
+      height: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #6f8798;
+      font-size: 24px;
+      font-weight: 700;
+    }
+
+    .loop-step--last {
+      background: #fff5f2;
+      border-color: #f2c9bf;
+      color: #9b4d3b;
+    }
+
+    /* ========================================
+       この状態が続くと
+    ======================================== */
+
+    .result-block--risk {
+      background: #fffaf7 !important;
+      border-color: #f1d9cf !important;
+    }
+
+    .risk-items {
+      display: grid;
+      gap: 10px;
+    }
+
+    .risk-item {
+      position: relative;
+      padding: 13px 14px 13px 40px;
+      background: #ffffff;
+      border: 1px solid #f0ddd5;
+      border-radius: 11px;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .risk-item::before {
+      content: "●";
+      position: absolute;
+      left: 17px;
+      top: 15px;
+      color: #d98670;
+      font-size: 10px;
+    }
+
+    /* ========================================
+       問題の正体
+    ======================================== */
+
+    .result-block--key {
+      background: #eef7ff !important;
+      border-color: #bddcec !important;
+    }
+
+    .key-message {
+      margin: 18px 0 !important;
+      padding: 18px 16px;
+      background: #ffffff;
+      border: 1px solid #dcecf5;
+      border-radius: 8px;
+      font-size: 18px !important;
+      font-weight: 700;
+      color: #083f5c;
+      text-align: center;
+      line-height: 1.7;
+    }
+
+    .key-message-line {
+      display: block;
+    }
+
+    /* ========================================
+       LINE自動生成用データ
+    ======================================== */
+
+    .result-block--source-only {
+      display: none !important;
+    }
+
+    /* ========================================
+       スマホ
+    ======================================== */
+
+    @media (max-width: 600px) {
+      .result-detail--visual .result-block {
+        margin-left: 14px;
+        margin-right: 14px;
+        padding: 23px 17px;
+      }
+
+      .result-detail--visual .result-block h2 {
+        font-size: 21px;
+      }
+
+      .type-keywords {
+        font-size: 19px;
+      }
+
+      .talent-scene-card strong {
+        font-size: 17px;
+      }
+
+      .key-message {
+        font-size: 17px !important;
+        padding: 16px 14px;
+      }
+    }
+  </style>
+
+  <!-- FV -->
+  <div class="diagnosis-result-fv">
+    <img
+      src="meta-fv-results/E2X.png"
+      alt="才能コンパス診断 感覚を現実にするアーキテクト"
+      loading="eager"
+      fetchpriority="high"
+    >
   </div>
 
+  <!-- 01 -->
   <article class="result-block">
-    <h2>あなたの本質</h2>
+    <h2>あなたはこんなタイプです</h2>
 
-    <p class="highlight-paragraph">
+    <div class="type-keywords">
       行動 × 世界観 × 論理
-    </p>
+    </div>
 
-    <p>
-      あなたは、頭の中に浮かんだ世界観やアイデアを、
-      考えているだけで終わらせない人です。
-    </p>
+    <div class="type-point-list">
+      <div class="type-point">
+        頭の中だけで終わらせず、
+        <strong>思いついたことをまず形にして試せる</strong>
+      </div>
 
-    <p>
-      「こんなものがあったらよさそう」<br>
-      「この考えを、もっと分かりやすく伝えられそう」<br>
-      「この形なら、実際に役立ててもらえるかもしれない」
-    </p>
+      <div class="type-point">
+        自分の世界観を守りながら、
+        <strong>相手に伝わる仕組みへ整理できる</strong>
+      </div>
 
-    <p>
-      と感じると、
-      まずは現実の形へ移そうとします。
-    </p>
+      <div class="type-point">
+        実際の反応を見ながら、
+        <strong>より機能する形へ素早く改善できる</strong>
+      </div>
+    </div>
 
-    <p>
-      あなたにとっての世界観は、
-      見た目の雰囲気だけではありません。
-    </p>
-
-    <p>
-      何を大切にしたいのか。<br>
-      どのような価値を届けたいのか。<br>
-      受け取る人に、どんな体験をしてほしいのか。<br>
-      その仕事を通して、どんな変化を生み出したいのか。
-    </p>
-
-    <p>
-      そうした思いや考えが、
-      一つの世界観としてつながっています。
-    </p>
-
-    <p>
-      さらに、あなたは、
-      理想や感覚だけで動く人ではありません。
-    </p>
-
-    <p>
-      実際に形にしたものを見ながら、
-    </p>
-
-    <p>
-      「どこが分かりにくいのか」<br>
-      「全体の流れは自然につながっているか」<br>
-      「どうすれば、もっと使いやすい形になるか」
-    </p>
-
-    <p>
-      と、筋道立てて考えられます。
-    </p>
-
-    <p>
-      思いついたことを形にする。<br>
-      現実の中で確かめる。<br>
-      分かりにくい部分を整理する。<br>
-      理想と現実がつながる形を考える。
-    </p>
-
-    <p>
-      あなたは、自分の中にある世界観を、
-      人が理解し、実際に使える形へ変えていく人です。
-    </p>
-  </article>
-
-  <article class="result-block">
-    <h2>あなたの才能</h2>
-
-    <p>
-      そんなあなたには、
-    </p>
-
-    <ul>
-      <li>頭の中にあるイメージを素早く形にする力</li>
-      <li>複雑な内容を分かりやすく整理する力</li>
-      <li>ばらばらな要素を一つの流れへ組み立てる力</li>
-      <li>理想を現実で使える仕組みへ変える力</li>
-    </ul>
-
-    <p>
-      があります。
-    </p>
-
-    <p>
-      仕事や日常の中で、
-    </p>
-
-    <p>
-      「思いついたことを形にするのが早いね」<br>
-      「説明が分かりやすいよね」<br>
-      「仕組みをつくるのが上手だね」<br>
-      「曖昧だった話が整理されたね」
-    </p>
-
-    <p>
-      と言われたことはありませんか？
-    </p>
-
-    <p>
+    <p class="type-summary">
       あなたは、ただアイデアを出す人ではありません。
-    </p>
-
-    <p>
-      まだ輪郭のはっきりしていないイメージでも、
-    </p>
-
-    <p>
-      何を伝えるのか。<br>
-      どのような順番で見せるのか。<br>
-      どこで相手が迷いそうか。<br>
-      どのような形なら実際に使えるのか。
-    </p>
-
-    <p>
-      そこまで考え、
-      現実に存在するものへ変えられます。
-    </p>
-
-    <p>
-      たとえば、誰かが、
-    </p>
-
-    <p>
-      「こんなことをしたいけれど、
-      まだうまく説明できない」
-    </p>
-
-    <p>
-      と話しているとき。
-    </p>
-
-    <p>
-      あなたは、その話の中から、
-    </p>
-
-    <p>
-      「大切にしたいのは、この部分かもしれない」<br>
-      「ここを整理すると、全体が分かりやすくなりそう」<br>
-      「この順番なら、実際に形にできそう」
-    </p>
-
-    <p>
-      と、実現するための構造を見つけられます。
-    </p>
-
-    <p>
-      発信でも、思いを感覚的に伝えるだけではありません。
-    </p>
-
-    <p>
-      伝えたいテーマ。<br>
-      言葉から伝わる世界観。<br>
-      読む人が理解する順番。<br>
-      全体を通して届けたい価値。
-    </p>
-
-    <p>
-      それぞれをつなぎ、
-      一つの分かりやすい流れへ組み立てられます。
-    </p>
-
-    <p>
-      サービスや企画をつくるときにも、
-      内容を決めるだけではありません。
-    </p>
-
-    <p>
-      名前や説明。<br>
-      受け取るまでの流れ。<br>
-      実際に利用するときの分かりやすさ。<br>
-      体験全体から伝わる印象。
-    </p>
-
-    <p>
-      それらを一つの仕組みとして考えられます。
-    </p>
-
-    <p>
-      そして、一度形にしたあとも、
-      実際に起きたことから、
-    </p>
-
-    <p>
-      「この部分は、もっと分かりやすくできそう」<br>
-      「ここを変えると、世界観が伝わりやすくなりそう」
-    </p>
-
-    <p>
-      と、新しい可能性に気づけます。
-    </p>
-
-    <p>
-      ふわっとした理想を、
-      誰かが理解し、体験できる仕組みへ変えられる。
-    </p>
-
-    <p>
-      その行動力と構成力が、
-      あなたの大きな才能です。
+      自分の中にあるイメージをまず現実へ移し、
+      そこで見えた課題を整理しながら、
+      人に伝わり、実際に使える形へ
+      育てていく人です。
     </p>
   </article>
 
+  <!-- 02 -->
   <article class="result-block">
-    <h2>今のあなたの状態</h2>
+    <h2>こんな場面で強みが出ます</h2>
 
-    <p>
-      ただ今は、その行動力と組み立てる力が、
-      少しだけ空回りしているかもしれません。
+    <div class="talent-scene-grid">
+      <div class="talent-scene-card">
+        <strong>🚀 アイデアを形にするとき</strong>
+        <p>
+          「こんなものがあったらいい」と感じると、
+          考えるだけで終わらず、
+          まず実際の形へ移せます。
+        </p>
+      </div>
+
+      <div class="talent-scene-card">
+        <strong>🧩 複雑な内容を整理するとき</strong>
+        <p>
+          発信やサービスの内容を、
+          相手が理解しやすい順番や
+          使いやすい仕組みへ整理できます。
+        </p>
+      </div>
+
+      <div class="talent-scene-card">
+        <strong>🛠️ 仕組みを改善するとき</strong>
+        <p>
+          実際に動かしたことで見えた問題をもとに、
+          世界観を保ちながら、
+          より機能する形へ組み直せます。
+        </p>
+      </div>
+    </div>
+  </article>
+
+  <!-- 03 -->
+  <article class="result-block">
+    <h2>今、こんなループに入っていませんか？</h2>
+
+    <p class="loop-intro">
+      「まず、この形で試してみよう」と始めたはずなのに……
     </p>
 
-    <p>
-      たとえば、新しいサービスを思いつき、
-    </p>
+    <div class="diagnosis-loop">
+      <div class="loop-step">
+        アイデアをすぐ形にする
+      </div>
+
+      <div class="loop-arrow">↓</div>
+
+      <div class="loop-step">
+        改善したい部分が見えてくる
+      </div>
+
+      <div class="loop-arrow">↓</div>
+
+      <div class="loop-step">
+        よりよい形へ組み直す
+      </div>
+
+      <div class="loop-arrow">↓</div>
+
+      <div class="loop-step loop-step--last">
+        土台まで変わり、また新しい形で再開する
+      </div>
+    </div>
 
     <p>
-      「まずは、この形でつくってみよう」<br>
-      「一度形にすれば、見えてくることがありそう」
-    </p>
-
-    <p>
-      と、実際に動き始めます。
-    </p>
-
-    <p>
-      内容を考える。<br>
-      名前を決める。<br>
-      案内文を書く。<br>
-      受け取るまでの流れをつくる。
-    </p>
-
-    <p>
-      頭の中にあったイメージが、
-      少しずつ現実の形になっていきます。
-    </p>
-
-    <p>
-      ところが、全体が見えてくると、
-    </p>
-
-    <p>
-      「この流れでは、世界観がうまく伝わらないかもしれない」<br>
-      「もっと分かりやすい構成がありそう」<br>
-      「この部分で、迷う人がいるかもしれない」
-    </p>
-
-    <p>
-      と、整えたい部分が次々に見つかります。
-    </p>
-
-    <p>
-      そこで、説明文を変える。<br>
-      受け取るまでの流れも変える。<br>
-      内容を整理し直す。<br>
-      名前や見せ方まで変え始める。
-    </p>
-
-    <p>
-      一つの部分を直すと、
-      その部分とつながっている別の箇所も
-      気になってきます。
-    </p>
-
-    <p>
-      発信でも同じです。
-    </p>
-
-    <p>
-      「まず、このテーマから伝えてみよう」
-      と発信を始めたあとで、
-    </p>
-
-    <p>
-      「この順番では、全体が伝わりにくいかも」<br>
-      「別のテーマから始めた方が、自然につながりそう」<br>
-      「発信全体の見せ方も変えた方がよいかもしれない」
-    </p>
-
-    <p>
-      と感じます。
-    </p>
-
-    <p>
-      最初は、一つの発信を整えるつもりだった。
-    </p>
-
-    <p>
-      それなのに、気づけば、
-      発信全体の設計を組み直していることがあります。
-    </p>
-
-    <p>
-      そうそう、棚の位置を少し変えるつもりだったのに、
-      部屋全体の間取りまで気になってくるような状態です。
-    </p>
-
-    <p>
-      あなたの中では、
-      前よりもよい形へ進んでいます。
-    </p>
-
-    <p>
-      理想に近づけようとしている。<br>
-      分かりやすくしようとしている。<br>
-      実際に使いやすい形へ整えようとしている。
-    </p>
-
-    <p>
-      どの変更にも、
-      きちんとした理由があります。
-    </p>
-
-    <p>
-      けれど、形にするたびに
-      全体の土台まで組み直していると、
-    </p>
-
-    <p>
-      「私は、何をつくっていたのだろう」<br>
-      「最初に届けたかったものは、何だったかな」<br>
-      「かなり動いているのに、形が定まっていない」
-    </p>
-
-    <p>
-      と感じることがあります。
-    </p>
-
-    <p>
-      すると、
-    </p>
-
-    <p>
-      形にする<br>
-      ↓<br>
-      分かりにくい部分に気づく<br>
-      ↓<br>
-      全体を組み直す<br>
-      ↓<br>
-      新しい形で動き始める<br>
-      ↓<br>
-      また別の違和感に気づく
-    </p>
-
-    <p>
-      という流れになりやすくなります。
-    </p>
-
-    <p>
-      あなたは、何もしていないわけではありません。
-    </p>
-
-    <p>
-      かなり動いています。<br>
-      かなり形にしています。<br>
-      かなり丁寧に仕組みを考えています。
-    </p>
-
-    <p>
-      それなのに、一日の終わりには、
-    </p>
-
-    <p>
-      「今日も、いろいろつくり直した」<br>
-      「でも、何が積み上がったのだろう」<br>
-      「いつになったら、この形でよいと思えるのだろう」
-    </p>
-
-    <p>
-      と、少し疲れてしまうことがあるかもしれません。
-    </p>
-
-    <p>
-      そして、
-    </p>
-
-    <p>
-      「私は、続けることが苦手なのかな」<br>
-      「また最初からつくり直している」<br>
-      「考えが定まっていないのかな」
-    </p>
-
-    <p>
-      と、自分を責めたくなることもあるでしょう。
-    </p>
-
-    <p>
-      けれど、あなたに継続する力がないわけではありません。
-    </p>
-
-    <p>
-      自分の理想を、
-      中途半端な形で終わらせたくないのです。
-    </p>
-
-    <p>
-      世界観をきちんと伝えたい。<br>
-      相手にも分かりやすく届けたい。<br>
-      現実の中で役立つものにしたい。
-    </p>
-
-    <p>
-      その3つを大切にしているからこそ、
-      一つの改善が全体の組み直しへ
-      広がりやすくなっているのです。
+      あなたは、続ける力がなくて
+      作り直しているわけではありません。
+      むしろ、
+      <strong>
+        理想を中途半端な形で終わらせず、
+        現実できちんと機能するものへ育てようとしています。
+      </strong>
+      ただ、問題を見つけるとすぐ改善できるため、
+      本来は一部分だけ直せばよい場面でも、
+      土台そのものまで組み直しやすいのです。
     </p>
   </article>
 
-  <article class="result-block result-block--final">
+  <!-- 04 -->
+  <article class="result-block result-block--risk">
+    <h2>この状態が続くと…</h2>
+
+    <div class="risk-items">
+      <div class="risk-item">
+        サービスの一部分を改善するたびに、
+        内容や導線、見せ方まで変わりやすくなる
+      </div>
+
+      <div class="risk-item">
+        発信を始めても、
+        結果を見る前に設計そのものを変えたくなる
+      </div>
+
+      <div class="risk-item">
+        かなり動いているのに、
+        何がよかったのか比較できる結果が残りにくくなる
+      </div>
+
+      <div class="risk-item">
+        本当は改善力が高いのに、
+        「前よりよくしたのに、なぜ成果が出ないのだろう」と感じやすくなる
+      </div>
+    </div>
+  </article>
+
+  <!-- 05 -->
+  <article class="result-block result-block--key">
+    <h2>でも、問題は「改善すること」ではありません</h2>
+
+    <p>
+      あなたには、
+      感覚やイメージを形にする力も、
+      複雑な内容を整理する力も、
+      現実に合わせて仕組みを改善する力もあります。
+    </p>
+
+    <p>
+      ただ今は、
+      見つけた問題が
+      <strong>
+        「土台から直す必要がある問題」なのか
+        「今の形のまま調整できる部分」なのか
+      </strong>
+      が分かれる前に、
+      全体を組み直しているのかもしれません。
+    </p>
+
+    <p class="key-message">
+      <span class="key-message-line">「これは土台の問題なのか？」</span>
+      <span class="key-message-line">「今の形のまま調整できるのか？」</span>
+    </p>
+
+    <p>
+      この違いを判断できるようになると、
+      改善力を止めなくても、
+      今の土台を残したまま必要な部分だけを直し、
+      結果を比較しながら育てていきやすくなります。
+    </p>
+  </article>
+
+  <!-- 06 LINE自動生成用 -->
+  <article class="result-block result-block--final result-block--source-only">
     <h2>ここから先が本題です</h2>
-
-    <p>
-      あなたが形をつくるたびに、
-      改善したい部分へ気づくのは、
-      軸がないからではありません。
-    </p>
-
-    <p>
-      頭の中にある理想と、
-      現実にできたものの違いを
-      具体的に見つけられるからです。
-    </p>
-
-    <p>
-      さらに、違いに気づくだけでなく、
-      もっと分かりやすく、使いやすい形を
-      考える力もあります。
-    </p>
-
-    <p>
-      その才能は、
-    </p>
-
-    <p>
-      曖昧なアイデアを形にするとき。<br>
-      複雑な情報を整理するとき。<br>
-      発信やサービスの流れをつくるとき。<br>
-      理想を現実で使える仕組みへ変えるとき。
-    </p>
-
-    <p>
-      さまざまな仕事の場面で活かせます。
-    </p>
-
-    <p>
-      けれど、形にする行動力と、
-      世界観を論理的に組み立てる力が同時に働くと、
-      どこへ力を向ければよいのか、
-      分かりにくくなることがあります。
-    </p>
-
-    <p>
-      それは、あなたの理想が曖昧だからでも、
-      仕組みをつくる力が足りないからでもありません。
-    </p>
-
-    <p>
-      あなたが持っている才能を、
-      仕事の中でどう活かせばよいのかが、
-      まだ見えにくくなっているだけです。
-    </p>
-
-    <p>
-      <strong>では、頭の中の世界観をすぐに形にする力、複雑な内容を分かりやすく整理する力、理想を現実で使える仕組みへ変える力を、仕事にどう活かしていけばよいのでしょうか。</strong>
-    </p>
 
     <ul class="line-benefits-source">
       <li>
-        <strong>まず形にして確かめる自分に合う進み方</strong><br>
-        行動力と論理的な思考を活かすためのヒントが分かります。
+        <strong>世界観をぼやけさせず、仕組みの中心を決める方法：</strong>
+        「誰のために、何ができるようになり、
+        どんな気持ちで受け取ってほしいか」を
+        一文にまとめる方法が分かります。
       </li>
+
       <li>
-        <strong>自分の世界観を仕事に活かすヒント</strong><br>
-        頭の中の理想を現実へ移す才能の活かし方が見えてきます。
+        <strong>改善しても土台を作り直さない方法：</strong>
+        改善点を
+        「土台・調整・新しい案」に分け、
+        今すぐ変えるべき範囲を判断する方法が分かります。
       </li>
+
       <li>
-        <strong>仕事で仕組みをつくる力を活かすヒント</strong><br>
-        複雑な内容を分かりやすく組み立てる才能の活かし方が分かります。
+        <strong>行動力と改善力を実績へ変える3つのヒント：</strong>
+        「検証が終わるまで変えない期間」を決め、
+        頭の中の予想ではなく、
+        実際の反応をもとに改善する方法が分かります。
       </li>
     </ul>
 
     <p class="cta-message-source">
-      あなたにはすでに、頭の中の世界観を形にする力も、
-      複雑な内容を分かりやすく整理する力も、
-      理想を現実で使える仕組みへ変える力もあります。
-      その才能を仕事でもっと活かすためのヒントを、
+      あなたには、
+      頭の中の世界観をすぐ形にし、
+      複雑な内容を分かりやすく整理し、
+      現実に合わせて仕組みを改善する力があります。
+      その行動力と改善力を、
+      何度も最初から作り直すためではなく、
+      実績を積み上げながら仕事を育てるために使う考え方を、
       LINEで受け取ってください。
     </p>
   </article>
