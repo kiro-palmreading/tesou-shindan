@@ -1,220 +1,524 @@
-<section class="result-detail" data-diagnosis-code="C2Y">
-  <div class="result-catch" data-hide-title="true">
-    <p>【あなたを一言で表すと】</p>
-    <p>動きながら見つけるナビゲーター</p>
+<section class="result-detail result-detail--visual" data-diagnosis-code="C2Y">
+
+  <style>
+    /* ========================================
+       C2Y 診断結果
+       Meta広告流入・スマホ向け
+    ======================================== */
+
+    .result-detail--visual {
+      max-width: 720px;
+      margin: 0 auto;
+      color: #24313a;
+      line-height: 1.8;
+    }
+
+    /* ========================================
+       FV
+    ======================================== */
+
+    .diagnosis-result-fv {
+      margin: 0 0 28px;
+      padding: 0;
+    }
+
+    .diagnosis-result-fv img {
+      display: block;
+      width: 100%;
+      height: auto;
+      margin: 0 auto;
+    }
+
+    /* ========================================
+       共通ブロック
+    ======================================== */
+
+    .result-detail--visual .result-block {
+      margin: 0 16px 28px;
+      padding: 26px 20px;
+      background: #ffffff;
+      border: 1px solid #dcecf5;
+      border-radius: 18px;
+      box-sizing: border-box;
+    }
+
+    .result-detail--visual .result-block h2 {
+      margin: 0 0 18px;
+      color: #083f5c;
+      font-size: 22px;
+      line-height: 1.45;
+      text-align: left;
+    }
+
+    .result-detail--visual .result-block p {
+      margin: 0 0 16px;
+      font-size: 16px;
+      line-height: 1.9;
+    }
+
+    .result-detail--visual .result-block p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* ========================================
+       あなたはこんなタイプ
+    ======================================== */
+
+    .type-keywords {
+      margin: 0 0 20px;
+      font-size: 20px;
+      font-weight: 700;
+      color: #1f6fb2;
+      letter-spacing: 0.04em;
+      text-align: center;
+    }
+
+    .type-point-list {
+      display: grid;
+      gap: 11px;
+      margin: 0 0 20px;
+    }
+
+    .type-point {
+      position: relative;
+      padding: 14px 14px 14px 43px;
+      background: #f8fcff;
+      border-radius: 12px;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .type-point::before {
+      content: "✓";
+      position: absolute;
+      left: 16px;
+      top: 14px;
+      color: #1f6fb2;
+      font-weight: 700;
+    }
+
+    .type-summary {
+      padding: 16px;
+      background: #eef7ff;
+      border-radius: 12px;
+      color: #314958;
+    }
+
+    /* ========================================
+       強みが出る場面
+    ======================================== */
+
+    .talent-scene-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    .talent-scene-card {
+      padding: 18px;
+      border-radius: 14px;
+      background: #eef7ff;
+      border: 1px solid #cfe3f1;
+    }
+
+    .talent-scene-card strong {
+      display: block;
+      margin-bottom: 8px;
+      color: #083f5c;
+      font-size: 17px;
+      line-height: 1.5;
+    }
+
+    .talent-scene-card p {
+      margin: 0 !important;
+    }
+
+    /* ========================================
+       今のループ
+    ======================================== */
+
+    .loop-intro {
+      font-weight: 700;
+      color: #314958;
+    }
+
+    .diagnosis-loop {
+      margin: 20px 0;
+    }
+
+    .loop-step {
+      padding: 15px 14px;
+      background: #f8fcff;
+      border: 1px solid #cfe6f3;
+      border-radius: 12px;
+      text-align: center;
+      font-size: 16px;
+      font-weight: 700;
+      color: #083f5c;
+    }
+
+    .loop-arrow {
+      height: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #6f8798;
+      font-size: 24px;
+      font-weight: 700;
+    }
+
+    .loop-step--last {
+      background: #fff5f2;
+      border-color: #f2c9bf;
+      color: #9b4d3b;
+    }
+
+    /* ========================================
+       この状態が続くと
+    ======================================== */
+
+    .result-block--risk {
+      background: #fffaf7 !important;
+      border-color: #f1d9cf !important;
+    }
+
+    .risk-items {
+      display: grid;
+      gap: 10px;
+    }
+
+    .risk-item {
+      position: relative;
+      padding: 13px 14px 13px 40px;
+      background: #ffffff;
+      border: 1px solid #f0ddd5;
+      border-radius: 11px;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .risk-item::before {
+      content: "●";
+      position: absolute;
+      left: 17px;
+      top: 15px;
+      color: #d98670;
+      font-size: 10px;
+    }
+
+    /* ========================================
+       問題の正体
+    ======================================== */
+
+    .result-block--key {
+      background: #eef7ff !important;
+      border-color: #bddcec !important;
+    }
+
+    .key-message {
+      margin: 18px 0 !important;
+      padding: 18px 16px;
+      background: #ffffff;
+      border: 1px solid #dcecf5;
+      border-radius: 8px;
+      font-size: 18px !important;
+      font-weight: 700;
+      color: #083f5c;
+      text-align: center;
+      line-height: 1.7;
+    }
+
+    .key-message-line {
+      display: block;
+    }
+
+    /* ========================================
+       LINE自動生成用データ
+    ======================================== */
+
+    .result-block--source-only {
+      display: none !important;
+    }
+
+    /* ========================================
+       スマホ
+    ======================================== */
+
+    @media (max-width: 600px) {
+      .result-detail--visual .result-block {
+        margin-left: 14px;
+        margin-right: 14px;
+        padding: 23px 17px;
+      }
+
+      .result-detail--visual .result-block h2 {
+        font-size: 21px;
+      }
+
+      .type-keywords {
+        font-size: 19px;
+      }
+
+      .talent-scene-card strong {
+        font-size: 17px;
+      }
+
+      .key-message {
+        font-size: 17px !important;
+        padding: 16px 14px;
+      }
+    }
+  </style>
+
+  <!-- FV -->
+  <div class="diagnosis-result-fv">
+    <img
+      src="meta-fv-results/C2Y.png"
+      alt="才能コンパス診断 動きながら見つけるナビゲーター"
+      loading="eager"
+      fetchpriority="high"
+    >
   </div>
 
+  <!-- 01 -->
   <article class="result-block">
-    <h2>あなたの本質</h2>
+    <h2>あなたはこんなタイプです</h2>
 
-    <p class="highlight-paragraph">行動 × 分析 × 直感</p>
+    <div class="type-keywords">
+      行動 × 分析 × 直感
+    </div>
 
-    <p>
-      あなたは、最初から完璧な答えを出そうとするよりも、<br>
-      「まずは、やってみよう」<br>
-      「実際に動けば、分かることがありそう」<br>
-      と、一歩を踏み出せる人です。
-    </p>
+    <div class="type-point-list">
+      <div class="type-point">
+        完璧な答えを待つより、
+        <strong>まず試して現実から判断材料を集められる</strong>
+      </div>
 
-    <p>
-      ただし、思いついたまま勢いだけで進むわけではありません。
-    </p>
+      <div class="type-point">
+        動いたあとの反応から、
+        <strong>原因や可能性を素早く分析できる</strong>
+      </div>
 
-    <p>
-      動いたあとは、起きたことをよく見ています。どこで流れが変わったのか。何がうまくいったのか。どこに見直せるところがあるのか。現実に起きたことから、次に役立つ情報を集めます。
-    </p>
+      <div class="type-point">
+        集めた情報の中から、
+        <strong>「次はこちら」と新しい方向を見つけられる</strong>
+      </div>
+    </div>
 
-    <p>
-      そして、いくつかの情報が集まると、<br>
-      「次は、こちらを試してみよう」<br>
-      「今は、この方向がよさそう」<br>
-      と、進む道が直感的に見えてきます。
-    </p>
-
-    <p>
-      まず動く。状況を確かめる。起きていることを考える。その中から、次の一歩を見つける。
-    </p>
-
-    <p>
-      あなたは、頭の中だけで答えを探す人でも、一度決めた方法にこだわり続ける人でもありません。現実の変化を読みながら、そのときに合った道を選んでいける人です。
+    <p class="type-summary">
+      あなたは、
+      頭の中だけで正解を探す人でも、
+      一つの方法に固執する人でもありません。
+      まず動いて現実からヒントを集め、
+      状況を分析しながら、
+      自分に合う道を見つけていく人です。
     </p>
   </article>
 
+  <!-- 02 -->
   <article class="result-block">
-    <h2>あなたの才能</h2>
+    <h2>こんな場面で強みが出ます</h2>
 
-    <p>そんなあなたには、次のような力があります。</p>
+    <div class="talent-scene-grid">
+      <div class="talent-scene-card">
+        <strong>🚀 まず試してみるとき</strong>
+        <p>
+          完璧な準備が整うまで待たず、
+          実際に行動することで
+          現実の情報を集められます。
+        </p>
+      </div>
 
-    <ul>
-      <li>考え込む前に、まず試してみる力</li>
-      <li>目の前で起きていることを素早く分析する力</li>
-      <li>小さな変化から、新しい可能性を見つける力</li>
-      <li>状況に合わせて、柔軟に動き方を変える力</li>
-    </ul>
+      <div class="talent-scene-card">
+        <strong>🔍 反応を読み取るとき</strong>
+        <p>
+          数字や相手の反応から、
+          どこに手応えがあり、
+          どこで流れが止まったのかを見つけられます。
+        </p>
+      </div>
+
+      <div class="talent-scene-card">
+        <strong>🧭 次の可能性を見つけるとき</strong>
+        <p>
+          分析した結果から、
+          「こちらを試すとよさそう」と、
+          状況に合う次の一手を素早く選べます。
+        </p>
+      </div>
+    </div>
+  </article>
+
+  <!-- 03 -->
+  <article class="result-block">
+    <h2>今、こんなループに入っていませんか？</h2>
+
+    <p class="loop-intro">
+      「まず試してみよう」と動き始めたはずなのに……
+    </p>
+
+    <div class="diagnosis-loop">
+      <div class="loop-step">
+        まず1つの方向を試してみる
+      </div>
+
+      <div class="loop-arrow">↓</div>
+
+      <div class="loop-step">
+        少しの反応から、いくつもの可能性を分析する
+      </div>
+
+      <div class="loop-arrow">↓</div>
+
+      <div class="loop-step">
+        「次はこちらかも」と新しい方向が見える
+      </div>
+
+      <div class="loop-arrow">↓</div>
+
+      <div class="loop-step loop-step--last">
+        結果が出そろう前に、次の実験が始まる
+      </div>
+    </div>
 
     <p>
-      予定どおりに仕事が進まないときも、ただ困って立ち止まるのではありません。
+      あなたは、
+      やろうと思うだけで終わっているわけではありません。
+      <strong>ちゃんと動き、ちゃんと試しています。</strong>
     </p>
 
     <p>
-      「どこで流れが変わったのだろう」「今の状況では、何を優先した方がよいだろう」と考え、その場に合った次の一歩を見つけられます。
+      ただ、少し反応が返ってくると、
+      「テーマが違うのかも」
+      「別の切り口ならもっとよいかも」と、
+      複数の仮説がすぐに見えてきます。
     </p>
 
     <p>
-      たとえば、お客様と話しているとき。用意していた説明に反応がなければ、相手の表情や言葉を見ながら、別の伝え方を試せるのではないでしょうか。
+      そして分析している途中で、
+      「あ、むしろこちらかもしれない」と
+      新しい方向が浮かぶと、
+      そこにも実際に動けてしまいます。
     </p>
 
     <p>
-      相手から思いがけない質問を受けたときにも、「本当に知りたいのは、こちらかもしれない」と気づき、話す内容や順番を自然に変えられます。
-    </p>
-
-    <p>
-      新しい仕事や役割を任されたときも、すべてを理解するまで待つのではなく、まずできるところから始められます。
-    </p>
-
-    <p>
-      実際に取り組む中で必要なことを見つけ、その都度考えながら進めるため、前例の少ない仕事や変化の多い場面でも、自分なりの道を見つけていけるでしょう。
-    </p>
-
-    <p>
-      周りからも、「行動が早いよね」「頭の切り替えが早い」「状況を見て動くのが上手だね」「よくそんな方法を思いついたね」と言われたことがあるかもしれません。
-    </p>
-
-    <p>
-      あなたは、ただフットワークが軽い人ではありません。実際に動いて得た情報を読み取り、まだ誰も気づいていない可能性を見つけられる人です。
-    </p>
-
-    <p>
-      答えが決まっていない状況でも、動きながら自分なりの答えを見つけていけることが、あなたの大きな才能です。
+      気づけば机の上には、
+      試している発信、作りかけのサービス、新しい方法。
+      <strong>実験台が片づく前に、次の実験が始まっている。</strong>
+      そんな状態になることもあるかもしれません。
     </p>
   </article>
 
-  <article class="result-block">
-    <h2>今のあなたの状態</h2>
+  <!-- 04 -->
+  <article class="result-block result-block--risk">
+    <h2>この状態が続くと…</h2>
+
+    <div class="risk-items">
+      <div class="risk-item">
+        十分な結果が集まる前に、
+        次の方向へ移りやすくなる
+      </div>
+
+      <div class="risk-item">
+        前の方法をもう少し続ければどうなったのか、
+        判断できないまま終わりやすくなる
+      </div>
+
+      <div class="risk-item">
+        複数の実験が並行し、
+        何が本当に自分に合っているのか分かりにくくなる
+      </div>
+
+      <div class="risk-item">
+        行動量はあるのに成果が積み上がらず、
+        「自分は飽きっぽいのかも」と感じやすくなる
+      </div>
+    </div>
+  </article>
+
+  <!-- 05 -->
+  <article class="result-block result-block--key">
+    <h2>でも、問題は「新しい可能性に気づくこと」ではありません</h2>
 
     <p>
-      ただ今は、その行動力と直感が、少しだけ空回りしているかもしれません。
+      動いた結果からヒントを拾い、
+      次の可能性を素早く見つけられることは、
+      あなたの大きな強みです。
     </p>
 
     <p>
-      「これを試してみよう」と思い、すぐに動き出す。実際にやってみると、新しい情報や反応が返ってきます。
+      ただ、
+      まだ少ない反応から分析を始めると、
+      現実に起きたことと、
+      そこから考えた仮説が混ざりやすくなります。
+    </p>
+
+    <p class="key-message">
+      <span class="key-message-line">実際に起きたことは何なのか。</span>
+      <span class="key-message-line">「次はこちら」と感じているのは、まだ仮説ではないか。</span>
     </p>
 
     <p>
-      すると、あなたの中ではすぐに分析が始まります。
+      この違いが曖昧なままだと、
+      新しい可能性が見えるたびに、
+      それが確定した答えのように感じやすくなります。
     </p>
 
     <p>
-      「思っていた流れと少し違う」「今の方法より、こちらの方が合っているかもしれない」「別の可能性もありそう」と、次の選択肢が見えてきます。
-    </p>
-
-    <p>
-      そして、新しい可能性に気づくと、「では、こちらも試してみよう」と、また行動へ移せます。
-    </p>
-
-    <p>
-      仕事を始めたばかりなのに、別の進め方が気になる。サービスを形にしている途中で、もっと自分に合いそうな内容を思いつく。今の役割に取り組みながら、新しい仕事の可能性も見えてくる。
-    </p>
-
-    <p>
-      どれも、気まぐれで始めたものではありません。そのときに見えた状況を考え、自分なりに「こちらには可能性がある」と感じたものです。
-    </p>
-
-    <p>
-      しかも、あなたは思いつくだけで終わらず、実際に少しずつ動かしています。
-    </p>
-
-    <p>
-      気づけば、進めている仕事、試している方法、調べている新しい可能性が、いくつも同時に並んでいることがあります。
-    </p>
-
-    <p>
-      机の上で、複数の行き先へ向かう地図を同時に広げているような状態です。どの道にも、それなりの魅力があります。これは、簡単には畳めません。
-    </p>
-
-    <p>
-      あなたは、何もしていないわけではありません。かなり動いています。起きたことも分析しています。そして、その中から新しい可能性も見つけています。
-    </p>
-
-    <p>
-      それなのに、一日の終わりには、「今日もいろいろ進めた。でも、私は今、どの道を進んでいるんだろう」と感じることがあります。
-    </p>
-
-    <p>
-      一つの仕事に取り組んでいる途中で、もっとよさそうな方法が見つかる。新しい方法を試すと、また別の可能性が見えてくる。
-    </p>
-
-    <p>
-      そのため、行動した経験は増えているのに、それぞれが一つの仕事としてつながっていないように感じることもあるでしょう。
-    </p>
-
-    <p>
-      あなたに根気がないわけではありません。動いた先にある変化を読み取り、新しい可能性へ気づくのが早いのです。
-    </p>
-
-    <p>
-      今、一つの仕事へ力を注ぎにくくなっているのは、「新しい可能性へ気づく力」が、今の仕事を深めることよりも、次の道を探すことへ向かいやすくなっているからかもしれません。
+      反対に、
+      事実と仮説を分けてから判断できるようになると、
+      <strong>直感を消さずに、今の方向から必要な結果を集めていけます。</strong>
     </p>
   </article>
 
-  <article class="result-block result-block--final">
+  <!-- 06 LINE自動生成用 -->
+  <article class="result-block result-block--final result-block--source-only">
     <h2>ここから先が本題です</h2>
-
-    <p>
-      ここまで読んで、「そうそう。動くたびに、また別の可能性が見えてくるのよね」と思ったでしょうか。
-    </p>
-
-    <p>
-      手相から見えているあなたの行動力、分析力、直感は、答えが決まっていない状況でも、実際に動きながら進む道を見つけるための大切な才能です。
-    </p>
-
-    <p>
-      まず試してみることができる。目の前で起きていることを冷静に考えられる。小さな変化から、次にできることや新しい可能性を見つけられる。
-    </p>
-
-    <p>
-      こうした才能は、新しい仕事を始めるとき、前例のないことへ取り組むとき、予定どおりに進まない場面で次の手を考えるときに、大きく活かされます。
-    </p>
-
-    <p>
-      また、お客様や周りの人の様子を見ながら、その場に必要な対応へ切り替えられることも、あなたの強みです。
-    </p>
-
-    <p>
-      ただし、あなたの直感は、新しい道を見つけるためだけにあるものではありません。
-    </p>
-
-    <p>
-      今取り組んでいる仕事の中で、「ここを変えたら、もっとよくなりそう」「この経験は、次にも活かせそう」と気づくためにも使えます。
-    </p>
-
-    <p>
-      あなたらしい進み方のヒントは、新しい可能性を見ないようにすることではありません。動いたからこそ得られた気づきを、今取り組んでいる仕事にも活かしていくことにありそうです。
-    </p>
-
-    <p>
-      <strong>では、まず試してみる力、状況を読み取る力、次の可能性を見つける直感を、仕事にどう活かしていけばよいのでしょうか。</strong>
-    </p>
 
     <ul class="line-benefits-source">
       <li>
-        <strong>動きながら答えを見つける自分に合う進み方：</strong>
-        実際に試しながら道を見つけられる自分の特徴を、仕事の中で活かすヒントが分かります。
+        <strong>少しの反応から、別の方向がよく見えやすくなる理由：</strong>
+        行動力、分析力、直感が速いテンポで働くことで、
+        なぜ結果がそろう前でも
+        新しい方向に可能性を感じやすいのかが分かります。
       </li>
 
       <li>
-        <strong>分析力と直感を仕事に活かすヒント：</strong>
-        目の前の状況を考える力と、新しい可能性に気づく力を、自分の仕事へ活かすヒントが分かります。
+        <strong>現実の結果と、分析や直感から生まれた予想の見分け方：</strong>
+        実際に起きた「事実」、
+        そこから考えた「分析」、
+        次によさそうと感じる「直感」を
+        分けて整理する方法が分かります。
       </li>
 
       <li>
-        <strong>仕事で柔軟に動ける力を活かすヒント：</strong>
-        変化のある状況でも、そのときに必要な一歩を見つけられる才能を活かすヒントが分かります。
+        <strong>行動力と直感を、一つの成果へつなげるヒント：</strong>
+        今回の仮説を1つ決め、
+        判断する回数や期限を先に設定し、
+        新しい案は次の候補として残しながら
+        今の方向の結果を集める3つのコツが分かります。
       </li>
     </ul>
 
     <p class="cta-message-source">
-      あなたにはすでに、まず試してみる力も、起きていることを分析する力も、新しい可能性を見つける直感もあります。その才能を仕事でもっと活かすためのヒントを、LINEで受け取ってください。
+      あなたには、
+      まず試してみる力も、
+      現実の反応を分析する力も、
+      新しい可能性を素早く見つける直感もあります。
+      必要なのは、
+      新しい案を無視することでも、
+      一度選んだ方向へ固執することでもありません。
+      今回は何を確かめているのか。
+      実際に何が起きたのか。
+      そこから何を分析し、
+      何を次の可能性として感じているのか。
+      それを分けて考えられるようになると、
+      直感で見つけた新しい道を
+      すぐに確定した答えにせず、
+      現実の材料を集めてから選べます。
+      あなたに合う方向の見極め方を、
+      LINEで受け取ってください。
     </p>
   </article>
+
 </section>
