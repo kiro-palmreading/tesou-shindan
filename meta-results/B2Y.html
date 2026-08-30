@@ -1,193 +1,516 @@
-<section class="result-detail" data-diagnosis-code="B2Y">
-  <div class="result-catch" data-hide-title="true">
-    <p>【あなたを一言で表すと】</p>
-    <p>流れをつかんで動くトラベラー</p>
+<section class="result-detail result-detail--visual" data-diagnosis-code="B2Y">
+
+  <style>
+    /* ========================================
+       B2Y 診断結果
+       Meta広告流入・スマホ向け
+    ======================================== */
+
+    .result-detail--visual {
+      max-width: 720px;
+      margin: 0 auto;
+      color: #24313a;
+      line-height: 1.8;
+    }
+
+    /* ========================================
+       FV
+    ======================================== */
+
+    .diagnosis-result-fv {
+      margin: 0 0 28px;
+      padding: 0;
+    }
+
+    .diagnosis-result-fv img {
+      display: block;
+      width: 100%;
+      height: auto;
+      margin: 0 auto;
+    }
+
+    /* ========================================
+       共通ブロック
+    ======================================== */
+
+    .result-detail--visual .result-block {
+      margin: 0 16px 28px;
+      padding: 26px 20px;
+      background: #ffffff;
+      border: 1px solid #dcecf5;
+      border-radius: 18px;
+      box-sizing: border-box;
+    }
+
+    .result-detail--visual .result-block h2 {
+      margin: 0 0 18px;
+      color: #083f5c;
+      font-size: 22px;
+      line-height: 1.45;
+      text-align: left;
+    }
+
+    .result-detail--visual .result-block p {
+      margin: 0 0 16px;
+      font-size: 16px;
+      line-height: 1.9;
+    }
+
+    .result-detail--visual .result-block p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* ========================================
+       あなたはこんなタイプ
+    ======================================== */
+
+    .type-keywords {
+      margin: 0 0 20px;
+      font-size: 20px;
+      font-weight: 700;
+      color: #1f6fb2;
+      letter-spacing: 0.04em;
+      text-align: center;
+    }
+
+    .type-point-list {
+      display: grid;
+      gap: 11px;
+      margin: 0 0 20px;
+    }
+
+    .type-point {
+      position: relative;
+      padding: 14px 14px 14px 43px;
+      background: #f8fcff;
+      border-radius: 12px;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .type-point::before {
+      content: "✓";
+      position: absolute;
+      left: 16px;
+      top: 14px;
+      color: #1f6fb2;
+      font-weight: 700;
+    }
+
+    .type-summary {
+      padding: 16px;
+      background: #eef7ff;
+      border-radius: 12px;
+      color: #314958;
+    }
+
+    /* ========================================
+       強みが出る場面
+    ======================================== */
+
+    .talent-scene-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    .talent-scene-card {
+      padding: 18px;
+      border-radius: 14px;
+      background: #eef7ff;
+      border: 1px solid #cfe3f1;
+    }
+
+    .talent-scene-card strong {
+      display: block;
+      margin-bottom: 8px;
+      color: #083f5c;
+      font-size: 17px;
+      line-height: 1.5;
+    }
+
+    .talent-scene-card p {
+      margin: 0 !important;
+    }
+
+    /* ========================================
+       今のループ
+    ======================================== */
+
+    .loop-intro {
+      font-weight: 700;
+      color: #314958;
+    }
+
+    .diagnosis-loop {
+      margin: 20px 0;
+    }
+
+    .loop-step {
+      padding: 15px 14px;
+      background: #f8fcff;
+      border: 1px solid #cfe6f3;
+      border-radius: 12px;
+      text-align: center;
+      font-size: 16px;
+      font-weight: 700;
+      color: #083f5c;
+    }
+
+    .loop-arrow {
+      height: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #6f8798;
+      font-size: 24px;
+      font-weight: 700;
+    }
+
+    .loop-step--last {
+      background: #fff5f2;
+      border-color: #f2c9bf;
+      color: #9b4d3b;
+    }
+
+    /* ========================================
+       この状態が続くと
+    ======================================== */
+
+    .result-block--risk {
+      background: #fffaf7 !important;
+      border-color: #f1d9cf !important;
+    }
+
+    .risk-items {
+      display: grid;
+      gap: 10px;
+    }
+
+    .risk-item {
+      position: relative;
+      padding: 13px 14px 13px 40px;
+      background: #ffffff;
+      border: 1px solid #f0ddd5;
+      border-radius: 11px;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .risk-item::before {
+      content: "●";
+      position: absolute;
+      left: 17px;
+      top: 15px;
+      color: #d98670;
+      font-size: 10px;
+    }
+
+    /* ========================================
+       問題の正体
+    ======================================== */
+
+    .result-block--key {
+      background: #eef7ff !important;
+      border-color: #bddcec !important;
+    }
+
+    .key-message {
+      margin: 18px 0 !important;
+      padding: 18px 16px;
+      background: #ffffff;
+      border: 1px solid #dcecf5;
+      border-radius: 8px;
+      font-size: 18px !important;
+      font-weight: 700;
+      color: #083f5c;
+      text-align: center;
+      line-height: 1.7;
+    }
+
+    .key-message-line {
+      display: block;
+    }
+
+    /* ========================================
+       LINE自動生成用データ
+    ======================================== */
+
+    .result-block--source-only {
+      display: none !important;
+    }
+
+    /* ========================================
+       スマホ
+    ======================================== */
+
+    @media (max-width: 600px) {
+      .result-detail--visual .result-block {
+        margin-left: 14px;
+        margin-right: 14px;
+        padding: 23px 17px;
+      }
+
+      .result-detail--visual .result-block h2 {
+        font-size: 21px;
+      }
+
+      .type-keywords {
+        font-size: 19px;
+      }
+
+      .talent-scene-card strong {
+        font-size: 17px;
+      }
+
+      .key-message {
+        font-size: 17px !important;
+        padding: 16px 14px;
+      }
+    }
+  </style>
+
+  <!-- FV -->
+  <div class="diagnosis-result-fv">
+    <img
+      src="meta-fv-results/B2Y.png"
+      alt="才能コンパス診断 流れをつかんで動くトラベラー"
+      loading="eager"
+      fetchpriority="high"
+    >
   </div>
 
+  <!-- 01 -->
   <article class="result-block">
-    <h2>あなたの本質</h2>
+    <h2>あなたはこんなタイプです</h2>
 
-    <p class="highlight-paragraph">行動 × 共感 × 直感</p>
+    <div class="type-keywords">
+      行動 × 共感 × 直感
+    </div>
 
-    <p>
-      あなたは、人の気持ちやその場の空気を感じ取りながら、<br>
-      「まず、やってみよう」<br>
-      「今なら、こちらがよさそう」<br>
-      と、軽やかに動き出せる人です。
-    </p>
+    <div class="type-point-list">
+      <div class="type-point">
+        すべてを決めてからではなく、
+        <strong>まず動いて手応えを確かめられる</strong>
+      </div>
 
-    <p>
-      すべての答えがそろうまで、一人で考え続けるタイプではありません。
-    </p>
+      <div class="type-point">
+        相手の言葉や空気の変化から、
+        <strong>今の流れを素早く感じ取れる</strong>
+      </div>
 
-    <p>
-      人に会ってみる。実際に話してみる。できることから試してみる。その中で感じた手応えから、次の一歩を見つけていきます。
-    </p>
+      <div class="type-point">
+        状況が変われば、
+        <strong>その場に合う別の進み方へ柔軟に切り替えられる</strong>
+      </div>
+    </div>
 
-    <p>
-      しかも、自分の感覚だけで突っ走るわけではありません。
-    </p>
-
-    <p>
-      相手の声の調子。会話が弾んだ瞬間。表情が少しやわらいだこと。その場の空気が変わったこと。そうした小さな変化を感じ取り、「今は、こちらが必要なのかもしれない」と直感的に判断できます。
-    </p>
-
-    <p>
-      予定どおりに進まなくても、その場に合う動き方を見つけられる。考えているうちに機会を逃すより、目の前の人や出来事と関わりながら、今できることへ動いていく。
-    </p>
-
-    <p>
-      あなたは、人とのつながりや場の流れの中から、自分に合う道を切り拓いていける人です。
+    <p class="type-summary">
+      あなたは、
+      決められた道だけを進む人ではありません。
+      まず動き、
+      人の反応やその場の流れを感じながら、
+      今の状況に合うルートを見つけていく人です。
     </p>
   </article>
 
+  <!-- 02 -->
   <article class="result-block">
-    <h2>あなたの才能</h2>
+    <h2>こんな場面で強みが出ます</h2>
 
-    <p>そんなあなたには、次のような力があります。</p>
+    <div class="talent-scene-grid">
+      <div class="talent-scene-card">
+        <strong>🚀 最初の一歩を踏み出すとき</strong>
+        <p>
+          答えが全部そろっていなくても、
+          「まずやってみよう」と動き、
+          現実から次のヒントを得られます。
+        </p>
+      </div>
 
-    <ul>
-      <li>考えすぎる前に、最初の一歩を踏み出す力</li>
-      <li>相手の気持ちや場の空気を感じ取る力</li>
-      <li>今必要なことを直感的につかむ力</li>
-      <li>変化に合わせて、素早く動き方を変える力</li>
-    </ul>
+      <div class="talent-scene-card">
+        <strong>👀 流れを感じ取るとき</strong>
+        <p>
+          会話が弾んだ瞬間や、
+          相手の反応が変わったところから、
+          今何が求められているかを感じ取れます。
+        </p>
+      </div>
+
+      <div class="talent-scene-card">
+        <strong>🧭 その場で進み方を変えるとき</strong>
+        <p>
+          予定どおりにいかなくても固まらず、
+          「今はこちらがよさそう」と、
+          柔軟に別の方法を選べます。
+        </p>
+      </div>
+    </div>
+  </article>
+
+  <!-- 03 -->
+  <article class="result-block">
+    <h2>今、こんなループに入っていませんか？</h2>
+
+    <p class="loop-intro">
+      「今はこちらがよさそう」と動いているうちに……
+    </p>
+
+    <div class="diagnosis-loop">
+      <div class="loop-step">
+        よさそうな方向へすぐ動く
+      </div>
+
+      <div class="loop-arrow">↓</div>
+
+      <div class="loop-step">
+        別の反応や可能性が目に入る
+      </div>
+
+      <div class="loop-arrow">↓</div>
+
+      <div class="loop-step">
+        「今度はこちらかも」と感じる
+      </div>
+
+      <div class="loop-arrow">↓</div>
+
+      <div class="loop-step loop-step--last">
+        手応えが出る前に、次の道へ移る
+      </div>
+    </div>
 
     <p>
-      お客様と話しているときも、用意していた流れにこだわらず、相手の表情や言葉に合わせて、その場に必要な対応を選べるのではないでしょうか。
+      あなたは、
+      気まぐれに動いているわけではありません。
+      そのときそのとき、
+      <strong>本気で「こちらがよさそう」と感じています。</strong>
     </p>
 
     <p>
-      「この話には反応がある」「今は、答えを伝えるより、もう少し話を聞いた方がよさそう」と感じれば、自然に接し方を変えられます。
+      別のテーマに反応があれば、
+      そちらが気になる。
+      人との会話で別の話が盛り上がれば、
+      新しい方向も魅力的に見える。
     </p>
 
     <p>
-      相手がまだはっきり言葉にしていない希望にも気づき、「もしかすると、こういうことを求めているのかもしれない」と、次の提案や行動へつなげられます。
+      新しい道に気づくのが早いからこそ、
+      今の道の結果が見える前に、
+      次のルートへ乗り換えたくなるのです。
     </p>
 
     <p>
-      新しい機会が訪れたときにも、「まずは関わってみよう」と一歩を出せるため、周りがまだ迷っている間に、実際の経験や人とのつながりを手に入れられます。
-    </p>
-
-    <p>
-      周りからも「行動が早いよね」「フットワークが軽いよね」「話しやすい」「その場に合わせるのが上手だね」と思われやすいタイプです。
-    </p>
-
-    <p>
-      あなたは、ただ勢いで動く人ではありません。人の気持ちや場の変化を感じ取り、そのとき必要な一歩を選べる人です。
-    </p>
-
-    <p>
-      人と実際に関わる中で、今必要とされていることや、新しい仕事の可能性を見つけられる。その行動力、共感力、直感が、あなたの大きな才能です。
+      旅行でたとえるなら、
+      <strong>次の駅に着く前に、もう乗換案内を開いている。</strong>
+      しかも、どのルートもなかなか魅力的。
+      これは迷います。
     </p>
   </article>
 
-  <article class="result-block">
-    <h2>今のあなたの状態</h2>
+  <!-- 04 -->
+  <article class="result-block result-block--risk">
+    <h2>この状態が続くと…</h2>
+
+    <div class="risk-items">
+      <div class="risk-item">
+        反応が変わるたびに、
+        発信のテーマや方向を変えやすくなる
+      </div>
+
+      <div class="risk-item">
+        サービスが形になる前に、
+        別の案の方が魅力的に見えやすくなる
+      </div>
+
+      <div class="risk-item">
+        いろいろ試しているのに、
+        どの方向にも十分な時間を与えにくくなる
+      </div>
+
+      <div class="risk-item">
+        「また続かなかった」と感じ、
+        自分には軸がないように思いやすくなる
+      </div>
+    </div>
+  </article>
+
+  <!-- 05 -->
+  <article class="result-block result-block--key">
+    <h2>でも、問題は「新しい道に気づくこと」ではありません</h2>
 
     <p>
-      ただ今は、その軽やかさと柔軟さが、少しだけ空回りしているかもしれません。
+      人の反応や流れを感じながら、
+      新しい可能性を見つけられることは、
+      あなたの大きな強みです。
     </p>
 
     <p>
-      「これ、よさそう」と感じて、すぐに動く。人に会う。新しい仕事を始める。サービスや企画を形にする。ここまでは、比較的スムーズにできます。
+      ただ、
+      新しい道が見えるたびに
+      目的地まで変えてしまうと、
+      どの道も育ちかけのまま残ります。
+    </p>
+
+    <p class="key-message">
+      <span class="key-message-line">変えたいのは、目的地そのものなのか。</span>
+      <span class="key-message-line">それとも、そこへ向かう行き方なのか。</span>
     </p>
 
     <p>
-      ところが、少し動いたところで別の反応や可能性が見えると、「待って。こちらの方が喜ばれるかもしれない」「今の私には、別の形の方が合っているかも」と、次の道が気になり始めます。
+      この違いが曖昧なままだと、
+      少し違う反応が出るたびに、
+      方向そのものを見直したくなります。
     </p>
 
     <p>
-      あるお客様との会話から新しい可能性を感じると、「これからは、こちらを中心にした方がよいかもしれない」と思う。
-    </p>
-
-    <p>
-      ところが、別の人との話が盛り上がると、今度は「やっぱり、こちらの方が求められているのかもしれない」と、また気持ちが動きます。
-    </p>
-
-    <p>
-      どの判断も、そのときは本気です。気まぐれで選んでいるわけではありません。目の前の人の気持ちや、その場の流れを感じて、「今はこちら」と思える道を選んでいます。
-    </p>
-
-    <p>
-      ただ、新しい可能性へ気づくのが早いため、今の仕事や人との関係が育つ前に、次の動きへ気持ちが向きやすくなるのです。
-    </p>
-
-    <p>
-      サービスを形にしている途中でも、別の人の悩みを聞くと、「この人には、違う形の方が必要かもしれない」と感じます。
-    </p>
-
-    <p>
-      内容を変える。届け方を変える。仕事の方向まで少し変える。そしてしばらくすると、「最初は、何を大切にして始めたんだっけ？」と、自分でも分からなくなることがあります。
-    </p>
-
-    <p>
-      旅行でたとえるなら、次の駅に着く前に、もう乗換案内を開いているような状態です。しかも、どの道にも人との出会いや新しい可能性が見えるため、簡単には無視できません。
-    </p>
-
-    <p>
-      あなたは、止まっているわけではありません。かなり動き、人にも会い、多くの経験を重ねています。
-    </p>
-
-    <p>
-      それなのに、一日の終わりには、「今日もいろいろ動いた。でも、私は何を育てているんだろう」と、少し心細くなることがあります。
-    </p>
-
-    <p>
-      あなたに継続力がないわけではありません。それだけ、人の気持ちや新しい機会へ素早く気づき、行動へ移せる人なのです。
-    </p>
-
-    <p>
-      今、経験や人とのつながりが積み重なりにくくなっているのは、目の前で感じたことを「今の仕事に活かせる気づき」として受け取るのか、「別の仕事へ進んだ方がよい合図」として受け取るのかが、分かりにくくなっているからかもしれません。
+      反対に、
+      届けたい相手や変化を残したまま
+      進み方だけを調整できるようになると、
+      <strong>柔軟さを失わずに、選んだ道を育てていけます。</strong>
     </p>
   </article>
 
-  <article class="result-block result-block--final">
+  <!-- 06 LINE自動生成用 -->
+  <article class="result-block result-block--final result-block--source-only">
     <h2>ここから先が本題です</h2>
-
-    <p>
-      ここまで読んで、「そうそう。人と関わるたびに、また新しい可能性が見えてくるのよね」と思ったでしょうか。
-    </p>
-
-    <p>
-      手相から見えているあなたの行動力、共感力、直感は、人の小さな変化や、その場に生まれた機会を素早く感じ取り、今必要な行動へ移すための大切な強みです。
-    </p>
-
-    <p>
-      相手が言葉にする前に、求めていることへ気づける。目の前の人に合わせて、その場に必要な対応を選べる。新しい出会いや機会が訪れたときに、考えすぎず一歩を踏み出せる。こうした場面で、あなたの強みは信頼や新しい仕事につながります。
-    </p>
-
-    <p>
-      けれど、感じ取ったすべての変化を、新しい方向へ進む合図として受け取ると、これまで築いてきた関係や経験を十分に活かす前に、次の道へ移りやすくなります。
-    </p>
-
-    <p>
-      あなたらしい進み方のヒントは、直感を抑えたり、一つの道だけに自分を縛ったりすることではありません。人と関わる中で感じたことを、今の仕事や人との関係にも活かしていくことです。
-    </p>
-
-    <p>
-      では、人の気持ちや場の流れを感じ取る力と、直感を行動に移せる力を、仕事にどう活かしていけばよいのでしょうか。
-    </p>
 
     <ul class="line-benefits-source">
       <li>
-        <strong>人との関わりの中で進む自分に合う進み方：</strong>
-        人の気持ちや場の流れを感じながら動ける強みを、仕事で活かすヒントが分かります。
+        <strong>人の反応を見ると、別の道が魅力的に見えやすくなる理由：</strong>
+        行動力、共感力、直感が順番に働くことで、
+        なぜ新しい方向へ気持ちが動きやすいのかが分かります。
       </li>
 
       <li>
-        <strong>直感を仕事へ活かすための目安：</strong>
-        新しい可能性を感じたときに、その直感をどのように受け止めればよいのか、その目安が分かります。
+        <strong>調整と方向転換を見分ける判断基準：</strong>
+        届けたい相手や届けたい変化は同じなのかを確認し、
+        目的地と行き方を分ける考え方が分かります。
       </li>
 
       <li>
-        <strong>仕事で行動力・共感力・直感を活かすヒント：</strong>
-        人の気持ちを感じる力、流れをつかむ力、すぐに動ける力を、お客様との関係や新しい仕事へ活かすヒントが分かります。
+        <strong>行動力と直感を、積み上がる成果へ変えるヒント：</strong>
+        反応を乗り換える合図・調整のヒント・保留に分け、
+        今の道を試す回数や期限を決める
+        3つのコツが分かります。
       </li>
     </ul>
 
     <p class="cta-message-source">
-      あなたにはすでに、人の気持ちや場の流れを感じる力も、必要なときに一歩を踏み出す力もあります。その強みを仕事でもっと活かすためのヒントを、LINEで受け取ってください。
+      あなたには、
+      まず動く力も、
+      人の反応を感じ取る力も、
+      今に合う道を見つける直感もあります。
+      必要なのは、
+      新しい可能性を無視することではありません。
+      目的地そのものを変えたいのか。
+      それとも、行き方だけを調整したいのか。
+      その違いを見分けられるようになると、
+      新しい案を活かしながらも、
+      今の道に結果が見えるところまで進む時間を与えられます。
+      あなたに合う道の見極め方を、
+      LINEで受け取ってください。
     </p>
   </article>
+
 </section>
