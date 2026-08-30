@@ -1,181 +1,520 @@
-<section class="result-detail" data-diagnosis-code="B1M">
-  <div class="result-catch" data-hide-title="true">
-    <p>【あなたを一言で表すと】</p>
-    <p>想いを込めて貫くプロフェッショナル</p>
+<section class="result-detail result-detail--visual" data-diagnosis-code="B1M">
+
+  <style>
+    /* ========================================
+       B1M 診断結果
+       Meta広告流入・スマホ向け
+    ======================================== */
+
+    .result-detail--visual {
+      max-width: 720px;
+      margin: 0 auto;
+      color: #24313a;
+      line-height: 1.8;
+    }
+
+    /* ========================================
+       FV
+    ======================================== */
+
+    .diagnosis-result-fv {
+      margin: 0 0 28px;
+      padding: 0;
+    }
+
+    .diagnosis-result-fv img {
+      display: block;
+      width: 100%;
+      height: auto;
+      margin: 0 auto;
+    }
+
+    /* ========================================
+       共通ブロック
+    ======================================== */
+
+    .result-detail--visual .result-block {
+      margin: 0 16px 28px;
+      padding: 26px 20px;
+      background: #ffffff;
+      border: 1px solid #dcecf5;
+      border-radius: 18px;
+      box-sizing: border-box;
+    }
+
+    .result-detail--visual .result-block h2 {
+      margin: 0 0 18px;
+      color: #083f5c;
+      font-size: 22px;
+      line-height: 1.45;
+      text-align: left;
+    }
+
+    .result-detail--visual .result-block p {
+      margin: 0 0 16px;
+      font-size: 16px;
+      line-height: 1.9;
+    }
+
+    .result-detail--visual .result-block p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* ========================================
+       あなたはこんなタイプ
+    ======================================== */
+
+    .type-keywords {
+      margin: 0 0 20px;
+      font-size: 20px;
+      font-weight: 700;
+      color: #1f6fb2;
+      letter-spacing: 0.04em;
+      text-align: center;
+    }
+
+    .type-point-list {
+      display: grid;
+      gap: 11px;
+      margin: 0 0 20px;
+    }
+
+    .type-point {
+      position: relative;
+      padding: 14px 14px 14px 43px;
+      background: #f8fcff;
+      border-radius: 12px;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .type-point::before {
+      content: "✓";
+      position: absolute;
+      left: 16px;
+      top: 14px;
+      color: #1f6fb2;
+      font-weight: 700;
+    }
+
+    .type-summary {
+      padding: 16px;
+      background: #eef7ff;
+      border-radius: 12px;
+      color: #314958;
+    }
+
+    /* ========================================
+       強みが出る場面
+    ======================================== */
+
+    .talent-scene-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    .talent-scene-card {
+      padding: 18px;
+      border-radius: 14px;
+      background: #eef7ff;
+      border: 1px solid #cfe3f1;
+    }
+
+    .talent-scene-card strong {
+      display: block;
+      margin-bottom: 8px;
+      color: #083f5c;
+      font-size: 17px;
+      line-height: 1.5;
+    }
+
+    .talent-scene-card p {
+      margin: 0 !important;
+    }
+
+    /* ========================================
+       今のループ
+    ======================================== */
+
+    .loop-intro {
+      font-weight: 700;
+      color: #314958;
+    }
+
+    .diagnosis-loop {
+      margin: 20px 0;
+    }
+
+    .loop-step {
+      padding: 15px 14px;
+      background: #f8fcff;
+      border: 1px solid #cfe6f3;
+      border-radius: 12px;
+      text-align: center;
+      font-size: 16px;
+      font-weight: 700;
+      color: #083f5c;
+    }
+
+    .loop-arrow {
+      height: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #6f8798;
+      font-size: 24px;
+      font-weight: 700;
+    }
+
+    .loop-step--last {
+      background: #fff5f2;
+      border-color: #f2c9bf;
+      color: #9b4d3b;
+    }
+
+    /* ========================================
+       この状態が続くと
+    ======================================== */
+
+    .result-block--risk {
+      background: #fffaf7 !important;
+      border-color: #f1d9cf !important;
+    }
+
+    .risk-items {
+      display: grid;
+      gap: 10px;
+    }
+
+    .risk-item {
+      position: relative;
+      padding: 13px 14px 13px 40px;
+      background: #ffffff;
+      border: 1px solid #f0ddd5;
+      border-radius: 11px;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .risk-item::before {
+      content: "●";
+      position: absolute;
+      left: 17px;
+      top: 15px;
+      color: #d98670;
+      font-size: 10px;
+    }
+
+    /* ========================================
+       問題の正体
+    ======================================== */
+
+    .result-block--key {
+      background: #eef7ff !important;
+      border-color: #bddcec !important;
+    }
+
+    .key-message {
+      margin: 18px 0 !important;
+      padding: 18px 16px;
+      background: #ffffff;
+      border: 1px solid #dcecf5;
+      border-radius: 8px;
+      font-size: 18px !important;
+      font-weight: 700;
+      color: #083f5c;
+      text-align: center;
+      line-height: 1.7;
+    }
+
+    .key-message-line {
+      display: block;
+    }
+
+    /* ========================================
+       LINE自動生成用データ
+    ======================================== */
+
+    .result-block--source-only {
+      display: none !important;
+    }
+
+    /* ========================================
+       スマホ
+    ======================================== */
+
+    @media (max-width: 600px) {
+      .result-detail--visual .result-block {
+        margin-left: 14px;
+        margin-right: 14px;
+        padding: 23px 17px;
+      }
+
+      .result-detail--visual .result-block h2 {
+        font-size: 21px;
+      }
+
+      .type-keywords {
+        font-size: 19px;
+      }
+
+      .talent-scene-card strong {
+        font-size: 17px;
+      }
+
+      .key-message {
+        font-size: 17px !important;
+        padding: 16px 14px;
+      }
+    }
+  </style>
+
+  <!-- FV -->
+  <div class="diagnosis-result-fv">
+    <img
+      src="meta-fv-results/B1M.png"
+      alt="才能コンパス診断 想いを込めて貫くプロフェッショナル"
+      loading="eager"
+      fetchpriority="high"
+    >
   </div>
 
+  <!-- 01 -->
   <article class="result-block">
-    <h2>あなたの本質</h2>
+    <h2>あなたはこんなタイプです</h2>
 
-    <p class="highlight-paragraph">慎重 × 共感 × 集中</p>
+    <div class="type-keywords">
+      慎重 × 共感 × 集中
+    </div>
 
-    <p>
-      あなたは、人の気持ちやその場の空気を敏感に感じ取りながらも、心の奥には、<br>
-      「私は、こうありたい」<br>
-      「これだけは大切にしたい」<br>
-      という、自分なりの軸を持っている人です。
-    </p>
+    <div class="type-point-list">
+      <div class="type-point">
+        相手の気持ちを大切にしながらも、
+        <strong>自分なりの譲れない軸を持っている</strong>
+      </div>
 
-    <p>
-      相手に合わせることはできる。けれど、何でも「どちらでも大丈夫」と流せるわけではありません。
-    </p>
+      <div class="type-point">
+        何かを始める前には、
+        <strong>本当に相手の役に立つかを丁寧に確かめる</strong>
+      </div>
 
-    <p>
-      表面では穏やかに話を聞きながら、心の中では「うん。でも、ここだけは譲れない」と静かに思うこともあるのではないでしょうか。
-    </p>
+      <div class="type-point">
+        一度「これだ」と納得したものには、
+        <strong>深く、粘り強く力を注げる</strong>
+      </div>
+    </div>
 
-    <p>
-      何かを始めるときは、<br>
-      「相手にとって、本当に必要だろうか」<br>
-      「この形なら、安心して受け取ってもらえるだろうか」<br>
-      「私は、心から価値があると言えるだろうか」<br>
-      と、丁寧に確かめます。
-    </p>
-
-    <p>
-      一度「これだ」と納得すると、途中で簡単に投げ出さず、自分が納得できるところまで育てていけます。
-    </p>
-
-    <p>
-      あなたは、ただ周りに合わせる人でも、自分の考えだけを押し通す人でもありません。相手を思いやりながら、自分の信念も大切にする。やさしさの中に、静かな強さを持っている人です。
+    <p class="type-summary">
+      あなたは、
+      周りに合わせるだけの人でも、
+      自分の考えだけを押し通す人でもありません。
+      相手への思いやりと自分の信念、
+      その両方を大切にしながら、
+      納得できるものを深く育てていく人です。
     </p>
   </article>
 
+  <!-- 02 -->
   <article class="result-block">
-    <h2>あなたの才能</h2>
+    <h2>こんな場面で強みが出ます</h2>
 
-    <p>そんなあなたには、次のような力があります。</p>
+    <div class="talent-scene-grid">
+      <div class="talent-scene-card">
+        <strong>🤝 相手の本音をくみ取るとき</strong>
+        <p>
+          表面的な言葉だけで判断せず、
+          「本当に困っているのはどこだろう」と
+          相手の気持ちを深く考えられます。
+        </p>
+      </div>
 
-    <ul>
-      <li>相手の言葉の奥にある気持ちをくみ取る力</li>
-      <li>一つのテーマを深く掘り下げる力</li>
-      <li>自分なりの判断軸を育てる力</li>
-      <li>納得したことへ、粘り強く力を注ぐ力</li>
-    </ul>
+      <div class="talent-scene-card">
+        <strong>🔍 1つのテーマを深めるとき</strong>
+        <p>
+          自分が大切だと思ったことなら、
+          簡単な答えで終わらせず、
+          納得できるところまで追い続けられます。
+        </p>
+      </div>
+
+      <div class="talent-scene-card">
+        <strong>🎯 信頼できる仕事へ育てるとき</strong>
+        <p>
+          「本当に役立つか」
+          「責任を持って届けられるか」まで考え、
+          中身のある形へ育てていけます。
+        </p>
+      </div>
+    </div>
+  </article>
+
+  <!-- 03 -->
+  <article class="result-block">
+    <h2>今、こんなループに入っていませんか？</h2>
+
+    <p class="loop-intro">
+      ほぼ完成しているはずなのに……
+    </p>
+
+    <div class="diagnosis-loop">
+      <div class="loop-step">
+        「これで出そう」と思う
+      </div>
+
+      <div class="loop-arrow">↓</div>
+
+      <div class="loop-step">
+        相手の反応が気になり、もう一度見直す
+      </div>
+
+      <div class="loop-arrow">↓</div>
+
+      <div class="loop-step">
+        「もっと納得できる形に」と深く手を入れる
+      </div>
+
+      <div class="loop-arrow">↓</div>
+
+      <div class="loop-step loop-step--last">
+        完成しているのに、まだ届けられない
+      </div>
+    </div>
 
     <p>
-      お客様から相談を受けたときも、表面的な言葉だけで判断するのではありません。「本当に困っているのは、ここかもしれない」「この人が言葉にできていない気持ちは何だろう」と、その奥まで考えられます。
+      あなたは、
+      何もしていないわけではありません。
+      むしろ、
+      <strong>人一倍真剣に考え、手を動かしています。</strong>
     </p>
 
     <p>
-      一度「この人の力になりたい」と思うと、必要なことを調べ、伝え方を考え、よりよい方法を探し続けます。
+      相手をがっかりさせたくない。
+      自分の想いも薄めたくない。
+      出すからには、責任を持ちたい。
     </p>
 
     <p>
-      サービスをつくるときも、ただ形を整えるだけではありません。「本当に役に立つ内容になっているか」「自分が責任を持って届けられるか」というところまで、真剣に向き合います。
+      だから、
+      言葉を直す。
+      内容を足す。
+      もう一度全体を見る。
     </p>
 
     <p>
-      周りからも「親身になってくれる」「芯があるよね」「一度決めると強いよね」「安心して相談できる」と思われやすいタイプです。
-    </p>
-
-    <p>
-      あなたは、ただ優しい人ではありません。人の気持ちを丁寧に理解し、自分が大切だと思うことを、簡単に諦めずに深められる人です。
-    </p>
-
-    <p>
-      一人ひとりと誠実に向き合い、そこで得た理解や経験を、自分にしか提供できない専門性へ育てていけることが、あなたの大きな才能です。
+      気づけば公開ボタンの前で、
+      <strong>心の中はまだ「最終審議中」。</strong>
+      周りには完成して見えても、
+      あなたの中では、なかなか審議が終わりません。
     </p>
   </article>
 
-  <article class="result-block">
-    <h2>今のあなたの状態</h2>
+  <!-- 04 -->
+  <article class="result-block result-block--risk">
+    <h2>この状態が続くと…</h2>
+
+    <div class="risk-items">
+      <div class="risk-item">
+        何度も見直し続け、
+        発信やサービスを出すタイミングが遅くなる
+      </div>
+
+      <div class="risk-item">
+        相手への配慮、内容の質、自分らしさなど、
+        守りたい条件が増え続ける
+      </div>
+
+      <div class="risk-item">
+        十分できていても、
+        「まだ納得できない」と完成を認めにくくなる
+      </div>
+
+      <div class="risk-item">
+        本来は仕事を深める集中力を、
+        公開前の修正に使い続けやすくなる
+      </div>
+    </div>
+  </article>
+
+  <!-- 05 -->
+  <article class="result-block result-block--key">
+    <h2>でも、問題は「こだわりが強いこと」ではありません</h2>
 
     <p>
-      ただ今は、その誠実さと集中力が、少しだけ前へ進むことを難しくしているかもしれません。
+      あなたにとって納得とは、
+      自分だけが満足できればよい、というものではありません。
     </p>
 
     <p>
-      発信を書き終えて、「よし、これで出そう」と思う。ところが、公開する直前になると、「この言い方では、強く感じる人がいるかもしれない」「もう少し、やわらかくした方がいいかな」と気になります。
+      自分の想いに嘘がない。
+      相手にもきちんと届く。
+      責任を持って出せる。
+      その全部を大切にしているからこそ、
+      終わりの基準が高くなりやすいのです。
+    </p>
+
+    <p class="key-message">
+      <span class="key-message-line">今回、絶対に守りたいものは何なのか。</span>
+      <span class="key-message-line">今、本当に直す必要があるのはどこなのか。</span>
     </p>
 
     <p>
-      言葉をやわらかくすると、今度は「これでは、私が本当に伝えたいことが薄くなっている気がする」と感じる。
+      この2つを分けないままだと、
+      気になることが見つかるたびに、
+      すべてが「公開前に直すこと」に見えてしまいます。
     </p>
 
     <p>
-      元に戻す。少し言い換える。もう一度読み直す。気づけば、心の中ではまだ“最終審議中”です。そんなことはないでしょうか。
-    </p>
-
-    <p>
-      サービスをつくるときも、「本当に相手の役に立つだろうか」「期待を裏切らないだろうか」と考え、必要な内容を調べ続けます。
-    </p>
-
-    <p>
-      お客様から一つの悩みを聞けば、「もっと深く理解したい」「ほかにも役立つことがあるかもしれない」と考え、さらに知識や情報を増やしたくなります。
-    </p>
-
-    <p>
-      自分が責任を持って届けるなら、中途半端にはしたくない。相手の大切な悩みへ向き合うなら、できる限りのことをしたい。その誠実さがあるからこそ、簡単には「ここまででよい」と思えません。
-    </p>
-
-    <p>
-      すでに十分な知識や経験があっても、「もう少し深められるはず」「もっと相手の役に立てる形があるはず」と、さらに深く潜っていきます。
-    </p>
-
-    <p>
-      あなたは、何もしていないわけではありません。相手のことを考え、自分の想いとも向き合い、よりよい仕事へ育てようと真剣に取り組んでいます。
-    </p>
-
-    <p>
-      それでも一日の終わりには、「今日もずっと考えていたのに、まだ十分ではない気がする」と、少し切ない気持ちになることがあります。
-    </p>
-
-    <p>
-      あなたにとっての「納得」は、自分が満足することだけではありません。自分の想いに嘘がなく、相手の役に立ち、責任を持って届けられること。そのすべてがそろって、初めて「これでいこう」と思えるのです。
-    </p>
-
-    <p>
-      今、自分の強みを活かしにくくなっているのは、相手を大切に思う気持ちも、自分の信念も、どちらも中途半端にしたくないからです。そのため、本来は相手を深く理解し、仕事を育てるための集中力が、「まだ十分ではない」と考え続けることへ向かいやすくなっているのかもしれません。
+      反対に、
+      本当に守るべきものと、
+      次に育てればよいものを分けられると、
+      <strong>今の自分が責任を持てる形として、届けやすくなります。</strong>
     </p>
   </article>
 
-  <article class="result-block result-block--final">
+  <!-- 06 LINE自動生成用 -->
+  <article class="result-block result-block--final result-block--source-only">
     <h2>ここから先が本題です</h2>
-
-    <p>
-      ここまで読んで、「そうそう。相手の役に立ちたいからこそ、簡単に“これでよい”とは思えないのよね」と感じたでしょうか。
-    </p>
-
-    <p>
-      手相から見えているあなたの慎重さ、共感力、集中力は、相手の言葉にならない思いまで丁寧にくみ取り、一つのことへ深く向き合いながら、信頼される仕事を育てるための大切な強みです。
-    </p>
-
-    <p>
-      相手の悩みを表面だけで終わらせず、その奥にある気持ちまで理解できる。必要な知識や経験を粘り強く積み重ねられる。自分が価値を感じたことを、簡単に諦めず続けられる。こうした場面で、あなたの強みは仕事に深みを生み出します。
-    </p>
-
-    <p>
-      けれど、「もっと相手の役に立てるはず」と考え続けることだけに集中力を使うと、すでに持っている知識や経験を、実際の仕事の中で育てる機会が少なくなってしまいます。
-    </p>
-
-    <p>
-      あなたらしい進み方を見つけるヒントは、相手への責任を軽く考えることでも、自分の信念を曲げることでもありません。相手と深く関わる中で理解を重ね、自分が大切にしていることを、少しずつ信頼や専門性へ育てることにありそうです。
-    </p>
-
-    <p>
-      では、慎重に確かめる力、相手の気持ちを深く理解する力、一つのことへ集中する力を活かしながら、自分らしい信念と専門性を仕事の中で育てるには、どのような考え方が合っているのでしょうか。
-    </p>
 
     <ul class="line-benefits-source">
       <li>
-        <strong>丁寧に向き合う自分に合う進み方：</strong>
-        相手へ責任を持ちたい自分の特徴を大切にしながら、強みを仕事の中で育てるための考え方が分かります。
+        <strong>まだ納得できないが終わらなくなる理由：</strong>
+        共感力、慎重さ、集中力が重なることで、
+        なぜ確認するたびに完成基準が高くなっていくのかが分かります。
       </li>
 
       <li>
-        <strong>自分の信念を仕事で育てるための目安：</strong>
-        「まだ十分ではない」と感じたときに、自分が積み重ねてきた知識や経験をどのように捉えればよいのか、その目安が分かります。
+        <strong>相手への配慮と、自分の信念を両立する判断基準：</strong>
+        絶対に守るべきことと、
+        今は直さなくてもよいことを
+        見分ける考え方が分かります。
       </li>
 
       <li>
-        <strong>仕事で共感力と集中力を活かすヒント：</strong>
-        相手を深く理解する力と、一つのことを粘り強く深める力を、お客様との関係や自分らしい専門性へ活かすヒントが分かります。
+        <strong>深く考える力を、行動と成果へつなげるヒント：</strong>
+        守るものを1つに絞り、
+        気になる点を修正・好み・想像上の不安に分け、
+        実際の反応を受け取ってから改善する
+        3つのコツが分かります。
       </li>
     </ul>
 
     <p class="cta-message-source">
-      あなたにはすでに、人の気持ちを深く理解する力も、自分が価値を感じたことを粘り強く育てる力もあります。その強みを活かし、一人ひとりとの信頼を重ねながら、自分らしい信念と専門性を仕事へ育てるための考え方を、LINEで受け取ってください。
+      あなたには、
+      相手を思いやる力も、
+      自分の信念を守る力も、
+      1つのものを深く育てる力もあります。
+      必要なのは、
+      こだわりを捨てることではありません。
+      今回、絶対に守りたいものは何なのか。
+      そして、今直さなければ本当に伝わらない部分はどこなのか。
+      その違いを見分けられるようになると、
+      完全に不安が消えるまで待たなくても、
+      今の自分が責任を持てる形として
+      落ち着いて届けやすくなります。
+      あなたに合う完成の見極め方を、
+      LINEで受け取ってください。
     </p>
   </article>
+
 </section>
