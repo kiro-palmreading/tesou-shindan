@@ -1,162 +1,517 @@
-<section class="result-detail" data-diagnosis-code="B1W">
-  <div class="result-catch" data-hide-title="true">
-    <p>【あなたを一言で表すと】</p>
-    <p>みんなの立場を見渡すコーディネーター</p>
+<section class="result-detail result-detail--visual" data-diagnosis-code="B1W">
+
+  <style>
+    /* ========================================
+       B1W 診断結果
+       Meta広告流入・スマホ向け
+    ======================================== */
+
+    .result-detail--visual {
+      max-width: 720px;
+      margin: 0 auto;
+      color: #24313a;
+      line-height: 1.8;
+    }
+
+    /* ========================================
+       FV
+    ======================================== */
+
+    .diagnosis-result-fv {
+      margin: 0 0 28px;
+      padding: 0;
+    }
+
+    .diagnosis-result-fv img {
+      display: block;
+      width: 100%;
+      height: auto;
+      margin: 0 auto;
+    }
+
+    /* ========================================
+       共通ブロック
+    ======================================== */
+
+    .result-detail--visual .result-block {
+      margin: 0 16px 28px;
+      padding: 26px 20px;
+      background: #ffffff;
+      border: 1px solid #dcecf5;
+      border-radius: 18px;
+      box-sizing: border-box;
+    }
+
+    .result-detail--visual .result-block h2 {
+      margin: 0 0 18px;
+      color: #083f5c;
+      font-size: 22px;
+      line-height: 1.45;
+      text-align: left;
+    }
+
+    .result-detail--visual .result-block p {
+      margin: 0 0 16px;
+      font-size: 16px;
+      line-height: 1.9;
+    }
+
+    .result-detail--visual .result-block p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* ========================================
+       あなたはこんなタイプ
+    ======================================== */
+
+    .type-keywords {
+      margin: 0 0 20px;
+      font-size: 20px;
+      font-weight: 700;
+      color: #1f6fb2;
+      letter-spacing: 0.04em;
+      text-align: center;
+    }
+
+    .type-point-list {
+      display: grid;
+      gap: 11px;
+      margin: 0 0 20px;
+    }
+
+    .type-point {
+      position: relative;
+      padding: 14px 14px 14px 43px;
+      background: #f8fcff;
+      border-radius: 12px;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .type-point::before {
+      content: "✓";
+      position: absolute;
+      left: 16px;
+      top: 14px;
+      color: #1f6fb2;
+      font-weight: 700;
+    }
+
+    .type-summary {
+      padding: 16px;
+      background: #eef7ff;
+      border-radius: 12px;
+      color: #314958;
+    }
+
+    /* ========================================
+       強みが出る場面
+    ======================================== */
+
+    .talent-scene-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    .talent-scene-card {
+      padding: 18px;
+      border-radius: 14px;
+      background: #eef7ff;
+      border: 1px solid #cfe3f1;
+    }
+
+    .talent-scene-card strong {
+      display: block;
+      margin-bottom: 8px;
+      color: #083f5c;
+      font-size: 17px;
+      line-height: 1.5;
+    }
+
+    .talent-scene-card p {
+      margin: 0 !important;
+    }
+
+    /* ========================================
+       今のループ
+    ======================================== */
+
+    .loop-intro {
+      font-weight: 700;
+      color: #314958;
+    }
+
+    .diagnosis-loop {
+      margin: 20px 0;
+    }
+
+    .loop-step {
+      padding: 15px 14px;
+      background: #f8fcff;
+      border: 1px solid #cfe6f3;
+      border-radius: 12px;
+      text-align: center;
+      font-size: 16px;
+      font-weight: 700;
+      color: #083f5c;
+    }
+
+    .loop-arrow {
+      height: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #6f8798;
+      font-size: 24px;
+      font-weight: 700;
+    }
+
+    .loop-step--last {
+      background: #fff5f2;
+      border-color: #f2c9bf;
+      color: #9b4d3b;
+    }
+
+    /* ========================================
+       この状態が続くと
+    ======================================== */
+
+    .result-block--risk {
+      background: #fffaf7 !important;
+      border-color: #f1d9cf !important;
+    }
+
+    .risk-items {
+      display: grid;
+      gap: 10px;
+    }
+
+    .risk-item {
+      position: relative;
+      padding: 13px 14px 13px 40px;
+      background: #ffffff;
+      border: 1px solid #f0ddd5;
+      border-radius: 11px;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .risk-item::before {
+      content: "●";
+      position: absolute;
+      left: 17px;
+      top: 15px;
+      color: #d98670;
+      font-size: 10px;
+    }
+
+    /* ========================================
+       問題の正体
+    ======================================== */
+
+    .result-block--key {
+      background: #eef7ff !important;
+      border-color: #bddcec !important;
+    }
+
+    .key-message {
+      margin: 18px 0 !important;
+      padding: 18px 16px;
+      background: #ffffff;
+      border: 1px solid #dcecf5;
+      border-radius: 8px;
+      font-size: 18px !important;
+      font-weight: 700;
+      color: #083f5c;
+      text-align: center;
+      line-height: 1.7;
+    }
+
+    .key-message-line {
+      display: block;
+    }
+
+    /* ========================================
+       LINE自動生成用データ
+    ======================================== */
+
+    .result-block--source-only {
+      display: none !important;
+    }
+
+    /* ========================================
+       スマホ
+    ======================================== */
+
+    @media (max-width: 600px) {
+      .result-detail--visual .result-block {
+        margin-left: 14px;
+        margin-right: 14px;
+        padding: 23px 17px;
+      }
+
+      .result-detail--visual .result-block h2 {
+        font-size: 21px;
+      }
+
+      .type-keywords {
+        font-size: 19px;
+      }
+
+      .talent-scene-card strong {
+        font-size: 17px;
+      }
+
+      .key-message {
+        font-size: 17px !important;
+        padding: 16px 14px;
+      }
+    }
+  </style>
+
+  <!-- FV -->
+  <div class="diagnosis-result-fv">
+    <img
+      src="meta-fv-results/B1W.png"
+      alt="才能コンパス診断 みんなの立場を見渡すコーディネーター"
+      loading="eager"
+      fetchpriority="high"
+    >
   </div>
 
+  <!-- 01 -->
   <article class="result-block">
-    <h2>あなたの本質</h2>
+    <h2>あなたはこんなタイプです</h2>
 
-    <p class="highlight-paragraph">慎重 × 共感 × 多角的視点</p>
+    <div class="type-keywords">
+      慎重 × 共感 × 多角的視点
+    </div>
 
-    <p>
-      あなたは、自分の考えだけでなく、<br>
-      「この人は、どう感じるだろう」<br>
-      「あの人には、別の考えがあるかもしれない」<br>
-      「全体として、無理のない形になっているだろうか」<br>
-      と、複数の立場を同時に想像できるタイプです。
-    </p>
+    <div class="type-point-list">
+      <div class="type-point">
+        1人だけでなく、
+        <strong>複数の人がどう感じるかを同時に想像できる</strong>
+      </div>
 
-    <p>
-      誰かの意見を聞いたときも、「その考え方にも理由がある」「でも、こちらの立場も大切にしたい」と、それぞれの気持ちを丁寧に受け止めます。
-    </p>
+      <div class="type-point">
+        意見が違っていても、
+        <strong>それぞれの立場にある理由を受け止められる</strong>
+      </div>
 
-    <p>
-      空気を読む。それぞれの受け取り方を想像する。いくつもの考え方を比べる。全体のバランスを確かめる。そんなことを自然に行っています。
-    </p>
+      <div class="type-point">
+        全体を見渡しながら、
+        <strong>みんなが受け取りやすい着地点を考えられる</strong>
+      </div>
+    </div>
 
-    <p>
-      あなたは、誰か一人の意見だけで動く人ではありません。人の気持ちとさまざまな視点をつなぎ、みんなが安心して関われる形を探していく人です。
+    <p class="type-summary">
+      あなたは、
+      誰か1人の考えだけで動く人ではありません。
+      さまざまな人の気持ちや視点をつなぎながら、
+      全体が無理なく受け取れる形を探していく人です。
     </p>
   </article>
 
+  <!-- 02 -->
   <article class="result-block">
-    <h2>あなたの才能</h2>
+    <h2>こんな場面で強みが出ます</h2>
 
-    <p>そんなあなたには、次のような力があります。</p>
+    <div class="talent-scene-grid">
+      <div class="talent-scene-card">
+        <strong>🤝 意見を調整するとき</strong>
+        <p>
+          どちらかをすぐに否定せず、
+          それぞれが大切にしていることを見ながら、
+          納得しやすい着地点を探せます。
+        </p>
+      </div>
 
-    <ul>
-      <li>複数の人の立場や気持ちを想像する力</li>
-      <li>全体を見渡し、バランスを整える力</li>
-      <li>異なる意見の間にある共通点を見つける力</li>
-      <li>人や考えをつなぎ、安心できる場をつくる力</li>
-    </ul>
+      <div class="talent-scene-card">
+        <strong>👀 相手ごとの反応を考えるとき</strong>
+        <p>
+          初めての人、経験のある人など、
+          立場によってどこで迷うかを想像し、
+          必要な伝え方を考えられます。
+        </p>
+      </div>
+
+      <div class="talent-scene-card">
+        <strong>🧩 全体を整えるとき</strong>
+        <p>
+          自分の考えだけでなく、
+          相手の気持ちや複数の視点をつなぎ、
+          バランスのよい形へまとめられます。
+        </p>
+      </div>
+    </div>
+  </article>
+
+  <!-- 03 -->
+  <article class="result-block">
+    <h2>今、こんなループに入っていませんか？</h2>
+
+    <p class="loop-intro">
+      「この人に届くように」と考え始めたはずなのに……
+    </p>
+
+    <div class="diagnosis-loop">
+      <div class="loop-step">
+        1人の相手を思い浮かべる
+      </div>
+
+      <div class="loop-arrow">↓</div>
+
+      <div class="loop-step">
+        別の人の受け取り方も気になる
+      </div>
+
+      <div class="loop-arrow">↓</div>
+
+      <div class="loop-step">
+        さらに別の立場にも配慮したくなる
+      </div>
+
+      <div class="loop-arrow">↓</div>
+
+      <div class="loop-step loop-step--last">
+        全員に合わせるほど、誰への言葉か分からなくなる
+      </div>
+    </div>
 
     <p>
-      誰かと誰かの意見が食い違ったときにも、「こちらの人が言いたいことも分かる」「でも、あちらの人は、ここが気になっているのかもしれない」と、両方の立場を考えられます。
+      あなたは、
+      誰に届けたいのか分からないわけではありません。
+      むしろ、
+      <strong>いろいろな人の立場が見えすぎる</strong>
+      のです。
     </p>
 
     <p>
-      周りからも「視野が広いよね」「気配りができるよね」「いろいろな人の気持ちが分かるんだね」と言われたことがあるかもしれません。
+      「詳しく知りたい人」
+      「長い文章は苦手な人」
+      「やさしい言葉がいい人」
+      「専門性をしっかり見たい人」。
     </p>
 
     <p>
-      あなたは、ただ人に合わせる人ではありません。異なる立場の間に入り、それぞれが大切にしていることをくみ取りながら、納得しやすい着地点を探せる人です。
+      気づけば、
+      1本の発信を書くために頭の中で読者会議。
     </p>
 
     <p>
-      お客様の希望と、実際に提供できることを整理する。チームの中で異なる意見が出たときに、それぞれの考えをつなぐ。話がまとまらないときに、全体を見渡して共通する目的を見つける。
-    </p>
-
-    <p>
-      自分の考えを伝えながら、相手の気持ちも置き去りにしない。さまざまな人や視点を丁寧につなぎ、安心して一緒に進める関係をつくれることが、あなたの大きな才能です。
+      しかも、
+      <strong>
+        全員に発言権があり、
+        全員が拒否権まで持っている。
+      </strong>
+      そんな状態になることもあるかもしれません。
     </p>
   </article>
 
-  <article class="result-block">
-    <h2>今のあなたの状態</h2>
+  <!-- 04 -->
+  <article class="result-block result-block--risk">
+    <h2>この状態が続くと…</h2>
+
+    <div class="risk-items">
+      <div class="risk-item">
+        全員に配慮しようとして、
+        誰に向けた発信なのか分かりにくくなる
+      </div>
+
+      <div class="risk-item">
+        届けたい相手が増えるほど、
+        サービスの内容まで広がりやすくなる
+      </div>
+
+      <div class="risk-item">
+        親しみやすさも専門性も入れようとして、
+        自分の見せ方に迷いやすくなる
+      </div>
+
+      <div class="risk-item">
+        たくさん考えているのに、
+        「結局、誰に何を伝えたいんだろう」と疲れやすくなる
+      </div>
+    </div>
+  </article>
+
+  <!-- 05 -->
+  <article class="result-block result-block--key">
+    <h2>でも、問題は「いろいろな人が見えること」ではありません</h2>
 
     <p>
-      ただ今は、その才能が少しだけ空回りしているかもしれません。
+      あなたの気配りと多角的な視点は、
+      人と人をつなぎ、
+      安心して受け取れる形をつくるための強みです。
     </p>
 
     <p>
-      仕事について考えていると、「この人には、この方法が合いそう」と思う。けれど、すぐに「でも、あの人には別の方法が必要かもしれない」「こちらの立場も大切にした方がよいかも」と、ほかの考えが浮かびます。
+      ただ、全員を同時に主役にしようとすると、
+      言葉の中心が見えにくくなります。
+    </p>
+
+    <p class="key-message">
+      <span class="key-message-line">今回は、誰をいちばん近くに置くのか。</span>
+      <span class="key-message-line">その人に、何を1つ届けたいのか。</span>
     </p>
 
     <p>
-      お客様から希望を聞いたときも、「この内容を取り入れた方が喜ばれそう」と考える。けれど、別の人の希望も聞くと、「こちらの考えも大切にしたい」と気になります。
+      一人を選ぶことは、
+      ほかの人を切り捨てることではありません。
     </p>
 
     <p>
-      チームや周囲の人と仕事をするときも、誰かの意見を採用すると、ほかの人を否定したように感じる。そのため、できるだけすべての意見を取り入れようとします。
-    </p>
-
-    <p>
-      一人の希望を取り入れる。別の人の心配にも対応する。さらに、ほかの立場から見た問題も加える。気づけば、最初はシンプルだった仕事が、少しずつ複雑になっていきます。
-    </p>
-
-    <p>
-      頭の中では、何人もの人が参加する会議が始まっています。しかも、全員に発言権があり、全員が拒否権まで持っている。そんなことはないでしょうか。
-    </p>
-
-    <p>
-      誰かの考えを大切にすると、ほかの人を置き去りにする気がする。すべての人へ配慮すると、今度は何を大切にして進める仕事なのかが分からなくなる。
-    </p>
-
-    <p>
-      周囲の意見を丁寧に聞くうちに、自分が最初に大切にしていた考えを後ろへ置いてしまうこともあります。
-    </p>
-
-    <p>
-      あなたは、考えが足りないわけではありません。むしろ、人より多くの立場が見えています。それぞれの考えにある理由や気持ちを理解できるからこそ、簡単に一つへ決められないのです。
-    </p>
-
-    <p>
-      その結果、「今日は、みんなのことをかなり考えた。でも、私は何を進めたかったんだろう」と、少し疲れてしまうことがあります。
-    </p>
-
-    <p>
-      あなたに自分の考えがないわけではありません。今、仕事の中心を見つけにくくなっているのは、見えているすべての立場を同じように大切にしようとして、それぞれの間にある共通点や、みんなで目指したい目的が見えにくくなっているからかもしれません。
+      今回はこの人。
+      次は別の人。
+      そうやって届ける順番をつくれば、
+      ほかの人への思いやりを残したまま、
+      <strong>目の前の一人へまっすぐ伝えやすくなります。</strong>
     </p>
   </article>
 
-  <article class="result-block result-block--final">
+  <!-- 06 LINE自動生成用 -->
+  <article class="result-block result-block--final result-block--source-only">
     <h2>ここから先が本題です</h2>
-
-    <p>
-      ここまで読んで、「そうそう。どの意見にも理由があると思うと、簡単には決められないのよね」と感じたでしょうか。
-    </p>
-
-    <p>
-      手相から見えているあなたの慎重さ、共感力、多角的な視点は、人と人の間にある違いを丁寧に理解し、それぞれが安心して関われる形をつくるための大切な強みです。
-    </p>
-
-    <p>
-      お客様が言葉にできていない希望をくみ取れる。異なる意見の間にある共通点を見つけられる。全体を見渡し、誰か一人を置き去りにしない形を考えられる。こうした場面で、あなたの強みは信頼や安心感を生み出します。
-    </p>
-
-    <p>
-      けれど、すべての意見へ同じように応えようとすると、自分が大切にしたいことや、みんなで目指していた目的まで見えにくくなってしまいます。
-    </p>
-
-    <p>
-      あなたらしい進み方を見つけるヒントは、ほかの人への気配りを減らすことでも、誰か一人の意見だけを優先することでもありません。それぞれの立場を丁寧に受け止めながら、共通する想いや目的を見つけ、人や考えをつないでいくことにありそうです。
-    </p>
-
-    <p>
-      では、慎重に全体を確かめる力、人の気持ちを思いやる力、さまざまな立場を見渡す力を活かしながら、人との信頼と自分らしい仕事の両方を育てるには、どのような考え方が合っているのでしょうか。
-    </p>
 
     <ul class="line-benefits-source">
       <li>
-        <strong>多くの立場を見渡せる自分に合う進み方：</strong>
-        さまざまな人の考えを大切にできる自分の特徴を活かしながら、仕事を前へ進めるための考え方が分かります。
+        <strong>多くの立場が見えるほど、相手を決めにくくなる理由：</strong>
+        共感力、多角的な視点、慎重さが重なることで、
+        なぜ全員へ同時に配慮したくなるのかが分かります。
       </li>
 
       <li>
-        <strong>自分の考えも大切にしながら人をつなぐ目安：</strong>
-        異なる意見が出たときに、自分が大切にしたいことや、共通する目的をどのように捉えればよいのか、その目安が分かります。
+        <strong>今回いちばん近くに置く相手の選び方：</strong>
+        年齢や職業だけではなく、
+        今どんな場面で困っている人から
+        届ければよいのかが分かります。
       </li>
 
       <li>
-        <strong>仕事で共感力と多角的な視点を活かすヒント：</strong>
-        人の気持ちを思いやる力と、異なる立場をつなぐ力を、お客様との関係や周囲との協力へ活かすヒントが分かります。
+        <strong>気配りを伝わる発信へ変えるヒント：</strong>
+        伝える中心を決め、
+        相手に合わせる部分を分け、
+        頭の中の相手を今回・次回・個別対応へ分ける
+        3つのコツが分かります。
       </li>
     </ul>
 
     <p class="cta-message-source">
-      あなたにはすでに、多くの人の気持ちを思いやる力も、異なる立場や考えをつなぐ力もあります。その強みを活かし、人との信頼を大切にしながら、自分らしい仕事を育てるための考え方を、LINEで受け取ってください。
+      あなたには、
+      いろいろな人の気持ちを想像する力も、
+      異なる立場をつなぐ力もあります。
+      必要なのは、
+      見える人を減らすことでも、
+      ほかの人への配慮を捨てることでもありません。
+      今回は誰を最初の一人にするのか。
+      その人へ何を1つ届けたいのか。
+      その順番を決められるようになると、
+      全員に合わせて言葉を薄めなくても、
+      一人ひとりへ丁寧に届けていけます。
+      あなたに合う相手の選び方を、
+      LINEで受け取ってください。
     </p>
   </article>
+
 </section>
