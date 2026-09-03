@@ -285,6 +285,25 @@
       pointer-events: none;
     }
 
+    .locked-result-message {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      z-index: 2;
+      transform: translate(-50%, -50%);
+      width: calc(100% - 36px);
+      margin: 0;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(238, 247, 255, 0.95);
+      color: #1f6fb2;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 1.5;
+      text-align: center;
+      box-sizing: border-box;
+    }
+
     /* ========================================
        LINE自動生成用データ
     ======================================== */
@@ -319,6 +338,12 @@
 
       .locked-result-preview {
         padding: 20px 16px 26px;
+      }
+
+      .locked-result-message {
+        width: calc(100% - 28px);
+        font-size: 12px;
+        padding: 7px 10px;
       }
     }
   </style>
@@ -515,6 +540,10 @@
         <div class="locked-line"></div>
         <div class="locked-line"></div>
       </div>
+
+      <p class="locked-result-message">
+        この先の診断結果は、LINE登録後に受け取れます
+      </p>
 
     </div>
 
