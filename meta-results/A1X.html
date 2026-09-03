@@ -221,7 +221,7 @@
 
     .locked-result {
       position: relative;
-      margin-top: 18px;
+      margin-top: 10px;
       overflow: hidden;
       border-radius: 14px;
       background: #ffffff;
@@ -229,7 +229,8 @@
     }
 
     .locked-result-preview {
-      padding: 20px 18px 105px;
+      position: relative;
+      padding: 22px 18px 28px;
       filter: blur(5px);
       opacity: 0.72;
       user-select: none;
@@ -263,46 +264,25 @@
       width: 84%;
     }
 
-    .locked-result-overlay {
+    .locked-line:last-child {
+      margin-bottom: 0;
+    }
+
+    .locked-result::after {
+      content: "";
       position: absolute;
       left: 0;
       right: 0;
       bottom: 0;
-      padding: 45px 18px 20px;
+      height: 46%;
       background:
         linear-gradient(
           to bottom,
           rgba(255,255,255,0),
-          rgba(255,255,255,0.92) 32%,
-          rgba(255,255,255,1) 65%
+          rgba(255,255,255,0.88),
+          rgba(255,255,255,1)
         );
-      text-align: center;
-    }
-
-    .locked-result-label {
-      display: inline-block;
-      margin: 0 0 8px;
-      padding: 5px 12px;
-      background: #eef7ff;
-      color: #1f6fb2;
-      border-radius: 999px;
-      font-size: 13px;
-      font-weight: 700;
-    }
-
-    .locked-result-title {
-      margin: 0 !important;
-      color: #083f5c;
-      font-size: 18px !important;
-      font-weight: 700;
-      line-height: 1.65 !important;
-    }
-
-    .locked-result-note {
-      margin-top: 8px !important;
-      color: #526b79;
-      font-size: 14px !important;
-      line-height: 1.7 !important;
+      pointer-events: none;
     }
 
     /* ========================================
@@ -338,11 +318,7 @@
       }
 
       .locked-result-preview {
-        padding: 18px 16px 112px;
-      }
-
-      .locked-result-title {
-        font-size: 17px !important;
+        padding: 20px 16px 26px;
       }
     }
   </style>
@@ -520,11 +496,17 @@
       着実に積み上げる力もあります。
     </p>
 
+    <p>
+      ただ今は、その力を
+      <strong>「前へ進むため」</strong>
+      よりも――
+    </p>
+
     <div class="locked-result">
 
       <!--
-        本当の診断結果はここには入れません。
-        モザイク表示専用のダミー行です。
+        本当の核心部分はHTMLに入れず、
+        モザイク表示専用のダミー行だけを表示
       -->
       <div class="locked-result-preview">
         <div class="locked-line"></div>
@@ -532,25 +514,6 @@
         <div class="locked-line"></div>
         <div class="locked-line"></div>
         <div class="locked-line"></div>
-      </div>
-
-      <div class="locked-result-overlay">
-
-        <div class="locked-result-label">
-          この先が、あなた専用の続きです
-        </div>
-
-        <p class="locked-result-title">
-          なぜ慎重さが「強み」なのに、<br>
-          前へ進みにくくなるのでしょうか？
-        </p>
-
-        <p class="locked-result-note">
-          あなたが迷いに区切りをつけるための
-          判断基準と、次の一歩のヒントを
-          この先でお伝えします。
-        </p>
-
       </div>
 
     </div>
