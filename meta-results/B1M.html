@@ -233,6 +233,51 @@
     }
 
     /* ========================================
+       感情フレーズ（心の声・迷い）
+       ※このブロックも今後、全タイプ共通の
+       　スタイルシートへ移動してください
+    ======================================== */
+
+    .loop-doubt {
+      margin: 4px 0 18px;
+      padding: 12px 16px;
+      background: #f8fcff;
+      border-left: 3px solid #7893a3;
+      font-size: 15px;
+      font-style: italic;
+      color: #4a5d68;
+      line-height: 1.7;
+    }
+
+    .unspoken-worry {
+      position: relative;
+      margin: 0 0 22px;
+      padding: 16px 18px;
+      background: #fdf6f3;
+      border: 1px dashed #e3b8a8;
+      border-radius: 14px;
+      font-size: 15px;
+      font-style: italic;
+      color: #6b5347;
+      text-align: center;
+      line-height: 1.8;
+    }
+
+    .unspoken-worry::before {
+      content: "心の声";
+      position: absolute;
+      top: -10px;
+      left: 16px;
+      padding: 2px 10px;
+      background: #f4dcd3;
+      border-radius: 20px;
+      font-size: 11px;
+      font-style: normal;
+      font-weight: 700;
+      color: #9b5d47;
+    }
+
+    /* ========================================
        モザイク部分（共通CSS化予定・実文ぼかし版）
        ※このブロックは今後、全タイプ共通の
        　スタイルシートへ移動してください
@@ -504,6 +549,12 @@
       周りには完成して見えても、
       あなたの中では、なかなか審議が終わりません。
     </p>
+
+    <p class="loop-doubt">
+      今のままで本当にいいのか、
+      それとももう少し変えるべきなのか——
+      その迷いが、ずっとくすぶっている。
+    </p>
   </article>
 
   <!-- 04 -->
@@ -523,7 +574,9 @@
 
       <div class="risk-item">
         十分できていても、
-        「まだ納得できない」と完成を認めにくくなる
+        「まだ納得できない」と完成を認めにくくなる。
+        その間にも、同じ時期に動き出した人が
+        形にしていく様子を見て、焦りだけが募っていく
       </div>
 
       <div class="risk-item">
@@ -535,6 +588,12 @@
 
   <!-- 05（モザイク実装版：実文ぼかし・中途半端な位置で切断） -->
   <article class="result-block result-block--key">
+
+    <p class="unspoken-worry">
+      「こんなに時間をかけているのに、
+      私は本当にこの仕事に向いているのだろうか」
+    </p>
+
     <h2>でも、問題は「こだわりが強いこと」ではありません</h2>
 
     <p>
@@ -578,18 +637,21 @@
 
     <ul class="line-benefits-source">
       <li>
-        <strong>何を絶対に守るべきか：</strong>
-        今回の形に残したい大切な部分が分かります。
+        <strong>こだわりの強さは、実は才能だったと分かること：</strong>
+        「これでいいのか」と何度も見直してしまうのは、
+        甘さではなく、責任感の強さの裏返しだと気づけます。
       </li>
 
       <li>
-        <strong>何は今直さなくてよいか：</strong>
-        公開前に直すことと、あとで育てることを見分ける目安が分かります。
+        <strong>今回、守るべきものが見えて、迷いが減ること：</strong>
+        公開前に直すことと、あとで育てることを見分けられるようになり、
+        立ち止まる時間が減っていきます。
       </li>
 
       <li>
-        <strong>どこで完成とするか：</strong>
-        不安が残っていても、責任を持って届けてよい基準が分かります。
+        <strong>「これでいい」と、自信を持って届けられるようになること：</strong>
+        納得の基準が整理されることで、
+        責任を持って完成を決められる自分になれます。
       </li>
     </ul>
 
@@ -599,7 +661,7 @@
       <strong>「今回守るもの」と「あとで育てるもの」</strong>
       を分けられるようになると、
       こだわりを大切にしたまま、
-      今の自分が責任を持てる形として届けやすくなります。
+      自信を持って届けられる自分に近づいていきます。
       あなたに合う完成の見極め方を、
       LINEで受け取ってください。
     </p>
