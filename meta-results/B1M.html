@@ -233,6 +233,93 @@
     }
 
     /* ========================================
+       モザイク部分（共通CSS化予定・実文ぼかし版）
+       ※このブロックは今後、全タイプ共通の
+       　スタイルシートへ移動してください
+    ======================================== */
+
+    .locked-result {
+      position: relative;
+      margin-top: 10px;
+      overflow: hidden;
+      border-radius: 14px;
+      background: #ffffff;
+      border: 1px solid #dcecf5;
+    }
+
+    .locked-result-preview {
+      position: relative;
+      padding: 22px 18px 34px;
+      filter: blur(6px);
+      user-select: none;
+      pointer-events: none;
+    }
+
+    .locked-result-preview p {
+      margin: 0 0 16px;
+      font-size: 16px;
+      line-height: 1.9;
+      color: #24313a;
+    }
+
+    .locked-result-preview p:last-child {
+      margin-bottom: 0;
+    }
+
+    .locked-result-preview .key-message {
+      margin: 18px 0 0 !important;
+      padding: 18px 16px;
+      background: #ffffff;
+      border: 1px solid #dcecf5;
+      border-radius: 8px;
+      font-size: 18px !important;
+      font-weight: 700;
+      color: #083f5c;
+      text-align: center;
+      line-height: 1.7;
+    }
+
+    .locked-result::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 46%;
+      background:
+        linear-gradient(
+          to bottom,
+          rgba(255,255,255,0),
+          rgba(255,255,255,0.88),
+          rgba(255,255,255,1)
+        );
+      pointer-events: none;
+    }
+
+    .locked-result-message {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      z-index: 2;
+      transform: translate(-50%, -50%);
+      width: calc(100% - 36px);
+      margin: 0;
+      padding: 9px 12px;
+      border-radius: 12px;
+      background: rgba(238, 247, 255, 0.95);
+      color: #1f6fb2;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 1.6;
+      text-align: center;
+      box-sizing: border-box;
+    }
+
+    .locked-result-message span {
+      display: block;
+    }
+
+    /* ========================================
        LINE自動生成用データ
     ======================================== */
 
@@ -267,10 +354,20 @@
         font-size: 17px !important;
         padding: 16px 14px;
       }
+
+      .locked-result-preview {
+        padding: 20px 16px 30px;
+      }
+
+      .locked-result-message {
+        width: calc(100% - 28px);
+        font-size: 12px;
+        padding: 8px 10px;
+      }
     }
   </style>
 
-  <!-- FV -->
+  <!-- FV（4つの強みカード削除版） -->
   <div class="diagnosis-result-fv">
     <img
       src="meta-fv-results/B1M.png"
@@ -436,7 +533,7 @@
     </div>
   </article>
 
-  <!-- 05 -->
+  <!-- 05（モザイク実装版：実文ぼかし・中途半端な位置で切断） -->
   <article class="result-block result-block--key">
     <h2>でも、問題は「こだわりが強いこと」ではありません</h2>
 
@@ -449,27 +546,30 @@
       自分の想いに嘘がない。
       相手にもきちんと届く。
       責任を持って出せる。
-      その全部を大切にしているからこそ、
-      終わりの基準が高くなりやすいのです。
+      その全部を大切にしているからこそ――
     </p>
 
-    <p class="key-message">
-      <span class="key-message-line">今回、絶対に守りたいものは何なのか。</span>
-      <span class="key-message-line">今、本当に直す必要があるのはどこなのか。</span>
-    </p>
+    <div class="locked-result">
+      <div class="locked-result-preview">
+        <p>
+          終わりの基準が高くなりやすいのです。
+        </p>
+        <p class="key-message">
+          <span class="key-message-line">今回、絶対に守りたいものは何なのか。</span>
+          <span class="key-message-line">今、本当に直す必要があるのはどこなのか。</span>
+        </p>
+        <p>
+          この2つを分けないままだと、
+          気になることが見つかるたびに、
+          すべてが「公開前に直すこと」に見えてしまいます。
+        </p>
+      </div>
 
-    <p>
-      この2つを分けないままだと、
-      気になることが見つかるたびに、
-      すべてが「公開前に直すこと」に見えてしまいます。
-    </p>
-
-    <p>
-      反対に、
-      本当に守るべきものと、
-      次に育てればよいものを分けられると、
-      <strong>今の自分が責任を持てる形として、届けやすくなります。</strong>
-    </p>
+      <p class="locked-result-message">
+        <span>あなたが守るべきものの見極め方は</span>
+        <span>LINE登録後にお伝えします</span>
+      </p>
+    </div>
   </article>
 
   <!-- 06 LINE自動生成用 -->
