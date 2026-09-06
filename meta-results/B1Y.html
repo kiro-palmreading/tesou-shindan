@@ -13,10 +13,6 @@
       line-height: 1.8;
     }
 
-    /* ========================================
-       FV
-    ======================================== */
-
     .diagnosis-result-fv {
       margin: 0 0 28px;
       padding: 0;
@@ -28,10 +24,6 @@
       height: auto;
       margin: 0 auto;
     }
-
-    /* ========================================
-       共通ブロック
-    ======================================== */
 
     .result-detail--visual .result-block {
       margin: 0 16px 28px;
@@ -59,10 +51,6 @@
     .result-detail--visual .result-block p:last-child {
       margin-bottom: 0;
     }
-
-    /* ========================================
-       あなたはこんなタイプ
-    ======================================== */
 
     .type-keywords {
       margin: 0 0 20px;
@@ -104,10 +92,6 @@
       color: #314958;
     }
 
-    /* ========================================
-       強みが出る場面
-    ======================================== */
-
     .talent-scene-grid {
       display: grid;
       grid-template-columns: 1fr;
@@ -132,10 +116,6 @@
     .talent-scene-card p {
       margin: 0 !important;
     }
-
-    /* ========================================
-       今のループ
-    ======================================== */
 
     .loop-intro {
       font-weight: 700;
@@ -173,10 +153,6 @@
       color: #9b4d3b;
     }
 
-    /* ========================================
-       この状態が続くと
-    ======================================== */
-
     .result-block--risk {
       background: #fffaf7 !important;
       border-color: #f1d9cf !important;
@@ -206,10 +182,6 @@
       font-size: 10px;
     }
 
-    /* ========================================
-       問題の正体
-    ======================================== */
-
     .result-block--key {
       background: #eef7ff !important;
       border-color: #bddcec !important;
@@ -233,16 +205,125 @@
     }
 
     /* ========================================
-       LINE自動生成用データ
+       感情フレーズ（心の声・迷い）
+       ※このブロックは全タイプ共通の
+       　スタイルシートへ移動してください
     ======================================== */
+
+    .loop-doubt {
+      margin: 4px 0 18px;
+      padding: 12px 16px;
+      background: #f8fcff;
+      border-left: 3px solid #7893a3;
+      font-size: 15px;
+      font-style: italic;
+      color: #4a5d68;
+      line-height: 1.7;
+    }
+
+    .unspoken-worry {
+      margin: 0 0 22px;
+      padding: 18px 18px;
+      background: #fdf6f3;
+      border: 1px dashed #e3b8a8;
+      border-radius: 14px;
+      font-size: 15px;
+      font-style: italic;
+      color: #6b5347;
+      text-align: center;
+      line-height: 1.8;
+    }
+
+    /* ========================================
+       モザイク部分（共通CSS化予定・実文ぼかし版）
+       ※このブロックは全タイプ共通の
+       　スタイルシートへ移動してください
+    ======================================== */
+
+    .locked-result {
+      position: relative;
+      margin-top: 10px;
+      overflow: hidden;
+      border-radius: 14px;
+      background: #ffffff;
+      border: 1px solid #dcecf5;
+    }
+
+    .locked-result-preview {
+      position: relative;
+      padding: 22px 18px 34px;
+      filter: blur(6px);
+      user-select: none;
+      pointer-events: none;
+    }
+
+    .locked-result-preview p {
+      margin: 0 0 16px;
+      font-size: 16px;
+      line-height: 1.9;
+      color: #24313a;
+    }
+
+    .locked-result-preview p:last-child {
+      margin-bottom: 0;
+    }
+
+    .locked-result-preview .key-message {
+      margin: 18px 0 0 !important;
+      padding: 18px 16px;
+      background: #ffffff;
+      border: 1px solid #dcecf5;
+      border-radius: 8px;
+      font-size: 18px !important;
+      font-weight: 700;
+      color: #083f5c;
+      text-align: center;
+      line-height: 1.7;
+    }
+
+    .locked-result::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 46%;
+      background:
+        linear-gradient(
+          to bottom,
+          rgba(255,255,255,0),
+          rgba(255,255,255,0.88),
+          rgba(255,255,255,1)
+        );
+      pointer-events: none;
+    }
+
+    .locked-result-message {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      z-index: 2;
+      transform: translate(-50%, -50%);
+      width: calc(100% - 36px);
+      margin: 0;
+      padding: 9px 12px;
+      border-radius: 12px;
+      background: rgba(238, 247, 255, 0.95);
+      color: #1f6fb2;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 1.6;
+      text-align: center;
+      box-sizing: border-box;
+    }
+
+    .locked-result-message span {
+      display: block;
+    }
 
     .result-block--source-only {
       display: none !important;
     }
-
-    /* ========================================
-       スマホ
-    ======================================== */
 
     @media (max-width: 600px) {
       .result-detail--visual .result-block {
@@ -267,10 +348,20 @@
         font-size: 17px !important;
         padding: 16px 14px;
       }
+
+      .locked-result-preview {
+        padding: 20px 16px 30px;
+      }
+
+      .locked-result-message {
+        width: calc(100% - 28px);
+        font-size: 12px;
+        padding: 8px 10px;
+      }
     }
   </style>
 
-  <!-- FV -->
+  <!-- FV（4つの強みカード削除版に差し替えてください） -->
   <div class="diagnosis-result-fv">
     <img
       src="meta-fv-results/B1Y.png"
@@ -405,6 +496,12 @@
       <strong>「遅くなってごめんなさい。忙しくて」</strong>
       の一言だった、ということもあるかもしれません。
     </p>
+
+    <p class="loop-doubt">
+      今、方向を変えるべきなのか、
+      それとも様子を見るべきなのか——
+      その判断が、なかなかつかない。
+    </p>
   </article>
 
   <!-- 04 -->
@@ -429,14 +526,28 @@
 
       <div class="risk-item">
         「私は人に流されているのかも」と、
-        本来の共感力まで疑いやすくなる
+        本来の共感力まで疑いやすくなる。
+        本当の自分の気持ちを誰にも分かってもらえていない気がして、
+        孤独感が募っていく
       </div>
     </div>
   </article>
 
-  <!-- 05 -->
+  <!-- 05（モザイク実装版：実文ぼかし・中途半端な位置で切断） -->
   <article class="result-block result-block--key">
+
+    <p class="unspoken-worry">
+      「こんなに相手のことを考えているのに、
+      私にはちゃんと人を喜ばせる力がないのだろうか」
+    </p>
+
     <h2>でも、問題は「人の反応を見ること」ではありません</h2>
+
+    <p>
+      ご安心ください。
+      その相手の反応が気になってしまう気持ちには、
+      ちゃんと理由があります。
+    </p>
 
     <p>
       あなたの共感力は、
@@ -446,27 +557,32 @@
 
     <p>
       ただ、
-      実際に起きたことと、
-      「きっと、こう思われた」と想像したことが、
-      同じ相手の反応に見えやすいのです。
+      実際に起きたことと――
     </p>
 
-    <p class="key-message">
-      <span class="key-message-line">実際に起きたことは何なのか。</span>
-      <span class="key-message-line">そこから、自分は何を想像したのか。</span>
-    </p>
+    <div class="locked-result">
+      <div class="locked-result-preview">
+        <p>
+          「きっと、こう思われた」と想像したことが、
+          同じ相手の反応に見えやすいのです。
+        </p>
+        <p class="key-message">
+          <span class="key-message-line">実際に起きたことは何なのか。</span>
+          <span class="key-message-line">そこから、自分は何を想像したのか。</span>
+        </p>
+        <p>
+          この2つを分けないままだと、
+          相手が何も求めていなくても、
+          自分の方から方向を変えたくなってしまいます。
+        </p>
+      </div>
 
-    <p>
-      この2つを分けないままだと、
-      相手が何も求めていなくても、
-      自分の方から方向を変えたくなってしまいます。
-    </p>
+      <p class="locked-result-message">
+        <span>事実と想像を見分ける方法は</span>
+        <span>LINE登録後にお伝えします</span>
+      </p>
+    </div>
 
-    <p>
-      反対に、
-      事実を確かめたうえで相手の声を使えるようになると、
-      <strong>自分が届けたい中心を守りながら、必要な部分だけを調整できます。</strong>
-    </p>
   </article>
 
   <!-- 06 LINE自動生成用 -->
@@ -475,18 +591,22 @@
 
     <ul class="line-benefits-source">
       <li>
-        <strong>これは事実か、想像か：</strong>
-        相手の実際の反応と、自分の解釈を分ける目安が分かります。
+        <strong>相手の変化に気づけるのは、実は才能だったと気づけます：</strong>
+        言葉になっていない相手の反応まで感じ取れるのは、
+        誰にでもできることではない感受性です。
       </li>
 
       <li>
-        <strong>どこまで相手に合わせるか：</strong>
-        相手の声を取り入れてよい部分が分かります。
+        <strong>今、事実と想像を分けられて、迷いが減っていきます：</strong>
+        「実際に起きたこと」と「自分が想像したこと」を
+        分けられるようになり、
+        方向を変え続ける時間が減っていきます。
       </li>
 
       <li>
-        <strong>何は変えなくてよいか：</strong>
-        反応が気になっても守りたい、自分の中心が分かります。
+        <strong>「これでいい」と、自信を持って届け続けられるようになります：</strong>
+        事実を確かめる基準ができることで、
+        自分の中心を守りながら自信を持って届けられる自分になれます。
       </li>
     </ul>
 
@@ -496,7 +616,7 @@
       <strong>「実際に起きたこと」と「自分が想像したこと」</strong>
       を分けられるようになると、
       相手の声を大切にしながら、
-      自分が届けたい中心も守りやすくなります。
+      自信を持って自分が届けたい中心も守りやすくなります。
       あなたに合う見極め方を、
       LINEで受け取ってください。
     </p>
