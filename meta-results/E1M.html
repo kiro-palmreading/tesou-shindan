@@ -13,10 +13,6 @@
       line-height: 1.8;
     }
 
-    /* ========================================
-       FV
-    ======================================== */
-
     .diagnosis-result-fv {
       margin: 0 0 28px;
       padding: 0;
@@ -28,10 +24,6 @@
       height: auto;
       margin: 0 auto;
     }
-
-    /* ========================================
-       共通ブロック
-    ======================================== */
 
     .result-detail--visual .result-block {
       margin: 0 16px 28px;
@@ -59,10 +51,6 @@
     .result-detail--visual .result-block p:last-child {
       margin-bottom: 0;
     }
-
-    /* ========================================
-       あなたはこんなタイプ
-    ======================================== */
 
     .type-keywords {
       margin: 0 0 20px;
@@ -104,10 +92,6 @@
       color: #314958;
     }
 
-    /* ========================================
-       強みが出る場面
-    ======================================== */
-
     .talent-scene-grid {
       display: grid;
       grid-template-columns: 1fr;
@@ -132,10 +116,6 @@
     .talent-scene-card p {
       margin: 0 !important;
     }
-
-    /* ========================================
-       今のループ
-    ======================================== */
 
     .loop-intro {
       font-weight: 700;
@@ -173,10 +153,6 @@
       color: #9b4d3b;
     }
 
-    /* ========================================
-       この状態が続くと
-    ======================================== */
-
     .result-block--risk {
       background: #fffaf7 !important;
       border-color: #f1d9cf !important;
@@ -206,10 +182,6 @@
       font-size: 10px;
     }
 
-    /* ========================================
-       問題の正体
-    ======================================== */
-
     .result-block--key {
       background: #eef7ff !important;
       border-color: #bddcec !important;
@@ -233,16 +205,125 @@
     }
 
     /* ========================================
-       LINE自動生成用データ
+       感情フレーズ（心の声・迷い）
+       ※このブロックは全タイプ共通の
+       　スタイルシートへ移動してください
     ======================================== */
+
+    .loop-doubt {
+      margin: 4px 0 18px;
+      padding: 12px 16px;
+      background: #f8fcff;
+      border-left: 3px solid #7893a3;
+      font-size: 15px;
+      font-style: italic;
+      color: #4a5d68;
+      line-height: 1.7;
+    }
+
+    .unspoken-worry {
+      margin: 0 0 22px;
+      padding: 18px 18px;
+      background: #fdf6f3;
+      border: 1px dashed #e3b8a8;
+      border-radius: 14px;
+      font-size: 15px;
+      font-style: italic;
+      color: #6b5347;
+      text-align: center;
+      line-height: 1.8;
+    }
+
+    /* ========================================
+       モザイク部分（共通CSS化予定・実文ぼかし版）
+       ※このブロックは全タイプ共通の
+       　スタイルシートへ移動してください
+    ======================================== */
+
+    .locked-result {
+      position: relative;
+      margin-top: 10px;
+      overflow: hidden;
+      border-radius: 14px;
+      background: #ffffff;
+      border: 1px solid #dcecf5;
+    }
+
+    .locked-result-preview {
+      position: relative;
+      padding: 22px 18px 34px;
+      filter: blur(6px);
+      user-select: none;
+      pointer-events: none;
+    }
+
+    .locked-result-preview p {
+      margin: 0 0 16px;
+      font-size: 16px;
+      line-height: 1.9;
+      color: #24313a;
+    }
+
+    .locked-result-preview p:last-child {
+      margin-bottom: 0;
+    }
+
+    .locked-result-preview .key-message {
+      margin: 18px 0 0 !important;
+      padding: 18px 16px;
+      background: #ffffff;
+      border: 1px solid #dcecf5;
+      border-radius: 8px;
+      font-size: 18px !important;
+      font-weight: 700;
+      color: #083f5c;
+      text-align: center;
+      line-height: 1.7;
+    }
+
+    .locked-result::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 46%;
+      background:
+        linear-gradient(
+          to bottom,
+          rgba(255,255,255,0),
+          rgba(255,255,255,0.88),
+          rgba(255,255,255,1)
+        );
+      pointer-events: none;
+    }
+
+    .locked-result-message {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      z-index: 2;
+      transform: translate(-50%, -50%);
+      width: calc(100% - 36px);
+      margin: 0;
+      padding: 9px 12px;
+      border-radius: 12px;
+      background: rgba(238, 247, 255, 0.95);
+      color: #1f6fb2;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 1.6;
+      text-align: center;
+      box-sizing: border-box;
+    }
+
+    .locked-result-message span {
+      display: block;
+    }
 
     .result-block--source-only {
       display: none !important;
     }
-
-    /* ========================================
-       スマホ
-    ======================================== */
 
     @media (max-width: 600px) {
       .result-detail--visual .result-block {
@@ -267,10 +348,20 @@
         font-size: 17px !important;
         padding: 16px 14px;
       }
+
+      .locked-result-preview {
+        padding: 20px 16px 30px;
+      }
+
+      .locked-result-message {
+        width: calc(100% - 28px);
+        font-size: 12px;
+        padding: 8px 10px;
+      }
     }
   </style>
 
-  <!-- FV -->
+  <!-- FV（4つの強みカード削除版に差し替えてください） -->
   <div class="diagnosis-result-fv">
     <img
       src="meta-fv-results/E1M.png"
@@ -395,6 +486,12 @@
       どこで完成とするかが
       分かりにくくなりやすいのです。
     </p>
+
+    <p class="loop-doubt">
+      これは本当に直すべきところなのか、
+      それとももう十分なのか——
+      その判断が、なかなかつかない。
+    </p>
   </article>
 
   <!-- 04 -->
@@ -414,7 +511,9 @@
 
       <div class="risk-item">
         長く集中して取り組んでいるのに、
-        外へ出た成果や実績が増えにくくなる
+        外へ出た成果や実績が増えにくくなる。
+        その間にも、同じように発信を続けている人が
+        実績を積み重ねていく様子を見て、焦りが募っていく
       </div>
 
       <div class="risk-item">
@@ -424,9 +523,21 @@
     </div>
   </article>
 
-  <!-- 05 -->
+  <!-- 05（モザイク実装版：実文ぼかし・中途半端な位置で切断） -->
   <article class="result-block result-block--key">
+
+    <p class="unspoken-worry">
+      「こんなに深く考えているのに、
+      私は本当に価値のあるものを作れているのだろうか」
+    </p>
+
     <h2>でも、問題は「深く考えること」ではありません</h2>
+
+    <p>
+      ご安心ください。
+      その直したくなる気持ちには、
+      ちゃんと理由があります。
+    </p>
 
     <p>
       あなたには、
@@ -437,26 +548,33 @@
 
     <p>
       ただ今は、
-      完成の基準が
-      <strong>
-        「今の目的を果たせる状態」ではなく
-        「これ以上直すところがない状態」
-      </strong>
-      になっているのかもしれません。
+      完成の基準が――
     </p>
 
-    <p class="key-message">
-      <span class="key-message-line">「今の目的を果たせているか？」</span>
-      <span class="key-message-line">「次に育てればよい改善は何か？」</span>
-    </p>
+    <div class="locked-result">
+      <div class="locked-result-preview">
+        <p>
+          「今の目的を果たせる状態」ではなく
+          「これ以上直すところがない状態」に
+          なっているのかもしれません。
+        </p>
+        <p class="key-message">
+          <span class="key-message-line">「今の目的を果たせているか？」</span>
+          <span class="key-message-line">「次に育てればよい改善は何か？」</span>
+        </p>
+        <p>
+          この区切りを持てるようになると、
+          こだわりや深さを失わなくても、
+          今届けられる価値を一度外へ出しやすくなります。
+        </p>
+      </div>
 
-    <p>
-      この区切りを持てるようになると、
-      こだわりや深さを失わなくても、
-      今届けられる価値を一度外へ出し、
-      実際の反応を受け取りながら
-      次の深さへ育てていきやすくなります。
-    </p>
+      <p class="locked-result-message">
+        <span>あなたの完成の基準の整え方は</span>
+        <span>LINE登録後にお伝えします</span>
+      </p>
+    </div>
+
   </article>
 
   <!-- 06 LINE自動生成用 -->
@@ -465,24 +583,23 @@
 
     <ul class="line-benefits-source">
       <li>
-        <strong>どこまで整えたら「今は完成」と言えるのか：</strong>
+        <strong>深く考え抜けるのは、実は才能だったと気づけます：</strong>
         あらかじめ3つの完成条件を決め、
         「これ以上直せない」ではなく
-        「今の目的を果たしているか」で判断する方法が分かります。
+        「今の目的を果たしているか」で判断できるようになります。
       </li>
 
       <li>
-        <strong>改善点が見つかっても全体を作り直さない方法：</strong>
-        気づいた改善を
-        「今直すもの」と「次に育てるもの」に分け、
-        今回必要な部分だけを整える考え方が分かります。
+        <strong>改善点と、今回直すべき部分の違いが見えて、迷いが減っていきます：</strong>
+        気づいた改善を「今直すもの」と「次に育てるもの」に
+        分けられるようになり、
+        全体を作り直す時間が減っていきます。
       </li>
 
       <li>
-        <strong>集中力を成果へ変える3つのヒント：</strong>
+        <strong>「これでいい」と、自信を持って外に出せるようになります：</strong>
         一つの方向を育てる期間を先に決め、
-        頭の中の違和感だけではなく、
-        実際の反応をもとに次の改善を決める方法が分かります。
+        実際の反応をもとに次の改善を判断できる自分になれます。
       </li>
     </ul>
 
@@ -493,7 +610,7 @@
       簡単には真似できない価値へ育てる力があります。
       その慎重さと世界観と集中力を、
       完成を先延ばしにするためではなく、
-      人に届く仕事と実績へ変えるための考え方を、
+      自信を持って人に届く仕事と実績へ変えるための考え方を、
       LINEで受け取ってください。
     </p>
   </article>
