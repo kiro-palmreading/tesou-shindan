@@ -13,10 +13,6 @@
       line-height: 1.8;
     }
 
-    /* ========================================
-       FV
-    ======================================== */
-
     .diagnosis-result-fv {
       margin: 0 0 28px;
       padding: 0;
@@ -28,10 +24,6 @@
       height: auto;
       margin: 0 auto;
     }
-
-    /* ========================================
-       共通ブロック
-    ======================================== */
 
     .result-detail--visual .result-block {
       margin: 0 16px 28px;
@@ -59,10 +51,6 @@
     .result-detail--visual .result-block p:last-child {
       margin-bottom: 0;
     }
-
-    /* ========================================
-       あなたはこんなタイプ
-    ======================================== */
 
     .type-keywords {
       margin: 0 0 20px;
@@ -104,10 +92,6 @@
       color: #314958;
     }
 
-    /* ========================================
-       強みが出る場面
-    ======================================== */
-
     .talent-scene-grid {
       display: grid;
       grid-template-columns: 1fr;
@@ -132,10 +116,6 @@
     .talent-scene-card p {
       margin: 0 !important;
     }
-
-    /* ========================================
-       今のループ
-    ======================================== */
 
     .loop-intro {
       font-weight: 700;
@@ -173,10 +153,6 @@
       color: #9b4d3b;
     }
 
-    /* ========================================
-       この状態が続くと
-    ======================================== */
-
     .result-block--risk {
       background: #fffaf7 !important;
       border-color: #f1d9cf !important;
@@ -206,10 +182,6 @@
       font-size: 10px;
     }
 
-    /* ========================================
-       問題の正体
-    ======================================== */
-
     .result-block--key {
       background: #eef7ff !important;
       border-color: #bddcec !important;
@@ -233,16 +205,125 @@
     }
 
     /* ========================================
-       LINE自動生成用データ
+       感情フレーズ（心の声・迷い）
+       ※このブロックは全タイプ共通の
+       　スタイルシートへ移動してください
     ======================================== */
+
+    .loop-doubt {
+      margin: 4px 0 18px;
+      padding: 12px 16px;
+      background: #f8fcff;
+      border-left: 3px solid #7893a3;
+      font-size: 15px;
+      font-style: italic;
+      color: #4a5d68;
+      line-height: 1.7;
+    }
+
+    .unspoken-worry {
+      margin: 0 0 22px;
+      padding: 18px 18px;
+      background: #fdf6f3;
+      border: 1px dashed #e3b8a8;
+      border-radius: 14px;
+      font-size: 15px;
+      font-style: italic;
+      color: #6b5347;
+      text-align: center;
+      line-height: 1.8;
+    }
+
+    /* ========================================
+       モザイク部分（共通CSS化予定・実文ぼかし版）
+       ※このブロックは全タイプ共通の
+       　スタイルシートへ移動してください
+    ======================================== */
+
+    .locked-result {
+      position: relative;
+      margin-top: 10px;
+      overflow: hidden;
+      border-radius: 14px;
+      background: #ffffff;
+      border: 1px solid #dcecf5;
+    }
+
+    .locked-result-preview {
+      position: relative;
+      padding: 22px 18px 34px;
+      filter: blur(6px);
+      user-select: none;
+      pointer-events: none;
+    }
+
+    .locked-result-preview p {
+      margin: 0 0 16px;
+      font-size: 16px;
+      line-height: 1.9;
+      color: #24313a;
+    }
+
+    .locked-result-preview p:last-child {
+      margin-bottom: 0;
+    }
+
+    .locked-result-preview .key-message {
+      margin: 18px 0 0 !important;
+      padding: 18px 16px;
+      background: #ffffff;
+      border: 1px solid #dcecf5;
+      border-radius: 8px;
+      font-size: 18px !important;
+      font-weight: 700;
+      color: #083f5c;
+      text-align: center;
+      line-height: 1.7;
+    }
+
+    .locked-result::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 46%;
+      background:
+        linear-gradient(
+          to bottom,
+          rgba(255,255,255,0),
+          rgba(255,255,255,0.88),
+          rgba(255,255,255,1)
+        );
+      pointer-events: none;
+    }
+
+    .locked-result-message {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      z-index: 2;
+      transform: translate(-50%, -50%);
+      width: calc(100% - 36px);
+      margin: 0;
+      padding: 9px 12px;
+      border-radius: 12px;
+      background: rgba(238, 247, 255, 0.95);
+      color: #1f6fb2;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 1.6;
+      text-align: center;
+      box-sizing: border-box;
+    }
+
+    .locked-result-message span {
+      display: block;
+    }
 
     .result-block--source-only {
       display: none !important;
     }
-
-    /* ========================================
-       スマホ
-    ======================================== */
 
     @media (max-width: 600px) {
       .result-detail--visual .result-block {
@@ -267,10 +348,20 @@
         font-size: 17px !important;
         padding: 16px 14px;
       }
+
+      .locked-result-preview {
+        padding: 20px 16px 30px;
+      }
+
+      .locked-result-message {
+        width: calc(100% - 28px);
+        font-size: 12px;
+        padding: 8px 10px;
+      }
     }
   </style>
 
-  <!-- FV -->
+  <!-- FV（4つの強みカード削除版に差し替えてください） -->
   <div class="diagnosis-result-fv">
     <img
       src="meta-fv-results/C2M.png"
@@ -411,6 +502,12 @@
       </strong>
       そんな状態になることもあるかもしれません。
     </p>
+
+    <p class="loop-doubt">
+      今は立ち止まって見直すべきなのか、
+      それともこのまま進めるべきなのか——
+      その判断が、なかなかつかない。
+    </p>
   </article>
 
   <!-- 04 -->
@@ -435,14 +532,28 @@
 
       <div class="risk-item">
         本気で取り組んでいるのに、
-        「自分はブレやすいのかも」と感じやすくなる
+        「自分はブレやすいのかも」と感じやすくなる。
+        誰にも本当の理由を分かってもらえない気がして、
+        孤独感が募っていく
       </div>
     </div>
   </article>
 
-  <!-- 05 -->
+  <!-- 05（モザイク実装版：実文ぼかし・中途半端な位置で切断） -->
   <article class="result-block result-block--key">
+
+    <p class="unspoken-worry">
+      「こんなに試行錯誤しているのに、
+      私は本当にこの道で合っているのだろうか」
+    </p>
+
     <h2>でも、問題は「途中で疑問を持つこと」ではありません</h2>
+
+    <p>
+      ご安心ください。
+      その立ち止まりたくなる気持ちには、
+      ちゃんと理由があります。
+    </p>
 
     <p>
       動いた結果を深く分析し、
@@ -453,28 +564,33 @@
 
     <p>
       ただ、
-      一つの疑問を
-      「今の方法の問題」なのか
-      「仕事の軸そのものの問題」なのか分けないまま考えると、
-      問いが一気に大きくなります。
+      一つの疑問を――
     </p>
 
-    <p class="key-message">
-      <span class="key-message-line">今、疑問なのは「軸」なのか。</span>
-      <span class="key-message-line">それとも、軸を届ける「方法」なのか。</span>
-    </p>
+    <div class="locked-result">
+      <div class="locked-result-preview">
+        <p>
+          「今の方法の問題」なのか
+          「仕事の軸そのものの問題」なのか
+          分けないまま考えると、問いが一気に大きくなります。
+        </p>
+        <p class="key-message">
+          <span class="key-message-line">今、疑問なのは「軸」なのか。</span>
+          <span class="key-message-line">それとも、軸を届ける「方法」なのか。</span>
+        </p>
+        <p>
+          この違いが曖昧なままだと、
+          方法に小さな問題が出るたびに、
+          「この仕事そのものが違うのでは」と感じやすくなります。
+        </p>
+      </div>
 
-    <p>
-      この違いが曖昧なままだと、
-      方法に小さな問題が出るたびに、
-      「この仕事そのものが違うのでは」と感じやすくなります。
-    </p>
+      <p class="locked-result-message">
+        <span>あなたが今、本当に見直すべき部分は</span>
+        <span>LINE登録後にお伝えします</span>
+      </p>
+    </div>
 
-    <p>
-      反対に、
-      軸と方法を分けて考えられるようになると、
-      <strong>今の方向を残したまま、疑問を深める材料として使えます。</strong>
-    </p>
   </article>
 
   <!-- 06 LINE自動生成用 -->
@@ -483,18 +599,22 @@
 
     <ul class="line-benefits-source">
       <li>
-        <strong>何を軸として残すか：</strong>
-        今も変わっていない、仕事の中心を確認する方法が分かります。
+        <strong>結果を深く分析して疑問を持てるのは、実は才能だったと気づけます：</strong>
+        やりっぱなしにせず本質まで確かめられるのは、
+        誰にでもできることではない検証力です。
       </li>
 
       <li>
-        <strong>何が方法の問題か：</strong>
-        軸まで変えず、今のやり方だけ見直せばよい疑問が分かります。
+        <strong>今、軸と方法の違いが見えて、迷いが減っていきます：</strong>
+        「今も残したい軸」と「今回確かめる方法」を
+        分けられるようになり、
+        土台から作り直す時間が減っていきます。
       </li>
 
       <li>
-        <strong>次に何を確かめるか：</strong>
-        疑問を止まる理由にせず、検証するテーマへ変える方法が分かります。
+        <strong>「これでいい」と、自信を持って進み続けられるようになります：</strong>
+        疑問を次の改善に変える基準ができることで、
+        積み上げを活かしながら自信を持って進める自分になれます。
       </li>
     </ul>
 
@@ -504,7 +624,7 @@
       <strong>「今も残したい軸」と「今回確かめる方法」</strong>
       を分けられるようになると、
       今までの積み上げを活かしながら、
-      疑問を次の改善へつなげやすくなります。
+      自信を持って疑問を次の改善へつなげやすくなります。
       あなたに合う軸の深め方を、
       LINEで受け取ってください。
     </p>
