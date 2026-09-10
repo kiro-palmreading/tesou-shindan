@@ -3,7 +3,7 @@
   <style>
     /* ========================================
        B1M 診断結果
-       Meta広告流入・スマホ向け（圧縮版）
+       Meta広告流入・スマホ向け（大幅圧縮版）
     ======================================== */
 
     .result-detail--visual {
@@ -64,7 +64,7 @@
     .type-point-list {
       display: grid;
       gap: 11px;
-      margin: 0 0 20px;
+      margin: 0;
     }
 
     .type-point {
@@ -83,38 +83,6 @@
       top: 14px;
       color: #1f6fb2;
       font-weight: 700;
-    }
-
-    .type-summary {
-      padding: 16px;
-      background: #eef7ff;
-      border-radius: 12px;
-      color: #314958;
-    }
-
-    .talent-scene-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 12px;
-    }
-
-    .talent-scene-card {
-      padding: 18px;
-      border-radius: 14px;
-      background: #eef7ff;
-      border: 1px solid #cfe3f1;
-    }
-
-    .talent-scene-card strong {
-      display: block;
-      margin-bottom: 8px;
-      color: #083f5c;
-      font-size: 17px;
-      line-height: 1.5;
-    }
-
-    .talent-scene-card p {
-      margin: 0 !important;
     }
 
     .loop-intro {
@@ -205,7 +173,7 @@
     }
 
     /* ========================================
-       モザイク部分（共通CSS化予定・実文ぼかし版）
+       モザイク部分（実文ぼかし版）
     ======================================== */
 
     .locked-result {
@@ -308,10 +276,6 @@
         font-size: 19px;
       }
 
-      .talent-scene-card strong {
-        font-size: 17px;
-      }
-
       .key-message {
         font-size: 17px !important;
         padding: 16px 14px;
@@ -339,7 +303,7 @@
     >
   </div>
 
-  <!-- 01（圧縮：3ポイント→2ポイント、要約短縮） -->
+  <!-- 01+02統合：タイプ説明と強みを1ブロックに集約 -->
   <article class="result-block">
     <h2>あなたはこんなタイプです</h2>
 
@@ -354,50 +318,13 @@
       </div>
 
       <div class="type-point">
-        一度「これだ」と納得したものには、
-        <strong>深く、粘り強く力を注げる</strong>
-      </div>
-    </div>
-
-    <p class="type-summary">
-      相手への思いやりと自分の信念、
-      その両方を大切にしながら、
-      納得できるものを深く育てていく人です。
-    </p>
-  </article>
-
-  <!-- 02（各カードの説明を1文に短縮） -->
-  <article class="result-block">
-    <h2>こんな場面で強みが出ます</h2>
-
-    <div class="talent-scene-grid">
-      <div class="talent-scene-card">
-        <strong>🤝 相手の本音をくみ取るとき</strong>
-        <p>
-          「本当に困っているのはどこだろう」と、
-          相手の気持ちを深く考えられます。
-        </p>
-      </div>
-
-      <div class="talent-scene-card">
-        <strong>🔍 1つのテーマを深めるとき</strong>
-        <p>
-          簡単な答えで終わらせず、
-          納得できるところまで追い続けられます。
-        </p>
-      </div>
-
-      <div class="talent-scene-card">
-        <strong>🎯 信頼できる仕事へ育てるとき</strong>
-        <p>
-          「責任を持って届けられるか」まで考え、
-          中身のある形へ育てていけます。
-        </p>
+        「本当に役立つか」まで考え抜き、
+        <strong>中身のある仕事へ育てていける</strong>
       </div>
     </div>
   </article>
 
-  <!-- 03（4段落→1段落に圧縮、迷いの追加文は削除） -->
+  <!-- 03：ループ図はそのまま（視覚的で速く読める）、文章は1文に -->
   <article class="result-block">
     <h2>今、こんなループに入っていませんか？</h2>
 
@@ -430,14 +357,12 @@
     </div>
 
     <p>
-      あなたは、何もしていないわけではありません。
-      むしろ人一倍真剣に考え、手を動かしています。
-      ただ、相手への想いや責任感から「もう少し」が続き、
-      <strong>心の中はまだ「最終審議中」</strong>のままなのです。
+      <strong>心の中はまだ「最終審議中」。</strong>
+      周りには完成して見えても、なかなか審議が終わりません。
     </p>
   </article>
 
-  <!-- 04（追加した焦りの一文を削除、元の簡潔さに戻す） -->
+  <!-- 04：4項目→2項目に絞る -->
   <article class="result-block result-block--risk">
     <h2>この状態が続くと…</h2>
 
@@ -448,23 +373,13 @@
       </div>
 
       <div class="risk-item">
-        相手への配慮、内容の質、自分らしさなど、
-        守りたい条件が増え続ける
-      </div>
-
-      <div class="risk-item">
         十分できていても、
         「まだ納得できない」と完成を認めにくくなる
-      </div>
-
-      <div class="risk-item">
-        本来は仕事を深める集中力を、
-        公開前の修正に使い続けやすくなる
       </div>
     </div>
   </article>
 
-  <!-- 05（心の声・ご安心くださいを削除、前置きも短縮） -->
+  <!-- 05：渇望感ゾーンはそのまま維持（削らない） -->
   <article class="result-block result-block--key">
     <h2>でも、問題は「こだわりが強いこと」ではありません</h2>
 
@@ -493,7 +408,7 @@
     </div>
   </article>
 
-  <!-- 06 LINE自動生成用（ページには表示されないため変更なし） -->
+  <!-- 06 LINE自動生成用（変更なし） -->
   <article class="result-block result-block--final result-block--source-only">
     <h2>ここから先が本題です</h2>
 
