@@ -3,7 +3,7 @@
   <style>
     /* ========================================
        B1M 診断結果
-       Meta広告流入・スマホ向け（大幅圧縮版）
+       Meta広告流入・スマホ向け（調整版）
     ======================================== */
 
     .result-detail--visual {
@@ -64,7 +64,7 @@
     .type-point-list {
       display: grid;
       gap: 11px;
-      margin: 0;
+      margin: 0 0 20px;
     }
 
     .type-point {
@@ -83,6 +83,31 @@
       top: 14px;
       color: #1f6fb2;
       font-weight: 700;
+    }
+
+    .talent-scene-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    .talent-scene-card {
+      padding: 18px;
+      border-radius: 14px;
+      background: #eef7ff;
+      border: 1px solid #cfe3f1;
+    }
+
+    .talent-scene-card strong {
+      display: block;
+      margin-bottom: 8px;
+      color: #083f5c;
+      font-size: 17px;
+      line-height: 1.5;
+    }
+
+    .talent-scene-card p {
+      margin: 0 !important;
     }
 
     .loop-intro {
@@ -171,10 +196,6 @@
     .key-message-line {
       display: block;
     }
-
-    /* ========================================
-       モザイク部分（実文ぼかし版）
-    ======================================== */
 
     .locked-result {
       position: relative;
@@ -276,6 +297,10 @@
         font-size: 19px;
       }
 
+      .talent-scene-card strong {
+        font-size: 17px;
+      }
+
       .key-message {
         font-size: 17px !important;
         padding: 16px 14px;
@@ -303,7 +328,7 @@
     >
   </div>
 
-  <!-- 01+02統合：タイプ説明と強みを1ブロックに集約 -->
+  <!-- 01：ポイント2つ、要約はカット -->
   <article class="result-block">
     <h2>あなたはこんなタイプです</h2>
 
@@ -318,13 +343,44 @@
       </div>
 
       <div class="type-point">
-        「本当に役立つか」まで考え抜き、
-        <strong>中身のある仕事へ育てていける</strong>
+        一度「これだ」と納得したものには、
+        <strong>深く、粘り強く力を注げる</strong>
       </div>
     </div>
   </article>
 
-  <!-- 03：ループ図はそのまま（視覚的で速く読める）、文章は1文に -->
+  <!-- 02：復活。3カードそのまま維持 -->
+  <article class="result-block">
+    <h2>こんな場面で強みが出ます</h2>
+
+    <div class="talent-scene-grid">
+      <div class="talent-scene-card">
+        <strong>🤝 相手の本音をくみ取るとき</strong>
+        <p>
+          「本当に困っているのはどこだろう」と、
+          相手の気持ちを深く考えられます。
+        </p>
+      </div>
+
+      <div class="talent-scene-card">
+        <strong>🔍 1つのテーマを深めるとき</strong>
+        <p>
+          簡単な答えで終わらせず、
+          納得できるところまで追い続けられます。
+        </p>
+      </div>
+
+      <div class="talent-scene-card">
+        <strong>🎯 信頼できる仕事へ育てるとき</strong>
+        <p>
+          「責任を持って届けられるか」まで考え、
+          中身のある形へ育てていけます。
+        </p>
+      </div>
+    </div>
+  </article>
+
+  <!-- 03：ループ図維持、文章1文 -->
   <article class="result-block">
     <h2>今、こんなループに入っていませんか？</h2>
 
@@ -362,7 +418,7 @@
     </p>
   </article>
 
-  <!-- 04：4項目→2項目に絞る -->
+  <!-- 04：2項目のまま維持 -->
   <article class="result-block result-block--risk">
     <h2>この状態が続くと…</h2>
 
@@ -379,7 +435,7 @@
     </div>
   </article>
 
-  <!-- 05：渇望感ゾーンはそのまま維持（削らない） -->
+  <!-- 05：渇望感ゾーン、維持 -->
   <article class="result-block result-block--key">
     <h2>でも、問題は「こだわりが強いこと」ではありません</h2>
 
