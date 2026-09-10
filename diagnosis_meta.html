@@ -1344,15 +1344,20 @@ lineBtnEl.addEventListener('click', function() {
   const code = copyCodeValueEl.textContent.trim();
   const lineUrl = lineBtnEl.dataset.lineUrl;
 
-  // ユーザー操作の直後（非同期処理より前）に開くことで、
-  // ブラウザのポップアップブロックを避ける
+  // ① 先にコピーを開始する（ページがまだフォーカスされているうちに）
+  //    ※ window.open を先に呼ぶと画面のフォーカスが移り、
+  //      クリップボードへの書き込みが失敗することがあるため
+  const copyPromise = copyTextToClipboard(code);
+
+  // ② その直後（同じクリック処理の中）でLINEを開く
+  //    同期的に呼ぶことで、ブラウザのポップアップブロックを避ける
   const lineWindow = window.open(lineUrl, '_blank', 'noopener');
 
   trackDiagnosisEvent('line_click', {
     diagnosis_code: code
   });
 
-  copyTextToClipboard(code)
+  copyPromise
     .then(function() {
       showCopyFeedback(true);
     })
