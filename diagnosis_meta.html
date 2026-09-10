@@ -1303,20 +1303,36 @@ backBtnEl.addEventListener('click', goBack);
 nextBtnEl.addEventListener('click', goNext);
 
 async function copyTextToClipboard(text) {
+  // まず標準のクリップボードAPIを試す
   if (navigator.clipboard && window.isSecureContext) {
-    await navigator.clipboard.writeText(text);
-    return;
+    try {
+      await navigator.clipboard.writeText(text);
+      return;
+    } catch (error) {
+      // Instagram/FacebookなどのアプリDND内ブラウザでは、
+      // ここで失敗することがあるため、下の方法へ進む
+    }
   }
 
+  // フォールバック：一時的なテキストエリアを使ってコピーする
   const temporaryTextArea = document.createElement('textarea');
   temporaryTextArea.value = text;
   temporaryTextArea.setAttribute('readonly', '');
   temporaryTextArea.style.position = 'fixed';
+  temporaryTextArea.style.top = '0';
+  temporaryTextArea.style.left = '0';
   temporaryTextArea.style.opacity = '0';
   document.body.appendChild(temporaryTextArea);
+  temporaryTextArea.focus();
   temporaryTextArea.select();
+  temporaryTextArea.setSelectionRange(0, temporaryTextArea.value.length);
 
-  const copied = document.execCommand('copy');
+  let copied = false;
+  try {
+    copied = document.execCommand('copy');
+  } catch (error) {
+    copied = false;
+  }
   temporaryTextArea.remove();
 
   if (!copied) {
@@ -1339,33 +1355,24 @@ function showCopyFeedback(succeeded) {
   }, 4000);
 }
 
-// 「診断結果を受け取る」ボタン：LINE起動とコードコピーを1アクションで行う
-lineBtnEl.addEventListener('click', function() {
+// 「診断結果を受け取る」ボタン：コピーを完了させてからLINEを開く
+lineBtnEl.addEventListener('click', async function() {
   const code = copyCodeValueEl.textContent.trim();
   const lineUrl = lineBtnEl.dataset.lineUrl;
-
-  // ① 先にコピーを開始する（ページがまだフォーカスされているうちに）
-  //    ※ window.open を先に呼ぶと画面のフォーカスが移り、
-  //      クリップボードへの書き込みが失敗することがあるため
-  const copyPromise = copyTextToClipboard(code);
-
-  // ② その直後（同じクリック処理の中）でLINEを開く
-  //    同期的に呼ぶことで、ブラウザのポップアップブロックを避ける
-  const lineWindow = window.open(lineUrl, '_blank', 'noopener');
 
   trackDiagnosisEvent('line_click', {
     diagnosis_code: code
   });
 
-  copyPromise
-    .then(function() {
-      showCopyFeedback(true);
-    })
-    .catch(function() {
-      showCopyFeedback(false);
-    });
+  try {
+    await copyTextToClipboard(code);
+    showCopyFeedback(true);
+  } catch (error) {
+    showCopyFeedback(false);
+  }
 
-  // ポップアップがブロックされた場合は、同じタブで開き直す
+  // コピー処理が終わってからLINEを開く
+  const lineWindow = window.open(lineUrl, '_blank', 'noopener');
   if (!lineWindow) {
     window.location.href = lineUrl;
   }
