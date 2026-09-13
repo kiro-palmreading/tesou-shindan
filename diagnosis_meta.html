@@ -315,6 +315,25 @@ body {
   letter-spacing: 1px;
 }
 
+.btn-copy-code {
+  background: linear-gradient(135deg, var(--sky) 0%, var(--navy) 100%);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  width: 100%;
+  padding: 14px 20px;
+  font-size: 16px;
+  font-weight: 700;
+  font-family: 'Noto Sans JP', sans-serif;
+  cursor: pointer;
+  letter-spacing: 1px;
+  line-height: 1.5;
+}
+
+.btn-copy-code.is-copied {
+  background: var(--navy-mid);
+}
+
 .btn-next:disabled {
   opacity: 0.35;
   cursor: not-allowed;
@@ -1071,8 +1090,9 @@ body {
         <div class="receive-guide">
           <div class="receive-guide-title">あなた専用の結果を受け取る方法</div>
           <ol class="receive-steps">
-            <li>下のボタンを押すと、診断コードのコピーとLINEの起動が自動で行われます。</li>
-            <li>開いたLINEのトーク画面に、そのまま貼り付けて送るだけです。</li>
+            <li>下の「診断コードをコピーする」ボタンを押す。</li>
+            <li>「あなた専用の診断結果を受け取る」ボタンでLINEを開く。</li>
+            <li>開いたトーク画面に、コピーしたコードを貼り付けて送る。</li>
           </ol>
           <p class="receive-guide-note">
             ※コードを送っていただくと、すぐに詳しい診断結果をお届けします。
@@ -1082,6 +1102,7 @@ body {
         <div class="copy-code-box">
           <div class="copy-code-label">LINE送信用の診断コード</div>
           <div class="copy-code-value" id="copyCodeValue">---</div>
+          <button class="btn-copy-code" id="copyCodeBtn" type="button">診断コードをコピーする</button>
           <div class="copy-status" id="copyStatus" role="status" aria-live="polite"></div>
         </div>
 
@@ -1096,7 +1117,7 @@ body {
           あなた専用の診断結果を<br>受け取る　▶
         </button>
 
-        <p class="line-note">ボタン1つで、コードのコピーとLINEの起動が同時に行われます</p>
+        <p class="line-note">無料・1分で登録できます</p>
       </div>
 
       <div class="footer">ビジネス手相診断士 輝路(kiro) © 2026</div>
@@ -1293,6 +1314,7 @@ const resultImageWrapEl = document.getElementById('resultImageWrap');
 const externalResultTextEl = document.getElementById('externalResultText');
 const ctaLeadEl = document.getElementById('ctaLead');
 const copyCodeValueEl = document.getElementById('copyCodeValue');
+const copyCodeBtnEl = document.getElementById('copyCodeBtn');
 const copyStatusEl = document.getElementById('copyStatus');
 const linePreviewTitleEl = document.getElementById('linePreviewTitle');
 const linePreviewLeadEl = document.getElementById('linePreviewLead');
@@ -1344,25 +1366,26 @@ function showCopyFeedback(succeeded) {
   window.clearTimeout(showCopyFeedback.timerId);
 
   if (succeeded) {
-    copyStatusEl.textContent = '診断コードをコピーしました。LINEのトーク画面に貼り付けて送ってください。';
+    copyCodeBtnEl.textContent = 'コピーしました ✓';
+    copyCodeBtnEl.classList.add('is-copied');
+    copyStatusEl.textContent = '診断コードをコピーしました。';
   } else {
+    copyCodeBtnEl.textContent = '診断コードをコピーする';
+    copyCodeBtnEl.classList.remove('is-copied');
     copyStatusEl.textContent = 'コピーできませんでした。上の診断コードを長押ししてコピーしてください。';
     return;
   }
 
   showCopyFeedback.timerId = window.setTimeout(function() {
+    copyCodeBtnEl.textContent = '診断コードをコピーする';
+    copyCodeBtnEl.classList.remove('is-copied');
     copyStatusEl.textContent = '';
-  }, 4000);
+  }, 2200);
 }
 
-// 「診断結果を受け取る」ボタン：コピーを完了させてからLINEを開く
-lineBtnEl.addEventListener('click', async function() {
+// コピー専用ボタン
+copyCodeBtnEl.addEventListener('click', async function() {
   const code = copyCodeValueEl.textContent.trim();
-  const lineUrl = lineBtnEl.dataset.lineUrl;
-
-  trackDiagnosisEvent('line_click', {
-    diagnosis_code: code
-  });
 
   try {
     await copyTextToClipboard(code);
@@ -1370,9 +1393,17 @@ lineBtnEl.addEventListener('click', async function() {
   } catch (error) {
     showCopyFeedback(false);
   }
+});
 
-  // 同じタブ内でLINEへ遷移する（アプリ連携を安定させ、
-  // アプリ内ブラウザでQRコード画面が表示されるのを避けるため）
+// LINEを開く専用ボタン（同じタブ内で遷移させ、アプリ連携を安定させる）
+lineBtnEl.addEventListener('click', function() {
+  const code = copyCodeValueEl.textContent.trim();
+  const lineUrl = lineBtnEl.dataset.lineUrl;
+
+  trackDiagnosisEvent('line_click', {
+    diagnosis_code: code
+  });
+
   window.location.href = lineUrl;
 });
 
@@ -1722,6 +1753,8 @@ async function showResult() {
   prepareSharedResultLayout();
   copyCodeValueEl.textContent = code;
   copyStatusEl.textContent = '';
+  copyCodeBtnEl.textContent = '診断コードをコピーする';
+  copyCodeBtnEl.classList.remove('is-copied');
 
   loadingMsgEl.style.display = 'none';
   resultSectionEl.style.display = 'block';
