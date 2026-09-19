@@ -174,6 +174,34 @@
     }
 
     /* ========================================
+       感情フレーズ（心の声・迷い）
+    ======================================== */
+
+    .loop-doubt {
+      margin: 4px 0 18px;
+      padding: 12px 16px;
+      background: #f8fcff;
+      border-left: 3px solid #7893a3;
+      font-size: 15px;
+      font-style: italic;
+      color: #4a5d68;
+      line-height: 1.7;
+    }
+
+    .unspoken-worry {
+      margin: 0 0 22px;
+      padding: 18px 18px;
+      background: #fdf6f3;
+      border: 1px dashed #e3b8a8;
+      border-radius: 14px;
+      font-size: 15px;
+      font-style: italic;
+      color: #6b5347;
+      text-align: center;
+      line-height: 1.8;
+    }
+
+    /* ========================================
        この状態が続くと
     ======================================== */
 
@@ -233,6 +261,91 @@
     }
 
     /* ========================================
+       モザイク部分（実文ぼかし版）
+    ======================================== */
+
+    .locked-result {
+      position: relative;
+      margin-top: 10px;
+      overflow: hidden;
+      border-radius: 14px;
+      background: #ffffff;
+      border: 1px solid #dcecf5;
+    }
+
+    .locked-result-preview {
+      position: relative;
+      padding: 22px 18px 34px;
+      filter: blur(6px);
+      user-select: none;
+      pointer-events: none;
+    }
+
+    .locked-result-preview p {
+      margin: 0 0 16px;
+      font-size: 16px;
+      line-height: 1.9;
+      color: #24313a;
+    }
+
+    .locked-result-preview p:last-child {
+      margin-bottom: 0;
+    }
+
+    .locked-result-preview .key-message {
+      margin: 18px 0 0 !important;
+      padding: 18px 16px;
+      background: #ffffff;
+      border: 1px solid #dcecf5;
+      border-radius: 8px;
+      font-size: 18px !important;
+      font-weight: 700;
+      color: #083f5c;
+      text-align: center;
+      line-height: 1.7;
+    }
+
+    .locked-result::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 46%;
+      background:
+        linear-gradient(
+          to bottom,
+          rgba(255,255,255,0),
+          rgba(255,255,255,0.88),
+          rgba(255,255,255,1)
+        );
+      pointer-events: none;
+    }
+
+    .locked-result-message {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      z-index: 2;
+      transform: translate(-50%, -50%);
+      width: calc(100% - 36px);
+      margin: 0;
+      padding: 9px 12px;
+      border-radius: 12px;
+      background: rgba(238, 247, 255, 0.95);
+      color: #1f6fb2;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 1.6;
+      text-align: center;
+      box-sizing: border-box;
+    }
+
+    .locked-result-message span {
+      display: block;
+    }
+
+    /* ========================================
        LINE自動生成用データ
     ======================================== */
 
@@ -266,6 +379,16 @@
       .key-message {
         font-size: 17px !important;
         padding: 16px 14px;
+      }
+
+      .locked-result-preview {
+        padding: 20px 16px 30px;
+      }
+
+      .locked-result-message {
+        width: calc(100% - 28px);
+        font-size: 12px;
+        padding: 8px 10px;
       }
     }
   </style>
@@ -348,7 +471,7 @@
     </div>
   </article>
 
-  <!-- 03 -->
+  <!-- 03（圧縮版） -->
   <article class="result-block">
     <h2>今、こんなループに入っていませんか？</h2>
 
@@ -383,28 +506,20 @@
     <p>
       あなたは、行動していないわけではありません。
       むしろ、ちゃんと試しています。
-    </p>
-
-    <p>
-      ただ、
-      <strong>
-        今の方向を十分に確かめる前に、
-        次の可能性へ心が動きやすい
-      </strong>
-      のです。
+      ただ、<strong>今の方向を十分に確かめる前に、
+      次の可能性へ心が動きやすい</strong>のです。
     </p>
 
     <p>
       ノートには「今後の方向性・決定版」。
       ところが数ページ先には「今後の方向性・最新版」。
-      そして、どちらも書いたときは本気。
+      そして、どちらも書いたときは本気でした。
     </p>
 
-    <p>
-      そんなふうに、
+    <p class="loop-doubt">
       動いているのに振り返ると、
       <strong>「結局、私は何を育てているんだろう？」</strong>
-      と感じることがあるかもしれません。
+      ——そう感じることがあるかもしれません。
     </p>
   </article>
 
@@ -435,43 +550,58 @@
     </div>
   </article>
 
-  <!-- 05 -->
+  <!-- 05（モザイク実装版に変更） -->
   <article class="result-block result-block--key">
+
+    <p class="unspoken-worry">
+      「こんなに試しているのに、
+      私は本当に何かを育てられているのだろうか」
+    </p>
+
     <h2>でも、問題は「直感」ではありません</h2>
 
     <p>
-      あなたは、新しい可能性に気づくのが早い人です。
-      だからこそ、今の方向にまだ答えが出ていない段階でも、
-      次の選択肢のよさが先に見えてしまいます。
+      ご安心ください。
+      新しい可能性に気づいてしまう気持ちには、
+      ちゃんと理由があります。
     </p>
 
     <p>
-      問題は、
-      新しい案が浮かぶことではありません。
-    </p>
-
-    <p class="key-message">
-      <span class="key-message-line">今はまだ続ける段階なのか。</span>
-      <span class="key-message-line">少し直せばいいのか。</span>
-      <span class="key-message-line">本当に方向を変えるべきなのか。</span>
+      それは、あなたの性格の問題ではありません。
     </p>
 
     <p>
-      ここを見分ける基準がないまま、
-      その瞬間の感覚だけで判断すると、
-      形になる前に次へ移りやすくなります。
+      気づかないうちに、
+      ある考え方の癖が――
     </p>
 
-    <p>
-      逆に、この判断基準を持てるようになると、
-      あなたの直感は、
-      迷いの原因ではなく、
-      <strong>進む方向を見極める力</strong>
-      として活かしやすくなります。
-    </p>
+    <div class="locked-result">
+      <div class="locked-result-preview">
+        <p>
+          今の方向にまだ答えが出ていない段階でも、
+          次の選択肢のよさが先に見えてしまうのです。
+        </p>
+        <p class="key-message">
+          <span class="key-message-line">今はまだ続ける段階なのか。</span>
+          <span class="key-message-line">少し直せばいいのか。</span>
+          <span class="key-message-line">本当に方向を変えるべきなのか。</span>
+        </p>
+        <p>
+          ここを見分ける基準がないまま、
+          その瞬間の感覚だけで判断すると、
+          形になる前に次へ移りやすくなります。
+        </p>
+      </div>
+
+      <p class="locked-result-message">
+        <span>あなたが今見分けるべき基準は</span>
+        <span>LINE登録後にお伝えします</span>
+      </p>
+    </div>
+
   </article>
 
-  <!-- 06 LINE自動生成用 -->
+  <!-- 06 LINE自動生成用（cta文のみ答えを明かさない形に修正） -->
   <article class="result-block result-block--final result-block--source-only">
     <h2>ここから先が本題です</h2>
 
@@ -493,12 +623,10 @@
     </ul>
 
     <p class="cta-message-source">
-      新しい可能性が見えたとき、
-      「続ける・直す・変える」のどれを選ぶのか。
-      その判断基準が分かれば、
-      あなたの直感は迷いではなく、
-      <strong>進む方向を見極める力</strong>に変わります。
-      あなたに合う見極め方を、LINEで受け取ってください。
+      新しい可能性が見えるたびに、
+      方向を変える必要はありません。
+      あなたに合う見極め方を、
+      LINEで受け取ってください。
     </p>
   </article>
 
