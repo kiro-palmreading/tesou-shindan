@@ -758,13 +758,30 @@ body {
   border: 1px solid #9FD0EA;
   border-radius: 12px;
   color: #083F5C;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  text-align: left;
+}
+
+.supervisor-avatar {
+  flex: 0 0 auto;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #ffffff;
+  box-shadow: 0 2px 8px rgba(8,63,92,0.18);
+}
+
+.supervisor-proof-text {
+  flex: 1 1 auto;
   font-size: 14px;
   font-weight: 700;
   line-height: 1.65;
-  text-align: center;
 }
 
-.supervisor-proof span {
+.supervisor-proof-text span {
   display: block;
 }
 
@@ -1105,10 +1122,13 @@ body {
 
         <div class="cta-lead" id="ctaLead"></div>
 
-        <p class="supervisor-proof">
-          <span>手相診断歴13年・1,250名以上を診断</span>
-          <span>ビジネス手相診断士 輝路が監修</span>
-        </p>
+        <div class="supervisor-proof">
+          <img src="meta-fv-results/DSC_4920.JPG" alt="ビジネス手相診断士 輝路" class="supervisor-avatar">
+          <div class="supervisor-proof-text">
+            <span>手相診断歴13年・1,250名以上を診断</span>
+            <span>ビジネス手相診断士 輝路が監修</span>
+          </div>
+        </div>
 
         <button id="lineBtn" class="btn-line" type="button" data-line-url="https://lin.ee/OINIB8d">
           友だち追加して、診断結果を<br>受け取る　▶
@@ -1268,6 +1288,46 @@ const QUESTION_FLOW = [
 let answers = {};
 let currentQuestionKey = 'q3';
 
+/* =========================================================
+   流入元トラッキング（GA4補完 ＋ LINEコード用の見えない印）
+   ---------------------------------------------------------
+   ・リンクの末尾に付けた ?utm_source=◯◯ を読み取る
+   ・utm_sourceが無い場合は、参照元（検索エンジンかどうか）を見る
+   ・診断コードの見た目は一切変えず、コピーされる文字列の末尾に
+     「画面には表示されない文字」を1つだけ混ぜ込む
+   ・混ぜ込む文字は普通の空白ではないので、コピー処理で消えない
+========================================================= */
+
+const TRAFFIC_SOURCE_MARKS = {
+  ad: '\u200B',         // 広告（Meta広告）
+  facebook: '\u200C',   // Facebook
+  ameblo: '\u200D',     // アメブロ
+  instagram: '\u2060'   // Instagramプロフィール
+};
+const SEARCH_ENGINE_MARK = '\u200E'; // 検索エンジン経由（Google/Yahoo/Bing）
+
+function detectTrafficSource() {
+  try {
+    const params = new URLSearchParams(window.location.search);
+    const utmSource = (params.get('utm_source') || '').toLowerCase().trim();
+
+    if (TRAFFIC_SOURCE_MARKS[utmSource]) {
+      return { mark: TRAFFIC_SOURCE_MARKS[utmSource], label: utmSource };
+    }
+
+    const referrer = (document.referrer || '').toLowerCase();
+    if (/google\.|yahoo\.|bing\./.test(referrer)) {
+      return { mark: SEARCH_ENGINE_MARK, label: 'search' };
+    }
+  } catch (error) {
+    console.warn('流入元の判定に失敗しました:', error);
+  }
+
+  return { mark: '', label: 'direct_or_unknown' };
+}
+
+const trafficSource = detectTrafficSource();
+
 const sentAnalyticsEvents = new Set();
 
 function trackDiagnosisEvent(eventName, eventParams = {}) {
@@ -1398,7 +1458,8 @@ lineBtnEl.addEventListener('click', function() {
   const lineUrl = lineBtnEl.dataset.lineUrl;
 
   trackDiagnosisEvent('line_click', {
-    diagnosis_code: code
+    diagnosis_code: code,
+    traffic_source: trafficSource.label
   });
 
   window.location.href = lineUrl;
@@ -1748,7 +1809,8 @@ async function showResult() {
 
   setLinePreviewText();
   prepareSharedResultLayout();
-  copyCodeValueEl.textContent = code;
+  // 画面表示は今まで通りの見た目（コードの後ろに見えない印を追加）
+  copyCodeValueEl.textContent = code + trafficSource.mark;
   copyStatusEl.textContent = '';
   copyCodeBtnEl.textContent = '診断コードをコピーする';
   copyCodeBtnEl.classList.remove('is-copied');
@@ -1758,7 +1820,8 @@ async function showResult() {
 
   trackDiagnosisEvent('diagnosis_complete', {
     diagnosis_code: code,
-    question_total: getVisibleFlowKeys().length
+    question_total: getVisibleFlowKeys().length,
+    traffic_source: trafficSource.label
   });
 
   window.scrollTo({ top: 0, behavior: 'smooth' });
