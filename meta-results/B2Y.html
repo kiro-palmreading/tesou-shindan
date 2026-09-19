@@ -174,6 +174,34 @@
     }
 
     /* ========================================
+       感情フレーズ（心の声・迷い）
+    ======================================== */
+
+    .loop-doubt {
+      margin: 4px 0 18px;
+      padding: 12px 16px;
+      background: #f8fcff;
+      border-left: 3px solid #7893a3;
+      font-size: 15px;
+      font-style: italic;
+      color: #4a5d68;
+      line-height: 1.7;
+    }
+
+    .unspoken-worry {
+      margin: 0 0 22px;
+      padding: 18px 18px;
+      background: #fdf6f3;
+      border: 1px dashed #e3b8a8;
+      border-radius: 14px;
+      font-size: 15px;
+      font-style: italic;
+      color: #6b5347;
+      text-align: center;
+      line-height: 1.8;
+    }
+
+    /* ========================================
        この状態が続くと
     ======================================== */
 
@@ -233,6 +261,91 @@
     }
 
     /* ========================================
+       モザイク部分（実文ぼかし版）
+    ======================================== */
+
+    .locked-result {
+      position: relative;
+      margin-top: 10px;
+      overflow: hidden;
+      border-radius: 14px;
+      background: #ffffff;
+      border: 1px solid #dcecf5;
+    }
+
+    .locked-result-preview {
+      position: relative;
+      padding: 22px 18px 34px;
+      filter: blur(6px);
+      user-select: none;
+      pointer-events: none;
+    }
+
+    .locked-result-preview p {
+      margin: 0 0 16px;
+      font-size: 16px;
+      line-height: 1.9;
+      color: #24313a;
+    }
+
+    .locked-result-preview p:last-child {
+      margin-bottom: 0;
+    }
+
+    .locked-result-preview .key-message {
+      margin: 18px 0 0 !important;
+      padding: 18px 16px;
+      background: #ffffff;
+      border: 1px solid #dcecf5;
+      border-radius: 8px;
+      font-size: 18px !important;
+      font-weight: 700;
+      color: #083f5c;
+      text-align: center;
+      line-height: 1.7;
+    }
+
+    .locked-result::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 46%;
+      background:
+        linear-gradient(
+          to bottom,
+          rgba(255,255,255,0),
+          rgba(255,255,255,0.88),
+          rgba(255,255,255,1)
+        );
+      pointer-events: none;
+    }
+
+    .locked-result-message {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      z-index: 2;
+      transform: translate(-50%, -50%);
+      width: calc(100% - 36px);
+      margin: 0;
+      padding: 9px 12px;
+      border-radius: 12px;
+      background: rgba(238, 247, 255, 0.95);
+      color: #1f6fb2;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 1.6;
+      text-align: center;
+      box-sizing: border-box;
+    }
+
+    .locked-result-message span {
+      display: block;
+    }
+
+    /* ========================================
        LINE自動生成用データ
     ======================================== */
 
@@ -266,6 +379,16 @@
       .key-message {
         font-size: 17px !important;
         padding: 16px 14px;
+      }
+
+      .locked-result-preview {
+        padding: 20px 16px 30px;
+      }
+
+      .locked-result-message {
+        width: calc(100% - 28px);
+        font-size: 12px;
+        padding: 8px 10px;
       }
     }
   </style>
@@ -348,7 +471,7 @@
     </div>
   </article>
 
-  <!-- 03 -->
+  <!-- 03（圧縮版） -->
   <article class="result-block">
     <h2>今、こんなループに入っていませんか？</h2>
 
@@ -381,20 +504,9 @@
     </div>
 
     <p>
-      あなたは、
-      気まぐれに動いているわけではありません。
+      あなたは、気まぐれに動いているわけではありません。
       そのときそのとき、
       <strong>本気で「こちらがよさそう」と感じています。</strong>
-    </p>
-
-    <p>
-      別のテーマに反応があれば、
-      そちらが気になる。
-      人との会話で別の話が盛り上がれば、
-      新しい方向も魅力的に見える。
-    </p>
-
-    <p>
       新しい道に気づくのが早いからこそ、
       今の道の結果が見える前に、
       次のルートへ乗り換えたくなるのです。
@@ -403,8 +515,13 @@
     <p>
       旅行でたとえるなら、
       <strong>次の駅に着く前に、もう乗換案内を開いている。</strong>
-      しかも、どのルートもなかなか魅力的。
-      これは迷います。
+      しかも、どのルートもなかなか魅力的。これは迷います。
+    </p>
+
+    <p class="loop-doubt">
+      今の道を進むべきなのか、
+      それとも乗り換えるべきなのか——
+      その判断が、なかなかつかない。
     </p>
   </article>
 
@@ -435,43 +552,57 @@
     </div>
   </article>
 
-  <!-- 05 -->
+  <!-- 05（モザイク実装版に変更） -->
   <article class="result-block result-block--key">
+
+    <p class="unspoken-worry">
+      「こんなに敏感に感じ取れているのに、
+      私は結局、何も育てられていないんじゃないか」
+    </p>
+
     <h2>でも、問題は「新しい道に気づくこと」ではありません</h2>
 
     <p>
-      人の反応や流れを感じながら、
-      新しい可能性を見つけられることは、
-      あなたの大きな強みです。
+      ご安心ください。
+      その乗り換えたくなる気持ちには、
+      ちゃんと理由があります。
     </p>
 
     <p>
-      ただ、
-      新しい道が見えるたびに
-      目的地まで変えてしまうと、
-      どの道も育ちかけのまま残ります。
-    </p>
-
-    <p class="key-message">
-      <span class="key-message-line">変えたいのは、目的地そのものなのか。</span>
-      <span class="key-message-line">それとも、そこへ向かう行き方なのか。</span>
+      それは、あなたの性格の問題ではありません。
     </p>
 
     <p>
-      この違いが曖昧なままだと、
-      少し違う反応が出るたびに、
-      方向そのものを見直したくなります。
+      気づかないうちに、
+      ある考え方の癖が――
     </p>
 
-    <p>
-      反対に、
-      届けたい相手や変化を残したまま
-      進み方だけを調整できるようになると、
-      <strong>柔軟さを失わずに、選んだ道を育てていけます。</strong>
-    </p>
+    <div class="locked-result">
+      <div class="locked-result-preview">
+        <p>
+          新しい道が見えるたびに、
+          目的地まで変えてしまう癖があります。
+        </p>
+        <p class="key-message">
+          <span class="key-message-line">変えたいのは、目的地そのものなのか。</span>
+          <span class="key-message-line">それとも、そこへ向かう行き方なのか。</span>
+        </p>
+        <p>
+          この違いが曖昧なままだと、
+          少し違う反応が出るたびに、
+          方向そのものを見直したくなります。
+        </p>
+      </div>
+
+      <p class="locked-result-message">
+        <span>あなたに合う道の見極め方は</span>
+        <span>LINE登録後にお伝えします</span>
+      </p>
+    </div>
+
   </article>
 
-  <!-- 06 LINE自動生成用 -->
+  <!-- 06 LINE自動生成用（cta文のみ答えを明かさない形に修正） -->
   <article class="result-block result-block--final result-block--source-only">
     <h2>ここから先が本題です</h2>
 
@@ -495,10 +626,6 @@
     <p class="cta-message-source">
       新しい道が魅力的に見えても、
       目的地まで毎回変える必要はありません。
-      <strong>「変えない目的地」と「調整してよい行き方」</strong>
-      を分けられるようになると、
-      新しい可能性を活かしながら、
-      今の道にも結果が見えるまで時間を与えやすくなります。
       あなたに合う道の見極め方を、
       LINEで受け取ってください。
     </p>
