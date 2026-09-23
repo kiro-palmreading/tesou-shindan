@@ -1,515 +1,294 @@
-<section class="result-detail result-detail--visual" data-diagnosis-code="D1W">
+<section class="result-detail" data-diagnosis-code="D1W">
 
-  <style>
-    /* ========================================
-       D1W 診断結果
-       Meta広告流入・スマホ向け
-    ======================================== */
-
-    .result-detail--visual {
-      max-width: 720px;
-      margin: 0 auto;
-      color: #24313a;
-      line-height: 1.8;
-    }
-
-    /* ========================================
-       FV
-    ======================================== */
-
-    .diagnosis-result-fv {
-      margin: 0 0 28px;
-      padding: 0;
-    }
-
-    .diagnosis-result-fv img {
-      display: block;
-      width: 100%;
-      height: auto;
-      margin: 0 auto;
-    }
-
-    /* ========================================
-       共通ブロック
-    ======================================== */
-
-    .result-detail--visual .result-block {
-      margin: 0 16px 28px;
-      padding: 26px 20px;
-      background: #ffffff;
-      border: 1px solid #dcecf5;
-      border-radius: 18px;
-      box-sizing: border-box;
-    }
-
-    .result-detail--visual .result-block h2 {
-      margin: 0 0 18px;
-      color: #083f5c;
-      font-size: 22px;
-      line-height: 1.45;
-      text-align: left;
-    }
-
-    .result-detail--visual .result-block p {
-      margin: 0 0 16px;
-      font-size: 16px;
-      line-height: 1.9;
-    }
-
-    .result-detail--visual .result-block p:last-child {
-      margin-bottom: 0;
-    }
-
-    /* ========================================
-       あなたはこんなタイプ
-    ======================================== */
-
-    .type-keywords {
-      margin: 0 0 20px;
-      font-size: 20px;
-      font-weight: 700;
-      color: #1f6fb2;
-      letter-spacing: 0.04em;
-      text-align: center;
-    }
-
-    .type-point-list {
-      display: grid;
-      gap: 11px;
-      margin: 0 0 20px;
-    }
-
-    .type-point {
-      position: relative;
-      padding: 14px 14px 14px 43px;
-      background: #f8fcff;
-      border-radius: 12px;
-      font-size: 16px;
-      line-height: 1.7;
-    }
-
-    .type-point::before {
-      content: "✓";
-      position: absolute;
-      left: 16px;
-      top: 14px;
-      color: #1f6fb2;
-      font-weight: 700;
-    }
-
-    .type-summary {
-      padding: 16px;
-      background: #eef7ff;
-      border-radius: 12px;
-      color: #314958;
-    }
-
-    /* ========================================
-       強みが出る場面
-    ======================================== */
-
-    .talent-scene-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 12px;
-    }
-
-    .talent-scene-card {
-      padding: 18px;
-      border-radius: 14px;
-      background: #eef7ff;
-      border: 1px solid #cfe3f1;
-    }
-
-    .talent-scene-card strong {
-      display: block;
-      margin-bottom: 8px;
-      color: #083f5c;
-      font-size: 17px;
-      line-height: 1.5;
-    }
-
-    .talent-scene-card p {
-      margin: 0 !important;
-    }
-
-    /* ========================================
-       今のループ
-    ======================================== */
-
-    .loop-intro {
-      font-weight: 700;
-      color: #314958;
-    }
-
-    .diagnosis-loop {
-      margin: 20px 0;
-    }
-
-    .loop-step {
-      padding: 15px 14px;
-      background: #f8fcff;
-      border: 1px solid #cfe6f3;
-      border-radius: 12px;
-      text-align: center;
-      font-size: 16px;
-      font-weight: 700;
-      color: #083f5c;
-    }
-
-    .loop-arrow {
-      height: 34px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #6f8798;
-      font-size: 24px;
-      font-weight: 700;
-    }
-
-    .loop-step--last {
-      background: #fff5f2;
-      border-color: #f2c9bf;
-      color: #9b4d3b;
-    }
-
-    /* ========================================
-       この状態が続くと
-    ======================================== */
-
-    .result-block--risk {
-      background: #fffaf7 !important;
-      border-color: #f1d9cf !important;
-    }
-
-    .risk-items {
-      display: grid;
-      gap: 10px;
-    }
-
-    .risk-item {
-      position: relative;
-      padding: 13px 14px 13px 40px;
-      background: #ffffff;
-      border: 1px solid #f0ddd5;
-      border-radius: 11px;
-      font-size: 16px;
-      line-height: 1.7;
-    }
-
-    .risk-item::before {
-      content: "●";
-      position: absolute;
-      left: 17px;
-      top: 15px;
-      color: #d98670;
-      font-size: 10px;
-    }
-
-    /* ========================================
-       問題の正体
-    ======================================== */
-
-    .result-block--key {
-      background: #eef7ff !important;
-      border-color: #bddcec !important;
-    }
-
-    .key-message {
-      margin: 18px 0 !important;
-      padding: 18px 16px;
-      background: #ffffff;
-      border: 1px solid #dcecf5;
-      border-radius: 8px;
-      font-size: 18px !important;
-      font-weight: 700;
-      color: #083f5c;
-      text-align: center;
-      line-height: 1.7;
-    }
-
-    .key-message-line {
-      display: block;
-    }
-
-    /* ========================================
-       LINE自動生成用データ
-    ======================================== */
-
-    .result-block--source-only {
-      display: none !important;
-    }
-
-    /* ========================================
-       スマホ
-    ======================================== */
-
-    @media (max-width: 600px) {
-      .result-detail--visual .result-block {
-        margin-left: 14px;
-        margin-right: 14px;
-        padding: 23px 17px;
-      }
-
-      .result-detail--visual .result-block h2 {
-        font-size: 21px;
-      }
-
-      .type-keywords {
-        font-size: 19px;
-      }
-
-      .talent-scene-card strong {
-        font-size: 17px;
-      }
-
-      .key-message {
-        font-size: 17px !important;
-        padding: 16px 14px;
-      }
-    }
-  </style>
-
-  <!-- FV -->
-  <div class="diagnosis-result-fv">
+  <!-- 診断結果FV：ページ最上部 -->
+  <div class="result-fv" style="width: 100%; margin: 0 auto 24px;">
     <img
       src="meta-fv-results/D1W.png"
-      alt="才能コンパス診断 見渡して束ねるプロデューサー"
-      loading="eager"
-      fetchpriority="high"
+      alt="才能コンパス診断 D1W 診断結果"
+      style="display: block; width: 100%; height: auto;"
     >
   </div>
 
-  <!-- 01 -->
   <article class="result-block">
-    <h2>あなたはこんなタイプです</h2>
+    <h2>詳しい診断結果</h2>
 
-    <div class="type-keywords">
-      慎重 × 突破 × 多角的視点
-    </div>
+    <p>
+      あなたが企画を考えるほど新しい切り口を見つけ、最初の形を決めにくくなるのは、3つの特徴が同時に働くためです。
+    </p>
 
-    <div class="type-point-list">
-      <div class="type-point">
-        今の状態に停滞を感じると、
-        <strong>「新しい形にできないか」と突破口を考えられる</strong>
-      </div>
+    <p>1つ目は、「慎重」です。</p>
 
-      <div class="type-point">
-        一つの案だけでなく、
-        <strong>さまざまな立場や見せ方から考えられる</strong>
-      </div>
+    <p>
+      あなたは、思いついた案をそのまま出す前に、「大切なことを見落としていないか」と考えます。
+    </p>
 
-      <div class="type-point">
-        複数のアイデアをつなぎ、
-        <strong>新しい企画や流れへまとめられる</strong>
-      </div>
-    </div>
+    <p>
+      「初めての人にも分かるだろうか」<br>
+      「今のお客様にも役立つだろうか」<br>
+      「別の見せ方の方が伝わるだろうか」
+    </p>
 
-    <p class="type-summary">
-      あなたは、
-      ただ新しい企画を思いつく人ではありません。
-      全体を見渡しながら、
-      異なる人やアイデアの接点を見つけ、
-      新しい流れへ束ねていく人です。
+    <p>
+      こうして確かめる力は、相手の立場に立つための強みです。
+    </p>
+
+    <p>2つ目は、「突破」です。</p>
+
+    <p>
+      あなたは、今ある形をそのまま続けるだけではなく、「もっとよい流れをつくれないか」と考えます。
+    </p>
+
+    <p>
+      別々に見えていた人やアイデアをつなぎ、新しい企画の可能性を見つけられます。
+    </p>
+
+    <p>3つ目は、「多角的視点」です。</p>
+
+    <p>
+      一つの案を、届ける相手、内容、伝え方、その先の展開など、複数の角度から見ることができます。
+    </p>
+
+    <p>
+      そのため、企画を考えていると、
+    </p>
+
+    <p>
+      「この人向けの内容も入れたい」<br>
+      「こんな伝え方もできそう」<br>
+      「次のサービスへもつなげられるかもしれない」
+    </p>
+
+    <p>
+      と、意味のある視点が増えていきます。
+    </p>
+
+    <p>
+      それぞれは、企画を育てるための大切な材料です。
+    </p>
+
+    <p>
+      ただ、見つけた材料をすべて「始める前に必要なもの」と考えると、こんな流れが起きます。
+    </p>
+
+    <p>一つの企画を思いつく</p>
+    <p>↓</p>
+    <p>別の立場や展開も見える</p>
+    <p>↓</p>
+    <p>見えたものを企画へ加える</p>
+    <p>↓</p>
+    <p>内容が大きくなり、最初に何を出すか決めにくくなる</p>
+
+    <p>
+      たとえば、最初は一人のお客様向けの小さな企画だったのに、初心者向けの説明や別の対象への対応まで入れ始めると、何を確かめる企画なのかがぼやけます。
+    </p>
+
+    <p>
+      企画を深める力があるからこそ、着手する前に完成形まで描こうとしてしまうのです。
+    </p>
+
+    <p>
+      <strong>大切なのは、見つけた視点を捨てることではなく、「今回使う視点」と「始めてから使う視点」に分けることです。</strong>
+    </p>
+
+    <p>
+      広く見渡す力を、一つ目の実験を決める力へ変えていきましょう。
     </p>
   </article>
 
-  <!-- 02 -->
   <article class="result-block">
-    <h2>こんな場面で強みが出ます</h2>
+    <h2>企画を形にする3つのコツ</h2>
 
-    <div class="talent-scene-grid">
-      <div class="talent-scene-card">
-        <strong>👀 全体を見渡すとき</strong>
-        <p>
-          一つの部分だけでなく、
-          相手、内容、見せ方、その先の流れまで
-          広く考えられます。
-        </p>
-      </div>
+    <p>あなたのタイプに合うコツは、次の3つです。</p>
 
-      <div class="talent-scene-card">
-        <strong>🧩 アイデアを組み合わせるとき</strong>
-        <p>
-          別々に見える考えの共通点を見つけ、
-          一つの企画へ
-          まとめていくことができます。
-        </p>
-      </div>
-
-      <div class="talent-scene-card">
-        <strong>🚀 新しい流れをつくるとき</strong>
-        <p>
-          「この形なら動かせそう」と見えると、
-          人やアイデアをつなぎながら、
-          現実へ動かしていけます。
-        </p>
-      </div>
-    </div>
-  </article>
-
-  <!-- 03 -->
-  <article class="result-block">
-    <h2>今、こんなループに入っていませんか？</h2>
-
-    <p class="loop-intro">
-      「この企画をやってみたい」と思ったはずなのに……
-    </p>
-
-    <div class="diagnosis-loop">
-      <div class="loop-step">
-        新しい企画や切り口を思いつく
-      </div>
-
-      <div class="loop-arrow">↓</div>
-
-      <div class="loop-step">
-        別の立場や見せ方からも考える
-      </div>
-
-      <div class="loop-arrow">↓</div>
-
-      <div class="loop-step">
-        必要そうな視点や内容が増えていく
-      </div>
-
-      <div class="loop-arrow">↓</div>
-
-      <div class="loop-step loop-step--last">
-        企画が大きくなり、最初の形が決まらない
-      </div>
-    </div>
+    <p><strong>1．「今回の突破点」を一つ決める</strong></p>
 
     <p>
-      あなたは、
-      企画が思いつかないわけではありません。
-      むしろ、
-      <strong>一つの案から、いくつもの展開を考えられます。</strong>
+      企画全体を作り込む前に、「今回は何を変えたいのか」を一文にしてください。
     </p>
 
     <p>
-      ただ、
-      「初心者には？」
-      「今のお客様には？」
-      「別の見せ方なら？」と、
-      新しい視点が次々と見えてきます。
+      たとえば、
     </p>
 
     <p>
-      しかも、
-      どの視点にもちゃんと意味があるため、
-      「これも最初から入れた方がよいかも」と
-      企画が少しずつ大きくなります。
+      「サービスの説明を変え、お客様が内容を理解しやすくする」<br>
+      「新しい切り口で投稿し、届けたい人の反応を確かめる」
     </p>
 
     <p>
-      気づけば、
-      <strong>
-        最初は一枚だった企画メモが、
-        立派な事業計画書になっている。
-      </strong>
-      でも、肝心の企画はまだ外へ出ていない。
-      そんな状態になることもあるかもしれません。
-    </p>
-  </article>
-
-  <!-- 04 -->
-  <article class="result-block result-block--risk">
-    <h2>この状態が続くと…</h2>
-
-    <div class="risk-items">
-      <div class="risk-item">
-        新しい視点が見つかるたびに内容が増え、
-        企画を始めるまでの準備が大きくなる
-      </div>
-
-      <div class="risk-item">
-        対象や見せ方を広げるほど、
-        「今回は何をする企画なのか」がぼやけやすくなる
-      </div>
-
-      <div class="risk-item">
-        頭の中では企画が深まるのに、
-        実際の反応を得る機会が増えにくくなる
-      </div>
-
-      <div class="risk-item">
-        本当は全体を見る力が高いのに、
-        「自分は決めるのが苦手」と感じやすくなる
-      </div>
-    </div>
-  </article>
-
-  <!-- 05 -->
-  <article class="result-block result-block--key">
-    <h2>でも、問題は「いろいろな角度が見えること」ではありません</h2>
-
-    <p>
-      多くの立場や可能性を見渡せることは、
-      新しい企画を育てるための
-      あなたの大きな強みです。
+      といった形です。
     </p>
 
     <p>
-      ただ、
-      見つけた視点をすべて
-      「始める前に必要なもの」と考えると、
-      最初の形がどんどん大きくなります。
-    </p>
-
-    <p class="key-message">
-      <span class="key-message-line">今回、本当に変えたいことは何なのか。</span>
-      <span class="key-message-line">そのために、最初から必要なものはどれなのか。</span>
+      「売上も増やす」「対象も広げる」「ブランド全体も整える」と一度に決めると、何を最初に試せばよいか分かりにくくなります。
     </p>
 
     <p>
-      この違いが分かると、
-      広い視野を失わずに、
-      今動かせる大きさへ企画をまとめやすくなります。
+      今回変えたいことを一つにすると、必要な内容を選ぶ基準ができます。
     </p>
-  </article>
 
-  <!-- 06 LINE自動生成用 -->
-  <article class="result-block result-block--final result-block--source-only">
-    <h2>ここから先が本題です</h2>
+    <p>
+      新しい視点が浮かんだら、「これは今回の突破点に必要か」と確かめてみてください。
+    </p>
 
-    <ul class="line-benefits-source">
-      <li>
-        <strong>企画を考えるほど、別の切り口が増えていく理由：</strong>
-        慎重さ、突破力、多角的視点が同時に働くことで、
-        なぜ新しい視点が
-        「最初から入れておくべき条件」へ変わりやすいのかが分かります。
-      </li>
+    <p><strong>2．浮かんだ視点を、3つの置き場所へ分ける</strong></p>
 
-      <li>
-        <strong>どの視点を今使い、何をあとへ回すかの見分け方：</strong>
-        「今回の突破点」を一つ決め、
-        浮かんだ視点を
-        「今回必要・始めたあと・今回は扱わない」に分ける方法が分かります。
-      </li>
+    <p>
+      視点が増えたら、その場で企画へ足す前に、次の3つへ振り分けます。
+    </p>
 
-      <li>
-        <strong>多角的な視点を、新しい企画へ変えるヒント：</strong>
-        最初の実験を
-        「一人・一つのメッセージ・一つの届け方」へ絞り、
-        現実の反応から次の展開を決める
-        3つのコツが分かります。
-      </li>
+    <ul>
+      <li>今回必要：最初の実験を成立させるために欠かせないもの</li>
+      <li>始めたあと：反応を見てから加えるか決めるもの</li>
+      <li>今回は扱わない：別の企画として残しておくもの</li>
     </ul>
 
-    <p class="cta-message-source">
-      あなたには、
-      広い視野から新しい企画を
-      生み出す力があります。
+    <p>
+      たとえば、一人向けの相談サービスを試すなら、誰に何を届けるかと、申し込み方法は「今回必要」です。
+    </p>
 
-      大切なのは、
-      「今必要な視点」
-      「あとで活かす視点」を
-      分けられること。
+    <p>
+      別の対象向けの説明や、複数の提供プランは「始めたあと」にできます。
+    </p>
 
-      あなたに合う
-      「企画の束ね方」を、
-      LINEで受け取ってください。
+    <p>
+      関連する講座の案は「今回は扱わない」に残せます。
+    </p>
+
+    <p>
+      「今は入れない」と決めても、よい視点を失うわけではありません。
+    </p>
+
+    <p>
+      視点を残しながら順番を決めると、あなたの広い視野を使いやすくなります。
+    </p>
+
+    <p><strong>3．最初の実験を「一人・一つ・一つ」に絞る</strong></p>
+
+    <p>
+      最初から多くの人へ、いくつもの内容を、複数の方法で届けようとすると、反応があっても、何が届いたのか分かりにくくなります。
+    </p>
+
+    <p>
+      まずは、
+    </p>
+
+    <ul>
+      <li>一人：最初に届けたい相手を一人の人物像として決める</li>
+      <li>一つのメッセージ：その人へ伝えたい変化を一つに絞る</li>
+      <li>一つの届け方：投稿、個別案内など、試す方法を一つ選ぶ</li>
+    </ul>
+
+    <p>
+      たとえば、「新しいサービスを検討している人」へ、「最初の一歩が具体的に分かる」という一つの価値を、投稿一本で伝えてみます。
+    </p>
+
+    <p>
+      その結果、相手からどんな質問が来たか、どこで伝わりにくかったかを確認します。
+    </p>
+
+    <p>
+      反応を見てから、次の対象や伝え方を加えれば十分です。
+    </p>
+
+    <p>
+      最初の実験を小さくすると、次の展開を選ぶための材料が得られます。
+    </p>
+  </article>
+
+  <article class="result-block">
+    <h2>あなたの強みの活かし方</h2>
+
+    <p>
+      あなたには、全体を見渡し、異なる立場やアイデアの接点を見つける力があります。
+    </p>
+
+    <p>
+      その力は、一度にすべてを盛り込むときよりも、「今はどの接点から始めるか」を選ぶときに活きます。
+    </p>
+
+    <p>
+      今回の突破点を決める。浮かんだ視点に順番をつける。小さく届けて、相手の反応を見る。
+    </p>
+
+    <p>
+      そこで得たことを使い、次の視点を加えていく。
+    </p>
+
+    <p>
+      こうすれば、慎重さは確認する力に、突破力は動き出す力に、多角的視点は企画を育てる力になります。
+    </p>
+
+    <p>
+      最初の企画が小さくても、その先へ広げられる余地は残っています。
+    </p>
+  </article>
+
+  <article class="result-block result-block--final">
+    <h2>今日からできる最初の一歩</h2>
+
+    <p>
+      今、考えている企画を一つ選び、次の3つを書き出してください。
+    </p>
+
+    <ul>
+      <li>今回、誰の何を変えたいか</li>
+      <li>最初の実験に必要な視点はどれか</li>
+      <li>始めたあとに検討する視点はどれか</li>
+    </ul>
+
+    <p>
+      たとえば、
+    </p>
+
+    <p>
+      今回の突破点：初めての人にサービスの価値を伝える<br>
+      今回必要：対象となる一人、伝える価値一つ、投稿一本<br>
+      始めたあと：別の対象向けの説明、別の投稿形式
+    </p>
+
+    <p>
+      という形です。
+    </p>
+
+    <p>
+      書けたら、最初の投稿を作るなど、一つ目の実験を予定に入れてください。
+    </p>
+
+    <p>
+      すべての視点を一度に形にする必要はありません。
+    </p>
+
+    <p>
+      まず一つ届け、得られた反応を見て、次の形へ育てていきましょう。
+    </p>
+
+    <p>
+      今回お伝えしたのは、
+      あなたの手に表れている特徴の一部です。
+    </p>
+
+    <p>
+      これから、少しずつ、
+      手相の観点から見た強みを活かすコツを
+      お伝えしていきますね。
+    </p>
+
+    <p>
+      落ち着いたら、
+      週に1度程度の頻度で
+      配信していく予定です。
+    </p>
+
+    <p>
+      こちらの配信が、
+      あなたのお役に立てたら幸いです^^
+    </p>
+
+    <p>
+      もし、ご自身の状況に合わせてもっと深く知りたくなったときは、
+      個別の診断でも詳しくお伝えできますので、
+      その時はぜひ覗いてみてください。
     </p>
   </article>
 
