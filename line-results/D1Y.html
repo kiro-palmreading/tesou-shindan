@@ -1,513 +1,313 @@
-<section class="result-detail result-detail--visual" data-diagnosis-code="D1Y">
+<section class="result-detail" data-diagnosis-code="D1Y">
 
-  <style>
-    /* ========================================
-       D1Y 診断結果
-       Meta広告流入・スマホ向け
-    ======================================== */
-
-    .result-detail--visual {
-      max-width: 720px;
-      margin: 0 auto;
-      color: #24313a;
-      line-height: 1.8;
-    }
-
-    /* ========================================
-       FV
-    ======================================== */
-
-    .diagnosis-result-fv {
-      margin: 0 0 28px;
-      padding: 0;
-    }
-
-    .diagnosis-result-fv img {
-      display: block;
-      width: 100%;
-      height: auto;
-      margin: 0 auto;
-    }
-
-    /* ========================================
-       共通ブロック
-    ======================================== */
-
-    .result-detail--visual .result-block {
-      margin: 0 16px 28px;
-      padding: 26px 20px;
-      background: #ffffff;
-      border: 1px solid #dcecf5;
-      border-radius: 18px;
-      box-sizing: border-box;
-    }
-
-    .result-detail--visual .result-block h2 {
-      margin: 0 0 18px;
-      color: #083f5c;
-      font-size: 22px;
-      line-height: 1.45;
-      text-align: left;
-    }
-
-    .result-detail--visual .result-block p {
-      margin: 0 0 16px;
-      font-size: 16px;
-      line-height: 1.9;
-    }
-
-    .result-detail--visual .result-block p:last-child {
-      margin-bottom: 0;
-    }
-
-    /* ========================================
-       あなたはこんなタイプ
-    ======================================== */
-
-    .type-keywords {
-      margin: 0 0 20px;
-      font-size: 20px;
-      font-weight: 700;
-      color: #1f6fb2;
-      letter-spacing: 0.04em;
-      text-align: center;
-    }
-
-    .type-point-list {
-      display: grid;
-      gap: 11px;
-      margin: 0 0 20px;
-    }
-
-    .type-point {
-      position: relative;
-      padding: 14px 14px 14px 43px;
-      background: #f8fcff;
-      border-radius: 12px;
-      font-size: 16px;
-      line-height: 1.7;
-    }
-
-    .type-point::before {
-      content: "✓";
-      position: absolute;
-      left: 16px;
-      top: 14px;
-      color: #1f6fb2;
-      font-weight: 700;
-    }
-
-    .type-summary {
-      padding: 16px;
-      background: #eef7ff;
-      border-radius: 12px;
-      color: #314958;
-    }
-
-    /* ========================================
-       強みが出る場面
-    ======================================== */
-
-    .talent-scene-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 12px;
-    }
-
-    .talent-scene-card {
-      padding: 18px;
-      border-radius: 14px;
-      background: #eef7ff;
-      border: 1px solid #cfe3f1;
-    }
-
-    .talent-scene-card strong {
-      display: block;
-      margin-bottom: 8px;
-      color: #083f5c;
-      font-size: 17px;
-      line-height: 1.5;
-    }
-
-    .talent-scene-card p {
-      margin: 0 !important;
-    }
-
-    /* ========================================
-       今のループ
-    ======================================== */
-
-    .loop-intro {
-      font-weight: 700;
-      color: #314958;
-    }
-
-    .diagnosis-loop {
-      margin: 20px 0;
-    }
-
-    .loop-step {
-      padding: 15px 14px;
-      background: #f8fcff;
-      border: 1px solid #cfe6f3;
-      border-radius: 12px;
-      text-align: center;
-      font-size: 16px;
-      font-weight: 700;
-      color: #083f5c;
-    }
-
-    .loop-arrow {
-      height: 34px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #6f8798;
-      font-size: 24px;
-      font-weight: 700;
-    }
-
-    .loop-step--last {
-      background: #fff5f2;
-      border-color: #f2c9bf;
-      color: #9b4d3b;
-    }
-
-    /* ========================================
-       この状態が続くと
-    ======================================== */
-
-    .result-block--risk {
-      background: #fffaf7 !important;
-      border-color: #f1d9cf !important;
-    }
-
-    .risk-items {
-      display: grid;
-      gap: 10px;
-    }
-
-    .risk-item {
-      position: relative;
-      padding: 13px 14px 13px 40px;
-      background: #ffffff;
-      border: 1px solid #f0ddd5;
-      border-radius: 11px;
-      font-size: 16px;
-      line-height: 1.7;
-    }
-
-    .risk-item::before {
-      content: "●";
-      position: absolute;
-      left: 17px;
-      top: 15px;
-      color: #d98670;
-      font-size: 10px;
-    }
-
-    /* ========================================
-       問題の正体
-    ======================================== */
-
-    .result-block--key {
-      background: #eef7ff !important;
-      border-color: #bddcec !important;
-    }
-
-    .key-message {
-      margin: 18px 0 !important;
-      padding: 18px 16px;
-      background: #ffffff;
-      border: 1px solid #dcecf5;
-      border-radius: 8px;
-      font-size: 18px !important;
-      font-weight: 700;
-      color: #083f5c;
-      text-align: center;
-      line-height: 1.7;
-    }
-
-    .key-message-line {
-      display: block;
-    }
-
-    /* ========================================
-       LINE自動生成用データ
-    ======================================== */
-
-    .result-block--source-only {
-      display: none !important;
-    }
-
-    /* ========================================
-       スマホ
-    ======================================== */
-
-    @media (max-width: 600px) {
-      .result-detail--visual .result-block {
-        margin-left: 14px;
-        margin-right: 14px;
-        padding: 23px 17px;
-      }
-
-      .result-detail--visual .result-block h2 {
-        font-size: 21px;
-      }
-
-      .type-keywords {
-        font-size: 19px;
-      }
-
-      .talent-scene-card strong {
-        font-size: 17px;
-      }
-
-      .key-message {
-        font-size: 17px !important;
-        padding: 16px 14px;
-      }
-    }
-  </style>
-
-  <!-- FV -->
-  <div class="diagnosis-result-fv">
+  <!-- 診断結果FV：ページ最上部 -->
+  <div class="result-fv" style="width: 100%; margin: 0 auto 24px;">
     <img
       src="meta-fv-results/D1Y.png"
-      alt="才能コンパス診断 見極めて踏み出すエクスプローラー"
-      loading="eager"
-      fetchpriority="high"
+      alt="才能コンパス診断 D1Y 診断結果"
+      style="display: block; width: 100%; height: auto;"
     >
   </div>
 
-  <!-- 01 -->
   <article class="result-block">
-    <h2>あなたはこんなタイプです</h2>
+    <h2>詳しい診断結果</h2>
 
-    <div class="type-keywords">
-      慎重 × 突破 × 直感
-    </div>
+    <p>
+      あなたが「今度はこの方向へ」と決めかけても、別の道が気になり、選び直したくなるのは、3つの特徴が同時に働くためです。
+    </p>
 
-    <div class="type-point-list">
-      <div class="type-point">
-        今の状態に限界を感じると、
-        <strong>「別の道があるかも」と新しい可能性を見つけられる</strong>
-      </div>
+    <p>1つ目は、「慎重」です。</p>
 
-      <div class="type-point">
-        すぐ飛び込むのではなく、
-        <strong>自分に合うか、後悔しないかを丁寧に確かめる</strong>
-      </div>
+    <p>
+      あなたは、時間や力を注ぐ先を大切に選びたい人です。
+    </p>
 
-      <div class="type-point">
-        「今はこちら」と納得すると、
-        <strong>思い切って新しい方向へ踏み出せる</strong>
-      </div>
-    </div>
+    <p>
+      一つの道を選ぶときにも、
+    </p>
 
-    <p class="type-summary">
-      あなたは、
-      ただ新しいものを追いかける人ではありません。
-      まだ見えていない可能性を感じ取りながら、
-      自分に合う方向を見極め、
-      納得した道から未来を切り開いていく人です。
+    <p>
+      「本当に今の自分に合っているか」<br>
+      「ほかを選んだ方がよかったと後悔しないか」
+    </p>
+
+    <p>
+      と確かめます。
+    </p>
+
+    <p>2つ目は、「突破」です。</p>
+
+    <p>
+      あなたは、現状に限界を感じると、「ここから変えたい」と新しい出口を探します。
+    </p>
+
+    <p>
+      今までの方法だけにとらわれず、別の道を見つけられる力があります。
+    </p>
+
+    <p>3つ目は、「直感」です。</p>
+
+    <p>
+      新しい情報や人との出会いから、「こちらにも可能性がありそう」と感じ取ります。
+    </p>
+
+    <p>
+      まだ結果が出ていない案の魅力にも、早く気づけるのです。
+    </p>
+
+    <p>
+      この3つが重なると、次のような流れが起こりやすくなります。
+    </p>
+
+    <p>進みたい道を一つ選ぶ</p>
+    <p>↓</p>
+    <p>自分に合うか確かめ始める</p>
+    <p>↓</p>
+    <p>別の魅力的な可能性が見える</p>
+    <p>↓</p>
+    <p>今の道を十分に試す前に、また比較へ戻る</p>
+
+    <p>
+      たとえば、あるテーマで発信すると決めたあと、別の人の発信を見て、「こちらのテーマの方が合うかもしれない」と思う。
+    </p>
+
+    <p>
+      あるサービスを育てようと決めても、新しい企画の案が浮かぶと、「先にこちらを試すべきかも」と考える。
+    </p>
+
+    <p>
+      ここで新しい案が魅力的に見えるのには、理由があります。
+    </p>
+
+    <p>
+      選んだ道には、すでに難しさや地道な作業が見えています。一方、まだ試していない道には、可能性が大きく見えます。
+    </p>
+
+    <p>
+      そのため、新しい案を見つけたこと自体を、「今の道が合っていない証拠」のように感じやすいのです。
+    </p>
+
+    <p>
+      けれど、別の可能性が見えることと、今の方向が間違っていることは、同じではありません。
+    </p>
+
+    <p>
+      <strong>まず「今、何を変えたいか」を決め、選んだ方法を一度試してから、別の道と比べましょう。</strong>
+    </p>
+
+    <p>
+      そうすれば、直感を新しい案探しだけで終わらせず、進む方向を見極める力として使えます。
     </p>
   </article>
 
-  <!-- 02 -->
   <article class="result-block">
-    <h2>こんな場面で強みが出ます</h2>
+    <h2>可能性を見極める3つのコツ</h2>
 
-    <div class="talent-scene-grid">
-      <div class="talent-scene-card">
-        <strong>🧭 新しい可能性を見つけるとき</strong>
-        <p>
-          今までの方法にとらわれず、
-          「こんな道もあるかもしれない」と
-          新しい出口を見つけられます。
-        </p>
-      </div>
+    <p>あなたのタイプに合うコツは、次の3つです。</p>
 
-      <div class="talent-scene-card">
-        <strong>🔍 自分に合う方向を見極めるとき</strong>
-        <p>
-          面白そうという感覚だけで決めず、
-          今の自分に合うか、
-          無理なく進めるかまで確かめられます。
-        </p>
-      </div>
-
-      <div class="talent-scene-card">
-        <strong>🚀 新しい道へ踏み出すとき</strong>
-        <p>
-          「今はこちら」と決まれば、
-          それまでの迷いを切り替え、
-          新しい世界へ一歩を出せます。
-        </p>
-      </div>
-    </div>
-  </article>
-
-  <!-- 03 -->
-  <article class="result-block">
-    <h2>今、こんなループに入っていませんか？</h2>
-
-    <p class="loop-intro">
-      「今度は、この方向へ」と思ったはずなのに……
-    </p>
-
-    <div class="diagnosis-loop">
-      <div class="loop-step">
-        新しい可能性を見つける
-      </div>
-
-      <div class="loop-arrow">↓</div>
-
-      <div class="loop-step">
-        自分に合うか慎重に確かめる
-      </div>
-
-      <div class="loop-arrow">↓</div>
-
-      <div class="loop-step">
-        比較中に、さらに魅力的な可能性が見える
-      </div>
-
-      <div class="loop-arrow">↓</div>
-
-      <div class="loop-step loop-step--last">
-        また選び直し、出発地点へ戻る
-      </div>
-    </div>
+    <p><strong>1．方法を比べる前に、「今変えたいこと」を一つ決める</strong></p>
 
     <p>
-      あなたは、
-      進みたい方向が見えていないわけではありません。
-      むしろ、
-      <strong>「これを試してみたい」という候補は、かなり見えています。</strong>
+      新しい案と今の案を比べ始める前に、何のために取り組むのかを書き出してください。
     </p>
 
     <p>
-      ただ、一つを選ぼうとすると、
-      「こちらも面白そう」
-      「もっと今の自分に合う方法があるかも」と、
-      新しい可能性まで見えてきます。
+      たとえば、
     </p>
 
     <p>
-      どちらにも本当に魅力があるから、
-      「せっかくなら、こちらも確認してから」と
-      比較をやり直したくなるのです。
+      「自分のサービスを、必要としている人に分かりやすく伝えたい」<br>
+      「今の仕事の負担を減らしながら、新しい収入の道を探したい」
     </p>
 
     <p>
-      気づけば、
-      <strong>
-        調べるために開いたタブだけが増え、
-        どの道から出発するかは、まだ決まっていない。
-      </strong>
-      そんな状態になることもあるかもしれません。
-    </p>
-  </article>
-
-  <!-- 04 -->
-  <article class="result-block result-block--risk">
-    <h2>この状態が続くと…</h2>
-
-    <div class="risk-items">
-      <div class="risk-item">
-        一つを選びかけるたびに別の可能性が見え、
-        決定までの時間が長くなる
-      </div>
-
-      <div class="risk-item">
-        一度選んでも、
-        十分に試す前に別の方向を見直したくなる
-      </div>
-
-      <div class="risk-item">
-        選択肢は増えるのに、
-        どの道が本当に合うのかを確かめる経験が増えにくくなる
-      </div>
-
-      <div class="risk-item">
-        本当は可能性を見つける力が高いのに、
-        「自分は飽きっぽい」と感じやすくなる
-      </div>
-    </div>
-  </article>
-
-  <!-- 05 -->
-  <article class="result-block result-block--key">
-    <h2>でも、問題は「ほかの可能性が見えること」ではありません</h2>
-
-    <p>
-      新しい道を見つけられることは、
-      停滞した状況を変えるための
-      あなたの大きな強みです。
+      といった形です。
     </p>
 
     <p>
-      ただ、
-      新しい可能性が見えたことを
-      「今選んだ方向が違う合図」と感じると、
-      何度も選択へ戻りやすくなります。
+      目的が見えると、新しい案について、
     </p>
 
-    <p class="key-message">
-      <span class="key-message-line">今の方向を、もう少し試すべきなのか。</span>
-      <span class="key-message-line">それとも、本当に別の道へ変えるべきなのか。</span>
-    </p>
-
-    <p>
-      この違いが分かると、
-      新しい可能性を捨てずに、
-      今選んだ道もきちんと確かめられます。
-    </p>
-  </article>
-
-  <!-- 06 LINE自動生成用 -->
-  <article class="result-block result-block--final result-block--source-only">
-    <h2>ここから先が本題です</h2>
-
-    <ul class="line-benefits-source">
-      <li>
-        <strong>一つを選ぶと、ほかの可能性が魅力的に見えやすくなる理由：</strong>
-        慎重さ、突破力、直感が同時に働くことで、
-        なぜ一つの方向を選んだあとも
-        「もっと自分に合う道があるかもしれない」と感じやすいのかが分かります。
-      </li>
-
-      <li>
-        <strong>今の方向を続けるか、変えるかの見分け方：</strong>
-        「どの方法で進むか」より先に
-        「今、何を変えたいのか」を決め、
-        新しい案が同じ目的地へ向かう別の方法なのかを
-        見分ける方法が分かります。
-      </li>
-
-      <li>
-        <strong>慎重さと直感を、前進する力へ変えるヒント：</strong>
-        一つの方向につき一つの実験を最後まで終え、
-        新しい可能性は次の検討日まで保留し、
-        実際の反応から次を判断する
-        3つのコツが分かります。
-      </li>
+    <ul>
+      <li>今の目的に近づく別の方法なのか</li>
+      <li>目的そのものを変える新しい方向なのか</li>
+      <li>今は面白いけれど、目的とは離れている案なのか</li>
     </ul>
 
-    <p class="cta-message-source">
-      あなたには、
-      新しい可能性を見つけ、
-      自分に合う道を選ぶ力があります。
+    <p>
+      を分けられます。
+    </p>
 
-      大切なのは、
-      「今の道を続けるか」
-      「別の道へ変えるか」を
-      見分けられること。
+    <p>
+      「どちらが魅力的か」だけで比べるより、今必要な選択が見えやすくなります。
+    </p>
 
-      あなたに合う
-      「可能性の見極め方」を、
-      LINEで受け取ってください。
+    <p><strong>2．選んだ道で、一つの実験を終える</strong></p>
+
+    <p>
+      自分に合うかどうかは、頭の中で比べ続けるだけでは判断しにくいものです。
+    </p>
+
+    <p>
+      そこで、今選んだ方向につき、終わりのある実験を一つ決めましょう。
+    </p>
+
+    <p>
+      たとえば、
+    </p>
+
+    <ul>
+      <li>決めたテーマで投稿を3本作る</li>
+      <li>一つのサービスを対象となる5人に案内する</li>
+      <li>新しい方法を2週間だけ試し、反応を記録する</li>
+    </ul>
+
+    <p>
+      という形です。
+    </p>
+
+    <p>
+      実験中に別の案が浮かんだら、書き残しておきます。
+    </p>
+
+    <p>
+      気になる案を忘れないようにしながら、決めた実験を終えるまでは進む方向を変えない。
+    </p>
+
+    <p>
+      そうすると、「やってみたらどうだったか」という比較の材料が手に入ります。
+    </p>
+
+    <p><strong>3．検討する日を決め、実際の反応で続けるか選ぶ</strong></p>
+
+    <p>
+      新しい案をいつでも検討できる状態にしておくと、別の可能性が見えるたびに選び直しが始まります。
+    </p>
+
+    <p>
+      実験を始める前に、「終えた日に次の方向を検討する」と決めておきましょう。
+    </p>
+
+    <p>
+      その日に、次の3つを確認します。
+    </p>
+
+    <ul>
+      <li>今回の目的に近づく反応や手応えはあったか</li>
+      <li>難しい点があっても、もう一度工夫したいか</li>
+      <li>新しい案は、今の目的により近づけるか</li>
+    </ul>
+
+    <p>
+      今の道に手応えがあるなら、続けるか、やり方を調整します。
+    </p>
+
+    <p>
+      目的に合わず、実際に試しても改善の見込みが薄いなら、残しておいた別の案を検討します。
+    </p>
+
+    <p>
+      一回の実験で将来のすべてを決める必要はありません。
+    </p>
+
+    <p>
+      経験をもとに次の一歩を選ぶことが大切です。
+    </p>
+  </article>
+
+  <article class="result-block">
+    <h2>あなたの強みの活かし方</h2>
+
+    <p>
+      あなたには、今の状況を変えるための新しい道を見つける力があります。
+    </p>
+
+    <p>
+      自分に合うかを丁寧に考える力もあります。
+    </p>
+
+    <p>
+      そして、納得できた方向へ踏み出す力があります。
+    </p>
+
+    <p>
+      大切なのは、まだ試していない案と、すでに取り組んでいる案を、想像だけで何度も比べないことです。
+    </p>
+
+    <p>
+      目的を定める。一つ選んで試す。新しい可能性は記録し、検討する日に実際の反応と比べる。
+    </p>
+
+    <p>
+      この順番なら、慎重さは選ぶ力に、突破力は一歩踏み出す力に、直感は次の可能性に気づく力になります。
+    </p>
+
+    <p>
+      どの道を選ぶか迷ったら、まず一つを試した自分の経験を判断材料にしてください。
+    </p>
+  </article>
+
+  <article class="result-block result-block--final">
+    <h2>今日からできる最初の一歩</h2>
+
+    <p>
+      今迷っていることについて、次の3つを書き出してください。
+    </p>
+
+    <ul>
+      <li>今、何を変えたいのか</li>
+      <li>まず選んで、最後まで試す小さな実験</li>
+      <li>ほかの案を改めて検討する日</li>
+    </ul>
+
+    <p>
+      たとえば、
+    </p>
+
+    <p>
+      変えたいこと：サービスの魅力を必要な人に伝える<br>
+      最初の実験：今の説明で対象となる5人に案内する<br>
+      検討する日：5人への案内と反応の記録を終えた日
+    </p>
+
+    <p>
+      という形です。
+    </p>
+
+    <p>
+      新しい案が浮かんでも、今選んだ道が間違いだと急いで決める必要はありません。
+    </p>
+
+    <p>
+      まずは一つの実験を終え、その経験を持って次の方向を選びましょう。
+    </p>
+
+    <p>
+      今回お伝えしたのは、
+      あなたの手に表れている特徴の一部です。
+    </p>
+
+    <p>
+      これから、少しずつ、
+      手相の観点から見た強みを活かすコツを
+      お伝えしていきますね。
+    </p>
+
+    <p>
+      落ち着いたら、
+      週に1度程度の頻度で
+      配信していく予定です。
+    </p>
+
+    <p>
+      こちらの配信が、
+      あなたのお役に立てたら幸いです^^
+    </p>
+
+    <p>
+      もし、ご自身の状況に合わせてもっと深く知りたくなったときは、
+      個別の診断でも詳しくお伝えできますので、
+      その時はぜひ覗いてみてください。
     </p>
   </article>
 
