@@ -1,32 +1,41 @@
-<section class="tp-lp">
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+
+  <!-- スマホ表示に必須 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>才能プロファイリング</title>
+
+  <meta
+    name="description"
+    content="両手の画像から、あなた自身の強みを読み解くメール完結型の手相診断「才能プロファイリング」です。"
+  >
 
   <style>
-    .tp-lp,
-    .tp-lp * {
+
+    /* ========================================
+       基本設定
+    ======================================== */
+
+    *,
+    *::before,
+    *::after {
       box-sizing: border-box;
     }
 
-    .tp-lp {
-      --navy: #173f57;
-      --navy-soft: #355b70;
-      --blue: #65add5;
-      --blue-dark: #428fba;
-      --blue-light: #e7f5fc;
-      --blue-pale: #f6fbfe;
-      --border: #d8eaf4;
-      --text: #2f4049;
-      --muted: #6b7f89;
-      --white: #ffffff;
+    html {
+      -webkit-text-size-adjust: 100%;
+      text-size-adjust: 100%;
+    }
 
-      /* CTA：才能コンパス診断と同系統のオレンジ */
-      --cta: #f5a000;
-      --cta-hover: #e89400;
-
-      max-width: 760px;
-      margin: 0 auto;
-      padding: 0 0 60px;
+    body {
+      margin: 0;
+      padding: 0;
       background: #ffffff;
-      color: var(--text);
+      color: #2f4049;
       font-family:
         -apple-system,
         BlinkMacSystemFont,
@@ -35,27 +44,61 @@
         "Yu Gothic",
         "Meiryo",
         sans-serif;
-      font-size: 16px;
-      line-height: 1.9;
-      overflow-wrap: break-word;
     }
 
-    .tp-lp img {
-      display: block;
+    img {
       max-width: 100%;
       height: auto;
+      display: block;
     }
 
-    .tp-lp a {
+    a {
       text-decoration: none;
     }
 
+    /* ========================================
+       LP全体
+    ======================================== */
+
+    .tp-lp {
+      --navy: #173f57;
+      --navy-soft: #355b70;
+
+      --blue: #65add5;
+      --blue-dark: #428fba;
+      --blue-light: #e7f5fc;
+      --blue-pale: #f6fbfe;
+
+      --border: #d8eaf4;
+
+      --text: #2f4049;
+      --muted: #647985;
+
+      --cta: #f5a000;
+      --cta-hover: #e89400;
+
+      width: 100%;
+      max-width: 760px;
+      margin: 0 auto;
+      padding-bottom: 60px;
+
+      background: #ffffff;
+      color: var(--text);
+
+      font-size: 17px;
+      line-height: 1.9;
+
+      word-break: normal;
+      overflow-wrap: break-word;
+    }
+
     .tp-inner {
-      padding: 0 18px;
+      padding-left: 18px;
+      padding-right: 18px;
     }
 
     .tp-section {
-      margin-top: 48px;
+      margin-top: 52px;
     }
 
     /* ========================================
@@ -63,20 +106,23 @@
     ======================================== */
 
     .tp-section-title {
-      margin: 0 0 23px;
+      margin: 0 0 25px;
+
       color: var(--navy);
-      font-size: 25px;
-      line-height: 1.55;
+
+      font-size: 27px;
+      line-height: 1.5;
       font-weight: 800;
+
       text-align: center;
       letter-spacing: 0.02em;
     }
 
-    .tp-section-title .tp-accent {
+    .tp-accent {
       color: var(--blue-dark);
     }
 
-    /* スマホで不自然に改行しないためのまとまり */
+    /* 意味のまとまりを途中で割らない */
     .tp-nowrap {
       display: inline-block;
     }
@@ -87,113 +133,136 @@
 
     .tp-text {
       margin: 0;
-      font-size: 16px;
+
+      font-size: 17px;
       line-height: 1.95;
+
+      letter-spacing: 0.01em;
     }
 
     .tp-text + .tp-text {
-      margin-top: 18px;
+      margin-top: 20px;
     }
 
-    .tp-highlight {
+    strong {
       font-weight: 800;
-      background:
-        linear-gradient(
-          transparent 62%,
-          #dff1fa 62%
-        );
     }
 
     /* ========================================
-       冒頭
+       最初のセクション
     ======================================== */
 
     .tp-intro {
       margin-top: 0;
-      padding: 38px 0 4px;
+      padding-top: 38px;
     }
 
     .tp-intro .tp-section-title {
-      margin-bottom: 24px;
-      font-size: 28px;
+      font-size: 29px;
     }
 
     .tp-intro-box {
-      margin-top: 23px;
-      padding: 23px 20px;
+      margin-top: 25px;
+      padding: 24px 21px;
+
       background: var(--blue-pale);
       border: 1px solid var(--border);
-      border-radius: 17px;
+      border-radius: 18px;
     }
 
     .tp-intro-box p {
       margin: 0;
+
       color: var(--navy-soft);
-      font-size: 16px;
+
+      font-size: 18px;
       line-height: 1.9;
     }
 
     /* ========================================
-       引用・強調
+       引用
     ======================================== */
 
     .tp-quote {
-      margin: 22px 0;
-      padding: 21px 19px;
+      margin: 24px 0;
+      padding: 22px 20px;
+
       background: var(--blue-pale);
+
       border-left: 5px solid var(--blue);
-      border-radius: 0 14px 14px 0;
+      border-radius: 0 15px 15px 0;
+
       color: var(--navy);
-      font-weight: 700;
+
+      font-size: 17px;
       line-height: 1.9;
+      font-weight: 700;
     }
 
+    /* ========================================
+       強調メッセージ
+    ======================================== */
+
     .tp-key-message {
-      margin: 24px 0;
-      padding: 22px 18px;
+      margin: 25px 0;
+      padding: 23px 20px;
+
       background: #f5fbfe;
+
       border: 1px solid var(--border);
-      border-radius: 16px;
+      border-radius: 17px;
+
       color: var(--navy);
-      font-size: 18px;
-      line-height: 1.8;
+
+      font-size: 20px;
+      line-height: 1.75;
       font-weight: 800;
+
       text-align: center;
     }
 
     /* ========================================
-       両手の説明
+       左手・右手
     ======================================== */
 
     .tp-hand-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 13px;
-      margin-top: 25px;
+      gap: 14px;
+
+      margin-top: 27px;
     }
 
     .tp-hand-card {
-      padding: 21px 17px;
+      padding: 22px 18px;
+
       background: var(--blue-pale);
+
       border: 1px solid var(--border);
-      border-radius: 16px;
+      border-radius: 17px;
     }
 
     .tp-hand-label {
       display: inline-block;
-      margin-bottom: 10px;
-      padding: 5px 12px;
+
+      margin-bottom: 12px;
+      padding: 6px 14px;
+
       background: #ffffff;
+
       border: 1px solid #cce6f3;
       border-radius: 999px;
+
       color: var(--blue-dark);
-      font-size: 13px;
+
+      font-size: 15px;
       font-weight: 800;
     }
 
     .tp-hand-card p {
       margin: 0;
-      font-size: 14px;
+
+      font-size: 16px;
       line-height: 1.85;
     }
 
@@ -202,9 +271,11 @@
     ======================================== */
 
     .tp-report-image {
-      margin-top: 25px;
+      margin-top: 26px;
       padding: 10px;
+
       background: #ffffff;
+
       border: 1px solid var(--border);
       border-radius: 18px;
     }
@@ -215,21 +286,28 @@
     }
 
     .tp-caption {
-      margin: 10px 0 0;
+      margin: 11px 0 0;
+
       color: var(--muted);
-      font-size: 12px;
+
+      font-size: 14px;
       line-height: 1.7;
+
       text-align: center;
     }
 
     .tp-report-note {
-      margin-top: 18px;
-      padding: 17px 18px;
+      margin-top: 20px;
+      padding: 19px 18px;
+
       background: var(--blue-pale);
+
       border-radius: 14px;
+
       color: var(--navy-soft);
-      font-size: 14px;
-      line-height: 1.8;
+
+      font-size: 16px;
+      line-height: 1.85;
     }
 
     /* ========================================
@@ -237,27 +315,36 @@
     ======================================== */
 
     .tp-bonus {
-      padding: 28px 20px;
+      padding: 29px 21px;
+
       background: #ffffff;
+
       border: 2px solid #c6e4f3;
-      border-radius: 19px;
+      border-radius: 20px;
     }
 
     .tp-bonus-label {
       display: inline-block;
-      margin-bottom: 13px;
-      padding: 6px 14px;
+
+      margin-bottom: 14px;
+      padding: 7px 15px;
+
       background: var(--blue-light);
+
       border-radius: 999px;
+
       color: var(--blue-dark);
-      font-size: 13px;
+
+      font-size: 15px;
       font-weight: 800;
     }
 
     .tp-bonus h3 {
-      margin: 0 0 16px;
+      margin: 0 0 18px;
+
       color: var(--navy);
-      font-size: 22px;
+
+      font-size: 24px;
       line-height: 1.55;
     }
 
@@ -266,59 +353,77 @@
     ======================================== */
 
     .tp-offer {
-      padding: 31px 20px;
+      padding: 32px 21px;
+
       background: var(--blue-pale);
+
       border: 2px solid #bddff0;
       border-radius: 20px;
+
       text-align: center;
     }
 
     .tp-offer-title {
       margin: 0;
+
       color: var(--navy);
-      font-size: 24px;
+
+      font-size: 26px;
       line-height: 1.55;
       font-weight: 800;
     }
 
     .tp-normal {
-      margin: 25px 0 6px;
+      margin: 27px 0 7px;
+
       color: var(--muted);
-      font-size: 15px;
+
+      font-size: 16px;
     }
 
     .tp-normal span {
-      margin-left: 5px;
-      font-size: 18px;
+      margin-left: 6px;
+
+      font-size: 20px;
+
       text-decoration: line-through;
     }
 
     .tp-off-label {
       display: inline-block;
-      margin: 7px 0 6px;
-      padding: 6px 16px;
-      border-radius: 999px;
+
+      margin: 8px 0 8px;
+      padding: 7px 18px;
+
       background: #dff1fa;
+
+      border-radius: 999px;
+
       color: var(--blue-dark);
-      font-size: 18px;
+
+      font-size: 20px;
       font-weight: 800;
     }
 
     .tp-special-price {
       margin: 0;
+
       color: var(--blue-dark);
+
       line-height: 1.2;
     }
 
     .tp-special-price strong {
-      font-size: 45px;
+      font-size: 48px;
       font-weight: 800;
     }
 
     .tp-special-price span {
-      margin-left: 4px;
+      margin-left: 5px;
+
       color: var(--navy);
-      font-size: 16px;
+
+      font-size: 18px;
       font-weight: 700;
     }
 
@@ -327,18 +432,24 @@
     ======================================== */
 
     .tp-request-box {
-      margin-top: 23px;
-      padding: 23px 19px;
+      margin-top: 25px;
+      padding: 24px 20px;
+
       background: #ffffff;
+
       border: 1px solid var(--border);
       border-radius: 16px;
+
       text-align: left;
     }
 
     .tp-request-title {
-      margin: 0 0 13px;
+      margin: 0 0 15px;
+
       color: var(--navy);
-      font-size: 19px;
+
+      font-size: 21px;
+      line-height: 1.6;
       font-weight: 800;
     }
 
@@ -347,31 +458,38 @@
     ======================================== */
 
     .tp-flow {
-      margin-top: 25px;
+      margin-top: 28px;
     }
 
     .tp-flow-item {
       display: grid;
-      grid-template-columns: 44px 1fr;
-      gap: 14px;
-      margin-bottom: 18px;
+      grid-template-columns: 48px 1fr;
+      gap: 15px;
+
+      margin-bottom: 20px;
     }
 
     .tp-flow-num {
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 42px;
-      height: 42px;
-      border-radius: 50%;
+
+      width: 44px;
+      height: 44px;
+
       background: var(--blue);
+
+      border-radius: 50%;
+
       color: #ffffff;
-      font-size: 17px;
+
+      font-size: 18px;
       font-weight: 800;
     }
 
     .tp-flow-body {
-      padding: 5px 0 17px;
+      padding: 4px 0 18px;
+
       border-bottom: 1px solid var(--border);
     }
 
@@ -380,85 +498,110 @@
     }
 
     .tp-flow-body h3 {
-      margin: 0 0 6px;
+      margin: 0 0 7px;
+
       color: var(--navy);
-      font-size: 17px;
+
+      font-size: 19px;
       line-height: 1.6;
     }
 
     .tp-flow-body p {
       margin: 0;
-      font-size: 15px;
+
+      font-size: 17px;
       line-height: 1.85;
     }
 
     .tp-note {
-      margin-top: 10px !important;
+      margin-top: 11px !important;
+
       color: var(--muted);
-      font-size: 13px !important;
+
+      font-size: 14px !important;
+      line-height: 1.8 !important;
     }
 
     /* ========================================
-       サポート
+       メールサポート
     ======================================== */
 
     .tp-support-box {
-      padding: 27px 20px;
+      padding: 29px 21px;
+
       background: #f7fcff;
+
       border: 1px solid var(--border);
-      border-radius: 18px;
+      border-radius: 19px;
     }
 
     .tp-support-tag {
       display: inline-block;
-      margin-bottom: 13px;
-      padding: 6px 13px;
+
+      margin-bottom: 14px;
+      padding: 7px 14px;
+
       background: var(--blue-light);
+
       border-radius: 999px;
+
       color: var(--blue-dark);
-      font-size: 13px;
+
+      font-size: 15px;
       font-weight: 800;
     }
 
     /* ========================================
-       最終オファー
+       最後の限定オファー
     ======================================== */
 
     .tp-limit {
-      padding: 32px 20px;
+      padding: 34px 21px;
+
       background:
         linear-gradient(
           180deg,
           #eef8fd 0%,
           #ffffff 100%
         );
+
       border: 2px solid #c9e6f4;
       border-radius: 20px;
+
       text-align: center;
     }
 
     .tp-limit-label {
       display: inline-block;
-      padding: 7px 15px;
-      border-radius: 999px;
+
+      padding: 8px 16px;
+
       background: var(--navy);
+
+      border-radius: 999px;
+
       color: #ffffff;
-      font-size: 14px;
+
+      font-size: 15px;
       font-weight: 800;
     }
 
     .tp-limit h2 {
-      margin: 17px 0 13px;
+      margin: 19px 0 14px;
+
       color: var(--navy);
-      font-size: 27px;
+
+      font-size: 29px;
       line-height: 1.5;
     }
 
     .tp-deadline {
-      margin: 16px 0 0;
+      margin: 18px 0 0;
+
       color: var(--blue-dark);
-      font-size: 23px;
-      line-height: 1.5;
+
+      font-size: 24px;
+      line-height: 1.55;
       font-weight: 800;
     }
 
@@ -467,26 +610,34 @@
     ======================================== */
 
     .tp-cta-wrap {
-      margin-top: 27px;
+      margin-top: 30px;
     }
 
     .tp-cta {
       display: flex;
       align-items: center;
       justify-content: center;
+
       width: 100%;
-      min-height: 66px;
-      padding: 16px 20px;
-      border-radius: 12px;
+      min-height: 68px;
+
+      padding: 18px 20px;
+
       background: var(--cta);
+
+      border-radius: 10px;
+
       color: #ffffff !important;
-      font-size: 18px;
-      line-height: 1.45;
+
+      font-size: 19px;
+      line-height: 1.4;
       font-weight: 800;
       letter-spacing: 0.02em;
+
       box-shadow:
-        0 4px 0 rgba(194, 123, 0, 0.26),
-        0 6px 14px rgba(180, 116, 0, 0.14);
+        0 4px 0 rgba(194, 123, 0, 0.23),
+        0 7px 15px rgba(180, 116, 0, 0.12);
+
       transition:
         background 0.15s ease,
         transform 0.15s ease;
@@ -495,6 +646,10 @@
     .tp-cta:hover {
       background: var(--cta-hover);
       transform: translateY(-1px);
+    }
+
+    .tp-cta:active {
+      transform: translateY(1px);
     }
 
     .tp-cta:focus-visible {
@@ -509,593 +664,724 @@
     @media (max-width: 600px) {
 
       .tp-lp {
+        font-size: 17px;
+        line-height: 1.9;
         padding-bottom: 45px;
       }
 
       .tp-inner {
-        padding-left: 16px;
-        padding-right: 16px;
+        padding-left: 17px;
+        padding-right: 17px;
       }
 
       .tp-intro {
         padding-top: 31px;
       }
 
-      .tp-intro .tp-section-title {
-        font-size: 25px;
-      }
-
       .tp-section {
-        margin-top: 42px;
+        margin-top: 45px;
       }
 
       .tp-section-title {
-        font-size: 22px;
-        line-height: 1.6;
+        font-size: 25px;
+        line-height: 1.55;
+      }
+
+      .tp-intro .tp-section-title {
+        font-size: 26px;
+      }
+
+      .tp-text {
+        font-size: 17px;
+        line-height: 1.95;
+      }
+
+      .tp-intro-box p {
+        font-size: 18px;
+        line-height: 1.9;
+      }
+
+      .tp-quote {
+        font-size: 17px;
+      }
+
+      .tp-key-message {
+        font-size: 19px;
       }
 
       .tp-hand-grid {
         grid-template-columns: 1fr;
       }
 
+      .tp-hand-card p {
+        font-size: 17px;
+      }
+
+      .tp-bonus h3 {
+        font-size: 22px;
+      }
+
+      .tp-offer-title {
+        font-size: 24px;
+      }
+
       .tp-special-price strong {
-        font-size: 41px;
+        font-size: 46px;
+      }
+
+      .tp-flow-body p {
+        font-size: 17px;
+      }
+
+      .tp-limit h2 {
+        font-size: 26px;
+      }
+
+      .tp-deadline {
+        font-size: 23px;
+      }
+
+      .tp-cta {
+        min-height: 68px;
+        font-size: 18px;
+      }
+
+    }
+
+    /* 小さいスマホ */
+    @media (max-width: 370px) {
+
+      .tp-inner {
+        padding-left: 15px;
+        padding-right: 15px;
+      }
+
+      .tp-section-title,
+      .tp-intro .tp-section-title {
+        font-size: 23px;
+      }
+
+      .tp-text {
+        font-size: 17px;
+      }
+
+      .tp-special-price strong {
+        font-size: 42px;
       }
 
       .tp-limit h2 {
         font-size: 24px;
       }
 
-      .tp-deadline {
-        font-size: 21px;
-      }
-
       .tp-cta {
-        min-height: 64px;
         font-size: 17px;
       }
 
     }
 
-    @media (max-width: 360px) {
-
-      .tp-intro .tp-section-title,
-      .tp-section-title {
-        font-size: 21px;
-      }
-
-      .tp-special-price strong {
-        font-size: 37px;
-      }
-
-    }
-
   </style>
+</head>
 
 
-  <div class="tp-inner">
+<body>
+
+  <main class="tp-lp">
+
+    <div class="tp-inner">
 
 
-    <!-- ========================================
-         才能コンパス診断の、その先へ
-    ======================================== -->
-    <section class="tp-section tp-intro">
+      <!-- ========================================
+           才能コンパス診断の、その先へ
+      ======================================== -->
 
-      <h2 class="tp-section-title">
-        <span class="tp-nowrap">才能コンパス診断の</span>
-        <span class="tp-nowrap">その先へ</span>
-      </h2>
+      <section class="tp-section tp-intro">
 
-      <p class="tp-text">
-        才能コンパス診断では、
-        利き手の「手の形」と「知能線」から、
-        あなたの強みや思考の特徴を読み解いてきました。
-      </p>
+        <h1 class="tp-section-title">
+          <span class="tp-nowrap">才能コンパス診断の、</span>
+          <span class="tp-nowrap">その先へ</span>
+        </h1>
 
-      <div class="tp-intro-box">
-        <p>
-          今回の「才能プロファイリング」は、
-          <strong>
-            時間や場所を気にすることなく、
-            両手の画像を送るだけで受けられる、
-            メール完結型の手相診断
-          </strong>
-          です。
+        <p class="tp-text">
+          才能コンパス診断では、
+          利き手の「手の形」と「知能線」から、
+          あなたの強みや思考の特徴を読み解いてきました。
         </p>
-      </div>
 
-    </section>
+        <div class="tp-intro-box">
 
-
-    <!-- ========================================
-         自分の価値
-    ======================================== -->
-    <section class="tp-section">
-
-      <h2 class="tp-section-title">
-        <span class="tp-nowrap">自分の価値に、</span>
-        <span class="tp-nowrap">気づけていますか？</span>
-      </h2>
-
-      <p class="tp-text">
-        これまで診断をする中で、
-      </p>
-
-      <div class="tp-quote">
-        「強みなのに、本人にとっては当たり前すぎて気づけていない」
-        <br><br>
-        「本当は強みとして持っているのに、
-        “私にはそんな力はない”と思っている」
-      </div>
-
-      <p class="tp-text">
-        そんな起業家の方を、何人も見てきました。
-      </p>
-
-      <p class="tp-text">
-        それって、ものすごくもったいないことだと思うんです。
-      </p>
-
-      <p class="tp-text">
-        自分では当たり前だと思っていたことが、
-      </p>
-
-      <div class="tp-key-message">
-        「これも私の強みだったんだ」
-      </div>
-
-      <p class="tp-text">
-        と分かったとき。
-      </p>
-
-      <p class="tp-text">
-        自分の見方が少し変わり、
-        <strong>「私にもちゃんと価値がある」</strong>
-        と思えるきっかけになるからです。
-      </p>
-
-      <p class="tp-text">
-        そこで、手に表れているさまざまな特徴から、
-        今のあなたが持っている強みをもっと深く読み解く
-        <strong>「才能プロファイリング」</strong>
-        を作りました。
-      </p>
-
-    </section>
-
-
-    <!-- ========================================
-         両手を見る理由
-    ======================================== -->
-    <section class="tp-section">
-
-      <h2 class="tp-section-title">
-        <span class="tp-nowrap">両手を見るからこそ、</span>
-        <span class="tp-nowrap">分かる強みがあります</span>
-      </h2>
-
-      <p class="tp-text">
-        見るのは、利き手だけではありません。
-      </p>
-
-      <p class="tp-text">
-        右手と左手の手相の線、手の厚み、指の長さ、爪の形まで。
-        いくつもの要素を複合的に見ながら、
-        あなた個人の強みをより詳しく読み解いていきます。
-      </p>
-
-      <div class="tp-hand-grid">
-
-        <div class="tp-hand-card">
-          <span class="tp-hand-label">左手</span>
           <p>
-            あなたが生まれたときから持っている強みを読み解きます。
-          </p>
-        </div>
-
-        <div class="tp-hand-card">
-          <span class="tp-hand-label">右手</span>
-          <p>
-            今、表に出ている強みや、
-            経験や努力によって身につけてきた強みを読み解きます。
-          </p>
-        </div>
-
-      </div>
-
-      <p class="tp-text" style="margin-top:24px;">
-        もし、左手に表れている強みが、
-        右手では十分に表れていなかったとしたら。
-      </p>
-
-      <div class="tp-key-message">
-        この診断では、そこを<br>
-        「まだ発揮できていない強み」<br>
-        として読み解いていきます。
-      </div>
-
-    </section>
-
-
-    <!-- ========================================
-         レポート
-    ======================================== -->
-    <section class="tp-section">
-
-      <h2 class="tp-section-title">
-        <span class="tp-nowrap">あなたの強みを、</span>
-        <span class="tp-nowrap">あとから何度でも見返せます</span>
-      </h2>
-
-      <p class="tp-text">
-        診断結果は、A4・3枚の
-        <strong>「才能プロファイリングレポート」</strong>
-        としてPDFでお届けします。
-      </p>
-
-      <div class="tp-report-image">
-        <img
-          src="https://cdn.peraichi.com/userData/d6621e34-3268-445c-bb20-ddb971833921/img/aed9ee06-da16-4c16-9a62-b1232b47b10d/________2_.png"
-          alt="才能プロファイリングレポートの見本"
-          loading="lazy"
-        >
-      </div>
-
-      <p class="tp-caption">
-        ※才能プロファイリングレポートのイメージです
-      </p>
-
-      <div class="tp-report-note">
-        左手、右手、そして両手を合わせた総合的な視点から、
-        あなたの強みを整理してお伝えします。
-      </div>
-
-      <p class="tp-text" style="margin-top:24px;">
-        自分では当たり前だと思っていたことが、
-        実はあなたならではの強みだった。
-      </p>
-
-      <div class="tp-key-message">
-        「こんな強みが、私にはあったんだ」
-      </div>
-
-      <p class="tp-text">
-        そんな嬉しい発見があるかもしれません。
-      </p>
-
-      <p class="tp-text">
-        このPDFは、迷ったときや自信をなくしたときにも、
-        何度も見返してみてください。
-      </p>
-
-      <p class="tp-text">
-        <strong>「私には、こんな強みがある」</strong>
-      </p>
-
-      <p class="tp-text">
-        そうやって、
-        自分の中にすでにある価値を
-        改めて確認するきっかけになればと思っています。
-      </p>
-
-    </section>
-
-
-    <!-- ========================================
-         特典
-    ======================================== -->
-    <section class="tp-section">
-
-      <div class="tp-bonus">
-
-        <span class="tp-bonus-label">特典</span>
-
-        <h3>
-          「あなただけの強みキャッチコピー」
-        </h3>
-
-        <p class="tp-text">
-          さらに特典として、
-          両手から読み解いたあなたの強みを表す
-          <strong>「あなただけの強みキャッチコピー」</strong>
-          もお付けします。
-        </p>
-
-        <p class="tp-text">
-          あなた自身の強みを、
-          ひと言で表したキャッチコピーです。
-        </p>
-
-        <p class="tp-text">
-          「私には、こんな強みがある」
-        </p>
-
-        <p class="tp-text">
-          そう思い出したいときに、
-          自分の価値を再確認するひと言としてお使いください。
-        </p>
-
-        <p class="tp-text">
-          もちろん、商品・サービス紹介やプロフィールなど、
-          自分をひと言で伝えたい場面にも
-          ご自由にご活用いただけます。
-        </p>
-
-      </div>
-
-    </section>
-
-
-    <!-- ========================================
-         価格
-    ======================================== -->
-    <section class="tp-section">
-
-      <div class="tp-offer">
-
-        <h2 class="tp-offer-title">
-          今回は50％OFFの<br>
-          特別価格でご提供します
-        </h2>
-
-        <p class="tp-normal">
-          通常価格
-          <span>3,300円（税込）</span>
-        </p>
-
-        <div class="tp-off-label">
-          50％OFF
-        </div>
-
-        <p class="tp-special-price">
-          <strong>1,650</strong>
-          <span>円（税込）</span>
-        </p>
-
-        <div class="tp-request-box">
-
-          <h3 class="tp-request-title">
-            ただ、一つお願いがあります
-          </h3>
-
-          <p class="tp-text">
-            こちらは、新しく始めるサービスです。
-          </p>
-
-          <p class="tp-text">
-            より良いサービスにしていくために、
-            実際に受けてくださった方の率直なご意見を
-            伺いたいと考えています。
-          </p>
-
-          <p class="tp-text">
-            そこで今回、
+            今回の「才能プロファイリング」は、
             <strong>
-              診断後に、感想を含めたアンケートにお答えいただける方
+              時間や場所を気にすることなく、
+              両手の画像を送るだけで受けられる、
+              メール完結型の手相診断
             </strong>
-            に限り、
-            50％OFFの特別価格でご提供することにしました。
-          </p>
-
-          <p class="tp-text">
-            今回の特別価格は、
-            アンケートにご協力いただくことへの
-            お礼も込めた価格です。
-          </p>
-
-          <p class="tp-text">
-            いただいたご感想を、
-            今後さらに価値のあるサービスへ改善していくために
-            活かしていきたいと思っています。
+            です。
           </p>
 
         </div>
 
-      </div>
-
-    </section>
+      </section>
 
 
-    <!-- ========================================
-         3ステップ
-    ======================================== -->
-    <section class="tp-section">
+      <!-- ========================================
+           自分の価値
+      ======================================== -->
 
-      <h2 class="tp-section-title">
-        <span class="tp-nowrap">お申し込みからレポート受け取りまで、</span>
-        <span class="tp-nowrap">カンタン3ステップ</span>
-      </h2>
-
-      <div class="tp-flow">
-
-        <div class="tp-flow-item">
-
-          <div class="tp-flow-num">1</div>
-
-          <div class="tp-flow-body">
-            <h3>お申し込み</h3>
-            <p>
-              お申し込みフォームから、
-              お名前とメールアドレスをご入力ください。
-            </p>
-          </div>
-
-        </div>
-
-
-        <div class="tp-flow-item">
-
-          <div class="tp-flow-num">2</div>
-
-          <div class="tp-flow-body">
-            <h3>両手の画像を送る</h3>
-            <p>
-              ご案内に沿って、
-              両手の画像をお送りください。
-            </p>
-          </div>
-
-        </div>
-
-
-        <div class="tp-flow-item">
-
-          <div class="tp-flow-num">3</div>
-
-          <div class="tp-flow-body">
-            <h3>才能プロファイリングレポートを受け取る</h3>
-            <p>
-              診断結果をPDFにまとめて、
-              メールでお届けします。
-            </p>
-
-            <p class="tp-note">
-              ※両手の画像を受け取ってから、3日以内にお送りします。
-            </p>
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- ========================================
-         メールサポート
-    ======================================== -->
-    <section class="tp-section">
-
-      <div class="tp-support-box">
-
-        <span class="tp-support-tag">
-          アフターサポート
-        </span>
+      <section class="tp-section">
 
         <h2 class="tp-section-title">
-          <span class="tp-nowrap">3回まで無料の</span>
-          <span class="tp-nowrap">メールサポート付き</span>
+          <span class="tp-nowrap">自分の価値に、</span>
+          <span class="tp-nowrap">気づけていますか？</span>
         </h2>
 
         <p class="tp-text">
-          才能プロファイリングレポートを読んで、
+          これまで診断をする中で、
         </p>
 
         <div class="tp-quote">
-          「ここはどういう意味？」
+          「強みなのに、本人にとっては当たり前すぎて気づけていない」
           <br><br>
-          「もう少し詳しく聞いてみたい」
+          「本当は強みとして持っているのに、
+          “私にはそんな力はない”と思っている」
         </div>
 
         <p class="tp-text">
-          ということがありましたら、
-          お気軽にメールでお問い合わせください。
+          そんな起業家の方を、何人も見てきました。
         </p>
 
         <p class="tp-text">
-          レポートを受け取ってから30日以内であれば、
-          <strong>3回まで無料</strong>でお答えします。
+          それって、ものすごくもったいないことだと思うんです。
         </p>
 
-      </div>
+        <p class="tp-text">
+          自分では当たり前だと思っていたことが、
+        </p>
 
-    </section>
+        <div class="tp-key-message">
+          「これも私の強みだったんだ」
+        </div>
 
+        <p class="tp-text">
+          と分かったとき。
+        </p>
 
-    <!-- ========================================
-         最後のメッセージ
-    ======================================== -->
-    <section class="tp-section">
+        <p class="tp-text">
+          自分の見方が少し変わり、
+          <strong>「私にもちゃんと価値がある」</strong>
+          と思えるきっかけになるからです。
+        </p>
 
-      <h2 class="tp-section-title">
-        <span class="tp-nowrap">「私に才能なんてあるのかな…」</span>
-        <span class="tp-nowrap">と思ったときに</span>
-      </h2>
+        <p class="tp-text">
+          そこで、手に表れているさまざまな特徴から、
+          今のあなたが持っている強みをもっと深く読み解く
+          <strong>「才能プロファイリング」</strong>
+          を作りました。
+        </p>
 
-      <p class="tp-text">
-        一生懸命仕事を続けていても、
-        思ったようにいかないことはあります。
-      </p>
-
-      <p class="tp-text">
-        周りを見ると、
-        自分より順調に進んでいる人ばかりに
-        見えることもあります。
-      </p>
-
-      <p class="tp-text">
-        そんなとき、
-        <strong>「私に才能なんてあるのかな…」</strong>
-        と、自分の強みそのものが
-        分からなくなることもあるかもしれません。
-      </p>
-
-      <p class="tp-text">
-        そんなときは、
-        才能プロファイリングレポートを
-        もう一度開いてみてください。
-      </p>
-
-      <div class="tp-key-message">
-        「私には、こんな強みがある」
-      </div>
-
-      <p class="tp-text">
-        そうやって、
-        自分の中にすでにある価値を
-        改めて確認するきっかけになれば嬉しく思います。
-      </p>
-
-    </section>
+      </section>
 
 
-    <!-- ========================================
-         限定・最終CTA
-    ======================================== -->
-    <section class="tp-section">
+      <!-- ========================================
+           両手を見る理由
+      ======================================== -->
 
-      <div class="tp-limit">
+      <section class="tp-section">
 
-        <span class="tp-limit-label">
-          今回限りの特別募集
-        </span>
-
-        <h2>
-          先着5名様限定です
+        <h2 class="tp-section-title">
+          <span class="tp-nowrap">両手を見るからこそ、</span>
+          <span class="tp-nowrap">分かる強みがあります</span>
         </h2>
 
         <p class="tp-text">
-          50％OFFの特別価格でのご提供は、
+          見るのは、利き手だけではありません。
         </p>
 
-        <p class="tp-deadline">
-          先着5名様、または<br>
-          10月3日（土）まで
+        <p class="tp-text">
+          右手と左手の手相の線、手の厚み、指の長さ、爪の形まで。
         </p>
 
-        <p class="tp-text" style="margin-top:18px;">
-          まだ自分でも気づいていない強みを知りたい方は、
-          ぜひこの機会にお申し込みください。
+        <p class="tp-text">
+          いくつもの要素を複合的に見ながら、
+          あなた個人の強みを、より詳しく読み解いていきます。
         </p>
 
-        <div class="tp-cta-wrap">
+        <div class="tp-hand-grid">
 
-          <a
-            class="tp-cta"
-            href="https://wgfcf.hp.peraichi.com"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            才能プロファイリングを申し込む ▶
-          </a>
+          <div class="tp-hand-card">
+
+            <span class="tp-hand-label">
+              左手
+            </span>
+
+            <p>
+              あなたが生まれたときから持っている強みを読み解きます。
+            </p>
+
+          </div>
+
+
+          <div class="tp-hand-card">
+
+            <span class="tp-hand-label">
+              右手
+            </span>
+
+            <p>
+              今、表に出ている強みや、
+              これまでの経験や努力によって身につけてきた強みを読み解きます。
+            </p>
+
+          </div>
 
         </div>
 
-      </div>
+        <p class="tp-text" style="margin-top:25px;">
+          もし、左手に表れている強みが、
+          右手では十分に表れていなかったとしたら。
+        </p>
 
-    </section>
+        <div class="tp-key-message">
+          この診断では、そこを<br>
+          「まだ発揮できていない強み」<br>
+          として読み解いていきます。
+        </div>
+
+      </section>
 
 
-  </div>
+      <!-- ========================================
+           レポート
+      ======================================== -->
 
-</section>
+      <section class="tp-section">
+
+        <h2 class="tp-section-title">
+          <span class="tp-nowrap">あなたの強みを、</span>
+          <span class="tp-nowrap">あとから何度でも見返せます</span>
+        </h2>
+
+        <p class="tp-text">
+          診断結果は、A4・3枚の
+          <strong>「才能プロファイリングレポート」</strong>
+          としてPDFでお届けします。
+        </p>
+
+        <div class="tp-report-image">
+
+          <img
+            src="https://cdn.peraichi.com/userData/d6621e34-3268-445c-bb20-ddb971833921/img/aed9ee06-da16-4c16-9a62-b1232b47b10d/________2_.png"
+            alt="才能プロファイリングレポートの見本"
+            loading="lazy"
+          >
+
+        </div>
+
+        <p class="tp-caption">
+          ※才能プロファイリングレポートのイメージです
+        </p>
+
+        <div class="tp-report-note">
+          左手、右手、そして両手を合わせた総合的な視点から、
+          あなたの強みを整理してお伝えします。
+        </div>
+
+        <p class="tp-text" style="margin-top:26px;">
+          自分では当たり前だと思っていたことが、
+          実はあなたならではの強みだった。
+        </p>
+
+        <div class="tp-key-message">
+          「こんな強みが、私にはあったんだ」
+        </div>
+
+        <p class="tp-text">
+          そんな嬉しい発見があるかもしれません。
+        </p>
+
+        <p class="tp-text">
+          このPDFは、
+          迷ったときや自信をなくしたときにも、
+          何度も見返してみてください。
+        </p>
+
+        <p class="tp-text">
+          <strong>「私には、こんな強みがある」</strong>
+        </p>
+
+        <p class="tp-text">
+          そうやって、
+          自分の中にすでにある価値を
+          改めて確認するきっかけになればと思っています。
+        </p>
+
+      </section>
+
+
+      <!-- ========================================
+           特典
+      ======================================== -->
+
+      <section class="tp-section">
+
+        <div class="tp-bonus">
+
+          <span class="tp-bonus-label">
+            特典
+          </span>
+
+          <h2>
+            「あなただけの強みキャッチコピー」
+          </h2>
+
+          <p class="tp-text">
+            さらに特典として、
+            両手から読み解いたあなたの強みを表す
+            <strong>「あなただけの強みキャッチコピー」</strong>
+            もお付けします。
+          </p>
+
+          <p class="tp-text">
+            あなた自身の強みを、
+            ひと言で表したキャッチコピーです。
+          </p>
+
+          <p class="tp-text">
+            「私には、こんな強みがある」
+          </p>
+
+          <p class="tp-text">
+            そう思い出したいときに、
+            自分の価値を再確認するひと言としてお使いください。
+          </p>
+
+          <p class="tp-text">
+            もちろん、
+            商品・サービス紹介やプロフィールなど、
+            自分をひと言で伝えたい場面にも
+            ご自由にご活用いただけます。
+          </p>
+
+        </div>
+
+      </section>
+
+
+      <!-- ========================================
+           価格
+      ======================================== -->
+
+      <section class="tp-section">
+
+        <div class="tp-offer">
+
+          <h2 class="tp-offer-title">
+            今回は50％OFFの<br>
+            特別価格でご提供します
+          </h2>
+
+          <p class="tp-normal">
+            通常価格
+            <span>3,300円（税込）</span>
+          </p>
+
+          <div class="tp-off-label">
+            50％OFF
+          </div>
+
+          <p class="tp-special-price">
+            <strong>1,650</strong>
+            <span>円（税込）</span>
+          </p>
+
+          <div class="tp-request-box">
+
+            <h3 class="tp-request-title">
+              ただ、一つお願いがあります
+            </h3>
+
+            <p class="tp-text">
+              こちらは、新しく始めるサービスです。
+            </p>
+
+            <p class="tp-text">
+              より良いサービスにしていくために、
+              実際に受けてくださった方の率直なご意見を
+              伺いたいと考えています。
+            </p>
+
+            <p class="tp-text">
+              そこで今回、
+              <strong>
+                診断後に、感想を含めたアンケートにお答えいただける方
+              </strong>
+              に限り、
+              50％OFFの特別価格でご提供することにしました。
+            </p>
+
+            <p class="tp-text">
+              今回の特別価格は、
+              アンケートにご協力いただくことへの
+              お礼も込めた価格です。
+            </p>
+
+            <p class="tp-text">
+              いただいたご感想を、
+              今後さらに価値のあるサービスへ改善していくために
+              活かしていきたいと思っています。
+            </p>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- ========================================
+           3ステップ
+      ======================================== -->
+
+      <section class="tp-section">
+
+        <h2 class="tp-section-title">
+          <span class="tp-nowrap">
+            お申し込みからレポート受け取りまで、
+          </span>
+          <span class="tp-nowrap">
+            カンタン3ステップ
+          </span>
+        </h2>
+
+        <div class="tp-flow">
+
+
+          <div class="tp-flow-item">
+
+            <div class="tp-flow-num">
+              1
+            </div>
+
+            <div class="tp-flow-body">
+
+              <h3>
+                お申し込み
+              </h3>
+
+              <p>
+                お申し込みフォームから、
+                お名前とメールアドレスをご入力ください。
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <div class="tp-flow-item">
+
+            <div class="tp-flow-num">
+              2
+            </div>
+
+            <div class="tp-flow-body">
+
+              <h3>
+                両手の画像を送る
+              </h3>
+
+              <p>
+                ご案内に沿って、
+                両手の画像をお送りください。
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <div class="tp-flow-item">
+
+            <div class="tp-flow-num">
+              3
+            </div>
+
+            <div class="tp-flow-body">
+
+              <h3>
+                才能プロファイリングレポートを受け取る
+              </h3>
+
+              <p>
+                診断結果をPDFにまとめて、
+                メールでお届けします。
+              </p>
+
+              <p class="tp-note">
+                ※両手の画像を受け取ってから、3日以内にお送りします。
+              </p>
+
+            </div>
+
+          </div>
+
+
+        </div>
+
+      </section>
+
+
+      <!-- ========================================
+           メールサポート
+      ======================================== -->
+
+      <section class="tp-section">
+
+        <div class="tp-support-box">
+
+          <span class="tp-support-tag">
+            アフターサポート
+          </span>
+
+          <h2 class="tp-section-title">
+            <span class="tp-nowrap">
+              3回まで無料の
+            </span>
+            <span class="tp-nowrap">
+              メールサポート付き
+            </span>
+          </h2>
+
+          <p class="tp-text">
+            才能プロファイリングレポートを読んで、
+          </p>
+
+          <div class="tp-quote">
+            「ここはどういう意味？」
+            <br><br>
+            「もう少し詳しく聞いてみたい」
+          </div>
+
+          <p class="tp-text">
+            ということがありましたら、
+            お気軽にメールでお問い合わせください。
+          </p>
+
+          <p class="tp-text">
+            レポートを受け取ってから30日以内であれば、
+            <strong>3回まで無料</strong>でお答えします。
+          </p>
+
+        </div>
+
+      </section>
+
+
+      <!-- ========================================
+           最後のメッセージ
+      ======================================== -->
+
+      <section class="tp-section">
+
+        <h2 class="tp-section-title">
+          <span class="tp-nowrap">
+            「私に才能なんてあるのかな…」
+          </span>
+          <span class="tp-nowrap">
+            と思ったときに
+          </span>
+        </h2>
+
+        <p class="tp-text">
+          一生懸命仕事を続けていても、
+          思ったようにいかないことはあります。
+        </p>
+
+        <p class="tp-text">
+          周りを見ると、
+          自分より順調に進んでいる人ばかりに
+          見えることもあります。
+        </p>
+
+        <p class="tp-text">
+          そんなとき、
+          <strong>
+            「私に才能なんてあるのかな…」
+          </strong>
+          と、自分の強みそのものが
+          分からなくなることもあるかもしれません。
+        </p>
+
+        <p class="tp-text">
+          そんなときは、
+          才能プロファイリングレポートを
+          もう一度開いてみてください。
+        </p>
+
+        <div class="tp-key-message">
+          「私には、こんな強みがある」
+        </div>
+
+        <p class="tp-text">
+          そうやって、
+          自分の中にすでにある価値を
+          改めて確認するきっかけになれば嬉しく思います。
+        </p>
+
+      </section>
+
+
+      <!-- ========================================
+           最終CTA
+      ======================================== -->
+
+      <section class="tp-section">
+
+        <div class="tp-limit">
+
+          <span class="tp-limit-label">
+            今回限りの特別募集
+          </span>
+
+          <h2>
+            先着5名様限定です
+          </h2>
+
+          <p class="tp-text">
+            50％OFFの特別価格でのご提供は、
+          </p>
+
+          <p class="tp-deadline">
+            先着5名様、または<br>
+            10月3日（土）まで
+          </p>
+
+          <p class="tp-text" style="margin-top:20px;">
+            まだ自分でも気づいていない強みを知りたい方は、
+            ぜひこの機会にお申し込みください。
+          </p>
+
+          <div class="tp-cta-wrap">
+
+            <a
+              class="tp-cta"
+              href="https://wgfcf.hp.peraichi.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              才能プロファイリングを申し込む ▶
+            </a>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+    </div>
+
+  </main>
+
+</body>
+</html>
