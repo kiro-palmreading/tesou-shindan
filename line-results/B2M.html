@@ -1,331 +1,753 @@
-<section class="result-detail" data-diagnosis-code="B2M">
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>詳しい診断結果｜才能コンパス診断</title>
+<style>
+    /* ========================================
+       B2M 診断結果
+       LINE登録後・完全版
+    ======================================== */
 
-  <!-- 診断結果FV：ページ最上部 -->
-  <div class="result-fv" style="width: 100%; margin: 0 auto 24px;">
+    .result-detail--visual {
+      max-width: 720px;
+      margin: 0 auto;
+      color: #24313a;
+      line-height: 1.8;
+    }
+
+    .diagnosis-result-fv {
+      margin: 0 0 28px;
+      padding: 0;
+    }
+
+    .diagnosis-result-fv img {
+      display: block;
+      width: 100%;
+      height: auto;
+      margin: 0 auto;
+    }
+
+    .result-detail--visual .result-block {
+      margin: 0 16px 28px;
+      padding: 26px 20px;
+      background: #ffffff;
+      border: 1px solid #dcecf5;
+      border-radius: 18px;
+      box-sizing: border-box;
+    }
+
+    .result-detail--visual .result-block h2 {
+      margin: 0 0 18px;
+      color: #083f5c;
+      font-size: 22px;
+      line-height: 1.45;
+      text-align: left;
+    }
+
+    .result-detail--visual .result-block p {
+      margin: 0 0 16px;
+      font-size: 16px;
+      line-height: 1.9;
+    }
+
+    .result-detail--visual .result-block p:last-child {
+      margin-bottom: 0;
+    }
+
+    .result-detail--visual .result-block ul {
+      margin: 0 0 18px;
+      padding-left: 1.4em;
+    }
+
+    .result-detail--visual .result-block li {
+      margin: 0 0 8px;
+      font-size: 16px;
+      line-height: 1.8;
+    }
+
+    .type-keywords {
+      margin: 0 0 20px;
+      font-size: 20px;
+      font-weight: 700;
+      color: #1f6fb2;
+      letter-spacing: 0.04em;
+      text-align: center;
+    }
+
+    .type-point-list {
+      display: grid;
+      gap: 11px;
+      margin: 0;
+    }
+
+    .type-point {
+      position: relative;
+      padding: 14px 14px 14px 43px;
+      background: #f8fcff;
+      border-radius: 12px;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .type-point::before {
+      content: "✓";
+      position: absolute;
+      left: 16px;
+      top: 14px;
+      color: #1f6fb2;
+      font-weight: 700;
+    }
+
+    .talent-scene-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    .talent-scene-card {
+      padding: 18px;
+      border-radius: 14px;
+      background: #eef7ff;
+      border: 1px solid #cfe3f1;
+    }
+
+    .talent-scene-card strong {
+      display: block;
+      margin-bottom: 8px;
+      color: #083f5c;
+      font-size: 17px;
+      line-height: 1.5;
+    }
+
+    .talent-scene-card p {
+      margin: 0 !important;
+    }
+
+    .loop-intro {
+      font-weight: 700;
+      color: #314958;
+    }
+
+    .diagnosis-loop {
+      margin: 20px 0;
+    }
+
+    .loop-step {
+      padding: 15px 14px;
+      background: #f8fcff;
+      border: 1px solid #cfe6f3;
+      border-radius: 12px;
+      text-align: center;
+      font-size: 16px;
+      font-weight: 700;
+      color: #083f5c;
+    }
+
+    .loop-arrow {
+      height: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #6f8798;
+      font-size: 24px;
+      font-weight: 700;
+    }
+
+    .loop-step--last {
+      background: #fff5f2;
+      border-color: #f2c9bf;
+      color: #9b4d3b;
+    }
+
+    .loop-doubt {
+      margin: 4px 0 18px;
+      padding: 12px 16px;
+      background: #f8fcff;
+      border-left: 3px solid #7893a3;
+      font-size: 15px;
+      font-style: italic;
+      color: #4a5d68;
+      line-height: 1.7;
+    }
+
+    .result-block--risk {
+      background: #fffaf7 !important;
+      border-color: #f1d9cf !important;
+    }
+
+    .risk-items {
+      display: grid;
+      gap: 10px;
+    }
+
+    .risk-item {
+      position: relative;
+      padding: 13px 14px 13px 40px;
+      background: #ffffff;
+      border: 1px solid #f0ddd5;
+      border-radius: 11px;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .risk-item::before {
+      content: "●";
+      position: absolute;
+      left: 17px;
+      top: 15px;
+      color: #d98670;
+      font-size: 10px;
+    }
+
+    .result-block--key {
+      background: #eef7ff !important;
+      border-color: #bddcec !important;
+    }
+
+    .unspoken-worry {
+      margin: 0 0 22px;
+      padding: 18px 18px;
+      background: #fdf6f3;
+      border: 1px dashed #e3b8a8;
+      border-radius: 14px;
+      font-size: 15px;
+      font-style: italic;
+      color: #6b5347;
+      text-align: center;
+      line-height: 1.8;
+    }
+
+    .key-message {
+      margin: 18px 0 !important;
+      padding: 18px 16px;
+      background: #ffffff;
+      border: 1px solid #dcecf5;
+      border-radius: 8px;
+      font-size: 18px !important;
+      font-weight: 700;
+      color: #083f5c;
+      text-align: center;
+      line-height: 1.7;
+    }
+
+    .key-message-line {
+      display: block;
+    }
+
+    .tip-box {
+      margin: 0 0 18px;
+      padding: 18px 16px;
+      background: #f8fcff;
+      border: 1px solid #dcecf5;
+      border-radius: 12px;
+    }
+
+    .tip-box:last-child {
+      margin-bottom: 0;
+    }
+
+    .tip-title {
+      margin: 0 0 12px !important;
+      color: #083f5c;
+      font-size: 17px !important;
+      font-weight: 700;
+      line-height: 1.6 !important;
+    }
+
+    .result-block--action {
+      background: #f7fbfd !important;
+      border-color: #cfe3f1 !important;
+    }
+
+    .result-block--newsletter {
+      background: #fffdf8 !important;
+      border-color: #eadfca !important;
+    }
+
+    .result-block--service {
+      background: #f4f9fc !important;
+      border-color: #cfe3f1 !important;
+    }
+
+    .service-lead {
+      font-weight: 700;
+      color: #083f5c;
+    }
+
+    .service-points {
+      margin-top: 6px !important;
+    }
+
+    @media (max-width: 600px) {
+      .result-detail--visual .result-block {
+        margin-left: 14px;
+        margin-right: 14px;
+        padding: 23px 17px;
+      }
+
+      .result-detail--visual .result-block h2 {
+        font-size: 21px;
+      }
+
+      .type-keywords {
+        font-size: 19px;
+      }
+
+      .talent-scene-card strong,
+      .tip-title {
+        font-size: 17px !important;
+      }
+
+      .key-message {
+        font-size: 17px !important;
+        padding: 16px 14px;
+      }
+    }
+  
+
+    /* ===== LINE登録後・単独ページ用 ===== */
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      background: #eef8ff;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background: #eef8ff;
+      color: #24313a;
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Kaku Gothic ProN", "Yu Gothic", "Meiryo", sans-serif;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    .page-header {
+      width: 100%;
+      background: #ffffff;
+      border-bottom: 1px solid #e4edf3;
+    }
+
+    .page-header-inner {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 18px 18px 16px;
+      color: #111111;
+      font-size: 17px;
+      font-weight: 700;
+      line-height: 1.45;
+    }
+
+    .page-main {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 18px 0 10px;
+    }
+
+    .page-footer {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 38px 18px 48px;
+      color: #58758c;
+      font-size: 14px;
+      text-align: center;
+      line-height: 1.7;
+    }
+
+    .diagnosis-result-fv {
+      margin-left: 14px;
+      margin-right: 14px;
+      overflow: hidden;
+      border-radius: 18px;
+      background: #ffffff;
+      border: 1px solid #dcecf5;
+      box-shadow: 0 3px 14px rgba(44, 103, 142, 0.08);
+    }
+
+    .diagnosis-result-fv img {
+      border-radius: 18px;
+    }
+
+    @media (max-width: 600px) {
+      .page-header-inner {
+        padding: 16px 18px 14px;
+        font-size: 16px;
+      }
+
+      .page-main {
+        padding-top: 12px;
+      }
+
+      .page-footer {
+        padding-top: 30px;
+        font-size: 13px;
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+  <header class="page-header">
+    <div class="page-header-inner">詳しい診断結果｜才能コンパス診断</div>
+  </header>
+
+  <main class="page-main">
+<section class="result-detail result-detail--visual" data-diagnosis-code="B2M">
+<!-- FV -->
+  <div class="diagnosis-result-fv">
     <img
-      src="meta-fv-results/B2M.png"
-      alt="才能コンパス診断 B2M 診断結果"
-      style="display: block; width: 100%; height: auto;"
+      src="https://kiro-palmreading.github.io/tesou-shindan/meta-fv-results/B2M.png"
+      alt="才能コンパス診断 夢中で打ち込むプロフェッショナル"
+      loading="eager"
+      fetchpriority="high"
     >
   </div>
 
+  <!-- 01 -->
   <article class="result-block">
-    <h2>詳しい診断結果</h2>
+    <h2>あなたはこんなタイプです</h2>
+
+    <div class="type-keywords">
+      行動 × 共感 × 集中
+    </div>
+
+    <div class="type-point-list">
+      <div class="type-point">
+        誰かの役に立てそうだと感じたら、
+        <strong>まず動いて形にできる</strong>
+      </div>
+
+      <div class="type-point">
+        相手の言葉だけでなく、
+        <strong>本当に必要としていることまで感じ取れる</strong>
+      </div>
+
+      <div class="type-point">
+        「これは大切」と思ったものには、
+        <strong>大きな熱量で深く打ち込める</strong>
+      </div>
+    </div>
+  </article>
+
+  <!-- 02 -->
+  <article class="result-block">
+    <h2>こんな場面で強みが出ます</h2>
+
+    <div class="talent-scene-grid">
+      <div class="talent-scene-card">
+        <strong>🚀 誰かのために動くとき</strong>
+        <p>
+          「これなら役に立てそう」と思えば、
+          考えるだけで終わらず、
+          すぐに最初の一歩を踏み出せます。
+        </p>
+      </div>
+
+      <div class="talent-scene-card">
+        <strong>🤝 相手の本音を感じ取るとき</strong>
+        <p>
+          表面的な言葉だけでなく、
+          「本当に困っているのはどこだろう」と、
+          奥にある気持ちまで考えられます。
+        </p>
+      </div>
+
+      <div class="talent-scene-card">
+        <strong>🔥 1つの仕事へ打ち込むとき</strong>
+        <p>
+          「これだ」と思ったことには、
+          必要なことを調べ、考え、
+          時間を忘れるほど深く向き合えます。
+        </p>
+      </div>
+    </div>
+  </article>
+
+  <!-- 03 -->
+  <article class="result-block">
+    <h2>今、こんなループに入っていませんか？</h2>
+
+    <p class="loop-intro">
+      最初は勢いよく進んでいたはずなのに……
+    </p>
+
+    <div class="diagnosis-loop">
+      <div class="loop-step">
+        「これなら役に立てそう」とすぐ動く
+      </div>
+
+      <div class="loop-arrow">↓</div>
+
+      <div class="loop-step">
+        相手の反応から小さなズレに気づく
+      </div>
+
+      <div class="loop-arrow">↓</div>
+
+      <div class="loop-step">
+        「もっとよい形に」と深く入り込む
+      </div>
+
+      <div class="loop-arrow">↓</div>
+
+      <div class="loop-step loop-step--last">
+        一部の修正が、仕事全体の作り直しになる
+      </div>
+    </div>
 
     <p>
-      あなたが動き出したあとに、小さなズレから方向全体を見直したくなりやすいのは、次の3つの特徴が順番に働くためです。
+      あなたは、途中で投げ出しているわけではありません。
+      むしろ<strong>大切だからこそ、本気で向き合っています。</strong>
+      一つ直せば前後も気になり、
+      流れを直せばテーマそのものまで見直したくなります。
     </p>
 
     <p>
-      1つ目は、考え続けるより、まず試して確かめようとする「行動力」です。
+      少しだけ直す予定だったのに、
+      気づけば、<strong>小さな修正から全面リフォーム。</strong>
+      そんなこともあるかもしれません。
     </p>
 
-    <p>
-      あなたは、発信する、サービスを出す、人に届けてみることで答えを見つけます。
-    </p>
-
-    <p>
-      そのため、ほかの人より早く、現実の反応や改善点に出会えます。
-    </p>
-
-    <p>
-      2つ目は、相手の気持ちや受け取り方を敏感に感じる「共感力」です。
-    </p>
-
-    <p>
-      反応がよければ、
-    </p>
-
-    <p>
-      「この方向で役に立てるかもしれない」
-    </p>
-
-    <p>
-      と感じます。
-    </p>
-
-    <p>
-      反対に、反応が少なかったり、相手が迷った様子を見せたりすると、
-    </p>
-
-    <p>
-      「期待に応えられていないのかもしれない」
-    </p>
-
-    <p>
-      と、自分の仕事を見直したくなります。
-    </p>
-
-    <p>
-      3つ目は、納得したものへ大きな力を注ぐ「集中力」です。
-    </p>
-
-    <p>
-      あなたは、気になる部分を見つけても、
-    </p>
-
-    <p>
-      「ここだけ直して終わり」
-    </p>
-
-    <p>
-      とはなりにくいところがあります。
-    </p>
-
-    <p>
-      一つの問題を深く考え、
-    </p>
-
-    <p>
-      「根本から、もっとよい形にしたい」
-    </p>
-
-    <p>
-      と、全体まで掘り下げていきます。
-    </p>
-
-    <p>
-      つまり、あなたの中では、
-    </p>
-
-    <p>
-      行動力が、まず形にする。<br>
-      共感力が、相手の反応からズレを感じ取る。<br>
-      集中力が、そのズレを納得できるまで深く追いかける。
-    </p>
-
-    <p>
-      という流れが起きています。
-    </p>
-
-    <p>
-      この組み合わせがあるからこそ、あなたは人の役に立つ仕事へ、強い熱量で向き合えます。
-    </p>
-
-    <p>
-      ただ、小さなズレまで根本的な問題として扱うと、修正のたびに仕事全体を作り直すことになります。
-    </p>
-
-    <p>
-      あなたに必要なのは、深く考えないことではありません。
-    </p>
-
-    <p>
-      <strong>
-        どこまで深く考えるべき問題なのかを、最初に見分けることです。
-      </strong>
+    <p class="loop-doubt">
+      これは全体を見直すべきサインなのか、
+      それとも一部を直せば済むことなのか——
+      その判断が、なかなかつかない。
     </p>
   </article>
 
+  <!-- 04 -->
+  <article class="result-block result-block--risk">
+    <h2>この状態が続くと…</h2>
+
+    <div class="risk-items">
+      <div class="risk-item">
+        小さな違和感を見つけるたびに、
+        仕事全体への確信まで揺れやすくなる
+      </div>
+
+      <div class="risk-item">
+        案内できる状態のサービスも、
+        また根本から作り直したくなる
+      </div>
+    </div>
+  </article>
+
+  <!-- 05 -->
+  <article class="result-block result-block--key">
+    <p class="unspoken-worry">
+      「こんなに手をかけているのに、
+      私は本当に良いものを作れているのだろうか」
+    </p>
+
+    <h2>でも、問題は「深く向き合うこと」ではありません</h2>
+
+    <p>
+      ご安心ください。
+      その作り直したくなる気持ちには、
+      ちゃんと理由があります。
+    </p>
+
+    <p>
+      あなたが動き出したあとに、
+      小さなズレから方向全体を見直したくなりやすいのは、
+      3つの特徴が順番に働くためです。
+    </p>
+
+    <p>
+      まず、考え続けるより、
+      まず試して確かめようとする「行動力」。
+      あなたは発信する、サービスを出す、
+      人に届けてみることで答えを見つけます。
+    </p>
+
+    <p>
+      次に、相手の気持ちや受け取り方を敏感に感じる「共感力」。
+      反応が少なかったり、相手が迷った様子を見せたりすると、
+      「期待に応えられていないのかもしれない」と、
+      自分の仕事を見直したくなります。
+    </p>
+
+    <p>
+      そして、納得したものへ大きな力を注ぐ「集中力」。
+      気になる部分を見つけると、
+      「根本から、もっとよい形にしたい」と、
+      全体まで掘り下げていきます。
+    </p>
+
+    <p>
+      行動力が、まず形にする。
+      共感力が、相手の反応からズレを感じ取る。
+      集中力が、そのズレを納得できるまで深く追いかける——
+      この組み合わせがあるからこそ、
+      あなたは人の役に立つ仕事へ、強い熱量で向き合えます。
+    </p>
+
+    <p>
+      ただ、小さなズレまで根本的な問題として扱うと、
+      修正のたびに仕事全体を作り直すことになります。
+    </p>
+
+    <p>
+      あなたに必要なのは、
+      深く考えないことではありません。
+    </p>
+
+    <p class="key-message">
+      <span class="key-message-line">どこまで深く考えるべき問題なのかを、</span>
+      <span class="key-message-line">最初に見分けることです。</span>
+    </p>
+
+    <p>
+      この見分けができると、
+      熱量を注ぐ前に、
+      作り直す必要があるかどうかが分かるようになります。
+    </p>
+  </article>
+
+  <!-- 06 -->
   <article class="result-block">
-    <h2>小さなズレで全部を作り直さない3つのコツ</h2>
+    <h2>動き出すための3つのコツ</h2>
 
     <p>
       あなたのタイプに合うコツは、次の3つです。
     </p>
 
-    <p>
-      <strong>1．「守りたい信念」と「届けたい変化」を1つずつ決める</strong>
-    </p>
+    <div class="tip-box">
+      <p class="tip-title">1．「守りたい信念」と「届けたい変化」を1つずつ決める</p>
 
-    <p>
-      仕事を始める前に、次の2つを書いてください。
-    </p>
+      <p>
+        仕事を始める前に、次の2つを書いてください。
+      </p>
 
-    <ul>
-      <li>この仕事で、私が絶対に大切にしたいこと</li>
-      <li>相手に、どんな変化を届けたいのか</li>
-    </ul>
+      <ul>
+        <li>この仕事で、私が絶対に大切にしたいこと</li>
+        <li>相手に、どんな変化を届けたいのか</li>
+      </ul>
 
-    <p>
-      たとえば、
-    </p>
+      <p>
+        たとえば、
+        「できない自分を責めるのではなく、今ある強みに気づいてもらう」
+        「自分の進み方に納得できる材料を持ち帰ってもらう」
+        という形です。
+      </p>
 
-    <ul>
-      <li>できない自分を責めるのではなく、今ある強みに気づいてもらう</li>
-      <li>自分の進み方に納得できる材料を持ち帰ってもらう</li>
-    </ul>
+      <p>
+        この2つが守られているなら、
+        細かな表現や見せ方に改善点があっても、
+        仕事の中心はズレていません。
+      </p>
 
-    <p>
-      という形です。
-    </p>
+      <p>
+        気になる部分が見つかったときは、
+        守りたい信念と届けたい変化が変わったかを確認してください。
+        どちらも変わっていないなら、
+        方向そのものを捨てる必要はありません。
+        今の方向の中で、必要な部分だけを整えればよいのです。
+      </p>
+    </div>
 
-    <p>
-      この2つが守られているなら、細かな表現や見せ方に改善点があっても、仕事の中心はズレていません。
-    </p>
+    <div class="tip-box">
+      <p class="tip-title">2．ズレを「土台」「伝え方」「未確認」に分ける</p>
 
-    <p>
-      あなたは、気になる部分が見つかると、仕事全体への確信まで揺らぎやすいところがあります。
-    </p>
+      <p>
+        気になる点を見つけたら、
+        すぐに全面的な修正へ入らず、
+        次の3つに分けてください。
+      </p>
 
-    <p>
-      そのときは、
-    </p>
+      <ul>
+        <li>土台から見直すズレ:届けたい相手や解決したい問題、大切にしたい信念そのものが違っていた</li>
+        <li>伝え方を整えるズレ:内容は合っているが、説明や言葉、順番を変えればもっと伝わりそう</li>
+        <li>まだ判断しないズレ:1人の反応しかなく、実際の問題がまだ確認できていない</li>
+      </ul>
 
-    <ul>
-      <li>守りたい信念は変わったか</li>
-      <li>届けたい変化は変わったか</li>
-    </ul>
+      <p>
+        すべてを「土台の問題」として扱わないことが大切です。
+        伝え方のズレなら、今までの内容を残したまま修正できます。
+        未確認なら、もう少し届けて反応を集めてから判断できます。
+      </p>
 
-    <p>
-      を確認してください。
-    </p>
+      <p>
+        この3つに分けるだけで、
+        あなたの集中力を、必要な場所へ向けやすくなります。
+      </p>
+    </div>
 
-    <p>
-      どちらも変わっていないなら、方向そのものを捨てる必要はありません。
-    </p>
+    <div class="tip-box">
+      <p class="tip-title">3．集中する範囲と、終わりの条件を決める</p>
 
-    <p>
-      今の方向の中で、必要な部分だけを整えればよいのです。
-    </p>
+      <p>
+        あなたは一度気になると、
+        時間を忘れて深く入り込める人です。
+        だからこそ、修正を始める前に、次を決めてください。
+      </p>
 
-    <p>
-      <strong>2．ズレを「土台」「伝え方」「未確認」に分ける</strong>
-    </p>
+      <ul>
+        <li>今回は、どこだけを直すのか</li>
+        <li>何ができたら、修正を終えるのか</li>
+      </ul>
 
-    <p>
-      気になる点を見つけたら、すぐに全面的な修正へ入らず、次の3つに分けてください。
-    </p>
+      <p>
+        たとえば、「今回は、サービスの説明文だけを直す」
+        「初めて読む人にも、内容が分かる状態になったら終える」
+        という形です。
+      </p>
 
-    <p>
-      届けたい相手が違っていた。<br>
-      解決したい問題そのものが変わった。<br>
-      自分が大切にしたい信念と合っていない。
-    </p>
+      <p>
+        途中で別の気になる点が見つかったら、
+        すぐに手を広げず、
+        「次に整えること」としてメモに残します。
+        また、大きく方向を変える前には、
+        「この発信を5回出してから」など、
+        判断する回数も決めてください。
+      </p>
 
-    <p>
-      これは「土台から見直すズレ」です。
-    </p>
-
-    <p>
-      内容は合っているけれど、説明が分かりにくい。<br>
-      言葉や順番を変えれば、もっと伝わりそう。
-    </p>
-
-    <p>
-      これは「伝え方を整えるズレ」です。
-    </p>
-
-    <p>
-      1人の反応しかなく、なぜそうなったのか分からない。<br>
-      自分が不安になっているだけで、実際の問題は確認できていない。
-    </p>
-
-    <p>
-      これは「まだ判断しないズレ」です。
-    </p>
-
-    <p>
-      すべてを「土台の問題」として扱わないことが大切です。
-    </p>
-
-    <p>
-      伝え方のズレなら、今までの内容を残したまま修正できます。
-    </p>
-
-    <p>
-      未確認なら、もう少し届けて反応を集めてから判断できます。
-    </p>
-
-    <p>
-      この3つに分けるだけで、あなたの集中力を、必要な場所へ向けやすくなります。
-    </p>
-
-    <p>
-      <strong>3．集中する範囲と、終わりの条件を決める</strong>
-    </p>
-
-    <p>
-      あなたは一度気になると、時間を忘れて深く入り込める人です。
-    </p>
-
-    <p>
-      だからこそ、修正を始める前に、
-    </p>
-
-    <ul>
-      <li>今回は、どこだけを直すのか</li>
-      <li>何ができたら、修正を終えるのか</li>
-    </ul>
-
-    <p>
-      を決めてください。
-    </p>
-
-    <p>
-      たとえば、
-    </p>
-
-    <ul>
-      <li>今回は、サービスの説明文だけを直す</li>
-      <li>初めて読む人にも、内容が分かる状態になったら終える</li>
-    </ul>
-
-    <p>
-      という形です。
-    </p>
-
-    <p>
-      途中で別の気になる点が見つかったら、すぐに手を広げず、「次に整えること」としてメモに残します。
-    </p>
-
-    <p>
-      また、大きく方向を変える前には、
-    </p>
-
-    <ul>
-      <li>この発信を5回出してから</li>
-      <li>このサービスを3人に届けてから</li>
-    </ul>
-
-    <p>
-      など、判断する回数も決めてください。
-    </p>
-
-    <p>
-      あなたの集中力は、範囲が曖昧なままだと、どこまでも深く進んでいきます。
-    </p>
-
-    <p>
-      けれど、目的と終わりが決まっていれば、一つの仕事を完成へ運ぶ大きな力になります。
-    </p>
+      <p>
+        あなたの集中力は、範囲が曖昧なままだと、
+        どこまでも深く進んでいきます。
+        けれど、目的と終わりが決まっていれば、
+        一つの仕事を完成へ運ぶ大きな力になります。
+      </p>
+    </div>
   </article>
 
+  <!-- 07 -->
   <article class="result-block">
     <h2>あなたの強みの活かし方</h2>
 
     <p>
       あなたは、軽い気持ちで出して終わる人になる必要はありません。
-    </p>
-
-    <p>
-      本気で向き合い、人の反応を受け取り、自分が納得できる形へ深めていく。
-    </p>
-
-    <p>
+      本気で向き合い、人の反応を受け取り、
+      自分が納得できる形へ深めていく。
       それが、あなたらしい仕事の育て方です。
     </p>
 
     <p>
       ただし、毎回ゼロから作り直す必要はありません。
-    </p>
-
-    <p>
-      大切な土台を残す。<br>
-      ズレの種類を見分ける。<br>
+      大切な土台を残す。
+      ズレの種類を見分ける。
       集中する範囲を決める。
     </p>
 
     <p>
-      この順番を持つことで、あなたの熱量は、迷いを深める力ではなく、一つの仕事を最後まで形にする力へ変わっていきます。
+      この順番を持つことで、あなたの熱量は、
+      迷いを深める力ではなく、
+      一つの仕事を最後まで形にする力へ変わっていきます。
     </p>
   </article>
 
-  <article class="result-block result-block--final">
+  <!-- 08 -->
+  <article class="result-block result-block--action">
     <h2>今日からできる最初の一歩</h2>
 
     <p>
-      今、作り直そうとしている仕事を1つ選び、次の3つをメモしてください。
+      今、作り直そうとしている仕事を1つ選び、
+      次の3つをメモしてください。
     </p>
 
     <ul>
@@ -335,12 +757,17 @@
     </ul>
 
     <p>
-      守りたい信念が変わっていないなら、仕事全体は残してください。
+      守りたい信念が変わっていないなら、
+      仕事全体は残してください。
+      今回は1か所だけを整え、
+      ほかの気になる点は「次に育てること」へ移して、
+      公開または次の工程へ進みましょう。
     </p>
+  </article>
 
-    <p>
-      今回は1か所だけを整え、ほかの気になる点は「次に育てること」へ移して、公開または次の工程へ進みましょう。
-    </p>
+  <!-- 09 -->
+  <article class="result-block result-block--newsletter">
+    <h2>このあとも、少しずつお届けします</h2>
 
     <p>
       今回お伝えしたのは、
@@ -348,27 +775,87 @@
     </p>
 
     <p>
-      これから、少しずつ、
-      手相の観点から見た強みを活かすコツを
-      お伝えしていきますね。
+      このあと、まず数通のステップメールで、
+      手相の観点から見た強みの活かし方や、
+      思考のクセに気づくヒント、
+      仕事で一歩を進めるための考え方をお届けします。
     </p>
 
     <p>
-      落ち着いたら、
-      週に1度程度の頻度で
-      配信していく予定です。
+      その後は、週に1回程度、
+      自分の強みや進み方を整理するためのメルマガを
+      お届けしていきます。
     </p>
 
     <p>
-      こちらの配信が、
-      あなたのお役に立てたら幸いです^^
+      「自分の強みを、どう仕事に活かせばいいのか」<br>
+      「この方向で進んでいいのか」
     </p>
 
     <p>
-      もし、ご自身の状況に合わせてもっと深く知りたくなったときは、
-      個別の診断でも詳しくお伝えできますので、
-      その時はぜひ覗いてみてください。
+      そんなときに、
+      少し立ち止まって自分を整理するための読みものとして、
+      お役に立てたらうれしいです。
     </p>
   </article>
 
+  <!-- 10 -->
+  <article class="result-block result-block--service">
+    <h2>もっと自分に合わせて深く知りたい方へ</h2>
+
+    <p class="service-lead">
+      「タイプとしての傾向」だけでなく、
+      あなた自身の手相から、もっと具体的に整理したい場合は、
+      手相プロファイリングで詳しくお伝えしています。
+    </p>
+
+    <p>
+      手相プロファイリングでは、
+      両手の手相をもとに、
+      あなたの強みや思考のクセ、
+      止まりやすい理由、
+      そして今後の進み方まで一緒に整理します。
+    </p>
+
+    <ul class="service-points">
+      <li>自分では気づきにくい強みを言葉にする</li>
+      <li>その強みを仕事でどう活かすかを整理する</li>
+      <li>今の自分に合った、次の一歩を具体的にする</li>
+    </ul>
+
+    <p>
+      必要になったタイミングで、
+      「もう少し自分のことを深く見てみたい」と思ったら、
+      手相プロファイリングも覗いてみてください。
+    </p>
+
+    <div style="display:flex; justify-content:center; margin-top:24px;">
+      <a
+        href="https://q0gsv.hp.peraichi.com"
+        target="_blank"
+        rel="noopener noreferrer"
+        style="
+          display:inline-flex;
+          align-items:center;
+          justify-content:center;
+          padding:14px 22px;
+          background:#f28c45;
+          color:#ffffff;
+          text-decoration:none;
+          border-radius:10px;
+          font-size:16px;
+          font-weight:700;
+          line-height:1.5;
+          text-align:center;
+        "
+      >
+        手相プロファイリングの詳細を見る
+      </a>
+    </div>
+  </article>
+
+
 </section>
+  </main>
+</body>
+</html>
