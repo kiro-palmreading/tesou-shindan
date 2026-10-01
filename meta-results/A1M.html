@@ -1,44 +1,61 @@
-<section class="result-detail result-detail--source" data-diagnosis-code="A1M">
+<div class="line-section" id="lineActionSection">
 
-  <style>
-    /* ========================================
-       A1M 登録前用データ
-       diagnosis_meta_v2.html から裏側で読み込む専用
-       診断本文は画面に表示しない
-    ======================================== */
+  <div class="receive-guide">
+    <div class="receive-guide-title">受け取り方</div>
 
-    .result-detail--source {
-      display: none !important;
-    }
-  </style>
+    <ol class="receive-steps">
+      <li>「診断コードをコピーする」を押す</li>
+      <li>下のボタンでLINEを開く</li>
+      <li>トーク画面に貼り付けて送る</li>
+    </ol>
+  </div>
 
-  <!--
-    LINE登録前の表示に使うデータ
-    ・受け取り方3ステップは diagnosis_meta_v2.html 側で表示
-    ・A1M側ではベネフィット情報とCTA文だけを保持
-  -->
+  <div class="copy-code-box">
+    <div class="copy-code-label">LINE送信用の診断コード</div>
+    <div class="copy-code-value" id="copyCodeValue">---</div>
 
-  <article class="result-block result-block--source-only">
+    <button
+      class="btn-copy-code"
+      id="copyCodeBtn"
+      type="button"
+    >
+      診断コードをコピーする
+    </button>
 
-    <ul class="line-benefits-source">
-      <li>
-        <strong>あなたの強み</strong>
-      </li>
+    <div
+      class="copy-status"
+      id="copyStatus"
+      role="status"
+      aria-live="polite"
+    ></div>
+  </div>
 
-      <li>
-        <strong>なぜ一歩が止まりやすいのか</strong>
-      </li>
+  <div class="supervisor-proof">
+    <img
+      src="meta-fv-results/DSC_4920.JPG"
+      alt="ビジネス手相診断士 輝路"
+      class="supervisor-avatar"
+    >
 
-      <li>
-        <strong>あなたに合った進み方</strong>
-      </li>
-    </ul>
+    <div class="supervisor-proof-text">
+      <span>手相診断歴13年</span>
+      <span>1,250名以上の診断実績</span>
+      <span>ビジネス手相診断士 輝路が監修</span>
+    </div>
+  </div>
 
-    <p class="cta-message-source">
-      あなたの強みと、なぜ一歩が止まりやすいのか。<br>
-      あなたに合った進み方を、今すぐ受け取ってください。
-    </p>
+  <button
+    id="lineBtn"
+    class="btn-line"
+    type="button"
+    data-line-url="https://lin.ee/OINIB8d"
+  >
+    友だち追加して、診断結果を<br>
+    受け取る　▶
+  </button>
 
-  </article>
+  <p class="line-note">
+    無料・1分で登録できます
+  </p>
 
-</section>
+</div>
