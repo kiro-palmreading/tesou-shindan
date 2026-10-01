@@ -1,270 +1,755 @@
-<section class="result-detail" data-diagnosis-code="B1W">
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>詳しい診断結果｜才能コンパス診断</title>
+<style>
+    /* ========================================
+       B1W 診断結果
+       LINE登録後・完全版
+    ======================================== */
 
-  <!-- 診断結果FV：ページ最上部 -->
-  <div class="result-fv" style="width: 100%; margin: 0 auto 24px;">
+    .result-detail--visual {
+      max-width: 720px;
+      margin: 0 auto;
+      color: #24313a;
+      line-height: 1.8;
+    }
+
+    .diagnosis-result-fv {
+      margin: 0 0 28px;
+      padding: 0;
+    }
+
+    .diagnosis-result-fv img {
+      display: block;
+      width: 100%;
+      height: auto;
+      margin: 0 auto;
+    }
+
+    .result-detail--visual .result-block {
+      margin: 0 16px 28px;
+      padding: 26px 20px;
+      background: #ffffff;
+      border: 1px solid #dcecf5;
+      border-radius: 18px;
+      box-sizing: border-box;
+    }
+
+    .result-detail--visual .result-block h2 {
+      margin: 0 0 18px;
+      color: #083f5c;
+      font-size: 22px;
+      line-height: 1.45;
+      text-align: left;
+    }
+
+    .result-detail--visual .result-block p {
+      margin: 0 0 16px;
+      font-size: 16px;
+      line-height: 1.9;
+    }
+
+    .result-detail--visual .result-block p:last-child {
+      margin-bottom: 0;
+    }
+
+    .result-detail--visual .result-block ul {
+      margin: 0 0 18px;
+      padding-left: 1.4em;
+    }
+
+    .result-detail--visual .result-block li {
+      margin: 0 0 8px;
+      font-size: 16px;
+      line-height: 1.8;
+    }
+
+    .type-keywords {
+      margin: 0 0 20px;
+      font-size: 20px;
+      font-weight: 700;
+      color: #1f6fb2;
+      letter-spacing: 0.04em;
+      text-align: center;
+    }
+
+    .type-point-list {
+      display: grid;
+      gap: 11px;
+      margin: 0;
+    }
+
+    .type-point {
+      position: relative;
+      padding: 14px 14px 14px 43px;
+      background: #f8fcff;
+      border-radius: 12px;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .type-point::before {
+      content: "✓";
+      position: absolute;
+      left: 16px;
+      top: 14px;
+      color: #1f6fb2;
+      font-weight: 700;
+    }
+
+    .talent-scene-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    .talent-scene-card {
+      padding: 18px;
+      border-radius: 14px;
+      background: #eef7ff;
+      border: 1px solid #cfe3f1;
+    }
+
+    .talent-scene-card strong {
+      display: block;
+      margin-bottom: 8px;
+      color: #083f5c;
+      font-size: 17px;
+      line-height: 1.5;
+    }
+
+    .talent-scene-card p {
+      margin: 0 !important;
+    }
+
+    .loop-intro {
+      font-weight: 700;
+      color: #314958;
+    }
+
+    .diagnosis-loop {
+      margin: 20px 0;
+    }
+
+    .loop-step {
+      padding: 15px 14px;
+      background: #f8fcff;
+      border: 1px solid #cfe6f3;
+      border-radius: 12px;
+      text-align: center;
+      font-size: 16px;
+      font-weight: 700;
+      color: #083f5c;
+    }
+
+    .loop-arrow {
+      height: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #6f8798;
+      font-size: 24px;
+      font-weight: 700;
+    }
+
+    .loop-step--last {
+      background: #fff5f2;
+      border-color: #f2c9bf;
+      color: #9b4d3b;
+    }
+
+    .loop-doubt {
+      margin: 4px 0 18px;
+      padding: 12px 16px;
+      background: #f8fcff;
+      border-left: 3px solid #7893a3;
+      font-size: 15px;
+      font-style: italic;
+      color: #4a5d68;
+      line-height: 1.7;
+    }
+
+    .result-block--risk {
+      background: #fffaf7 !important;
+      border-color: #f1d9cf !important;
+    }
+
+    .risk-items {
+      display: grid;
+      gap: 10px;
+    }
+
+    .risk-item {
+      position: relative;
+      padding: 13px 14px 13px 40px;
+      background: #ffffff;
+      border: 1px solid #f0ddd5;
+      border-radius: 11px;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .risk-item::before {
+      content: "●";
+      position: absolute;
+      left: 17px;
+      top: 15px;
+      color: #d98670;
+      font-size: 10px;
+    }
+
+    .result-block--key {
+      background: #eef7ff !important;
+      border-color: #bddcec !important;
+    }
+
+    .unspoken-worry {
+      margin: 0 0 22px;
+      padding: 18px 18px;
+      background: #fdf6f3;
+      border: 1px dashed #e3b8a8;
+      border-radius: 14px;
+      font-size: 15px;
+      font-style: italic;
+      color: #6b5347;
+      text-align: center;
+      line-height: 1.8;
+    }
+
+    .key-message {
+      margin: 18px 0 !important;
+      padding: 18px 16px;
+      background: #ffffff;
+      border: 1px solid #dcecf5;
+      border-radius: 8px;
+      font-size: 18px !important;
+      font-weight: 700;
+      color: #083f5c;
+      text-align: center;
+      line-height: 1.7;
+    }
+
+    .key-message-line {
+      display: block;
+    }
+
+    .tip-box {
+      margin: 0 0 18px;
+      padding: 18px 16px;
+      background: #f8fcff;
+      border: 1px solid #dcecf5;
+      border-radius: 12px;
+    }
+
+    .tip-box:last-child {
+      margin-bottom: 0;
+    }
+
+    .tip-title {
+      margin: 0 0 12px !important;
+      color: #083f5c;
+      font-size: 17px !important;
+      font-weight: 700;
+      line-height: 1.6 !important;
+    }
+
+    .result-block--action {
+      background: #f7fbfd !important;
+      border-color: #cfe3f1 !important;
+    }
+
+    .result-block--newsletter {
+      background: #fffdf8 !important;
+      border-color: #eadfca !important;
+    }
+
+    .result-block--service {
+      background: #f4f9fc !important;
+      border-color: #cfe3f1 !important;
+    }
+
+    .service-lead {
+      font-weight: 700;
+      color: #083f5c;
+    }
+
+    .service-points {
+      margin-top: 6px !important;
+    }
+
+    @media (max-width: 600px) {
+      .result-detail--visual .result-block {
+        margin-left: 14px;
+        margin-right: 14px;
+        padding: 23px 17px;
+      }
+
+      .result-detail--visual .result-block h2 {
+        font-size: 21px;
+      }
+
+      .type-keywords {
+        font-size: 19px;
+      }
+
+      .talent-scene-card strong,
+      .tip-title {
+        font-size: 17px !important;
+      }
+
+      .key-message {
+        font-size: 17px !important;
+        padding: 16px 14px;
+      }
+    }
+  
+
+    /* ===== LINE登録後・単独ページ用 ===== */
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      background: #eef8ff;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background: #eef8ff;
+      color: #24313a;
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Kaku Gothic ProN", "Yu Gothic", "Meiryo", sans-serif;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    .page-header {
+      width: 100%;
+      background: #ffffff;
+      border-bottom: 1px solid #e4edf3;
+    }
+
+    .page-header-inner {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 18px 18px 16px;
+      color: #111111;
+      font-size: 17px;
+      font-weight: 700;
+      line-height: 1.45;
+    }
+
+    .page-main {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 18px 0 10px;
+    }
+
+    .page-footer {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 38px 18px 48px;
+      color: #58758c;
+      font-size: 14px;
+      text-align: center;
+      line-height: 1.7;
+    }
+
+    .diagnosis-result-fv {
+      margin-left: 14px;
+      margin-right: 14px;
+      overflow: hidden;
+      border-radius: 18px;
+      background: #ffffff;
+      border: 1px solid #dcecf5;
+      box-shadow: 0 3px 14px rgba(44, 103, 142, 0.08);
+    }
+
+    .diagnosis-result-fv img {
+      border-radius: 18px;
+    }
+
+    @media (max-width: 600px) {
+      .page-header-inner {
+        padding: 16px 18px 14px;
+        font-size: 16px;
+      }
+
+      .page-main {
+        padding-top: 12px;
+      }
+
+      .page-footer {
+        padding-top: 30px;
+        font-size: 13px;
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+  <header class="page-header">
+    <div class="page-header-inner">詳しい診断結果｜才能コンパス診断</div>
+  </header>
+
+  <main class="page-main">
+<section class="result-detail result-detail--visual" data-diagnosis-code="B1W">
+<!-- FV -->
+  <div class="diagnosis-result-fv">
     <img
-      src="meta-fv-results/B1W.png"
-      alt="才能コンパス診断 B1W 診断結果"
-      style="display: block; width: 100%; height: auto;"
+      src="https://kiro-palmreading.github.io/tesou-shindan/meta-fv-results/B1W.png"
+      alt="才能コンパス診断 みんなの立場を見渡すコーディネーター"
+      loading="eager"
+      fetchpriority="high"
     >
   </div>
 
+  <!-- 01 -->
   <article class="result-block">
-    <h2>詳しい診断結果</h2>
+    <h2>あなたはこんなタイプです</h2>
+
+    <div class="type-keywords">
+      慎重 × 共感 × 多角的視点
+    </div>
+
+    <div class="type-point-list">
+      <div class="type-point">
+        1人だけでなく、
+        <strong>複数の人がどう感じるかを同時に想像できる</strong>
+      </div>
+
+      <div class="type-point">
+        意見が違っていても、
+        <strong>それぞれの立場にある理由を受け止められる</strong>
+      </div>
+
+      <div class="type-point">
+        全体を見渡しながら、
+        <strong>みんなが受け取りやすい着地点を考えられる</strong>
+      </div>
+    </div>
+  </article>
+
+  <!-- 02 -->
+  <article class="result-block">
+    <h2>こんな場面で強みが出ます</h2>
+
+    <div class="talent-scene-grid">
+      <div class="talent-scene-card">
+        <strong>🤝 意見を調整するとき</strong>
+        <p>
+          どちらかをすぐに否定せず、
+          それぞれが大切にしていることを見ながら、
+          納得しやすい着地点を探せます。
+        </p>
+      </div>
+
+      <div class="talent-scene-card">
+        <strong>👀 相手ごとの反応を考えるとき</strong>
+        <p>
+          初めての人、経験のある人など、
+          立場によってどこで迷うかを想像し、
+          必要な伝え方を考えられます。
+        </p>
+      </div>
+
+      <div class="talent-scene-card">
+        <strong>🧩 全体を整えるとき</strong>
+        <p>
+          自分の考えだけでなく、
+          相手の気持ちや複数の視点をつなぎ、
+          バランスのよい形へまとめられます。
+        </p>
+      </div>
+    </div>
+  </article>
+
+  <!-- 03 -->
+  <article class="result-block">
+    <h2>今、こんなループに入っていませんか？</h2>
+
+    <p class="loop-intro">
+      「この人に届くように」と考え始めたはずなのに……
+    </p>
+
+    <div class="diagnosis-loop">
+      <div class="loop-step">
+        1人の相手を思い浮かべる
+      </div>
+
+      <div class="loop-arrow">↓</div>
+
+      <div class="loop-step">
+        別の人の受け取り方も気になる
+      </div>
+
+      <div class="loop-arrow">↓</div>
+
+      <div class="loop-step">
+        さらに別の立場にも配慮したくなる
+      </div>
+
+      <div class="loop-arrow">↓</div>
+
+      <div class="loop-step loop-step--last">
+        全員に合わせるほど、誰への言葉か分からなくなる
+      </div>
+    </div>
 
     <p>
-      あなたが多くの人へ配慮するほど、誰に向けるかを決めにくくなるのは、
+      あなたは、誰に届けたいのか分からないわけではありません。
+      むしろ、<strong>いろいろな人の立場が見えすぎる</strong>のです。
+      「詳しく知りたい人」「長い文章は苦手な人」
+      「やさしい言葉がいい人」「専門性を見たい人」——
     </p>
 
     <p>
-      「共感力」<br>
-      「多角的な視点」<br>
-      「慎重さ」
+      気づけば、1本の発信を書くために頭の中で読者会議。
+      しかも、<strong>全員に発言権があり、
+      全員が拒否権まで持っている。</strong>
+      そんな状態になることもあるかもしれません。
+    </p>
+
+    <p class="loop-doubt">
+      今回は誰に向けて書いているのか、
+      それとも全員に向けているのか——
+      その焦点が、なかなか定まらない。
+    </p>
+  </article>
+
+  <!-- 04 -->
+  <article class="result-block result-block--risk">
+    <h2>この状態が続くと…</h2>
+
+    <div class="risk-items">
+      <div class="risk-item">
+        全員に配慮しようとして、
+        誰に向けた発信なのか分かりにくくなる
+      </div>
+
+      <div class="risk-item">
+        たくさん考えているのに、
+        「結局、誰に何を伝えたいんだろう」と疲れやすくなる
+      </div>
+    </div>
+  </article>
+
+  <!-- 05 -->
+  <article class="result-block result-block--key">
+    <p class="unspoken-worry">
+      「こんなに気を配っているのに、
+      結局、誰の心にも残っていないんじゃないか」
+    </p>
+
+    <h2>でも、問題は「いろいろな人が見えること」ではありません</h2>
+
+    <p>
+      ご安心ください。
+      その全員を思ってしまう気持ちには、
+      ちゃんと理由があります。
     </p>
 
     <p>
-      という3つの特徴が、順番に働くためです。
+      あなたが多くの人へ配慮するほど、
+      誰に向けるかを決めにくくなるのは、
+      「共感力」「多角的な視点」「慎重さ」という
+      3つの特徴が、順番に働くためです。
     </p>
 
     <p>
       まず、あなたの共感力が、
-    </p>
-
-    <p>
-      「相手は、どう感じるだろう」
-    </p>
-
-    <p>
-      と、人の気持ちを細やかに察します。
+      「相手は、どう感じるだろう」と、
+      人の気持ちを細やかに察します。
     </p>
 
     <p>
       すると、多角的な視点によって、
-    </p>
-
-    <p>
-      「この人には、こう伝わる」<br>
-      「あの人は、別の受け取り方をするかもしれない」
-    </p>
-
-    <p>
-      と、複数の立場が同時に見えてきます。
+      「この人には、こう伝わる」
+      「あの人は、別の受け取り方をするかもしれない」と、
+      複数の立場が同時に見えてきます。
     </p>
 
     <p>
       さらに慎重さが、
+      「誰かを置き去りにしていないかな」
+      「どちらにも配慮した方が安全かもしれない」と、
+      全員が納得できる形を探し始めます。
     </p>
 
     <p>
-      「誰かを置き去りにしていないかな」<br>
-      「どちらにも配慮した方が安全かもしれない」
-    </p>
-
-    <p>
-      と、全員が納得できる形を探し始めます。
-    </p>
-
-    <p>
-      その結果、誰か一人へまっすぐ届けるより、みんなに当てはまる表現へ整えやすくなるのです。
+      その結果、誰か一人へまっすぐ届けるより、
+      みんなに当てはまる表現へ
+      整えやすくなるのです。
     </p>
 
     <p>
       これは、あなたに軸がないからではありません。
+      たくさんの人の立場や気持ちが見えるからこそ、
+      誰か一人を主役にすることが難しいのです。
     </p>
 
     <p>
-      たくさんの人の立場や気持ちが見えるからこそ、誰か一人を主役にすることが難しいのです。
+      あなたに必要なのは、
+      見える範囲を狭くすることではありません。
+    </p>
+
+    <p class="key-message">
+      <span class="key-message-line">今回は誰を最初の一人にするのか、</span>
+      <span class="key-message-line">届ける順番を決めることです。</span>
     </p>
 
     <p>
-      あなたに必要なのは、見える範囲を狭くすることではありません。
-    </p>
-
-    <p>
-      <strong>
-        今回は誰を最初の一人にするのか、届ける順番を決めることです。
-      </strong>
+      この順番が決まると、
+      全員への配慮を保ったまま、
+      目の前の一人へまっすぐ届けられるようになります。
     </p>
   </article>
 
+  <!-- 06 -->
   <article class="result-block">
-    <h2>一人に届く言葉へ変える3つのコツ</h2>
+    <h2>動き出すための3つのコツ</h2>
 
     <p>
       あなたのタイプに合うコツは、次の3つです。
     </p>
 
-    <p>
-      <strong>1．「今、最も困っている一人」を選ぶ</strong>
-    </p>
+    <div class="tip-box">
+      <p class="tip-title">1．「今、最も困っている一人」を選ぶ</p>
 
-    <p>
-      年齢や職業だけで相手を決めるのではありません。
-    </p>
+      <p>
+        年齢や職業だけで相手を決めるのではありません。
+        その人が今、どのような場面で困っているのかまで
+        想像してください。
+      </p>
 
-    <p>
-      その人が今、どのような場面で困っているのかまで想像してください。
-    </p>
+      <ul>
+        <li>発信しようとしても、自分の強みが分からず手が止まっている人</li>
+        <li>今の仕事を続けてよいか、一人で何度も考えている人</li>
+      </ul>
 
-    <p>
-      たとえば、
-    </p>
+      <p>
+        という形です。
+        そして、「今の自分が、最も力になりたいのは誰か」
+        を考えます。
+      </p>
 
-    <ul>
-      <li>発信しようとしても、自分の強みが分からず手が止まっている人</li>
-      <li>今の仕事を続けてよいか、一人で何度も考えている人</li>
-    </ul>
+      <p>
+        ほかの人を対象外にするのではありません。
+        今回は、その一人から先に届けるだけです。
+      </p>
 
-    <p>
-      という形です。
-    </p>
+      <p>
+        相手の状況が具体的になるほど、
+        あなたの共感力が活かされ、
+        どんな言葉が必要かも見えやすくなります。
+      </p>
+    </div>
 
-    <p>
-      そして、
-    </p>
+    <div class="tip-box">
+      <p class="tip-title">2．「伝える中心」と「見せ方」を分ける</p>
 
-    <p>
-      「今の自分が、最も力になりたいのは誰か」
-    </p>
+      <p>
+        相手によって、分かりやすい説明や響く言葉は変わります。
+        けれど、そのたびに伝える中心まで
+        変える必要はありません。
+      </p>
 
-    <p>
-      を考えます。
-    </p>
+      <p>
+        まず、「私は、この仕事で何を届けたいのか」を
+        1文で決めてください。
+        たとえば、
+        「自分では気づいていない強みを、
+        客観的に認められる時間を届けたい」
+        というものです。
+      </p>
 
-    <p>
-      ほかの人を対象外にするのではありません。
-    </p>
+      <p>
+        この中心は変えず、相手に合わせて、
+        次だけを調整します。
+      </p>
 
-    <p>
-      今回は、その一人から先に届けるだけです。
-    </p>
+      <ul>
+        <li>使う例</li>
+        <li>説明する順番</li>
+        <li>言葉のやわらかさ</li>
+      </ul>
 
-    <p>
-      相手の状況が具体的になるほど、あなたの共感力が活かされ、どんな言葉が必要かも見えやすくなります。
-    </p>
+      <p>
+        伝える中心が決まっていれば、
+        相手に寄り添っても、
+        自分まで変わらずに済みます。
+      </p>
+    </div>
 
-    <p>
-      <strong>2．「伝える中心」と「見せ方」を分ける</strong>
-    </p>
+    <div class="tip-box">
+      <p class="tip-title">3．頭の中の相手を「今回・次回・個別対応」に分ける</p>
 
-    <p>
-      相手によって、分かりやすい説明や響く言葉は変わります。
-    </p>
+      <p>
+        文章を書いている途中で、
+        別の人の顔が浮かんだら、
+        その人を無視する必要はありません。
+        次の3つに分けてください。
+      </p>
 
-    <p>
-      けれど、そのたびに伝える中心まで変える必要はありません。
-    </p>
+      <ul>
+        <li>今回の発信で、最初に届ける人</li>
+        <li>次の発信で取り上げる人</li>
+        <li>質問されたときに、個別に説明する人</li>
+      </ul>
 
-    <p>
-      まず、
-    </p>
+      <p>
+        全員へ一度に届けようとするのではなく、
+        出番を分けるのです。
+      </p>
 
-    <p>
-      「私は、この仕事で何を届けたいのか」
-    </p>
+      <p>
+        今回の相手に必要な内容だけを残す。
+        別の人に必要な説明は、
+        次の発信や、よくある質問へ回す。
+      </p>
 
-    <p>
-      を1文で決めてください。
-    </p>
-
-    <p>
-      たとえば、
-    </p>
-
-    <p>
-      「自分では気づいていない強みを、客観的に認められる時間を届けたい」
-    </p>
-
-    <p>
-      というものです。
-    </p>
-
-    <p>
-      この中心は変えず、相手に合わせて、
-    </p>
-
-    <ul>
-      <li>使う例</li>
-      <li>説明する順番</li>
-      <li>言葉のやわらかさ</li>
-    </ul>
-
-    <p>
-      だけを調整します。
-    </p>
-
-    <p>
-      伝える中心が決まっていれば、相手に寄り添っても、自分まで変わらずに済みます。
-    </p>
-
-    <p>
-      <strong>3．頭の中の相手を「今回・次回・個別対応」に分ける</strong>
-    </p>
-
-    <p>
-      文章を書いている途中で、別の人の顔が浮かんだら、その人を無視する必要はありません。
-    </p>
-
-    <p>
-      次の3つに分けてください。
-    </p>
-
-    <ul>
-      <li>今回の発信で、最初に届ける人</li>
-      <li>次の発信で取り上げる人</li>
-      <li>質問されたときに、個別に説明する人</li>
-    </ul>
-
-    <p>
-      全員へ一度に届けようとするのではなく、出番を分けるのです。
-    </p>
-
-    <p>
-      今回の相手に必要な内容だけを残す。
-    </p>
-
-    <p>
-      別の人に必要な説明は、次の発信や、よくある質問へ回す。
-    </p>
-
-    <p>
-      こうすれば、ほかの人への配慮を失わずに、目の前の一人へまっすぐ伝えられます。
-    </p>
+      <p>
+        こうすれば、ほかの人への配慮を失わずに、
+        目の前の一人へまっすぐ伝えられます。
+      </p>
+    </div>
   </article>
 
+  <!-- 07 -->
   <article class="result-block">
-    <h2>あなたの共感力の活かし方</h2>
+    <h2>あなたの強みの活かし方</h2>
 
     <p>
       あなたは、誰かを切り捨てなければ進めない人ではありません。
-    </p>
-
-    <p>
-      届ける順番をつくることで、さまざまな人へ丁寧につなげていける人です。
+      届ける順番をつくることで、
+      さまざまな人へ丁寧につなげていける人です。
     </p>
 
     <p>
       全員を同じ文章へ招待しなくても大丈夫です。
-    </p>
-
-    <p>
-      まず一人に席へ座ってもらい、その人へ必要な言葉を届ける。
-    </p>
-
-    <p>
+      まず一人に席へ座ってもらい、
+      その人へ必要な言葉を届ける。
       次の人には、次の言葉を用意する。
     </p>
 
     <p>
-      その積み重ねによって、あなたの気配りは、誰にも届かない曖昧さではなく、一人ひとりとの信頼を育てる力へ変わっていきます。
+      その積み重ねによって、あなたの気配りは、
+      誰にも届かない曖昧さではなく、
+      一人ひとりとの信頼を育てる力へ変わっていきます。
     </p>
   </article>
 
-  <article class="result-block result-block--final">
+  <!-- 08 -->
+  <article class="result-block result-block--action">
     <h2>今日からできる最初の一歩</h2>
 
     <p>
-      今、誰に向けるか決められずに止まっている発信を1つ選び、次の2つを書いてください。
+      今、誰に向けるか決められずに止まっている発信を1つ選び、
+      次の2つを書いてください。
     </p>
 
     <ul>
@@ -273,8 +758,14 @@
     </ul>
 
     <p>
-      ほかの人に必要な内容は「次回」へ移し、今回はその一人に向けて、最初の3行を書いてみましょう。
+      ほかの人に必要な内容は「次回」へ移し、
+      今回はその一人に向けて、最初の3行を書いてみましょう。
     </p>
+  </article>
+
+  <!-- 09 -->
+  <article class="result-block result-block--newsletter">
+    <h2>このあとも、少しずつお届けします</h2>
 
     <p>
       今回お伝えしたのは、
@@ -282,27 +773,87 @@
     </p>
 
     <p>
-      これから、少しずつ、
-      手相の観点から見た強みを活かすコツを
-      お伝えしていきますね。
+      このあと、まず数通のステップメールで、
+      手相の観点から見た強みの活かし方や、
+      思考のクセに気づくヒント、
+      仕事で一歩を進めるための考え方をお届けします。
     </p>
 
     <p>
-      落ち着いたら、
-      週に1度程度の頻度で
-      配信していく予定です。
+      その後は、週に1回程度、
+      自分の強みや進み方を整理するためのメルマガを
+      お届けしていきます。
     </p>
 
     <p>
-      こちらの配信が、
-      あなたのお役に立てたら幸いです^^
+      「自分の強みを、どう仕事に活かせばいいのか」<br>
+      「この方向で進んでいいのか」
     </p>
 
     <p>
-      もし、ご自身の状況に合わせてもっと深く知りたくなったときは、
-      個別の診断でも詳しくお伝えできますので、
-      その時はぜひ覗いてみてください。
+      そんなときに、
+      少し立ち止まって自分を整理するための読みものとして、
+      お役に立てたらうれしいです。
     </p>
   </article>
 
+  <!-- 10 -->
+  <article class="result-block result-block--service">
+    <h2>もっと自分に合わせて深く知りたい方へ</h2>
+
+    <p class="service-lead">
+      「タイプとしての傾向」だけでなく、
+      あなた自身の手相から、もっと具体的に整理したい場合は、
+      手相プロファイリングで詳しくお伝えしています。
+    </p>
+
+    <p>
+      手相プロファイリングでは、
+      両手の手相をもとに、
+      あなたの強みや思考のクセ、
+      止まりやすい理由、
+      そして今後の進み方まで一緒に整理します。
+    </p>
+
+    <ul class="service-points">
+      <li>自分では気づきにくい強みを言葉にする</li>
+      <li>その強みを仕事でどう活かすかを整理する</li>
+      <li>今の自分に合った、次の一歩を具体的にする</li>
+    </ul>
+
+    <p>
+      必要になったタイミングで、
+      「もう少し自分のことを深く見てみたい」と思ったら、
+      手相プロファイリングも覗いてみてください。
+    </p>
+
+    <div style="display:flex; justify-content:center; margin-top:24px;">
+      <a
+        href="https://q0gsv.hp.peraichi.com"
+        target="_blank"
+        rel="noopener noreferrer"
+        style="
+          display:inline-flex;
+          align-items:center;
+          justify-content:center;
+          padding:14px 22px;
+          background:#f28c45;
+          color:#ffffff;
+          text-decoration:none;
+          border-radius:10px;
+          font-size:16px;
+          font-weight:700;
+          line-height:1.5;
+          text-align:center;
+        "
+      >
+        手相プロファイリングの詳細を見る
+      </a>
+    </div>
+  </article>
+
+
 </section>
+  </main>
+</body>
+</html>
