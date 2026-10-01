@@ -1,282 +1,753 @@
-<section class="result-detail" data-diagnosis-code="B1X">
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>詳しい診断結果｜才能コンパス診断</title>
+<style>
+    /* ========================================
+       B1X 診断結果
+       LINE登録後・完全版
+    ======================================== */
 
-  <!-- 診断結果FV：ページ最上部 -->
-  <div class="result-fv" style="width: 100%; margin: 0 auto 24px;">
+    .result-detail--visual {
+      max-width: 720px;
+      margin: 0 auto;
+      color: #24313a;
+      line-height: 1.8;
+    }
+
+    .diagnosis-result-fv {
+      margin: 0 0 28px;
+      padding: 0;
+    }
+
+    .diagnosis-result-fv img {
+      display: block;
+      width: 100%;
+      height: auto;
+      margin: 0 auto;
+    }
+
+    .result-detail--visual .result-block {
+      margin: 0 16px 28px;
+      padding: 26px 20px;
+      background: #ffffff;
+      border: 1px solid #dcecf5;
+      border-radius: 18px;
+      box-sizing: border-box;
+    }
+
+    .result-detail--visual .result-block h2 {
+      margin: 0 0 18px;
+      color: #083f5c;
+      font-size: 22px;
+      line-height: 1.45;
+      text-align: left;
+    }
+
+    .result-detail--visual .result-block p {
+      margin: 0 0 16px;
+      font-size: 16px;
+      line-height: 1.9;
+    }
+
+    .result-detail--visual .result-block p:last-child {
+      margin-bottom: 0;
+    }
+
+    .result-detail--visual .result-block ul {
+      margin: 0 0 18px;
+      padding-left: 1.4em;
+    }
+
+    .result-detail--visual .result-block li {
+      margin: 0 0 8px;
+      font-size: 16px;
+      line-height: 1.8;
+    }
+
+    .type-keywords {
+      margin: 0 0 20px;
+      font-size: 20px;
+      font-weight: 700;
+      color: #1f6fb2;
+      letter-spacing: 0.04em;
+      text-align: center;
+    }
+
+    .type-point-list {
+      display: grid;
+      gap: 11px;
+      margin: 0;
+    }
+
+    .type-point {
+      position: relative;
+      padding: 14px 14px 14px 43px;
+      background: #f8fcff;
+      border-radius: 12px;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .type-point::before {
+      content: "✓";
+      position: absolute;
+      left: 16px;
+      top: 14px;
+      color: #1f6fb2;
+      font-weight: 700;
+    }
+
+    .talent-scene-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    .talent-scene-card {
+      padding: 18px;
+      border-radius: 14px;
+      background: #eef7ff;
+      border: 1px solid #cfe3f1;
+    }
+
+    .talent-scene-card strong {
+      display: block;
+      margin-bottom: 8px;
+      color: #083f5c;
+      font-size: 17px;
+      line-height: 1.5;
+    }
+
+    .talent-scene-card p {
+      margin: 0 !important;
+    }
+
+    .loop-intro {
+      font-weight: 700;
+      color: #314958;
+    }
+
+    .diagnosis-loop {
+      margin: 20px 0;
+    }
+
+    .loop-step {
+      padding: 15px 14px;
+      background: #f8fcff;
+      border: 1px solid #cfe6f3;
+      border-radius: 12px;
+      text-align: center;
+      font-size: 16px;
+      font-weight: 700;
+      color: #083f5c;
+    }
+
+    .loop-arrow {
+      height: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #6f8798;
+      font-size: 24px;
+      font-weight: 700;
+    }
+
+    .loop-step--last {
+      background: #fff5f2;
+      border-color: #f2c9bf;
+      color: #9b4d3b;
+    }
+
+    .loop-doubt {
+      margin: 4px 0 18px;
+      padding: 12px 16px;
+      background: #f8fcff;
+      border-left: 3px solid #7893a3;
+      font-size: 15px;
+      font-style: italic;
+      color: #4a5d68;
+      line-height: 1.7;
+    }
+
+    .result-block--risk {
+      background: #fffaf7 !important;
+      border-color: #f1d9cf !important;
+    }
+
+    .risk-items {
+      display: grid;
+      gap: 10px;
+    }
+
+    .risk-item {
+      position: relative;
+      padding: 13px 14px 13px 40px;
+      background: #ffffff;
+      border: 1px solid #f0ddd5;
+      border-radius: 11px;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .risk-item::before {
+      content: "●";
+      position: absolute;
+      left: 17px;
+      top: 15px;
+      color: #d98670;
+      font-size: 10px;
+    }
+
+    .result-block--key {
+      background: #eef7ff !important;
+      border-color: #bddcec !important;
+    }
+
+    .unspoken-worry {
+      margin: 0 0 22px;
+      padding: 18px 18px;
+      background: #fdf6f3;
+      border: 1px dashed #e3b8a8;
+      border-radius: 14px;
+      font-size: 15px;
+      font-style: italic;
+      color: #6b5347;
+      text-align: center;
+      line-height: 1.8;
+    }
+
+    .key-message {
+      margin: 18px 0 !important;
+      padding: 18px 16px;
+      background: #ffffff;
+      border: 1px solid #dcecf5;
+      border-radius: 8px;
+      font-size: 18px !important;
+      font-weight: 700;
+      color: #083f5c;
+      text-align: center;
+      line-height: 1.7;
+    }
+
+    .key-message-line {
+      display: block;
+    }
+
+    .tip-box {
+      margin: 0 0 18px;
+      padding: 18px 16px;
+      background: #f8fcff;
+      border: 1px solid #dcecf5;
+      border-radius: 12px;
+    }
+
+    .tip-box:last-child {
+      margin-bottom: 0;
+    }
+
+    .tip-title {
+      margin: 0 0 12px !important;
+      color: #083f5c;
+      font-size: 17px !important;
+      font-weight: 700;
+      line-height: 1.6 !important;
+    }
+
+    .result-block--action {
+      background: #f7fbfd !important;
+      border-color: #cfe3f1 !important;
+    }
+
+    .result-block--newsletter {
+      background: #fffdf8 !important;
+      border-color: #eadfca !important;
+    }
+
+    .result-block--service {
+      background: #f4f9fc !important;
+      border-color: #cfe3f1 !important;
+    }
+
+    .service-lead {
+      font-weight: 700;
+      color: #083f5c;
+    }
+
+    .service-points {
+      margin-top: 6px !important;
+    }
+
+    @media (max-width: 600px) {
+      .result-detail--visual .result-block {
+        margin-left: 14px;
+        margin-right: 14px;
+        padding: 23px 17px;
+      }
+
+      .result-detail--visual .result-block h2 {
+        font-size: 21px;
+      }
+
+      .type-keywords {
+        font-size: 19px;
+      }
+
+      .talent-scene-card strong,
+      .tip-title {
+        font-size: 17px !important;
+      }
+
+      .key-message {
+        font-size: 17px !important;
+        padding: 16px 14px;
+      }
+    }
+  
+
+    /* ===== LINE登録後・単独ページ用 ===== */
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      background: #eef8ff;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background: #eef8ff;
+      color: #24313a;
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Kaku Gothic ProN", "Yu Gothic", "Meiryo", sans-serif;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    .page-header {
+      width: 100%;
+      background: #ffffff;
+      border-bottom: 1px solid #e4edf3;
+    }
+
+    .page-header-inner {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 18px 18px 16px;
+      color: #111111;
+      font-size: 17px;
+      font-weight: 700;
+      line-height: 1.45;
+    }
+
+    .page-main {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 18px 0 10px;
+    }
+
+    .page-footer {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 38px 18px 48px;
+      color: #58758c;
+      font-size: 14px;
+      text-align: center;
+      line-height: 1.7;
+    }
+
+    .diagnosis-result-fv {
+      margin-left: 14px;
+      margin-right: 14px;
+      overflow: hidden;
+      border-radius: 18px;
+      background: #ffffff;
+      border: 1px solid #dcecf5;
+      box-shadow: 0 3px 14px rgba(44, 103, 142, 0.08);
+    }
+
+    .diagnosis-result-fv img {
+      border-radius: 18px;
+    }
+
+    @media (max-width: 600px) {
+      .page-header-inner {
+        padding: 16px 18px 14px;
+        font-size: 16px;
+      }
+
+      .page-main {
+        padding-top: 12px;
+      }
+
+      .page-footer {
+        padding-top: 30px;
+        font-size: 13px;
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+  <header class="page-header">
+    <div class="page-header-inner">詳しい診断結果｜才能コンパス診断</div>
+  </header>
+
+  <main class="page-main">
+<section class="result-detail result-detail--visual" data-diagnosis-code="B1X">
+<!-- FV -->
+  <div class="diagnosis-result-fv">
     <img
-      src="meta-fv-results/B1X.png"
-      alt="才能コンパス診断 B1X 診断結果"
-      style="display: block; width: 100%; height: auto;"
+      src="https://kiro-palmreading.github.io/tesou-shindan/meta-fv-results/B1X.png"
+      alt="才能コンパス診断 丁寧に整えて届けるプランナー"
+      loading="eager"
+      fetchpriority="high"
     >
   </div>
 
+  <!-- 01 -->
   <article class="result-block">
-    <h2>詳しい診断結果</h2>
+    <h2>あなたはこんなタイプです</h2>
+
+    <div class="type-keywords">
+      慎重 × 共感 × 論理
+    </div>
+
+    <div class="type-point-list">
+      <div class="type-point">
+        何かを伝えるとき、
+        <strong>相手がどう感じるかを自然に考えられる</strong>
+      </div>
+
+      <div class="type-point">
+        強すぎる言い方や誤解を避けながら、
+        <strong>安心して受け取れる言葉を選べる</strong>
+      </div>
+
+      <div class="type-point">
+        複雑な内容でも、
+        <strong>順番を整理して分かりやすく伝えられる</strong>
+      </div>
+    </div>
+  </article>
+
+  <!-- 02 -->
+  <article class="result-block">
+    <h2>こんな場面で強みが出ます</h2>
+
+    <div class="talent-scene-grid">
+      <div class="talent-scene-card">
+        <strong>💬 誰かに説明するとき</strong>
+        <p>
+          相手がどこで迷いそうかを想像しながら、
+          初めて聞く人にも分かる言葉や順番へ
+          整えることができます。
+        </p>
+      </div>
+
+      <div class="talent-scene-card">
+        <strong>🤝 相談を受けるとき</strong>
+        <p>
+          表面的な言葉だけでなく、
+          「本当は何を気にしているのだろう」と考え、
+          安心して話せる空気をつくれます。
+        </p>
+      </div>
+
+      <div class="talent-scene-card">
+        <strong>🧩 発信やサービスを整えるとき</strong>
+        <p>
+          自分が伝えたいことと、
+          相手が知りたいことを整理し、
+          分かりやすい形へ組み立てられます。
+        </p>
+      </div>
+    </div>
+  </article>
+
+  <!-- 03 -->
+  <article class="result-block">
+    <h2>今、こんなループに入っていませんか？</h2>
+
+    <p class="loop-intro">
+      「きちんと伝えたい」と思うほど……
+    </p>
+
+    <div class="diagnosis-loop">
+      <div class="loop-step">
+        まず伝えたいことを書く
+      </div>
+
+      <div class="loop-arrow">↓</div>
+
+      <div class="loop-step">
+        「強く聞こえないかな」と言い換える
+      </div>
+
+      <div class="loop-arrow">↓</div>
+
+      <div class="loop-step">
+        誤解を防ぐために説明を足す
+      </div>
+
+      <div class="loop-arrow">↓</div>
+
+      <div class="loop-step loop-step--last">
+        丁寧なのに、いちばん大事なことが埋もれる
+      </div>
+    </div>
 
     <p>
-      あなたが丁寧に伝えようとするほど言葉が増えやすいのは、3つの特徴が同時に働くためです。
+      あなたは、
+      伝えたいことがないわけではありません。
+      むしろ、
+      <strong>相手にきちんと受け取ってほしい気持ちが強い</strong>
+      のです。
+    </p>
+
+    <p>
+      本文を書いたあとに補足を足す。
+      その補足にも、「念のため」と説明を加える。
+      気づけば、
+      <strong>
+        本文、補足、念のための説明、
+        その補足に対する補足。
+      </strong>
+      そして読み返したとき、
+      「ところで、私は何をいちばん伝えたかったんだっけ？」
+      となることもあるかもしれません。
+    </p>
+
+    <p class="loop-doubt">
+      これは必要な説明なのか、
+      それとも不安からの説明なのか——
+      その判断が、なかなかつかない。
+    </p>
+  </article>
+
+  <!-- 04 -->
+  <article class="result-block result-block--risk">
+    <h2>この状態が続くと…</h2>
+
+    <div class="risk-items">
+      <div class="risk-item">
+        説明が増え続け、
+        文章の中心が見えにくくなる
+      </div>
+
+      <div class="risk-item">
+        反応が弱いほど、
+        「もっと説明しなければ」とさらに言葉を増やしやすくなる
+      </div>
+    </div>
+  </article>
+
+  <!-- 05 -->
+  <article class="result-block result-block--key">
+    <p class="unspoken-worry">
+      「こんなに言葉を尽くしているのに、
+      私にはうまく伝える力がないのだろうか」
+    </p>
+
+    <h2>でも、問題は「丁寧すぎること」ではありません</h2>
+
+    <p>
+      ご安心ください。
+      その説明を重ねたくなる気持ちには、
+      ちゃんと理由があります。
+    </p>
+
+    <p>
+      あなたが丁寧に伝えようとするほど
+      言葉が増えやすいのは、
+      3つの特徴が同時に働くためです。
     </p>
 
     <p>
       まず、あなたは相手の感情や反応を細やかに想像します。
-    </p>
-
-    <p>
-      「強く聞こえないか」<br>
-      「嫌な気持ちにさせないか」
-    </p>
-
-    <p>
-      と、受け取る人の立場を考えます。
+      「強く聞こえないか」「嫌な気持ちにさせないか」と、
+      受け取る人の立場を考えます。
     </p>
 
     <p>
       さらに、行動する前には、
+      「誤解される可能性はないか」「問題が起きないか」を
+      慎重に確かめます。
     </p>
 
     <p>
-      「誤解される可能性はないか」<br>
-      「問題が起きないか」
+      そして、説明の抜けや矛盾に気づくと、
+      論理的につながるよう言葉を補います。
     </p>
 
     <p>
-      を慎重に確かめます。
-    </p>
-
-    <p>
-      そして、説明の抜けや矛盾に気づくと、論理的につながるよう言葉を補います。
-    </p>
-
-    <p>
-      その結果、
-    </p>
-
-    <p>
-      相手への配慮。<br>
-      誤解を防ぐための予防。<br>
-      論理をつなぐための説明。
-    </p>
-
-    <p>
+      その結果、相手への配慮、誤解を防ぐための予防、
+      論理をつなぐための説明——
       この3つが、同じ文章の中へ次々に加わるのです。
     </p>
 
     <p>
       どれも、それ自体は大切です。
-    </p>
-
-    <p>
-      けれど、すべてを最初から伝えようとすると、読む人は中心へたどり着く前に疲れてしまいます。
+      けれど、すべてを最初から伝えようとすると、
+      読む人は中心へたどり着く前に疲れてしまいます。
     </p>
 
     <p>
       あなたに必要なのは、配慮を減らすことではありません。
     </p>
 
+    <p class="key-message">
+      <span class="key-message-line">伝える順番を変え、</span>
+      <span class="key-message-line">配慮を必要な場所に置くことです。</span>
+    </p>
+
     <p>
-      <strong>
-        伝える順番を変え、配慮を必要な場所に置くことです。
-      </strong>
+      この順番ができると、
+      配慮を保ったまま、
+      要点がきちんと伝わるようになります。
     </p>
   </article>
 
+  <!-- 06 -->
   <article class="result-block">
-    <h2>伝わりやすくする3つのコツ</h2>
+    <h2>動き出すための3つのコツ</h2>
 
     <p>
       あなたのタイプに合うコツは、次の3つです。
     </p>
 
-    <p>
-      <strong>1．最初に「結論の1文」を書く</strong>
-    </p>
+    <div class="tip-box">
+      <p class="tip-title">1．最初に「結論の1文」を書く</p>
 
-    <p>
-      文章を書き始める前に、
-    </p>
+      <p>
+        文章を書き始める前に、
+        「この文章で、いちばん伝えたいことは何か」を
+        1文で書いてください。
+      </p>
 
-    <p>
-      「この文章で、いちばん伝えたいことは何か」
-    </p>
+      <ul>
+        <li>自分の強みが分からない人へ、今ある経験や得意なことを整理するヒントをお伝えします</li>
+        <li>このサービスは、仕事の方向に迷っている人のためのものです</li>
+      </ul>
 
-    <p>
-      を1文で書いてください。
-    </p>
+      <p>
+        という形です。
+        この1文を、文章の最初に置きます。
+        そのあとに、なぜそう言えるのか、
+        どのような人に関係があるのか、
+        必要な補足は何か、という順番で説明します。
+      </p>
 
-    <p>
-      たとえば、
-    </p>
+      <p>
+        結論を最初に出すことは、強く押しつけることではありません。
+        読む人に、「これから何の話をするのか」を
+        先に伝える配慮です。
+      </p>
+    </div>
 
-    <ul>
-      <li>自分の強みが分からない人へ、今ある経験や得意なことを整理するヒントをお伝えします</li>
-      <li>このサービスは、仕事の方向に迷っている人のためのものです</li>
-    </ul>
+    <div class="tip-box">
+      <p class="tip-title">2．想像している相手を「1人」に絞る</p>
 
-    <p>
-      という形です。
-    </p>
+      <p>
+        たくさんの人を思い浮かべると、
+        「この人には説明が必要」「あの人には、別の言い方がよい」と、
+        文章が広がっていきます。
+      </p>
 
-    <p>
-      この1文を、文章の最初に置きます。
-    </p>
+      <p>
+        書く前に、「今回は、誰に届けるのか」を
+        1人に絞ってください。
+        そして、その人が理解するために
+        本当に必要な説明だけを残します。
+      </p>
 
-    <p>
-      そのあとに、
-    </p>
+      <p>
+        まだ読んでいない人、サービスの対象ではない人、
+        まったく違う受け取り方をするかもしれない人——
+        すべての反応へ、1つの文章で備える必要はありません。
+      </p>
 
-    <p>
-      なぜ、そう言えるのか。<br>
-      どのような人に関係があるのか。<br>
-      必要な補足は何か。
-    </p>
+      <p>
+        目の前の1人に分かりやすく届ける方が、
+        結果として多くの人にも伝わりやすくなります。
+      </p>
+    </div>
 
-    <p>
-      という順番で説明します。
-    </p>
+    <div class="tip-box">
+      <p class="tip-title">3．説明を「本文・補足・別の場所」に分ける</p>
 
-    <p>
-      結論を最初に出すことは、強く押しつけることではありません。
-    </p>
+      <p>
+        文章を書いたあと、説明を次の3つに分けてください。
+      </p>
 
-    <p>
-      読む人に、
-    </p>
+      <ul>
+        <li>要点を理解するために必要な内容</li>
+        <li>不安を減らすための短い補足</li>
+        <li>例外や細かな条件など、必要な人だけが読む内容</li>
+      </ul>
 
-    <p>
-      「これから何の話をするのか」
-    </p>
+      <p>
+        1つ目は本文へ残す。
+        2つ目は、本文のあとに短く添える。
+        3つ目は、よくある質問や注意事項など、
+        別の場所へ移します。
+      </p>
 
-    <p>
-      を先に伝える配慮です。
-    </p>
-
-    <p>
-      <strong>2．想像している相手を「1人」に絞る</strong>
-    </p>
-
-    <p>
-      たくさんの人を思い浮かべると、
-    </p>
-
-    <p>
-      「この人には説明が必要」<br>
-      「あの人には、別の言い方がよい」
-    </p>
-
-    <p>
-      と、文章が広がっていきます。
-    </p>
-
-    <p>
-      書く前に、
-    </p>
-
-    <p>
-      「今回は、誰に届けるのか」
-    </p>
-
-    <p>
-      を1人に絞ってください。
-    </p>
-
-    <p>
-      そして、その人が理解するために本当に必要な説明だけを残します。
-    </p>
-
-    <p>
-      まだ読んでいない人。<br>
-      サービスの対象ではない人。<br>
-      まったく違う受け取り方をするかもしれない人。
-    </p>
-
-    <p>
-      すべての反応へ、1つの文章で備える必要はありません。
-    </p>
-
-    <p>
-      目の前の1人に分かりやすく届ける方が、結果として多くの人にも伝わりやすくなります。
-    </p>
-
-    <p>
-      <strong>3．説明を「本文・補足・別の場所」に分ける</strong>
-    </p>
-
-    <p>
-      文章を書いたあと、説明を次の3つに分けてください。
-    </p>
-
-    <ul>
-      <li>要点を理解するために必要な内容</li>
-      <li>不安を減らすための短い補足</li>
-      <li>例外や細かな条件など、必要な人だけが読む内容</li>
-    </ul>
-
-    <p>
-      1つ目は本文へ残す。
-    </p>
-
-    <p>
-      2つ目は、本文のあとに短く添える。
-    </p>
-
-    <p>
-      3つ目は、よくある質問や注意事項など、別の場所へ移します。
-    </p>
-
-    <p>
-      すべてを本文に入れなくても、必要な情報を消すわけではありません。
-    </p>
-
-    <p>
-      読む人が必要な順番で受け取れるよう、置き場所を変えるだけです。
-    </p>
+      <p>
+        すべてを本文に入れなくても、
+        必要な情報を消すわけではありません。
+        読む人が必要な順番で受け取れるよう、
+        置き場所を変えるだけです。
+      </p>
+    </div>
   </article>
 
+  <!-- 07 -->
   <article class="result-block">
     <h2>あなたの強みの活かし方</h2>
 
     <p>
       あなたの丁寧さは、言葉の量で示すものではありません。
-    </p>
-
-    <p>
       何を先に伝えれば、相手が迷わないか。
-    </p>
-
-    <p>
       どの説明をあとへ回せば、読みやすくなるか。
+      そこまで考えて整えられることが、
+      あなたならではの配慮です。
     </p>
 
     <p>
-      そこまで考えて整えられることが、あなたならではの配慮です。
-    </p>
-
-    <p>
-      共感する。<br>
-      中心を決める。<br>
-      分かりやすい順番で届ける。
-    </p>
-
-    <p>
-      この流れができれば、あなたのやさしい言葉は、回りくどさではなく、安心と信頼を生む力へ変わります。
+      共感する。中心を決める。分かりやすい順番で届ける。
+      この流れができれば、あなたのやさしい言葉は、
+      回りくどさではなく、安心と信頼を生む力へ変わります。
     </p>
   </article>
 
-  <article class="result-block result-block--final">
+  <!-- 08 -->
+  <article class="result-block result-block--action">
     <h2>今日からできる最初の一歩</h2>
 
     <p>
-      今、説明が長くなっている発信やサービス案内を1つ選び、次の順番で見直してください。
+      今、説明が長くなっている発信やサービス案内を1つ選び、
+      次の順番で見直してください。
     </p>
 
     <ul>
       <li>いちばん伝えたいことを1文にする</li>
       <li>その1文を文章の最初へ置く</li>
-      <li>“念のため”に足した説明を、補足または別の場所へ移す</li>
+      <li>"念のため"に足した説明を、補足または別の場所へ移す</li>
     </ul>
 
     <p>
-      今日は削除することよりも、主役の一文をいちばん前へ戻すことから始めましょう。
+      今日は削除することよりも、
+      主役の一文をいちばん前へ戻すことから始めましょう。
     </p>
+  </article>
+
+  <!-- 09 -->
+  <article class="result-block result-block--newsletter">
+    <h2>このあとも、少しずつお届けします</h2>
 
     <p>
       今回お伝えしたのは、
@@ -284,27 +755,87 @@
     </p>
 
     <p>
-      これから、少しずつ、
-      手相の観点から見た強みを活かすコツを
-      お伝えしていきますね。
+      このあと、まず数通のステップメールで、
+      手相の観点から見た強みの活かし方や、
+      思考のクセに気づくヒント、
+      仕事で一歩を進めるための考え方をお届けします。
     </p>
 
     <p>
-      落ち着いたら、
-      週に1度程度の頻度で
-      配信していく予定です。
+      その後は、週に1回程度、
+      自分の強みや進み方を整理するためのメルマガを
+      お届けしていきます。
     </p>
 
     <p>
-      こちらの配信が、
-      あなたのお役に立てたら幸いです^^
+      「自分の強みを、どう仕事に活かせばいいのか」<br>
+      「この方向で進んでいいのか」
     </p>
 
     <p>
-      もし、ご自身の状況に合わせてもっと深く知りたくなったときは、
-      個別の診断でも詳しくお伝えできますので、
-      その時はぜひ覗いてみてください。
+      そんなときに、
+      少し立ち止まって自分を整理するための読みものとして、
+      お役に立てたらうれしいです。
     </p>
   </article>
 
+  <!-- 10 -->
+  <article class="result-block result-block--service">
+    <h2>もっと自分に合わせて深く知りたい方へ</h2>
+
+    <p class="service-lead">
+      「タイプとしての傾向」だけでなく、
+      あなた自身の手相から、もっと具体的に整理したい場合は、
+      手相プロファイリングで詳しくお伝えしています。
+    </p>
+
+    <p>
+      手相プロファイリングでは、
+      両手の手相をもとに、
+      あなたの強みや思考のクセ、
+      止まりやすい理由、
+      そして今後の進み方まで一緒に整理します。
+    </p>
+
+    <ul class="service-points">
+      <li>自分では気づきにくい強みを言葉にする</li>
+      <li>その強みを仕事でどう活かすかを整理する</li>
+      <li>今の自分に合った、次の一歩を具体的にする</li>
+    </ul>
+
+    <p>
+      必要になったタイミングで、
+      「もう少し自分のことを深く見てみたい」と思ったら、
+      手相プロファイリングも覗いてみてください。
+    </p>
+
+    <div style="display:flex; justify-content:center; margin-top:24px;">
+      <a
+        href="https://q0gsv.hp.peraichi.com"
+        target="_blank"
+        rel="noopener noreferrer"
+        style="
+          display:inline-flex;
+          align-items:center;
+          justify-content:center;
+          padding:14px 22px;
+          background:#f28c45;
+          color:#ffffff;
+          text-decoration:none;
+          border-radius:10px;
+          font-size:16px;
+          font-weight:700;
+          line-height:1.5;
+          text-align:center;
+        "
+      >
+        手相プロファイリングの詳細を見る
+      </a>
+    </div>
+  </article>
+
+
 </section>
+  </main>
+</body>
+</html>
