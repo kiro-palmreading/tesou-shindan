@@ -598,31 +598,35 @@ body {
 }
 
 .line-preview-lead {
-  font-size: 16px;
-  line-height: 1.75;
-  color: #7a554a;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.7;
+  color: #b9513c;
   margin-bottom: 14px;
 }
 
+.line-preview-lead .emphasis-number {
+  font-size: 26px;
+  color: #f07a5a;
+}
+
 .line-benefit-list {
-  display: grid;
-  gap: 10px;
-  margin-bottom: 12px;
-  text-align: left;
+  display: none;
 }
 
 .line-benefit-card {
   position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
   background: #fffdfa;
   border: 1px solid #f3c9bc;
   border-radius: 13px;
-  padding: 13px 14px 13px 48px;
+  padding: 13px 14px;
 }
 
 .line-benefit-number {
-  position: absolute;
-  left: 12px;
-  top: 13px;
+  flex: 0 0 auto;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -637,16 +641,9 @@ body {
 
 .line-benefit-title {
   color: #b9513c;
-  font-size: 17px;
-  font-weight: 700;
-  line-height: 1.55;
-}
-
-.line-benefit-text {
-  margin-top: 4px;
-  color: #5f4a43;
   font-size: 16px;
-  line-height: 1.7;
+  font-weight: 700;
+  line-height: 1.5;
 }
 
 /* ===== LINE導線 ===== */
@@ -1006,9 +1003,15 @@ body {
 }
 
 .line-preview-lead {
-  color: #7A4B3E !important;
-  font-size: 16px !important;
-  line-height: 1.75 !important;
+  color: #B9513C !important;
+  font-size: 18px !important;
+  font-weight: 700 !important;
+  line-height: 1.7 !important;
+}
+
+.line-preview-lead .emphasis-number {
+  font-size: 26px !important;
+  color: #F07A5A !important;
 }
 
 .line-benefit-card {
@@ -1039,7 +1042,7 @@ body {
 
 <section class="fv-area" id="fvArea">
   <div class="fv-copy">
-    <div class="fv-label">【無料・3分・あなたの才能タイプが分かる】</div>
+    <div class="fv-label">【無料・3分】</div>
 
     <p class="fv-lead">
       最大4問に答えるだけで、<br>
@@ -1049,9 +1052,9 @@ body {
     <h1 class="fv-title">才能コンパス診断</h1>
 
     <p class="fv-proof">
-      <span class="fv-proof-strong">1250名以上の鑑定実績。</span><br>
+      <span class="fv-proof-strong">1250名以上の診断実績</span><br>
       起業家・個人事業主を多く診断してきた<br>
-      手相診断士が監修。
+      手相診断士が監修
     </p>
   </div>
 </section>
@@ -1157,15 +1160,15 @@ const DEFAULT_LINE_BENEFITS = [
     text: '向いている場面も具体的にお届けします。'
   },
   {
-    title: 'このまま気づかずにいると、何が起きるか',
+    title: '気づかないうちに、仕事を進める一歩が重くなっていく理由',
     text: '先に知っておくことで、備えられます。'
   },
   {
-    title: '止まりやすくなる理由',
+    title: 'あなたが仕事の場面で時々立ち止まってしまう、本当の理由',
     text: '才能が、迷いや停止につながる仕組みを整理します。'
   },
   {
-    title: '迷いに区切りをつける基準',
+    title: '仕事の進め方に迷ったときの、あなたに合う区切り方',
     text: '今の自分に合う判断方法を、分かりやすく確認できます。'
   }
 ];
@@ -1620,8 +1623,8 @@ function buildDiagnosisCode() {
 }
 
 function setLinePreviewText() {
-  linePreviewTitleEl.innerHTML = 'LINE登録後に分かる<br>4つのこと';
-  linePreviewLeadEl.innerHTML = 'このタイプの特徴に合わせて、<br>次の内容をお届けします。';
+  linePreviewTitleEl.style.display = 'none';
+  linePreviewLeadEl.innerHTML = 'あなたの強みと、そこから一歩踏み出すための<br>具体的なヒントを、LINEでお届けします。';
 }
 
 function normalizePlainText(value) {
@@ -1701,7 +1704,6 @@ function renderLineBenefits(benefits) {
       <div class="line-benefit-card">
         <span class="line-benefit-number">${String(index + 1).padStart(2, '0')}</span>
         <div class="line-benefit-title">${escapeHtml(item.title)}</div>
-        <div class="line-benefit-text">${escapeHtml(item.text)}</div>
       </div>
     `;
   }).join('');
@@ -1722,11 +1724,9 @@ function findTypeSpecificCtaLead(parsedSource) {
 }
 
 function prepareSharedResultLayout(parsedSource) {
-  const benefitSource = findLineBenefitSource(parsedSource);
-  const benefits = getBenefitsFromList(benefitSource);
+  // 一言ティザーに統合したため、4項目リストの個別表示は行わない
   const ctaLead = findTypeSpecificCtaLead(parsedSource);
 
-  renderLineBenefits(benefits);
   ctaLeadEl.textContent = ctaLead.text;
 }
 
