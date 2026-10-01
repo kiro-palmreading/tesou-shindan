@@ -932,7 +932,6 @@ body {
   }
 }
 
-
 /* ===== 診断結果：最終上書き（表示安定化） ===== */
 /* A1Xなど外部診断結果側の指定を、親CSSより確実に優先する */
 
@@ -1145,33 +1144,6 @@ body {
 </div>
 
 <script>
-const COMMON_TEXTS = {
-  ctaLead: `あなたに足りないものを探すのではなく、今ある才能を前へ進む力に変えるヒントを受け取ってください。`
-};
-
-const DEFAULT_LINE_PREVIEW = {
-  title: `LINE登録後に分かる4つのこと`,
-  lead: `このタイプの特徴に合わせて、次の内容をお届けします。`
-};
-
-const DEFAULT_LINE_BENEFITS = [
-  {
-    title: 'あなたの強みが、どこで輝くか',
-    text: '向いている場面も具体的にお届けします。'
-  },
-  {
-    title: '気づかないうちに、仕事を進める一歩が重くなっていく理由',
-    text: '先に知っておくことで、備えられます。'
-  },
-  {
-    title: 'あなたが仕事の場面で時々立ち止まってしまう、本当の理由',
-    text: '才能が、迷いや停止につながる仕組みを整理します。'
-  },
-  {
-    title: '仕事の進め方に迷ったときの、あなたに合う区切り方',
-    text: '今の自分に合う判断方法を、分かりやすく確認できます。'
-  }
-];
 
 const IMAGE_ASSETS = {
   Q1_A: "https://cdn.peraichi.com/userData/d6621e34-3268-445c-bb20-ddb971833921/img/8d67ae3b-1e9e-4300-93e1-47a3844163b5/17.png",
@@ -1627,111 +1599,8 @@ function setLinePreviewText() {
   linePreviewLeadEl.innerHTML = 'あなたの強みと<br>そこから一歩踏み出すための<br>具体的なヒントを<br>LINEでお届けします。';
 }
 
-function normalizePlainText(value) {
-  return String(value || '')
-    .replace(/\s+/g, ' ')
-    .replace(/^[①②③④⑤⑥⑦⑧⑨⑩]|^\d+[.．、)]\s*/u, '')
-    .trim();
-}
-
-function splitBenefitText(text, index) {
-  const normalizedText = normalizePlainText(text);
-  const separatorMatch = normalizedText.match(/^(.{1,32}?)[：:｜|]\s*(.+)$/u);
-
-  if (separatorMatch) {
-    return {
-      title: separatorMatch[1].trim(),
-      text: separatorMatch[2].trim()
-    };
-  }
-
-  const firstSentenceEnd = normalizedText.indexOf('。');
-  if (firstSentenceEnd > 0 && firstSentenceEnd <= 31 && firstSentenceEnd < normalizedText.length - 1) {
-    return {
-      title: normalizedText.slice(0, firstSentenceEnd),
-      text: normalizedText.slice(firstSentenceEnd + 1)
-    };
-  }
-
-  return {
-    title: `受け取れるヒント ${String(index + 1).padStart(2, '0')}`,
-    text: normalizedText
-  };
-}
-
-/* =========================================================
-   LINE登録後に分かること・CTA文
-   ※結果非表示版：meta-results/{code}.html は画面に表示せず、
-   　裏側で読み込んで「ベネフィット3つ」「cta文」だけを抜き出す
-========================================================= */
-
-function findLineBenefitSource(parsedSource) {
-  return parsedSource ? parsedSource.querySelector('.line-benefits-source') : null;
-}
-
-function getBenefitsFromList(list) {
-  if (!list) return [];
-
-  const listItems = Array.from(list.querySelectorAll('li'));
-
-  return listItems.slice(0, 4).map(function(item, index) {
-    const titleElement = item.querySelector('strong, b, h4');
-    const fullText = normalizePlainText(item.textContent);
-
-    if (!titleElement) {
-      return splitBenefitText(fullText, index);
-    }
-
-    const title = normalizePlainText(titleElement.textContent);
-    const text = normalizePlainText(
-      fullText.replace(titleElement.textContent, '')
-    );
-
-    return {
-      title: title || `受け取れるヒント ${String(index + 1).padStart(2, '0')}`,
-      text: text || fullText
-    };
-  }).filter(function(item) {
-    return item.text;
-  });
-}
-
-function renderLineBenefits(benefits) {
-  const items = benefits.length === 4 ? benefits : DEFAULT_LINE_BENEFITS;
-
-  lineBenefitListEl.innerHTML = items.map(function(item, index) {
-    return `
-      <div class="line-benefit-card">
-        <span class="line-benefit-number">${String(index + 1).padStart(2, '0')}</span>
-        <div class="line-benefit-title">${escapeHtml(item.title)}</div>
-      </div>
-    `;
-  }).join('');
-}
-
-function findTypeSpecificCtaLead(parsedSource) {
-  const explicitParagraph = parsedSource ? parsedSource.querySelector('.cta-message-source') : null;
-
-  if (explicitParagraph) {
-    return {
-      text: normalizePlainText(explicitParagraph.textContent)
-    };
-  }
-
-  return {
-    text: COMMON_TEXTS.ctaLead
-  };
-}
-
-function prepareSharedResultLayout(parsedSource) {
-  // 一言ティザーに統合したため、4項目リストの個別表示は行わない
-  const ctaLead = findTypeSpecificCtaLead(parsedSource);
-
-  ctaLeadEl.textContent = ctaLead.text;
-}
-
 function renderResultImage(code) {
-  // 結果非表示版：本文は見せず、タイプ名入りのFV画像だけを表示する
+  // タイプ名入りのFV画像だけを表示する
   resultImageWrapEl.innerHTML = `
     <img
       src="meta-fv-results/${escapeHtml(code)}.png"
@@ -1740,30 +1609,6 @@ function renderResultImage(code) {
     >
   `;
   resultImageWrapEl.style.display = 'block';
-}
-
-async function loadExternalResultSource(code) {
-  // 結果非表示版：fetchはするが、画面には一切書き出さない。
-  // ベネフィット・cta文を抜き出すためだけに、画面外のdivへ読み込む。
-  const htmlPath = `meta-results/${code}.html`;
-
-  try {
-    const response = await fetch(`${htmlPath}?v=${Date.now()}`, {
-      cache: 'no-store'
-    });
-
-    if (!response.ok) {
-      throw new Error('not found');
-    }
-
-    const html = await response.text();
-    const parser = document.createElement('div');
-    parser.innerHTML = html;
-    return parser;
-  } catch (error) {
-    console.warn('結果データの読み込みに失敗しました:', htmlPath, error);
-    return null;
-  }
 }
 
 function diagnose() {
@@ -1782,10 +1627,10 @@ async function showResult() {
   fvAreaEl.style.display = 'none';
 
   renderResultImage(code);
-  const parsedSource = await loadExternalResultSource(code);
 
   setLinePreviewText();
-  prepareSharedResultLayout(parsedSource);
+  // cta-leadは全タイプ共通の1行(タイプ別データの読み込みは行わない)
+  ctaLeadEl.textContent = 'あなたに合った一歩の踏み出し方を、今すぐ受け取ってください。';
   // 画面表示は今まで通りの見た目（コードの後ろに見えない印を追加）
   copyCodeValueEl.textContent = code + trafficSource.mark;
   copyStatusEl.textContent = '';
