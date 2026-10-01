@@ -1,117 +1,16 @@
 from pathlib import Path
 
-path = Path("/mnt/data/A1M.html")
-html = path.read_text(encoding="utf-8")
+src = Path("/mnt/data/A1M.html")
+html = src.read_text(encoding="utf-8")
 
-old_newsletter = '''  <!-- 09 -->
-  <article class="result-block result-block--newsletter">
-    <h2>これからも、週に1度お届けします</h2>
+# result.html に貼り付ける用途が分かるようコメントだけ追加
+paste_ready = """<!-- ===== A1M 診断結果ここから ===== -->
+""" + html + """
+<!-- ===== A1M 診断結果ここまで ===== -->
+"""
 
-    <p>
-      今回お伝えしたのは、
-      あなたの手に表れている特徴の一部です。
-    </p>
+out = Path("/mnt/data/A1M_result_html貼り付け用.html")
+out.write_text(paste_ready, encoding="utf-8")
 
-    <p>
-      これから週に1度程度、
-      手相の観点から見た強みの活かし方や、
-      思考のクセに気づくヒント、
-      仕事で一歩を進めるための考え方をお届けしていきます。
-    </p>
-
-    <p>
-      「自分の強みを、どう仕事に活かせばいいのか」<br>
-      「この方向で進んでいいのか」
-    </p>
-
-    <p>
-      そんなときに、
-      少し立ち止まって自分を整理するための読みものとして、
-      お役に立てたらうれしいです。
-    </p>
-  </article>
-'''
-
-new_newsletter = '''  <!-- 09 -->
-  <article class="result-block result-block--newsletter">
-    <h2>このあとも、少しずつお届けします</h2>
-
-    <p>
-      今回お伝えしたのは、
-      あなたの手に表れている特徴の一部です。
-    </p>
-
-    <p>
-      このあと、まず数通のステップメールで、
-      手相の観点から見た強みの活かし方や、
-      思考のクセに気づくヒント、
-      仕事で一歩を進めるための考え方をお届けします。
-    </p>
-
-    <p>
-      その後は、週に1回程度、
-      自分の強みや進み方を整理するためのメルマガを
-      お届けしていきます。
-    </p>
-
-    <p>
-      「自分の強みを、どう仕事に活かせばいいのか」<br>
-      「この方向で進んでいいのか」
-    </p>
-
-    <p>
-      そんなときに、
-      少し立ち止まって自分を整理するための読みものとして、
-      お役に立てたらうれしいです。
-    </p>
-  </article>
-'''
-
-old_service_end = '''    <p>
-      必要になったタイミングで、
-      「もう少し自分のことを深く見てみたい」と思ったら、
-      手相プロファイリングも覗いてみてください。
-    </p>
-  </article>
-'''
-
-new_service_end = '''    <p>
-      必要になったタイミングで、
-      「もう少し自分のことを深く見てみたい」と思ったら、
-      手相プロファイリングも覗いてみてください。
-    </p>
-
-    <p style="text-align:center; margin-top:24px;">
-      <a
-        href="https://q0gsv.hp.peraichi.com"
-        target="_blank"
-        rel="noopener noreferrer"
-        style="
-          display:inline-block;
-          padding:14px 22px;
-          background:#1f6fb2;
-          color:#ffffff;
-          text-decoration:none;
-          border-radius:10px;
-          font-size:16px;
-          font-weight:700;
-          line-height:1.5;
-        "
-      >
-        手相プロファイリングの詳細を見る
-      </a>
-    </p>
-  </article>
-'''
-
-if old_newsletter not in html:
-    raise ValueError("Newsletter block not found")
-if old_service_end not in html:
-    raise ValueError("Service block ending not found")
-
-html = html.replace(old_newsletter, new_newsletter, 1)
-html = html.replace(old_service_end, new_service_end, 1)
-
-path.write_text(html, encoding="utf-8")
-print(f"Updated: {path}")
-print("Added step-email notice and palm profiling link.")
+print(f"Created: {out}")
+print("This is pure HTML. No Python code is included.")
