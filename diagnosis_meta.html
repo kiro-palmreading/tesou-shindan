@@ -990,7 +990,7 @@ body {
   color: #083F5C !important;
 }
 
-/* LINE登録後に分かる3つのこと：盛り上げるベネフィットエリア */
+/* LINE登録後に分かる4つのこと：盛り上げるベネフィットエリア */
 .line-preview-section {
   background: linear-gradient(180deg, #FFF9F6 0%, #FFF0EA 100%) !important;
   border: 1px solid #F2B8A7 !important;
@@ -1049,9 +1049,9 @@ body {
     <h1 class="fv-title">才能コンパス診断</h1>
 
     <p class="fv-proof">
-      <span class="fv-proof-strong">1250名以上の鑑定実績</span><br>
+      <span class="fv-proof-strong">1250名以上の鑑定実績。</span><br>
       起業家・個人事業主を多く診断してきた<br>
-      手相診断士が監修
+      手相診断士が監修。
     </p>
   </div>
 </section>
@@ -1091,7 +1091,7 @@ body {
 
       <div class="line-preview-section">
         <div class="line-preview-title" id="linePreviewTitle">
-          LINE登録後に分かる<br>3つのこと
+          LINE登録後に分かる<br>4つのこと
         </div>
 
         <div class="line-preview-lead" id="linePreviewLead">
@@ -1147,11 +1147,19 @@ const COMMON_TEXTS = {
 };
 
 const DEFAULT_LINE_PREVIEW = {
-  title: `LINE登録後に分かる3つのこと`,
+  title: `LINE登録後に分かる4つのこと`,
   lead: `このタイプの特徴に合わせて、次の内容をお届けします。`
 };
 
 const DEFAULT_LINE_BENEFITS = [
+  {
+    title: 'あなたの強みが、どこで輝くか',
+    text: '向いている場面も具体的にお届けします。'
+  },
+  {
+    title: 'このまま気づかずにいると、何が起きるか',
+    text: '先に知っておくことで、備えられます。'
+  },
   {
     title: '止まりやすくなる理由',
     text: '才能が、迷いや停止につながる仕組みを整理します。'
@@ -1159,10 +1167,6 @@ const DEFAULT_LINE_BENEFITS = [
   {
     title: '迷いに区切りをつける基準',
     text: '今の自分に合う判断方法を、分かりやすく確認できます。'
-  },
-  {
-    title: '才能を成果につなげる方法',
-    text: '強みを前進のために使う、具体的な一歩が分かります。'
   }
 ];
 
@@ -1616,7 +1620,7 @@ function buildDiagnosisCode() {
 }
 
 function setLinePreviewText() {
-  linePreviewTitleEl.innerHTML = 'LINE登録後に分かる<br>3つのこと';
+  linePreviewTitleEl.innerHTML = 'LINE登録後に分かる<br>4つのこと';
   linePreviewLeadEl.innerHTML = 'このタイプの特徴に合わせて、<br>次の内容をお届けします。';
 }
 
@@ -1667,7 +1671,7 @@ function getBenefitsFromList(list) {
 
   const listItems = Array.from(list.querySelectorAll('li'));
 
-  return listItems.slice(0, 3).map(function(item, index) {
+  return listItems.slice(0, 4).map(function(item, index) {
     const titleElement = item.querySelector('strong, b, h4');
     const fullText = normalizePlainText(item.textContent);
 
@@ -1690,7 +1694,7 @@ function getBenefitsFromList(list) {
 }
 
 function renderLineBenefits(benefits) {
-  const items = benefits.length === 3 ? benefits : DEFAULT_LINE_BENEFITS;
+  const items = benefits.length === 4 ? benefits : DEFAULT_LINE_BENEFITS;
 
   lineBenefitListEl.innerHTML = items.map(function(item, index) {
     return `
