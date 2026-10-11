@@ -336,7 +336,7 @@ body {
 
 /* ===== 診断完了:共通FV画像 ===== */
 .result-image-wrap {
-  margin-top: 12px;
+  margin-top: 8px;
   text-align: center;
 }
 
@@ -351,20 +351,20 @@ body {
   box-shadow: 0 4px 24px var(--shadow);
 }
 
-/* ===== 診断結果で分かること ===== */
+/* ===== 診断結果で分かること(2列・コンパクト) ===== */
 .benefit-box {
-  margin-top: 12px;
-  padding: 14px 16px 12px;
+  margin-top: 8px;
+  padding: 10px 12px 10px;
   background: var(--white);
   border: 1px solid var(--border);
-  border-radius: 16px;
+  border-radius: 14px;
   box-shadow: 0 2px 12px var(--shadow);
 }
 
 .benefit-title {
-  margin-bottom: 8px;
+  margin-bottom: 4px;
   color: var(--navy);
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 700;
   line-height: 1.5;
   text-align: center;
@@ -374,49 +374,57 @@ body {
   list-style: none;
   margin: 0;
   padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2px 8px;
 }
 
 .benefit-list li {
   position: relative;
-  padding: 3px 0 3px 26px;
+  padding: 2px 0 2px 18px;
   color: var(--text-dark);
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 500;
-  line-height: 1.6;
+  line-height: 1.55;
+  white-space: nowrap;
+}
+
+.benefit-list li.benefit-wide {
+  grid-column: 1 / -1;
 }
 
 .benefit-list li::before {
   content: "✓";
   position: absolute;
-  left: 4px;
-  top: 3px;
+  left: 2px;
+  top: 2px;
   color: var(--sky);
   font-weight: 700;
 }
 
 /* ===== メール登録フォーム ===== */
 .signup-section {
-  margin-top: 12px;
-  padding: 16px 16px 14px;
+  margin-top: 8px;
+  padding: 12px 12px 12px;
   background: var(--white);
   border: 1px solid var(--border);
-  border-radius: 16px;
+  border-radius: 14px;
   box-shadow: 0 2px 12px var(--shadow);
 }
 
 .signup-lead {
-  margin-bottom: 10px;
+  margin-bottom: 8px;
   color: var(--navy);
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 600;
-  line-height: 1.7;
+  line-height: 1.6;
   text-align: center;
 }
 
 .email-input {
   display: block;
   width: 100%;
-  padding: 14px 14px;
+  padding: 12px 14px;
   border: 2px solid var(--border);
   border-radius: 12px;
   background: #fbfdff;
@@ -468,8 +476,8 @@ body {
 .btn-submit {
   display: block;
   width: 100%;
-  margin-top: 12px;
-  padding: 17px 20px;
+  margin-top: 10px;
+  padding: 15px 20px;
   border: none;
   border-radius: 12px;
   background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
@@ -498,35 +506,35 @@ body {
   text-align: center;
 }
 
-/* ===== 監修者 ===== */
+/* ===== 監修者(コンパクト) ===== */
 .supervisor-proof {
-  margin: 12px 0 0;
-  padding: 14px 16px;
+  margin: 8px 0 0;
+  padding: 8px 12px;
   background: #EEF7FF;
   border: 1px solid #9FD0EA;
   border-radius: 12px;
   color: #083F5C;
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 10px;
   text-align: left;
 }
 
 .supervisor-avatar {
   flex: 0 0 auto;
-  width: 56px;
-  height: 56px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   object-fit: cover;
   border: 2px solid #ffffff;
-  box-shadow: 0 2px 8px rgba(8,63,92,0.18);
+  box-shadow: 0 2px 6px rgba(8,63,92,0.18);
 }
 
 .supervisor-proof-text {
   flex: 1 1 auto;
-  font-size: 14px;
+  font-size: 12.5px;
   font-weight: 700;
-  line-height: 1.65;
+  line-height: 1.55;
 }
 
 .supervisor-proof-text span {
@@ -720,13 +728,13 @@ body {
 
       <!-- ② 診断結果で分かること -->
       <div class="benefit-box" id="benefitBox">
-        <div class="benefit-title">【診断結果で分かること】</div>
+        <div class="benefit-title">【あなたの診断結果で分かること】</div>
         <ul class="benefit-list">
-          <li>あなたを表すキャッチコピー</li>
-          <li>あなたの3つの強み</li>
-          <li>強みが活かせる場面</li>
-          <li>つまずきやすいポイント</li>
-          <li>今日からできる最初の一歩</li>
+          <li>キャッチコピー</li>
+          <li>3つの強み</li>
+          <li>強みが活きる場面</li>
+          <li>つまずきやすい点</li>
+          <li class="benefit-wide">今日からできる最初の一歩</li>
         </ul>
       </div>
 
@@ -734,8 +742,7 @@ body {
       <div class="supervisor-proof" id="supervisorProof">
         <img src="meta-fv-results/DSC_4920.JPG" alt="ビジネス手相診断士 輝路" class="supervisor-avatar">
         <div class="supervisor-proof-text">
-          <span>手相診断歴13年</span>
-          <span>1,250名以上の診断実績</span>
+          <span>手相診断歴13年・1,250名以上の診断実績</span>
           <span>ビジネス手相診断士 輝路が監修</span>
         </div>
       </div>
@@ -743,8 +750,7 @@ body {
       <!-- ④ メール登録フォーム -->
       <form class="signup-section" id="signupForm" novalidate>
         <p class="signup-lead">
-          メールアドレスを入力すると、<br>
-          すぐにこの画面で結果をご覧いただけます。
+          入力後すぐに、この画面で結果が見られます
         </p>
 
         <input
