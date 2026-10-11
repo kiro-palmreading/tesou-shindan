@@ -29,7 +29,9 @@
   --text-light: #7a9ab8;
   --border: rgba(91,163,217,0.28);
   --shadow: rgba(91,163,217,0.14);
-  --line: #06C755;
+  --accent: #f07a5a;
+  --accent-dark: #d9603f;
+  --error: #c8503c;
 }
 
 * {
@@ -315,25 +317,6 @@ body {
   letter-spacing: 1px;
 }
 
-.btn-copy-code {
-  background: linear-gradient(135deg, var(--sky) 0%, var(--navy) 100%);
-  color: white;
-  border: none;
-  border-radius: 50px;
-  width: 100%;
-  padding: 14px 20px;
-  font-size: 16px;
-  font-weight: 700;
-  font-family: 'Noto Sans JP', sans-serif;
-  cursor: pointer;
-  letter-spacing: 1px;
-  line-height: 1.5;
-}
-
-.btn-copy-code.is-copied {
-  background: var(--navy-mid);
-}
-
 .btn-next:disabled {
   opacity: 0.35;
   cursor: not-allowed;
@@ -351,9 +334,9 @@ body {
   display: none;
 }
 
-/* ===== 診断結果 ===== */
+/* ===== 診断完了:共通FV画像 ===== */
 .result-image-wrap {
-  margin-top: 18px;
+  margin-top: 12px;
   text-align: center;
 }
 
@@ -368,388 +351,156 @@ body {
   box-shadow: 0 4px 24px var(--shadow);
 }
 
-.result-card,
-.external-result-text .result-block,
-.external-result-text article {
+/* ===== 診断結果で分かること ===== */
+.benefit-box {
+  margin-top: 12px;
+  padding: 14px 16px 12px;
   background: var(--white);
+  border: 1px solid var(--border);
   border-radius: 16px;
-  padding: 22px 22px;
-  margin-top: 16px;
   box-shadow: 0 2px 12px var(--shadow);
-  border: 1px solid var(--border);
 }
 
-.external-result-text section.result-detail {
-  background: transparent;
-  border: none;
-  box-shadow: none;
-  border-radius: 0;
-  padding: 0;
-  margin: 0;
-}
-
-.external-result-text {
-  margin-top: 14px;
-  text-align: left;
-}
-
-.external-result-text [data-hide-title="true"],
-.external-result-text .result-catch,
-.external-result-text .one-word,
-.external-result-text .catch-copy {
-  display: none !important;
-}
-
-.external-result-text .result-detail {
-  counter-reset: resultStep;
-}
-
-.external-result-text .result-block {
-  margin-top: 16px !important;
-  margin-bottom: 0 !important;
-  position: relative;
-  overflow: hidden;
-}
-
-.external-result-text .result-block h2,
-.external-result-text .result-block h3 {
-  display: flex;
-  align-items: center;
-  gap: 9px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid var(--border);
-  margin-bottom: 15px !important;
+.benefit-title {
+  margin-bottom: 8px;
   color: var(--navy);
-  font-size: 17px;
-  line-height: 1.7;
-}
-
-.external-result-text .result-block h2::before,
-.external-result-text .result-block h3::before {
-  counter-increment: resultStep;
-  content: counter(resultStep, decimal-leading-zero);
-  flex: 0 0 auto;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 34px;
-  height: 24px;
-  padding: 0 7px;
-  border-radius: 999px;
-  background: linear-gradient(135deg, var(--sky-light), var(--sky));
-  color: #ffffff;
-  font-family: 'Noto Sans JP', sans-serif;
-  font-size: 12px;
+  font-size: 15px;
   font-weight: 700;
-  letter-spacing: 0.04em;
-}
-
-.external-result-text .highlight-paragraph {
-  background: var(--sky-pale);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 14px 16px;
-  margin: 14px 0 18px;
-  color: var(--navy);
-  font-weight: 600;
-  line-height: 1.95;
+  line-height: 1.5;
   text-align: center;
 }
 
-.external-result-text .result-block--final p:first-child {
-  background: var(--sky-pale);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 14px 16px;
-  color: var(--navy);
-  font-weight: 600;
-  text-align: center;
-}
-
-.external-result-text .result-block--final p:last-child {
-  font-family: 'Noto Serif JP', serif;
-  color: var(--navy);
-  font-weight: 600;
-  text-align: center;
-  margin-bottom: 0;
-}
-
-.external-result-text p {
-  font-size: 17px;
-  line-height: 2.05;
-  color: var(--text-dark);
-  margin: 0 0 18px;
-  padding: 0;
-  line-break: strict;
-  word-break: keep-all;
-  overflow-wrap: break-word;
-}
-
-.external-result-text p:empty {
-  display: none;
-}
-
-.external-result-text,
-.line-preview-section,
-.line-section {
-  line-break: strict;
-  word-break: normal;
-  overflow-wrap: break-word;
-}
-
-.external-result-text ul {
+.benefit-list {
   list-style: none;
-  margin: 14px 0 22px;
-  padding: 0;
-  counter-reset: listItem;
-}
-
-.external-result-text li {
-  position: relative;
-  font-size: 17px;
-  line-height: 1.85;
-  color: var(--text-dark);
-  background: #f8fcff;
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 12px 14px 12px 48px;
-  margin-bottom: 10px;
-}
-
-.external-result-text li::before {
-  counter-increment: listItem;
-  content: counter(listItem, decimal-leading-zero);
-  position: absolute;
-  left: 14px;
-  top: 14px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  background: var(--sky);
-  color: #ffffff;
-  font-size: 11px;
-  font-weight: 700;
-  line-height: 1;
-}
-
-/* ===== 改行の微調整 ===== */
-.external-result-text,
-.external-result-text p,
-.external-result-text li,
-.external-result-text .highlight-paragraph,
-.external-result-text .result-block--final p,
-.line-preview-title,
-.line-preview-lead,
-.line-benefits,
-.cta-lead {
-  line-break: strict;
-  word-break: normal;
-  overflow-wrap: break-word;
-}
-
-.external-result-text .highlight-paragraph,
-.external-result-text .result-block--final p:first-child {
-  text-align: center;
-}
-
-.fixed-result-line {
-  display: inline-block;
-  white-space: nowrap;
-  text-indent: 0;
-}
-
-.external-result-error,
-.result-image-error {
-  background: var(--white);
-  border-radius: 16px;
-  padding: 20px 22px;
-  margin-top: 16px;
-  box-shadow: 0 2px 12px var(--shadow);
-  border: 1px solid var(--border);
-  border-left: 4px solid #d96b5b;
-  color: var(--text-mid);
-  font-size: 16px;
-  line-height: 1.9;
-  text-align: left;
-}
-
-/* ===== LINE登録後プレビュー ===== */
-.line-preview-section {
-  background: linear-gradient(180deg, #fffaf7 0%, #fff2ec 100%);
-  border-radius: 18px;
-  padding: 22px 18px 20px;
-  margin-top: 18px;
-  box-shadow: 0 3px 16px rgba(200, 95, 69, 0.12);
-  border: 1px solid #f2b8a7;
-  text-align: center;
-}
-
-.line-preview-title {
-  font-family: 'Noto Serif JP', serif;
-  font-size: 22px;
-  line-height: 1.55;
-  color: #b9513c;
-  font-weight: 700;
-  margin-bottom: 10px;
-  letter-spacing: 0.02em;
-}
-
-.line-preview-lead {
-  font-size: 18px;
-  font-weight: 700;
-  line-height: 1.7;
-  color: #b9513c;
-  margin-bottom: 14px;
-}
-
-.line-preview-lead .emphasis-number {
-  font-size: 26px;
-  color: #f07a5a;
-}
-
-.line-benefit-list {
-  display: none;
-}
-
-.line-benefit-card {
-  position: relative;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  background: #fffdfa;
-  border: 1px solid #f3c9bc;
-  border-radius: 13px;
-  padding: 13px 14px;
-}
-
-.line-benefit-number {
-  flex: 0 0 auto;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 26px;
-  height: 26px;
-  border-radius: 50%;
-  background: #f07a5a;
-  color: #ffffff;
-  font-size: 11px;
-  font-weight: 700;
-}
-
-.line-benefit-title {
-  color: #b9513c;
-  font-size: 16px;
-  font-weight: 700;
-  line-height: 1.5;
-}
-
-/* ===== LINE導線 ===== */
-.line-section {
-  scroll-margin-top: 16px;
-  background: var(--white);
-  border-radius: 16px;
-  padding: 20px 18px 18px;
-  margin-top: 14px;
-  text-align: center;
-  box-shadow: 0 2px 12px var(--shadow);
-  border: 1px solid var(--border);
-}
-
-.receive-guide {
-  padding: 12px;
-  border-radius: 12px;
-  background: var(--sky-pale);
-  border: 1px solid var(--border);
-  text-align: left;
-}
-
-.receive-guide-title {
-  margin-bottom: 7px;
-  color: var(--navy);
-  font-size: 14px;
-  font-weight: 600;
-  line-height: 1.65;
-}
-
-.receive-steps {
-  display: block;
   margin: 0;
-  padding-left: 1.5em;
-  list-style: decimal;
-}
-
-.receive-steps li {
-  margin: 0 0 5px;
   padding: 0;
+}
+
+.benefit-list li {
+  position: relative;
+  padding: 3px 0 3px 26px;
   color: var(--text-dark);
-  font-size: 13px;
-  font-weight: 400;
-  line-height: 1.75;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.6;
 }
 
-.receive-steps li:last-child {
-  margin-bottom: 0;
+.benefit-list li::before {
+  content: "✓";
+  position: absolute;
+  left: 4px;
+  top: 3px;
+  color: var(--sky);
+  font-weight: 700;
 }
 
-.receive-guide-note {
-  margin: 9px 0 0;
-  padding-top: 9px;
-  border-top: 1px solid var(--border);
-  color: var(--text-mid);
-  font-size: 12px;
-  line-height: 1.75;
+/* ===== メール登録フォーム ===== */
+.signup-section {
+  margin-top: 12px;
+  padding: 16px 16px 14px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: 0 2px 12px var(--shadow);
 }
 
-.copy-code-box {
-  padding: 14px 0 0;
-  margin-top: 0;
+.signup-lead {
+  margin-bottom: 10px;
+  color: var(--navy);
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.7;
   text-align: center;
 }
 
-.copy-code-label {
+.email-input {
+  display: block;
+  width: 100%;
+  padding: 14px 14px;
+  border: 2px solid var(--border);
+  border-radius: 12px;
+  background: #fbfdff;
+  color: var(--text-dark);
+  font-size: 17px;
+  font-family: 'Noto Sans JP', sans-serif;
+  line-height: 1.4;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.email-input:focus {
+  outline: none;
+  border-color: var(--sky);
+  background: #ffffff;
+}
+
+.email-input.has-error {
+  border-color: var(--error);
+}
+
+.form-message {
+  margin-top: 8px;
+  color: var(--error);
   font-size: 14px;
-  color: var(--text-mid);
-  margin-bottom: 5px;
-}
-
-.copy-code-value {
-  font-size: 22px;
-  font-weight: 700;
-  color: var(--navy);
-  background: var(--sky-pale);
-  border-radius: 10px;
-  padding: 10px;
-  margin-bottom: 10px;
-  letter-spacing: 2px;
-}
-
-.copy-status {
-  margin-top: 7px;
-  color: var(--navy-mid);
-  font-size: 13px;
   font-weight: 600;
-  line-height: 1.5;
+  line-height: 1.6;
+  text-align: left;
 }
 
-.copy-status:empty {
+.form-message:empty {
   display: none;
 }
 
-.cta-lead {
-  font-size: 16px;
+.btn-fix-email {
+  display: inline-block;
+  margin-top: 6px;
+  padding: 6px 12px;
+  border: 1px solid var(--sky);
+  border-radius: 999px;
+  background: var(--sky-pale);
   color: var(--navy);
-  font-weight: 600;
-  line-height: 1.8;
-  margin: 14px 0 10px;
-  text-align: center;
-  white-space: normal;
+  font-size: 13px;
+  font-weight: 700;
+  font-family: 'Noto Sans JP', sans-serif;
+  cursor: pointer;
 }
 
+.btn-submit {
+  display: block;
+  width: 100%;
+  margin-top: 12px;
+  padding: 17px 20px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+  color: #ffffff;
+  font-size: 19px;
+  font-weight: 700;
+  font-family: 'Noto Sans JP', sans-serif;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(217, 96, 63, 0.28);
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+.btn-submit:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+.signup-note {
+  margin-top: 9px;
+  color: var(--text-light);
+  font-size: 12px;
+  line-height: 1.7;
+  text-align: center;
+}
+
+/* ===== 監修者 ===== */
 .supervisor-proof {
-  margin: 12px 0;
+  margin: 12px 0 0;
   padding: 14px 16px;
   background: #EEF7FF;
   border: 1px solid #9FD0EA;
@@ -782,48 +533,47 @@ body {
   display: block;
 }
 
-.btn-line {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--line);
-  color: white;
-  border: none;
-  border-radius: 12px;
-  padding: 20px 24px;
-  font-size: 19px;
+/* ===== 準備中(結果ページ未完成のタイプ) ===== */
+.pending-section {
+  display: none;
+  margin-top: 12px;
+  padding: 22px 18px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: 0 2px 12px var(--shadow);
+  text-align: center;
+}
+
+.pending-title {
+  margin-bottom: 12px;
+  color: var(--navy);
+  font-family: 'Noto Serif JP', serif;
+  font-size: 21px;
   font-weight: 700;
-  font-family: 'Noto Sans JP', sans-serif;
-  cursor: pointer;
-  text-decoration: none;
-  width: 100%;
-  line-height: 1.65;
-  text-align: center;
-  white-space: normal;
-  position: relative;
-  z-index: 20;
-  pointer-events: auto;
-  -webkit-tap-highlight-color: transparent;
-}
-
-.line-note {
-  font-size: 12px;
-  color: var(--text-light);
   line-height: 1.6;
-  margin-top: 8px;
-  text-align: center;
 }
 
-.line-section,
-.btn-line {
-  position: relative;
-  z-index: 9999;
-  pointer-events: auto !important;
+.pending-text {
+  color: var(--text-dark);
+  font-size: 16px;
+  line-height: 1.9;
 }
 
-.btn-line {
-  touch-action: manipulation;
-  -webkit-tap-highlight-color: rgba(0,0,0,0);
+.pending-text + .pending-text {
+  margin-top: 10px;
+}
+
+.pending-code {
+  display: inline-block;
+  margin: 12px 0 4px;
+  padding: 6px 16px;
+  border-radius: 10px;
+  background: var(--sky-pale);
+  color: var(--navy);
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 2px;
 }
 
 .footer {
@@ -901,139 +651,10 @@ body {
     padding: 14px 20px;
   }
 
-  .external-result-text p {
-    font-size: 17px;
-    line-height: 1.92;
-    margin-bottom: 13px;
-  }
-
-  .external-result-text .result-block,
-  .external-result-text article {
-    padding: 18px 16px;
-    margin-top: 14px !important;
-  }
-
-  .external-result-text li {
-    padding: 11px 12px 11px 44px;
-    line-height: 1.8;
-  }
-
-  .external-result-text li::before {
-    left: 12px;
-    top: 13px;
-  }
-
   .result-image-wrap {
     margin-top: 8px;
   }
-
-  .external-result-text {
-    margin-top: 10px;
-  }
 }
-
-/* ===== 診断結果：最終上書き（表示安定化） ===== */
-/* A1Xなど外部診断結果側の指定を、親CSSより確実に優先する */
-
-/* 「慎重 × 現実 × 効率」などタイプ3ワードは中央揃え */
-.external-result-text .type-keywords {
-  display: block !important;
-  width: 100% !important;
-  text-align: center !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
-}
-
-/* 「サービスづくり」「改善するとき」「アイデアを整理するとき」 */
-.external-result-text .talent-scene-grid {
-  display: grid !important;
-  grid-template-columns: 1fr !important;
-  gap: 12px !important;
-}
-
-.external-result-text .talent-scene-card {
-  background: #EEF7FF !important;
-  border: 1px solid #CFE3F1 !important;
-  border-radius: 14px !important;
-  padding: 18px !important;
-  box-shadow: none !important;
-}
-
-.external-result-text .talent-scene-card strong {
-  display: block !important;
-  margin-bottom: 8px !important;
-  color: #083F5C !important;
-  font-size: 17px !important;
-  font-weight: 700 !important;
-}
-
-.external-result-text .talent-scene-card p {
-  margin: 0 !important;
-  padding: 0 !important;
-}
-
-/* 「どこまで整えたら、進んでいいのか？」 */
-.external-result-text .key-message {
-  border-left: none !important;
-  border: 1px solid #DCECF5 !important;
-  padding: 18px 18px 18px 1em !important;
-  margin: 18px 0 !important;
-  background: #FFFFFF !important;
-  border-radius: 8px !important;
-  text-align: left !important;
-  font-size: 18px !important;
-  font-weight: 700 !important;
-  color: #083F5C !important;
-}
-
-/* LINE登録後に分かる4つのこと：盛り上げるベネフィットエリア */
-.line-preview-section {
-  background: linear-gradient(180deg, #FFF9F6 0%, #FFF0EA 100%) !important;
-  border: 1px solid #F2B8A7 !important;
-  box-shadow: 0 3px 16px rgba(200, 95, 69, 0.12) !important;
-}
-
-.line-preview-title {
-  color: #B9513C !important;
-  font-family: 'Noto Sans JP', sans-serif !important;
-  font-size: 22px !important;
-  font-weight: 700 !important;
-  line-height: 1.55 !important;
-}
-
-.line-preview-lead {
-  color: #B9513C !important;
-  font-size: 18px !important;
-  font-weight: 700 !important;
-  line-height: 1.7 !important;
-}
-
-.line-preview-lead .emphasis-number {
-  font-size: 26px !important;
-  color: #F07A5A !important;
-}
-
-.line-benefit-card {
-  background: #FFFBF8 !important;
-  border: 1px solid #F3C9BC !important;
-}
-
-.line-benefit-number {
-  background: #F07A5A !important;
-}
-
-.line-benefit-title {
-  color: #B9513C !important;
-  font-size: 17px !important;
-  line-height: 1.65 !important;
-}
-
-.line-benefit-text {
-  color: #5E4038 !important;
-  font-size: 17px !important;
-  line-height: 1.75 !important;
-}
-
 </style>
 </head>
 
@@ -1084,59 +705,88 @@ body {
       </div>
     </div>
 
-    <div class="loading" id="loadingMsg">診断結果を読み込んでいます...</div>
+    <div class="loading" id="loadingMsg">診断結果を準備しています...</div>
 
     <div id="result-section">
-      <div id="preResultCards">
-        <div id="resultImageWrap" class="result-image-wrap"></div>
+
+      <!-- ① 全タイプ共通のFV画像(タイプ名なし) -->
+      <div class="result-image-wrap">
+        <img
+          src="https://cdn.peraichi.com/userData/d6621e34-3268-445c-bb20-ddb971833921/img/fa070ba7-4900-427b-9dde-ddb1a8df9e09/____________.png"
+          alt="診断完了です。75タイプの中から、あなたの才能タイプが判明しました"
+          loading="eager"
+        >
       </div>
 
-      <div class="line-preview-section">
-        <div class="line-preview-title" id="linePreviewTitle">
-          LINE登録後に分かる<br>4つのこと
-        </div>
-
-        <div class="line-preview-lead" id="linePreviewLead">
-          このタイプの特徴に合わせて、<br>
-          次の内容をお届けします。
-        </div>
-
-        <div class="line-benefit-list" id="lineBenefitList"></div>
+      <!-- ② 診断結果で分かること -->
+      <div class="benefit-box" id="benefitBox">
+        <div class="benefit-title">【診断結果で分かること】</div>
+        <ul class="benefit-list">
+          <li>あなたを表すキャッチコピー</li>
+          <li>あなたの3つの強み</li>
+          <li>強みが活かせる場面</li>
+          <li>つまずきやすいポイント</li>
+          <li>今日からできる最初の一歩</li>
+        </ul>
       </div>
 
-      <div class="line-section" id="lineActionSection">
-        <div class="receive-guide">
-          <div class="receive-guide-title">受け取り方</div>
-          <ol class="receive-steps">
-            <li>「診断コードをコピーする」を押す</li>
-            <li>下のボタンでLINEを開く</li>
-            <li>トーク画面に貼り付けて送る</li>
-          </ol>
+      <!-- ③ 監修者(社会的証明) -->
+      <div class="supervisor-proof" id="supervisorProof">
+        <img src="meta-fv-results/DSC_4920.JPG" alt="ビジネス手相診断士 輝路" class="supervisor-avatar">
+        <div class="supervisor-proof-text">
+          <span>手相診断歴13年</span>
+          <span>1,250名以上の診断実績</span>
+          <span>ビジネス手相診断士 輝路が監修</span>
         </div>
+      </div>
 
-        <div class="copy-code-box">
-          <div class="copy-code-label">LINE送信用の診断コード</div>
-          <div class="copy-code-value" id="copyCodeValue">---</div>
-          <button class="btn-copy-code" id="copyCodeBtn" type="button">診断コードをコピーする</button>
-          <div class="copy-status" id="copyStatus" role="status" aria-live="polite"></div>
-        </div>
+      <!-- ④ メール登録フォーム -->
+      <form class="signup-section" id="signupForm" novalidate>
+        <p class="signup-lead">
+          メールアドレスを入力すると、<br>
+          すぐにこの画面で結果をご覧いただけます。
+        </p>
 
-        <div class="cta-lead" id="ctaLead"></div>
+        <input
+          type="email"
+          class="email-input"
+          id="emailInput"
+          name="email"
+          placeholder="例:example@gmail.com"
+          autocomplete="email"
+          inputmode="email"
+          autocapitalize="off"
+          autocorrect="off"
+          spellcheck="false"
+          aria-label="メールアドレス"
+          required
+        >
 
-        <div class="supervisor-proof">
-          <img src="meta-fv-results/DSC_4920.JPG" alt="ビジネス手相診断士 輝路" class="supervisor-avatar">
-          <div class="supervisor-proof-text">
-            <span>手相診断歴13年</span>
-            <span>1,250名以上の診断実績</span>
-            <span>ビジネス手相診断士 輝路が監修</span>
-          </div>
-        </div>
+        <div class="form-message" id="formMessage" role="alert" aria-live="polite"></div>
 
-        <button id="lineBtn" class="btn-line" type="button" data-line-url="https://lin.ee/OINIB8d">
-          友だち追加して<br>診断結果を受け取る　▶
+        <button type="submit" class="btn-submit" id="submitBtn">
+          無料で診断結果を見る　▶
         </button>
 
-        <p class="line-note">無料・1分で登録できます</p>
+        <p class="signup-note">
+          ご登録後、強みを活かすヒントを<br>
+          メールでお届けします(いつでも配信停止できます)
+        </p>
+      </form>
+
+      <!-- 結果ページがまだ無いタイプ用の「準備中」 -->
+      <div class="pending-section" id="pendingSection">
+        <div class="pending-title">ご登録ありがとうございます</div>
+        <p class="pending-text">
+          あなたのタイプの詳しい診断結果は、<br>
+          ただいま最終調整中です。
+        </p>
+        <div class="pending-code" id="pendingCode">---</div>
+        <p class="pending-text">
+          <strong>24時間以内に</strong>、ご登録のメールアドレスへ<br>
+          診断結果をお届けします。<br>
+          届くまで、少しだけお待ちください。
+        </p>
       </div>
 
       <div class="footer">ビジネス手相診断士 輝路(kiro) © 2026</div>
@@ -1145,6 +795,15 @@ body {
 </div>
 
 <script>
+
+/* =========================================================
+   メール登録の送り先(Googleスプレッドシートの受け取り口)
+========================================================= */
+const SIGNUP_ENDPOINT = 'https://script.google.com/macros/s/AKfycbzsS1hGJ4fsEP2BbtmREKy_ctOCp0GCzEixv2siXiHsvdoo-z9eyGvT7Z4RbJhO2ybP4g/exec';
+
+/* 登録後に結果を表示するページ */
+const RESULT_PAGE_URL = 'line-result.html';
+const RESULT_FILE_DIR = 'line-results/';
 
 const IMAGE_ASSETS = {
   Q1_A: "https://cdn.peraichi.com/userData/d6621e34-3268-445c-bb20-ddb971833921/img/8d67ae3b-1e9e-4300-93e1-47a3844163b5/17.png",
@@ -1266,51 +925,39 @@ const QUESTION_FLOW = [
 
 let answers = {};
 let currentQuestionKey = 'q3';
+let currentDiagnosisCode = '';
 
 /* =========================================================
-   流入元トラッキング（GA4補完 ＋ LINEコード用の見えない印）
-   ---------------------------------------------------------
-   ・リンクの末尾に付けた ?utm_source=◯◯ を読み取る
-   ・utm_sourceが無い場合は、参照元（検索エンジンかどうか）を見る
-   ・診断コードの見た目は一切変えず、コピーされる文字列の末尾に
-     「画面には表示されない文字」を1つだけ混ぜ込む
-   ・混ぜ込む文字は普通の空白ではないので、コピー処理で消えない
+   流入元の判定(GA4の記録用)
 ========================================================= */
-
-const TRAFFIC_SOURCE_MARKS = {
-  ad: '\u200B',         // 広告（Meta広告）
-  facebook: '\u200C',   // Facebook
-  ameblo: '\u200D',     // アメブロ
-  instagram: '\u2060'   // Instagramプロフィール
-};
-const SEARCH_ENGINE_MARK = '\u200E'; // 検索エンジン経由（Google/Yahoo/Bing）
-
 function detectTrafficSource() {
   try {
     const params = new URLSearchParams(window.location.search);
     const utmSource = (params.get('utm_source') || '').toLowerCase().trim();
-
-    if (TRAFFIC_SOURCE_MARKS[utmSource]) {
-      return { mark: TRAFFIC_SOURCE_MARKS[utmSource], label: utmSource };
+    if (utmSource) {
+      return utmSource;
     }
 
     const referrer = (document.referrer || '').toLowerCase();
     if (/google\.|yahoo\.|bing\./.test(referrer)) {
-      return { mark: SEARCH_ENGINE_MARK, label: 'search' };
+      return 'search';
     }
   } catch (error) {
     console.warn('流入元の判定に失敗しました:', error);
   }
 
-  return { mark: '', label: 'direct_or_unknown' };
+  return 'direct_or_unknown';
 }
 
 const trafficSource = detectTrafficSource();
 
+/* =========================================================
+   GA4イベント
+========================================================= */
 const sentAnalyticsEvents = new Set();
 
-function trackDiagnosisEvent(eventName, eventParams = {}) {
-  if (sentAnalyticsEvents.has(eventName)) return;
+function trackDiagnosisEvent(eventName, eventParams = {}, allowRepeat = false) {
+  if (!allowRepeat && sentAnalyticsEvents.has(eventName)) return;
 
   try {
     if (typeof window.gtag === 'function') {
@@ -1334,6 +981,9 @@ function trackQuestionAnswer(questionKey) {
   });
 }
 
+/* =========================================================
+   画面の部品
+========================================================= */
 const fvAreaEl = document.getElementById('fvArea');
 const questionCardEl = document.getElementById('questionCard');
 const questionNumberEl = document.getElementById('questionNumber');
@@ -1346,102 +996,18 @@ const backBtnEl = document.getElementById('backBtn');
 const nextBtnEl = document.getElementById('nextBtn');
 const loadingMsgEl = document.getElementById('loadingMsg');
 const resultSectionEl = document.getElementById('result-section');
-const resultImageWrapEl = document.getElementById('resultImageWrap');
-const ctaLeadEl = document.getElementById('ctaLead');
-const copyCodeValueEl = document.getElementById('copyCodeValue');
-const copyCodeBtnEl = document.getElementById('copyCodeBtn');
-const copyStatusEl = document.getElementById('copyStatus');
-const linePreviewTitleEl = document.getElementById('linePreviewTitle');
-const linePreviewLeadEl = document.getElementById('linePreviewLead');
-const lineBenefitListEl = document.getElementById('lineBenefitList');
-const lineBtnEl = document.getElementById('lineBtn');
+
+const benefitBoxEl = document.getElementById('benefitBox');
+const signupFormEl = document.getElementById('signupForm');
+const emailInputEl = document.getElementById('emailInput');
+const formMessageEl = document.getElementById('formMessage');
+const submitBtnEl = document.getElementById('submitBtn');
+const supervisorProofEl = document.getElementById('supervisorProof');
+const pendingSectionEl = document.getElementById('pendingSection');
+const pendingCodeEl = document.getElementById('pendingCode');
 
 backBtnEl.addEventListener('click', goBack);
 nextBtnEl.addEventListener('click', goNext);
-
-async function copyTextToClipboard(text) {
-  // まず標準のクリップボードAPIを試す
-  if (navigator.clipboard && window.isSecureContext) {
-    try {
-      await navigator.clipboard.writeText(text);
-      return;
-    } catch (error) {
-      // Instagram/FacebookなどのアプリDND内ブラウザでは、
-      // ここで失敗することがあるため、下の方法へ進む
-    }
-  }
-
-  // フォールバック：一時的なテキストエリアを使ってコピーする
-  const temporaryTextArea = document.createElement('textarea');
-  temporaryTextArea.value = text;
-  temporaryTextArea.setAttribute('readonly', '');
-  temporaryTextArea.style.position = 'fixed';
-  temporaryTextArea.style.top = '0';
-  temporaryTextArea.style.left = '0';
-  temporaryTextArea.style.opacity = '0';
-  document.body.appendChild(temporaryTextArea);
-  temporaryTextArea.focus();
-  temporaryTextArea.select();
-  temporaryTextArea.setSelectionRange(0, temporaryTextArea.value.length);
-
-  let copied = false;
-  try {
-    copied = document.execCommand('copy');
-  } catch (error) {
-    copied = false;
-  }
-  temporaryTextArea.remove();
-
-  if (!copied) {
-    throw new Error('copy failed');
-  }
-}
-
-function showCopyFeedback(succeeded) {
-  window.clearTimeout(showCopyFeedback.timerId);
-
-  if (succeeded) {
-    copyCodeBtnEl.textContent = 'コピーしました ✓';
-    copyCodeBtnEl.classList.add('is-copied');
-    copyStatusEl.textContent = '診断コードをコピーしました。';
-  } else {
-    copyCodeBtnEl.textContent = '診断コードをコピーする';
-    copyCodeBtnEl.classList.remove('is-copied');
-    copyStatusEl.textContent = 'コピーできませんでした。上の診断コードを長押ししてコピーしてください。';
-    return;
-  }
-
-  showCopyFeedback.timerId = window.setTimeout(function() {
-    copyCodeBtnEl.textContent = '診断コードをコピーする';
-    copyCodeBtnEl.classList.remove('is-copied');
-    copyStatusEl.textContent = '';
-  }, 2200);
-}
-
-// コピー専用ボタン
-copyCodeBtnEl.addEventListener('click', async function() {
-  const code = copyCodeValueEl.textContent.trim();
-
-  try {
-    await copyTextToClipboard(code);
-    showCopyFeedback(true);
-  } catch (error) {
-    showCopyFeedback(false);
-  }
-});
-
-// LINEを開く専用ボタン（同じタブ内で遷移させ、アプリ連携を安定させる）
-lineBtnEl.addEventListener('click', function() {
-  const code = copyCodeValueEl.textContent.trim();
-  const lineUrl = lineBtnEl.dataset.lineUrl;
-
-  trackDiagnosisEvent('line_click', {
-    diagnosis_code: code,
-    traffic_source: trafficSource.label
-  });
-
-  window.location.href = lineUrl;
-});
 
 function escapeHtml(value) {
   return String(value)
@@ -1452,6 +1018,9 @@ function escapeHtml(value) {
     .replace(/'/g, '&#39;');
 }
 
+/* =========================================================
+   診断の進行(質問の表示・回答・戻る/進む)
+========================================================= */
 function getQuestionConfig(key) {
   return QUESTION_FLOW.find(q => q.key === key);
 }
@@ -1595,59 +1164,245 @@ function buildDiagnosisCode() {
   return `${answers.q1}${answers.q2}${answers.q4}`;
 }
 
-function setLinePreviewText() {
-  linePreviewTitleEl.style.display = 'none';
-  linePreviewLeadEl.innerHTML = 'あなたの強みと<br>そこから一歩踏み出すための<br>具体的なヒントを<br>LINEでお届けします。';
-}
-
-function renderResultImage(code) {
-  // タイプ名入りのFV画像だけを表示する
-  resultImageWrapEl.innerHTML = `
-    <img
-      src="meta-fv-results/${escapeHtml(code)}.png"
-      alt="才能コンパス診断 結果タイプ画像"
-      loading="eager"
-    >
-  `;
-  resultImageWrapEl.style.display = 'block';
-}
-
+/* =========================================================
+   診断完了 → 登録画面の表示
+   (タイプ名は表示しない)
+========================================================= */
 function diagnose() {
   fvAreaEl.style.display = 'none';
   questionCardEl.style.display = 'none';
   loadingMsgEl.style.display = 'block';
 
   setTimeout(function() {
-    showResult();
+    showSignup();
   }, 500);
 }
 
-async function showResult() {
-  const code = buildDiagnosisCode();
+function showSignup() {
+  currentDiagnosisCode = buildDiagnosisCode();
 
   fvAreaEl.style.display = 'none';
-
-  renderResultImage(code);
-
-  setLinePreviewText();
-  // cta-leadは全タイプ共通の1行(タイプ別データの読み込みは行わない)
-  ctaLeadEl.textContent = 'あなたに合った一歩の踏み出し方を、今すぐ受け取ってください。';
-  // 画面表示は今まで通りの見た目（コードの後ろに見えない印を追加）
-  copyCodeValueEl.textContent = code + trafficSource.mark;
-  copyStatusEl.textContent = '';
-  copyCodeBtnEl.textContent = '診断コードをコピーする';
-  copyCodeBtnEl.classList.remove('is-copied');
-
   loadingMsgEl.style.display = 'none';
   resultSectionEl.style.display = 'block';
 
   trackDiagnosisEvent('diagnosis_complete', {
-    diagnosis_code: code,
+    diagnosis_code: currentDiagnosisCode,
     question_total: getVisibleFlowKeys().length,
-    traffic_source: trafficSource.label
+    traffic_source: trafficSource
   });
 
   window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+/* =========================================================
+   メールアドレスのチェック
+========================================================= */
+const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+// よくある打ち間違い → 正しいドメイン
+const DOMAIN_TYPOS = {
+  'gmail.con': 'gmail.com',
+  'gmail.co': 'gmail.com',
+  'gmail.cm': 'gmail.com',
+  'gmail.om': 'gmail.com',
+  'gmail.comm': 'gmail.com',
+  'gmial.com': 'gmail.com',
+  'gmai.com': 'gmail.com',
+  'gamil.com': 'gmail.com',
+  'gmali.com': 'gmail.com',
+  'gmil.com': 'gmail.com',
+  'gmail.jp': 'gmail.com',
+  'yahoo.co.jo': 'yahoo.co.jp',
+  'yahoo.co.j': 'yahoo.co.jp',
+  'yahoo.cojp': 'yahoo.co.jp',
+  'yaho.co.jp': 'yahoo.co.jp',
+  'yahooo.co.jp': 'yahoo.co.jp',
+  'icloud.con': 'icloud.com',
+  'icloud.co': 'icloud.com',
+  'icoud.com': 'icloud.com',
+  'iclod.com': 'icloud.com',
+  'hotmail.con': 'hotmail.com',
+  'hotmail.co': 'hotmail.com',
+  'outlook.con': 'outlook.com',
+  'outlook.co': 'outlook.com',
+  'docomo.ne.jo': 'docomo.ne.jp',
+  'docomo.ne.j': 'docomo.ne.jp',
+  'docomo.co.jp': 'docomo.ne.jp',
+  'ezweb.ne.jo': 'ezweb.ne.jp',
+  'softbank.ne.jo': 'softbank.ne.jp',
+  'au.con': 'au.com'
+};
+
+let suggestedEmail = '';
+let typoWarningShownFor = '';
+
+function normalizeEmail(value) {
+  return String(value || '')
+    .replace(/[！-～]/g, ch => String.fromCharCode(ch.charCodeAt(0) - 0xFEE0)) // 全角英数→半角
+    .replace(/　/g, ' ')
+    .trim()
+    .replace(/\s+/g, '');
+}
+
+function findTypoSuggestion(email) {
+  const atIndex = email.lastIndexOf('@');
+  if (atIndex < 0) return '';
+
+  const domain = email.slice(atIndex + 1).toLowerCase();
+  const fixedDomain = DOMAIN_TYPOS[domain];
+
+  return fixedDomain ? email.slice(0, atIndex + 1) + fixedDomain : '';
+}
+
+function showFormMessage(html) {
+  formMessageEl.innerHTML = html;
+  emailInputEl.classList.add('has-error');
+}
+
+function clearFormMessage() {
+  formMessageEl.innerHTML = '';
+  emailInputEl.classList.remove('has-error');
+}
+
+emailInputEl.addEventListener('input', function() {
+  clearFormMessage();
+  typoWarningShownFor = '';
+});
+
+formMessageEl.addEventListener('click', function(event) {
+  if (event.target && event.target.id === 'fixEmailBtn' && suggestedEmail) {
+    emailInputEl.value = suggestedEmail;
+    clearFormMessage();
+    typoWarningShownFor = '';
+    emailInputEl.focus();
+  }
+});
+
+/* =========================================================
+   登録(スプレッドシートに保存できてから結果を表示)
+========================================================= */
+signupFormEl.addEventListener('submit', async function(event) {
+  event.preventDefault();
+  if (submitBtnEl.disabled) return;
+
+  const email = normalizeEmail(emailInputEl.value);
+  emailInputEl.value = email;
+
+  if (!email) {
+    showFormMessage('メールアドレスを入力してください。');
+    emailInputEl.focus();
+    return;
+  }
+
+  if (!EMAIL_PATTERN.test(email)) {
+    showFormMessage('メールアドレスの形が正しくないようです。もう一度ご確認ください。');
+    emailInputEl.focus();
+    return;
+  }
+
+  // よくある打ち間違いは1回だけ確認する(そのまま送ることもできる)
+  const suggestion = findTypoSuggestion(email);
+  if (suggestion && typoWarningShownFor !== email) {
+    suggestedEmail = suggestion;
+    typoWarningShownFor = email;
+    showFormMessage(
+      `もしかして「${escapeHtml(suggestion)}」ですか？<br>` +
+      `<button type="button" class="btn-fix-email" id="fixEmailBtn">このアドレスに直す</button>`
+    );
+    return;
+  }
+
+  clearFormMessage();
+  setSubmitting(true);
+
+  try {
+    await saveSignup(email, currentDiagnosisCode);
+  } catch (error) {
+    console.warn('登録の保存に失敗しました:', error);
+    setSubmitting(false);
+    showFormMessage('通信がうまくいきませんでした。電波の良い場所で、もう一度お試しください。');
+    trackDiagnosisEvent('email_submit_error', {
+      diagnosis_code: currentDiagnosisCode
+    }, true);
+    return;
+  }
+
+  trackDiagnosisEvent('email_submit', {
+    diagnosis_code: currentDiagnosisCode,
+    traffic_source: trafficSource
+  });
+
+  await showResultAfterSignup(currentDiagnosisCode);
+});
+
+function setSubmitting(isSubmitting) {
+  submitBtnEl.disabled = isSubmitting;
+  submitBtnEl.textContent = isSubmitting ? '送信しています…' : '無料で診断結果を見る　▶';
+}
+
+async function saveSignup(email, code) {
+  const controller = ('AbortController' in window) ? new AbortController() : null;
+  const timerId = controller ? setTimeout(() => controller.abort(), 20000) : null;
+
+  try {
+    const response = await fetch(SIGNUP_ENDPOINT, {
+      method: 'POST',
+      // text/plain にすると、ブラウザの事前確認なしで送れる
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: JSON.stringify({ email: email, code: code }),
+      redirect: 'follow',
+      signal: controller ? controller.signal : undefined
+    });
+
+    if (!response.ok) {
+      throw new Error('HTTP ' + response.status);
+    }
+
+    const result = await response.json();
+    if (!result || result.ok !== true) {
+      throw new Error((result && result.error) || 'unknown');
+    }
+  } finally {
+    if (timerId) clearTimeout(timerId);
+  }
+}
+
+/* 結果ページがあるか確認してから表示する */
+async function resultFileExists(code) {
+  try {
+    const response = await fetch(`${RESULT_FILE_DIR}${encodeURIComponent(code)}.html`, {
+      method: 'HEAD',
+      cache: 'no-store'
+    });
+    return response.ok;
+  } catch (error) {
+    // 確認できない場合は、結果ページへ進めてみる
+    return true;
+  }
+}
+
+async function showResultAfterSignup(code) {
+  submitBtnEl.textContent = '診断結果を表示しています…';
+
+  const exists = await resultFileExists(code);
+
+  if (exists) {
+    window.location.href = `${RESULT_PAGE_URL}?code=${encodeURIComponent(code)}`;
+    return;
+  }
+
+  // 結果ページがまだ無いタイプ:準備中を表示
+  trackDiagnosisEvent('result_pending_view', {
+    diagnosis_code: code
+  });
+
+  benefitBoxEl.style.display = 'none';
+  signupFormEl.style.display = 'none';
+  supervisorProofEl.style.display = 'none';
+  pendingCodeEl.textContent = code;
+  pendingSectionEl.style.display = 'block';
+
+  pendingSectionEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
 renderQuestion('q3');
