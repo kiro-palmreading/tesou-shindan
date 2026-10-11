@@ -1,377 +1,746 @@
-<section class="result-detail" data-diagnosis-code="D3Y">
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>詳しい診断結果｜才能コンパス診断</title>
+<style>
+    /* ========================================
+       D3Y 診断結果
+       登録後・完全版
+    ======================================== */
 
-  <!-- 診断結果FV：ページ最上部 -->
-  <div class="result-fv" style="width: 100%; margin: 0 auto 24px;">
+    .result-detail--visual {
+      max-width: 720px;
+      margin: 0 auto;
+      color: #24313a;
+      line-height: 1.8;
+    }
+
+    .diagnosis-result-fv {
+      margin: 0 0 28px;
+      padding: 0;
+    }
+
+    .diagnosis-result-fv img {
+      display: block;
+      width: 100%;
+      height: auto;
+      margin: 0 auto;
+    }
+
+    .result-detail--visual .result-block {
+      margin: 0 16px 28px;
+      padding: 26px 20px;
+      background: #ffffff;
+      border: 1px solid #dcecf5;
+      border-radius: 18px;
+      box-sizing: border-box;
+    }
+
+    .result-detail--visual .result-block h2 {
+      margin: 0 0 18px;
+      color: #083f5c;
+      font-size: 22px;
+      line-height: 1.45;
+      text-align: left;
+    }
+
+    .result-detail--visual .result-block p {
+      margin: 0 0 16px;
+      font-size: 16px;
+      line-height: 1.9;
+    }
+
+    .result-detail--visual .result-block p:last-child {
+      margin-bottom: 0;
+    }
+
+    .result-detail--visual .result-block ul {
+      margin: 0 0 18px;
+      padding-left: 1.4em;
+    }
+
+    .result-detail--visual .result-block li {
+      margin: 0 0 8px;
+      font-size: 16px;
+      line-height: 1.8;
+    }
+
+    .type-keywords {
+      margin: 0 0 20px;
+      font-size: 20px;
+      font-weight: 700;
+      color: #1f6fb2;
+      letter-spacing: 0.04em;
+      text-align: center;
+    }
+
+    .type-point-list {
+      display: grid;
+      gap: 11px;
+      margin: 0;
+    }
+
+    .type-point {
+      position: relative;
+      padding: 14px 14px 14px 43px;
+      background: #f8fcff;
+      border-radius: 12px;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .type-point::before {
+      content: "✓";
+      position: absolute;
+      left: 16px;
+      top: 14px;
+      color: #1f6fb2;
+      font-weight: 700;
+    }
+
+    .talent-scene-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    .talent-scene-card {
+      padding: 18px;
+      border-radius: 14px;
+      background: #eef7ff;
+      border: 1px solid #cfe3f1;
+    }
+
+    .talent-scene-card strong {
+      display: block;
+      margin-bottom: 8px;
+      color: #083f5c;
+      font-size: 17px;
+      line-height: 1.5;
+    }
+
+    .talent-scene-card p {
+      margin: 0 !important;
+    }
+
+    .loop-intro {
+      font-weight: 700;
+      color: #314958;
+    }
+
+    .diagnosis-loop {
+      margin: 20px 0;
+    }
+
+    .loop-step {
+      padding: 15px 14px;
+      background: #f8fcff;
+      border: 1px solid #cfe6f3;
+      border-radius: 12px;
+      text-align: center;
+      font-size: 16px;
+      font-weight: 700;
+      color: #083f5c;
+    }
+
+    .loop-arrow {
+      height: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #6f8798;
+      font-size: 24px;
+      font-weight: 700;
+    }
+
+    .loop-step--last {
+      background: #fff5f2;
+      border-color: #f2c9bf;
+      color: #9b4d3b;
+    }
+
+    .loop-doubt {
+      margin: 4px 0 18px;
+      padding: 12px 16px;
+      background: #f8fcff;
+      border-left: 3px solid #7893a3;
+      font-size: 15px;
+      font-style: italic;
+      color: #4a5d68;
+      line-height: 1.7;
+    }
+
+    .result-block--risk {
+      background: #fffaf7 !important;
+      border-color: #f1d9cf !important;
+    }
+
+    .risk-items {
+      display: grid;
+      gap: 10px;
+    }
+
+    .risk-item {
+      position: relative;
+      padding: 13px 14px 13px 40px;
+      background: #ffffff;
+      border: 1px solid #f0ddd5;
+      border-radius: 11px;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .risk-item::before {
+      content: "●";
+      position: absolute;
+      left: 17px;
+      top: 15px;
+      color: #d98670;
+      font-size: 10px;
+    }
+
+    .result-block--key {
+      background: #eef7ff !important;
+      border-color: #bddcec !important;
+    }
+
+    .unspoken-worry {
+      margin: 0 0 22px;
+      padding: 18px 18px;
+      background: #fdf6f3;
+      border: 1px dashed #e3b8a8;
+      border-radius: 14px;
+      font-size: 15px;
+      font-style: italic;
+      color: #6b5347;
+      text-align: center;
+      line-height: 1.8;
+    }
+
+    .key-message {
+      margin: 18px 0 !important;
+      padding: 18px 16px;
+      background: #ffffff;
+      border: 1px solid #dcecf5;
+      border-radius: 8px;
+      font-size: 18px !important;
+      font-weight: 700;
+      color: #083f5c;
+      text-align: center;
+      line-height: 1.7;
+    }
+
+    .key-message-line {
+      display: block;
+    }
+
+    .tip-box {
+      margin: 0 0 18px;
+      padding: 18px 16px;
+      background: #f8fcff;
+      border: 1px solid #dcecf5;
+      border-radius: 12px;
+    }
+
+    .tip-box:last-child {
+      margin-bottom: 0;
+    }
+
+    .tip-title {
+      margin: 0 0 12px !important;
+      color: #083f5c;
+      font-size: 17px !important;
+      font-weight: 700;
+      line-height: 1.6 !important;
+    }
+
+    .result-block--action {
+      background: #f7fbfd !important;
+      border-color: #cfe3f1 !important;
+    }
+
+    .result-block--newsletter {
+      background: #fffdf8 !important;
+      border-color: #eadfca !important;
+    }
+
+    .result-block--service {
+      background: #f4f9fc !important;
+      border-color: #cfe3f1 !important;
+    }
+
+    .service-lead {
+      font-weight: 700;
+      color: #083f5c;
+    }
+
+    .service-points {
+      margin-top: 6px !important;
+    }
+
+    @media (max-width: 600px) {
+      .result-detail--visual .result-block {
+        margin-left: 14px;
+        margin-right: 14px;
+        padding: 23px 17px;
+      }
+
+      .result-detail--visual .result-block h2 {
+        font-size: 21px;
+      }
+
+      .type-keywords {
+        font-size: 19px;
+      }
+
+      .talent-scene-card strong,
+      .tip-title {
+        font-size: 17px !important;
+      }
+
+      .key-message {
+        font-size: 17px !important;
+        padding: 16px 14px;
+      }
+    }
+
+
+    /* ===== 登録後・単独ページ用 ===== */
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      background: #eef8ff;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background: #eef8ff;
+      color: #24313a;
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Kaku Gothic ProN", "Yu Gothic", "Meiryo", sans-serif;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    .page-header {
+      width: 100%;
+      background: #ffffff;
+      border-bottom: 1px solid #e4edf3;
+    }
+
+    .page-header-inner {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 18px 18px 16px;
+      color: #111111;
+      font-size: 17px;
+      font-weight: 700;
+      line-height: 1.45;
+    }
+
+    .page-main {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 18px 0 10px;
+    }
+
+    .page-footer {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 38px 18px 48px;
+      color: #58758c;
+      font-size: 14px;
+      text-align: center;
+      line-height: 1.7;
+    }
+
+    .diagnosis-result-fv {
+      margin-left: 14px;
+      margin-right: 14px;
+      overflow: hidden;
+      border-radius: 18px;
+      background: #ffffff;
+      border: 1px solid #dcecf5;
+      box-shadow: 0 3px 14px rgba(44, 103, 142, 0.08);
+    }
+
+    .diagnosis-result-fv img {
+      border-radius: 18px;
+    }
+
+    @media (max-width: 600px) {
+      .page-header-inner {
+        padding: 16px 18px 14px;
+        font-size: 16px;
+      }
+
+      .page-main {
+        padding-top: 12px;
+      }
+
+      .page-footer {
+        padding-top: 30px;
+        font-size: 13px;
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+  <header class="page-header">
+    <div class="page-header-inner">詳しい診断結果｜才能コンパス診断</div>
+  </header>
+
+  <main class="page-main">
+<section class="result-detail result-detail--visual" data-diagnosis-code="D3Y">
+<!-- FV -->
+  <div class="diagnosis-result-fv">
     <img
-      src="meta-fv-results/D3Y.png"
-      alt="才能コンパス診断 D3Y 診断結果"
-      style="display: block; width: 100%; height: auto;"
+      src="https://kiro-palmreading.github.io/tesou-shindan/meta-fv-results/D3Y.png"
+      alt="才能コンパス診断 流れを読んで踏み出すエクスプローラー"
+      loading="eager"
+      fetchpriority="high"
     >
   </div>
 
+  <!-- 01 -->
   <article class="result-block">
-    <h2>詳しい診断結果</h2>
+    <h2>あなたにはこんな3つの強みがあります</h2>
+
+    <div class="type-keywords">
+      熟考 × 突破 × 直感
+    </div>
+
+    <div class="type-point-list">
+      <div class="type-point">
+        勢いだけで動くより、
+        <strong>「今、動くべきか」を自分なりに確かめる</strong>
+      </div>
+
+      <div class="type-point">
+        情報だけではなく、
+        <strong>人の反応や場の空気、流れの変化まで感じ取れる</strong>
+      </div>
+
+      <div class="type-point">
+        「今なら進めそう」と納得すると、
+        <strong>思い切って新しい一歩を踏み出せる</strong>
+      </div>
+    </div>
+  </article>
+
+  <!-- 02 -->
+  <article class="result-block">
+    <h2>こんな場面で強みが出ます</h2>
+
+    <div class="talent-scene-grid">
+      <div class="talent-scene-card">
+        <strong>👀 状況を見るとき</strong>
+        <p>
+          目の前の情報だけでなく、
+          人の反応や周囲の空気まで見ながら、
+          状況の変化を感じ取れます。
+        </p>
+      </div>
+
+      <div class="talent-scene-card">
+        <strong>🧭 タイミングを見極めるとき</strong>
+        <p>
+          「今は進むときか」
+          「もう少し様子を見るときか」と、
+          自分の感覚も含めて判断できます。
+        </p>
+      </div>
+
+      <div class="talent-scene-card">
+        <strong>🚀 新しい方向へ踏み出すとき</strong>
+        <p>
+          一度「ここだ」と納得できれば、
+          それまでの状況を変える一歩を
+          思い切って選べます。
+        </p>
+      </div>
+    </div>
+  </article>
+
+  <!-- 03 -->
+  <article class="result-block">
+    <h2>今、こんなループに入っていませんか？</h2>
+
+    <p class="loop-intro">
+      「この方向で進もう」と決めたはずなのに……
+    </p>
+
+    <div class="diagnosis-loop">
+      <div class="loop-step">
+        じっくり考えて方向を決める
+      </div>
+
+      <div class="loop-arrow">↓</div>
+
+      <div class="loop-step">
+        納得して動き始める
+      </div>
+
+      <div class="loop-arrow">↓</div>
+
+      <div class="loop-step">
+        新しい流れや兆しを感じ取る
+      </div>
+
+      <div class="loop-arrow">↓</div>
+
+      <div class="loop-step loop-step--last">
+        また方向を見直したくなる
+      </div>
+    </div>
 
     <p>
-      あなたが、自分なりに決めて動いたあとにも、方向を見直したくなるのは、3つの特徴が同時に働くためです。
+      あなたは、適当に方向を変えているわけではありません。
+      むしろ、<strong>そのときどきで、本当に良いと思える流れを丁寧に選ぼうとしています。</strong>
+      ただ、新しい情報や変化に気づくたびに、
+      「これは方向を変える合図かもしれない」と感じ、
+      一度決めた答えまでもう一度検討したくなりやすいのです。
     </p>
 
     <p>
-      1つ目は、「熟考」です。
+      お客様から一つの意見をもらった。別のテーマの投稿が多く読まれていた。
+      気づけば、
+      <strong>たった一つの出来事から、せっかく決めた進路をまた引き直している。</strong>
+      そんな状態になることもあるかもしれません。
+    </p>
+
+    <p class="loop-doubt">
+      この変化は、本物の合図なのか——
+      それとも、ただの気のせいなのか。
+      自分でも、決めきれない。
+    </p>
+  </article>
+
+  <!-- 04 -->
+  <article class="result-block result-block--risk">
+    <h2>この状態が続くと…</h2>
+
+    <div class="risk-items">
+      <div class="risk-item">
+        発信の方向を決めても、
+        新しいテーマや反応を見るたびに見直したくなる
+      </div>
+
+      <div class="risk-item">
+        サービスを形にしたあとでも、
+        新しいアイデアから別の形が気になりやすくなる
+      </div>
+    </div>
+  </article>
+
+  <!-- 05 -->
+  <article class="result-block result-block--key">
+    <p class="unspoken-worry">
+      「こんなに考えて決めたのに、
+      私は、迷いやすい人なのだろうか」
+    </p>
+
+    <h2>でも、問題は「新しい流れを感じること」ではありません</h2>
+
+    <p>
+      ご安心ください。
+      自分なりに決めて動いたあとにも方向を見直したくなるのには、
+      ちゃんと理由があります。
     </p>
 
     <p>
-      あなたは、その場の勢いだけで決めるのではなく、頭の中で何度も確かめる人です。
+      それは、3つの特徴が同時に働くためです。
     </p>
 
     <p>
-      今動くべきか。<br>
-      この方向で続けられるか。<br>
-      自分が本当に納得しているか。
-    </p>
-
-    <p>
+      まず、<strong>熟考する力</strong>。
+      今動くべきか、この方向で続けられるか、自分が本当に納得しているか。
       時間をかけて考え、自分の中で答えを育てます。
     </p>
 
     <p>
-      2つ目は、「突破」です。
+      次に、<strong>突破力</strong>。
+      「今までとは違う流れを作りたい」「ここから状況を動かしたい」。
+      そのため、変化の兆しを感じると、
+      「これは前へ進むきっかけかもしれない」と反応します。
     </p>
 
     <p>
-      あなたは、本当は現状を変えたい人です。
+      そして、<strong>直感</strong>。
+      人の反応や場の空気、タイミングの変化から、
+      明確な根拠がそろう前でも「少し流れが変わった気がする」と、
+      言葉になる前の変化に気づきます。
     </p>
 
     <p>
-      「今までとは違う流れを作りたい」<br>
-      「新しい可能性へ進みたい」<br>
-      「ここから状況を動かしたい」
+      どれも、変化の中で道を見つけるための才能です。
+      ただ、直感で受け取ったすべての変化を「今すぐ方向を変えるべき合図」として扱うと、
+      今の方向が本当に合っていたのかを確かめる前に、
+      次へ移ることになってしまうのです。
     </p>
 
     <p>
-      という気持ちを持っています。
+      あなたに必要なのは、
+      直感を無視することではありません。
+    </p>
+
+    <p class="key-message">
+      <span class="key-message-line">直感を「すぐに従う指示」ではなく、</span>
+      <span class="key-message-line">「確かめる価値のある情報」として</span>
+      <span class="key-message-line">扱うことです。</span>
     </p>
 
     <p>
-      そのため、変化の兆しを感じると、「これは前へ進むきっかけかもしれない」と反応します。
-    </p>
-
-    <p>
-      3つ目は、「直感」です。
-    </p>
-
-    <p>
-      あなたは、人の反応や場の空気、タイミングの変化から、次の流れを感じ取る人です。
-    </p>
-
-    <p>
-      明確な根拠がそろう前でも、
-    </p>
-
-    <p>
-      「今はこちらかもしれない」<br>
-      「この方向には可能性がありそう」<br>
-      「少し流れが変わった気がする」
-    </p>
-
-    <p>
-      と、言葉になる前の変化に気づきます。
-    </p>
-
-    <p>
-      この3つは、すべて変化の中で道を見つけるための才能です。
-    </p>
-
-    <p>
-      ところが同時に働くと、
-    </p>
-
-    <p>
-      じっくり考えて方向を決める
-    </p>
-
-    <p>
-      ↓
-    </p>
-
-    <p>
-      現状を変えるために動き始める
-    </p>
-
-    <p>
-      ↓
-    </p>
-
-    <p>
-      直感が新しい兆しを拾う
-    </p>
-
-    <p>
-      ↓
-    </p>
-
-    <p>
-      その兆しについて、また深く考える
-    </p>
-
-    <p>
-      ↓
-    </p>
-
-    <p>
-      別の方向へ進むべきか迷う
-    </p>
-
-    <p>
-      という流れが起こりやすくなります。
-    </p>
-
-    <p>
-      ここでの問題は、新しい流れを感じることではありません。
-    </p>
-
-    <p>
-      直感で受け取ったすべての変化を、「今すぐ方向を変えるべき合図」として扱ってしまうことです。
-    </p>
-
-    <p>
-      お客様から一つの意見をもらった。<br>
-      別のテーマの投稿が多く読まれていた。<br>
-      新しい方法を勧める情報を見つけた。<br>
-      自分の中に少し違和感が出てきた。
-    </p>
-
-    <p>
-      どれも大切な情報です。
-    </p>
-
-    <p>
-      しかし、一つの情報だけで方向を変えると、今の方向が本当に合っていたのかを確かめる前に、次へ移ることになります。
-    </p>
-
-    <p>
-      あなたに必要なのは、直感を無視することではありません。
-    </p>
-
-    <p>
-      <strong>
-        直感を「すぐに従う指示」ではなく、「確かめる価値のある情報」として扱うことです。
-      </strong>
-    </p>
-
-    <p>
-      その3つを、一つの仕事を育てる力へ変えていきましょう。
+      方向を変えるサインか、今の方向を磨くヒントかを見分けられると、
+      一度選んだ方向をすぐ否定せずに、新しい兆しを今の仕事へ活かせます。
     </p>
   </article>
 
+  <!-- 06 -->
   <article class="result-block">
-    <h2>直感を前進へつなげる3つのコツ</h2>
+    <h2>動き出すための3つのコツ</h2>
 
     <p>
       あなたのタイプに合うコツは、次の3つです。
     </p>
 
-    <p>
-      <strong>1．新しい直感は、すぐに結論にせず言葉にする</strong>
-    </p>
+    <div class="tip-box">
+      <p class="tip-title">1．新しい直感は、すぐに結論にせず言葉にする</p>
 
-    <p>
-      「こちらの方が良いかもしれない」と感じたときは、すぐに方向を変える前に、
-    </p>
+      <p>
+        「こちらの方が良いかもしれない」と感じたときは、
+        すぐに方向を変える前に、
+      </p>
 
-    <ul>
-      <li>何を見てそう感じたのか</li>
-      <li>今の方向のどこが気になったのか</li>
-      <li>変えたら何が良くなりそうなのか</li>
-    </ul>
+      <ul>
+        <li>何を見てそう感じたのか</li>
+        <li>今の方向のどこが気になったのか</li>
+        <li>変えたら何が良くなりそうなのか</li>
+      </ul>
 
-    <p>
-      を書き出してください。
-    </p>
+      <p>
+        を書き出してください。
+        たとえば、「別のテーマの方が良い気がする」だけではなく、
+        「お客様の質問を聞いて、今のテーマよりも悩みに近いと感じた」
+        というところまで言葉にします。
+      </p>
 
-    <p>
-      たとえば、
-    </p>
+      <p>
+        直感のきっかけが分かると、方向全体を変える必要があるのか、
+        一部を整えればよいのかを判断しやすくなります。
+      </p>
+    </div>
 
-    <p>
-      「別のテーマの方が良い気がする」
-    </p>
+    <div class="tip-box">
+      <p class="tip-title">2．方向を見直す日を先に決める</p>
 
-    <p>
-      だけではなく、
-    </p>
+      <p>
+        新しい情報が入るたびに判断し直すと、今の方向を育てる時間がなくなります。
+        そこで、始めるときに、
+      </p>
 
-    <p>
-      「お客様の質問を聞いて、今のテーマよりも悩みに近いと感じた」
-    </p>
+      <ul>
+        <li>2週間後に見直す</li>
+        <li>投稿を5本出したあとに判断する</li>
+        <li>3人へ案内したあとに振り返る</li>
+      </ul>
 
-    <p>
-      というところまで言葉にします。
-    </p>
+      <p>
+        というように、見直すタイミングを決めておきましょう。
+        途中で別の案が浮かんでも、メモに残し、決めた日までは今の方向を続けます。
+      </p>
 
-    <p>
-      直感のきっかけが分かると、方向全体を変える必要があるのか、一部を整えればよいのかを判断しやすくなります。
-    </p>
+      <p>
+        見直す日を決めることは、直感を無視することではありません。
+        その直感が一時的な反応なのか、何度も現れる大切なサインなのかを
+        確かめるための時間を作ることです。
+      </p>
+    </div>
 
-    <p>
-      <strong>2．方向を見直す日を先に決める</strong>
-    </p>
+    <div class="tip-box">
+      <p class="tip-title">3．「方向転換」と「今の方向の調整」を分ける</p>
 
-    <p>
-      新しい情報が入るたびに判断し直すと、今の方向を育てる時間がなくなります。
-    </p>
+      <p>
+        何か違和感が出たとき、仕事全体を変える必要があるとは限りません。
+        どの範囲の変化が必要なのかを確認しましょう。
+      </p>
 
-    <p>
-      そこで、始めるときに、
-    </p>
+      <ul>
+        <li>届ける相手を変えるのか</li>
+        <li>伝え方だけを変えるのか</li>
+        <li>サービスの一部を整えるのか</li>
+        <li>方向そのものを変えるのか</li>
+      </ul>
 
-    <ul>
-      <li>2週間後に見直す</li>
-      <li>投稿を5本出したあとに判断する</li>
-      <li>3人へ案内したあとに振り返る</li>
-    </ul>
+      <p>
+        たとえば、発信の反応が弱い場合でも、
+        テーマを変える前に、タイトルや具体例だけを整えられるかもしれません。
+        お客様の一言が気になった場合も、
+        サービス全体ではなく、説明の一部を加えるだけで済むかもしれません。
+      </p>
 
-    <p>
-      というように、見直すタイミングを決めておきましょう。
-    </p>
-
-    <p>
-      途中で別の案が浮かんでも、メモに残し、決めた日までは今の方向を続けます。
-    </p>
-
-    <p>
-      見直す日を決めることは、直感を無視することではありません。
-    </p>
-
-    <p>
-      その直感が一時的な反応なのか、何度も現れる大切なサインなのかを確かめるための時間を作ることです。
-    </p>
-
-    <p>
-      <strong>3．「方向転換」と「今の方向の調整」を分ける</strong>
-    </p>
-
-    <p>
-      何か違和感が出たとき、仕事全体を変える必要があるとは限りません。
-    </p>
-
-    <p>
-      届ける相手を変えるのか。
-    </p>
-
-    <p>
-      伝え方だけを変えるのか。
-    </p>
-
-    <p>
-      サービスの一部を整えるのか。
-    </p>
-
-    <p>
-      方向そのものを変えるのか。
-    </p>
-
-    <p>
-      どの範囲の変化が必要なのかを確認しましょう。
-    </p>
-
-    <p>
-      たとえば、発信の反応が弱い場合でも、テーマを変える前に、タイトルや具体例だけを整えられるかもしれません。
-    </p>
-
-    <p>
-      お客様の一言が気になった場合も、サービス全体ではなく、説明の一部を加えるだけで済むかもしれません。
-    </p>
-
-    <p>
-      新しい流れを感じたときに、すぐ別の道へ移るのではなく、今の方向へ取り入れられないかを見る。
-    </p>
-
-    <p>
-      そうすることで、直感を活かしながら、これまでの積み上げも残せるようになります。
-    </p>
+      <p>
+        新しい流れを感じたときに、すぐ別の道へ移るのではなく、
+        今の方向へ取り入れられないかを見る。
+        そうすることで、直感を活かしながら、これまでの積み上げも残せるようになります。
+      </p>
+    </div>
   </article>
 
+  <!-- 07 -->
   <article class="result-block">
     <h2>あなたの強みの活かし方</h2>
 
     <p>
       あなたには、じっくり考える力があります。
-    </p>
-
-    <p>
-      変化のタイミングを感じ取る力があります。
-    </p>
-
-    <p>
-      納得した方向へ踏み出し、現実を変える力があります。
-    </p>
-
-    <p>
+      変化のタイミングを感じ取る力も、
+      納得した方向へ踏み出し、現実を変える力もあります。
       大切なのは、新しい兆しを感じるたびに進路そのものを変えないことです。
     </p>
 
     <p>
       まず、感じたことを言葉にする。
-    </p>
-
-    <p>
       今の方向へ取り入れられないかを確かめる。
-    </p>
-
-    <p>
       決めた時期までは進んでみる。
-    </p>
-
-    <p>
       そのうえで、現実の結果と直感の両方を使って見直す。
     </p>
 
     <p>
-      この流れなら、あなたの直感は、迷いを増やすものではなく、自分らしい道を育てる力として働き始めます。
+      この流れなら、あなたの直感は、迷いを増やすものではなく、
+      自分らしい道を育てる力として働き始めます。
     </p>
   </article>
 
-  <article class="result-block result-block--final">
+  <!-- 08 -->
+  <article class="result-block result-block--action">
     <h2>今日からできる最初の一歩</h2>
 
     <p>
-      今進めている仕事や発信を一つ選び、次の3つを書き出してください。
+      今進めている仕事や発信を1つ選び、
+      次の3つを書き出してください。
     </p>
 
     <ul>
-      <li>この方向を選んだ理由</li>
-      <li>最近感じた新しい兆しや違和感</li>
-      <li>次に方向を見直す日、または回数</li>
+      <li>この方向を選んだ理由(例:今のお客様から同じ相談を何度も受けたから)</li>
+      <li>最近感じた新しい兆しや違和感(例:別のテーマにも反応があった)</li>
+      <li>次に方向を見直す日、または回数(例:今のテーマで5本発信したあと)</li>
     </ul>
 
     <p>
-      たとえば、
-    </p>
-
-    <p>
-      選んだ理由：今のお客様から同じ相談を何度も受けたから
-    </p>
-
-    <p>
-      新しい兆し：別のテーマにも反応があった
-    </p>
-
-    <p>
-      見直す時期：今のテーマで5本発信したあと
-    </p>
-
-    <p>
-      という形です。
-    </p>
-
-    <p>
       新しい流れを感じても、すぐに今の選択を否定する必要はありません。
-    </p>
-
-    <p>
       まずは言葉にして残し、決めたところまで進んだあとに、改めて確かめてください。
     </p>
+  </article>
+
+  <!-- 09 -->
+  <article class="result-block result-block--newsletter">
+    <h2>このあとも、少しずつお届けします</h2>
 
     <p>
       今回お伝えしたのは、
@@ -379,27 +748,87 @@
     </p>
 
     <p>
-      これから、少しずつ、
-      手相の観点から見た強みを活かすコツを
-      お伝えしていきますね。
+      このあと、まず数通のステップメールで、
+      手相の観点から見た強みの活かし方や、
+      思考のクセに気づくヒント、
+      仕事で一歩を進めるための考え方をお届けします。
     </p>
 
     <p>
-      落ち着いたら、
-      週に1度程度の頻度で
-      配信していく予定です。
+      その後は、週に1回程度、
+      自分の強みや進み方を整理するためのメルマガを
+      お届けしていきます。
     </p>
 
     <p>
-      こちらの配信が、
-      あなたのお役に立てたら幸いです^^
+      「自分の強みを、どう仕事に活かせばいいのか」<br>
+      「この方向で進んでいいのか」
     </p>
 
     <p>
-      もし、ご自身の状況に合わせてもっと深く知りたくなったときは、
-      個別の診断でも詳しくお伝えできますので、
-      その時はぜひ覗いてみてください。
+      そんなときに、
+      少し立ち止まって自分を整理するための読みものとして、
+      お役に立てたらうれしいです。
     </p>
   </article>
 
+  <!-- 10 -->
+  <article class="result-block result-block--service">
+    <h2>もっと自分に合わせて深く知りたい方へ</h2>
+
+    <p class="service-lead">
+      「タイプとしての傾向」だけでなく、
+      あなた自身の手相から、もっと具体的に整理したい場合は、
+      手相プロファイリングで詳しくお伝えしています。
+    </p>
+
+    <p>
+      手相プロファイリングでは、
+      両手の手相をもとに、
+      あなたの強みや思考のクセ、
+      止まりやすい理由、
+      そして今後の進み方まで一緒に整理します。
+    </p>
+
+    <ul class="service-points">
+      <li>自分では気づきにくい強みを言葉にする</li>
+      <li>その強みを仕事でどう活かすかを整理する</li>
+      <li>今の自分に合った、次の一歩を具体的にする</li>
+    </ul>
+
+    <p>
+      必要になったタイミングで、
+      「もう少し自分のことを深く見てみたい」と思ったら、
+      手相プロファイリングも覗いてみてください。
+    </p>
+
+    <div style="display:flex; justify-content:center; margin-top:24px;">
+      <a
+        href="https://q0gsv.hp.peraichi.com"
+        target="_blank"
+        rel="noopener noreferrer"
+        style="
+          display:inline-flex;
+          align-items:center;
+          justify-content:center;
+          padding:14px 22px;
+          background:#f28c45;
+          color:#ffffff;
+          text-decoration:none;
+          border-radius:10px;
+          font-size:16px;
+          font-weight:700;
+          line-height:1.5;
+          text-align:center;
+        "
+      >
+        手相プロファイリングの詳細を見る
+      </a>
+    </div>
+  </article>
+
+
 </section>
+  </main>
+</body>
+</html>
