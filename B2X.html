@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>詳しい診断結果｜才能コンパス診断</title>
+<style>
+    /* ========================================
+       B2X 診断結果
+       登録後・完全版
+    ======================================== */
+
+    .result-detail--visual {
+      max-width: 720px;
+      margin: 0 auto;
+      color: #24313a;
+      line-height: 1.8;
+    }
+
+    .diagnosis-result-fv {
+      margin: 0 0 28px;
+      padding: 0;
+    }
+
+    .diagnosis-result-fv img {
+      display: block;
+      width: 100%;
+      height: auto;
+      margin: 0 auto;
+    }
+
+    .result-detail--visual .result-block {
+      margin: 0 16px 28px;
+      padding: 26px 20px;
+      background: #ffffff;
+      border: 1px solid #dcecf5;
+      border-radius: 18px;
+      box-sizing: border-box;
+    }
+
+    .result-detail--visual .result-block h2 {
+      margin: 0 0 18px;
+      color: #083f5c;
+      font-size: 22px;
+      line-height: 1.45;
+      text-align: left;
+    }
+
+    .result-detail--visual .result-block p {
+      margin: 0 0 16px;
+      font-size: 16px;
+      line-height: 1.9;
+    }
+
+    .result-detail--visual .result-block p:last-child {
+      margin-bottom: 0;
+    }
+
+    .result-detail--visual .result-block ul {
+      margin: 0 0 18px;
+      padding-left: 1.4em;
+    }
+
+    .result-detail--visual .result-block li {
+      margin: 0 0 8px;
+      font-size: 16px;
+      line-height: 1.8;
+    }
+
+    .type-keywords {
+      margin: 0 0 20px;
+      font-size: 20px;
+      font-weight: 700;
+      color: #1f6fb2;
+      letter-spacing: 0.04em;
+      text-align: center;
+    }
+
+    .type-point-list {
+      display: grid;
+      gap: 11px;
+      margin: 0;
+    }
+
+    .type-point {
+      position: relative;
+      padding: 14px 14px 14px 43px;
+      background: #f8fcff;
+      border-radius: 12px;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .type-point::before {
+      content: "✓";
+      position: absolute;
+      left: 16px;
+      top: 14px;
+      color: #1f6fb2;
+      font-weight: 700;
+    }
+
+    .talent-scene-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    .talent-scene-card {
+      padding: 18px;
+      border-radius: 14px;
+      background: #eef7ff;
+      border: 1px solid #cfe3f1;
+    }
+
+    .talent-scene-card strong {
+      display: block;
+      margin-bottom: 8px;
+      color: #083f5c;
+      font-size: 17px;
+      line-height: 1.5;
+    }
+
+    .talent-scene-card p {
+      margin: 0 !important;
+    }
+
+    .loop-intro {
+      font-weight: 700;
+      color: #314958;
+    }
+
+    .diagnosis-loop {
+      margin: 20px 0;
+    }
+
+    .loop-step {
+      padding: 15px 14px;
+      background: #f8fcff;
+      border: 1px solid #cfe6f3;
+      border-radius: 12px;
+      text-align: center;
+      font-size: 16px;
+      font-weight: 700;
+      color: #083f5c;
+    }
+
+    .loop-arrow {
+      height: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #6f8798;
+      font-size: 24px;
+      font-weight: 700;
+    }
+
+    .loop-step--last {
+      background: #fff5f2;
+      border-color: #f2c9bf;
+      color: #9b4d3b;
+    }
+
+    .loop-doubt {
+      margin: 4px 0 18px;
+      padding: 12px 16px;
+      background: #f8fcff;
+      border-left: 3px solid #7893a3;
+      font-size: 15px;
+      font-style: italic;
+      color: #4a5d68;
+      line-height: 1.7;
+    }
+
+    .result-block--risk {
+      background: #fffaf7 !important;
+      border-color: #f1d9cf !important;
+    }
+
+    .risk-items {
+      display: grid;
+      gap: 10px;
+    }
+
+    .risk-item {
+      position: relative;
+      padding: 13px 14px 13px 40px;
+      background: #ffffff;
+      border: 1px solid #f0ddd5;
+      border-radius: 11px;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .risk-item::before {
+      content: "●";
+      position: absolute;
+      left: 17px;
+      top: 15px;
+      color: #d98670;
+      font-size: 10px;
+    }
+
+    .result-block--key {
+      background: #eef7ff !important;
+      border-color: #bddcec !important;
+    }
+
+    .unspoken-worry {
+      margin: 0 0 22px;
+      padding: 18px 18px;
+      background: #fdf6f3;
+      border: 1px dashed #e3b8a8;
+      border-radius: 14px;
+      font-size: 15px;
+      font-style: italic;
+      color: #6b5347;
+      text-align: center;
+      line-height: 1.8;
+    }
+
+    .key-message {
+      margin: 18px 0 !important;
+      padding: 18px 16px;
+      background: #ffffff;
+      border: 1px solid #dcecf5;
+      border-radius: 8px;
+      font-size: 18px !important;
+      font-weight: 700;
+      color: #083f5c;
+      text-align: center;
+      line-height: 1.7;
+    }
+
+    .key-message-line {
+      display: block;
+    }
+
+    .tip-box {
+      margin: 0 0 18px;
+      padding: 18px 16px;
+      background: #f8fcff;
+      border: 1px solid #dcecf5;
+      border-radius: 12px;
+    }
+
+    .tip-box:last-child {
+      margin-bottom: 0;
+    }
+
+    .tip-title {
+      margin: 0 0 12px !important;
+      color: #083f5c;
+      font-size: 17px !important;
+      font-weight: 700;
+      line-height: 1.6 !important;
+    }
+
+    .result-block--action {
+      background: #f7fbfd !important;
+      border-color: #cfe3f1 !important;
+    }
+
+    .result-block--newsletter {
+      background: #fffdf8 !important;
+      border-color: #eadfca !important;
+    }
+
+    .result-block--service {
+      background: #f4f9fc !important;
+      border-color: #cfe3f1 !important;
+    }
+
+    .service-lead {
+      font-weight: 700;
+      color: #083f5c;
+    }
+
+    .service-points {
+      margin-top: 6px !important;
+    }
+
+    @media (max-width: 600px) {
+      .result-detail--visual .result-block {
+        margin-left: 14px;
+        margin-right: 14px;
+        padding: 23px 17px;
+      }
+
+      .result-detail--visual .result-block h2 {
+        font-size: 21px;
+      }
+
+      .type-keywords {
+        font-size: 19px;
+      }
+
+      .talent-scene-card strong,
+      .tip-title {
+        font-size: 17px !important;
+      }
+
+      .key-message {
+        font-size: 17px !important;
+        padding: 16px 14px;
+      }
+    }
+
+
+    /* ===== 登録後・単独ページ用 ===== */
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      background: #eef8ff;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background: #eef8ff;
+      color: #24313a;
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Kaku Gothic ProN", "Yu Gothic", "Meiryo", sans-serif;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    .page-header {
+      width: 100%;
+      background: #ffffff;
+      border-bottom: 1px solid #e4edf3;
+    }
+
+    .page-header-inner {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 18px 18px 16px;
+      color: #111111;
+      font-size: 17px;
+      font-weight: 700;
+      line-height: 1.45;
+    }
+
+    .page-main {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 18px 0 10px;
+    }
+
+    .page-footer {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 38px 18px 48px;
+      color: #58758c;
+      font-size: 14px;
+      text-align: center;
+      line-height: 1.7;
+    }
+
+    .diagnosis-result-fv {
+      margin-left: 14px;
+      margin-right: 14px;
+      overflow: hidden;
+      border-radius: 18px;
+      background: #ffffff;
+      border: 1px solid #dcecf5;
+      box-shadow: 0 3px 14px rgba(44, 103, 142, 0.08);
+    }
+
+    .diagnosis-result-fv img {
+      border-radius: 18px;
+    }
+
+    @media (max-width: 600px) {
+      .page-header-inner {
+        padding: 16px 18px 14px;
+        font-size: 16px;
+      }
+
+      .page-main {
+        padding-top: 12px;
+      }
+
+      .page-footer {
+        padding-top: 30px;
+        font-size: 13px;
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+  <header class="page-header">
+    <div class="page-header-inner">詳しい診断結果｜才能コンパス診断</div>
+  </header>
+
+  <main class="page-main">
+<section class="result-detail result-detail--visual" data-diagnosis-code="B2X">
+<!-- FV -->
+  <div class="diagnosis-result-fv">
+    <img
+      src="https://kiro-palmreading.github.io/tesou-shindan/meta-fv-results/B2X.png"
+      alt="才能コンパス診断 反応を見ながら整えるプランナー"
+      loading="eager"
+      fetchpriority="high"
+    >
+  </div>
+
+  <!-- 01 -->
+  <article class="result-block">
+    <h2>あなたには、こんな3つの強みがあります</h2>
+
+    <div class="type-keywords">
+      行動 × 共感 × 論理
+    </div>
+
+    <div class="type-point-list">
+      <div class="type-point">
+        考え続けるより、
+        <strong>まず試して現実の反応を確かめられる</strong>
+      </div>
+
+      <div class="type-point">
+        数字だけでなく、
+        <strong>相手の言葉や表情の小さな変化にも気づける</strong>
+      </div>
+
+      <div class="type-point">
+        気づいた問題を整理し、
+        <strong>すぐに改善へつなげられる</strong>
+      </div>
+    </div>
+  </article>
+
+  <!-- 02 -->
+  <article class="result-block">
+    <h2>こんな場面で強みが出ます</h2>
+
+    <div class="talent-scene-grid">
+      <div class="talent-scene-card">
+        <strong>🚀 まず試してみるとき</strong>
+        <p>
+          最初から完璧に決めなくても、
+          実際に発信したり案内したりして、
+          現実から答えを集められます。
+        </p>
+      </div>
+
+      <div class="talent-scene-card">
+        <strong>👀 相手の反応を見るとき</strong>
+        <p>
+          質問された場所や、
+          少し迷った表情などから、
+          どこを整えるとよいか気づけます。
+        </p>
+      </div>
+
+      <div class="talent-scene-card">
+        <strong>🛠️ 改善するとき</strong>
+        <p>
+          「では、何を変えればよいだろう」と整理し、
+          分かりやすく、使いやすい形へ
+          すぐ修正できます。
+        </p>
+      </div>
+    </div>
+  </article>
+
+  <!-- 03 -->
+  <article class="result-block">
+    <h2>今、こんなループに入っていませんか？</h2>
+
+    <p class="loop-intro">
+      よりよくしようとしているだけなのに……
+    </p>
+
+    <div class="diagnosis-loop">
+      <div class="loop-step">
+        まず試してみる
+      </div>
+
+      <div class="loop-arrow">↓</div>
+
+      <div class="loop-step">
+        少し気になる反応を見つける
+      </div>
+
+      <div class="loop-arrow">↓</div>
+
+      <div class="loop-step">
+        すぐに改善案を考える
+      </div>
+
+      <div class="loop-arrow">↓</div>
+
+      <div class="loop-step loop-step--last">
+        気づけば、土台まで変わっている
+      </div>
+    </div>
+
+    <p>
+      あなたは、止まっているわけではありません。
+      むしろ、<strong>かなり動き、かなり改善しています。</strong>
+      投稿の反応が少なければ言葉を変え、それでも気になるとテーマや見せ方も見直す。
+      お客様から1つ質問があれば説明を修正し、
+      別の意見が入ればサービスの内容も考え直す。
+    </p>
+
+    <p>
+      最初は小さな修正だったはずなのに、気づけば大工事。
+      <strong>「そこまで工事する予定でしたっけ？」</strong>
+      と、自分で自分に聞きたくなることもあるかもしれません。
+    </p>
+
+    <p class="loop-doubt">
+      この反応は、方向を変えるサインなのか、
+      ただの小さな揺れなのか——
+      その見分けが、なかなかつかない。
+    </p>
+  </article>
+
+  <!-- 04 -->
+  <article class="result-block result-block--risk">
+    <h2>この状態が続くと…</h2>
+
+    <div class="risk-items">
+      <div class="risk-item">
+        反応が少ないたびに、
+        発信のテーマや方向まで変えやすくなる
+      </div>
+
+      <div class="risk-item">
+        お客様の声を受け取るたびに、
+        サービス全体を組み直したくなる
+      </div>
+    </div>
+  </article>
+
+  <!-- 05 -->
+  <article class="result-block result-block--key">
+    <p class="unspoken-worry">
+      「こんなに改善しているのに、
+      どうして積み上がっている感じがしないんだろう」
+    </p>
+
+    <h2>でも、問題は「改善すること」ではありません</h2>
+
+    <p>
+      ご安心ください。
+      反応を見るたびに、すぐ改善したくなるのには、
+      ちゃんと理由があります。
+    </p>
+
+    <p>
+      それは、3つの特徴が順番に働くためです。
+    </p>
+
+    <p>
+      まず、<strong>行動力</strong>。
+      頭の中だけで考え続けるより、
+      実際に発信する、案内する、試してみることで答えを見つけようとします。
+      そのため、人より早く現実の反応を受け取れます。
+    </p>
+
+    <p>
+      次に、<strong>共感力</strong>。
+      反応の数だけでなく、言葉の調子や質問の内容、
+      少し迷った表情などにも気づきます。
+      反応が弱ければ、「喜んでもらえなかったのかもしれない」と
+      感じやすいところがあります。
+    </p>
+
+    <p>
+      そして、<strong>論理的な改善力</strong>。
+      気になる反応を見つけると、
+      「原因はどこだろう」「何を変えれば、もっとよくなるだろう」と考え、
+      すぐに修正へ移ります。
+    </p>
+
+    <p>
+      この流れそのものは、仕事を育てるうえで大きな強みです。
+      ただし、反応がまだ少ない段階で原因を決めつけると、
+      本当に改善が必要なのか、たまたま反応が少なかっただけなのかを
+      見分けられません。
+      1つの投稿への反応、1人からの意見、1度試した結果。
+      それだけをもとに全体を変えると、改善するたびに前提が変わり、
+      何がよかったのかも分からなくなってしまうのです。
+    </p>
+
+    <p>
+      あなたに必要なのは、
+      改善を減らすことではありません。
+    </p>
+
+    <p class="key-message">
+      <span class="key-message-line">反応を受け取ってから変更するまでの間に、</span>
+      <span class="key-message-line">判断するための基準を</span>
+      <span class="key-message-line">置くことです。</span>
+    </p>
+
+    <p>
+      変えない部分を残しながら必要なところだけ改善できるようになると、
+      相手の声を活かしながら、今の仕事を育てていけます。
+    </p>
+  </article>
+
+  <!-- 06 -->
+  <article class="result-block">
+    <h2>動き出すための3つのコツ</h2>
+
+    <p>
+      あなたのタイプに合うコツは、次の3つです。
+    </p>
+
+    <div class="tip-box">
+      <p class="tip-title">1．「変えない土台」と「変えてよい部分」を先に決める</p>
+
+      <p>
+        改善を始める前に、今回の仕事で変えないものを決めてください。
+        たとえば、
+      </p>
+
+      <ul>
+        <li>誰に届けたいのか</li>
+        <li>どんな悩みを解決したいのか</li>
+        <li>何を受け取ってほしいのか</li>
+      </ul>
+
+      <p>
+        この3つが変わらないなら、言葉や画像、説明の順番を変えても、
+        方向性そのものは変わっていません。
+        反対に、この3つまで一緒に変えると、
+        それは改善ではなく、別の仕事を始めることになります。
+      </p>
+
+      <p>
+        最初に「今回は、この土台だけは変えない」と決めておきましょう。
+        土台を残したまま調整すれば、
+        これまでの積み上げを失わずに改善できます。
+      </p>
+    </div>
+
+    <div class="tip-box">
+      <p class="tip-title">2．「実際に起きたこと」と「自分の解釈」を分ける</p>
+
+      <p>
+        反応が気になったときは、すぐに方法を変える前に、
+        「実際に起きたこと」と「そこから自分が考えたこと」を
+        分けて書き出してください。
+      </p>
+
+      <ul>
+        <li><strong>起きたこと：</strong>発信への反応が、いつもより少なかった<br><strong>解釈：</strong>このテーマは求められていない</li>
+        <li><strong>起きたこと：</strong>お客様から、説明について質問された<br><strong>解釈：</strong>サービス全体が分かりにくい</li>
+      </ul>
+
+      <p>
+        共感力が高いあなたは、小さな反応から相手の気持ちを深く読み取れます。
+        ただし、読み取ったものが、いつも相手の本音と一致するとは限りません。
+        事実と解釈を分けるだけで、
+        「全部を変えなければ」という焦りが少し落ち着きます。
+      </p>
+
+      <p>
+        必要であれば、「どこが分かりにくかったですか？」
+        「どんな内容を期待していましたか？」と、
+        実際に相手へ確かめてから改善しましょう。
+        想像した反応ではなく、受け取った事実を材料にすることで、
+        あなたの共感力がより正確に活かされます。
+      </p>
+    </div>
+
+    <div class="tip-box">
+      <p class="tip-title">3．1度に変えるのは1か所だけにする</p>
+
+      <p>
+        あなたは問題点に気づくと、いくつもの改善案が一度に浮かびます。
+        しかし、全部を同時に変えると、
+        どの変更が結果につながったのか分かりません。そこで、
+      </p>
+
+      <ul>
+        <li>今回は、タイトルだけ変える</li>
+        <li>今回は、サービス説明の順番だけ変える</li>
+        <li>今回は、申し込み前の案内だけ変える</li>
+      </ul>
+
+      <p>
+        というように、1度に変える場所を1つに絞ってください。
+        そして、「このテーマで5回発信する」「この案内を3人に届ける」
+        「この方法を2週間試す」など、判断するための回数や期間も先に決めます。
+      </p>
+
+      <p>
+        その途中で別の改善案が浮かんだら、今すぐ変更せず、
+        「次に試す候補」としてメモに置いておきます。
+        改善案を捨てる必要はありません。少しだけ、順番を待ってもらうのです。
+      </p>
+
+      <p>
+        1つ変える。<br>
+        決めたところまで試す。<br>
+        反応を見る。<br>
+        その結果をもとに、次の1つを変える。
+      </p>
+
+      <p>
+        この流れなら、あなたの行動力も共感力も、
+        成果につながる改善力として働きます。
+      </p>
+    </div>
+  </article>
+
+  <!-- 07 -->
+  <article class="result-block">
+    <h2>あなたの強みの活かし方</h2>
+
+    <p>
+      あなたは、反応を気にせず、
+      自分のやり方を押し通す人になる必要はありません。
+      相手の声を受け取り、すぐに動けることは、あなたの大きな強みです。
+    </p>
+
+    <p>
+      ただ、すべての反応を「方向転換の指示」にしなくて大丈夫です。
+      反応は、今の仕事を捨てるためのものではなく、
+      どこを整えれば、もっと届く形になるのかを教えてくれる材料です。
+    </p>
+
+    <p>
+      土台を残す。事実を確かめる。1か所ずつ改善する。
+      この順番を持つことで、「また別の方法を試している」という忙しさが、
+      「今の仕事が少しずつ育っている」という手応えに変わっていきます。
+    </p>
+  </article>
+
+  <!-- 08 -->
+  <article class="result-block result-block--action">
+    <h2>今日からできる最初の一歩</h2>
+
+    <p>
+      今、反応が気になって見直している仕事を1つ選び、
+      メモに次の3つを書いてください。
+    </p>
+
+    <ul>
+      <li>今回、変えない土台</li>
+      <li>実際に起きた反応</li>
+      <li>今回だけ変える1か所</li>
+    </ul>
+
+    <p>
+      変更する場所を1つ決めたら、
+      それ以外の改善案は「次に試す候補」へ移します。
+      そして、土台は変えず、その1か所だけを整えて、
+      もう一度届けてみましょう。
+    </p>
+  </article>
+
+  <!-- 09 -->
+  <article class="result-block result-block--newsletter">
+    <h2>このあとも、少しずつお届けします</h2>
+
+    <p>
+      今回お伝えしたのは、
+      あなたの手に表れている特徴の一部です。
+    </p>
+
+    <p>
+      このあと、まず数通のステップメールで、
+      手相の観点から見た強みの活かし方や、
+      思考のクセに気づくヒント、
+      仕事で一歩を進めるための考え方をお届けします。
+    </p>
+
+    <p>
+      その後は、週に1回程度、
+      自分の強みや進み方を整理するためのメルマガを
+      お届けしていきます。
+    </p>
+
+    <p>
+      「自分の強みを、どう仕事に活かせばいいのか」<br>
+      「この方向で進んでいいのか」
+    </p>
+
+    <p>
+      そんなときに、
+      少し立ち止まって自分を整理するための読みものとして、
+      お役に立てたらうれしいです。
+    </p>
+  </article>
+
+  <!-- 10 -->
+  <article class="result-block result-block--service">
+    <h2>もっと自分に合わせて深く知りたい方へ</h2>
+
+    <p class="service-lead">
+      「タイプとしての傾向」だけでなく、
+      あなた自身の手相から、もっと具体的に整理したい場合は、
+      手相プロファイリングで詳しくお伝えしています。
+    </p>
+
+    <p>
+      手相プロファイリングでは、
+      両手の手相をもとに、
+      あなたの強みや思考のクセ、
+      止まりやすい理由、
+      そして今後の進み方まで一緒に整理します。
+    </p>
+
+    <ul class="service-points">
+      <li>自分では気づきにくい強みを言葉にする</li>
+      <li>その強みを仕事でどう活かすかを整理する</li>
+      <li>今の自分に合った、次の一歩を具体的にする</li>
+    </ul>
+
+    <p>
+      必要になったタイミングで、
+      「もう少し自分のことを深く見てみたい」と思ったら、
+      手相プロファイリングも覗いてみてください。
+    </p>
+
+    <div style="display:flex; justify-content:center; margin-top:24px;">
+      <a
+        href="https://q0gsv.hp.peraichi.com"
+        target="_blank"
+        rel="noopener noreferrer"
+        style="
+          display:inline-flex;
+          align-items:center;
+          justify-content:center;
+          padding:14px 22px;
+          background:#f28c45;
+          color:#ffffff;
+          text-decoration:none;
+          border-radius:10px;
+          font-size:16px;
+          font-weight:700;
+          line-height:1.5;
+          text-align:center;
+        "
+      >
+        手相プロファイリングの詳細を見る
+      </a>
+    </div>
+  </article>
+
+
+</section>
+  </main>
+</body>
+</html>

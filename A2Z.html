@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>詳しい診断結果｜才能コンパス診断</title>
+<style>
+    /* ========================================
+       A2Z 診断結果
+       登録後・完全版
+    ======================================== */
+
+    .result-detail--visual {
+      max-width: 720px;
+      margin: 0 auto;
+      color: #24313a;
+      line-height: 1.8;
+    }
+
+    .diagnosis-result-fv {
+      margin: 0 0 28px;
+      padding: 0;
+    }
+
+    .diagnosis-result-fv img {
+      display: block;
+      width: 100%;
+      height: auto;
+      margin: 0 auto;
+    }
+
+    .result-detail--visual .result-block {
+      margin: 0 16px 28px;
+      padding: 26px 20px;
+      background: #ffffff;
+      border: 1px solid #dcecf5;
+      border-radius: 18px;
+      box-sizing: border-box;
+    }
+
+    .result-detail--visual .result-block h2 {
+      margin: 0 0 18px;
+      color: #083f5c;
+      font-size: 22px;
+      line-height: 1.45;
+      text-align: left;
+    }
+
+    .result-detail--visual .result-block p {
+      margin: 0 0 16px;
+      font-size: 16px;
+      line-height: 1.9;
+    }
+
+    .result-detail--visual .result-block p:last-child {
+      margin-bottom: 0;
+    }
+
+    .result-detail--visual .result-block ul {
+      margin: 0 0 18px;
+      padding-left: 1.4em;
+    }
+
+    .result-detail--visual .result-block li {
+      margin: 0 0 8px;
+      font-size: 16px;
+      line-height: 1.8;
+    }
+
+    .type-keywords {
+      margin: 0 0 20px;
+      font-size: 20px;
+      font-weight: 700;
+      color: #1f6fb2;
+      letter-spacing: 0.04em;
+      text-align: center;
+    }
+
+    .type-point-list {
+      display: grid;
+      gap: 11px;
+      margin: 0;
+    }
+
+    .type-point {
+      position: relative;
+      padding: 14px 14px 14px 43px;
+      background: #f8fcff;
+      border-radius: 12px;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .type-point::before {
+      content: "✓";
+      position: absolute;
+      left: 16px;
+      top: 14px;
+      color: #1f6fb2;
+      font-weight: 700;
+    }
+
+    .talent-scene-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    .talent-scene-card {
+      padding: 18px;
+      border-radius: 14px;
+      background: #eef7ff;
+      border: 1px solid #cfe3f1;
+    }
+
+    .talent-scene-card strong {
+      display: block;
+      margin-bottom: 8px;
+      color: #083f5c;
+      font-size: 17px;
+      line-height: 1.5;
+    }
+
+    .talent-scene-card p {
+      margin: 0 !important;
+    }
+
+    .loop-intro {
+      font-weight: 700;
+      color: #314958;
+    }
+
+    .diagnosis-loop {
+      margin: 20px 0;
+    }
+
+    .loop-step {
+      padding: 15px 14px;
+      background: #f8fcff;
+      border: 1px solid #cfe6f3;
+      border-radius: 12px;
+      text-align: center;
+      font-size: 16px;
+      font-weight: 700;
+      color: #083f5c;
+    }
+
+    .loop-arrow {
+      height: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #6f8798;
+      font-size: 24px;
+      font-weight: 700;
+    }
+
+    .loop-step--last {
+      background: #fff5f2;
+      border-color: #f2c9bf;
+      color: #9b4d3b;
+    }
+
+    .loop-doubt {
+      margin: 4px 0 18px;
+      padding: 12px 16px;
+      background: #f8fcff;
+      border-left: 3px solid #7893a3;
+      font-size: 15px;
+      font-style: italic;
+      color: #4a5d68;
+      line-height: 1.7;
+    }
+
+    .result-block--risk {
+      background: #fffaf7 !important;
+      border-color: #f1d9cf !important;
+    }
+
+    .risk-items {
+      display: grid;
+      gap: 10px;
+    }
+
+    .risk-item {
+      position: relative;
+      padding: 13px 14px 13px 40px;
+      background: #ffffff;
+      border: 1px solid #f0ddd5;
+      border-radius: 11px;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .risk-item::before {
+      content: "●";
+      position: absolute;
+      left: 17px;
+      top: 15px;
+      color: #d98670;
+      font-size: 10px;
+    }
+
+    .result-block--key {
+      background: #eef7ff !important;
+      border-color: #bddcec !important;
+    }
+
+    .unspoken-worry {
+      margin: 0 0 22px;
+      padding: 18px 18px;
+      background: #fdf6f3;
+      border: 1px dashed #e3b8a8;
+      border-radius: 14px;
+      font-size: 15px;
+      font-style: italic;
+      color: #6b5347;
+      text-align: center;
+      line-height: 1.8;
+    }
+
+    .key-message {
+      margin: 18px 0 !important;
+      padding: 18px 16px;
+      background: #ffffff;
+      border: 1px solid #dcecf5;
+      border-radius: 8px;
+      font-size: 18px !important;
+      font-weight: 700;
+      color: #083f5c;
+      text-align: center;
+      line-height: 1.7;
+    }
+
+    .key-message-line {
+      display: block;
+    }
+
+    .tip-box {
+      margin: 0 0 18px;
+      padding: 18px 16px;
+      background: #f8fcff;
+      border: 1px solid #dcecf5;
+      border-radius: 12px;
+    }
+
+    .tip-box:last-child {
+      margin-bottom: 0;
+    }
+
+    .tip-title {
+      margin: 0 0 12px !important;
+      color: #083f5c;
+      font-size: 17px !important;
+      font-weight: 700;
+      line-height: 1.6 !important;
+    }
+
+    .result-block--action {
+      background: #f7fbfd !important;
+      border-color: #cfe3f1 !important;
+    }
+
+    .result-block--newsletter {
+      background: #fffdf8 !important;
+      border-color: #eadfca !important;
+    }
+
+    .result-block--service {
+      background: #f4f9fc !important;
+      border-color: #cfe3f1 !important;
+    }
+
+    .service-lead {
+      font-weight: 700;
+      color: #083f5c;
+    }
+
+    .service-points {
+      margin-top: 6px !important;
+    }
+
+    @media (max-width: 600px) {
+      .result-detail--visual .result-block {
+        margin-left: 14px;
+        margin-right: 14px;
+        padding: 23px 17px;
+      }
+
+      .result-detail--visual .result-block h2 {
+        font-size: 21px;
+      }
+
+      .type-keywords {
+        font-size: 19px;
+      }
+
+      .talent-scene-card strong,
+      .tip-title {
+        font-size: 17px !important;
+      }
+
+      .key-message {
+        font-size: 17px !important;
+        padding: 16px 14px;
+      }
+    }
+
+
+    /* ===== 登録後・単独ページ用 ===== */
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      background: #eef8ff;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background: #eef8ff;
+      color: #24313a;
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Kaku Gothic ProN", "Yu Gothic", "Meiryo", sans-serif;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    .page-header {
+      width: 100%;
+      background: #ffffff;
+      border-bottom: 1px solid #e4edf3;
+    }
+
+    .page-header-inner {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 18px 18px 16px;
+      color: #111111;
+      font-size: 17px;
+      font-weight: 700;
+      line-height: 1.45;
+    }
+
+    .page-main {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 18px 0 10px;
+    }
+
+    .page-footer {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 38px 18px 48px;
+      color: #58758c;
+      font-size: 14px;
+      text-align: center;
+      line-height: 1.7;
+    }
+
+    .diagnosis-result-fv {
+      margin-left: 14px;
+      margin-right: 14px;
+      overflow: hidden;
+      border-radius: 18px;
+      background: #ffffff;
+      border: 1px solid #dcecf5;
+      box-shadow: 0 3px 14px rgba(44, 103, 142, 0.08);
+    }
+
+    .diagnosis-result-fv img {
+      border-radius: 18px;
+    }
+
+    @media (max-width: 600px) {
+      .page-header-inner {
+        padding: 16px 18px 14px;
+        font-size: 16px;
+      }
+
+      .page-main {
+        padding-top: 12px;
+      }
+
+      .page-footer {
+        padding-top: 30px;
+        font-size: 13px;
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+  <header class="page-header">
+    <div class="page-header-inner">詳しい診断結果｜才能コンパス診断</div>
+  </header>
+
+  <main class="page-main">
+<section class="result-detail result-detail--visual" data-diagnosis-code="A2Z">
+<!-- FV -->
+  <div class="diagnosis-result-fv">
+    <img
+      src="https://kiro-palmreading.github.io/tesou-shindan/meta-fv-results/A2Z.png"
+      alt="才能コンパス診断 表現しながら育てるデザイナー"
+      loading="eager"
+      fetchpriority="high"
+    >
+  </div>
+
+  <!-- 01 -->
+  <article class="result-block">
+    <h2>あなたには、こんな3つの強みがあります</h2>
+
+    <div class="type-keywords">
+      行動 × 現実 × 感性
+    </div>
+
+    <div class="type-point-list">
+      <div class="type-point">
+        頭の中だけで考えるより、
+        <strong>まず表現してみることで答えを見つける</strong>
+      </div>
+
+      <div class="type-point">
+        実際に出してみたときの感覚から、
+        <strong>自分に合う・合わないを素早く感じ取れる</strong>
+      </div>
+
+      <div class="type-point">
+        言葉や写真、デザインなどを使いながら、
+        <strong>自分らしい世界観を育てていける</strong>
+      </div>
+    </div>
+  </article>
+
+  <!-- 02 -->
+  <article class="result-block">
+    <h2>こんな場面で強みが出ます</h2>
+
+    <div class="talent-scene-grid">
+      <div class="talent-scene-card">
+        <strong>✍️ 感じたことを表現するとき</strong>
+        <p>
+          心の中にあるものを、
+          言葉や写真、デザインなど、
+          自分なりの形にして外へ出せます。
+        </p>
+      </div>
+
+      <div class="talent-scene-card">
+        <strong>🎨 世界観を育てるとき</strong>
+        <p>
+          実際に表現しながら、
+          「これは好き」「ここは違う」と感じ取り、
+          少しずつ自分らしい雰囲気へ近づけられます。
+        </p>
+      </div>
+
+      <div class="talent-scene-card">
+        <strong>🔄 表現を調整するとき</strong>
+        <p>
+          相手の反応や自分の感覚を見ながら、
+          今の自分に合う見せ方へ
+          柔軟に整えていけます。
+        </p>
+      </div>
+    </div>
+  </article>
+
+  <!-- 03 -->
+  <article class="result-block">
+    <h2>今、こんなループに入っていませんか？</h2>
+
+    <p class="loop-intro">
+      「今度こそ、これが私らしい」と思ったのに……
+    </p>
+
+    <div class="diagnosis-loop">
+      <div class="loop-step">
+        まず表現してみる
+      </div>
+
+      <div class="loop-arrow">↓</div>
+
+      <div class="loop-step">
+        小さな違和感に気づく
+      </div>
+
+      <div class="loop-arrow">↓</div>
+
+      <div class="loop-step">
+        言葉や見せ方を変え始める
+      </div>
+
+      <div class="loop-arrow">↓</div>
+
+      <div class="loop-step loop-step--last">
+        気づけば、方向そのものまで変わっている
+      </div>
+    </div>
+
+    <p>
+      あなたは、何も形にしていないわけではありません。
+      ちゃんと動き、ちゃんと表現しています。
+      ただ、
+      <strong>「なんか違う」と感じたときに、
+      表現だけでなく方向まで変えやすい</strong>のです。
+    </p>
+
+    <p>
+      少し前には「これが今の私らしい」と思っていたのに、
+      数日後には「これは少し前の私かも」と感じる。
+      発信を見返して、
+      <strong>「この投稿とこの投稿、本当に同じ人が書いたのかな」</strong>
+      と、自分で少し笑ってしまうこともあるかもしれません。
+    </p>
+
+    <p class="loop-doubt">
+      どれも、そのときは本気で「私らしい」と思っていた。
+      でも、本当の私らしさはどこにあるんだろう——。
+    </p>
+  </article>
+
+  <!-- 04 -->
+  <article class="result-block result-block--risk">
+    <h2>この状態が続くと…</h2>
+
+    <div class="risk-items">
+      <div class="risk-item">
+        発信の雰囲気や世界観が、
+        短い期間で何度も変わりやすくなる
+      </div>
+
+      <div class="risk-item">
+        サービスを形にしても、
+        違和感が出るたびにつくり直したくなる
+      </div>
+    </div>
+  </article>
+
+  <!-- 05 -->
+  <article class="result-block result-block--key">
+    <p class="unspoken-worry">
+      「ちゃんと動いているのに、
+      私の軸はどこにあるんだろう」
+    </p>
+
+    <h2>でも、問題は「感性が揺れやすいこと」ではありません</h2>
+
+    <p>
+      ご安心ください。
+      動きながら自分らしい形を見つけられる一方で、
+      方向を変えやすいのには、ちゃんと理由があります。
+    </p>
+
+    <p>
+      それは、3つの特徴が順番に働くためです。
+    </p>
+
+    <p>
+      まず、<strong>行動力</strong>。
+      あなたは頭の中で考えているだけでは、
+      自分に合うかどうかを判断しません。
+      発信する。サービスを形にする。実際に人へ見せる。
+    </p>
+
+    <p>
+      次に、<strong>現実の手応え</strong>。
+      実際に出してみて初めて、
+      「これは自分らしい」「ここは少し違う」という感覚がはっきりします。
+      これは、あなたに合った自然な進み方です。
+    </p>
+
+    <p>
+      そして、<strong>感性</strong>。
+      実際に表現したものと、頭の中にあったイメージが
+      一度で完全に一致することは多くありません。
+      あなたはそこで生まれた小さなズレに、敏感に気づきます。
+    </p>
+
+    <p>
+      そのズレを「この方向は私に合っていない」と受け取ると、
+      表現だけでなく、世界観やサービスの方向まで
+      変えたくなってしまうのです。
+    </p>
+
+    <p>
+      あなたに必要なのは、
+      違和感をなくすことではありません。
+    </p>
+
+    <p class="key-message">
+      <span class="key-message-line">違和感が教えている</span>
+      <span class="key-message-line">“変更の大きさ”を</span>
+      <span class="key-message-line">見極めることです。</span>
+    </p>
+
+    <p>
+      残したい中心と、変えてよい表現を分けられると、
+      「もっと私らしい形」を探し直さなくても、
+      今ある世界観を深めていけるようになります。
+    </p>
+  </article>
+
+  <!-- 06 -->
+  <article class="result-block">
+    <h2>動き出すための3つのコツ</h2>
+
+    <p>
+      あなたのタイプに合うコツは、次の3つです。
+    </p>
+
+    <div class="tip-box">
+      <p class="tip-title">1．変えない「中心」を1文で決める</p>
+
+      <p>
+        表現を始める前に、
+        「私は、誰に何を感じてもらいたいのか」を
+        1文で書いてください。たとえば、
+      </p>
+
+      <ul>
+        <li>仕事に自信をなくしている人に、今ある強みに気づいてほしい</li>
+        <li>頑張りすぎている人に、少し肩の力を抜いてほしい</li>
+      </ul>
+
+      <p>
+        という形です。
+      </p>
+
+      <p>
+        この中心は、言葉や写真に違和感が出ても、すぐには変えません。
+        文章、色、写真、デザインは、中心を伝えるための表現方法です。
+      </p>
+
+      <p>
+        表現は変えてもよい。
+        けれど、伝えたい中心まで一緒に変えない。
+        この区別ができると、世界観を壊さずに調整できます。
+      </p>
+    </div>
+
+    <div class="tip-box">
+      <p class="tip-title">2．違和感を「方向」と「表現」に分ける</p>
+
+      <p>
+        「なんか違う」と感じたら、すぐにつくり直す前に、
+        次の2つを確認してください。
+      </p>
+
+      <ul>
+        <li>届けたい相手を変えたいのか</li>
+        <li>伝えたいことを変えたいのか</li>
+      </ul>
+
+      <p>
+        どちらかを変えたいなら、
+        方向そのものに違和感がある可能性があります。
+      </p>
+
+      <p>
+        反対に、
+        「言葉が少し固い」
+        「写真の雰囲気が合わない」
+        「見せ方が、今の自分らしくない」
+        という場合は、方向ではなく表現の調整で済むかもしれません。
+      </p>
+
+      <p>
+        すべてを白紙に戻す前に、
+        違和感がある場所だけを直してみてください。
+      </p>
+    </div>
+
+    <div class="tip-box">
+      <p class="tip-title">3．1つの世界観を「まとまり」で試す</p>
+
+      <p>
+        1回表現しただけでは、
+        その方向が自分に合うかどうかは分かりません。
+        そこで、
+      </p>
+
+      <ul>
+        <li>同じテーマで5回発信する</li>
+        <li>同じ雰囲気で3つの投稿をつくる</li>
+        <li>このサービスを3人に案内する</li>
+      </ul>
+
+      <p>
+        というように、まとまりで試してください。
+        1回ごとの気分で判断せず、いくつか表現したあとで、
+      </p>
+
+      <ul>
+        <li>どこは自然に続けられたか</li>
+        <li>どこに違和感が繰り返し出たか</li>
+      </ul>
+
+      <p>
+        を振り返ります。
+      </p>
+
+      <p>
+        一度だけの違和感ではなく、
+        何度試しても残る違和感なら、
+        次の方向を考える材料になります。
+      </p>
+    </div>
+  </article>
+
+  <!-- 07 -->
+  <article class="result-block">
+    <h2>あなたの強みの活かし方</h2>
+
+    <p>
+      自分らしさは、最初から完成した形で見つかるものではありません。
+      表現する。少し調整する。もう一度表現する。
+      その積み重ねの中で、少しずつ輪郭がはっきりしていきます。
+    </p>
+
+    <p>
+      あなたの感性は、何度もすべてを変えるためのものではありません。
+      今ある表現を、よりあなたらしい形へ育てるためにあるのです。
+    </p>
+  </article>
+
+  <!-- 08 -->
+  <article class="result-block result-block--action">
+    <h2>今日からできる最初の一歩</h2>
+
+    <p>
+      今、方向を変えようとしている発信やサービスを1つ選び、
+      次の2つを書いてください。
+    </p>
+
+    <ul>
+      <li>誰に、何を感じてもらいたいのか</li>
+      <li>今の違和感は、方向と表現のどちらにあるのか</li>
+    </ul>
+
+    <p>
+      中心が変わっていないなら、全体をつくり直さず、
+      違和感のある表現を1か所だけ直して、
+      もう一度届けてみましょう。
+    </p>
+  </article>
+
+  <!-- 09 -->
+  <article class="result-block result-block--newsletter">
+    <h2>このあとも、少しずつお届けします</h2>
+
+    <p>
+      今回お伝えしたのは、
+      あなたの手に表れている特徴の一部です。
+    </p>
+
+    <p>
+      このあと、まず数通のステップメールで、
+      手相の観点から見た強みの活かし方や、
+      思考のクセに気づくヒント、
+      仕事で一歩を進めるための考え方をお届けします。
+    </p>
+
+    <p>
+      その後は、週に1回程度、
+      自分の強みや進み方を整理するためのメルマガを
+      お届けしていきます。
+    </p>
+
+    <p>
+      「自分の強みを、どう仕事に活かせばいいのか」<br>
+      「この方向で進んでいいのか」
+    </p>
+
+    <p>
+      そんなときに、
+      少し立ち止まって自分を整理するための読みものとして、
+      お役に立てたらうれしいです。
+    </p>
+  </article>
+
+  <!-- 10 -->
+  <article class="result-block result-block--service">
+    <h2>もっと自分に合わせて深く知りたい方へ</h2>
+
+    <p class="service-lead">
+      「タイプとしての傾向」だけでなく、
+      あなた自身の手相から、もっと具体的に整理したい場合は、
+      手相プロファイリングで詳しくお伝えしています。
+    </p>
+
+    <p>
+      手相プロファイリングでは、
+      両手の手相をもとに、
+      あなたの強みや思考のクセ、
+      止まりやすい理由、
+      そして今後の進み方まで一緒に整理します。
+    </p>
+
+    <ul class="service-points">
+      <li>自分では気づきにくい強みを言葉にする</li>
+      <li>その強みを仕事でどう活かすかを整理する</li>
+      <li>今の自分に合った、次の一歩を具体的にする</li>
+    </ul>
+
+    <p>
+      必要になったタイミングで、
+      「もう少し自分のことを深く見てみたい」と思ったら、
+      手相プロファイリングも覗いてみてください。
+    </p>
+
+    <div style="display:flex; justify-content:center; margin-top:24px;">
+      <a
+        href="https://q0gsv.hp.peraichi.com"
+        target="_blank"
+        rel="noopener noreferrer"
+        style="
+          display:inline-flex;
+          align-items:center;
+          justify-content:center;
+          padding:14px 22px;
+          background:#f28c45;
+          color:#ffffff;
+          text-decoration:none;
+          border-radius:10px;
+          font-size:16px;
+          font-weight:700;
+          line-height:1.5;
+          text-align:center;
+        "
+      >
+        手相プロファイリングの詳細を見る
+      </a>
+    </div>
+  </article>
+
+
+</section>
+  </main>
+</body>
+</html>
