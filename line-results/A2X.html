@@ -1,215 +1,735 @@
-<section class="result-detail" data-diagnosis-code="A2X">
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>詳しい診断結果｜才能コンパス診断</title>
+<style>
+    /* ========================================
+       A2X 診断結果
+       登録後・完全版
+    ======================================== */
 
-  <!-- 診断結果FV：ページ最上部 -->
-  <div class="result-fv" style="width: 100%; margin: 0 auto 24px;">
+    .result-detail--visual {
+      max-width: 720px;
+      margin: 0 auto;
+      color: #24313a;
+      line-height: 1.8;
+    }
+
+    .diagnosis-result-fv {
+      margin: 0 0 28px;
+      padding: 0;
+    }
+
+    .diagnosis-result-fv img {
+      display: block;
+      width: 100%;
+      height: auto;
+      margin: 0 auto;
+    }
+
+    .result-detail--visual .result-block {
+      margin: 0 16px 28px;
+      padding: 26px 20px;
+      background: #ffffff;
+      border: 1px solid #dcecf5;
+      border-radius: 18px;
+      box-sizing: border-box;
+    }
+
+    .result-detail--visual .result-block h2 {
+      margin: 0 0 18px;
+      color: #083f5c;
+      font-size: 22px;
+      line-height: 1.45;
+      text-align: left;
+    }
+
+    .result-detail--visual .result-block p {
+      margin: 0 0 16px;
+      font-size: 16px;
+      line-height: 1.9;
+    }
+
+    .result-detail--visual .result-block p:last-child {
+      margin-bottom: 0;
+    }
+
+    .result-detail--visual .result-block ul {
+      margin: 0 0 18px;
+      padding-left: 1.4em;
+    }
+
+    .result-detail--visual .result-block li {
+      margin: 0 0 8px;
+      font-size: 16px;
+      line-height: 1.8;
+    }
+
+    .type-keywords {
+      margin: 0 0 20px;
+      font-size: 20px;
+      font-weight: 700;
+      color: #1f6fb2;
+      letter-spacing: 0.04em;
+      text-align: center;
+    }
+
+    .type-point-list {
+      display: grid;
+      gap: 11px;
+      margin: 0;
+    }
+
+    .type-point {
+      position: relative;
+      padding: 14px 14px 14px 43px;
+      background: #f8fcff;
+      border-radius: 12px;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .type-point::before {
+      content: "✓";
+      position: absolute;
+      left: 16px;
+      top: 14px;
+      color: #1f6fb2;
+      font-weight: 700;
+    }
+
+    .talent-scene-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    .talent-scene-card {
+      padding: 18px;
+      border-radius: 14px;
+      background: #eef7ff;
+      border: 1px solid #cfe3f1;
+    }
+
+    .talent-scene-card strong {
+      display: block;
+      margin-bottom: 8px;
+      color: #083f5c;
+      font-size: 17px;
+      line-height: 1.5;
+    }
+
+    .talent-scene-card p {
+      margin: 0 !important;
+    }
+
+    .loop-intro {
+      font-weight: 700;
+      color: #314958;
+    }
+
+    .diagnosis-loop {
+      margin: 20px 0;
+    }
+
+    .loop-step {
+      padding: 15px 14px;
+      background: #f8fcff;
+      border: 1px solid #cfe6f3;
+      border-radius: 12px;
+      text-align: center;
+      font-size: 16px;
+      font-weight: 700;
+      color: #083f5c;
+    }
+
+    .loop-arrow {
+      height: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #6f8798;
+      font-size: 24px;
+      font-weight: 700;
+    }
+
+    .loop-step--last {
+      background: #fff5f2;
+      border-color: #f2c9bf;
+      color: #9b4d3b;
+    }
+
+    .loop-doubt {
+      margin: 4px 0 18px;
+      padding: 12px 16px;
+      background: #f8fcff;
+      border-left: 3px solid #7893a3;
+      font-size: 15px;
+      font-style: italic;
+      color: #4a5d68;
+      line-height: 1.7;
+    }
+
+    .result-block--risk {
+      background: #fffaf7 !important;
+      border-color: #f1d9cf !important;
+    }
+
+    .risk-items {
+      display: grid;
+      gap: 10px;
+    }
+
+    .risk-item {
+      position: relative;
+      padding: 13px 14px 13px 40px;
+      background: #ffffff;
+      border: 1px solid #f0ddd5;
+      border-radius: 11px;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .risk-item::before {
+      content: "●";
+      position: absolute;
+      left: 17px;
+      top: 15px;
+      color: #d98670;
+      font-size: 10px;
+    }
+
+    .result-block--key {
+      background: #eef7ff !important;
+      border-color: #bddcec !important;
+    }
+
+    .unspoken-worry {
+      margin: 0 0 22px;
+      padding: 18px 18px;
+      background: #fdf6f3;
+      border: 1px dashed #e3b8a8;
+      border-radius: 14px;
+      font-size: 15px;
+      font-style: italic;
+      color: #6b5347;
+      text-align: center;
+      line-height: 1.8;
+    }
+
+    .key-message {
+      margin: 18px 0 !important;
+      padding: 18px 16px;
+      background: #ffffff;
+      border: 1px solid #dcecf5;
+      border-radius: 8px;
+      font-size: 18px !important;
+      font-weight: 700;
+      color: #083f5c;
+      text-align: center;
+      line-height: 1.7;
+    }
+
+    .key-message-line {
+      display: block;
+    }
+
+    .tip-box {
+      margin: 0 0 18px;
+      padding: 18px 16px;
+      background: #f8fcff;
+      border: 1px solid #dcecf5;
+      border-radius: 12px;
+    }
+
+    .tip-box:last-child {
+      margin-bottom: 0;
+    }
+
+    .tip-title {
+      margin: 0 0 12px !important;
+      color: #083f5c;
+      font-size: 17px !important;
+      font-weight: 700;
+      line-height: 1.6 !important;
+    }
+
+    .result-block--action {
+      background: #f7fbfd !important;
+      border-color: #cfe3f1 !important;
+    }
+
+    .result-block--newsletter {
+      background: #fffdf8 !important;
+      border-color: #eadfca !important;
+    }
+
+    .result-block--service {
+      background: #f4f9fc !important;
+      border-color: #cfe3f1 !important;
+    }
+
+    .service-lead {
+      font-weight: 700;
+      color: #083f5c;
+    }
+
+    .service-points {
+      margin-top: 6px !important;
+    }
+
+    @media (max-width: 600px) {
+      .result-detail--visual .result-block {
+        margin-left: 14px;
+        margin-right: 14px;
+        padding: 23px 17px;
+      }
+
+      .result-detail--visual .result-block h2 {
+        font-size: 21px;
+      }
+
+      .type-keywords {
+        font-size: 19px;
+      }
+
+      .talent-scene-card strong,
+      .tip-title {
+        font-size: 17px !important;
+      }
+
+      .key-message {
+        font-size: 17px !important;
+        padding: 16px 14px;
+      }
+    }
+
+
+    /* ===== 登録後・単独ページ用 ===== */
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      background: #eef8ff;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background: #eef8ff;
+      color: #24313a;
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Kaku Gothic ProN", "Yu Gothic", "Meiryo", sans-serif;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    .page-header {
+      width: 100%;
+      background: #ffffff;
+      border-bottom: 1px solid #e4edf3;
+    }
+
+    .page-header-inner {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 18px 18px 16px;
+      color: #111111;
+      font-size: 17px;
+      font-weight: 700;
+      line-height: 1.45;
+    }
+
+    .page-main {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 18px 0 10px;
+    }
+
+    .page-footer {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 38px 18px 48px;
+      color: #58758c;
+      font-size: 14px;
+      text-align: center;
+      line-height: 1.7;
+    }
+
+    .diagnosis-result-fv {
+      margin-left: 14px;
+      margin-right: 14px;
+      overflow: hidden;
+      border-radius: 18px;
+      background: #ffffff;
+      border: 1px solid #dcecf5;
+      box-shadow: 0 3px 14px rgba(44, 103, 142, 0.08);
+    }
+
+    .diagnosis-result-fv img {
+      border-radius: 18px;
+    }
+
+    @media (max-width: 600px) {
+      .page-header-inner {
+        padding: 16px 18px 14px;
+        font-size: 16px;
+      }
+
+      .page-main {
+        padding-top: 12px;
+      }
+
+      .page-footer {
+        padding-top: 30px;
+        font-size: 13px;
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+  <header class="page-header">
+    <div class="page-header-inner">詳しい診断結果｜才能コンパス診断</div>
+  </header>
+
+  <main class="page-main">
+<section class="result-detail result-detail--visual" data-diagnosis-code="A2X">
+<!-- FV -->
+  <div class="diagnosis-result-fv">
     <img
-      src="meta-fv-results/A2X.png"
-      alt="才能コンパス診断 A2X 診断結果"
-      style="display: block; width: 100%; height: auto;"
+      src="https://kiro-palmreading.github.io/tesou-shindan/meta-fv-results/A2X.png"
+      alt="才能コンパス診断 動きながら磨くビルダー"
+      loading="eager"
+      fetchpriority="high"
     >
   </div>
 
+  <!-- 01 -->
   <article class="result-block">
-    <h2>詳しい診断結果</h2>
+    <h2>あなたはこんなタイプです</h2>
+
+    <div class="type-keywords">
+      行動 × 現実 × 論理
+    </div>
+
+    <div class="type-point-list">
+      <div class="type-point">
+        じっくり考え続けるより、
+        <strong>まず試してから答えを見つける</strong>
+        のが得意
+      </div>
+
+      <div class="type-point">
+        実際に動いたあと、
+        <strong>どこを直せばよいかを素早く見つけられる</strong>
+      </div>
+
+      <div class="type-point">
+        無駄や分かりにくさに気づき、
+        <strong>より成果につながる形へ改善できる</strong>
+      </div>
+    </div>
+  </article>
+
+  <!-- 02 -->
+  <article class="result-block">
+    <h2>こんな場面で強みが出ます</h2>
+
+    <div class="talent-scene-grid">
+      <div class="talent-scene-card">
+        <strong>🚀 新しいことを始めるとき</strong>
+        <p>
+          「もっと準備してから」と長く止まらず、
+          まず形にして試すことができます。
+        </p>
+      </div>
+
+      <div class="talent-scene-card">
+        <strong>🔍 問題点を見つけるとき</strong>
+        <p>
+          実際の反応を見ながら、
+          分かりにくいところや無駄な部分に
+          素早く気づけます。
+        </p>
+      </div>
+
+      <div class="talent-scene-card">
+        <strong>🛠️ 改善するとき</strong>
+        <p>
+          「では、どこを変えればよい？」と考え、
+          今あるものをより使いやすく、
+          成果につながる形へ整えられます。
+        </p>
+      </div>
+    </div>
+  </article>
+
+  <!-- 03 -->
+  <article class="result-block">
+    <h2>今、こんなループに入っていませんか？</h2>
+
+    <p class="loop-intro">
+      動き出すまでは早いのに……
+    </p>
+
+    <div class="diagnosis-loop">
+      <div class="loop-step">
+        まずやってみる
+      </div>
+
+      <div class="loop-arrow">↓</div>
+
+      <div class="loop-step">
+        すぐに改善点が見つかる
+      </div>
+
+      <div class="loop-arrow">↓</div>
+
+      <div class="loop-step">
+        もっとよい方法を試したくなる
+      </div>
+
+      <div class="loop-arrow">↓</div>
+
+      <div class="loop-step loop-step--last">
+        気づけば、土台からつくり直している
+      </div>
+    </div>
 
     <p>
-      あなたが行動しているのに、積み上がる実感を持ちにくいのは、3つの特徴が連続して働くためです。
+      あなたは、止まっているわけではありません。
+      むしろ、かなり動いています。
+      ただ、
+      <strong>少し直すつもりだったものが、
+      気づけば別のやり方になっている</strong>
+      ことがあるのです。
     </p>
 
     <p>
+      もっと効率よく進みたいと思っているのに、
+      方法を変えるたびに、新しいやり方を覚え直したり、
+      仕組みをつくり直したりする。
+      近道を探していたはずなのに、曲がり角だけが増えている。
+      そんな感覚になることもあるかもしれません。
+    </p>
+
+    <p class="loop-doubt">
+      こんなに動いているのに、
+      結局、何が残ったんだろう——。
+    </p>
+  </article>
+
+  <!-- 04 -->
+  <article class="result-block result-block--risk">
+    <h2>この状態が続くと…</h2>
+
+    <div class="risk-items">
+      <div class="risk-item">
+        発信やサービスのやり方が、
+        短い期間で何度も変わりやすくなる
+      </div>
+
+      <div class="risk-item">
+        試したことは多いのに、
+        何が効果的だったのか分かりにくくなる
+      </div>
+    </div>
+  </article>
+
+  <!-- 05 -->
+  <article class="result-block result-block--key">
+    <p class="unspoken-worry">
+      「前よりよくしているはずなのに、
+      どうして積み上がっていかないんだろう」
+    </p>
+
+    <h2>でも、問題は「改善すること」ではありません</h2>
+
+    <p>
+      ご安心ください。
+      行動しているのに積み上がる実感を持ちにくいのには、
+      ちゃんと理由があります。
+    </p>
+
+    <p>
+      それは、3つの特徴が連続して働くためです。
+    </p>
+
+    <p>
+      まず、<strong>行動力</strong>。
       あなたは、思いついたらすぐ動けます。
     </p>
 
     <p>
-      そして、実際に動いたことで見えた問題を、現実的かつ論理的に捉えます。
+      次に、<strong>現実を見る力</strong>。
+      実際に動いたことで、
+      頭の中では見えなかった問題が目の前に現れます。
     </p>
 
     <p>
-      「ここが分かりにくい」<br>
-      「この流れには無駄がある」<br>
-      「もっと結果につながる方法がありそう」
-    </p>
-
-    <p>
-      と、改善点に素早く気づけるのです。
+      そして、<strong>論理的に考える力</strong>。
+      「ここが分かりにくい」
+      「この流れには無駄がある」
+      「もっと結果につながる方法がありそう」と、
+      改善点に素早く気づけるのです。
     </p>
 
     <p>
       ここまでは、あなたの強みです。
+      ただ、改善点が見えると
+      「このまま続けるより、すぐに直した方が効率的」と判断しやすく、
+      結果を見極めるだけの回数を試す前に、方法を変えてしまうことがあります。
     </p>
 
     <p>
-      ただ、改善点が見えると、
+      さらに、1か所を直すつもりが、関連する部分まで気になり、
+      最後には土台からつくり直す。
+      これが、動いているのに同じ場所で作業を繰り返しているように
+      感じる理由です。
     </p>
 
     <p>
-      「このまま続けるより、すぐに直した方が効率的」
+      あなたに必要なのは、
+      改善を減らすことではありません。
+    </p>
+
+    <p class="key-message">
+      <span class="key-message-line">今までの積み上げを残したまま、</span>
+      <span class="key-message-line">改善できるように</span>
+      <span class="key-message-line">なることです。</span>
     </p>
 
     <p>
-      と判断しやすくなります。
-    </p>
-
-    <p>
-      そのため、結果を見極めるだけの回数を試す前に、方法を変えてしまうことがあります。
-    </p>
-
-    <p>
-      さらに、1か所を直すつもりが、関連する部分まで気になり、最後には土台からつくり直す。
-    </p>
-
-    <p>
-      これが、動いているのに同じ場所で作業を繰り返しているように感じる理由です。
-    </p>
-
-    <p>
-      あなたに必要なのは、改善を減らすことではありません。
-    </p>
-
-    <p>
-      <strong>
-        今までの積み上げを残したまま、改善できるようになることです。
-      </strong>
+      今変えるところと残すところを区別できるようになると、
+      あなたの速い行動力は、バラバラな試行錯誤ではなく、
+      積み上がる成果へ変わりやすくなります。
     </p>
   </article>
 
+  <!-- 06 -->
   <article class="result-block">
-    <h2>積み上げながら改善する3つのコツ</h2>
+    <h2>動き出すための3つのコツ</h2>
 
     <p>
       あなたのタイプに合うコツは、次の3つです。
     </p>
 
-    <p>
-      <strong>1．最初に「変えない土台」を決める</strong>
-    </p>
+    <div class="tip-box">
+      <p class="tip-title">1．最初に「変えない土台」を決める</p>
 
-    <p>
-      改善を始める前に、今回の取り組みで変えないものを決めてください。
-    </p>
+      <p>
+        改善を始める前に、今回の取り組みで変えないものを決めてください。
+        たとえば、
+      </p>
 
-    <p>
-      たとえば、
-    </p>
+      <ul>
+        <li>届けたい相手</li>
+        <li>解決したい問題</li>
+        <li>提供する中心的な価値</li>
+      </ul>
 
-    <ul>
-      <li>届けたい相手</li>
-      <li>解決したい問題</li>
-      <li>提供する中心的な価値</li>
-    </ul>
+      <p>
+        の3つです。
+        この土台は、少し反応が弱かったからといって、すぐには変えません。
+      </p>
 
-    <p>
-      の3つです。
-    </p>
+      <p>
+        一方で、タイトル、文章、画像、案内の順番などは、改善してよい部分です。
+        土台と見せ方を分けることで、すべてをつくり直さずに改善できます。
+      </p>
+    </div>
 
-    <p>
-      この土台は、少し反応が弱かったからといって、すぐには変えません。
-    </p>
+    <div class="tip-box">
+      <p class="tip-title">2．判断するための「回数」か「期限」を先に決める</p>
 
-    <p>
-      一方で、タイトル、文章、画像、案内の順番などは、改善してよい部分です。
-    </p>
+      <p>
+        あなたは動くのが早いぶん、
+        結果を待つより先に次の改善点が見えてきます。
+        そこで、始めるときに、
+      </p>
 
-    <p>
-      土台と見せ方を分けることで、すべてをつくり直さずに改善できます。
-    </p>
+      <ul>
+        <li>このテーマで5回発信する</li>
+        <li>この案内を3人に届ける</li>
+        <li>この方法を2週間続ける</li>
+      </ul>
 
-    <p>
-      <strong>2．判断するための「回数」か「期限」を先に決める</strong>
-    </p>
+      <p>
+        というように、結果を判断する回数か期限を決めてください。
+      </p>
 
-    <p>
-      あなたは動くのが早いぶん、結果を待つより先に次の改善点が見えてきます。
-    </p>
+      <p>
+        その区切りまでは、同じ土台で試します。
+        改善案が浮かんでも、すぐには変更せず、メモに残しておきます。
+        決めたところまで試してから反応を比べれば、
+        印象ではなく現実の材料を使って判断できます。
+      </p>
+    </div>
 
-    <p>
-      そこで、始めるときに、
-    </p>
+    <div class="tip-box">
+      <p class="tip-title">3．一度に変えるのは1つだけにする</p>
 
-    <ul>
-      <li>このテーマで5回発信する</li>
-      <li>この案内を3人に届ける</li>
-      <li>この方法を2週間続ける</li>
-    </ul>
+      <p>
+        改善するときは、今回変えるものを1つに絞ってください。
+        たとえば、
+      </p>
 
-    <p>
-      というように、結果を判断する回数か期限を決めてください。
-    </p>
+      <ul>
+        <li>今回はタイトルだけ変える</li>
+        <li>今回は申し込みボタンまでの説明だけ変える</li>
+        <li>今回は案内する相手だけ変える</li>
+      </ul>
 
-    <p>
-      その区切りまでは、同じ土台で試します。
-    </p>
+      <p>
+        という形です。
+        複数の部分を一度に変えると、結果がよくなっても、
+        何が効いたのか分かりません。
+      </p>
 
-    <p>
-      改善案が浮かんでも、すぐには変更せず、メモに残しておきます。
-    </p>
+      <p>
+        1つ変える。<br>
+        同じ条件で試す。<br>
+        反応を比べる。
+      </p>
 
-    <p>
-      決めたところまで試してから反応を比べれば、印象ではなく現実の材料を使って判断できます。
-    </p>
-
-    <p>
-      <strong>3．一度に変えるのは1つだけにする</strong>
-    </p>
-
-    <p>
-      改善するときは、今回変えるものを1つに絞ってください。
-    </p>
-
-    <p>
-      たとえば、
-    </p>
-
-    <ul>
-      <li>今回はタイトルだけ変える</li>
-      <li>今回は申し込みボタンまでの説明だけ変える</li>
-      <li>今回は案内する相手だけ変える</li>
-    </ul>
-
-    <p>
-      という形です。
-    </p>
-
-    <p>
-      複数の部分を一度に変えると、結果がよくなっても、何が効いたのか分かりません。
-    </p>
-
-    <p>
-      1つ変える。<br>
-      同じ条件で試す。<br>
-      反応を比べる。
-    </p>
-
-    <p>
-      この順番なら、あなたの論理的に改善する力が活きてきます。
-    </p>
+      <p>
+        この順番なら、あなたの論理的に改善する力が活きてきます。
+      </p>
+    </div>
   </article>
 
+  <!-- 07 -->
   <article class="result-block">
     <h2>あなたの強みの活かし方</h2>
 
     <p>
-      あなたは、新しい方法を探し続けなくても、今あるものをよくする力を持っています。
+      あなたは、新しい方法を探し続けなくても、
+      今あるものをよくする力を持っています。
     </p>
 
     <p>
       改善とは、毎回新しくつくり直すことではありません。
+      残すものを決めたうえで、
+      結果に影響する部分を少しずつ磨くことです。
     </p>
 
     <p>
-      残すものを決めたうえで、結果に影響する部分を少しずつ磨くことです。
-    </p>
-
-    <p>
-      その違いが分かれば、あなたの速い行動は、散らばる経験ではなく、確かな積み上げへ変わっていきます。
+      その違いが分かれば、あなたの速い行動は、
+      散らばる経験ではなく、確かな積み上げへ変わっていきます。
     </p>
   </article>
 
-  <article class="result-block result-block--final">
+  <!-- 08 -->
+  <article class="result-block result-block--action">
     <h2>今日からできる最初の一歩</h2>
 
     <p>
-      今、改善しようとしている仕事を1つ選び、次の3つをメモしてください。
+      今、改善しようとしている仕事を1つ選び、
+      次の3つをメモしてください。
     </p>
 
     <ul>
@@ -221,6 +741,11 @@
     <p>
       それ以外の改善案は、次の見直しまでメモに置いておきましょう。
     </p>
+  </article>
+
+  <!-- 09 -->
+  <article class="result-block result-block--newsletter">
+    <h2>このあとも、少しずつお届けします</h2>
 
     <p>
       今回お伝えしたのは、
@@ -228,27 +753,87 @@
     </p>
 
     <p>
-      これから、少しずつ、
-      手相の観点から見た強みを活かすコツを
-      お伝えしていきますね。
+      このあと、まず数通のステップメールで、
+      手相の観点から見た強みの活かし方や、
+      思考のクセに気づくヒント、
+      仕事で一歩を進めるための考え方をお届けします。
     </p>
 
     <p>
-      落ち着いたら、
-      週に1度程度の頻度で
-      配信していく予定です。
+      その後は、週に1回程度、
+      自分の強みや進み方を整理するためのメルマガを
+      お届けしていきます。
     </p>
 
     <p>
-      こちらの配信が、
-      あなたのお役に立てたら幸いです^^
+      「自分の強みを、どう仕事に活かせばいいのか」<br>
+      「この方向で進んでいいのか」
     </p>
 
     <p>
-      もし、ご自身の状況に合わせてもっと深く知りたくなったときは、
-      個別の診断でも詳しくお伝えできますので、
-      その時はぜひ覗いてみてください。
+      そんなときに、
+      少し立ち止まって自分を整理するための読みものとして、
+      お役に立てたらうれしいです。
     </p>
   </article>
 
+  <!-- 10 -->
+  <article class="result-block result-block--service">
+    <h2>もっと自分に合わせて深く知りたい方へ</h2>
+
+    <p class="service-lead">
+      「タイプとしての傾向」だけでなく、
+      あなた自身の手相から、もっと具体的に整理したい場合は、
+      手相プロファイリングで詳しくお伝えしています。
+    </p>
+
+    <p>
+      手相プロファイリングでは、
+      両手の手相をもとに、
+      あなたの強みや思考のクセ、
+      止まりやすい理由、
+      そして今後の進み方まで一緒に整理します。
+    </p>
+
+    <ul class="service-points">
+      <li>自分では気づきにくい強みを言葉にする</li>
+      <li>その強みを仕事でどう活かすかを整理する</li>
+      <li>今の自分に合った、次の一歩を具体的にする</li>
+    </ul>
+
+    <p>
+      必要になったタイミングで、
+      「もう少し自分のことを深く見てみたい」と思ったら、
+      手相プロファイリングも覗いてみてください。
+    </p>
+
+    <div style="display:flex; justify-content:center; margin-top:24px;">
+      <a
+        href="https://q0gsv.hp.peraichi.com"
+        target="_blank"
+        rel="noopener noreferrer"
+        style="
+          display:inline-flex;
+          align-items:center;
+          justify-content:center;
+          padding:14px 22px;
+          background:#f28c45;
+          color:#ffffff;
+          text-decoration:none;
+          border-radius:10px;
+          font-size:16px;
+          font-weight:700;
+          line-height:1.5;
+          text-align:center;
+        "
+      >
+        手相プロファイリングの詳細を見る
+      </a>
+    </div>
+  </article>
+
+
 </section>
+  </main>
+</body>
+</html>
