@@ -377,8 +377,7 @@ body {
 }
 
 .rationale-item {
-  position: relative;
-  padding: 8px 10px 8px 34px;
+  padding: 8px 10px;
   background: #f8fcff;
   border: 1px solid rgba(91,163,217,0.20);
   border-radius: 10px;
@@ -388,13 +387,10 @@ body {
   line-height: 1.65;
 }
 
-.rationale-item::before {
-  content: "✓";
-  position: absolute;
-  left: 11px;
-  top: 8px;
+.rationale-num {
+  display: inline-block;
+  margin-right: 4px;
   color: var(--sky);
-  font-size: 15px;
   font-weight: 700;
 }
 
@@ -784,27 +780,25 @@ body {
         >
       </div>
 
-      <!-- ② なぜこの診断で判定できるのか -->
+      <!-- ② 診断で才能傾向が分かる2つの理由 -->
       <div class="rationale-box" id="rationaleBox">
-        <div class="rationale-title">【なぜ、この診断で才能傾向が分かるの？】</div>
+        <div class="rationale-title">【診断で才能傾向が分かる2つの理由】</div>
 
         <div class="rationale-list">
           <div class="rationale-item">
-            手相学では、手には脳の使われ方が表れると考えられています。
+            <span class="rationale-num">①</span>
+            手には「脳の使われ方」が表れると、手相学では考えられているから
           </div>
 
           <div class="rationale-item">
-            この診断では、知能線の始点と終点、手の形など複数の特徴を見ています。
-          </div>
-
-          <div class="rationale-item">
-            それらを組み合わせて、あなたの才能傾向を読み解いています。
+            <span class="rationale-num">②</span>
+            知能線には、主に知力や能力の傾向が表れやすいとされているから
           </div>
         </div>
 
         <div class="rationale-note">
-          ※ 京都大学名誉教授の久保田競先生も、著書の中で
-          「手は外部の脳である」と表現されています。
+          ※京都大学名誉教授の久保田競先生も、著書の中で
+          「手は外部に出た脳である」と表現されています。
         </div>
       </div>
 
