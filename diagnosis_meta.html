@@ -351,6 +351,37 @@ body {
   box-shadow: 0 4px 24px var(--shadow);
 }
 
+/* ===== なぜこの診断で判定できるのか ===== */
+.rationale-box {
+  margin-top: 8px;
+  padding: 12px 14px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  box-shadow: 0 2px 12px var(--shadow);
+}
+
+.rationale-title {
+  margin-bottom: 7px;
+  color: var(--navy);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.rationale-text {
+  color: var(--text-dark);
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.8;
+  text-align: left;
+}
+
+.rationale-text + .rationale-text {
+  margin-top: 7px;
+}
+
 /* ===== 診断結果で分かること(2列・コンパクト) ===== */
 .benefit-box {
   margin-top: 8px;
@@ -726,7 +757,28 @@ body {
         >
       </div>
 
-      <!-- ② 診断結果で分かること -->
+      <!-- ② なぜこの診断で判定できるのか -->
+      <div class="rationale-box" id="rationaleBox">
+        <div class="rationale-title">【なぜ、この診断で才能傾向が分かるの？】</div>
+
+        <p class="rationale-text">
+          手相学では、手には脳の使われ方が表れると考えられています。
+        </p>
+
+        <p class="rationale-text">
+          大脳生理学者で京都大学名誉教授の久保田競先生も、
+          著書の中で「手は外部の脳である」と表現されており、
+          脳と手には深い関わりがあることがうかがえます。
+        </p>
+
+        <p class="rationale-text">
+          この才能コンパス診断では、あなたの手に現れた知能線の始点と終点、
+          そして手の形など、複数の特徴を組み合わせて、
+          あなたの才能傾向を読み解いています。
+        </p>
+      </div>
+
+      <!-- ③ 診断結果で分かること -->
       <div class="benefit-box" id="benefitBox">
         <div class="benefit-title">【あなたの診断結果で分かること】</div>
         <ul class="benefit-list">
@@ -736,15 +788,6 @@ body {
           <li>つまずきやすい点</li>
           <li class="benefit-wide">今日からできる最初の一歩</li>
         </ul>
-      </div>
-
-      <!-- ③ 監修者(社会的証明) -->
-      <div class="supervisor-proof" id="supervisorProof">
-        <img src="meta-fv-results/DSC_4920.JPG" alt="ビジネス手相診断士 輝路" class="supervisor-avatar">
-        <div class="supervisor-proof-text">
-          <span>手相診断歴13年・1,250名以上の診断実績</span>
-          <span>ビジネス手相診断士 輝路が監修</span>
-        </div>
       </div>
 
       <!-- ④ メール登録フォーム -->
@@ -780,7 +823,16 @@ body {
         </p>
       </form>
 
-      <!-- 結果ページがまだ無いタイプ用の「準備中」 -->
+      <!-- ⑤ 監修者(社会的証明) -->
+      <div class="supervisor-proof" id="supervisorProof">
+        <img src="meta-fv-results/DSC_4920.JPG" alt="ビジネス手相診断士 輝路" class="supervisor-avatar">
+        <div class="supervisor-proof-text">
+          <span>手相診断歴13年・1,250名以上の診断実績</span>
+          <span>ビジネス手相診断士 輝路が監修</span>
+        </div>
+      </div>
+
+      <!-- ⑥ 結果ページがまだ無いタイプ用の「準備中」 -->
       <div class="pending-section" id="pendingSection">
         <div class="pending-title">ご登録ありがとうございます</div>
         <p class="pending-text">
