@@ -354,7 +354,7 @@ body {
 /* ===== なぜこの診断で判定できるのか ===== */
 .rationale-box {
   margin-top: 8px;
-  padding: 12px 14px;
+  padding: 10px 12px 11px;
   background: var(--white);
   border: 1px solid var(--border);
   border-radius: 14px;
@@ -362,7 +362,7 @@ body {
 }
 
 .rationale-title {
-  margin-bottom: 7px;
+  margin-bottom: 8px;
   color: var(--navy);
   font-size: 14px;
   font-weight: 700;
@@ -370,16 +370,43 @@ body {
   text-align: center;
 }
 
-.rationale-text {
-  color: var(--text-dark);
-  font-size: 13px;
-  font-weight: 400;
-  line-height: 1.8;
-  text-align: left;
+.rationale-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 6px;
 }
 
-.rationale-text + .rationale-text {
-  margin-top: 7px;
+.rationale-item {
+  position: relative;
+  padding: 8px 10px 8px 34px;
+  background: #f8fcff;
+  border: 1px solid rgba(91,163,217,0.20);
+  border-radius: 10px;
+  color: var(--text-dark);
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.65;
+}
+
+.rationale-item::before {
+  content: "✓";
+  position: absolute;
+  left: 11px;
+  top: 8px;
+  color: var(--sky);
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.rationale-note {
+  margin-top: 8px;
+  padding: 7px 9px;
+  background: var(--sky-pale);
+  border-radius: 9px;
+  color: var(--text-mid);
+  font-size: 11.5px;
+  line-height: 1.65;
+  text-align: left;
 }
 
 /* ===== 診断結果で分かること(2列・コンパクト) ===== */
@@ -761,21 +788,24 @@ body {
       <div class="rationale-box" id="rationaleBox">
         <div class="rationale-title">【なぜ、この診断で才能傾向が分かるの？】</div>
 
-        <p class="rationale-text">
-          手相学では、手には脳の使われ方が表れると考えられています。
-        </p>
+        <div class="rationale-list">
+          <div class="rationale-item">
+            手相学では、手には脳の使われ方が表れると考えられています。
+          </div>
 
-        <p class="rationale-text">
-          大脳生理学者で京都大学名誉教授の久保田競先生も、
-          著書の中で「手は外部の脳である」と表現されており、
-          脳と手には深い関わりがあることがうかがえます。
-        </p>
+          <div class="rationale-item">
+            この診断では、知能線の始点と終点、手の形など複数の特徴を見ています。
+          </div>
 
-        <p class="rationale-text">
-          この才能コンパス診断では、あなたの手に現れた知能線の始点と終点、
-          そして手の形など、複数の特徴を組み合わせて、
-          あなたの才能傾向を読み解いています。
-        </p>
+          <div class="rationale-item">
+            それらを組み合わせて、あなたの才能傾向を読み解いています。
+          </div>
+        </div>
+
+        <div class="rationale-note">
+          ※ 京都大学名誉教授の久保田競先生も、著書の中で
+          「手は外部の脳である」と表現されています。
+        </div>
       </div>
 
       <!-- ③ 診断結果で分かること -->
