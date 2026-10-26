@@ -84,6 +84,25 @@
     @media(max-width:600px){.bp-lp{padding-bottom:45px}.bp-inner{padding:0 17px}.bp-section{margin-top:45px}.bp-section:first-child{padding-top:31px}.bp-title{font-size:25px}.bp-text{font-size:17px}.bp-type-grid{grid-template-columns:1fr}.bp-type p{font-size:17px}.bp-example-title{font-size:21px}.bp-key{font-size:19px}.bp-offer-title{font-size:23px}.bp-price strong{font-size:46px}.bp-final h2{font-size:24px}.bp-deadline{font-size:20px}.bp-cta{font-size:18px}}
     @media(max-width:370px){.bp-inner{padding:0 15px}.bp-title{font-size:23px}.bp-example-title{font-size:20px}.bp-price strong{font-size:42px}.bp-cta{font-size:17px}}
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.bp-cta{transition:none}}
+
+    /* スマートフォンでの不自然な途中改行を抑える */
+    .bp-lp{word-break:normal;line-break:strict;overflow-wrap:break-word}
+    .bp-title,.bp-example-title,.bp-offer-title,.bp-final h2,.bp-deadline,
+    .bp-flow-body h3,.bp-type h3,.bp-credentials-name,.bp-request h3{
+      word-break:normal;
+      line-break:strict;
+      overflow-wrap:normal;
+      text-wrap:pretty;
+    }
+    .bp-key,.bp-quote,.bp-story-card p{word-break:normal;line-break:strict;overflow-wrap:break-word}
+    .bp-story-customer{margin:14px 0 0;text-align:right;color:var(--navy-soft);font-size:15px;font-weight:700}
+    @media(max-width:600px){
+      .bp-title{font-size:clamp(21px,5.6vw,25px);letter-spacing:0;line-height:1.55}
+      .bp-example-title{font-size:clamp(19px,5.0vw,21px);letter-spacing:0}
+      .bp-key{font-size:18px;line-height:1.8}
+      .bp-offer-title{font-size:clamp(21px,5.5vw,23px)}
+      .bp-text,.bp-testimonial-lead,.bp-story-card{line-break:strict}
+    }
   </style>
 </head>
 <body>
@@ -104,7 +123,7 @@
     <p class="bp-text">また、組織の中で働くことだけでなく、自分のペースで知識や経験を積み重ね、それを仕事に活かすという方向性にも目を向けるようになりました。</p>
     <p class="bp-text">こうした発見が、現在のビジネス手相診断士としての活動につながっています。</p>
     <p class="bp-text">この経験から、思うことがあります。</p>
-    <div class="bp-quote">自分の強みは、必ずしも自分が思い描いている形でしか活かせないわけではない。<br>同じ強みでも、活かし方は一つではないのではないか、と。</div>
+    <div class="bp-quote">自分の強みは、必ずしも自分が思い描いている形でしか活かせないわけではない。同じ強みでも、活かし方は一つではないのではないか、と。</div>
     <p class="bp-text">そこで今回、</p>
     <div class="bp-key">「自分の持ち味を、どんな仕事で活かせるのだろう？」</div>
     <p class="bp-text">という疑問に、手相という視点からヒントをお届けしたい。</p>
@@ -144,13 +163,13 @@
       <figcaption class="bp-caption">※画像は診断イメージです。</figcaption>
     </figure>
     <p class="bp-text bp-afterimage">このように、手相から読み解いた複数の特徴を組み合わせて、あなたの強みが活きそうな仕事の方向性をお伝えします。</p>
-    <div class="bp-key">「自分には、こんな適性があったんだ」<br>「こんな形で仕事に活かす道もあるんだ」</div>
+    <div class="bp-key">「自分には、こんな適性があったんだ」「こんな形で仕事に活かす道もあるんだ」</div>
     <p class="bp-text">そんな新しい発見があるかもしれません。</p>
     <p class="bp-note">※この診断は、手相の解釈を通じて仕事の可能性を探るものであり、特定の職業への適性や収入の増加を保証するものではありません。</p>
   </section>
 
   <section class="bp-section">
-    <h2 class="bp-title">あなたの強みを、<br>あとから何度でも見返せます</h2>
+    <h2 class="bp-title">あなたの強みを、あとから何度でも見返せます</h2>
     <p class="bp-text">診断結果は、A4・3ページ以上の<strong class="bp-emphasis">「ビジネスプレイヤー診断レポート」</strong>としてPDFでお届けします。</p>
     <figure class="bp-report-image">
       <img src="https://cdn.peraichi.com/userData/d6621e34-3268-445c-bb20-ddb971833921/img/ac295295-fa01-415d-9e44-158313f73806/_______.png" alt="お届けするビジネスプレイヤー診断PDFレポートの見本" loading="lazy">
@@ -164,7 +183,7 @@
   </section>
 
   <section class="bp-section">
-    <h2 class="bp-title">実際にメール手相診断を受けた<br>お客様の声</h2>
+    <h2 class="bp-title">実際にメール手相診断を受けたお客様の声</h2>
     <div class="bp-testimonial-lead">
       <p>今回の「ビジネスプレイヤー診断」は、新しく始めるサービスです。</p>
       <p>そこで、以前のメール手相診断「才能プロファイリング」を受けてくださったお客様のご感想をご紹介します。</p>
@@ -184,13 +203,14 @@
     <p class="bp-text" style="margin-top:25px">また、レポートについても、</p>
     <div class="bp-quote">「詳細なレポートを書いてくれたことも印象的でした。強みを発見することをテーマにした書籍も多いですが、ここまで詳細に自分の強みを掘り下げるのは難しいと思います」</div>
     <p class="bp-text">というご感想をいただきました。</p>
+    <p class="bp-story-customer">原口様（仮名）</p>
     <p class="bp-note">※同じお客様からいただいた「才能プロファイリング」のアンケート回答を、抜粋して掲載しています。</p>
     <p class="bp-note">※個人の感想であり、診断の効果を実証・保証するものではありません。</p>
   </section>
 
   <section class="bp-section">
     <div class="bp-credentials">
-      <h2 class="bp-title">これまで1,250名以上を<br>鑑定してきました</h2>
+      <h2 class="bp-title">これまで1,250名以上を鑑定してきました</h2>
       <p class="bp-credentials-name">ビジネス手相診断士 輝路</p>
       <p class="bp-text">2013年から手相鑑定を始め、これまでに経営者や個人事業主、会社員など、累計1,250名以上を鑑定してきました。</p>
       <p class="bp-text">LINEトーク占いでは、184件の評価で平均★4.9を獲得。</p>
@@ -200,7 +220,7 @@
 
   <section class="bp-section">
     <div class="bp-offer">
-      <h2 class="bp-offer-title">今回は50％OFFの<br>モニター特別価格でご提供します</h2>
+      <h2 class="bp-offer-title">今回は50％OFFのモニター特別価格でご提供します</h2>
       <p class="bp-regular">正式販売価格（予定） <strong>5,500円（税込）</strong></p>
       <div class="bp-off-label">50％OFF</div>
       <p class="bp-price"><strong>2,750</strong><span>円（税込）</span></p>
@@ -214,7 +234,7 @@
   </section>
 
   <section class="bp-section">
-    <h2 class="bp-title">お申し込みからレポート受け取りまで、<br>カンタン3ステップ</h2>
+    <h2 class="bp-title">お申し込みからレポート受け取りまで、カンタン3ステップ</h2>
     <div class="bp-flow">
       <div class="bp-flow-item"><div class="bp-flow-num">1</div><div class="bp-flow-body"><h3>お申し込み</h3><p>お申し込みフォームから、お名前とメールアドレスをご入力ください。</p></div></div>
       <div class="bp-flow-item"><div class="bp-flow-num">2</div><div class="bp-flow-body"><h3>両手の画像を送る</h3><p>ご案内に沿って、両手の画像をお送りください。</p></div></div>
@@ -225,7 +245,7 @@
   <section class="bp-section">
     <div class="bp-support">
       <span class="bp-tag">アフターサポート</span>
-      <h2 class="bp-title">3回まで無料の<br>メールサポート付き</h2>
+      <h2 class="bp-title">3回まで無料のメールサポート付き</h2>
       <p class="bp-text">ビジネスプレイヤー診断レポートを読んで、</p>
       <div class="bp-quote">「ここはどういう意味？」<br><br>「もう少し詳しく聞いてみたい」</div>
       <p class="bp-text">ということがありましたら、お気軽にメールでお問い合わせください。</p>
@@ -234,7 +254,7 @@
   </section>
 
   <section class="bp-section">
-    <h2 class="bp-title">あなたの強みには、<br>まだ別の活かし方があるかもしれません</h2>
+    <h2 class="bp-title">あなたの強みには、まだ別の活かし方があるかもしれません</h2>
     <p class="bp-text">ちょっと想像してみてください。</p>
     <p class="bp-text">今まで当たり前だと思っていた自分の持ち味が、実は別の仕事や役割でも活かせると気づいたら。</p>
     <p class="bp-text">これまでとは違った角度から、自分の仕事の可能性を考えられるかもしれません。</p>
