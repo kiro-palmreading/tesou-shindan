@@ -10,6 +10,20 @@
 
   gtag('config', 'G-5QGZDWRNYE');
 </script>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1531750675449118');
+fbq('track', 'PageView');
+</script>
+<!-- End Meta Pixel Code -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>才能コンパス診断</title>
@@ -721,6 +735,9 @@ body {
 </head>
 
 <body>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1531750675449118&ev=PageView&noscript=1"
+/></noscript>
 
 <section class="fv-area" id="fvArea">
   <div class="fv-copy">
@@ -1034,6 +1051,27 @@ function detectTrafficSource() {
 const trafficSource = detectTrafficSource();
 
 /* =========================================================
+   Meta広告(ピクセル)イベント
+   - 診断完了: DiagnosisComplete(カスタム)
+   - メール登録: Lead(広告の最適化に使う)
+   ※メールアドレスなどの個人情報は送らない
+========================================================= */
+const sentMetaEvents = new Set();
+
+function trackMetaEvent(eventName, params = {}, isCustom = false) {
+  if (sentMetaEvents.has(eventName)) return;
+
+  try {
+    if (typeof window.fbq === 'function') {
+      window.fbq(isCustom ? 'trackCustom' : 'track', eventName, params);
+      sentMetaEvents.add(eventName);
+    }
+  } catch (error) {
+    console.warn('Metaピクセルへの記録に失敗しました:', eventName, error);
+  }
+}
+
+/* =========================================================
    GA4イベント
 ========================================================= */
 const sentAnalyticsEvents = new Set();
@@ -1273,6 +1311,10 @@ function showSignup() {
     traffic_source: trafficSource
   });
 
+  trackMetaEvent('DiagnosisComplete', {
+    diagnosis_code: currentDiagnosisCode
+  }, true);
+
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
@@ -1413,6 +1455,16 @@ signupFormEl.addEventListener('submit', async function(event) {
     diagnosis_code: currentDiagnosisCode,
     traffic_source: trafficSource
   });
+
+  trackMetaEvent('Lead', {
+    content_name: '才能コンパス診断',
+    content_category: currentDiagnosisCode
+  });
+
+  // 結果ページへ移動する前に、Metaへの送信が終わるよう少しだけ待つ
+  if (typeof window.fbq === 'function') {
+    await new Promise(resolve => setTimeout(resolve, 400));
+  }
 
   await showResultAfterSignup(currentDiagnosisCode);
 });
