@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>利用規約・プライバシーポリシー・特定商取引法に基づく表記</title>
+
+  <meta
+    name="description"
+    content="才能プロファイリングの利用規約、プライバシーポリシー、特定商取引法に基づく表記です。"
+  >
+
+  <style>
+
+    /* ========================================
+       基本設定
+    ======================================== */
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-text-size-adjust: 100%;
+      text-size-adjust: 100%;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+
+      background: #f7fbfd;
+      color: #2f4049;
+
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Hiragino Kaku Gothic ProN",
+        "Hiragino Sans",
+        "Yu Gothic",
+        "Meiryo",
+        sans-serif;
+    }
+
+    a {
+      color: #428fba;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* ========================================
+       全体
+    ======================================== */
+
+    .legal-page {
+      width: 100%;
+      max-width: 780px;
+
+      margin: 0 auto;
+      padding: 40px 18px 70px;
+    }
+
+    .legal-box {
+      padding: 38px 34px;
+
+      background: #ffffff;
+
+      border: 1px solid #d8eaf4;
+      border-radius: 18px;
+
+      box-shadow: 0 4px 20px rgba(23, 63, 87, 0.05);
+    }
+
+    /* ========================================
+       メインタイトル
+    ======================================== */
+
+    .main-title {
+      margin: 0 0 14px;
+
+      color: #173f57;
+
+      font-size: 30px;
+      line-height: 1.5;
+      font-weight: 800;
+
+      text-align: center;
+    }
+
+    .lead {
+      margin: 0 0 30px;
+
+      color: #647985;
+
+      font-size: 15px;
+      line-height: 1.9;
+
+      text-align: center;
+    }
+
+    /* ========================================
+       ナビゲーション
+    ======================================== */
+
+    .legal-nav {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+
+      margin-bottom: 45px;
+    }
+
+    .legal-nav a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      min-height: 54px;
+
+      padding: 10px 8px;
+
+      background: #e7f5fc;
+
+      border-radius: 10px;
+
+      color: #173f57;
+
+      font-size: 14px;
+      line-height: 1.5;
+      font-weight: 700;
+
+      text-align: center;
+    }
+
+    /* ========================================
+       セクション
+    ======================================== */
+
+    .legal-section {
+      margin-top: 55px;
+    }
+
+    .legal-section:first-of-type {
+      margin-top: 0;
+    }
+
+    .section-title {
+      margin: 0 0 28px;
+      padding: 15px 18px;
+
+      background: #e7f5fc;
+
+      border-radius: 12px;
+
+      color: #173f57;
+
+      font-size: 25px;
+      line-height: 1.5;
+      font-weight: 800;
+
+      text-align: center;
+    }
+
+    .article {
+      margin-top: 32px;
+    }
+
+    .article:first-of-type {
+      margin-top: 0;
+    }
+
+    .article h3 {
+      margin: 0 0 12px;
+
+      color: #355b70;
+
+      font-size: 19px;
+      line-height: 1.6;
+      font-weight: 800;
+    }
+
+    .article p,
+    .article li {
+      color: #2f4049;
+
+      font-size: 16px;
+      line-height: 1.95;
+    }
+
+    .article p {
+      margin: 0 0 14px;
+    }
+
+    .article ul {
+      margin: 10px 0 0;
+      padding-left: 1.4em;
+    }
+
+    .article li + li {
+      margin-top: 6px;
+    }
+
+    /* ========================================
+       特商法テーブル
+    ======================================== */
+
+    .tokusho-table {
+      width: 100%;
+
+      border-collapse: collapse;
+
+      font-size: 15px;
+      line-height: 1.8;
+    }
+
+    .tokusho-table th,
+    .tokusho-table td {
+      padding: 14px 15px;
+
+      border: 1px solid #d8eaf4;
+
+      vertical-align: top;
+    }
+
+    .tokusho-table th {
+      width: 30%;
+
+      background: #f2f9fd;
+
+      color: #173f57;
+
+      font-weight: 700;
+
+      text-align: left;
+    }
+
+    .tokusho-table td {
+      background: #ffffff;
+    }
+
+    /* ========================================
+       注意表示
+    ======================================== */
+
+    .notice {
+      margin-top: 35px;
+      padding: 18px;
+
+      background: #fff9ec;
+
+      border: 1px solid #f1dfb0;
+      border-radius: 12px;
+
+      color: #645532;
+
+      font-size: 14px;
+      line-height: 1.85;
+    }
+
+    /* ========================================
+       ページ上部へ
+    ======================================== */
+
+    .back-top {
+      margin-top: 35px;
+
+      text-align: center;
+    }
+
+    .back-top a {
+      display: inline-block;
+
+      padding: 9px 18px;
+
+      background: #f2f9fd;
+
+      border-radius: 999px;
+
+      color: #428fba;
+
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    /* ========================================
+       フッター
+    ======================================== */
+
+    .footer {
+      margin-top: 55px;
+
+      color: #7a8d97;
+
+      font-size: 13px;
+      line-height: 1.8;
+
+      text-align: center;
+    }
+
+    /* ========================================
+       スマホ
+    ======================================== */
+
+    @media (max-width: 600px) {
+
+      .legal-page {
+        padding: 20px 12px 50px;
+      }
+
+      .legal-box {
+        padding: 28px 18px;
+        border-radius: 14px;
+      }
+
+      .main-title {
+        font-size: 24px;
+      }
+
+      .lead {
+        font-size: 14px;
+      }
+
+      .legal-nav {
+        grid-template-columns: 1fr;
+      }
+
+      .legal-nav a {
+        min-height: 48px;
+      }
+
+      .section-title {
+        padding: 13px 10px;
+
+        font-size: 21px;
+      }
+
+      .article h3 {
+        font-size: 18px;
+      }
+
+      .article p,
+      .article li {
+        font-size: 15px;
+        line-height: 1.9;
+      }
+
+      .tokusho-table,
+      .tokusho-table tbody,
+      .tokusho-table tr,
+      .tokusho-table th,
+      .tokusho-table td {
+        display: block;
+        width: 100%;
+      }
+
+      .tokusho-table tr {
+        margin-bottom: 14px;
+      }
+
+      .tokusho-table th {
+        padding: 10px 12px;
+
+        border-bottom: 0;
+      }
+
+      .tokusho-table td {
+        padding: 12px;
+      }
+
+    }
+
+  </style>
+</head>
+
+
+<body id="top">
+
+  <main class="legal-page">
+
+    <div class="legal-box">
+
+      <h1 class="main-title">
+        利用規約・プライバシーポリシー<br>
+        特定商取引法に基づく表記
+      </h1>
+
+      <p class="lead">
+        「才能プロファイリング」を安心してご利用いただくための
+        各種規約・方針をご案内しています。
+      </p>
+
+
+      <!-- ナビゲーション -->
+
+      <nav class="legal-nav">
+
+        <a href="#terms">
+          利用規約
+        </a>
+
+        <a href="#privacy">
+          プライバシーポリシー
+        </a>
+
+        <a href="#tokusho">
+          特定商取引法に基づく表記
+        </a>
+
+      </nav>
+
+
+      <!-- =====================================
+           利用規約
+      ====================================== -->
+
+      <section class="legal-section" id="terms">
+
+        <h2 class="section-title">
+          利用規約
+        </h2>
+
+
+        <div class="article">
+
+          <h3>
+            第1条　本サービスについて
+          </h3>
+
+          <p>
+            「才能プロファイリング」（以下「本サービス」といいます）は、
+            ご利用者様からご提供いただいた手の画像および事前アンケート等をもとに、
+            手相の観点から強みや特徴を読み解き、
+            PDF形式のレポート等でお伝えするサービスです。
+          </p>
+
+        </div>
+
+
+        <div class="article">
+
+          <h3>
+            第2条　お申し込み
+          </h3>
+
+          <p>
+            所定の方法により必要事項をご入力いただき、
+            診断料の決済が完了した時点で、お申し込み完了となります。
+          </p>
+
+        </div>
+
+
+        <div class="article">
+
+          <h3>
+            第3条　画像・情報のご提供
+          </h3>
+
+          <p>
+            診断に必要な手の画像および事前アンケート等を、
+            当方指定の方法によりご提供いただきます。
+          </p>
+
+          <p>
+            画像が不鮮明な場合や診断に必要な情報が不足している場合には、
+            再度の画像提出または情報提供をお願いすることがあります。
+          </p>
+
+        </div>
+
+
+        <div class="article">
+
+          <h3>
+            第4条　納品
+          </h3>
+
+          <p>
+            必要な画像および事前アンケート等がすべて到着した後、
+            原則として7日以内に、
+            PDF形式の才能プロファイリングレポートをメールにてお届けします。
+          </p>
+
+        </div>
+
+
+        <div class="article">
+
+          <h3>
+            第5条　キャンセル・返金
+          </h3>
+
+          <p>
+            本サービスは、ご利用者様ごとに個別に診断・作成するサービスのため、
+            決済完了後のお客様都合によるキャンセル・返金は、
+            原則としてお受けしておりません。
+          </p>
+
+          <p>
+            ただし、当方の事情によりサービスを提供できない場合には、
+            お支払いいただいた料金を返金いたします。
+          </p>
+
+        </div>
+
+
+        <div class="article">
+
+          <h3>
+            第6条　診断結果について
+          </h3>
+
+          <p>
+            本サービスは、ご自身の強みや特徴について考えるための情報を提供することを
+            目的としています。
+          </p>
+
+          <p>
+            診断結果は、収入、成功、就職、転職、事業成果その他の
+            特定の結果を保証するものではありません。
+          </p>
+
+          <p>
+            また、医療・法律・税務・投資その他の専門的な診断や助言に
+            代わるものではありません。
+          </p>
+
+        </div>
+
+
+        <div class="article">
+
+          <h3>
+            第7条　著作権
+          </h3>
+
+          <p>
+            本サービスにより提供するレポート・文章・画像その他のコンテンツの
+            著作権は、当方または正当な権利者に帰属します。
+          </p>
+
+          <p>
+            ご本人様が私的に利用・保存することは可能ですが、
+            当方の許可なく複製、転載、販売、配布等を行うことはできません。
+          </p>
+
+        </div>
+
+
+        <div class="article">
+
+          <h3>
+            第8条　準拠法
+          </h3>
+
+          <p>
+            本規約は日本法に準拠します。
+          </p>
+
+        </div>
+
+
+        <div class="back-top">
+          <a href="#top">ページ上部へ戻る</a>
+        </div>
+
+      </section>
+
+
+      <!-- =====================================
+           プライバシーポリシー
+      ====================================== -->
+
+      <section class="legal-section" id="privacy">
+
+        <h2 class="section-title">
+          プライバシーポリシー
+        </h2>
+
+
+        <div class="article">
+
+          <h3>
+            1．取得する情報
+          </h3>
+
+          <p>
+            本サービスでは、必要に応じて以下の情報を取得します。
+          </p>
+
+          <ul>
+            <li>氏名</li>
+            <li>メールアドレス</li>
+            <li>性別</li>
+            <li>生年月日</li>
+            <li>職業</li>
+            <li>仕事に関するお悩み・ご相談内容</li>
+            <li>手のひら・手の甲・指・爪等を含む手の画像</li>
+            <li>お問い合わせ内容</li>
+            <li>その他、サービス提供に必要な情報</li>
+          </ul>
+
+        </div>
+
+
+        <div class="article">
+
+          <h3>
+            2．利用目的
+          </h3>
+
+          <p>
+            取得した情報は、以下の目的で利用します。
+          </p>
+
+          <ul>
+            <li>才能プロファイリングの診断・レポート作成・納品</li>
+            <li>ご本人様への連絡</li>
+            <li>お問い合わせへの対応</li>
+            <li>アフターサポート</li>
+            <li>サービス改善・品質向上</li>
+            <li>アンケートのお願い</li>
+            <li>当方の商品・サービス等のご案内</li>
+            <li>不正利用・トラブル等の防止および対応</li>
+          </ul>
+
+        </div>
+
+
+        <div class="article">
+
+          <h3>
+            3．手の画像について
+          </h3>
+
+          <p>
+            ご提供いただいた手の画像は、
+            お申し込みいただいたサービスの診断およびレポート作成のために利用します。
+          </p>
+
+          <p>
+            ご本人様の同意なく、
+            広告、ウェブサイト、SNS、販売ページ等に掲載することはありません。
+          </p>
+
+          <p>
+            事例紹介等で使用する場合には、
+            あらかじめご本人様の同意を得ます。
+          </p>
+
+        </div>
+
+
+        <div class="article">
+
+          <h3>
+            4．第三者への提供
+          </h3>
+
+          <p>
+            法令に基づく場合等を除き、
+            ご本人様の同意なく個人情報を第三者へ提供することはありません。
+          </p>
+
+        </div>
+
+
+        <div class="article">
+
+          <h3>
+            5．外部サービスについて
+          </h3>
+
+          <p>
+            サービス提供のため、
+            決済サービス、メール配信サービス、クラウドサービス、
+            ウェブサイト運営サービス等を利用する場合があります。
+          </p>
+
+          <p>
+            クレジットカード情報等は、
+            原則として決済サービス事業者が管理し、
+            当方では保有しません。
+          </p>
+
+        </div>
+
+
+        <div class="article">
+
+          <h3>
+            6．安全管理
+          </h3>
+
+          <p>
+            取得した個人情報について、
+            不正アクセス、漏えい、紛失、改ざん等を防ぐため、
+            必要かつ適切な管理を行います。
+          </p>
+
+        </div>
+
+
+        <div class="article">
+
+          <h3>
+            7．個人情報に関するお問い合わせ
+          </h3>
+
+          <p>
+            個人情報の開示・訂正・削除・利用停止等をご希望の場合は、
+            下記お問い合わせ先までご連絡ください。
+          </p>
+
+        </div>
+
+
+        <div class="back-top">
+          <a href="#top">ページ上部へ戻る</a>
+        </div>
+
+      </section>
+
+
+      <!-- =====================================
+           特定商取引法に基づく表記
+      ====================================== -->
+
+      <section class="legal-section" id="tokusho">
+
+        <h2 class="section-title">
+          特定商取引法に基づく表記
+        </h2>
+
+
+        <table class="tokusho-table">
+
+          <tr>
+            <th>
+              販売事業者
+            </th>
+            <td>
+              ビジネス手相診断士　輝路
+            </td>
+          </tr>
+
+          <tr>
+            <th>
+              運営責任者
+            </th>
+            <td>
+              ビジネス手相診断士　輝路
+            </td>
+          </tr>
+
+          <tr>
+            <th>
+              所在地
+            </th>
+            <td>
+              東京都渋谷区神泉町10-15
+            </td>
+          </tr>
+
+          <tr>
+            <th>
+              電話番号
+            </th>
+            <td>
+              090-6506-6891
+            </td>
+          </tr>
+
+          <tr>
+            <th>
+              メールアドレス
+            </th>
+            <td>
+              sl-kiro@saleswriter-kiro.com
+            </td>
+          </tr>
+
+          <tr>
+            <th>
+              販売価格
+            </th>
+            <td>
+              各販売ページに表示された金額（税込）
+            </td>
+          </tr>
+
+          <tr>
+            <th>
+              商品代金以外に必要な料金
+            </th>
+            <td>
+              インターネット接続に必要な通信料金等は、
+              お客様のご負担となります。
+            </td>
+          </tr>
+
+          <tr>
+            <th>
+              支払方法
+            </th>
+            <td>
+              クレジットカード決済
+            </td>
+          </tr>
+
+          <tr>
+            <th>
+              支払時期
+            </th>
+            <td>
+              お申し込み時に決済いただきます。
+            </td>
+          </tr>
+
+          <tr>
+            <th>
+              サービス提供時期
+            </th>
+            <td>
+              必要な手の画像および事前アンケート等がすべて到着した後、
+              原則として7日以内にPDF形式で納品します。
+            </td>
+          </tr>
+
+          <tr>
+            <th>
+              申込期限
+            </th>
+            <td>
+              各販売ページに記載された期限まで。
+              または募集人数に達した時点で受付終了となります。
+            </td>
+          </tr>
+
+          <tr>
+            <th>
+              キャンセル・返金
+            </th>
+            <td>
+              個別に診断・作成するサービスのため、
+              決済完了後のお客様都合によるキャンセル・返金は
+              原則としてお受けしておりません。
+              当方の事情によりサービスを提供できない場合には、
+              お支払いいただいた料金を返金いたします。
+            </td>
+          </tr>
+
+        </table>
+
+
+
+        <div class="back-top">
+          <a href="#top">ページ上部へ戻る</a>
+        </div>
+
+      </section>
+
+
+      <!-- フッター -->
+
+      <footer class="footer">
+
+        制定日：2026年【要入力：月】月【要入力：日】日
+        <br>
+        © 才能プロファイリング
+
+      </footer>
+
+
+    </div>
+
+  </main>
+
+</body>
+
+</html>
