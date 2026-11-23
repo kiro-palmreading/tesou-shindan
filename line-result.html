@@ -257,7 +257,6 @@
       letter-spacing: 0.04em;
     }
 
-    /* 本文は必ず左揃え */
     #resultContent .result-block p:not(.highlight-paragraph),
     #resultContent .result-block li {
       text-align: left !important;
@@ -378,10 +377,7 @@
       padding: 0;
     }
 
-    /* ========================================
-       才能プロファイリング案内
-    ======================================== */
-
+    /* 才能プロファイリング */
     .talent-profile-service {
       border-color: rgba(91, 163, 217, 0.40);
       background: linear-gradient(
@@ -394,6 +390,68 @@
     .talent-profile-service .talent-service-lead {
       color: var(--navy);
       font-weight: 700;
+    }
+
+    /* レポート見本 */
+    .talent-report-sample {
+      margin: 8px 0 24px;
+      text-align: center;
+    }
+
+    .talent-report-sample img {
+      display: block;
+      width: 100%;
+      height: auto;
+      margin: 0 auto;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 3px 14px var(--shadow);
+    }
+
+    .talent-report-caption {
+      margin: 8px 0 0 !important;
+      color: var(--text-mid) !important;
+      font-size: 12px !important;
+      line-height: 1.6 !important;
+      text-align: center !important;
+    }
+
+    /* お客様の声 */
+    .talent-voice {
+      margin: 8px 0 24px;
+      padding: 18px 17px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: #f8fcff;
+    }
+
+    .talent-voice-title {
+      margin: 0 0 14px !important;
+      color: var(--navy) !important;
+      font-weight: 700;
+      line-height: 1.8 !important;
+    }
+
+    .talent-voice-text {
+      margin: 0 0 16px !important;
+      color: var(--text-dark) !important;
+      font-family: 'Noto Serif JP', serif;
+      line-height: 2 !important;
+    }
+
+    .talent-voice-name {
+      margin: 0 0 12px !important;
+      color: var(--navy-mid) !important;
+      font-size: 14px !important;
+      font-weight: 700;
+      line-height: 1.7 !important;
+    }
+
+    .talent-voice-note {
+      margin: 0 !important;
+      color: var(--text-mid) !important;
+      font-size: 11px !important;
+      line-height: 1.6 !important;
     }
 
     .talent-profile-service .talent-service-button-wrap {
@@ -464,6 +522,10 @@
         font-size: 16px;
         padding: 14px 16px;
       }
+
+      .talent-voice {
+        padding: 16px 14px;
+      }
     }
   </style>
 </head>
@@ -498,11 +560,6 @@
     const loadingMessage =
       document.getElementById('loadingMessage');
 
-
-    /* ========================================
-       HTMLエスケープ
-    ======================================== */
-
     function escapeHtml(value) {
       return String(value)
         .replaceAll('&', '&amp;')
@@ -512,13 +569,7 @@
         .replaceAll("'", '&#039;');
     }
 
-
-    /* ========================================
-       URLから診断コードを取得
-    ======================================== */
-
     function getDiagnosisCode() {
-
       const params =
         new URLSearchParams(window.location.search);
 
@@ -529,18 +580,9 @@
         .toUpperCase();
     }
 
-
-    /* ========================================
-       旧「手相プロファイリング」案内を削除し、
-       「才能プロファイリング」案内へ差し替える
-    ======================================== */
-
     function replaceServiceBlock() {
 
-      /*
-       * 各診断結果HTMLに個別に入っている
-       * 旧「手相プロファイリング」案内を削除
-       */
+      /* 旧・手相プロファイリング案内を削除 */
       const oldServiceBlocks =
         resultContent.querySelectorAll(
           '.result-block--service'
@@ -550,28 +592,16 @@
         block.remove();
       });
 
-
-      /*
-       * 新しい才能プロファイリング案内を追加する場所
-       *
-       * 各診断結果のメイン部分があればその末尾、
-       * 見つからない場合は resultContent の末尾へ追加
-       */
       const resultDetail =
         resultContent.querySelector(
           '.result-detail--visual, .result-detail'
         ) || resultContent;
 
-
-      /*
-       * 新しい案内ブロックを作成
-       */
       const talentBlock =
         document.createElement('article');
 
       talentBlock.className =
         'result-block talent-profile-service';
-
 
       talentBlock.innerHTML = `
         <h2>
@@ -633,6 +663,53 @@
           PDFでお届けします。
         </p>
 
+        <div class="talent-report-sample">
+          <img
+            src="https://cdn.peraichi.com/userData/d6621e34-3268-445c-bb20-ddb971833921/img/63f40864-be9d-4332-b5e2-27e8b6d52c29/________3_.png"
+            alt="才能プロファイリングレポート見本"
+            loading="lazy"
+          >
+          <p class="talent-report-caption">
+            ※実際にお届けするレポートの一例です
+          </p>
+        </div>
+
+        <div class="talent-voice">
+
+          <p class="talent-voice-title">
+            この才能プロファイリングを
+            受けられた方から、
+            こんなお声をいただいています。
+          </p>
+
+          <p class="talent-voice-text">
+            ❝自分が考えていた強みと、
+            いただいた強みでは
+            大きく違っていました。<br><br>
+
+            詳細なレポートを書いてくれたことも
+            印象的でした。<br><br>
+
+            強みを発見することをテーマとした
+            書籍も多いですが、<br><br>
+
+            ここまで詳細に
+            自分の強みを掘り下げるのは
+            難しいと思います。❞
+          </p>
+
+          <p class="talent-voice-name">
+            会社員・40代男性<br>
+            原口様（仮名）
+          </p>
+
+          <p class="talent-voice-note">
+            ※個人の感想であり、
+            結果を保証するものではありません。
+          </p>
+
+        </div>
+
         <p>
           さらに特典として、
           両手から読み解いたあなたの強みを
@@ -667,17 +744,8 @@
         </div>
       `;
 
-
-      /*
-       * 診断結果の最後に追加
-       */
       resultDetail.appendChild(talentBlock);
     }
-
-
-    /* ========================================
-       診断結果の表示を整える
-    ======================================== */
 
     function decorateResult() {
 
@@ -686,92 +754,76 @@
           '.result-block p'
         );
 
-      paragraphs.forEach(
-        function(paragraph) {
+      paragraphs.forEach(function(paragraph) {
 
-          const text =
-            paragraph.textContent
-              .replace(/\s+/g, ' ')
-              .trim();
+        const text =
+          paragraph.textContent
+            .replace(/\s+/g, ' ')
+            .trim();
 
-          const children =
-            Array.from(
-              paragraph.children
-            );
+        const children =
+          Array.from(
+            paragraph.children
+          );
 
-          const hasOnlyStrong =
-            children.length === 1 &&
-            children[0].tagName === 'STRONG' &&
-            paragraph.textContent.trim() ===
-              children[0].textContent.trim();
+        const hasOnlyStrong =
+          children.length === 1 &&
+          children[0].tagName === 'STRONG' &&
+          paragraph.textContent.trim() ===
+            children[0].textContent.trim();
 
+        if (
+          hasOnlyStrong &&
+          /^[123１２３][．.、]/u.test(text)
+        ) {
 
-          if (
-            hasOnlyStrong &&
-            /^[123１２３][．.、]/u.test(text)
-          ) {
+          paragraph.classList.add(
+            'tip-heading'
+          );
 
-            paragraph.classList.add(
-              'tip-heading'
-            );
+        } else if (hasOnlyStrong) {
 
-          } else if (hasOnlyStrong) {
+          paragraph.classList.add(
+            'key-message'
+          );
 
-            paragraph.classList.add(
-              'key-message'
-            );
+        } else if (
+          /^[「『].+[」』]$/u.test(text) &&
+          text.length <= 100
+        ) {
 
-          } else if (
-            /^[「『].+[」』]$/u.test(text) &&
-            text.length <= 100
-          ) {
-
-            paragraph.classList.add(
-              'quote-line'
-            );
-          }
-
-
-          /*
-           * 見出し用の強調行を除き、
-           * 本文へ左揃えを直接指定
-           */
-          if (
-            !paragraph.classList.contains(
-              'highlight-paragraph'
-            )
-          ) {
-
-            paragraph.style.setProperty(
-              'text-align',
-              'left',
-              'important'
-            );
-          }
+          paragraph.classList.add(
+            'quote-line'
+          );
         }
-      );
 
+        if (
+          !paragraph.classList.contains(
+            'highlight-paragraph'
+          )
+        ) {
+
+          paragraph.style.setProperty(
+            'text-align',
+            'left',
+            'important'
+          );
+        }
+      });
 
       resultContent
         .querySelectorAll(
           '.result-block li'
         )
-        .forEach(
-          function(item) {
+        .forEach(function(item) {
 
-            item.style.setProperty(
-              'text-align',
-              'left',
-              'important'
-            );
-          }
-        );
+          item.style.setProperty(
+            'text-align',
+            'left',
+            'important'
+          );
+        });
     }
-
-
-    /* ========================================
-       エラー表示
-    ======================================== */
 
     function showError(message) {
 
@@ -785,20 +837,11 @@
         true;
     }
 
-
-    /* ========================================
-       診断結果を読み込む
-    ======================================== */
-
     async function loadResult() {
 
       const code =
         getDiagnosisCode();
 
-
-      /*
-       * 診断コードの形式を確認
-       */
       if (
         !VALID_CODE_PATTERN.test(code)
       ) {
@@ -811,17 +854,10 @@
         return;
       }
 
-
       try {
 
-        /*
-         * A1Mなら
-         * line-results/A1M.html
-         * を読み込む
-         */
         const path =
           `line-results/${code}.html`;
-
 
         const response =
           await fetch(
@@ -831,42 +867,23 @@
             }
           );
 
-
         if (!response.ok) {
           throw new Error(
             'result not found'
           );
         }
 
-
-        /*
-         * 個別の診断結果HTMLを表示
-         */
         resultContent.innerHTML =
           await response.text();
 
-
-        /*
-         * 旧・手相プロファイリング案内を削除し、
-         * 新・才能プロファイリング案内へ差し替え
-         */
         replaceServiceBlock();
 
-
-        /*
-         * 診断結果の見た目を整える
-         */
         decorateResult();
 
-
-        /*
-         * 診断結果タイトルをページタイトルへ反映
-         */
         const catchTitle =
           resultContent.querySelector(
             '.result-catch p:last-child'
           );
-
 
         if (catchTitle) {
 
@@ -874,21 +891,12 @@
             `${catchTitle.textContent.trim()}｜才能コンパス診断`;
         }
 
-
-        /*
-         * 読み込み表示を消し、
-         * 診断結果を表示
-         */
         loadingMessage.hidden =
           true;
 
         resultContent.hidden =
           false;
 
-
-        /*
-         * GA4
-         */
         if (
           typeof gtag === 'function'
         ) {
@@ -902,7 +910,6 @@
           );
         }
 
-
       } catch (error) {
 
         showError(
@@ -913,11 +920,6 @@
         );
       }
     }
-
-
-    /* ========================================
-       実行
-    ======================================== */
 
     loadResult();
 
