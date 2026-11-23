@@ -425,6 +425,41 @@
       background: #f8fcff;
     }
 
+    .talent-voice-person {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 0 0 16px;
+    }
+
+    .talent-voice-photo-wrap {
+      flex: 0 0 auto;
+      text-align: center;
+    }
+
+    .talent-voice-photo {
+      display: block;
+      width: 74px;
+      height: 74px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #ffffff;
+      box-shadow: 0 2px 8px var(--shadow);
+    }
+
+    .talent-voice-image-note {
+      margin: 5px 0 0 !important;
+      color: var(--text-mid) !important;
+      font-size: 9px !important;
+      line-height: 1.4 !important;
+      text-align: center !important;
+      white-space: nowrap;
+    }
+
+    .talent-voice-person-info {
+      min-width: 0;
+    }
+
     .talent-voice-title {
       margin: 0 0 14px !important;
       color: var(--navy) !important;
@@ -610,7 +645,7 @@
 
         <p class="talent-service-lead">
           今回の才能コンパス診断では、
-          手の特徴から、あなたの強みの傾向を読み解きました。
+          知能線と手の形から、あなたの強みの傾向を読み解きました。
         </p>
 
         <p>
@@ -665,7 +700,7 @@
 
         <div class="talent-report-sample">
           <img
-            src="https://cdn.peraichi.com/userData/d6621e34-3268-445c-bb20-ddb971833921/img/63f40864-be9d-4332-b5e2-27e8b6d52c29/________3_.png"
+            src="https://cdn.peraichi.com/userData/d6621e34-3268-445c-bb20-ddb971833921/img/4953820c-ae28-416c-b158-48199abfae76/______.png"
             alt="才能プロファイリングレポート見本"
             loading="lazy"
           >
@@ -698,10 +733,26 @@
             難しいと思います。❞
           </p>
 
-          <p class="talent-voice-name">
-            会社員・40代男性<br>
-            原口様（仮名）
-          </p>
+          <div class="talent-voice-person">
+            <div class="talent-voice-photo-wrap">
+              <img
+                class="talent-voice-photo"
+                src="https://cdn.peraichi.com/userData/d6621e34-3268-445c-bb20-ddb971833921/img/0c73ef7d-0262-4bc7-b44f-3d6a76a1b217/28058807_s.jpg"
+                alt="お客様の声 イメージ"
+                loading="lazy"
+              >
+              <p class="talent-voice-image-note">
+                ※画像はイメージです
+              </p>
+            </div>
+
+            <div class="talent-voice-person-info">
+              <p class="talent-voice-name">
+                会社員・40代男性<br>
+                原口様（仮名）
+              </p>
+            </div>
+          </div>
 
           <p class="talent-voice-note">
             ※個人の感想であり、
@@ -709,14 +760,6 @@
           </p>
 
         </div>
-
-        <p>
-          さらに特典として、
-          両手から読み解いたあなたの強みを
-          ひと言で表した
-          「あなただけの強みキャッチコピー」
-          もお付けします。
-        </p>
 
         <p>
           「自分には、ほかにどんな強みがあるんだろう？」
